@@ -1,14 +1,160 @@
-\documentclass{article}
-\usepackage[utf8]{inputenc}
+%--------------------------------------------------------%
+  % Journal Article Manuscript Template
 
-\title{mind-pipeline-paper}
-\author{Dileep Kishore}
-\date{July 2018}
+%% Copyright 2014 Nicholas E. Reith.
+  
+  % This work may be distributed and/or modified under the
+  % conditions of the LaTeX Project Public License, 
+  % either version 1.3 of this license or (at your option) 
+  % any later version.
+  
+  % The latest version of this license is in
+  %   http://www.latex-project.org/lppl.txt
+  % and version 1.3 or later is part of all distributions of LaTeX
+  % version 2005/12/01 or later.
+  
+  % This work has the LPPL maintenance status `unmaintained'.
+  
+  % This work consists of the files main.tex and subsidiary files:
+  % (references: biblio.bib), (sections: content.tex, coverpage.tex,
+  % preamble.tex, title_authors.tex, and title_noauthors.tex), and
+  % (tables: sample_longtable.tex, and sample_table.tex).
+  
+  % It also includes the BibTeX reference styles: 
+  % asr.bst, and ajs.bst, borrowed from here:
+  % http://people.ku.edu/~chkim/
+
+%--------------------------------------------------------%
+
+
+%--------------------------------------------------------%
+%   This is the main .tex file, which controls and combines
+%   the other sections.
+%   See the "sections" folder to edit content
+%--------------------------------------------------------%
+
+\input{sections/preamble} % See preamble.tex to edit the overall layout
+
+% Header from Page Three on: Edit below for left and right headers
+\lhead{}
+\rhead{Wordy Manuscript Title}
+
+%--------------------------------------------------------%
+%   BEGIN DOCUMENT
+%--------------------------------------------------------%
 
 \begin{document}
 
-\maketitle
+%TC:ignore   %% This region is ignored for the word count
+% COVER PAGE
 
-\section{Introduction}
+\input{sections/coverpage} % Comment out to remove cover page
+%TC:endignore
+
+\thispagestyle{empty} % Removes header on page two. Only needed if there is a coverpage
+
+% TITLE SECTION
+
+% Comment out one of the two lines below to include or exclude authors in article title. You may want to exclude them in case of a double-blind peer review submission, since authors appear on the cover page, and reviewers should not see the authors' names in the manuscript draft.
+
+%\input{sections/title_authors}
+\input{sections/title_noauthors}
+
+\maketitle % Insert title
+
+% NOTE: Comment out the lines below to remove line numbers
+  % Running line numbers:
+  \linenumbers
+  \setlength\linenumbersep{15pt}
+  \renewcommand\linenumberfont{\normalfont\footnotesize\sffamily\color{gray}}
+  %\pagewiselinenumbers % Same, but that reset on every page:
+  \modulolinenumbers[1] % Number only every line. Change for fewer.
+
+%--------------------------------------------------------%
+%   CONTENT
+%--------------------------------------------------------%
+
+% See the content.tex file for the abstract and body text
+\input{sections/content}
+
+%--------------------------------------------------------%
+%   REFERENCE LIST
+%--------------------------------------------------------%
+\newpage
+\singlespacing
+
+% BIBTEX
+
+    % NOTE: Comment out next two lines if using biblatex
+    \bibliographystyle{references/ajs}
+    \bibliography{references/biblio} % Insert bibliography
+
+% BIBLATEX
+
+    % NOTE: Uncomment next line to use biblatex
+    % \printbibliography
+
+%--------------------------------------------------------%
+%   END NOTES
+%--------------------------------------------------------%
+
+    % Uncomment these three lines below if using endnotes
+    % instead of footnotes
+      % \newpage
+      % \section*{End Notes}
+      % \theendnotes
+
+%--------------------------------------------------------%
+%   FIGURES
+%--------------------------------------------------------%
+
+% NOTE: If your submission guidelines don't require figures
+% at the end, you can comment out the two lines below,
+% and embed figures in the text of content.tex instead of here
+
+\newpage
+\section*{Figures}
+
+\begin{figure}[ht!]
+\centering\includegraphics[width=0.4\linewidth]{figures/placeholder}
+\caption{Figure caption}
+\end{figure}
+
+%--------------------------------------------------------%
+%   TABLES
+%--------------------------------------------------------%
+
+% NOTE: If your submission guidelines don't require tables
+% at the end, you can comment out the two lines below,
+% and embed tables in the text of content.tex instead of here
+
+\newpage
+\section*{Tables}
+
+\input{tables/sample_longtable}
+
+\newpage
+\input{tables/sample_table}
+
+%--------------------------------------------------------%
+%   WORD COUNT
+%--------------------------------------------------------%
+
+% NOTE: Comment out this section, if you wish 
+% to remove this Word Count page.
+
+% NOTE: AJS wants no more than about 10,000 words total.
+
+\newpage
+
+%TC:ignore  %% This region is ignored for the word count
+\section*{Word Count}
+
+This document contains approximately {\large \textbf{\wordcount}} before this page, including: title, authors, section headings, abstract, body text, tables, figure captions and references. It seems to ignore most \LaTeX \ code and \%comments, but it treats contractions such as "can't" as one word.
+%TC:endignore
+
+%--------------------------------------------------------%
+%   END DOCUMENT
+%--------------------------------------------------------%
 
 \end{document}
