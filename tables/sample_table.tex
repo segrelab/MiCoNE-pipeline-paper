@@ -1,0 +1,25 @@
+%----------------------------------------------------------
+%	TABLE: SAMPLE SHORT TABLE
+%----------------------------------------------------------
+
+% NOTE: If you want to stretch or constrain a table
+% to a particular width, such as textwidth, comment out
+% the tabular code below, and uncomment the tabularx code.
+% Using the "X" option, only available in tabularx allows
+% columns to fill the available space.
+
+\begin{table}[h!] \centering
+\small
+\begin{tabular}{lrrr}
+%\begin{tabularx}{\textwidth}{XXXX}
+\hline
+\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2} & \textbf{Response 3} \\
+\hline
+Treatment 1 & 0.0003262 & 0.562 & 0.653 \\
+Treatment 2 & 0.0015681 & 0.910 & 0.331 \\
+Treatment 3 & 0.0009271 & 0.296 & 0.222 \\
+\hline
+\end{tabular}
+%\end{tabularx}
+\caption{Table caption}
+\end{table}
