@@ -9,27 +9,16 @@
 \rhead{Correlating microbial abundances for the Microbial Interaction Database}
 
 %--------------------------------------------------------%
-%   BEGIN DOCUMENT
+% BEGIN DOCUMENT
 %--------------------------------------------------------%
 
 \begin{document}
 
-%TC:ignore   %% This region is ignored for the word count
 % COVER PAGE
 
 \input{sections/coverpage} % Comment out to remove cover page
-%TC:endignore
 
 \thispagestyle{empty} % Removes header on page two. Only needed if there is a coverpage
-
-% TITLE SECTION
-
-% Comment out one of the two lines below to include or exclude authors in article title. You may want to exclude them in case of a double-blind peer review submission, since authors appear on the cover page, and reviewers should not see the authors' names in the manuscript draft.
-
-%\input{sections/title_authors}
-\input{sections/title_noauthors}
-
-\maketitle % Insert title
 
 % NOTE: Comment out the lines below to remove line numbers
   % Running line numbers:
@@ -104,23 +93,6 @@
 
 \newpage
 \input{tables/sample_table}
-
-%--------------------------------------------------------%
-%   WORD COUNT
-%--------------------------------------------------------%
-
-% NOTE: Comment out this section, if you wish 
-% to remove this Word Count page.
-
-% NOTE: AJS wants no more than about 10,000 words total.
-
-\newpage
-
-%TC:ignore  %% This region is ignored for the word count
-\section*{Word Count}
-
-This document contains approximately {\large \textbf{\wordcount}} before this page, including: title, authors, section headings, abstract, body text, tables, figure captions and references. It seems to ignore most \LaTeX \ code and \%comments, but it treats contractions such as "can't" as one word.
-%TC:endignore
 
 %--------------------------------------------------------%
 %   END DOCUMENT
