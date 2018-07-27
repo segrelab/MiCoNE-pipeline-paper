@@ -1,0 +1,35 @@
+\section*{Introduction}
+
+    Microorganisms naturally occur in communities which can consist of tens of thousands of species involved in complex interactions with millions of metabolic and signaling relationships.
+    Each interaction within this complex ecological network can have a positive effect, a negative effect or no effect on the species involved.
+    For example, bacteria that compete for the same nutrient will have a negative impact on each other when the media is deficient in that nutrient \cite{Ghoul2016}.
+    There can also be cases of cross-feeding where two species produce metabolic products that are beneficial to each other.
+
+    The microbial interaction networks are highly dynamic, and they constantly reorganize in a varying environment.
+    Even under static conditions, these interactions are often difficult to predict due to their non-linear nature \cite{Konopka2015}.
+    Compounding on this complexity is the fact that these interaction networks usually involve thousands of species.
+    While the species diversity is now measurable through metagenomic sequencing and other technologies, the detailed characterization of inter-species interactions still escapes our understanding.
+    Knowledge of the community composition at a particular instance in time would enable us to derive partial insights into the underlying dynamics.
+    The study of microbial communities using high throughput genomic surveys (such as 16S rRNA gene profiling) has become routine in the resolution of microbial diversity, abundances and associations within microbial populations \cite{Jovel2016}.
+    There have recently been many large-scale data collection efforts involving soil (Earth Microbiome Project) \cite{Thompson2017}, marine (Tara Oceans Project) \cite{Zhang2015} and human-associated microbiota (Human Microbiome Project) \cite{HumanMicrobiomeProjectConsortium2012}.
+    With data being acquired at exponential rates, it becomes increasingly difficult and essential to be able to extract useful knowledge from them.
+    The first goal of this study is to alleviate the data-to-knowledge bottleneck by creating a comprehensive database of microbial interactions comprising of several kinds of heterogeneous data from different data sources.
+    The first stage of the project will involve populating the database with associations derived from experimental predictions, literature review and raw 16S sequence data.
+
+    Due to the compositional nature of 16S data, standard data analysis tools are not very effective.
+    The development of appropriate and well-validated analysis methods that do not produce statistical artifacts is still ongoing and is receiving much attention. There have been many approaches taken to try to solve this issue, but, there is no single method that works perfectly in all situations \cite{Golob2017,Weiss2016}.
+    The methodology for the analysis of 16S rRNA sequence data is not very straightforward and there are a myriad of tools for each step of the process.
+    This makes the analysis complicated and not very reproducible.
+    Hence, we propose to build a standardized 16S data analysis pipeline that will ensure accuracy and uniformity across all the data stored in the database.
+    There exist many platforms like MG-RAST \cite{Keegan2016}, Qiita \cite{qiita} and others that provide pipelines for 16S data analysis, but the main motivations behind the construction of our own pipeline are two-fold.
+    Firstly, these tools do not analyze co-occurrence networks and the effect of upstream statistical methods on the inferred networks.
+    Secondly, a comprehensive study of existing methods is needed in order to suggest optimal methods and parameters for users of the pipeline and database.
+    The pipeline would also allow a user to process their sequence data using the same standards applied to the database and compare their results to the networks in the database.
+    This would also ensure reproducible comparisons.
+
+    We will further collect metagenomic data (whole genome shotgun sequence data), metatranscriptomic data (mRNA sequence data) and metabolomic data (metabolite profile from mass spectroscopy) and incorporate these into the database in the next phase of the project.
+    This addition would enable us to obtain a mechanistic perspective of the dynamics in a microbial community.
+    The heterogeneous multi-omic data-sets will open new avenues and exciting approaches for generating new knowledge.
+    This data can be leveraged to provide insights into previously unknown microbial ecological interaction network dynamics upon integration into the database.
+    We will also make use of \ac{comets} simulations to predict interactions in microbial communities and to design synthetic communities.
+
