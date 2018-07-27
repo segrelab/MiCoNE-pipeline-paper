@@ -2,6 +2,28 @@
 
 \section*{Results}
 
+  There is significant variation both in the networks as well as the \ac{otu}/\ac{esv} tables when different combinations of methods are used to generate them.
+  Figure \ref{fig:otu_correlations} shows the comparison of several denoising and clustering methods.
+  The data shows that all the methods that perform either clustering or denoising are highly correlated with each other.
+  The correlation is low when comparing a method that performs clustering on the sequences with a method that performs denoising (Figure \ref{fig:otu_correlations}).
+  The common core network (network made up of edges that are predicted by all methods) is very small compared to the total number of edges predicted by all the methods (Figure \ref{fig:denoise_network}).
+  In this result, only the denoising method was changed (database used: \ac{gg} and network inference: \ac{sparcc}).
+  But, nonetheless this approach of identifying a common network will help identify links with a good degree of confidence.
+
+  SILVA and \ac{gg} are two popular 16S databases used for taxonomy identification.
+  The two databases vastly differ in terms of their last update status - \ac{gg} was last updated on May 2013 and SILVA was last updated on December 2017.
+  Since updates to taxonomic classifications are frequent, these two databases vary significantly \cite{Balvociute2017}.
+  As a consequence of this, when different taxonomy databases are used on the same data-set we see large numbers of misclassifications \ref{fig:tax_mismatches}.
+
+  Different network inference methods infer significantly different association networks.
+  We can divide the network inference methods into two sets, the first set of methods (Pearson, Spearman, \ac{sparcc}) infer pairwise correlations while the second set infer direct associations (\ac{spieceasi}, \ac{mldm}, \ac{daa}).
+  Our preliminary analysis (Figure \ref{fig:network_comparison}) shows that networks generated using 4 different methods (Pearson, Spearman, \ac{sparcc}, \ac{spieceasi}) are vastly different and the degree of similarity (number of edges that overlapped) between the methods was dependent on the data-set used.
+  The abundance profiles of the different data-sets used are show in Figure \ref{fig:abundance_profile}.
+
+  The pipeline and the data visualization tool help the user explore the effect of the various methods on their data.
+  Exploring these differences are difficult and inconvenient without the tool since different tools differ in their input and output formats and require inter-converting between the various formats.
+  In the case of our pipeline, this is handled automatically.
+
   \begin{figure}[h]
     \begin{center}
       \includegraphics[width=17.8cm]{main_figure.png}
@@ -36,7 +58,7 @@
     \begin{center}
       \includegraphics[width=15.8cm]{tax_distance_deblur.pdf}
       \caption{\textbf{Average percentage of mismatches in taxonomy assignment at various taxonomy levels}. NOTE: I will include a boxplot of the weighted distance in the taxonomy tree}
-      \label{fig:otu_correlations}
+      \label{fig:tax_mismatches}
     \end{center}
   \end{figure}
 
