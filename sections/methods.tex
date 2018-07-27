@@ -34,9 +34,9 @@
     This module deals with processing the raw 16S sequence data into \ac{otu} or \ac{esv} count tables.
     It incorporates three processes: quality control, denoise/cluster and chimera checking.
     \begin{itemize}
-    \item The quality control process handles the demultiplexing and quality control steps such as trimming adapters and trimming low-quality nucleotide stretches from the sequences.
-    \item The denoise/cluster process handles the conversion of the demultiplexed, trimmed sequences into \ac{otu} or \ac{esv} count tables \footnote{Some methods perform clustering and taxonomy assignment in the same step}.
-    \item The chimera checking process handles the removal of chimeric sequences created during the \ac{pcr} step.
+      \item The quality control process handles the demultiplexing and quality control steps such as trimming adapters and trimming low-quality nucleotide stretches from the sequences.
+      \item The denoise/cluster process handles the conversion of the demultiplexed, trimmed sequences into \ac{otu} or \ac{esv} count tables \footnote{Some methods perform clustering and taxonomy assignment in the same step}.
+      \item The chimera checking process handles the removal of chimeric sequences created during the \ac{pcr} step.
     \end{itemize}
     The output of this module is a counts matrix that describes the number of reads of a particular \ac{otu} or \ac{esv} (rows of the matrix) present in each sample (columns of the matrix). The pipeline incorporates \ac{qiime1} \cite{Caporaso2010}, \ac{qiime2}, \ac{dada2} \cite{Callahan2016} and Deblur \cite{Amir2017} tools in this module.
 
@@ -52,17 +52,17 @@
     \vspace{-5mm}
     This module deals with normalization, filtering and applying transformations on the \ac{otu} or \ac{esv} counts matrix.
     \begin{itemize}
-    \item Rarefaction is a normalization technique used to overcome the bias that might arise due to variable sampling depth \footnote{The total number of reads obtained from a particular sample} in different samples. This is commonly performed either by sub-sampling or by normalization of the matrix to the lowest sampling depth.
-    \item Filtering is usually performed to remove samples or features from the count matrix that are sparse.
-    \item Transformations are performed in order to correct for and overcome the compositional bias that is inherent in a counts matrix.
+      \item Rarefaction is a normalization technique used to overcome the bias that might arise due to variable sampling depth \footnote{The total number of reads obtained from a particular sample} in different samples. This is commonly performed either by sub-sampling or by normalization of the matrix to the lowest sampling depth.
+      \item Filtering is usually performed to remove samples or features from the count matrix that are sparse.
+      \item Transformations are performed in order to correct for and overcome the compositional bias that is inherent in a counts matrix.
     \end{itemize}
 
   \subsubsection*{Network Inference}
     \vspace{-5mm}
     This module deals with the inference of co-occurrence associations from the \ac{otu} or \ac{otu} counts matrix. These associations can be represented as a network.
     \begin{itemize}
-    \item Associations can either be correlations or direct associations.
-    \item Significance of these associations is determined by re-sampling, bootstrapping and calculating pvalues.
+      \item Associations can either be correlations or direct associations.
+      \item Significance of these associations is determined by re-sampling, bootstrapping and calculating pvalues.
     \end{itemize}
     The pipeline incorporates \ac{sparcc} \cite{Friedman2012} and \ac{spieceasi} \cite{Kurtz2015} and will soon include \ac{mldm} \cite{Yang2017} and \ac{daa} \cite{Menon2018}.
 
