@@ -3,34 +3,31 @@
 \section*{Introduction}
 
   Microbiomes are ubiquitous and play an important role in biogeochemical transformations in both natural as well as man-made ecosystems.
-  These microbiomes comprise several thousand different microbes interacting with each other as well as their environment often through intricate metabolic and signaling relationships.
+  These microbiomes comprise several thousand different microbes interacting with each other and their environment, often through intricate metabolic and signaling relationships.
+  The changes in the microbiome can impact the health of the environmental niche in which they reside \cite{HumanMicrobiomeProjectConsortium2012,Lloyd-Price2016} and this can have major implications in health of the human body.
+  A mechanistic understanding of the key interactions driving the microbe-microbe and microbe-environment dynamics is necessary in order to analyze the dysbiosis in a healthy microbiome and in the design of modifications to these correct these microbiomes.
 
-  Each interaction within this complex ecological network can have a positive effect, a negative effect or no effect on the species involved. \todo[size=\footnotesize]{Combine with an explanation of co-occurrences}
-  For example, bacteria that compete for the same nutrient will have a negative impact on each other when the media is deficient in that nutrient \cite{Ghoul2016}.
-  There can also be cases of cross-feeding where two species produce metabolic products that are beneficial to each other.
-
-  High-throughput metagenomic sequencing techniques help detect, identify and quantify a large part of the constitutive microorganisms of a microbiome.
-  Even though the species diversity is now measurable through metagenomics, the detailed characterization of inter-species interactions still escapes our understanding.
-
+  Studies have shown the importance of specific microbial interactions in the healthy human microbiome \cite{Lloyd-Price2016} and others have shown how changes in these interactions can lead to dysbiosis \cite{Wang2017,Gilbert2016,Belizario2015}.
+  Co-occurrence relationships in microbial communities are be driven by microbial interactions.
+  Each interaction within this complex ecological network can have a positive effect, a negative effect or no effect on the species involved.
+  Bacteria that compete for the same nutrient will have a negative co-occurrence relationship \cite{Ghoul2016} whereas cross-feeding between species leads to a positive co-occurrence relationship \cite{DSouza2018}.
   The microbial interaction networks are highly dynamic, and they constantly reorganize in a varying environment.
   Even under static conditions, these interactions are often difficult to predict due to their non-linear nature \cite{Konopka2015}.
   Compounding on this complexity is the fact that these interaction networks usually involve thousands of species.
 
+  High-throughput metagenomic sequencing techniques (such as 16S rRNA gene profiling) help detect, identify and quantify a large part of the constitutive microorganisms of a microbiome \cite{Jovel2016}.
   Knowledge of the community composition at a particular instance in time would enable us to derive partial insights into the underlying dynamics.
-  The study of microbial communities using high throughput genomic surveys (such as 16S rRNA gene profiling) has become routine in the resolution of microbial diversity, abundances and associations within microbial populations \cite{Jovel2016}.
+  With the advancement in DNA sequencing technologies \cite{Narihiro2017} and data processing methods much more information can be extracted from these microbial community samples than ever before.
+  These advances have led to large-scale data collection efforts involving soil (Earth Microbiome Project) \cite{Thompson2017}, marine (Tara Oceans Project) \cite{Zhang2015} and human-associated microbiota (Human Microbiome Project) \cite{HumanMicrobiomeProjectConsortium2012} and thus led the generation of a wealth of data about these microbial communities.
+  These metagenomic data-sets can be used to infer networks of co-occurrence relationships between microorganisms in the samples.
+  The co-occurrence networks can in turn be used to identify important interactions driving the dynamics of the microbial community, as well as, analyze emergent properties such as robustness and modularity.
+  However, 16S sequencing data is limited by factors such as resolution, sequencing depth, compositional nature, sequencing errors and copy number variations.
+  To counter these limitations and remove statistical artifacts, many different analysis methods have been developed \cite{Callahan2016,Amir2017,Friedman2012,Kurtz2015}.
+  But, the different methods and tools developed to solve these issues infer vastly different community compositions and co-occurrence networks \cite{Golob2017,Weiss2016}.
 
-  Advances in next-generation sequencing (NGS) technologies had led to the generation of a wealth of data about these microbial populations.
-  There have recently been many large-scale data collection efforts involving soil (Earth Microbiome Project) \todo[size=\footnotesize]{Don't need to mention the names, just cite} \cite{Thompson2017}, marine (Tara Oceans Project) \cite{Zhang2015} and human-associated microbiota (Human Microbiome Project) \cite{HumanMicrobiomeProjectConsortium2012}.
-  With data being acquired at exponential rates, it becomes increasingly difficult and essential to be able to extract useful knowledge from them.
-
-  Due to the compositional nature of 16S data, standard data analysis tools are not very effective.
-  The development of appropriate and well-validated analysis methods that do not produce statistical artifacts is still ongoing and is receiving much attention.
-  There have been many approaches taken to try to solve this issue, but, there is no single method that works perfectly in all situations \cite{Golob2017,Weiss2016}.
-  The methodology for the analysis of 16S rRNA sequence data is not very straightforward and there are a myriad of tools for each step of the process.
-  This makes the analysis complicated and not very reproducible.
-  Hence, we propose to build a standardized 16S data analysis pipeline that will ensure accuracy and uniformity across all the data stored in the database.
-  There exist many platforms like MG-RAST \cite{Keegan2016}, Qiita \cite{qiita} and others that provide pipelines for 16S data analysis, but the main motivations behind the construction of our own pipeline are two-fold.
-  Firstly, these tools do not analyze co-occurrence networks and the effect of upstream statistical methods on the inferred networks.
-  Secondly, a comprehensive study of existing methods is needed in order to suggest optimal methods and parameters for users of the pipeline and database.
-  The pipeline would also allow a user to process their sequence data using the same standards applied to the database and compare their results to the networks in the database.
-  This would also ensure reproducible comparisons.
+  The methodology for the analysis of 16S rRNA sequence data is not very straightforward and there are a myriad of tools for each step of the process, making the analysis complicated and not very reproducible.
+  In this study, we propose to build a standardized 16S data-analysis pipeline that will produce robust and reproducible co-occurrence networks from community 16S sequence data. \todo[size=\footnotesize]{Mention DB?}
+  There exist many platforms like MG-RAST \cite{Keegan2016}, Qiita \cite{qiita} and tools such as QIIME \cite{Caporaso2010} that provide pipelines for 16S data analysis, but the main motivations behind the construction of our own pipeline are two-fold.
+  Firstly, the existing tools do not focus their analysis on co-occurrence networks and the effect of upstream statistical methods on the inferred networks.
+  Secondly, we undertake a comprehensive study of existing methods in order to suggest optimal methods, tools and parameters for users of the pipeline.
+  We believe that these steps will ensure better reproducibility and easier comparison of networks across data-sets.
