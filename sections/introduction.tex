@@ -26,7 +26,11 @@
   But, the different methods and tools developed to solve these issues infer vastly different community compositions and co-occurrence networks \cite{Golob2017,Weiss2016}.
 
   The methodology for the analysis of 16S rRNA sequence data is not very straightforward and there are a myriad of tools for each step of the process, making the analysis complicated and not very reproducible.
+  But because there does not exist a dataset wherein the microbial interactions have been fully characterized, there is no straightforward way to determine which set of tools or methods generate the most accurate networks.
   In this study, we propose to build a standardized 16S data-analysis pipeline that will produce robust and reproducible co-occurrence networks from community 16S sequence data. \todo[size=\footnotesize]{Mention DB?}
+  We do this by conducting a systematic study of the various methods currently available.
+  We compare different methods to each other and additionally use mock microbial community datasets and synthetically generated reads to benchmark them.
+
   There exist many platforms like MG-RAST \cite{Keegan2016}, Qiita \cite{qiita} and tools such as QIIME \cite{Caporaso2010} that provide pipelines for 16S data analysis, but the main motivations behind the construction of our own pipeline are two-fold.
   Firstly, the existing tools do not focus their analysis on co-occurrence networks and the effect of upstream statistical methods on the inferred networks.
   Secondly, we undertake a comprehensive study of existing methods in order to suggest optimal methods, tools and parameters for users of the pipeline.
