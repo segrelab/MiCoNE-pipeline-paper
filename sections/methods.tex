@@ -38,7 +38,8 @@
         \item The denoise/cluster process handles the conversion of the demultiplexed, trimmed sequences into \ac{otu} or \ac{esv} count tables (some methods perform clustering and taxonomy assignment in the same step).
         \item The chimera checking process handles the removal of chimeric sequences created during the \ac{pcr} step.
       \end{itemize}
-      The output of this module is a counts matrix that describes the number of reads of a particular \ac{otu} or \ac{esv} (rows of the matrix) present in each sample (columns of the matrix). The pipeline incorporates \ac{qiime1} \cite{Caporaso2010}, \ac{qiime2}, \ac{dada2} \cite{Callahan2016} and Deblur \cite{Amir2017} tools in this module.
+      The output of this module is a counts matrix that describes the number of reads of a particular \ac{otu} or \ac{esv} (rows of the matrix) present in each sample (columns of the matrix).
+      The pipeline incorporates \ac{qiime1} \cite{Caporaso2010}, \ac{qiime2}, \ac{dada2} \cite{Callahan2016} and Deblur \cite{Amir2017} tools in this module.
 
     \subsubsection*{Taxonomy Assignment}
       \vspace{-5mm}
@@ -62,7 +63,8 @@
 
     \subsubsection*{Network Inference}
       \vspace{-5mm}
-      This module deals with the inference of co-occurrence associations from the \ac{otu} or \ac{otu} counts matrix. These associations can be represented as a network, with nodes representing taxonomies and edges the association between them.
+      This module deals with the inference of co-occurrence associations from the \ac{otu} or \ac{otu} counts matrix.
+      These associations can be represented as a network, with nodes representing taxonomies and edges the association between them.
       \begin{itemize}
         \item A null model is created by re-sampling and bootstrapping the correlation/interaction matrix
         \item Significance of these associations is determined by calculating pvalues against this null model.
@@ -95,7 +97,8 @@
     This tool is a Python web-based interface built using dash \cite{dash}.
     It aids in the analysis of the effects of different processing methods on the generated counts matrix or network.
     The data from a pipeline run can be directly fed into the visualizer, allowing one to visualize various properties of intermediate \ac{otu} or \ac{esv} tables and final association networks.
-    This tool makes it easy and straightforward to compare different methods and combinations of methods in the 16S data analysis workflow. The visualization tool supports:
+    This tool makes it easy and straightforward to compare different methods and combinations of methods in the 16S data analysis workflow.
+    The visualization tool supports:
     \begin{itemize}
       \item Filtering and aggregating data from multiple sources (data-sets)
       \item Comparing properties of the generated counts matrices and networks across different methods
