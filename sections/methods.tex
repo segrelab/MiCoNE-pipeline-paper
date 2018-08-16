@@ -6,10 +6,14 @@
 
     \vspace{-5mm}
     \begin{itemize}
-      \item The mock community 16S datasets were obtained from mockrobiota \cite{Bokulich2016}. We used samples (\hl{enter id number}) for this study.
+      \item The mock community 16S datasets were obtained from mockrobiota \cite{Bokulich2016}. We used mock numbers (\hl{enter id number}) for this study.
       \item The real datasets were control samples (49samples) \todo[size=\footnotesize]{Check the exact number} of a fecal microbiome transplant study obtained from \cite{Kang2017}.
       \item Simulated data was generated using Grinder \cite{Angly2012}.
     \end{itemize}
+
+    \subsubsection*{Synthetic data}
+
+    \todo[size=\footnotesize]{Detailed options used to generate the data}
 
 
   \subsection*{16S processing pipeline}
@@ -27,6 +31,10 @@
     Since the entire pipeline run-through is stored in the form of a text file (the configuration file), subsequent runs are highly reproducible and changes can be easily tracked using version control.
     The pipeline allows for automatic parallelization of all possible processes, both within and across samples.
     In addition to the Python package, the entire pipeline has been containerized into a Docker \cite{Merkel1994} image (\hl{dockerhub link}) for easy deployment and setup.
+
+    \hl{Package usage details}
+
+
     The main components of the pipeline are detailed in the following sections.
 
     \subsubsection*{Denoising and Clustering}
@@ -49,7 +57,7 @@
         \item A taxonomy database, which is a collection of 16S sequences of known organisms.
         \item A query tool, which allows one to compare a sequence of interest to all the sequences in the database to find the best match.
       \end{itemize}
-      The pipeline incorporates \ac{gg} \cite{DeSantis2006}, SILVA \cite{Quast2012} and the \ac{ncbi} \cite{Sayers2009} databases for taxonomy assignment
+      The pipeline incorporates \ac{gg} \cite{DeSantis2006}, SILVA \cite{Quast2012} and the \ac{ncbi}~\cite{Sayers2009} databases for taxonomy assignment
 
     % TODO: Add Gabriel's new stuff here
     \subsubsection*{OTU and ESV Processing}
