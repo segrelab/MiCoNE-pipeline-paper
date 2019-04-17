@@ -12,6 +12,9 @@ insert_final_newline = true
 [*.py]
 indent_size = 4
 
+[*.R]
+indent_size = 4
+
 [*.md]
 indent_size = 4
 trim_trailing_whitespace = true
