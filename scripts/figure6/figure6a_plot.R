@@ -30,12 +30,12 @@ plot_network <- function(network_file, combined_layout, interaction_threshold, t
   graph_layout$x <- combined_layout[match_inds,]$x
   graph_layout$y <- combined_layout[match_inds,]$y
   graph_plot <- ggraph(graph=graph, layout="manual", node.positions=graph_layout, circular=TRUE) +
-    geom_edge_arc(aes(color=color, edge_linetype=color, edge_alpha=color)) +
+    geom_edge_arc(aes(color=factor(layer), edge_linetype=factor(color), edge_alpha=factor(layer))) +
     # geom_node_point(aes(color=factor(colorkey))) +
     geom_node_point() +
-    scale_edge_color_manual(values = c("#d95f02", "#1b9e77")) +
-    scale_edge_linetype_manual(values = c("dashed", "solid")) +
-    scale_edge_alpha_manual(values = c(0.6, 0.3)) +
+    scale_edge_color_manual(values = c(background="#d3d3d3", foreground=edgecolor)) +
+    scale_edge_linetype_manual(values = c(negative="dashed", positive="solid")) +
+    scale_edge_alpha_manual(values = c(foreground=0.6, background=0.7)) +
     labs(title=title) +
     coord_fixed() +
     theme_bw() +
@@ -60,7 +60,7 @@ default_plot <- plot_network("default.gml", combined_layout, 0.3, "default", pal
 database_plot <- plot_network("gg.gml", combined_layout, 0.3, "database=gg", palette[[2]])
 clustering_plot <- plot_network("open_ref.gml", combined_layout, 0.3, "clustering=open_ref", palette[[3]])
 otu_filtering_plot <- plot_network("otu_filtering.gml", combined_layout, 0.3, "otu_filtering=off", palette[[4]])
-network_inference_plot <- plot_network("spieceasi_direct.gml", combined_layout, 0.01, "network_inference=spieceasi",  palette[[5]])
+network_inference_plot <- plot_network("spieceasi_direct.gml", combined_layout, 0.3, "network_inference=spieceasi",  palette[[5]])
 
 combined_plot <- ggarrange(default_plot, database_plot, clustering_plot, otu_filtering_plot, network_inference_plot, ncol=3, nrow=2, common.legend=TRUE, legend="bottom")
 annotate_figure(combined_plot, fig.lab = "A", fig.lab.pos = "top.left", fig.lab.size = 20)
