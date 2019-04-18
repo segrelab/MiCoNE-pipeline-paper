@@ -20,7 +20,10 @@ plot_network <- function(network_file, combined_layout, interaction_threshold, t
   graph <- graph_raw %>%
     activate(edges) %>%
     filter(abs(weight) > interaction_threshold) %>%
-    mutate(color=get_edgecolor(weight))
+    mutate(color=get_edgecolor(weight)) %>%
+    activate(nodes) %>%
+    mutate(isolated=node_is_isolated()) %>%
+    filter(isolated==FALSE)
   temp_layout <- create_layout(graph=graph, layout="linear", circular=TRUE)
   match_inds <- match(temp_layout$name, combined_layout$name)
   graph_layout <- data.frame(temp_layout)
