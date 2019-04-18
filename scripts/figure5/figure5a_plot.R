@@ -33,9 +33,9 @@ plot_network <- function(network_file, combined_layout, interaction_threshold, t
     geom_edge_arc(aes(color=color, edge_linetype=color, edge_alpha=color)) +
     # geom_node_point(aes(color=factor(colorkey))) +
     geom_node_point() +
-    scale_edge_color_manual(values = c("#d95f02", "#1b9e77")) +
-    scale_edge_linetype_manual(values = c("dashed", "solid")) +
-    scale_edge_alpha_manual(values = c(0.6, 0.3)) +
+    scale_edge_color_manual(values = c(negative="#d95f02", positive="#1b9e77")) +
+    scale_edge_linetype_manual(values = c(negative="dashed", positive="solid")) +
+    scale_edge_alpha_manual(values = c(negative=0.6, positive=0.3)) +
     labs(title=title) +
     coord_fixed() +
     theme_bw() +
