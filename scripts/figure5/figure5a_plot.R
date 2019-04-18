@@ -38,12 +38,13 @@ plot_network <- function(network_file, combined_layout, interaction_threshold, t
     theme_bw() +
     theme(
         # legend.position="none",
+        plot.title=element_text(hjust=0.5),
         axis.title=element_blank(),
         axis.text=element_blank(),
         axis.line=element_blank(),
         axis.ticks=element_blank(),
         panel.background=element_blank(),
-        panel.border=element_rect(linetype="solid"),
+        panel.border=element_blank(),
         panel.grid=element_blank()
     )
 }
@@ -52,12 +53,12 @@ combined_graph <- read_graph("combined.gml", format="gml")
 combined_layout <- create_layout(graph=combined_graph, layout="linear", circular=TRUE)
 
 palette <- brewer.pal(n=6, name="Dark2")
-magma_plot <- plot_network("magma_direct.gml", combined_layout, 0.01, "magma", palette[[1]])
-mldm_plot <- plot_network("mldm_direct.gml", combined_layout, 0.01, "mldm", palette[[2]])
-spieceasi_plot <- plot_network("spieceasi_direct.gml", combined_layout, 0.01, "spieceasi", palette[[3]])
-sparcc_plot <- plot_network("sparcc_corr.gml", combined_layout, 0.3, "sparcc", palette[[4]])
-spearman_plot <- plot_network("spearman_corr.gml", combined_layout, 0.3, "spearman",  palette[[5]])
-pearson_plot <- plot_network("pearson_corr.gml", combined_layout, 0.3, "pearson", palette[[6]])
+magma_plot <- plot_network("magma.gml", combined_layout, 0.01, "magma", palette[[1]])
+mldm_plot <- plot_network("mldm.gml", combined_layout, 0.01, "mldm", palette[[2]])
+spieceasi_plot <- plot_network("spieceasi.gml", combined_layout, 0.01, "spieceasi", palette[[3]])
+sparcc_plot <- plot_network("sparcc.gml", combined_layout, 0.3, "sparcc", palette[[4]])
+spearman_plot <- plot_network("spearman.gml", combined_layout, 0.3, "spearman",  palette[[5]])
+pearson_plot <- plot_network("pearson.gml", combined_layout, 0.3, "pearson", palette[[6]])
 
 combined_plot <- ggarrange(magma_plot, mldm_plot, spieceasi_plot, sparcc_plot, spearman_plot, pearson_plot, ncol=3, nrow=2, common.legend=TRUE, legend="bottom")
 annotate_figure(combined_plot, fig.lab = "A", fig.lab.pos = "top.left", fig.lab.size = 20)
