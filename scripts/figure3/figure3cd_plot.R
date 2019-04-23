@@ -16,16 +16,19 @@ tidy_up_data <- function(unifrac_data, name) {
         select_at(c("method1", "sample", "unifrac", "dataset"))
 }
 
-make_dot_plot <- function(unifrac_data) {
+make_dot_plot <- function(unifrac_data, title) {
     dot_plot <- add_summary(
-        ggdotplot(
+        ggstripchart(
             unifrac_data,
             x="method1",
             y="unifrac",
-            fill="dataset",
-            title="unweighted unifrac",
+            color="dataset",
+            title=title,
             xlab="denoising/clustering method",
             ylab="unifrac distance",
+            ylim=c(0, 1),
+            size=3,
+            add="jitter",
         ) +
         theme(
             plot.title=element_text(hjust=0.5),
@@ -45,7 +48,7 @@ mock12_weighted_tidy <- tidy_up_data(mock12_weighted, "mock12")
 mock16_weighted_tidy <- tidy_up_data(mock16_weighted, "mock16")
 
 mock_weighted_tidy <- rbind(mock4_weighted_tidy, mock12_weighted_tidy, mock16_weighted_tidy)
-mock_weighted_plot <- make_dot_plot(mock_weighted_tidy)
+mock_weighted_plot <- make_dot_plot(mock_weighted_tidy, "weighted unifrac")
 
 # Unweighted
 mock4_unweighted <- read.csv("mock4_unweighted_unifrac.csv", sep=",", header=TRUE)
@@ -57,7 +60,7 @@ mock12_unweighted_tidy <- tidy_up_data(mock12_unweighted, "mock12")
 mock16_unweighted_tidy <- tidy_up_data(mock16_unweighted, "mock16")
 
 mock_unweighted_tidy <- rbind(mock4_unweighted_tidy, mock12_unweighted_tidy, mock16_unweighted_tidy)
-mock_unweighted_plot <- make_dot_plot(mock_unweighted_tidy)
+mock_unweighted_plot <- make_dot_plot(mock_unweighted_tidy, "unweighted unifrac")
 
 
 ggarrange(mock_weighted_plot, mock_unweighted_plot, labels=c("C", "D"), nrow=1, ncol=2, common.legend=TRUE, legend="right")
