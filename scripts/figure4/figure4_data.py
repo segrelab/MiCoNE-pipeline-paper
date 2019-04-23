@@ -13,6 +13,8 @@ def write_tables(file_paths, notus, output_path):
         otu_df = otu.to_dataframe(dense=True)
         obs_metadata = otu.metadata_to_dataframe(axis="observation")
         obs_metadata["Abundance"] = otu_df.sum(axis=1)
+        if notus < 0:
+            notus = obs_metadata.shape[0]
         final_df = obs_metadata.sort_values(by="Abundance", ascending=False).iloc[
             :notus
         ]
