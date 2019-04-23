@@ -1,48 +1,34 @@
 #!/usr/bin/env Rscript
 
+library(ggalluvial)
 library(ggrepel)
 library(ggplot2)
 library(ggpubr)
 
 
-gg <- read.csv("gg.csv", header=TRUE, sep=",", na.strings="")
-silva <- read.csv("silva.csv", header=TRUE, sep=",", na.strings="")
-ncbi <- read.csv("ncbi.csv", header=TRUE, sep=",", na.strings="")
+notu <- 50
+
+gg <- read.csv("gg.csv", header=TRUE, sep=",", na.strings="")[1:notu,]
+silva <- read.csv("silva.csv", header=TRUE, sep=",", na.strings="")[1:notu,]
+ncbi <- read.csv("ncbi.csv", header=TRUE, sep=",", na.strings="")[1:notu,]
+
+make_alluvial_plot <- function(db_data, title) {
+    alluvial_plot <- ggplot(data=db_data, aes(axis1=OTU, axis2=Genus,  y=Abundance)) +
+        scale_x_discrete(limits=c("OTU", "Genus"), expand=c(.1, .05)) +
+        xlab("Tax") +
+        geom_alluvium(aes(fill=Genus), width=1/12) +
+        geom_stratum(width=1/4, aes(fill=Genus)) +
+        scale_linetype_manual(values=c("blank", "solid")) +
+        # geom_text_repel(aes(label=Genus), stat="stratum", size=2, direction="y", nudge_x=0.5) +
+        ggtitle(title) +
+        theme_pubr() +
+        theme(plot.title=element_text(hjust=0.5), axis.line.x=element_blank(), axis.title.x=element_blank())
+}
 
 
-gg_plot <- ggplot(data=gg, aes(axis1=OTU, axis2=Genus,  y=Abundance)) +
-    scale_x_discrete(limits=c("OTU", "Genus"), expand=c(.1, .05)) +
-    xlab("Tax") +
-    geom_alluvium(aes(fill=Genus), width=1/12) +
-    geom_stratum(width=1/4, aes(fill=Genus)) +
-    scale_linetype_manual(values=c("blank", "solid")) +
-    # geom_text_repel(aes(label=Genus), stat="stratum", size=2, direction="y", nudge_x=0.5) +
-    ggtitle("GreenGenes") +
-    theme_pubr() +
-    theme(plot.title=element_text(hjust=0.5), axis.line.x=element_blank(), axis.title.x=element_blank())
-
-silva_plot <- ggplot(data=silva, aes(axis1=OTU, axis2=Genus,  y=Abundance)) +
-    scale_x_discrete(limits=c("OTU", "Genus"), expand=c(.1, .05)) +
-    xlab("Tax") +
-    geom_alluvium(aes(fill=Genus), width=1/12) +
-    geom_stratum(width=1/4, aes(fill=Genus)) +
-    scale_linetype_manual(values=c("blank", "solid")) +
-    # geom_text_repel(aes(label=Genus), stat="stratum", size=2, direction="y", nudge_x=0.5) +
-    ggtitle("SILVA") +
-    theme_pubr() +
-    theme(plot.title=element_text(hjust=0.5), axis.line.x=element_blank(), axis.title.x=element_blank())
-
-ncbi_plot <- ggplot(data=ncbi, aes(axis1=OTU, axis2=Genus,  y=Abundance)) +
-    scale_x_discrete(limits=c("OTU", "Genus"), expand=c(.1, .05)) +
-    xlab("Tax") +
-    geom_alluvium(aes(fill=Genus), width=1/12) +
-    geom_stratum(width=1/4, aes(fill=Genus)) +
-    scale_linetype_manual(values=c("blank", "solid")) +
-    # geom_text_repel(aes(label=Genus), stat="stratum", size=2, direction="y", nudge_x=0.5) +
-    ggtitle("NCBI") +
-    theme_pubr() +
-    theme(plot.title=element_text(hjust=0.5), axis.line.x=element_blank(), axis.title.x=element_blank())
-
+gg_plot <- make_alluvial_plot(gg, "GreenGenes")
+silva_plot <- make_alluvial_plot(silva, "SILVA")
+ncbi_plot <- make_alluvial_plot(ncbi, "NCBI")
 
 gg$OTU <- gg$empty
 gg_plot <- gg_plot +
