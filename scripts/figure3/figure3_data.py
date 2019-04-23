@@ -38,8 +38,8 @@ def get_unifrac(
     otu_file_1: pathlib.Path,
     otu_file_2: pathlib.Path,
     tree_file: pathlib.Path,
-    weighted: bool = True,
-    threshold: int = 10,
+    weighted: bool,
+    threshold: int,
 ):
     otu_1 = load_table(str(otu_file_1)).to_dataframe(dense=True)
     otu_2 = load_table(str(otu_file_2)).to_dataframe(dense=True)
@@ -65,7 +65,7 @@ def get_unifrac(
     type=bool,
     help="Flag to perform either weighted or unweighted unifrac",
 )
-@click.option("--threshold", default=10, type=int, help="Threshold for sequence count")
+@click.option("--threshold", default=3, type=int, help="Threshold for sequence count")
 @click.option("--output", default=".", help="The path to the output directory")
 def main(trees: str, otus: str, weighted: bool, threshold: int, output: str):
     output_path = pathlib.Path(output)
