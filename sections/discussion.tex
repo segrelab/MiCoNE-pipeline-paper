@@ -2,6 +2,44 @@
 
 \section*{Discussion}
 
-  Differences in environments of the samples could lead to the inference of spurious interactions.
+% TODO:
+% * Emphasize that the tool makes it really easy to analyze your data using multiple methods and then compare
+% * It is also easy to add new tools
+% * Write about each step and potential things people could do to better analyze their data
+% * Future steps
 
-  Network robustness, hubs, motifs and more
+% General statements
+Co-occurrence associations in microbial communities will identify important interactions that drive microbial community structure and organization.
+There is still much disagreement between the networks generated using various methods.
+This study makes a significant effort to identify those tools and parameters that enable more accurate inference of these co-occurrence networks.
+The mindpipe pipeline also enables the user to explore the effect of various tools and their combinations on their dataset of interest, thereby enabling one to identify those tools that perform their best on that particular dataset.
+
+The different denoising/clustering methods differ mostly in their identification of sequences that are in low abundances.
+Hence, they do not have much of an impact on the inferred co-occurrence networks when the sequences of abundance are removed.
+However, comparison of inferred and expected reference sequences and their abundances in mock community datasets has allowed us to identify \ac{dada2} as the method which best recapitulates expected the sequence composition.
+There are newer recently published methods like dbOTU3~\cite{Olesen2017} as well as older popular methods like mothur~\cite{Schloss2009} that haven't been included in the study, and are possible avenues for future investigation.
+
+The choice of taxonomy database was found to be the most important factor in the inference of a microbial co-occurrence network, contributing $\sim20\%$ of the total variance.
+The frequent changes in the taxonomy nomenclature coupled with the frequency of updates to the various 16S reference databases create inherent differences \cite{Balvociute2017} in taxonomy hierarchies in these databases.
+Our analysis did not reveal one particular reference database to perform better in all scenarios and we believe that that choice of the database should be made based on the organisms expected to be present in the dataset.
+The default reference database in the pipeline is the NCBI 16S RefSeq database as it is more frequently updated.
+We also enable users to use custom databases \cite{Griffen2011,Ritari2015} with the blast and naive bayes classifiers that are incorporated into the pipeline (from \ac{qiime2})
+
+% From "Accuracy of taxonomy prediction for 16S rRNA and fungal ITS sequences":
+% (It is clear from the results reported here that taxonomy prediction methods cannot be definitively ranked according to their accuracy using TAXXI or previous benchmark tests. However, some trends are apparent which can guide a biologist toward an appropriate method for addressing a given research question. In most cases, the highest true-positive rates are achieved by the simple top-hit classifiers (see e.g., Table 4). This shows, as might be expected, that the true name of a known rank is usually present in the top hit annotation, and there is no indication that more complicated methods achieve any improvement in this respect by successfully identifying anomalous cases where a taxon is known but has a lower identity than the top hit. This shows that the biggest challenge in algorithm design can be framed as predicting the LCR, or, equivalently, deciding how many ranks of the taxonomy in the top hit should be deleted in the prediction. Most methods incorporate thresholds which determine the lowest rank to predict using a measure such as identity (MEGAN, Metaxa2), bootstrap (RDP, SINTAX, Q2SK), posterior probability (BLCA), and/or frequency in the top hits (MEGAN, Q1, Q2BLAST and Q2VS). Adjusting a threshold necessarily makes a trade-off between true positives and false positives, because more true positives can be obtained only at the expense of including more false positives, reflecting the fact that taxonomy correlates only approximately with any measure of sequence similarity. Thus, different thresholds may be appropriate in different studies depending on whether false negatives or false positives are more important.)
+
+Filtering out taxa that are present in low abundances in all samples did not increase (in most datasets tested) the proportion of taxa in common between taxonomy tables generated using different reference databases.
+However, we do observe that the reduction in the number of taxa leads better agreement in the networks inferred through different methods.
+Moreover, filtering is necessary in order to increase the power in tests of significance when the number of taxa is much greater than the number of samples.
+
+The networks generated by different network inference methods show considerable differences in edge-density and connectivity.
+One reason for this is because of the underlying assumptions regarding sparsity, distribution and compositionality that the algorithms make.
+The consensus network created by merging the networks inferred using the different network inference methods enables the creation of a network whose links have evidence based on multiple inference algorithms.
+
+\hl{Other factors that play an important role in network inference} \\
+Differences in environments of the samples could lead to the inference of spurious interactions.
+
+Exploring the effects of these combinations of methods on the resultant networks is difficult and inconvenient since different tools differ in their input and output formats and require inter-converting between the various formats.
+The pipeline enables these by providing a variety of modules for inter-conversion between various formats, additionally it also allows easy incorporation of new tools as modules.
+The mindpipe pipeline not only enables users to generate co-occurrence networks using the default recommended options, but also allows users to identify tools or parameter options that tailored to their datasets.
+Thus, in this study we have identified a set of tools and parameters that help infer more accurately and consistently co-occurrence networks from microbial 16S sequencing data.
