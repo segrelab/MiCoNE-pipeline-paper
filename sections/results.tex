@@ -4,28 +4,28 @@
 
   \subsection*{mindpipe}
 
-  We have developed \hl{mindpipe}, a flexible and modular pipeline for 16S data analysis.
+  We have developed \hl{mindpipe}, a flexible and modular pipeline for 16S data analysis, that allows us to infer co-occurence networks from 16S sequencing data.
   It incorporates various popular, publicly available tools as well as custom Python modules and scripts to facilitate inference of co-occurrence networks from 16S data.
+  It allows for using any combination of the incorporated tools for intermediate analyses construct the networks.
   The pipeline workflow is as shown in Figure~\ref{fig:figure1}, it supports the conversion of raw 16S sequence data or counts matrices into co-occurrence networks through multiple methods.
   Each process in the pipeline supports alternate tools for performing the same task, users can use the configuration file to change these values.
   We perform a systematic analysis of each step of the pipeline to determine the set of default options for the pipeline (Table~\ref{tab:default_options}).
   We also provide the users with a set of guidelines to facilitate tool selection as appropriate for their data.
 
+  % TODO: Update this table
   \begin{table}[h]
     \centering
     \small
     \begin{tabular}{|c|c|c|}
-      %\begin{tabularx}{\textwidth}{XXXX}
       \hline
       \textbf{Process} & \textbf{Tool} & \textbf{Parameters} \\
       \hline
-      Denoising and Clustering & Dada2 & ?? \\
-      Taxonomy Assignment & \ac{ncbi} + Blast & ?? \\
-      OTU Processing & Dynamic cutoff & ?? \\
-      Network Inference & Consensus & ?? \\
+      Denoising and Clustering & Dada2/Deblur & default \\
+      Taxonomy Assignment & \ac{ncbi} with Blast & RefSeq database \\
+      OTU Processing & Based on statistical power & Dynamic cutoff \\
+      Network Inference & Consensus method & - \\
       \hline
     \end{tabular}
-    %\end{tabularx}
     \caption{Default tools and parameters for the pipeline}
     \label{tab:default_options}
   \end{table}
