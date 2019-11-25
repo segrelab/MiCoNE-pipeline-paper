@@ -246,3 +246,6 @@ build/
 
 # Ignore tags
 tags
+
+# Ignore .Rhistory
+.Rhistory
