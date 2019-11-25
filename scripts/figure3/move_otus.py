@@ -18,7 +18,7 @@ MAP = {
 
 @click.command()
 @click.option("--base_dir", help="Location of the directory containing the otus")
-@click.option("--output_dir", help="Location of the output directory")
+@click.option("--output_dir", default=".", help="Location of the output directory")
 def main(base_dir: str, output_dir: str):
     base_path = pathlib.Path(base_dir)
     output_path = pathlib.Path(output_dir)

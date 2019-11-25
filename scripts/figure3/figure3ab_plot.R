@@ -36,7 +36,8 @@ plot_heatmap <- function(data, title) {
             axis.title=element_blank(),
             axis.text.x=element_text(angle=30, hjust=1),
             axis.text.y=element_text(angle=30)
-        )
+        ) +
+        coord_fixed()
 }
 
 unweighted <- read.csv("fmt_unweighted_unifrac.csv", sep=",", header=TRUE)

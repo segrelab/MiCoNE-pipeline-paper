@@ -75,6 +75,8 @@ def write_networks(file_paths, default_file, multigraph, color_key_level, output
                         colorkey=colorkey,
                         layer="background",
                     )
+                else:
+                    G.nodes[name]["layer"] = "common"
             for source, target, edge_data in default_graph.edges(data=True):
                 source_name, target_name = id_name_map[source], id_name_map[target]
                 weight = edge_data["weight"]
@@ -87,6 +89,9 @@ def write_networks(file_paths, default_file, multigraph, color_key_level, output
                         pvalue=pvalue,
                         layer="background",
                     )
+                else:
+                    G.edges[(source_name, target_name)]["layer"] = "common"
+                    G.edges[(source_name, target_name)]["weight"] = edge_data["weight"]
         nx.write_gml(G, str(output_path / f"{network_name}.gml"))
     nx.write_gml(combined_graph, str(output_path / "combined.gml"))
     return list(combined_graph.nodes), list(combined_graph.edges)
