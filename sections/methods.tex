@@ -9,11 +9,14 @@
   Real datasets are those sequencing reads obtained from naturally occurring microbial community samples.
   The current study used healthy stool samples from a fecal microbiome transplant study \cite{Kang2017} and healhty saliva samples from a periodontal disease study~\cite{Chen2018} as real datasets for analysis.
   The mock community 16S datasets were obtained from mockrobiota~\cite{Bokulich2016}.
-  The mock datasets used for this study were labelled mock4, mock12 and mock16 datasets.
+  The mock datasets used for this study were labelled mock4, mock12 and mock16.
+  The mock4 community is composed of 21 bacterial strains represented in equal abundances in two replicate samples, and same strains in unequal abundances in two more replicate samples.
+  The mock12 community is composed of 27 bacterial strains that include closely related taxa with some pairs having only one to two nucleotide difference from another.
+  The mock16 community is composed of equal amounts of 49 bacteria and 10 archea.
   The synthetic datasets were generated using an artificial read simulator called ART~\cite{Huang2012}.
   Three different microbial composition profiles were used as input
-  Synthetic reads were generated using a soil and water microbiome composition profiles from the Earth Microbiome Project~\cite{Thompson2017} and healthy gut microbiome project from the Human Microbiome Project~\cite{HumanMicrobiomeProjectConsortium2012}
-  The scripts used to generate the synthetic data are in the \hl{scripts folder of the respository}
+  Synthetic reads were generated using a soil and water microbiome composition profiles from the Earth Microbiome Project~\cite{Thompson2017} and healthy gut microbiome project from the Human Microbiome Project~\cite{HumanMicrobiomeProjectConsortium2012}.
+  The scripts used to generate the synthetic data are in the scripts folder of the respository (\href{https://github.com/dileep-kishore/mind-pipeline-paper}{https://github.com/dileep-kishore/mind-pipeline-paper})
 
   \subsection*{mindpipe}
 
@@ -30,7 +33,7 @@
   It also allows for automatic parallelization of all possible processes, both within and across samples.
   The pipeline is designed to be modular, where each tool or method is organized into modules which can be easily modified or replaced.
   This also simplifies the process of adding new tools (refer to modules section in the mindpipe documentation).
-  In addition to the Python package, the entire pipeline has been containerized into a Docker~\cite{Merkel1994} image (\hl{dockerhub link}) for easy deployment and setup.
+  In addition to the Python package, the entire pipeline has been containerized into a Docker~\cite{Merkel1994} image (dockerhub link) for easy deployment and setup.
   The main components of the pipeline are detailed in the subsequent sections.
 
   \subsection*{Denoising and Clustering}
@@ -75,7 +78,7 @@
     \item A null model is created by re-sampling and bootstrapping the correlation/interaction matrix
     \item Significance of these associations is determined by calculating pvalues against this null model.
   \end{itemize}
-  The pipeline includes Pearson, Spearman and \ac{sparcc}~\cite{Friedman2012} as the pairwise correlation metrics, and \ac{spieceasi}~\cite{Kurtz2015}, \ac{mldm}~\cite{Yang2017} and \ac{magma} (\hl{in biorxiv}) as the direct association metrics.
+  The pipeline includes Pearson, Spearman and \ac{sparcc}~\cite{Friedman2012} as the pairwise correlation metrics, and \ac{spieceasi}~\cite{Kurtz2015}, \ac{mldm}~\cite{Yang2017} and \ac{magma} (in biorxiv) as the direct association metrics.
 
   \subsection*{Statistical Analysis}
 
@@ -85,11 +88,11 @@
   The total variance for the network is calculated by adding the variances for each connection.
   The PCA analysis is also performed on the merged network.
 
-  \textbf{Power calculations:}
+  % TODO: Variance and PCA calculation
 
-  \textbf{P-value merging}
-  The empirical Browns method is used for combining p-values from the various methods to obtain a consensus pvalue, which is used to create the consensus network.
+  % \textbf{Power calculations:}
+
+\textbf{P-value merging}:
+The empirical Browns method [ref] is used for combining p-values from the various methods to obtain a consensus pvalue, which is used to create the consensus network.
 
   \subsection*{Code and Data Availability}
-
-  Links here

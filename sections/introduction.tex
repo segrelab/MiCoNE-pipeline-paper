@@ -24,11 +24,11 @@
   These data-sets can be used to infer networks of co-occurrence relationships between microorganisms in the samples.
   The co-occurrence networks can in turn be used to identify important interactions driving the dynamics of the microbial community, as well as, analyze emergent properties such as robustness and modularity.
 
-
   16S sequencing data is limited by many factors such as resolution, sequencing depth, compositional nature, sequencing errors and copy number variations.
   Many different analysis methods have been developed \cite{Callahan2016,Amir2017,Friedman2012,Kurtz2015} to counter these limitations and remove statistical artifacts, leading to the existence of a myriad of tools for each step of the data analysis workflow.
   The different methods and tools developed to solve these issues infer vastly different community compositions and co-occurrence networks \cite{Golob2017,Weiss2016}, making the analysis unreproducible and comparisons convoluted.
   But because there does not exist a dataset wherein the microbial interactions have been fully characterized, there is no straightforward way to determine which set of tools or methods generate the most accurate networks.
+  % TODO: Study the diversity of methods and explore the possiblity of a standardized approach to 16S analysis
   In this study, we propose to build a standardized 16S data-analysis pipeline that will produce robust and reproducible co-occurrence networks from community 16S sequence data.
   We do this by conducting a systematic study of the various methods currently available.
   We compare different methods to each other and additionally use mock microbial community datasets and synthetically generated reads to benchmark them.
