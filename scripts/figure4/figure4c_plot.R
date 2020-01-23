@@ -42,4 +42,6 @@ mock16_data <- tidy_up_data("mock16_braycurtis.csv", "mock16")
 mock_data <- rbind(mock4_data, mock12_data, mock16_data)
 dot_plot <- make_dot_plot(mock_data)
 dot_plot_facet <- facet(dot_plot, facet.by="tax_level")
-annotate_figure(dot_plot_facet, fig.lab="C", fig.lab.pos="top.left", fig.lab.size=20)
+final_plot <- annotate_figure(dot_plot_facet, fig.lab="C", fig.lab.pos="top.left", fig.lab.size=20)
+
+ggsave("figure4c.pdf", width=11, height=5)

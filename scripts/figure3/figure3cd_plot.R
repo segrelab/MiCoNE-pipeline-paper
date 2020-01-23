@@ -63,4 +63,6 @@ mock_unweighted_tidy <- rbind(mock4_unweighted_tidy, mock12_unweighted_tidy, moc
 mock_unweighted_plot <- make_dot_plot(mock_unweighted_tidy, "unweighted unifrac")
 
 
-ggarrange(mock_weighted_plot, mock_unweighted_plot, labels=c("C", "D"), nrow=1, ncol=2, common.legend=TRUE, legend="right")
+final_plot <- ggarrange(mock_weighted_plot, mock_unweighted_plot, labels=c("C", "D"), nrow=1, ncol=2, common.legend=TRUE, legend="right")
+
+ggsave("figure3cd.pdf", width=11, height=5)

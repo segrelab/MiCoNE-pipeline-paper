@@ -46,13 +46,14 @@ make_bar_plot <- function(data, title) {
         ylab="% of Mismatches",
         palette = c("#00AFBB", "#FC4E07"),
         #palette="Paired"
-    )
+    ) +
+    theme(axis.text.x=element_text(angle=30, hjust=1))
 }
 
 # Importing data
-gg <- tidy_up_data("gg.csv", notu)
-silva <- tidy_up_data("silva.csv", notu)
-ncbi <- tidy_up_data("ncbi.csv", notu)
+gg <- tidy_up_data("fmt_gg.csv", notu)
+silva <- tidy_up_data("fmt_silva.csv", notu)
+ncbi <- tidy_up_data("fmt_ncbi.csv", notu)
 
 # Combinations
 gg_silva <- combine_data(gg, silva)
@@ -63,5 +64,7 @@ gg_silva_plot <- make_bar_plot(gg_silva, "GreenGenes vs. SILVA")
 gg_ncbi_plot <- make_bar_plot(gg_ncbi, "GreenGenes vs. NCBI")
 ncbi_silva_plot <- make_bar_plot(ncbi_silva, "NCBI vs. SILVA")
 
-combined_plot <- ggarrange(gg_silva_plot, gg_ncbi_plot, ncbi_silva_plot, nrow=1, ncol=3, common.legend=TRUE, legend="top")
+combined_plot <- ggarrange(gg_silva_plot, gg_ncbi_plot, ncbi_silva_plot, nrow=1, ncol=3, common.legend=TRUE, legend="right")
 annotate_figure(combined_plot, fig.lab="B", fig.lab.pos="top.left", fig.lab.size=20)
+
+ggsave("figure4b.pdf", width=11, height=3.5)

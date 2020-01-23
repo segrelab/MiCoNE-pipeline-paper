@@ -6,11 +6,20 @@ library(ggplot2)
 library(ggpubr)
 
 
+# TODO: FIXME: Combine all the genus in all the files so that you get full legend
 notu <- 50
 
-gg <- read.csv("fmt_gg.csv", header=TRUE, sep=",", na.strings="")[1:notu,]
-silva <- read.csv("fmt_silva.csv", header=TRUE, sep=",", na.strings="")[1:notu,]
-ncbi <- read.csv("fmt_ncbi.csv", header=TRUE, sep=",", na.strings="")[1:notu,]
+# FIXME: This doesn't work all files get same values
+read_data <- function(data_file, n) {
+    raw_df <- read.csv(data_file, header=TRUE, sep=",", na.strings="")[1:n,]
+    # df <- aggregate(Abundance ~ Genus, raw_df, sum)
+    # df
+    raw_df
+}
+
+gg <- read_data("fmt_gg.csv", notu)
+silva <- read_data("fmt_silva.csv", notu)
+ncbi <- read_data("fmt_ncbi.csv", notu)
 
 make_alluvial_plot <- function(db_data, title) {
     genus_factors <- levels(factor(db_data$Genus))
@@ -36,16 +45,16 @@ silva_plot <- make_alluvial_plot(silva, "SILVA")
 ncbi_plot <- make_alluvial_plot(ncbi, "NCBI")
 
 gg$OTU <- gg$empty
-gg_plot <- gg_plot +
-    geom_text_repel(stat="stratum", label.strata=TRUE, data=gg[,c("OTU", "Genus", "Abundance")], nudge_x=1)
+gg_plot <- gg_plot #+
+    # geom_text_repel(stat="stratum", label.strata=TRUE, data=gg[,c("OTU", "Genus", "Abundance")], nudge_x=1)
 
 silva$OTU <- silva$empty
-silva_plot <- silva_plot +
-    geom_text_repel(stat="stratum", label.strata=TRUE, data=silva[,c("OTU", "Genus", "Abundance")], nudge_x=1)
+silva_plot <- silva_plot #+
+    # geom_text_repel(stat="stratum", label.strata=TRUE, data=silva[,c("OTU", "Genus", "Abundance")], nudge_x=1)
 
 ncbi$OTU <- ncbi$empty
-ncbi_plot <- ncbi_plot +
-    geom_text_repel(stat="stratum", label.strata=TRUE, data=ncbi[,c("OTU", "Genus", "Abundance")], nudge_x=1)
+ncbi_plot <- ncbi_plot #+
+    # geom_text_repel(stat="stratum", label.strata=TRUE, data=ncbi[,c("OTU", "Genus", "Abundance")], nudge_x=1)
 
 final_plot <- ggarrange(
     gg_plot,
@@ -54,6 +63,8 @@ final_plot <- ggarrange(
     nrow=1,
     ncol=3,
     common.legend=TRUE,
-    legend="bottom"
+    legend="right"
 )
 annotate_figure(final_plot, fig.lab="A", fig.lab.pos="top.left", fig.lab.size=20)
+
+ggsave("figure4a.pdf", width=11, height=8.5)

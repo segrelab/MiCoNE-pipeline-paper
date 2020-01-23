@@ -48,4 +48,5 @@ weighted_tidy <- tidy_up_data(weighted)
 weighted_plot <- plot_heatmap(weighted_tidy, "weighted unifrac")
 unweighted_plot <- plot_heatmap(unweighted_tidy, "unweighted unifrac")
 
-ggarrange(weighted_plot, unweighted_plot, nrow=1, ncol=2, labels=c("A", "B"), common.legend=TRUE, legend="right")
+heatmap_plot <- ggarrange(weighted_plot, unweighted_plot, nrow=1, ncol=2, labels=c("A", "B"), common.legend=TRUE, legend="right")
+ggsave("figure3ab.pdf", heatmap_plot, width=11, height=8.5)

@@ -17,6 +17,11 @@ get_edgestyle <- function(x) {
 
 plot_network <- function(network_file, combined_layout, interaction_threshold, title, palette, ind) {
   graph_raw <- as_tbl_graph(read_graph(network_file, format="gml"))
+  if(title=="default") {
+      foreground = "#c1c1c1"
+  } else {
+      foreground = "#7570B3"
+  }
   graph <- graph_raw %>%
     activate(edges) %>%
     filter(abs(weight) > interaction_threshold) %>%
@@ -34,7 +39,7 @@ plot_network <- function(network_file, combined_layout, interaction_threshold, t
     # geom_node_point(aes(color=factor(colorkey))) +
     geom_node_point() +
     #scale_edge_color_manual(values = c(background=palette[[1]], foreground=palette[[ind]], common="black")) +
-    scale_edge_color_manual(values = c(foreground="#7570B3", background="#c1c1c1", common="black")) +
+    scale_edge_color_manual(values = c(foreground=foreground, background="#c1c1c1", common="black")) +
     scale_edge_linetype_manual(values = c(negative="dashed", positive="solid")) +
     scale_edge_alpha_manual(values = c(foreground=0.4, background=0.4, common=0.7)) +
     labs(title=title) +
@@ -58,13 +63,12 @@ combined_layout <- create_layout(graph=combined_graph, layout="linear", circular
 
 palette <- brewer.pal(n=6, name="Pastel1")
 default_plot <- plot_network("default.gml", combined_layout, 0.3, "default", palette, 1)
-database_plot <- plot_network("gg.gml", combined_layout, 0.3, "TA=Greengenes", palette, 2)
-clustering_plot <- plot_network("open_ref.gml", combined_layout, 0.3, "DC=open_ref", palette, 3)
-otu_filtering_plot <- plot_network("otu_filtering.gml", combined_layout, 0.3, "OP=off", palette, 4)
-network_inference_plot <- plot_network("spieceasi_direct.gml", combined_layout, 0.3, "NI=spieceasi",  palette, 5)
+database_plot <- plot_network("gg.gml", combined_layout, 0.3, "TA=GG", palette, 2)
+clustering_plot <- plot_network("open_ref.gml", combined_layout, 0.3, "DC=open_reference", palette, 3)
+otu_filtering_plot <- plot_network("otu_filtering.gml", combined_layout, 0.3, "OP=no", palette, 4)
+network_inference_plot <- plot_network("spieceasi_direct.gml", combined_layout, 0.3, "NI=Spieceasi",  palette, 5)
 
 combined_plot <- ggarrange(default_plot, database_plot, clustering_plot, otu_filtering_plot, network_inference_plot, ncol=3, nrow=2, common.legend=TRUE, legend="bottom")
 final_plot <- annotate_figure(combined_plot, fig.lab = "A", fig.lab.pos = "top.left", fig.lab.size = 20)
 
-ggsave(final_plot, file="figure6a.pdf")
-
+ggsave(final_plot, file="figure6a.pdf", width=11, height=8.5)

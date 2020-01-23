@@ -6,7 +6,7 @@ library(ggpubr)
 
 
 group <- c("DC", "TA", "OP", "misc")
-percentage <- c(24.90, 17.97, 5.16, 51.96)
+percentage <- c(17.97, 24.90, 5.16, 51.96)
 labels <- paste0(group, " (", percentage, "%)")
 df <- data.frame(group=group, percentage=percentage, labels=labels)
 
