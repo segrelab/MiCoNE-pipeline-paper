@@ -21,20 +21,27 @@
   Knowledge of the community composition at a particular instance in time would enable us to derive partial insights into the underlying dynamics.
   With the advancement in DNA sequencing technologies \cite{Narihiro2017} and data processing methods much more information can be extracted from these microbial community samples than ever before.
   These advances have led to large-scale data collection efforts involving environmental (Earth Microbiome Project) \cite{Thompson2017}, marine (Tara Oceans Project) \cite{Zhang2015} and human-associated microbiota (Human Microbiome Project) \cite{HumanMicrobiomeProjectConsortium2012} and thus led the generation of a wealth of data about these microbial communities.
-  These data-sets can be used to infer networks of co-occurrence relationships between microorganisms in the samples.
-  The co-occurrence networks can in turn be used to identify important interactions driving the dynamics of the microbial community, as well as, analyze emergent properties such as robustness and modularity.
+  
+  These data-sets can be used to infer networks of co-occurrence relationships between microorganisms in the samples.These networks have microbial taxa as nodes, and edges that represent the frequent co-occurrence (or negative correlations) across different datasets. Co-occurrence networks can in principle be used to identify important interactions driving the dynamics of the microbial community, including emergent ecosystem-level properties such as ecosystem robustness and modularity.
 
-  16S sequencing data is limited by many factors such as resolution, sequencing depth, compositional nature, sequencing errors and copy number variations.
+  One of the limitations of this type of analysis is that 16S sequencing data is limited by many factors such as resolution, sequencing depth, compositional nature, sequencing errors and copy number variations.
+
   Many different analysis methods have been developed \cite{Callahan2016,Amir2017,Friedman2012,Kurtz2015} to counter these limitations and remove statistical artifacts, leading to the existence of a myriad of tools for each step of the data analysis workflow.
-  The different methods and tools developed to solve these issues infer vastly different community compositions and co-occurrence networks \cite{Golob2017,Weiss2016}, making the analysis unreproducible and comparisons convoluted.
-  But because there does not exist a dataset wherein the microbial interactions have been fully characterized, there is no straightforward way to determine which set of tools or methods generate the most accurate networks.
+  The different methods and tools developed to solve these issues infer vastly different community compositions and co-occurrence networks \cite{Golob2017,Weiss2016}, making it difficult to reliably compare networks across different publications and studies. Conversely, given the lack of comprehensive comparisons between directly observed microbial interactions (e.g. from co-culture experiments) and co-occurence networks, there is no straightforward way to determine which set of tools or methods generate the most accurate networks.
+  
+ Previous work has developed popular platforms (like MG-RAST \cite{Keegan2016}, Qiita \cite{qiita}) and tools (such as QIIME \cite{Caporaso2010}) that provide pipelines for 16S data analysis. However, existing tools typically are not focused on the effects of upstream statistical methods on the inferred co-occurrence networks. Furthermore, no organized framework currently exist to systematically analyze and compare existing components of the data-analysis from amplicons to networks.
+  
+  In this study, we present a standardized 16S data-analysis pipeline that produces robust and reproducible co-occurrence networks from community 16S sequence data, and allow users to interactively explore how the network would change upon using different alternative tools and parameters at each step. Our pipeline is coupled to an online integrative tool for the organization, visualization and analysis of inter-microbial networks. Given that this 
+  In addition to making this tool freely available, we implemented a systematic comparative analysis to determine which steps of the pipeline have the largest influence on the final network, and what choice seems to provide best agreement with the tested mock and synthetic datasets.
+  We believe that these steps will ensure better reproducibility and easier comparison of co-occurrence networks across data-sets. We expect that our tool will also be useful for benchmarking future alternative methods, and for ensuring a transparent evaluation of the possible biases introduced by the use of specific tools.  
+
+  
+  
   % TODO: Study the diversity of methods and explore the possiblity of a standardized approach to 16S analysis
   In this study, we propose to build a standardized 16S data-analysis pipeline that will produce robust and reproducible co-occurrence networks from community 16S sequence data.
   We do this by conducting a systematic study of the various methods currently available.
   We compare different methods to each other and additionally use mock microbial community datasets and synthetically generated reads to benchmark them.
 
-  There exist many platforms like MG-RAST \cite{Keegan2016}, Qiita \cite{qiita} and tools such as QIIME \cite{Caporaso2010} that provide pipelines for 16S data analysis, but the main motivations behind the construction of our own pipeline are two-fold.
-  Firstly, the existing tools do not focus their analysis on co-occurrence networks and the effect of upstream statistical methods on the inferred networks.
   Secondly, we undertake a comprehensive study of existing methods in order to suggest optimal methods, tools and parameters for users of the pipeline.
   We believe that these steps will ensure better reproducibility and easier comparison of networks across data-sets.
   We call our pipeline mindpipe, which derives its origin from the \ac{mind}.
