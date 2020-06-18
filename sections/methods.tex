@@ -7,21 +7,25 @@
   \vspace{-5mm}
   The study uses three kinds of 16S rRNA sequencing datasets: real datasets, mock datasets and synthetic datasets.
   Real datasets are collections of sequencing reads obtained from naturally occurring microbial community samples.
-  The current study used healthy stool samples from a fecal microbiome transplant study \cite{Kang2017} and healthy saliva samples from a periodontal disease study~\cite{Chen2018} as real datasets for analysis.
-  The mock community 16S datasets are real sequencing data obtained for artificially assembled collections of species in known proportions. The mock datasets used for this study, obtained from mockrobiota~\cite{Bokulich2016}, were labelled mock4, mock12 and mock16.
-  The mock4 community is composed of 21 bacterial strains. Two replicate samples from mock4  contain all species in equal abundances, and two additional replicate samples contain the same species in unequal abundances.
+  The current study used healthy stool samples from a fecal microbiome transplant study~\cite{Kang2017} and healthy saliva samples from a periodontal disease study~\cite{Chen2018} as real datasets for analysis.
+  The mock community 16S datasets are real sequencing data obtained for artificially assembled collections of species in known proportions.
+  The mock datasets used for this study, obtained from mockrobiota~\cite{Bokulich2016}, were labelled mock4, mock12 and mock16.
+  The mock4 community is composed of 21 bacterial strains.
+  Two replicate samples from mock4  contain all species in equal abundances, and two additional replicate samples contain the same species in unequal abundances.
   The mock12 community is composed of 27 bacterial strains that include closely related taxa with some pairs having only one to two nucleotide difference from another.
   The mock16 community is composed of 49 bacteria and 10 archea, all represented in equal amount.
   The synthetic datasets were generated using an artificial read simulator called ART~\cite{Huang2012}.
-  Three different microbial composition profiles were used as input; reads were generated using a soil and water microbiome composition profiles from the Earth Microbiome Project~\cite{Thompson2017} and healthy gut microbiome project from the Human Microbiome Project~\cite{HumanMicrobiomeProjectConsortium2012}.
+  Three different microbial composition profiles were used as input; reads were generated using a soil and water microbiome composition profiles from the \ac{emp}~\cite{Thompson2017} and healthy gut microbiome project from the fecal microbiome transplant study~\cite{Kang2017}.
   The reads are simulated using the NCBI RefSeq database as the reference sequence pool and the "art\_illumina" sequence profile with a mutation rate of 2\%.
-  The scripts used to generate the synthetic data are in the scripts folder of the respository (\href{https://github.com/dileep-kishore/mind-pipeline-paper}{https://github.com/dileep-kishore/mind-pipeline-paper}).
+  The scripts used to generate the synthetic data are in the scripts folder of the respository (\href{https://github.com/segrelab/mind-pipeline-paper}{https://github.com/segrelab/mind-pipeline-paper}).
 
   \subsection*{\ac{micone}}
 
   \vspace{-5mm}
   The flowchart describing the workflow of \ac{micone} (\acl{micone}), our complete 16S data-analysis pipeline, is shown in Figure \ref{fig:figure1}.
-  The pipeline integrates many publicly available tools as well as custom R or Python modules and scripts to extract co-occurrence associations from 16S sequence data. Each of these tools corresponds to a distinct R or python module that recapitulates the relevant analyses. All such individual modules are available as part of the \ac{micone} package.
+  The pipeline integrates many publicly available tools as well as custom R or Python modules and scripts to extract co-occurrence associations from 16S sequence data.
+  Each of these tools corresponds to a distinct R or python module that recapitulates the relevant analyses.
+  All such individual modules are available as part of the \ac{micone} package.
   The inputs to the pipeline by default are the raw community 16S rRNA sequence reads, but the software can be alternatively configured to use trimmed sequences, \ac{otu} tables and other types of intermediate data.
   The final output of the pipeline is the inferred network of co-occurrence relationships among the microbes present in the samples.
 
@@ -43,38 +47,42 @@
   The denoise/cluster process handles the conversion of the demultiplexed, trimmed sequences into \ac{otu} or \ac{esv} count tables (some methods, like closed reference and open reference clustering, perform clustering and taxonomy assignment in the same step).
   The chimera checking process handles the removal of chimeric sequences created during the \ac{pcr} step.
   The output of this module is a matrix of counts, that describes the number of reads of a particular \ac{otu} or \ac{esv} (rows of the matrix) present in each sample (columns of the matrix).
-  The options currently available in the pipeline for denoising and clustering: open reference clustering, closed reference clustering and de novo clustering methods from \ac{qiime1}~\cite{Caporaso2010} and denoising methods from \ac{dada2}~\cite{Callahan2016} and Deblur~\cite{Amir2017}.
-  The quality filtering and chimera checking tools are derived from those used in \ac{qiime2} and \ac{dada2}. 
+  The options currently available in the pipeline for denoising and clustering: open reference clustering, closed reference clustering and de novo clustering methods from \ac{qiime1} v1.9.1~\cite{Caporaso2010} and denoising methods from \ac{dada2} v1.14~\cite{Callahan2016} and Deblur v1.1.0~\cite{Amir2017}.
+  The quality filtering and chimera checking tools are derived from those used in \ac{qiime2} v2019.10.0 and \ac{dada2}. 
 
 
   \subsection*{Taxonomy Assignment (TA)}
   \vspace{-5mm}
   This module deals with assigning taxonomies to either the representative sequences of the \ac{otu}s or directly to the \ac{esv}s.
   In order to assign taxonomies to a particular sequence we need a taxonomy database and a query tool.
-  The taxonomy database contains the collection of 16S sequences of micro-organisms of interest and the query tool allows one to compare a sequence of interest to all the sequences in the database to identify the best matches. Finally, a consensus method is used to identify the most probable match from the list of best matches.
-  The pipeline incorporates \ac{gg}~\cite{DeSantis2006}, SILVA~\cite{Quast2012} and the \ac{ncbi}~\cite{Sayers2009} databases for taxonomy assignment and the Naive Bayes classifier from \ac{qiime2} and \ac{ncbi} blast as the query tools (from \ac{qiime2}).
+  The taxonomy database contains the collection of 16S sequences of micro-organisms of interest and the query tool allows one to compare a sequence of interest to all the sequences in the database to identify the best matches.
+  Finally, a consensus method is used to identify the most probable match from the list of best matches.
+  The pipeline incorporates \ac{gg} 13\_8~\cite{DeSantis2006}, SILVA 132~\cite{Quast2012} and the \ac{ncbi} (16S RefSeq as of Oct 2019)~\cite{Sayers2009} databases for taxonomy assignment and the Naive Bayes classifier from \ac{qiime2} and \ac{ncbi} blast as the query tools (from \ac{qiime2}).
   The consensus algorithm used is the default method used by the classifiers in \ac{qiime2}.
 
   % TODO: Add references and basic equations
   \subsection*{OTU and ESV Processing (OP)}
   \vspace{-5mm}
   This module deals with normalization, filtering and applying transformations to the \ac{otu} or \ac{esv} counts matrix.
-  Rarefaction is a normalization technique used to overcome the bias that might arise due to variable sampling depth in different samples. This is performed either by sub-sampling or by normalization of the matrix to the lowest sampling depth.
-  Rarefaction is usually followed by filtering, which is performed to remove samples or features (\ac{otu}s or \ac{esv}s) from the count matrix that are sparse. In order to determine the filtering threshold we fix the number of samples and correlation detection power needed and determine the number of features to be used.
+  Rarefaction is a normalization technique used to overcome the bias that might arise due to variable sampling depth in different samples.
+  This is performed either by sub-sampling or by normalization of the matrix to the lowest sampling depth \cite{Weiss2015}.
+  Rarefaction is usually followed by filtering, which is performed to remove samples or features (\ac{otu}s or \ac{esv}s) from the count matrix that are sparse.
+  In order to determine the filtering threshold we fix the number of samples and correlation detection power needed and determine the number of features to be used.
   Finally, transformations are performed in order to correct for and overcome the compositional bias that is inherent in a counts matrix (in most cases this is handled by the network inference algorithm).
 
-  % TODO: Add reference for bootstrapping
   \subsection*{Network Inference (NI)}
   \vspace{-5mm}
   This module deals with the inference of co-occurrence associations from the \ac{otu} or \ac{esv} counts matrix.
   These associations can be represented as a network, with nodes representing taxonomies of the micro-organisms and edges representing the association between them.
-  A null model is created by re-sampling and bootstrapping the correlation/interaction matrix and is used to calculate the significance of the inferred associations by calculating the p-values against this null model.
-  The pipeline includes Pearson, Spearman and \ac{sparcc}~\cite{Friedman2012} as the pairwise correlation metrics, and \ac{spieceasi}~\cite{Kurtz2015}, \ac{mldm}~\cite{Yang2017} and \ac{magma} \hl{in biorxiv [ADD REF]} as the direct association metrics.
-  The empirical Browns method \hl{ref ADD REF} is used for combining p-values from the various methods to obtain a consensus p-value, which is used to create the consensus network.
+  A null model is created by re-sampling and bootstrapping the correlation/interaction matrix and is used to calculate the significance of the inferred associations by calculating the p-values against this null model \cite{Watts2018}.
+  The pipeline includes Pearson, Spearman and FastSpar v0.0.10 (a faster implementation of \ac{sparcc})~\cite{Watts2018} as the pairwise correlation metrics, and \ac{spieceasi} v1.0.7~\cite{Kurtz2015}, \ac{mldm} v1.1~\cite{Yang2017} and \ac{magma}~\cite{Cougoul2019} as the direct association metrics.
+  The empirical Browns method is used for combining p-values from the various methods to obtain a consensus p-value, which is used to create the consensus network.
 
   \subsection*{Network Variability}
   \vspace{-5mm}
-  In order to compare across different networks, and analyze the degree of variability induced by the choice of different modules and parameters, we organized multiple networks into a single mathematical structure that we could use for linear regression. In particular, we transformed the adjacency matrix of each co-occurrence network into a vector. We then merged the networks generated from all possible combinations of tools into a table (N, see below) in which each column represents one network.
+ In order to compare across different networks, and analyze the degree of variability induced by the choice of different modules and parameters, we organized multiple networks into a single mathematical structure that we could use for linear regression.
+ In particular, we transformed the adjacency matrix of each co-occurrence network into a vector.
+ We then merged the networks generated from all possible combinations of tools into a table (N, see below) in which each column represents one network.
   
   \begin{equation*}
     N = \begin{bmatrix}
@@ -85,22 +93,18 @@
     \end{bmatrix}      
   \end{equation*}
   
-In other words, $N$ is the merged table and each column $N_i$ is the vector representation of one of the networks.
-  
-We next use linear regression to express each network Ni as a linear function of categorical variables that describe the possible options in each of the first three steps of the pipeline.
+  In other words, $N$ is the merged table and each column $N_i$ is the vector representation of one of the networks and each row $L_i$ represents the one particular edge in all networks (assigned 0 if the edge does not exist in the network).
+      
+  We next use linear regression to express each link $L_i$ as a linear function of categorical variables that describe the possible options in each of the first three steps of the pipeline.
   
   % TODO: Explain the categorical linear model and ANOVA better
-
-In particular, we infer parameters $\alpha_i$ such that:
+  In particular, we infer parameters $\alpha_i$ such that:
    \begin{equation*}
-       N_i = \sum_{j=1}^5 \left( \alpha^{DC(j)}_i.\delta^{DC(j)}_i \right) +
+       L_i = \sum_{j=1}^5 \left( \alpha^{DC(j)}_i.\delta^{DC(j)}_i \right) +
              \sum_{j=1}^3 \left( \alpha^{TA(j)}_i.\delta^{TA(j)}_i \right) +
              \sum_{j=1}^2 \left( \alpha^{OP(j)}_i.\delta^{OP(j)}_i \right) +
              \epsilon_i
    \end{equation*}
-   
-   
-   $N_i = \mathbf{\alpha_i^{DC}} \cdot \mathbf{ \delta_i^{DC}}$
    
    where, $\alpha_i$ are the coefficients of the regression, $\epsilon_i$ are the residuals and $\delta_i$ are the indicator variables that correspond to the processes utilized in the pipeline used to create the network $N_i$; for example, $\delta^{DC(1)}_i = 1$ if the DC(1) process was used in the generation of the network $N_i$ .
    Here, (i) DC(1) = "closed reference", DC(2) = "open reference", DC(3) = "de novo", DC(4) = "dada2", DC(5) = "deblur"; (ii)  TA(1) = "GreenGenes", TA(2) = "SILVA", TA(3) = "NCBI"; (iii) OP(1) = "no filtering", OP(2) = "filtering".
@@ -110,5 +114,5 @@ In particular, we infer parameters $\alpha_i$ such that:
   The PCA analysis is also performed on the merged table to generate Figure~\ref{fig:figure2}C.
 
   \subsection*{Code and Data Availability}
-  pipeline: \href{}{} \\
+  pipeline: \href{https://github.com/segrelab/MiCoNE}{https://github.com/segrelab/MiCoNE} \\
   data and scripts related to the paper: \href{}{}

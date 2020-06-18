@@ -932,3 +932,45 @@ url = {http://www.ncbi.nlm.nih.gov/pubmed/19801464 http://www.pubmedcentral.nih.
 volume = {75},
 year = {2009}
 }
+
+@article{Cougoul2019,
+author = {Cougoul, Arnaud and Bailly, Xavier and Wit, Ernst C},
+doi = {10.1101/538579},
+title = {{MAGMA: inference of sparse microbial association networks}},
+url = {https://doi.org/10.1101/538579},
+year = {2019}
+}
+
+@article{Watts2018,
+author = {Watts, Stephen C and Ritchie, Scott C and Inouye, Michael and Holt, Kathryn E},
+doi = {10.1093/bioinformatics/bty734},
+editor = {Stegle, Oliver},
+issn = {1367-4803},
+journal = {Bioinformatics},
+mendeley-groups = {Microbiome project/interactions},
+month = {aug},
+title = {{FastSpar: rapid and scalable correlation estimation for compositional data}},
+url = {https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/bty734/5086389},
+year = {2018}
+}
+
+@article{Weiss2015,
+abstract = {Background: Data from 16S amplicon sequencing present challenges to ecological and statistical interpretation. In particular, library sizes often vary over several ranges of magnitude, and the data contains many zeroes. Also, since researchers sample a small fraction of the ecosystem, the observed sequences are relative abundances and therefore the data is compositional. Here we evaluate methods developed in the literature to address these three challenges in the context of normalization and ordination analysis, which is commonly used to visualize overall differences in bacterial composition between sample groups, and differential abundance analysis, which tests for significant differences in the abundances of microbes between sample groups. Results. Effects of normalization on ordination: Most normalization methods successfully cluster samples according to biological origin when many microbes differ between the groups. For datasets in which clusters are subtle and/or sequence depth varies greatly between samples, or for metrics in which rare microbes play an important role, rarefying outperforms other techniques. For abundance-based metrics, rarefying as well as alternatives like DESeq and metagenomeSeq's cumulative sum scaling (CSS), seem to correctly cluster samples according to biological origin. With these normalization alternatives, clustering by sequence depth as a confounding variable must be checked for, especially for low library sizes. Effects of differential abundance testing model choice: We build on previous work to evaluate each statistical method using rarefied as well as unrarefied data. When the mean library sizes in the differential abundance groups differ by more than 2-3x, or the library sizes differ in distribution, our simulation studies reveal that each statistical method improved in its false positive rate when samples were rarefied. However, when the difference in library size mean is less than 2-3x, and the library sizes are similarly distributed, rarefying results in a loss of power for all methods. In this case, DESeq2 has the highest power to compare groups, especially for less than 20 samples per group. MetagenomeSeq's fitZIG is a faster alternative to DESeq2, although it does worse for smaller sample sizes ({\textless}50 samples per group) and tends to have a higher false positives rate. For larger sample sizes ({\textgreater}50 samples), rarefying paired with a non-parametric test, such as the Mann-Whitney test, can also yield equally high sensitivity. Based on these results, we recommend a stepwise procedure in which sample groups are first tested for significant differences in library size. If there is a significant difference, we recommend rarefying with a non-parametric test. Otherwise, DESeq2 and/or fitZIG offer increased sensitivity, especially for rare OTUs and small sample numbers. Conclusions. These findings help guide which technique to use depending on the data characteristics of a given study.},
+archivePrefix = {arXiv},
+arxivId = {10.7287/peerj.preprints.270v1},
+author = {Weiss, Sophie J and Xu, Zhenjiang and Amir, Amnon and Peddada, Shyamal and Bittinger, Kyle and Gonzalez, Antonio and Lozupone, Catherine and Zaneveld, Jesse R and Vazquez-Baeza, Yoshiki and Birmingham, Amanda and Knight, Rob},
+doi = {10.7287/peerj.preprints.1157v1},
+eprint = {peerj.preprints.270v1},
+isbn = {2167-9843},
+issn = {2167-9843},
+journal = {PeerJ PrePrints},
+keywords = {Microbiome,OTU table analysis,compositional,differential abundance testing,high-throughput sequencing,library size,normalization,ordination,sparsity,statistics},
+mendeley-groups = {Microbiome project/OTUs},
+pages = {e1408},
+pmid = {27094199},
+primaryClass = {10.7287},
+title = {{Effects of library size variance, sparsity, and compositionality on the analysis of microbiome data}},
+url = {https://doi.org/10.7287/peerj.preprints.1157v1{\%}5Cnhttps://peerj.com/preprints/1157v1/{\#}supp-8},
+volume = {3},
+year = {2015}
+}
