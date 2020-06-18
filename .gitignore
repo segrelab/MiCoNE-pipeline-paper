@@ -249,3 +249,8 @@ tags
 
 # Ignore .Rhistory
 .Rhistory
+
+# Ignore data files in scripts
+scripts/**/*.pdf
+scripts/**/*.csv
+scripts/**/*.gml
