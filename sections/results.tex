@@ -30,7 +30,7 @@
   In addition to the algorithmic pipeline itself, our analysis involves two types of data: The first type consists of sets of 16S sequencing data for real communities consisting of Stool and Oral microbiomes (see Methods).
   The second are datasets artificially created for the specific goal of helping evaluate computational analysis tools.
   In particular, in order to objectively compare, to the extent possible, how well each step in \ac{micone} best captures the underlying data, we use both mock data (labelled mock4, mock12 and mock16) from mockrobiota~\cite{Bokulich2016} as well as, synthetically generated reads from an Illumina read simulator called ART~\cite{Huang2012}.
-  These mock datasets were selected since they contained the expected compositions along with the reference sequences for the organisms in the mock community.
+  These mock datasets consist of fake sequencing reads generated from reads obtained from synthetic microbial isolates mixed in know proportions. They contain the expected compositions along with the reference sequences for the organisms in the mock community.
   The synthetic reads were simulated using three different taxonomy distribution profiles, namely soil and water microbiomes obtained \ac{emp}~\cite{Thompson2017} and Stool microbiome that is used in our real community analysis~\cite{Kang2017}.
   Reference sequences were generated using \ac{ncbi} and the Decard tool~\cite{Golob2017} for these taxonomy profiles.
   Detailed information on the mock communities and the settings used to generate the synthetic data are provided in the Methods section.
@@ -43,7 +43,7 @@
   In order to analyze the effect of different statistical methods on the inferred co-occurrence networks, we generated co-occurrence networks using all possible combinations of methods and estimated the variability in the networks due to each choice.
   This analysis is performed while keeping the network inference algorithm (NI step) the same throughout the analysis.
   The effects of various steps on the final co-occurrence network is estimated by building a linear model of the edges of the network as a function the various step in the analysis pipeline (see Methods).
-  Figure \ref{fig:figure2}B, shows the fraction of total variation among the co-occurrence networks as contributed by the first three steps of the pipeline. In other words, each point corresponds to a different combination of tools, and captures how much the final network is affected by such choice.
+  Figure \ref{fig:figure2}B, shows the fraction of total variation among the co-occurrence networks due to the first three steps of the pipeline. In other words, each point corresponds to a different combination of tools, and captures how much the final network is affected by such choice.
   The 16S reference database contributes the most ($\sim25\%$) to variation in the networks. This is also reflected in the fact that the networks can be clearly separated based on the database used (Figure \ref{fig:figure2}B).
   This indicates that the taxonomy assigned to the reference sequences drastically alters the co-occurrence network and this change is much more significant than how the reference sequences themselves are identified (in the DC step).
   We believe that the grouping of the networks by taxonomy assignment into clusters (Figure~\ref{fig:figure2}B) is due to the mislabelling of constitutive taxa that are present in high abundance in the community, which drastically alters the nodes and hence the underlying network topology.
@@ -59,7 +59,7 @@
     \centering
       \caption{
       \textbf{The choice of database contributes to the most variance in the networks}.
-      \textbf{(A)} The total relative variance in the networks contributed by the DC, TA and OP steps of the pipeline (right) and the linear model used to calculate the relative variance (left).
+      \textbf{(A)} The total relative variance in the networks contributed by the DC, TA and OP steps of the pipeline (right) and the linear model used to calculate the relative variance (left), see the Methods section for details.
       \textbf{(B)} All combinations of inferred networks are shown as points on a PCA plot.
       The color of the points corresponds to the taxonomy database, the shape corresponds to the denoising/clustering method and the size corresponds to whether low abundance OTUs were removed or not.
       \textbf{(B inset)} The network generated using DC=dada2, TA=GG, OP=no and NI=SPARCC and represents the particular point shown (big red square).
