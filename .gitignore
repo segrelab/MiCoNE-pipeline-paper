@@ -254,3 +254,6 @@ tags
 scripts/**/*.pdf
 scripts/**/*.csv
 scripts/**/*.gml
+
+# Comments about drafts
+comments/
