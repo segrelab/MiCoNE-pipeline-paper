@@ -47,7 +47,7 @@
   The denoise/cluster process handles the conversion of the demultiplexed, trimmed sequences into \ac{otu} or \ac{esv} count tables (some methods, like closed reference and open reference clustering, perform clustering and taxonomy assignment in the same step).
   The chimera checking process handles the removal of chimeric sequences created during the \ac{pcr} step.
   The output of this module is a matrix of counts, that describes the number of reads of a particular \ac{otu} or \ac{esv} (rows of the matrix) present in each sample (columns of the matrix).
-  The options currently available in the pipeline for denoising and clustering: open reference clustering, closed reference clustering and de novo clustering methods from \ac{qiime1} v1.9.1~\cite{Caporaso2010} and denoising methods from \ac{dada2} v1.14~\cite{Callahan2016} and Deblur v1.1.0~\cite{Amir2017}.
+  The options currently available in the pipeline for denoising and clustering are: open reference clustering, closed reference clustering and de novo clustering methods from \ac{qiime1} v1.9.1~\cite{Caporaso2010} and denoising methods from \ac{dada2} v1.14~\cite{Callahan2016} and Deblur v1.1.0~\cite{Amir2017}.
   The quality filtering and chimera checking tools are derived from those used in \ac{qiime2} v2019.10.0 and \ac{dada2}. 
 
 
@@ -60,7 +60,7 @@
   The pipeline incorporates \ac{gg} 13\_8~\cite{DeSantis2006}, SILVA 132~\cite{Quast2012} and the \ac{ncbi} (16S RefSeq as of Oct 2019)~\cite{Sayers2009} databases for taxonomy assignment and the Naive Bayes classifier from \ac{qiime2} and \ac{ncbi} blast as the query tools (from \ac{qiime2}).
   The consensus algorithm used is the default method used by the classifiers in \ac{qiime2}.
 
-  % TODO: Add references and basic equations
+  % TODO: Add references and basic equations or details
   \subsection*{OTU and ESV Processing (OP)}
   \vspace{-5mm}
   This module deals with normalization, filtering and applying transformations to the \ac{otu} or \ac{esv} counts matrix.
@@ -76,7 +76,7 @@
   These associations can be represented as a network, with nodes representing taxonomies of the micro-organisms and edges representing the association between them.
   A null model is created by re-sampling and bootstrapping the correlation/interaction matrix and is used to calculate the significance of the inferred associations by calculating the p-values against this null model \cite{Watts2018}.
   The pipeline includes Pearson, Spearman and FastSpar v0.0.10 (a faster implementation of \ac{sparcc})~\cite{Watts2018} as the pairwise correlation metrics, and \ac{spieceasi} v1.0.7~\cite{Kurtz2015}, \ac{mldm} v1.1~\cite{Yang2017} and \ac{magma}~\cite{Cougoul2019} as the direct association metrics.
-  The empirical Browns method is used for combining p-values from the various methods to obtain a consensus p-value, which is used to create the consensus network.
+  The empirical Browns method~\cite{Poole} is used for combining p-values from the various methods to obtain a consensus p-value, which is used to create the consensus network.
 
   \subsection*{Network Variability}
   \vspace{-5mm}
@@ -93,11 +93,11 @@
     \end{bmatrix}      
   \end{equation*}
   
-  In other words, $N$ is the merged table and each column $N_i$ is the vector representation of one of the networks and each row $L_i$ represents the one particular edge in all networks (assigned 0 if the edge does not exist in the network).
+  In other words, $N$ is the merged table, each column $N_i$ is the vector representation of one of the networks, and each row $L_i$ represents the one particular edge in all networks (assigned 0 if the edge does not exist in the network).
       
-  We next use linear regression to express each link $L_i$ as a linear function of categorical variables that describe the possible options in each of the first three steps of the pipeline.
+  We use linear regression to express each link $L_i$ as a linear function of categorical variables that describe the possible options in each of the first three steps of the pipeline.
   
-  % TODO: Explain the categorical linear model and ANOVA better
+  % TODO: Explain the categorical linear model and ANOVA better (text)
   In particular, we infer parameters $\alpha_i$ such that:
    \begin{equation*}
        L_i = \sum_{j=1}^5 \left( \alpha^{DC(j)}_i.\delta^{DC(j)}_i \right) +
@@ -114,5 +114,5 @@
   The PCA analysis is also performed on the merged table to generate Figure~\ref{fig:figure2}C.
 
   \subsection*{Code and Data Availability}
-  pipeline: \href{https://github.com/segrelab/MiCoNE}{https://github.com/segrelab/MiCoNE} \\
-  data and scripts related to the paper: \href{https://github.com/segrelab/MiCoNE-pipeline-paper}{https://github.com/segrelab/MiCoNE-pipeline-paper}
+  Pipeline: \href{https://github.com/segrelab/MiCoNE}{https://github.com/segrelab/MiCoNE} \\
+  Data and scripts: \href{https://github.com/segrelab/MiCoNE-pipeline-paper}{https://github.com/segrelab/MiCoNE-pipeline-paper}

@@ -2,42 +2,42 @@
 
 \section*{Introduction}
 
-  Microbial communities are ubiquitous and play an important role in biogeochemical transformations in both natural as well as man-made ecosystems.
-  These microbiomes comprise several thousand different microbial strains interacting with each other and their environment, often through intricate metabolic and signaling relationships.
-  Changes in the microbiome can alter the environment in which they reside \cite{HumanMicrobiomeProjectConsortium2012,Lloyd-Price2016} and for host-associated microbiomes this can have major implications in health of the human body.
-  A mechanistic understanding of the key interactions between microbes is necessary in order to analyze the dysbiosis in a healthy microbiome and to design interventions.
+  Microbial communities are ubiquitous and play an important role in marine and terrestrial environments, urban ecosystems, metabolic engineering, and human health [REFs].
+  These microbial communities, or microbiomes, often comprise several hundreds of different microbial strains interacting with each other and their environment, often through intricate metabolic and signaling relationships.
+  Understanding how these interconnections shape community structure and functionalities is a fundamental challenge in microbial ecology, with applications in the study of microbial ecosystems across different biomes. 
+  With the advancement in DNA sequencing technologies \cite{Narihiro2017} and data processing methods,  more information can be extracted from these microbial community samples than ever before.
+  In particular, high-throughput sequencing, including community metagenomic sequencing and sequencing of 16S rRNA gene amplicons, has the potential to help detect, identify and quantify a large portion of the constitutive microorganisms of a microbiome \cite{Jovel2016} [MORE REFs, Reviews, keystone papers...].
+  These advances have led to large-scale data collection efforts involving environmental (\acl{emp}) \cite{Thompson2017}, marine (Tara Oceans Project) \cite{Zhang2015} and human-associated microbiota (Human Microbiome Project) \cite{HumanMicrobiomeProjectConsortium2012}.
 
-  Studies have shown the importance of specific microbial interactions in the healthy microbiome \cite{Lloyd-Price2016} and others have shown how changes in these interactions can lead to dysbiosis \cite{Wang2017,Gilbert2016,Belizario2015}.
-  While direct measurement of interactions is challenging, a significant amount of effort has gone into measuring correlations leading to the correlation information between microbial abundances being readily available.
-  Co-occurrence relationships in microbial communities may be driven by microbial interactions, although the extent and nature of these relationships is highly debated \cite{Zuniga2017}.
-  Each interaction within this complex ecological network can have a positive effect, a negative effect or no effect on the species involved.
-  Bacteria that compete for the same nutrient will have a negative co-occurrence relationship \cite{Ghoul2016} whereas cross-feeding between species leads to a positive co-occurrence relationship \cite{DSouza2018}.
-  But these co-occurrence relationships are not very straightforward, since, similar species competing for a resource could co-occur if the resource is abundant.
-  The microbial interaction networks are highly dynamic, and they constantly reorganize in a varying environment.
-  Even under static conditions, these interactions are often difficult to predict due to their non-linear nature \cite{Konopka2015}.
-  Compounding on this complexity is the fact that these interaction networks usually involve thousands of species.
+ This wealth of information on the composition and functions of a community at different times and under different environmental conditions has the potential to help us understand how communities assemble and operate.
+ A powerful tool for translating microbiome data into knowledge is the construction of possible inter-dependence networks across species.
+ The importance of these networks of relationships is two fold: first, such networks can serve as maps that help identify hubs of keystone species [REF], or basic microbiome changes that occur as a consequence of environmental perturbations or underlying host conditions [REF]; second, networks of inter-dependencies can serve as a key bridge towards building mechanistic models of microbial communities, greatly enhancing our capacity to understand and control them.
+ For example, multiple studies have shown the importance of specific microbial interactions in the healthy microbiome \cite{Lloyd-Price2016} and others have shown how changes in these interactions can lead to dysbiosis \cite{Wang2017,Gilbert2016,Belizario2015}.
+ In the context of terrestrial biogeochemistry..... [ANOTHER EXAMPLE].
 
-  High-throughput metagenomic sequencing techniques (such as 16S rRNA gene profiling) help detect, identify and quantify a large part of the constitutive microorganisms of a microbiome \cite{Jovel2016}.
-  Knowledge of the community composition at a particular instance in time would enable us to derive partial insights into the underlying dynamics.
-  With the advancement in DNA sequencing technologies \cite{Narihiro2017} and data processing methods much more information can be extracted from these microbial community samples than ever before.
-  These advances have led to large-scale data collection efforts involving environmental (\acl{emp}) \cite{Thompson2017}, marine (Tara Oceans Project) \cite{Zhang2015} and human-associated microbiota (Human Microbiome Project) \cite{HumanMicrobiomeProjectConsortium2012} and thus led the generation of a wealth of data about these microbial communities.
-  
-  These data-sets can be used to infer networks of co-occurrence relationships between microorganisms in the samples.
-  These networks have microbial taxa as nodes, and edges that represent the frequent co-occurrence (or negative correlations) across different datasets.
-  Co-occurrence networks can in principle be used to identify important interactions driving the dynamics of the microbial community, including emergent ecosystem-level properties such as ecosystem robustness and modularity.
+ Direct measurement of interactions, e.g. through co-culture microdroplet experiments [REF Blainey], or spatial visualization of natural communities [REF Borisy]  is possible, but still challenging.
+ In parallel, sequencing data across multiple samples can be used for estimating co-occurrence relationships between taxa.
+ While the the relationship between directly measured interactions and statistically inferred co-occurrence is still poorly understood \cite{Zuniga2017}, a significant amount of effort has gone into estimating correlations from large microbiome sequence datasets.
+ Co-occurrence networks have microbial taxa as nodes, and edges that represent the frequent co-occurrence (or negative correlations) across different datasets. 
 
-  One of the limitations of this type of analysis is that 16S sequencing data is limited by many factors such as resolution, sequencing depth, compositional nature, sequencing errors and copy number variations.
+One of the most frequently used avenues for inferring co-occurrence networks is the parsing and analysis of 16S sequencing data. A large number of software tools and pipelines have been developed to analyze 16S sequencing data, often focused on addressing the many known limitations of this methodology, including resolution, sequencing depth, compositional nature, sequencing errors and copy number variations.  Popular methods for different phases of the analysis of 16S data include; (i) tools for removing statistical artifacts...; (ii), 
+
   Many different analysis methods have been developed \cite{Callahan2016,Amir2017,Friedman2012,Kurtz2015} to counter these limitations and remove statistical artifacts, leading to the existence of a myriad of tools for each step of the data analysis workflow.
   The different methods and tools developed to solve these issues infer vastly different community compositions and co-occurrence networks \cite{Golob2017,Weiss2016}, making it difficult to reliably compare networks across different publications and studies.
   Conversely, given the lack of comprehensive comparisons between directly observed microbial interactions (e.g. from co-culture experiments) and co-occurrence networks, there is no straightforward way to determine which set of tools or methods generate the most accurate networks.
-  
+ 
  Previous work has developed popular platforms (like MG-RAST \cite{Keegan2016}, Qiita \cite{qiita}) and tools (such as QIIME \cite{Caporaso2010}) that provide pipelines for 16S data analysis.
+ 
  However, existing tools typically are focused on \ac{otu} generation and not on the effects of upstream statistical methods on the inferred co-occurrence networks.
  Furthermore, no organized framework currently exist to systematically analyze and compare existing components of the data-analysis from amplicons to networks.
   
-  In this study, we present a standardized 16S data-analysis pipeline called \ac{micone} that produces robust and reproducible co-occurrence networks from community 16S sequence data, and allow users to interactively explore how the network would change upon using different alternative tools and parameters at each step.
+
+ In this study, we present a standardized 16S data-analysis pipeline called \ac{micone} that produces robust and reproducible co-occurrence networks from community 16S sequence data, and allow users to interactively explore how the network would change upon using different alternative tools and parameters at each step.
   % TODO: Link or describe MIND here (?)
   Our pipeline is coupled to an online integrative tool for the organization, visualization and analysis of inter-microbial networks.
   In addition to making this tool freely available, we implemented a systematic comparative analysis to determine which steps of the pipeline have the largest influence on the final network, and what choice seems to provide best agreement with the tested mock and synthetic datasets.
   We believe that these steps will ensure better reproducibility and easier comparison of co-occurrence networks across data-sets.
   We expect that our tool will also be useful for benchmarking future alternative methods, and for ensuring a transparent evaluation of the possible biases introduced by the use of specific tools.
+  
+ 
+ 
