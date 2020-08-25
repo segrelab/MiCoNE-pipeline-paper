@@ -5,13 +5,13 @@
   \subsection*{\acl{micone} (\acs{micone})}
 
   We have developed \ac{micone}, a flexible and modular pipeline for 16S amplicon sequencing rRNA data (hereafter mentioned simply as 16S data) analysis, that allows us to infer microbial co-occurrence networks.
-  It incorporates various popular, publicly available tools as well as custom Python modules and scripts to facilitate inference of co-occurrence networks from 16S data.
+  It incorporates various popular, publicly available tools as well as custom Python modules and scripts to facilitate inference of co-occurrence networks from 16S data (see Methods).
   Using \ac{micone} one can obtain co-occurrence networks by applying to 16S data (or to already processed taxonomic count matrices) any combination of the available tools.
   The effects of changing any of the intermediate step can be monitored and evaluated in terms of its final network outcome, as well as on any of the intermediate metrics and data outputs.
   The \ac{micone} pipeline workflow is shown in Figure~\ref{fig:figure1}.
   The different steps for going from 16S data to co-occurrence networks can be grouped into four major modules; (i) the denoising and clustering (DC) step, which handles denoising of the raw 16S sequencing data into representative sequences; (ii) the taxonomy assignment (TA) step that assigns taxonomic labels to the representative sequences; (iii) the \ac{otu} processing (OP) step that filters and transforms the taxonomy abundance table; and finally (iv) the network inferences (NI) step which infers the microbial co-occurrence network.
   Each process in the pipeline supports alternate tools for performing the same task (see Methods and Figure~\ref{fig:figure1}).
-  A centralized configuration file contains all the specifications for what modules to be used in the pipeline, and can be modified by the user to choose the desired set of tools.
+  A centralized configuration file contains all the specifications for what modules are used in the pipeline, and can be modified by the user to choose the desired set of tools.
   In what follows, we perform a systematic analysis of each step of the pipeline to estimate how much the final co-occurrence network depends on the possible choices at each step.
   We also evaluate a large number of tool combinations to determine a set of recommended default options for the pipeline and provide the users with a set of guidelines to facilitate tool selection as appropriate for their data.
 
@@ -27,8 +27,8 @@
     \label{fig:figure1}
   \end{figure}
 
-  In addition to the algorithmic pipeline itself, our analysis involves two types of data: The first type consists of sets of 16S sequencing data for real communities consisting of Stool and Oral microbiomes (see Methods).
-  The second are datasets artificially created for the specific goal of helping evaluate computational analysis tools.
+  Our analysis involves two types of data: The first type consists of sets of 16S sequencing data for real communities consisting of Stool and Oral microbiomes.
+  The second are datasets synthetically or artificially created for the specific goal of helping evaluate computational analysis tools (see Methods).
   In particular, in order to objectively compare, to the extent possible, how well each step in \ac{micone} best captures the underlying data, we use both mock data (labelled mock4, mock12 and mock16) from mockrobiota~\cite{Bokulich2016} as well as, synthetically generated reads from an Illumina read simulator called ART~\cite{Huang2012}.
   These mock datasets consist of fake sequencing reads generated from reads obtained from synthetic microbial isolates mixed in know proportions. They contain the expected compositions along with the reference sequences for the organisms in the mock community.
   The synthetic reads were simulated using three different taxonomy distribution profiles, namely soil and water microbiomes obtained \ac{emp}~\cite{Thompson2017} and Stool microbiome that is used in our real community analysis~\cite{Kang2017}.
@@ -40,16 +40,17 @@
 
   \subsection*{The choice of reference database has the biggest impact on inferred networks}
 
-  In order to analyze the effect of different statistical methods on the inferred co-occurrence networks, we generated co-occurrence networks using all possible combinations of methods and estimated the variability in the networks due to each choice.
+  In order to analyze the effect of different statistical methods on the inferred co-occurrence networks, we generated co-occurrence networks using all possible combinations of methods and estimated the variability in the networks due to each choice (Figure \ref{fig:figure1}).
   This analysis is performed while keeping the network inference algorithm (NI step) the same throughout the analysis.
   The effects of various steps on the final co-occurrence network is estimated by building a linear model of the edges of the network as a function the various step in the analysis pipeline (see Methods).
   Figure \ref{fig:figure2}B, shows the fraction of total variation among the co-occurrence networks due to the first three steps of the pipeline. In other words, each point corresponds to a different combination of tools, and captures how much the final network is affected by such choice.
   The 16S reference database contributes the most ($\sim25\%$) to variation in the networks. This is also reflected in the fact that the networks can be clearly separated based on the database used (Figure \ref{fig:figure2}B).
-  This indicates that the taxonomy assigned to the reference sequences drastically alters the co-occurrence network and this change is much more significant than how the reference sequences themselves are identified (in the DC step).
-  We believe that the grouping of the networks by taxonomy assignment into clusters (Figure~\ref{fig:figure2}B) is due to the mislabelling of constitutive taxa that are present in high abundance in the community, which drastically alters the nodes and hence the underlying network topology.
+  This indicates that the taxonomy assigned to the reference sequences drastically alters the co-occurrence network.
+  In fact the variability induced by taxonomy assignment is much more significant than that due to the variability induced based on how the reference sequences themselves are identified (in the DC step).
+  The grouping of the networks by taxonomy assignment into clusters (Figure~\ref{fig:figure2}B) seems to derive from the mislabelling of constitutive taxa that are present in high abundance in the community, which drastically alter the nodes and hence the underlying network topology.
   The residual variation (Figure \ref{fig:figure2}A) can be seen as an artifact that arises when multiple steps are changed at the same time.
-  Another interesting observation is that the dissimilarity between the networks decreases when the low abundance \ac{otu}s are removed from the network. This result is elaborated in detail in the denoising and clustering section.
-  These results enable us to believe that the most important criterion for accurate comparative analyses of co-occurrence networks is the taxonomy reference database.
+  Another interesting observation (elaborated in detail in the denoising and clustering section) is that the dissimilarity between the networks decreases when the low abundance \ac{otu}s are removed from the network.
+  These results suggest that the most important criterion for accurate comparative analyses of co-occurrence networks is the taxonomy reference database.
 
   \begin{figure}[H]
     \centering
@@ -84,10 +85,10 @@
   Figure~\ref{fig:figure3}B on the other hand shows an increase in dissimilarity between each pair of methods suggesting that the methods might differ in the treatment of sequences of low abundance.
   In order to verify this claim, for each of these methods we use the \ac{gg} taxonomy database to assign taxonomies to the representative sequences.
   We then correlate the abundances of matching taxonomies between a pair of DC methods (Figure \ref{fig:figureS1}A and B).
-  The \ac{esv} tables generated by methods that perform denoising are very similar to each other $\sim0.91$ and the \ac{otu} tables generated by the clustering methods are very similar to each other $\sim0.9$, but results of denoising and clustering are highly uncorrelated with each other $\sim0.4$ (Figure \ref{fig:figureS1}C).
+  The \ac{esv} tables generated by methods that perform denoising are very similar to each other ($\sim0.91$) and the \ac{otu} tables generated by the clustering methods are very similar to each other ($\sim0.9$), but results of denoising and clustering are highly uncorrelated with each other ($\sim0.4$) (Figure \ref{fig:figureS1}C).
 
   These comparisons only elucidate the pairwise similarity or dissimilarity of a pair of methods.
-  In order to determine the tool that most accurately recapitulates the reference sequences in the samples, we use the 16S sequences from the mock datasets.
+  In order to determine the tool that most accurately recapitulates the reference sequences in the samples, we used the 16S sequences from the mock datasets.
   In particular, we used the pipeline to process mock community datasets using each of the possible methods included for this step.
   We next compared predicted representative sequences with expected representative sequences and their distribution.
   The results (Figure~\ref{fig:figure3}C and D) show that, for the mock datasets, the different methods perform similar to each other, exactly as observed in the case of the real dataset. However, the mock predicted sequence distributions are substantially different from the expected sequence distribution.
@@ -118,7 +119,7 @@
 
   Taxonomy databases are used to assign taxonomic identities to the representative sequences obtained after the DC step.
   In order to compare the assigned taxonomies from different databases, we use the same reference sequences and assign taxonomies to them using different taxonomy reference databases.
-  The three 16S taxonomic reference databases used in this study are SILVA~\cite{Quast2012}, \ac{gg}~\cite{DeSantis2006} and \ac{ncbi} RefSeq.
+  The three 16S taxonomic reference databases used in this study are SILVA~\cite{Quast2012}, \ac{gg}~\cite{DeSantis2006} and \ac{ncbi} RefSeq~\cite{Sayers2009}.
   SILVA and \ac{gg} are two popular 16S databases used for taxonomy identification.
   The \ac{ncbi} RefSeq nucleotide database contains 16S rRNA sequences as a part of two BioProjects - 33175 and 33317.
   The three databases vastly differ in terms of their last update status - \ac{gg} was last updated on May 2013, SILVA was last updated on December 2017 at the time of writing and \ac{ncbi} is updated as new sequences are curated.
@@ -131,8 +132,8 @@
   A representative sequence might be assigned an "unknown" Genus for one of two reasons: the first is if the taxonomy identifier associated with the sequence in the database did not contain a Genus; the second (more likely) reason is that the database contains multiple sequences that are very similar to the query (representative) sequence and the consensus algorithm (from \ac{qiime2}) is unable to assign one particular Genus at the required confidence.
   After assigning all the representative sequences to taxonomies we perform a pairwise comparison of the similarity between assignments from different databases at every taxonomic level (Figure~\ref{fig:figure4}B).
   The assignments beyond Family level (Family, Genus and Species) are very dissimilar with $<70\%$ similarity between any pair of databases.
-  There are no two reference databases that are more similar than the other, with \ac{gg} and SILVA producing only marginally similar assignments compared to \ac{ncbi}.
-  This implies that the taxonomy assignments from each reference database are fairly unique and is one of the reasons for a large differences in the resultant co-occurrence networks generated from different taxonomy databases.
+  There are no two reference databases that are more similar than the other pairs, with \ac{gg} and SILVA producing only marginally similar assignments compared to \ac{ncbi}.
+  This implies that the taxonomy assignments from each reference database are fairly unique and are largely responsible for the differences observed in the co-occurrence networks generated from different taxonomy databases.
   
   Supplementary Figure~\ref{fig:figureS4} shows that the top 20 most abundant genera in the three resulting taxonomy composition tables are different.
   For example, the most abundant genus in the \ac{gg} taxonomy table was \textit{Escherichia} whereas in the SILVA taxonomy table it was \textit{Escherichia-Shigella}.
@@ -178,14 +179,14 @@
 
   For the analysis presented in this section, we used the taxonomy composition table obtained using the \ac{ncbi} reference database as the input for algorithms that infer co-occurrence associations between the microbes.
   Figure~\ref{fig:figure5}A shows the networks inferred from this dataset using the different inference algorithms.
-  We can clearly see that the different networks differ vastly in their edge-density and connectivity and even some of the edges in common to these networks have their signs inverted. Note, however, that some of these comparisons depend on the threshold that has to be applied to the pairwise correlations methods (currently 0.3, based on~\cite{Friedman2012}).
+  The different networks differ vastly in their edge-density and connectivity; even some of the edges in common to these networks have their signs inverted. Note, however, that some of these comparisons depend on the threshold that has to be applied to the pairwise correlations methods (currently 0.3, based on~\cite{Friedman2012}).
   To get a more quantitative idea, we can take a look at the nodes and edges (Figure~\ref{fig:figure5}B) in common between the networks using UpSet plots~\cite{Lex} (only \ac{magma}, \ac{mldm}, \ac{spieceasi}, \ac{sparcc} are used in the comparison since Pearson and Spearman add a large number of spurious edges since they are not intended for compositional datasets).
   The results for the node intersections show that the networks have a large number of nodes in common ($63$ out of $67$ nodes in the smallest network - \ac{magma}) and no network possesses any unique node.
   The edge intersections in contrast show that only $19$ edges (out of $98$ edges in the smallest network - \ac{magma}) are in common between all the methods and each network has a large number of unique edges.
   These results indicate that there is a substantial rewiring of connections in the inferred networks.
 
-  Unlike in the previous sections, where were we evaluated the performance of methods on mock datasets, there are no such datasets that contain a set of known interactions for the evaluation of the network inference algorithms.
-  Therefore, we propose the construction of a consensus network (Figure~\ref{fig:figure5}C) involving \ac{magma}, \ac{mldm}, \ac{spieceasi} and \ac{sparcc} by merging the p-values generated from bootstraps of the original taxonomy composition table using the Browns p-value combining method~\cite{Poole} (see Methods section).
+  Unlike the previous steps of the pipeline, where were we evaluated the performance of methods on mock datasets, there is no equivalent dataset that contain a set of known interactions for the evaluation of the network inference algorithms.
+  Therefore, we propose the construction of a consensus network (Figure~\ref{fig:figure5}C) involving \ac{magma}, \ac{mldm}, \ac{spieceasi} and \ac{sparcc}. This consensus network is built by merging the p-values generated from bootstraps of the original taxonomy composition table using the Browns p-value combining method~\cite{Poole} (see Methods section).
   Based on this approach, \ac{micone} reports as default output the consensus network, annotated with weights (correlations for \ac{sparcc} and direct associations for the other methods) for all four methods.
 
   \begin{figure}[H]
