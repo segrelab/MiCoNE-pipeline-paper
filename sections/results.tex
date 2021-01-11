@@ -15,26 +15,13 @@
   In what follows, we perform a systematic analysis of each step of the pipeline to estimate how much the final co-occurrence network depends on the possible choices at each step.
   We also evaluate a large number of tool combinations to determine a set of recommended default options for the pipeline and provide the users with a set of guidelines to facilitate tool selection as appropriate for their data.
 
-  \begin{figure}[h]
-    \centering
-    \includegraphics[width=0.69\linewidth]{figure1.pdf}
-    \caption{
-      \textbf{The workflow of the microbial co-occurrence analysis pipeline}.
-      The steps can be grouped into four major groups: \textbf{(DC)} \textbf{D}enoising and \textbf{C}lustering, \textbf{(TA)} \textbf{T}axonomy \textbf{A}ssignment, \textbf{(OP)} \textbf{O}TU or ESV \textbf{P}rocessing, and \textbf{(NI)} \textbf{N}etwork \textbf{I}nference.
-      Each step incorporates several processes, each of which in turn have several alternate algorithms for the same task (indicated by the text to the right of the blue boxes).
-      The text along the arrows describes the data that is being passed from one step to another. For details on each process and data types, see Methods.
-    }
-    \label{fig:figure1}
-  \end{figure}
-
-  Our analysis involves two types of data: The first type consists of sets of 16S sequencing data for real communities consisting of Stool and Oral microbiomes.
+  Our analysis involves two types of data: The first type consists of sets of 16S sequencing data from real communities sampled from human Stool and Oral microbiomes.
   The second are datasets synthetically or artificially created for the specific goal of helping evaluate computational analysis tools (see Methods).
   In particular, in order to objectively compare, to the extent possible, how well each step in \ac{micone} best captures the underlying data, we use both mock data (labelled mock4, mock12 and mock16) from mockrobiota~\cite{Bokulich2016} as well as, synthetically generated reads from an Illumina read simulator called ART~\cite{Huang2012}.
   These mock datasets consist of fake sequencing reads generated from reads obtained from synthetic microbial isolates mixed in know proportions. They contain the expected compositions along with the reference sequences for the organisms in the mock community.
   The synthetic reads were simulated using three different taxonomy distribution profiles, namely soil and water microbiomes obtained \ac{emp}~\cite{Thompson2017} and Stool microbiome that is used in our real community analysis~\cite{Kang2017}.
   Reference sequences were generated using \ac{ncbi} and the Decard package~\cite{Golob2017} for these taxonomy profiles.
   Detailed information on the mock communities and the settings used to generate the synthetic data are provided in the Methods section.
-
 
   \FloatBarrier
 
@@ -51,24 +38,6 @@
   The residual variation (Figure \ref{fig:figure2}A) can be seen as an artifact that arises when multiple steps are changed at the same time.
   Another interesting observation (elaborated in detail in the denoising and clustering section) is that the dissimilarity between the networks decreases when the low abundance \ac{otu}s are removed from the network.
   These results suggest that the most important criterion for accurate comparative analyses of co-occurrence networks is the taxonomy reference database.
-
-  \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.85\linewidth]{figure2.pdf}
-  \end{figure}
-  \begin{figure}[!t]
-    \centering
-      \caption{
-      \textbf{The choice of database contributes to the most variance in the networks}.
-      \textbf{(A)} The total relative variance in the networks contributed by the DC, TA and OP steps of the pipeline (right) and the linear model used to calculate the relative variance (left), see the Methods section for details.
-      \textbf{(B)} All combinations of inferred networks are shown as points on a PCA plot.
-      The color of the points corresponds to the taxonomy database, the shape corresponds to the denoising/clustering method and the size corresponds to whether low abundance OTUs were removed or not.
-      \textbf{(B inset)} The network generated using DC=dada2, TA=GG, OP=no and NI=SPARCC and represents the particular point shown (big red square).
-      The plot clearly shows that the points can be separated based on the TA step and that the differences due to the DC and OP steps are not as significant.
-    }
-    \label{fig:figure2}
-  \end{figure}
-
 
   \FloatBarrier
 
@@ -99,19 +68,6 @@
   There is no method that clearly outperforms the rest in all datasets.
   Based on their slightly better performance on the mock datasets, their \textit{de novo} error correcting nature and other previous studies~\cite{Nearing2018}, \ac{dada2} and Deblur seem to be in general the most reliable.
   Given the unexpected poor performance of Deblur on the synthetic data, the default algorithm in the pipeline was chosen to be \ac{dada2} (Supplementary Figure~\ref{fig:figureS3}).
-
-  \begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{figure3.pdf}
-    \caption{
-      \textbf{The representative sequences generated by the different denoising/clustering methods are very similar but differ in the sequences that are in low abundance.}
-      \textbf{(A)} The average weighted UniFrac distance between the representative sequences shows that the representative sequences and their compositions are fairly identical between the methods,
-      \textbf{(B)} The relatively larger average unweighted UniFrac distance indicates that methods differ in their identification of sequences of low abundance,
-      \textbf{(C, D)} The distributions of the average weighted UniFrac distance between the expected sequence profile and the calculated sequence profile in mock datasets.
-      \textbf{(D)} The distributions of the average unweighted UniFrac distance show that dada2 and Deblur were the best performing methods in most of the datasets.
-    }
-    \label{fig:figure3}
-  \end{figure}
 
   \FloatBarrier
 
@@ -149,24 +105,6 @@
   One user-specific way to choose, would be based on the known representation of taxa for the microbiome of interest (see also Discussion). Another reason could be the frequency of updates and the potential for future growth, which prompted us to set \ac{ncbi} as the \ac{micone} standard for taxonomy assignment.
  In addition to being regularly maintained and updated the \ac{ncbi} database already has the advantage that its accuracy of assignments is still comparable to the SILVA and \ac{gg} reference databases that are routinely used as reference databases.
 
-  \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\textwidth,height=1.2\textwidth]{figure4.pdf}
-  \end{figure}
-  \begin{figure}[!t]
-    \centering
-    \caption{
-      \textbf{Taxonomic reference databases vary widely in terms of their taxonomy assignments.}
-      \textbf{(A)} The assignment of the top 50 representative sequences to their respective taxonomies using the three different reference databases shows how the same sequences are assigned to different Genus.
-      \textbf{(B)} The percentage of \ac{otu}s assigned to the same taxonomic label when using different reference databases.
-      The percentage of mismatches decrease at higher taxonomic levels but even at the Phylum level there exists around 10\% of mismatches.
-      \textbf{(C)} The Bray-Curtis dissimilarity between the expected taxonomy profile and calculated taxonomy profile in the mock datasets shows that there is no singular best choice of database for every dataset.
-    }
-    \label{fig:figure4}
-  \end{figure}
-
-    
-
   \FloatBarrier
 
   \subsection*{Networks generated using different network inference methods show notable difference in edge-density and connectivity}
@@ -180,7 +118,7 @@
   For the analysis presented in this section, we used the taxonomy composition table obtained using the \ac{ncbi} reference database as the input for algorithms that infer co-occurrence associations between the microbes.
   Figure~\ref{fig:figure5}A shows the networks inferred from this dataset using the different inference algorithms.
   The different networks differ vastly in their edge-density and connectivity; even some of the edges in common to these networks have their signs inverted. Note, however, that some of these comparisons depend on the threshold that has to be applied to the pairwise correlations methods (currently 0.3, based on~\cite{Friedman2012}).
-  To get a more quantitative idea, we can take a look at the nodes and edges (Figure~\ref{fig:figure5}B) in common between the networks using UpSet plots~\cite{Lex} (only \ac{magma}, \ac{mldm}, \ac{spieceasi}, \ac{sparcc} are used in the comparison since Pearson and Spearman add a large number of spurious edges since they are not intended for compositional datasets).
+  To get a more quantitative picture of the differences between the inferred networks, we checked the distribution of common nodes and edges (Figure~\ref{fig:figure5}B) using UpSet plots~\cite{Lex} (only \ac{magma}, \ac{mldm}, \ac{spieceasi}, \ac{sparcc} are used in the comparison since Pearson and Spearman add a large number of spurious edges since they are not intended for compositional datasets).
   The results for the node intersections show that the networks have a large number of nodes in common ($63$ out of $67$ nodes in the smallest network - \ac{magma}) and no network possesses any unique node.
   The edge intersections in contrast show that only $19$ edges (out of $98$ edges in the smallest network - \ac{magma}) are in common between all the methods and each network has a large number of unique edges.
   These results indicate that there is a substantial rewiring of connections in the inferred networks.
@@ -188,25 +126,6 @@
   Unlike the previous steps of the pipeline, where were we evaluated the performance of methods on mock datasets, there is no equivalent dataset that contain a set of known interactions for the evaluation of the network inference algorithms.
   Therefore, we propose the construction of a consensus network (Figure~\ref{fig:figure5}C) involving \ac{magma}, \ac{mldm}, \ac{spieceasi} and \ac{sparcc}. This consensus network is built by merging the p-values generated from bootstraps of the original taxonomy composition table using the Browns p-value combining method~\cite{Poole} (see Methods section).
   Based on this approach, \ac{micone} reports as default output the consensus network, annotated with weights (correlations for \ac{sparcc} and direct associations for the other methods) for all four methods.
-
-  \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\textwidth]{figure5.pdf}
-  \end{figure}
-  \begin{figure}[t!]
-    \centering
-    \caption{
-      \textbf{Networks generated using different network inference methods show notable differences both in terms of edge-density and connectivity}.
-      \textbf{(A)} The six different networks generated by the different network inference methods are very dissimilar.
-      The green links are positive associations and the orange links are negative associations.
-      A threshold of 0.3 was set for the methods that infer pairwise correlations (\ac{sparcc}, Spearman, Pearson) and no threshold was set for the other methods.
-      \textbf{(B)} The node overlap Upset plot~\cite{Lex} indicates that all the networks have a large number of common nodes involved in connections.
-      Whereas, \textbf{(C)} The edge overlap Upset plot shows that a very small fraction of these connections are actually shared.
-    }
-    \label{fig:figure5}
-  \end{figure}
-
- 
 
   \FloatBarrier
 
@@ -217,23 +136,6 @@
   Despite this partial degree of assessment, we wish to suggest a combination of tools and parameters that produce networks that are derived from the combination of tools which performed best on the mock communities, and displayed highest robustness to switching to alternative methods.
   These tools and parameters are chosen as the defaults for the pipeline and are given in Table~\ref{tab:default_options}.
 
-  \begin{table}[h]
-    \centering
-    \small
-    \begin{tabular}{|c|c|c|}
-      \hline
-      \textbf{Process} & \textbf{Tool} & \textbf{Parameters} \\
-      \hline
-      Denoising and Clustering & Dada2/Deblur & default \\
-      Taxonomy Assignment & \ac{ncbi} with Blast & RefSeq database \\
-      OTU Processing & Based on statistical power & Dynamic cutoff \\
-      Network Inference & Consensus method & - \\
-      \hline
-    \end{tabular}
-    \caption{Default tools and parameters for the pipeline}
-    \label{tab:default_options}
-  \end{table}
-
   The recommended tool for the \ac{dc} step (\ac{dada2} or Deblur) were chosen based on their accuracy in recapitulating the reference sequences in mock communities and synthetic data.
   The choice of the taxonomy reference database in the \ac{ta} step is dictated largely by the species expected to be present in the sample as well the database used in similar studies if comparison is a goal.
   Nevertheless, we suggest \ac{ncbi} RefSeq along with blast+ as the query tool since the database is updated regularly and has a broad collection of taxonomies.
@@ -243,27 +145,3 @@
   Figure~\ref{fig:figure6}A shows the default network compared against networks generated by altering one of the steps of the pipeline from the default.
   These results indicate that the biggest differences in networks occur when the reference database or the network inference algorithm are changed.
   Furthermore, the L1 distance of networks generated by altering one of the steps of the pipeline from the default against the default network (Figure~\ref{fig:figure6}B) shows that the biggest deviations from the default network occur when the \ac{ta} and \ac{ni} steps are changed, reinforcing the same results observed in Figure~\ref{fig:figure2}. Figure~\ref{fig:figure7} shows the co-occurrence networks inferred for the hard palate for healthy subjects in a periodontal disease study~\cite{Chen2018} and the healthy stool microbiome in fecal microbial transplant study~\cite{Kang2017}. These consensus networks were generated using the default tools and parameters from Table~\ref{tab:default_options}.
-
-  \begin{figure}[h]
-    \centering
-    \includegraphics[width=0.85\linewidth]{figure6.pdf}
-    \caption{
-      \textbf{Network inference and taxonomic assignment have the highest influence on the inferred network structures.}
-      \textbf{(A)} The network constructed using the default pipeline parameters (DC=\ac{dada2}, TA=\ac{ncbi}, OP=on, NI=\ac{sparcc}) is compared with networks generated when one of the steps use a different tool.
-      The common connections (common with the default network) are in black, connections unique to the network are colored purple and connections in the default network but not present in the current network are gray.
-      \textbf{(B)} The L1 distance between the networks generated by changing one step of the default pipeline and the network generated using the default parameters.
-    }
-    \label{fig:figure6}
-  \end{figure}
-
-
-  \begin{figure}[h]
-    \centering
-    \includegraphics[width=17cm]{figure7.pdf}
-    \caption{
-      The consensus networks generated using the default pipeline settings.
-      \textbf{(A)} Co-occurrence network of the Hard Palate microbiome generated from samples of healthy subjects in a periodontal diseases study.
-      \textbf{(B)} Co-occurrence network of the Stool microbiome generated from samples of healthy subjects in a fecal microbiome transplant study.
-  }
-    \label{fig:figure7}
-  \end{figure}

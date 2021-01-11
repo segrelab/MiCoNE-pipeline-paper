@@ -27,7 +27,7 @@ The choice of taxonomy database was found to be the most important factor in the
 The frequent changes in the taxonomy nomenclature coupled with the frequency of updates to the various 16S reference databases create inherent differences \cite{Balvociute2017} in taxonomy hierarchies in these databases.
 Our analysis revealed that no particular reference database performs better than the others across all scenarios. We suggest that that choice of the database should be made based on possible reported or inferred biases in the representation of given biomes in a specific databases \cite{Balvociute2017}.
 The default reference database in the pipeline is the \ac{ncbi} 16S RefSeq database as it is more frequently updated and is most compatible with the blast+ query tool.
-We also enable users to use custom databases \cite{Griffen2011,Ritari2015} with the blast and naive bayes classifiers that are incorporated into the pipeline (from \ac{qiime2}).
+We also enable users to use custom databases \cite{Ritari2015} with the blast+ and naive bayes classifiers that are incorporated into the pipeline (from \ac{qiime2}).
 
 Filtering out taxa that are present in low abundances in all samples did not increase (in most datasets tested) the proportion of taxa in common between taxonomy tables generated using different reference databases.
 However, we do observe that the reduction in the number of taxa leads to better agreement in the networks inferred through different methods.

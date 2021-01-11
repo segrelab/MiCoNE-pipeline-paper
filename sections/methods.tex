@@ -36,7 +36,7 @@
   It also allows for automatic parallelization of all possible processes, both within and across samples.
   The pipeline is designed to be modular: each tool or method is organized into modules which can be easily modified or replaced.
   This modular architecture simplifies the process of adding new tools (refer to modules section in the \ac{micone} documentation).
-  In addition to the Python package, the entire pipeline has been containerized into a Docker~\cite{Merkel1994} image (\hl{dockerhub link}) for easy deployment and setup.
+%   In addition to the Python package, the entire pipeline has been containerized into a Docker~\cite{Merkel1994} image (\hl{dockerhub link}) for easy deployment and setup.
   The main components of the pipeline are detailed in the subsequent sections.
 
   \subsection*{Denoising and Clustering (DC)}
@@ -93,7 +93,7 @@
     \end{bmatrix}      
   \end{equation*}
   
-  In other words, $N$ is the merged table, each column $N_i$ is the vector representation of one of the networks, and each row $L_i$ represents the one particular edge in all networks (assigned 0 if the edge does not exist in the network).
+  In other words, $N$ is the merged table, each column $N_i$ is the vector representation of one of the networks, and each row $L_i$ represents one particular edge in all networks (assigned 0 if the edge does not exist in the network).
       
   We use linear regression to express each link $L_i$ as a linear function of categorical variables that describe the possible options in each of the first three steps of the pipeline.
   
