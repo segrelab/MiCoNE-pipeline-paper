@@ -1,0 +1,22 @@
+Kingdom,Phylum,Class,Order,Family,Genus,Species,HMPMockEven1,HMPMockEven2,HMPMockStaggered1,HMPMockStaggered2
+Bacteria,Proteobacteria,Gammaproteobacteria,Pseudomonadales,Moraxellaceae,Acinetobacter,Acinetobacter baumannii,0.0476190476,0.0476190476,0.0021436226999999998,0.0021436226999999998
+Bacteria,Actinobacteria,Actinobacteria,Actinomycetales,Actinomycetaceae,Actinomyces,Actinomyces odontolyticus,0.0476190476,0.0476190476,0.0002143626,0.0002143626
+Bacteria,Firmicutes,Bacilli,Bacillales,Bacillaceae,Bacillus,Bacillus cereus,0.0476190476,0.0476190476,0.0214362274,0.0214362274
+Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Bacteroidaceae,Bacteroides,Bacteroides vulgatus,0.0476190476,0.0476190476,0.0002143626,0.0002143626
+Bacteria,Firmicutes,Clostridia,Clostridiales,Clostridiaceae,Clostridium,Clostridium beijerinckii,0.0476190476,0.0476190476,0.0214362274,0.0214362274
+Bacteria,Deinococcus-Thermus,Deinococci,Deinococcales,Deinococcaceae,Deinococcus,Deinococcus radiodurans,0.0476190476,0.0476190476,0.0002143626,0.0002143626
+Bacteria,Firmicutes,Bacilli,Lactobacillales,Enterococcaceae,Enterococcus,Enterococcus faecalis,0.0476190476,0.0476190476,0.0002143626,0.0002143626
+Bacteria,Proteobacteria,Gammaproteobacteria,Enterobacterales,Enterobacteriaceae,Escherichia,Escherichia coli,0.0476190476,0.0476190476,0.2143622714,0.2143622714
+Bacteria,Proteobacteria,Epsilonproteobacteria,Campylobacterales,Helicobacteraceae,Helicobacter,Helicobacter pylori,0.0476190476,0.0476190476,0.0021436226999999998,0.0021436226999999998
+Bacteria,Firmicutes,Bacilli,Lactobacillales,Lactobacillaceae,Lactobacillus,Lactobacillus gasseri,0.0476190476,0.0476190476,0.0021436229000000003,0.0021436229000000003
+Bacteria,Firmicutes,Bacilli,Bacillales,Listeriaceae,Listeria,Listeria monocytogenes,0.0476190476,0.0476190476,0.0021436229000000003,0.0021436229000000003
+Archaea,Euryarchaeota,Methanobacteria,Methanobacteriales,Methanobacteriaceae,Methanobrevibacter,Methanobrevibacter smithii,0.0476190476,0.0476190476,0.2143622714,0.2143622714
+Bacteria,Proteobacteria,Betaproteobacteria,Neisseriales,Neisseriaceae,Neisseria,Neisseria meningitidis,0.0476190476,0.0476190476,0.0021436229000000003,0.0021436229000000003
+Bacteria,Actinobacteria,Actinobacteria,Propionibacteriales,Propionibacteriaceae,Cutibacterium,Cutibacterium acnes,0.0476190476,0.0476190476,0.0021436229000000003,0.0021436229000000003
+Bacteria,Proteobacteria,Gammaproteobacteria,Pseudomonadales,Pseudomonadaceae,Pseudomonas,Pseudomonas aeruginosa,0.0476190476,0.0476190476,0.0214362274,0.0214362274
+Bacteria,Proteobacteria,Alphaproteobacteria,Rhodobacterales,Rhodobacteraceae,Rhodobacter,Rhodobacter sphaeroides,0.0476190476,0.0476190476,0.0214362274,0.0214362274
+Bacteria,Firmicutes,Bacilli,Bacillales,Staphylococcaceae,Staphylococcus,Staphylococcus aureus,0.0476190476,0.0476190476,0.2143622714,0.2143622714
+Bacteria,Firmicutes,Bacilli,Bacillales,Staphylococcaceae,Staphylococcus,Staphylococcus epidermidis,0.04761904769999999,0.04761904769999999,0.0214362274,0.0214362274
+Bacteria,Firmicutes,Bacilli,Lactobacillales,Streptococcaceae,Streptococcus,Streptococcus agalactiae,0.04761904769999999,0.04761904769999999,0.2143622714,0.2143622714
+Bacteria,Firmicutes,Bacilli,Lactobacillales,Streptococcaceae,Streptococcus,Streptococcus mutans,0.04761904769999999,0.04761904769999999,0.0002143626,0.0002143626
+Bacteria,Firmicutes,Bacilli,Lactobacillales,Streptococcaceae,Streptococcus,Streptococcus pneumoniae,0.04761904769999999,0.04761904769999999,0.0214362274,0.0214362274

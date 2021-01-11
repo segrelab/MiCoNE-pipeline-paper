@@ -1,0 +1,7787 @@
+{
+  "contexts": [
+    {
+      "computational_metadata": {
+        "denoising": "dada2",
+        "interaction_threshold": 0.1,
+        "network_inference": "SparCC",
+        "pvalue_correction": "fdr_bh",
+        "pvalue_threshold": 1,
+        "taxonomy_db": "NCBI"
+      },
+      "condition": "Healthy Plaque",
+      "description": "Controls for a peridontal treatment study",
+      "directionality": "undirected",
+      "disease_state": "Healthy",
+      "experimental_metadata": {
+        "data-type": "16S rRNA",
+        "platform": "illumina",
+        "region": "V4"
+      },
+      "host": "Homo Sapiens",
+      "interaction_type": "correlation",
+      "location": "Oral",
+      "publication": {
+        "authors": [
+          {
+            "email": "ccchen@usc.edu",
+            "name": "Casey Chen"
+          }
+        ],
+        "date": "2018-01-16",
+        "pubmed_id": "https://doi.org/10.1038/s41396-017-0037-1"
+      }
+    }
+  ],
+  "links": [
+    {
+      "context_index": 0,
+      "pvalue": 0.14193548387096774,
+      "source": "id0",
+      "target": "id1",
+      "weight": 0.3292
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6511760124610593,
+      "source": "id0",
+      "target": "id2",
+      "weight": 0.1268
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.7092071159283695,
+      "source": "id0",
+      "target": "id3",
+      "weight": 0.1084
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.031510416666666666,
+      "source": "id0",
+      "target": "id4",
+      "weight": 0.4931
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5614635894495412,
+      "source": "id0",
+      "target": "id6",
+      "weight": -0.1503
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6145665212649946,
+      "source": "id0",
+      "target": "id7",
+      "weight": -0.1296
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.573546875,
+      "source": "id0",
+      "target": "id8",
+      "weight": -0.1462
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4433333333333333,
+      "source": "id0",
+      "target": "id9",
+      "weight": 0.1891
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.14609375000000002,
+      "source": "id0",
+      "target": "id10",
+      "weight": 0.3371
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id0",
+      "target": "id11",
+      "weight": 0.4979
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.06215753424657534,
+      "source": "id0",
+      "target": "id12",
+      "weight": 0.4355
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id0",
+      "target": "id13",
+      "weight": 0.6115
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id0",
+      "target": "id14",
+      "weight": 0.5202
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04702072538860104,
+      "source": "id0",
+      "target": "id15",
+      "weight": 0.4002
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id0",
+      "target": "id16",
+      "weight": 0.7834
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id0",
+      "target": "id18",
+      "weight": 0.4518
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6223324324324324,
+      "source": "id0",
+      "target": "id19",
+      "weight": 0.1365
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.39682795698924733,
+      "source": "id0",
+      "target": "id20",
+      "weight": 0.2002
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04296875,
+      "source": "id0",
+      "target": "id21",
+      "weight": -0.4506
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.05114734299516908,
+      "source": "id0",
+      "target": "id22",
+      "weight": -0.3996
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id0",
+      "target": "id23",
+      "weight": -0.4677
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.437795358649789,
+      "source": "id0",
+      "target": "id25",
+      "weight": 0.1863
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4106314623338257,
+      "source": "id0",
+      "target": "id29",
+      "weight": -0.1876
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.031510416666666666,
+      "source": "id0",
+      "target": "id30",
+      "weight": 0.536
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.7347024356617647,
+      "source": "id0",
+      "target": "id31",
+      "weight": -0.1004
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.30002049180327867,
+      "source": "id0",
+      "target": "id32",
+      "weight": 0.2205
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.05114734299516908,
+      "source": "id0",
+      "target": "id33",
+      "weight": 0.4162
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id0",
+      "target": "id35",
+      "weight": -0.4773
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.075,
+      "source": "id0",
+      "target": "id36",
+      "weight": -0.3659
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.573546875,
+      "source": "id0",
+      "target": "id37",
+      "weight": -0.1472
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.031510416666666666,
+      "source": "id0",
+      "target": "id38",
+      "weight": 0.3944
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.0935,
+      "source": "id0",
+      "target": "id39",
+      "weight": -0.3334
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.58266206313416,
+      "source": "id0",
+      "target": "id40",
+      "weight": -0.1393
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.09723214285714285,
+      "source": "id0",
+      "target": "id42",
+      "weight": -0.3248
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1430157593123209,
+      "source": "id0",
+      "target": "id43",
+      "weight": -0.2857
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.031510416666666666,
+      "source": "id0",
+      "target": "id44",
+      "weight": -0.4052
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.15332191780821916,
+      "source": "id0",
+      "target": "id45",
+      "weight": -0.2818
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5905150334075725,
+      "source": "id0",
+      "target": "id46",
+      "weight": -0.1134
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5262545509708738,
+      "source": "id0",
+      "target": "id48",
+      "weight": 0.1545
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4433333333333333,
+      "source": "id0",
+      "target": "id49",
+      "weight": -0.1383
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.12801724137931034,
+      "source": "id0",
+      "target": "id51",
+      "weight": -0.2982
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.17996835443037976,
+      "source": "id0",
+      "target": "id53",
+      "weight": -0.2446
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.7226077386468953,
+      "source": "id0",
+      "target": "id54",
+      "weight": -0.1174
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2092349884526559,
+      "source": "id1",
+      "target": "id2",
+      "weight": -0.2998
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.15041436464088398,
+      "source": "id1",
+      "target": "id3",
+      "weight": -0.3285
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id1",
+      "target": "id4",
+      "weight": 0.5305
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id1",
+      "target": "id5",
+      "weight": -0.5528
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.13372713414634146,
+      "source": "id1",
+      "target": "id6",
+      "weight": -0.3485
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2384973684210526,
+      "source": "id1",
+      "target": "id7",
+      "weight": 0.2713
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5116518404907975,
+      "source": "id1",
+      "target": "id8",
+      "weight": 0.1765
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.11673657718120804,
+      "source": "id1",
+      "target": "id9",
+      "weight": 0.3547
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id1",
+      "target": "id10",
+      "weight": 0.5651
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.031510416666666666,
+      "source": "id1",
+      "target": "id12",
+      "weight": 0.4557
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.29667201834862383,
+      "source": "id1",
+      "target": "id13",
+      "weight": 0.2417
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6411194029850747,
+      "source": "id1",
+      "target": "id14",
+      "weight": -0.1361
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.031510416666666666,
+      "source": "id1",
+      "target": "id16",
+      "weight": 0.5107
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3721191247974068,
+      "source": "id1",
+      "target": "id17",
+      "weight": 0.2187
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.16090425531914893,
+      "source": "id1",
+      "target": "id18",
+      "weight": 0.3169
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.10503472222222222,
+      "source": "id1",
+      "target": "id21",
+      "weight": -0.3584
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3097794117647059,
+      "source": "id1",
+      "target": "id22",
+      "weight": -0.2383
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id1",
+      "target": "id24",
+      "weight": 0.5465
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4323283261802575,
+      "source": "id1",
+      "target": "id26",
+      "weight": -0.1921
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3865541601255887,
+      "source": "id1",
+      "target": "id27",
+      "weight": 0.2259
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4889333122629582,
+      "source": "id1",
+      "target": "id28",
+      "weight": 0.164
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.31561725663716816,
+      "source": "id1",
+      "target": "id29",
+      "weight": -0.2336
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3990229007633588,
+      "source": "id1",
+      "target": "id30",
+      "weight": -0.2253
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.25279485887096775,
+      "source": "id1",
+      "target": "id31",
+      "weight": 0.2654
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6743165829145729,
+      "source": "id1",
+      "target": "id34",
+      "weight": 0.1203
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.462311320754717,
+      "source": "id1",
+      "target": "id35",
+      "weight": -0.1434
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.7092071159283695,
+      "source": "id1",
+      "target": "id36",
+      "weight": 0.1055
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5104454377311961,
+      "source": "id1",
+      "target": "id38",
+      "weight": 0.1654
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.21424199084668188,
+      "source": "id1",
+      "target": "id39",
+      "weight": -0.2891
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6771531936127745,
+      "source": "id1",
+      "target": "id40",
+      "weight": -0.1108
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.7100505169172932,
+      "source": "id1",
+      "target": "id44",
+      "weight": 0.1027
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.031510416666666666,
+      "source": "id1",
+      "target": "id45",
+      "weight": -0.4138
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.12801724137931034,
+      "source": "id1",
+      "target": "id49",
+      "weight": -0.2929
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5553384216589862,
+      "source": "id1",
+      "target": "id50",
+      "weight": -0.123
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.12801724137931034,
+      "source": "id1",
+      "target": "id51",
+      "weight": -0.2992
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04296875,
+      "source": "id1",
+      "target": "id52",
+      "weight": -0.4055
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.0378125,
+      "source": "id1",
+      "target": "id54",
+      "weight": -0.5961
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id2",
+      "target": "id3",
+      "weight": 0.7607
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6771531936127745,
+      "source": "id2",
+      "target": "id4",
+      "weight": -0.1141
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id2",
+      "target": "id5",
+      "weight": 0.7882
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id2",
+      "target": "id6",
+      "weight": 0.615
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id2",
+      "target": "id7",
+      "weight": -0.4491
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3389734401349072,
+      "source": "id2",
+      "target": "id11",
+      "weight": 0.2286
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04296875,
+      "source": "id2",
+      "target": "id14",
+      "weight": 0.4253
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.0378125,
+      "source": "id2",
+      "target": "id15",
+      "weight": 0.4367
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id2",
+      "target": "id17",
+      "weight": -0.5617
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5542344290657439,
+      "source": "id2",
+      "target": "id19",
+      "weight": -0.1517
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.35474999999999995,
+      "source": "id2",
+      "target": "id20",
+      "weight": -0.228
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.29667201834862383,
+      "source": "id2",
+      "target": "id21",
+      "weight": 0.2391
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.23560096153846155,
+      "source": "id2",
+      "target": "id23",
+      "weight": -0.2636
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.19817720763723148,
+      "source": "id2",
+      "target": "id24",
+      "weight": -0.2913
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04296875,
+      "source": "id2",
+      "target": "id25",
+      "weight": 0.4342
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5213806196840827,
+      "source": "id2",
+      "target": "id26",
+      "weight": 0.1505
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.031510416666666666,
+      "source": "id2",
+      "target": "id27",
+      "weight": -0.407
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.36304942810457513,
+      "source": "id2",
+      "target": "id28",
+      "weight": -0.2161
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2983523765996344,
+      "source": "id2",
+      "target": "id29",
+      "weight": 0.252
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4705112137203167,
+      "source": "id2",
+      "target": "id30",
+      "weight": 0.1805
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6641582661290322,
+      "source": "id2",
+      "target": "id31",
+      "weight": 0.1236
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2176773648648649,
+      "source": "id2",
+      "target": "id32",
+      "weight": 0.2508
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6600556117290192,
+      "source": "id2",
+      "target": "id33",
+      "weight": -0.1179
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3247811958405546,
+      "source": "id2",
+      "target": "id35",
+      "weight": -0.1814
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id2",
+      "target": "id36",
+      "weight": -0.4654
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5542344290657439,
+      "source": "id2",
+      "target": "id37",
+      "weight": 0.1492
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6016721672167216,
+      "source": "id2",
+      "target": "id38",
+      "weight": -0.1359
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4613432835820896,
+      "source": "id2",
+      "target": "id39",
+      "weight": 0.1668
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5462397300469484,
+      "source": "id2",
+      "target": "id41",
+      "weight": -0.152
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.14193548387096774,
+      "source": "id2",
+      "target": "id42",
+      "weight": -0.286
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5213806196840827,
+      "source": "id2",
+      "target": "id43",
+      "weight": -0.1479
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.031510416666666666,
+      "source": "id2",
+      "target": "id44",
+      "weight": -0.4222
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.031510416666666666,
+      "source": "id2",
+      "target": "id45",
+      "weight": 0.4452
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4001103500761035,
+      "source": "id2",
+      "target": "id46",
+      "weight": 0.1788
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4433333333333333,
+      "source": "id2",
+      "target": "id49",
+      "weight": 0.143
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.11241554054054054,
+      "source": "id2",
+      "target": "id52",
+      "weight": 0.2944
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.05707547169811321,
+      "source": "id2",
+      "target": "id54",
+      "weight": 0.5241
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6555193482688391,
+      "source": "id3",
+      "target": "id4",
+      "weight": -0.1258
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id3",
+      "target": "id5",
+      "weight": 0.6295
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id3",
+      "target": "id6",
+      "weight": 0.5948
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.07960526315789473,
+      "source": "id3",
+      "target": "id7",
+      "weight": -0.3935
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6491675420168068,
+      "source": "id3",
+      "target": "id9",
+      "weight": -0.132
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.33786049488054604,
+      "source": "id3",
+      "target": "id11",
+      "weight": 0.2196
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1430157593123209,
+      "source": "id3",
+      "target": "id12",
+      "weight": -0.3281
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.48738271208226214,
+      "source": "id3",
+      "target": "id14",
+      "weight": 0.18
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04296875,
+      "source": "id3",
+      "target": "id15",
+      "weight": 0.4373
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.43293971631205674,
+      "source": "id3",
+      "target": "id16",
+      "weight": -0.2086
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.0378125,
+      "source": "id3",
+      "target": "id17",
+      "weight": -0.4541
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04702072538860104,
+      "source": "id3",
+      "target": "id19",
+      "weight": -0.4001
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6894356796116504,
+      "source": "id3",
+      "target": "id20",
+      "weight": -0.1177
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2363081395348837,
+      "source": "id3",
+      "target": "id21",
+      "weight": 0.2793
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.48744718309859153,
+      "source": "id3",
+      "target": "id22",
+      "weight": 0.1726
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1779411764705882,
+      "source": "id3",
+      "target": "id23",
+      "weight": -0.3027
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.19146036585365855,
+      "source": "id3",
+      "target": "id24",
+      "weight": -0.3007
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.06662995594713657,
+      "source": "id3",
+      "target": "id25",
+      "weight": 0.3825
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4005833333333334,
+      "source": "id3",
+      "target": "id26",
+      "weight": 0.1976
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.11241554054054054,
+      "source": "id3",
+      "target": "id27",
+      "weight": -0.3752
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.23286670235546042,
+      "source": "id3",
+      "target": "id28",
+      "weight": -0.2648
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.14787011173184358,
+      "source": "id3",
+      "target": "id29",
+      "weight": 0.3029
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5213806196840827,
+      "source": "id3",
+      "target": "id31",
+      "weight": 0.1615
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.21813611111111111,
+      "source": "id3",
+      "target": "id32",
+      "weight": 0.258
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.39174689440993793,
+      "source": "id3",
+      "target": "id33",
+      "weight": -0.2089
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6043351648351648,
+      "source": "id3",
+      "target": "id34",
+      "weight": -0.1359
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id3",
+      "target": "id36",
+      "weight": -0.6178
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2029746462264151,
+      "source": "id3",
+      "target": "id37",
+      "weight": 0.2793
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5625529782359678,
+      "source": "id3",
+      "target": "id38",
+      "weight": -0.1497
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.37763709677419355,
+      "source": "id3",
+      "target": "id39",
+      "weight": 0.2108
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5818757078142694,
+      "source": "id3",
+      "target": "id40",
+      "weight": 0.1336
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.14193548387096774,
+      "source": "id3",
+      "target": "id41",
+      "weight": -0.3146
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1430157593123209,
+      "source": "id3",
+      "target": "id42",
+      "weight": -0.296
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5067249381188119,
+      "source": "id3",
+      "target": "id43",
+      "weight": -0.1623
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.031510416666666666,
+      "source": "id3",
+      "target": "id44",
+      "weight": -0.4403
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id3",
+      "target": "id45",
+      "weight": 0.5645
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.39122074882995317,
+      "source": "id3",
+      "target": "id47",
+      "weight": 0.1897
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4122566371681416,
+      "source": "id3",
+      "target": "id49",
+      "weight": 0.1569
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.38710546875,
+      "source": "id3",
+      "target": "id52",
+      "weight": 0.1922
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2270397603485839,
+      "source": "id3",
+      "target": "id53",
+      "weight": 0.2158
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id3",
+      "target": "id54",
+      "weight": 0.6147
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.49666718749999994,
+      "source": "id4",
+      "target": "id5",
+      "weight": -0.1792
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.075,
+      "source": "id4",
+      "target": "id6",
+      "weight": -0.3834
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.39174689440993793,
+      "source": "id4",
+      "target": "id7",
+      "weight": 0.1959
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id4",
+      "target": "id9",
+      "weight": 0.7608
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.17996835443037976,
+      "source": "id4",
+      "target": "id10",
+      "weight": 0.3184
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.06662995594713657,
+      "source": "id4",
+      "target": "id12",
+      "weight": 0.3894
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1881218905472637,
+      "source": "id4",
+      "target": "id13",
+      "weight": 0.3024
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4054497751124438,
+      "source": "id4",
+      "target": "id14",
+      "weight": -0.1991
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id4",
+      "target": "id16",
+      "weight": 0.525
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.24917268041237114,
+      "source": "id4",
+      "target": "id17",
+      "weight": 0.2534
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2757742718446602,
+      "source": "id4",
+      "target": "id18",
+      "weight": 0.2452
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.031510416666666666,
+      "source": "id4",
+      "target": "id20",
+      "weight": 0.4524
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04702072538860104,
+      "source": "id4",
+      "target": "id22",
+      "weight": -0.4141
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5882508389261746,
+      "source": "id4",
+      "target": "id23",
+      "weight": -0.1412
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id4",
+      "target": "id24",
+      "weight": 0.6063
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.031510416666666666,
+      "source": "id4",
+      "target": "id26",
+      "weight": -0.41
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id4",
+      "target": "id27",
+      "weight": 0.5178
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.18528125,
+      "source": "id4",
+      "target": "id28",
+      "weight": -0.2881
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.0935,
+      "source": "id4",
+      "target": "id29",
+      "weight": -0.3679
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.16849093264248705,
+      "source": "id4",
+      "target": "id30",
+      "weight": 0.3085
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5542344290657439,
+      "source": "id4",
+      "target": "id31",
+      "weight": -0.1539
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.12801724137931034,
+      "source": "id4",
+      "target": "id32",
+      "weight": 0.3103
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.06662995594713657,
+      "source": "id4",
+      "target": "id34",
+      "weight": 0.3714
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3049527027027027,
+      "source": "id4",
+      "target": "id35",
+      "weight": -0.1967
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.07202380952380952,
+      "source": "id4",
+      "target": "id37",
+      "weight": -0.3695
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id4",
+      "target": "id38",
+      "weight": 0.5455
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id4",
+      "target": "id39",
+      "weight": -0.4862
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id4",
+      "target": "id40",
+      "weight": -0.4142
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4801399739583333,
+      "source": "id4",
+      "target": "id41",
+      "weight": 0.1673
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6434533898305085,
+      "source": "id4",
+      "target": "id42",
+      "weight": -0.1145
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.10877568493150686,
+      "source": "id4",
+      "target": "id47",
+      "weight": -0.3123
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1235702614379085,
+      "source": "id4",
+      "target": "id49",
+      "weight": -0.2621
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id4",
+      "target": "id51",
+      "weight": -0.4293
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.12604166666666666,
+      "source": "id4",
+      "target": "id52",
+      "weight": -0.2939
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04296875,
+      "source": "id5",
+      "target": "id6",
+      "weight": 0.4457
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.19326388888888887,
+      "source": "id5",
+      "target": "id7",
+      "weight": -0.3056
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.46372476446837146,
+      "source": "id5",
+      "target": "id10",
+      "weight": -0.2026
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.7403507769652651,
+      "source": "id5",
+      "target": "id11",
+      "weight": 0.1035
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6511760124610593,
+      "source": "id5",
+      "target": "id12",
+      "weight": -0.1306
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3227191840277778,
+      "source": "id5",
+      "target": "id14",
+      "weight": 0.2482
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3081820214669052,
+      "source": "id5",
+      "target": "id15",
+      "weight": 0.2439
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5067249381188119,
+      "source": "id5",
+      "target": "id16",
+      "weight": -0.1742
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id5",
+      "target": "id17",
+      "weight": -0.5591
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5357376802884616,
+      "source": "id5",
+      "target": "id18",
+      "weight": -0.169
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6452906976744186,
+      "source": "id5",
+      "target": "id20",
+      "weight": -0.1375
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.05114734299516908,
+      "source": "id5",
+      "target": "id21",
+      "weight": 0.3909
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6145665212649946,
+      "source": "id5",
+      "target": "id22",
+      "weight": 0.1438
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1430157593123209,
+      "source": "id5",
+      "target": "id23",
+      "weight": -0.3537
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.05707547169811321,
+      "source": "id5",
+      "target": "id24",
+      "weight": -0.3852
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2092349884526559,
+      "source": "id5",
+      "target": "id25",
+      "weight": 0.2808
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.31191948398576513,
+      "source": "id5",
+      "target": "id27",
+      "weight": -0.2505
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4323283261802575,
+      "source": "id5",
+      "target": "id28",
+      "weight": -0.2115
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.27893990384615386,
+      "source": "id5",
+      "target": "id29",
+      "weight": 0.2616
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6773107569721115,
+      "source": "id5",
+      "target": "id30",
+      "weight": 0.123
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4395769230769231,
+      "source": "id5",
+      "target": "id32",
+      "weight": 0.1839
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4226231884057971,
+      "source": "id5",
+      "target": "id33",
+      "weight": -0.2031
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6986857754519504,
+      "source": "id5",
+      "target": "id34",
+      "weight": -0.1051
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.05114734299516908,
+      "source": "id5",
+      "target": "id36",
+      "weight": -0.406
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5462397300469484,
+      "source": "id5",
+      "target": "id37",
+      "weight": 0.1552
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5268114406779661,
+      "source": "id5",
+      "target": "id39",
+      "weight": 0.1711
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.36235426929392445,
+      "source": "id5",
+      "target": "id42",
+      "weight": -0.208
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4395769230769231,
+      "source": "id5",
+      "target": "id43",
+      "weight": -0.1903
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.16849093264248705,
+      "source": "id5",
+      "target": "id44",
+      "weight": -0.308
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id5",
+      "target": "id45",
+      "weight": 0.5256
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2512551334702259,
+      "source": "id5",
+      "target": "id49",
+      "weight": 0.2154
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.38710546875,
+      "source": "id5",
+      "target": "id50",
+      "weight": 0.1775
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4726314060446781,
+      "source": "id5",
+      "target": "id51",
+      "weight": 0.1685
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.22521655701754387,
+      "source": "id5",
+      "target": "id52",
+      "weight": 0.2405
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.0378125,
+      "source": "id5",
+      "target": "id54",
+      "weight": 0.6478
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1566076294277929,
+      "source": "id6",
+      "target": "id7",
+      "weight": -0.3204
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.19146036585365855,
+      "source": "id6",
+      "target": "id9",
+      "weight": -0.2964
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2849261904761905,
+      "source": "id6",
+      "target": "id10",
+      "weight": -0.261
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4889333122629582,
+      "source": "id6",
+      "target": "id11",
+      "weight": 0.175
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2029746462264151,
+      "source": "id6",
+      "target": "id12",
+      "weight": -0.2934
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.09723214285714285,
+      "source": "id6",
+      "target": "id13",
+      "weight": -0.3593
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.40960740740740736,
+      "source": "id6",
+      "target": "id14",
+      "weight": 0.2025
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.08659351145038167,
+      "source": "id6",
+      "target": "id15",
+      "weight": 0.3576
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.14193548387096774,
+      "source": "id6",
+      "target": "id16",
+      "weight": -0.3227
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id6",
+      "target": "id17",
+      "weight": -0.653
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.34741820469798657,
+      "source": "id6",
+      "target": "id18",
+      "weight": -0.2238
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2363081395348837,
+      "source": "id6",
+      "target": "id19",
+      "weight": -0.274
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04296875,
+      "source": "id6",
+      "target": "id20",
+      "weight": -0.4553
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.29667201834862383,
+      "source": "id6",
+      "target": "id21",
+      "weight": 0.2325
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1403817365269461,
+      "source": "id6",
+      "target": "id22",
+      "weight": 0.3259
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.46913474240422726,
+      "source": "id6",
+      "target": "id23",
+      "weight": -0.1776
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04702072538860104,
+      "source": "id6",
+      "target": "id24",
+      "weight": -0.3953
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.05114734299516908,
+      "source": "id6",
+      "target": "id25",
+      "weight": 0.3939
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.075,
+      "source": "id6",
+      "target": "id26",
+      "weight": 0.3827
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04296875,
+      "source": "id6",
+      "target": "id27",
+      "weight": -0.4266
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.594303867403315,
+      "source": "id6",
+      "target": "id28",
+      "weight": -0.137
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id6",
+      "target": "id29",
+      "weight": 0.507
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.48148244473342,
+      "source": "id6",
+      "target": "id30",
+      "weight": -0.1807
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.14787011173184358,
+      "source": "id6",
+      "target": "id33",
+      "weight": -0.3221
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5010863466334164,
+      "source": "id6",
+      "target": "id34",
+      "weight": -0.1679
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4465082079343365,
+      "source": "id6",
+      "target": "id36",
+      "weight": -0.1879
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.0378125,
+      "source": "id6",
+      "target": "id37",
+      "weight": 0.4453
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id6",
+      "target": "id38",
+      "weight": -0.5038
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id6",
+      "target": "id39",
+      "weight": 0.5743
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.09723214285714285,
+      "source": "id6",
+      "target": "id40",
+      "weight": 0.3159
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6429734042553191,
+      "source": "id6",
+      "target": "id41",
+      "weight": -0.1291
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3482032554257095,
+      "source": "id6",
+      "target": "id42",
+      "weight": -0.2133
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1430157593123209,
+      "source": "id6",
+      "target": "id44",
+      "weight": -0.3003
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.09029850746268657,
+      "source": "id6",
+      "target": "id45",
+      "weight": 0.3361
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2948381801125704,
+      "source": "id6",
+      "target": "id47",
+      "weight": 0.2197
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2573371743486974,
+      "source": "id6",
+      "target": "id49",
+      "weight": 0.1891
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.15332191780821916,
+      "source": "id6",
+      "target": "id50",
+      "weight": -0.2674
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04296875,
+      "source": "id6",
+      "target": "id51",
+      "weight": 0.3677
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.15332191780821916,
+      "source": "id6",
+      "target": "id52",
+      "weight": 0.2723
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5079681705809641,
+      "source": "id6",
+      "target": "id54",
+      "weight": 0.2096
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4180966325036603,
+      "source": "id7",
+      "target": "id9",
+      "weight": 0.2034
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6790664867517173,
+      "source": "id7",
+      "target": "id10",
+      "weight": 0.1117
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.37884984025559104,
+      "source": "id7",
+      "target": "id12",
+      "weight": 0.2066
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3782463884430176,
+      "source": "id7",
+      "target": "id14",
+      "weight": -0.2098
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04702072538860104,
+      "source": "id7",
+      "target": "id15",
+      "weight": -0.4083
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6896941489361702,
+      "source": "id7",
+      "target": "id16",
+      "weight": 0.1072
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id7",
+      "target": "id17",
+      "weight": 0.5232
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.21813611111111111,
+      "source": "id7",
+      "target": "id19",
+      "weight": 0.2705
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.47126315789473683,
+      "source": "id7",
+      "target": "id20",
+      "weight": 0.172
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3482032554257095,
+      "source": "id7",
+      "target": "id22",
+      "weight": -0.2172
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5285539806996382,
+      "source": "id7",
+      "target": "id23",
+      "weight": 0.165
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.10118838028169014,
+      "source": "id7",
+      "target": "id24",
+      "weight": 0.3304
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3514929401993355,
+      "source": "id7",
+      "target": "id25",
+      "weight": -0.2181
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04702072538860104,
+      "source": "id7",
+      "target": "id26",
+      "weight": -0.4136
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.031510416666666666,
+      "source": "id7",
+      "target": "id27",
+      "weight": 0.4506
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.07960526315789473,
+      "source": "id7",
+      "target": "id29",
+      "weight": -0.3506
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6886358114674442,
+      "source": "id7",
+      "target": "id30",
+      "weight": -0.1045
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4039425981873112,
+      "source": "id7",
+      "target": "id33",
+      "weight": 0.1971
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4226231884057971,
+      "source": "id7",
+      "target": "id34",
+      "weight": 0.1867
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.41908394160583945,
+      "source": "id7",
+      "target": "id35",
+      "weight": 0.16
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id7",
+      "target": "id36",
+      "weight": 0.5111
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2092349884526559,
+      "source": "id7",
+      "target": "id37",
+      "weight": -0.2683
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.14787011173184358,
+      "source": "id7",
+      "target": "id38",
+      "weight": 0.2973
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.18528125,
+      "source": "id7",
+      "target": "id39",
+      "weight": -0.2794
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.06662995594713657,
+      "source": "id7",
+      "target": "id40",
+      "weight": -0.3353
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.24917268041237114,
+      "source": "id7",
+      "target": "id41",
+      "weight": 0.26
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2831238049713193,
+      "source": "id7",
+      "target": "id42",
+      "weight": 0.2235
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4896075031525851,
+      "source": "id7",
+      "target": "id43",
+      "weight": 0.1534
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id7",
+      "target": "id44",
+      "weight": 0.5344
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.14787011173184358,
+      "source": "id7",
+      "target": "id45",
+      "weight": -0.2766
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.39226816074188564,
+      "source": "id7",
+      "target": "id47",
+      "weight": -0.1789
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4868846649484536,
+      "source": "id7",
+      "target": "id49",
+      "weight": -0.1377
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.14609375000000002,
+      "source": "id7",
+      "target": "id50",
+      "weight": 0.2411
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.031510416666666666,
+      "source": "id7",
+      "target": "id51",
+      "weight": -0.4019
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.24231510416666663,
+      "source": "id7",
+      "target": "id53",
+      "weight": 0.2076
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3865541601255887,
+      "source": "id7",
+      "target": "id54",
+      "weight": -0.2485
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6907423002887392,
+      "source": "id8",
+      "target": "id9",
+      "weight": -0.1067
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.16673228346456695,
+      "source": "id8",
+      "target": "id12",
+      "weight": 0.3206
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6505172413793104,
+      "source": "id8",
+      "target": "id15",
+      "weight": -0.1217
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6789147000983284,
+      "source": "id8",
+      "target": "id17",
+      "weight": 0.1099
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6771531936127745,
+      "source": "id8",
+      "target": "id19",
+      "weight": 0.1181
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.37884984025559104,
+      "source": "id8",
+      "target": "id20",
+      "weight": -0.2091
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2849261904761905,
+      "source": "id8",
+      "target": "id22",
+      "weight": 0.2508
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6511760124610593,
+      "source": "id8",
+      "target": "id23",
+      "weight": -0.1261
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5542344290657439,
+      "source": "id8",
+      "target": "id24",
+      "weight": -0.1435
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.43324152542372885,
+      "source": "id8",
+      "target": "id28",
+      "weight": 0.1861
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.20766025641025643,
+      "source": "id8",
+      "target": "id29",
+      "weight": 0.2728
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6511760124610593,
+      "source": "id8",
+      "target": "id30",
+      "weight": -0.1294
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6600556117290192,
+      "source": "id8",
+      "target": "id31",
+      "weight": 0.1147
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.21671127562642367,
+      "source": "id8",
+      "target": "id32",
+      "weight": -0.2609
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3865541601255887,
+      "source": "id8",
+      "target": "id34",
+      "weight": -0.2184
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5441071428571429,
+      "source": "id8",
+      "target": "id35",
+      "weight": -0.1302
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.13070987654320987,
+      "source": "id8",
+      "target": "id37",
+      "weight": 0.3265
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6895651647286821,
+      "source": "id8",
+      "target": "id38",
+      "weight": 0.1095
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5932881637168143,
+      "source": "id8",
+      "target": "id39",
+      "weight": 0.1349
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5147319240196079,
+      "source": "id8",
+      "target": "id40",
+      "weight": 0.1623
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2925493421052632,
+      "source": "id8",
+      "target": "id42",
+      "weight": -0.231
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.075,
+      "source": "id8",
+      "target": "id46",
+      "weight": -0.3182
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5273656400966183,
+      "source": "id8",
+      "target": "id50",
+      "weight": 0.1345
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.42420043415340086,
+      "source": "id8",
+      "target": "id52",
+      "weight": -0.1728
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.608652579582876,
+      "source": "id8",
+      "target": "id54",
+      "weight": -0.1587
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3323861683848797,
+      "source": "id9",
+      "target": "id10",
+      "weight": 0.2411
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.462311320754717,
+      "source": "id9",
+      "target": "id11",
+      "weight": -0.1864
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1631907894736842,
+      "source": "id9",
+      "target": "id12",
+      "weight": 0.3053
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.16849093264248705,
+      "source": "id9",
+      "target": "id14",
+      "weight": -0.3034
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6986857754519504,
+      "source": "id9",
+      "target": "id15",
+      "weight": -0.1093
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.333267094017094,
+      "source": "id9",
+      "target": "id16",
+      "weight": 0.2261
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2384973684210526,
+      "source": "id9",
+      "target": "id17",
+      "weight": 0.2692
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.7226077386468953,
+      "source": "id9",
+      "target": "id19",
+      "weight": 0.1038
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.27893990384615386,
+      "source": "id9",
+      "target": "id20",
+      "weight": 0.2568
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1631907894736842,
+      "source": "id9",
+      "target": "id22",
+      "weight": -0.2943
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id9",
+      "target": "id24",
+      "weight": 0.6651
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6016721672167216,
+      "source": "id9",
+      "target": "id25",
+      "weight": -0.1365
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id9",
+      "target": "id26",
+      "weight": -0.4752
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.0378125,
+      "source": "id9",
+      "target": "id27",
+      "weight": 0.4735
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id9",
+      "target": "id28",
+      "weight": -0.4511
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.05114734299516908,
+      "source": "id9",
+      "target": "id29",
+      "weight": -0.3704
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6896941489361702,
+      "source": "id9",
+      "target": "id30",
+      "weight": 0.1071
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6916566698656429,
+      "source": "id9",
+      "target": "id31",
+      "weight": 0.1042
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id9",
+      "target": "id32",
+      "weight": 0.4054
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.22521655701754387,
+      "source": "id9",
+      "target": "id33",
+      "weight": -0.2765
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.21424199084668188,
+      "source": "id9",
+      "target": "id34",
+      "weight": 0.2802
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.0378125,
+      "source": "id9",
+      "target": "id37",
+      "weight": -0.4004
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id9",
+      "target": "id38",
+      "weight": 0.4961
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id9",
+      "target": "id39",
+      "weight": -0.5077
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04296875,
+      "source": "id9",
+      "target": "id40",
+      "weight": -0.4066
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4584829931972789,
+      "source": "id9",
+      "target": "id41",
+      "weight": 0.1814
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6773173459244533,
+      "source": "id9",
+      "target": "id42",
+      "weight": 0.1032
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5882508389261746,
+      "source": "id9",
+      "target": "id43",
+      "weight": 0.1329
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4001103500761035,
+      "source": "id9",
+      "target": "id44",
+      "weight": 0.1911
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6383235294117647,
+      "source": "id9",
+      "target": "id45",
+      "weight": 0.1189
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.48744718309859153,
+      "source": "id9",
+      "target": "id46",
+      "weight": 0.1445
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id9",
+      "target": "id47",
+      "weight": -0.4358
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6557240853658537,
+      "source": "id9",
+      "target": "id48",
+      "weight": -0.1186
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4054497751124438,
+      "source": "id9",
+      "target": "id49",
+      "weight": -0.1657
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.06215753424657534,
+      "source": "id9",
+      "target": "id51",
+      "weight": -0.3408
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4425697350069735,
+      "source": "id9",
+      "target": "id52",
+      "weight": -0.1642
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3389734401349072,
+      "source": "id9",
+      "target": "id53",
+      "weight": 0.1886
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6986857754519504,
+      "source": "id10",
+      "target": "id11",
+      "weight": 0.1088
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.462311320754717,
+      "source": "id10",
+      "target": "id12",
+      "weight": 0.1972
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.14787011173184358,
+      "source": "id10",
+      "target": "id13",
+      "weight": 0.3349
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1403817365269461,
+      "source": "id10",
+      "target": "id15",
+      "weight": 0.3223
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.19817720763723148,
+      "source": "id10",
+      "target": "id16",
+      "weight": 0.3006
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4054497751124438,
+      "source": "id10",
+      "target": "id17",
+      "weight": 0.2111
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4896623743718592,
+      "source": "id10",
+      "target": "id18",
+      "weight": 0.1899
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2363081395348837,
+      "source": "id10",
+      "target": "id19",
+      "weight": -0.2999
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4928434755332496,
+      "source": "id10",
+      "target": "id20",
+      "weight": 0.1802
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.15985772357723577,
+      "source": "id10",
+      "target": "id21",
+      "weight": -0.3202
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4216533430232558,
+      "source": "id10",
+      "target": "id22",
+      "weight": -0.1983
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.7082682291666667,
+      "source": "id10",
+      "target": "id23",
+      "weight": -0.1115
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.25279485887096775,
+      "source": "id10",
+      "target": "id24",
+      "weight": 0.2756
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5818757078142694,
+      "source": "id10",
+      "target": "id25",
+      "weight": -0.1489
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.24917268041237114,
+      "source": "id10",
+      "target": "id26",
+      "weight": -0.2762
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5686103192702394,
+      "source": "id10",
+      "target": "id27",
+      "weight": 0.1617
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.16090425531914893,
+      "source": "id10",
+      "target": "id29",
+      "weight": -0.3182
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.34037605042016805,
+      "source": "id10",
+      "target": "id30",
+      "weight": -0.2337
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3389734401349072,
+      "source": "id10",
+      "target": "id31",
+      "weight": 0.2286
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.43324152542372885,
+      "source": "id10",
+      "target": "id32",
+      "weight": 0.1922
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.725468316373728,
+      "source": "id10",
+      "target": "id34",
+      "weight": -0.1014
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6408733974358974,
+      "source": "id10",
+      "target": "id37",
+      "weight": -0.1338
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.24016474895397485,
+      "source": "id10",
+      "target": "id38",
+      "weight": 0.2647
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.05114734299516908,
+      "source": "id10",
+      "target": "id39",
+      "weight": -0.3789
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6355096566523605,
+      "source": "id10",
+      "target": "id40",
+      "weight": -0.1258
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.437795358649789,
+      "source": "id10",
+      "target": "id45",
+      "weight": -0.1892
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1403817365269461,
+      "source": "id10",
+      "target": "id49",
+      "weight": -0.2755
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5315617469879519,
+      "source": "id10",
+      "target": "id50",
+      "weight": 0.1382
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1710796915167095,
+      "source": "id10",
+      "target": "id51",
+      "weight": -0.2762
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.39572033898305087,
+      "source": "id10",
+      "target": "id52",
+      "weight": -0.188
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4889333122629582,
+      "source": "id10",
+      "target": "id53",
+      "weight": 0.1384
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5429624704491726,
+      "source": "id11",
+      "target": "id12",
+      "weight": 0.1528
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.20557218309859157,
+      "source": "id11",
+      "target": "id13",
+      "weight": 0.2856
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id11",
+      "target": "id14",
+      "weight": 0.4694
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.14609375000000002,
+      "source": "id11",
+      "target": "id15",
+      "weight": 0.3138
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.06215753424657534,
+      "source": "id11",
+      "target": "id16",
+      "weight": 0.3601
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2646875,
+      "source": "id11",
+      "target": "id17",
+      "weight": -0.2654
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3782463884430176,
+      "source": "id11",
+      "target": "id18",
+      "weight": 0.2153
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id11",
+      "target": "id23",
+      "weight": -0.518
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3782463884430176,
+      "source": "id11",
+      "target": "id24",
+      "weight": -0.2073
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.29667201834862383,
+      "source": "id11",
+      "target": "id25",
+      "weight": 0.2425
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.42006550218340616,
+      "source": "id11",
+      "target": "id26",
+      "weight": 0.1994
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.19146036585365855,
+      "source": "id11",
+      "target": "id27",
+      "weight": -0.2855
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5116518404907975,
+      "source": "id11",
+      "target": "id29",
+      "weight": 0.1632
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.21424199084668188,
+      "source": "id11",
+      "target": "id30",
+      "weight": 0.2686
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.40649850523168907,
+      "source": "id11",
+      "target": "id31",
+      "weight": -0.2038
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.58266206313416,
+      "source": "id11",
+      "target": "id32",
+      "weight": -0.1348
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04702072538860104,
+      "source": "id11",
+      "target": "id33",
+      "weight": 0.4066
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.0935,
+      "source": "id11",
+      "target": "id34",
+      "weight": -0.3437
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.13372713414634146,
+      "source": "id11",
+      "target": "id35",
+      "weight": -0.2556
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04702072538860104,
+      "source": "id11",
+      "target": "id36",
+      "weight": -0.3815
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.48819497455470734,
+      "source": "id11",
+      "target": "id37",
+      "weight": 0.1639
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.7053071631878558,
+      "source": "id11",
+      "target": "id41",
+      "weight": -0.104
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id11",
+      "target": "id42",
+      "weight": -0.4017
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.05707547169811321,
+      "source": "id11",
+      "target": "id43",
+      "weight": -0.3588
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04702072538860104,
+      "source": "id11",
+      "target": "id44",
+      "weight": -0.376
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.39682795698924733,
+      "source": "id11",
+      "target": "id45",
+      "weight": -0.1849
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2444476141078838,
+      "source": "id11",
+      "target": "id46",
+      "weight": -0.2177
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.40814925373134325,
+      "source": "id11",
+      "target": "id47",
+      "weight": 0.1817
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6429734042553191,
+      "source": "id11",
+      "target": "id48",
+      "weight": -0.1204
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.29667201834862383,
+      "source": "id11",
+      "target": "id52",
+      "weight": 0.2031
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.49412124060150375,
+      "source": "id12",
+      "target": "id13",
+      "weight": 0.1764
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.09723214285714285,
+      "source": "id12",
+      "target": "id14",
+      "weight": 0.3648
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id12",
+      "target": "id16",
+      "weight": 0.5987
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5542344290657439,
+      "source": "id12",
+      "target": "id17",
+      "weight": 0.1516
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3482032554257095,
+      "source": "id12",
+      "target": "id18",
+      "weight": 0.231
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id12",
+      "target": "id19",
+      "weight": 0.6043
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04296875,
+      "source": "id12",
+      "target": "id21",
+      "weight": -0.4072
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.08659351145038167,
+      "source": "id12",
+      "target": "id22",
+      "weight": -0.3676
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.46591487935656833,
+      "source": "id12",
+      "target": "id23",
+      "weight": -0.1875
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.34037605042016805,
+      "source": "id12",
+      "target": "id24",
+      "weight": 0.2203
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5882508389261746,
+      "source": "id12",
+      "target": "id25",
+      "weight": 0.1369
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5369102641056422,
+      "source": "id12",
+      "target": "id26",
+      "weight": -0.1535
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4896623743718592,
+      "source": "id12",
+      "target": "id28",
+      "weight": 0.1694
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.19146036585365855,
+      "source": "id12",
+      "target": "id29",
+      "weight": -0.2792
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.10503472222222222,
+      "source": "id12",
+      "target": "id30",
+      "weight": 0.3357
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6345676691729324,
+      "source": "id12",
+      "target": "id31",
+      "weight": 0.1282
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.19817720763723148,
+      "source": "id12",
+      "target": "id33",
+      "weight": 0.2741
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4054497751124438,
+      "source": "id12",
+      "target": "id34",
+      "weight": -0.1992
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.07202380952380952,
+      "source": "id12",
+      "target": "id35",
+      "weight": -0.3212
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id12",
+      "target": "id38",
+      "weight": 0.4681
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.031510416666666666,
+      "source": "id12",
+      "target": "id39",
+      "weight": -0.3777
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2512551334702259,
+      "source": "id12",
+      "target": "id40",
+      "weight": -0.2386
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.12604166666666666,
+      "source": "id12",
+      "target": "id41",
+      "weight": 0.3212
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2960097947761194,
+      "source": "id12",
+      "target": "id42",
+      "weight": -0.2248
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.37884984025559104,
+      "source": "id12",
+      "target": "id43",
+      "weight": -0.1836
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.0378125,
+      "source": "id12",
+      "target": "id45",
+      "weight": -0.4101
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6783015361744301,
+      "source": "id12",
+      "target": "id47",
+      "weight": -0.1052
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.15041436464088398,
+      "source": "id12",
+      "target": "id51",
+      "weight": -0.3067
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.462311320754717,
+      "source": "id12",
+      "target": "id52",
+      "weight": -0.16
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2548167670682731,
+      "source": "id12",
+      "target": "id53",
+      "weight": -0.2107
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.08659351145038167,
+      "source": "id12",
+      "target": "id54",
+      "weight": -0.4424
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6528932584269663,
+      "source": "id13",
+      "target": "id14",
+      "weight": 0.1288
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5010863466334164,
+      "source": "id13",
+      "target": "id15",
+      "weight": 0.1691
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id13",
+      "target": "id16",
+      "weight": 0.6933
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.26852783203124997,
+      "source": "id13",
+      "target": "id17",
+      "weight": 0.2632
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id13",
+      "target": "id18",
+      "weight": 0.5977
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.15041436464088398,
+      "source": "id13",
+      "target": "id20",
+      "weight": 0.3142
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.09723214285714285,
+      "source": "id13",
+      "target": "id21",
+      "weight": -0.3383
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.22386338495575223,
+      "source": "id13",
+      "target": "id22",
+      "weight": -0.2644
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.0935,
+      "source": "id13",
+      "target": "id23",
+      "weight": -0.367
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6528932584269663,
+      "source": "id13",
+      "target": "id24",
+      "weight": 0.1233
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.46913474240422726,
+      "source": "id13",
+      "target": "id25",
+      "weight": -0.1805
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4106314623338257,
+      "source": "id13",
+      "target": "id28",
+      "weight": 0.2014
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5896557971014492,
+      "source": "id13",
+      "target": "id29",
+      "weight": -0.1356
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4433333333333333,
+      "source": "id13",
+      "target": "id30",
+      "weight": 0.1894
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.7187908878504673,
+      "source": "id13",
+      "target": "id31",
+      "weight": -0.1047
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5446068904593641,
+      "source": "id13",
+      "target": "id32",
+      "weight": 0.1458
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04296875,
+      "source": "id13",
+      "target": "id33",
+      "weight": 0.4251
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.05114734299516908,
+      "source": "id13",
+      "target": "id35",
+      "weight": -0.3791
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.16090425531914893,
+      "source": "id13",
+      "target": "id36",
+      "weight": -0.2908
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6502958115183246,
+      "source": "id13",
+      "target": "id37",
+      "weight": -0.1165
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id13",
+      "target": "id38",
+      "weight": 0.475
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.21813611111111111,
+      "source": "id13",
+      "target": "id39",
+      "weight": -0.2705
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6774739583333333,
+      "source": "id13",
+      "target": "id42",
+      "weight": -0.1095
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2363081395348837,
+      "source": "id13",
+      "target": "id43",
+      "weight": -0.2457
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.19146036585365855,
+      "source": "id13",
+      "target": "id44",
+      "weight": -0.2772
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2709527290448343,
+      "source": "id13",
+      "target": "id45",
+      "weight": -0.2437
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5496301169590643,
+      "source": "id13",
+      "target": "id46",
+      "weight": -0.1204
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.43263532763532764,
+      "source": "id13",
+      "target": "id48",
+      "weight": 0.1786
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.28076867816091955,
+      "source": "id13",
+      "target": "id50",
+      "weight": 0.2071
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.20766025641025643,
+      "source": "id13",
+      "target": "id51",
+      "weight": -0.2531
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.36304942810457513,
+      "source": "id13",
+      "target": "id52",
+      "weight": -0.1885
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.17996835443037976,
+      "source": "id13",
+      "target": "id53",
+      "weight": -0.2439
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id14",
+      "target": "id15",
+      "weight": 0.4329
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.13070987654320987,
+      "source": "id14",
+      "target": "id16",
+      "weight": 0.3143
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1235702614379085,
+      "source": "id14",
+      "target": "id17",
+      "weight": -0.3248
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.26852783203124997,
+      "source": "id14",
+      "target": "id19",
+      "weight": 0.2477
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.23286670235546042,
+      "source": "id14",
+      "target": "id20",
+      "weight": -0.2738
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.34956114808652244,
+      "source": "id14",
+      "target": "id21",
+      "weight": -0.2205
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6434533898305085,
+      "source": "id14",
+      "target": "id22",
+      "weight": -0.1221
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.0935,
+      "source": "id14",
+      "target": "id23",
+      "weight": -0.3789
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04296875,
+      "source": "id14",
+      "target": "id24",
+      "weight": -0.3901
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.031510416666666666,
+      "source": "id14",
+      "target": "id25",
+      "weight": 0.4686
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.17996835443037976,
+      "source": "id14",
+      "target": "id26",
+      "weight": 0.2798
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.09029850746268657,
+      "source": "id14",
+      "target": "id27",
+      "weight": -0.3631
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6790664867517173,
+      "source": "id14",
+      "target": "id28",
+      "weight": 0.1072
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6528932584269663,
+      "source": "id14",
+      "target": "id29",
+      "weight": 0.1193
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.031510416666666666,
+      "source": "id14",
+      "target": "id30",
+      "weight": 0.4459
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.547372508792497,
+      "source": "id14",
+      "target": "id32",
+      "weight": -0.1577
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.06215753424657534,
+      "source": "id14",
+      "target": "id33",
+      "weight": 0.4162
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4433333333333333,
+      "source": "id14",
+      "target": "id34",
+      "weight": -0.1842
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.0378125,
+      "source": "id14",
+      "target": "id35",
+      "weight": -0.3668
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.39174689440993793,
+      "source": "id14",
+      "target": "id36",
+      "weight": -0.2062
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5882508389261746,
+      "source": "id14",
+      "target": "id37",
+      "weight": 0.1341
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6766767068273092,
+      "source": "id14",
+      "target": "id38",
+      "weight": -0.109
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.24016474895397485,
+      "source": "id14",
+      "target": "id42",
+      "weight": -0.2451
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.10503472222222222,
+      "source": "id14",
+      "target": "id43",
+      "weight": -0.3072
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.075,
+      "source": "id14",
+      "target": "id44",
+      "weight": -0.361
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.27893990384615386,
+      "source": "id14",
+      "target": "id45",
+      "weight": -0.2312
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2270397603485839,
+      "source": "id14",
+      "target": "id46",
+      "weight": -0.2237
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.47126315789473683,
+      "source": "id14",
+      "target": "id47",
+      "weight": 0.1477
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6528932584269663,
+      "source": "id14",
+      "target": "id48",
+      "weight": 0.1141
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3848259493670886,
+      "source": "id14",
+      "target": "id50",
+      "weight": -0.1725
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.13372713414634146,
+      "source": "id14",
+      "target": "id52",
+      "weight": 0.2666
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.14193548387096774,
+      "source": "id14",
+      "target": "id53",
+      "weight": -0.2424
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4395769230769231,
+      "source": "id14",
+      "target": "id54",
+      "weight": -0.2256
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3848259493670886,
+      "source": "id15",
+      "target": "id16",
+      "weight": 0.2158
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.07960526315789473,
+      "source": "id15",
+      "target": "id17",
+      "weight": -0.3471
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3081820214669052,
+      "source": "id15",
+      "target": "id18",
+      "weight": 0.249
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2646875,
+      "source": "id15",
+      "target": "id19",
+      "weight": -0.267
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.7202716884328357,
+      "source": "id15",
+      "target": "id21",
+      "weight": -0.1015
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6528932584269663,
+      "source": "id15",
+      "target": "id22",
+      "weight": -0.1131
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.06662995594713657,
+      "source": "id15",
+      "target": "id23",
+      "weight": -0.435
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4177169117647058,
+      "source": "id15",
+      "target": "id24",
+      "weight": -0.1968
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.11241554054054054,
+      "source": "id15",
+      "target": "id25",
+      "weight": 0.3331
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.06662995594713657,
+      "source": "id15",
+      "target": "id27",
+      "weight": -0.3732
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6364496248660235,
+      "source": "id15",
+      "target": "id30",
+      "weight": 0.1344
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3171715167548501,
+      "source": "id15",
+      "target": "id31",
+      "weight": 0.2233
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6528932584269663,
+      "source": "id15",
+      "target": "id32",
+      "weight": 0.1174
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4666911764705882,
+      "source": "id15",
+      "target": "id33",
+      "weight": 0.1726
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3202473730297723,
+      "source": "id15",
+      "target": "id34",
+      "weight": -0.2214
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.44107541899441344,
+      "source": "id15",
+      "target": "id35",
+      "weight": -0.1558
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.06215753424657534,
+      "source": "id15",
+      "target": "id36",
+      "weight": -0.3826
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.684085929892892,
+      "source": "id15",
+      "target": "id38",
+      "weight": -0.1007
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6223324324324324,
+      "source": "id15",
+      "target": "id40",
+      "weight": 0.1238
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.42952380952380953,
+      "source": "id15",
+      "target": "id41",
+      "weight": -0.1926
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.28076867816091955,
+      "source": "id15",
+      "target": "id42",
+      "weight": -0.2249
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5396383928571429,
+      "source": "id15",
+      "target": "id43",
+      "weight": -0.1414
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04702072538860104,
+      "source": "id15",
+      "target": "id44",
+      "weight": -0.374
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.40960740740740736,
+      "source": "id15",
+      "target": "id47",
+      "weight": 0.1697
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5213806196840827,
+      "source": "id15",
+      "target": "id50",
+      "weight": -0.1349
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2092349884526559,
+      "source": "id15",
+      "target": "id52",
+      "weight": 0.2294
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4488044959128065,
+      "source": "id15",
+      "target": "id54",
+      "weight": 0.2373
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4323283261802575,
+      "source": "id16",
+      "target": "id17",
+      "weight": 0.1959
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id16",
+      "target": "id18",
+      "weight": 0.6745
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.20557218309859157,
+      "source": "id16",
+      "target": "id19",
+      "weight": 0.2886
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2593288423153693,
+      "source": "id16",
+      "target": "id20",
+      "weight": 0.2635
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.031510416666666666,
+      "source": "id16",
+      "target": "id21",
+      "weight": -0.495
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.05114734299516908,
+      "source": "id16",
+      "target": "id22",
+      "weight": -0.3908
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04702072538860104,
+      "source": "id16",
+      "target": "id23",
+      "weight": -0.4188
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4488044959128065,
+      "source": "id16",
+      "target": "id24",
+      "weight": 0.1846
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3171715167548501,
+      "source": "id16",
+      "target": "id28",
+      "weight": 0.226
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3389734401349072,
+      "source": "id16",
+      "target": "id29",
+      "weight": -0.2201
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id16",
+      "target": "id30",
+      "weight": 0.5272
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6986857754519504,
+      "source": "id16",
+      "target": "id31",
+      "weight": -0.1099
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id16",
+      "target": "id33",
+      "weight": 0.4996
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id16",
+      "target": "id35",
+      "weight": -0.4783
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4773394495412844,
+      "source": "id16",
+      "target": "id36",
+      "weight": -0.1744
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5558002873563218,
+      "source": "id16",
+      "target": "id37",
+      "weight": -0.149
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id16",
+      "target": "id38",
+      "weight": 0.4485
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04702072538860104,
+      "source": "id16",
+      "target": "id39",
+      "weight": -0.3757
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6792176787463272,
+      "source": "id16",
+      "target": "id40",
+      "weight": -0.1134
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6528932584269663,
+      "source": "id16",
+      "target": "id41",
+      "weight": 0.126
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.05707547169811321,
+      "source": "id16",
+      "target": "id42",
+      "weight": -0.3329
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.075,
+      "source": "id16",
+      "target": "id43",
+      "weight": -0.3191
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.27763297872340426,
+      "source": "id16",
+      "target": "id44",
+      "weight": -0.2384
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.08659351145038167,
+      "source": "id16",
+      "target": "id45",
+      "weight": -0.3434
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.464510067114094,
+      "source": "id16",
+      "target": "id46",
+      "weight": -0.1528
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6774739583333333,
+      "source": "id16",
+      "target": "id48",
+      "weight": 0.1095
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5429624704491726,
+      "source": "id16",
+      "target": "id49",
+      "weight": -0.1182
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.18333333333333332,
+      "source": "id16",
+      "target": "id51",
+      "weight": -0.2557
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.29667201834862383,
+      "source": "id16",
+      "target": "id52",
+      "weight": -0.2099
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.075,
+      "source": "id16",
+      "target": "id53",
+      "weight": -0.2739
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4801399739583333,
+      "source": "id16",
+      "target": "id54",
+      "weight": -0.2122
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.333267094017094,
+      "source": "id17",
+      "target": "id18",
+      "weight": 0.23
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6432139065817409,
+      "source": "id17",
+      "target": "id19",
+      "weight": 0.1282
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.10877568493150686,
+      "source": "id17",
+      "target": "id20",
+      "weight": 0.3434
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.20082838479809975,
+      "source": "id17",
+      "target": "id21",
+      "weight": -0.2823
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5671009725400457,
+      "source": "id17",
+      "target": "id22",
+      "weight": -0.1482
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.0935,
+      "source": "id17",
+      "target": "id23",
+      "weight": 0.3527
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.09029850746268657,
+      "source": "id17",
+      "target": "id24",
+      "weight": 0.3373
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id17",
+      "target": "id25",
+      "weight": -0.4422
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.07960526315789473,
+      "source": "id17",
+      "target": "id26",
+      "weight": -0.3644
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04296875,
+      "source": "id17",
+      "target": "id27",
+      "weight": 0.3803
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.08336614173228347,
+      "source": "id17",
+      "target": "id29",
+      "weight": -0.3619
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.19326388888888887,
+      "source": "id17",
+      "target": "id33",
+      "weight": 0.2796
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6502958115183246,
+      "source": "id17",
+      "target": "id34",
+      "weight": 0.1222
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.16090425531914893,
+      "source": "id17",
+      "target": "id35",
+      "weight": 0.2557
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.12019867549668875,
+      "source": "id17",
+      "target": "id36",
+      "weight": 0.3417
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.22100609756097564,
+      "source": "id17",
+      "target": "id37",
+      "weight": -0.2617
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id17",
+      "target": "id38",
+      "weight": 0.4896
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04702072538860104,
+      "source": "id17",
+      "target": "id39",
+      "weight": -0.3543
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2913492438563327,
+      "source": "id17",
+      "target": "id40",
+      "weight": -0.2339
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5507549649532709,
+      "source": "id17",
+      "target": "id41",
+      "weight": 0.1521
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.27336819066147855,
+      "source": "id17",
+      "target": "id42",
+      "weight": 0.2356
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.24016474895397485,
+      "source": "id17",
+      "target": "id43",
+      "weight": 0.2503
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id17",
+      "target": "id44",
+      "weight": 0.4832
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.462311320754717,
+      "source": "id17",
+      "target": "id45",
+      "weight": -0.1635
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4666911764705882,
+      "source": "id17",
+      "target": "id47",
+      "weight": -0.1605
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6528932584269663,
+      "source": "id17",
+      "target": "id48",
+      "weight": -0.1121
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3848259493670886,
+      "source": "id17",
+      "target": "id49",
+      "weight": -0.173
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3758037156704362,
+      "source": "id17",
+      "target": "id50",
+      "weight": 0.1759
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id17",
+      "target": "id51",
+      "weight": -0.3889
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.12801724137931034,
+      "source": "id17",
+      "target": "id52",
+      "weight": -0.2651
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6953439597315436,
+      "source": "id17",
+      "target": "id54",
+      "weight": -0.1339
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.0378125,
+      "source": "id18",
+      "target": "id20",
+      "weight": 0.4247
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.05707547169811321,
+      "source": "id18",
+      "target": "id21",
+      "weight": -0.4069
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5929268292682928,
+      "source": "id18",
+      "target": "id22",
+      "weight": -0.1419
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.14193548387096774,
+      "source": "id18",
+      "target": "id23",
+      "weight": -0.3179
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2925493421052632,
+      "source": "id18",
+      "target": "id25",
+      "weight": -0.2522
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6336236559139785,
+      "source": "id18",
+      "target": "id27",
+      "weight": -0.1251
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6155446623093681,
+      "source": "id18",
+      "target": "id28",
+      "weight": 0.1349
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6789147000983284,
+      "source": "id18",
+      "target": "id30",
+      "weight": 0.1115
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4465082079343365,
+      "source": "id18",
+      "target": "id32",
+      "weight": 0.1759
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.10118838028169014,
+      "source": "id18",
+      "target": "id33",
+      "weight": 0.3522
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4323283261802575,
+      "source": "id18",
+      "target": "id34",
+      "weight": -0.1891
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.12604166666666666,
+      "source": "id18",
+      "target": "id35",
+      "weight": -0.3014
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.26852783203124997,
+      "source": "id18",
+      "target": "id36",
+      "weight": -0.2524
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.07202380952380952,
+      "source": "id18",
+      "target": "id38",
+      "weight": 0.3637
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3227191840277778,
+      "source": "id18",
+      "target": "id39",
+      "weight": -0.2172
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4323283261802575,
+      "source": "id18",
+      "target": "id41",
+      "weight": -0.1892
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.0378125,
+      "source": "id18",
+      "target": "id42",
+      "weight": -0.3738
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2960097947761194,
+      "source": "id18",
+      "target": "id43",
+      "weight": -0.2294
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.25279485887096775,
+      "source": "id18",
+      "target": "id44",
+      "weight": -0.2537
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.29667201834862383,
+      "source": "id18",
+      "target": "id47",
+      "weight": 0.2034
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.15041436464088398,
+      "source": "id18",
+      "target": "id49",
+      "weight": -0.238
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6411194029850747,
+      "source": "id18",
+      "target": "id51",
+      "weight": -0.1212
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2960097947761194,
+      "source": "id18",
+      "target": "id52",
+      "weight": -0.2192
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.11673657718120804,
+      "source": "id18",
+      "target": "id53",
+      "weight": -0.2832
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2176773648648649,
+      "source": "id19",
+      "target": "id21",
+      "weight": -0.2724
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5485026346604215,
+      "source": "id19",
+      "target": "id22",
+      "weight": -0.1488
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.46746333333333334,
+      "source": "id19",
+      "target": "id28",
+      "weight": 0.1772
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6528932584269663,
+      "source": "id19",
+      "target": "id29",
+      "weight": -0.1203
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.12019867549668875,
+      "source": "id19",
+      "target": "id30",
+      "weight": 0.3387
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5686103192702394,
+      "source": "id19",
+      "target": "id31",
+      "weight": -0.1433
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.30332052441229657,
+      "source": "id19",
+      "target": "id32",
+      "weight": -0.2262
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04702072538860104,
+      "source": "id19",
+      "target": "id33",
+      "weight": 0.3886
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6336236559139785,
+      "source": "id19",
+      "target": "id35",
+      "weight": -0.105
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.38710546875,
+      "source": "id19",
+      "target": "id36",
+      "weight": 0.2075
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.12801724137931034,
+      "source": "id19",
+      "target": "id38",
+      "weight": 0.3198
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.47399606299212604,
+      "source": "id19",
+      "target": "id39",
+      "weight": -0.1764
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.51105012300123,
+      "source": "id19",
+      "target": "id40",
+      "weight": -0.1579
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.28671489563567365,
+      "source": "id19",
+      "target": "id41",
+      "weight": 0.2485
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4005833333333334,
+      "source": "id19",
+      "target": "id43",
+      "weight": -0.1868
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.075,
+      "source": "id19",
+      "target": "id45",
+      "weight": -0.3445
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5614635894495412,
+      "source": "id19",
+      "target": "id47",
+      "weight": -0.1237
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2913492438563327,
+      "source": "id19",
+      "target": "id48",
+      "weight": -0.228
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.48744718309859153,
+      "source": "id19",
+      "target": "id51",
+      "weight": -0.1577
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2548167670682731,
+      "source": "id19",
+      "target": "id53",
+      "weight": -0.1989
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2176773648648649,
+      "source": "id19",
+      "target": "id54",
+      "weight": -0.3459
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.39792879019908123,
+      "source": "id20",
+      "target": "id21",
+      "weight": -0.199
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.40960740740740736,
+      "source": "id20",
+      "target": "id22",
+      "weight": -0.2048
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.26431163021868787,
+      "source": "id20",
+      "target": "id24",
+      "weight": 0.2667
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04296875,
+      "source": "id20",
+      "target": "id25",
+      "weight": -0.4202
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.031510416666666666,
+      "source": "id20",
+      "target": "id26",
+      "weight": -0.4098
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04702072538860104,
+      "source": "id20",
+      "target": "id27",
+      "weight": 0.3811
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.075,
+      "source": "id20",
+      "target": "id29",
+      "weight": -0.3709
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2363081395348837,
+      "source": "id20",
+      "target": "id30",
+      "weight": 0.2665
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6792176787463272,
+      "source": "id20",
+      "target": "id31",
+      "weight": -0.1099
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.08659351145038167,
+      "source": "id20",
+      "target": "id32",
+      "weight": 0.3537
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6336236559139785,
+      "source": "id20",
+      "target": "id33",
+      "weight": 0.1282
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3217691972076789,
+      "source": "id20",
+      "target": "id34",
+      "weight": 0.2123
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.08336614173228347,
+      "source": "id20",
+      "target": "id37",
+      "weight": -0.3545
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id20",
+      "target": "id38",
+      "weight": 0.4271
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.06662995594713657,
+      "source": "id20",
+      "target": "id39",
+      "weight": -0.3761
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4682313829787234,
+      "source": "id20",
+      "target": "id40",
+      "weight": -0.1696
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6596649746192893,
+      "source": "id20",
+      "target": "id41",
+      "weight": -0.1109
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6789147000983284,
+      "source": "id20",
+      "target": "id44",
+      "weight": 0.1022
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.43324152542372885,
+      "source": "id20",
+      "target": "id46",
+      "weight": 0.1539
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.42952380952380953,
+      "source": "id20",
+      "target": "id48",
+      "weight": 0.1752
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.09029850746268657,
+      "source": "id20",
+      "target": "id49",
+      "weight": -0.304
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1959705528846154,
+      "source": "id20",
+      "target": "id50",
+      "weight": 0.2421
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.25279485887096775,
+      "source": "id20",
+      "target": "id51",
+      "weight": -0.2338
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4180966325036603,
+      "source": "id20",
+      "target": "id53",
+      "weight": -0.1565
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3217691972076789,
+      "source": "id20",
+      "target": "id54",
+      "weight": 0.286
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.48556129032258066,
+      "source": "id21",
+      "target": "id22",
+      "weight": 0.1687
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6145665212649946,
+      "source": "id21",
+      "target": "id23",
+      "weight": 0.1339
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.21813611111111111,
+      "source": "id21",
+      "target": "id25",
+      "weight": 0.2736
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.48819497455470734,
+      "source": "id21",
+      "target": "id26",
+      "weight": -0.1624
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.29667201834862383,
+      "source": "id21",
+      "target": "id27",
+      "weight": 0.245
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.031510416666666666,
+      "source": "id21",
+      "target": "id28",
+      "weight": -0.4265
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4465082079343365,
+      "source": "id21",
+      "target": "id29",
+      "weight": 0.1831
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6793682795698924,
+      "source": "id21",
+      "target": "id30",
+      "weight": -0.1148
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.075,
+      "source": "id21",
+      "target": "id33",
+      "weight": -0.354
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4801399739583333,
+      "source": "id21",
+      "target": "id34",
+      "weight": 0.1772
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5379584826762246,
+      "source": "id21",
+      "target": "id35",
+      "weight": 0.1237
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3389734401349072,
+      "source": "id21",
+      "target": "id38",
+      "weight": -0.2002
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3202473730297723,
+      "source": "id21",
+      "target": "id39",
+      "weight": 0.2274
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.18528125,
+      "source": "id21",
+      "target": "id42",
+      "weight": 0.2651
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6016721672167216,
+      "source": "id21",
+      "target": "id44",
+      "weight": 0.1215
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id21",
+      "target": "id45",
+      "weight": 0.4557
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id21",
+      "target": "id47",
+      "weight": -0.4342
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5929268292682928,
+      "source": "id21",
+      "target": "id48",
+      "weight": 0.1242
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3865541601255887,
+      "source": "id21",
+      "target": "id49",
+      "weight": 0.1607
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.48819497455470734,
+      "source": "id21",
+      "target": "id50",
+      "weight": 0.1416
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5067249381188119,
+      "source": "id21",
+      "target": "id51",
+      "weight": 0.1528
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.07960526315789473,
+      "source": "id21",
+      "target": "id52",
+      "weight": 0.3686
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.09029850746268657,
+      "source": "id21",
+      "target": "id53",
+      "weight": 0.3137
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2983523765996344,
+      "source": "id21",
+      "target": "id54",
+      "weight": 0.2917
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5379584826762246,
+      "source": "id22",
+      "target": "id23",
+      "weight": 0.1535
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3097794117647059,
+      "source": "id22",
+      "target": "id24",
+      "weight": -0.2267
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id22",
+      "target": "id26",
+      "weight": 0.594
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2646875,
+      "source": "id22",
+      "target": "id27",
+      "weight": -0.2379
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.47806862745098033,
+      "source": "id22",
+      "target": "id28",
+      "weight": 0.1607
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id22",
+      "target": "id29",
+      "weight": 0.8055
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.10118838028169014,
+      "source": "id22",
+      "target": "id30",
+      "weight": -0.3289
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5830525871766029,
+      "source": "id22",
+      "target": "id32",
+      "weight": -0.1321
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.30332052441229657,
+      "source": "id22",
+      "target": "id33",
+      "weight": -0.2288
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3049527027027027,
+      "source": "id22",
+      "target": "id34",
+      "weight": -0.2299
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1779411764705882,
+      "source": "id22",
+      "target": "id35",
+      "weight": 0.2368
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id22",
+      "target": "id37",
+      "weight": 0.6974
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04702072538860104,
+      "source": "id22",
+      "target": "id38",
+      "weight": -0.42
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id22",
+      "target": "id39",
+      "weight": 0.7002
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id22",
+      "target": "id40",
+      "weight": 0.7724
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.20766025641025643,
+      "source": "id22",
+      "target": "id41",
+      "weight": -0.2711
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1430157593123209,
+      "source": "id22",
+      "target": "id45",
+      "weight": 0.2955
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id22",
+      "target": "id47",
+      "weight": 0.413
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5379584826762246,
+      "source": "id22",
+      "target": "id48",
+      "weight": -0.1411
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.08659351145038167,
+      "source": "id22",
+      "target": "id49",
+      "weight": 0.2689
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id22",
+      "target": "id51",
+      "weight": 0.673
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4828214285714286,
+      "source": "id22",
+      "target": "id53",
+      "weight": 0.1333
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.7092071159283695,
+      "source": "id22",
+      "target": "id54",
+      "weight": 0.1258
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.7045405982905983,
+      "source": "id23",
+      "target": "id24",
+      "weight": 0.1038
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.39226816074188564,
+      "source": "id23",
+      "target": "id25",
+      "weight": -0.2009
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.23286670235546042,
+      "source": "id23",
+      "target": "id27",
+      "weight": 0.2744
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3294528546712803,
+      "source": "id23",
+      "target": "id30",
+      "weight": -0.2439
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5457455882352941,
+      "source": "id23",
+      "target": "id31",
+      "weight": 0.1491
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.21813611111111111,
+      "source": "id23",
+      "target": "id33",
+      "weight": -0.2882
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.10118838028169014,
+      "source": "id23",
+      "target": "id34",
+      "weight": 0.3585
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id23",
+      "target": "id35",
+      "weight": 0.4482
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id23",
+      "target": "id36",
+      "weight": 0.5236
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.37396440129449837,
+      "source": "id23",
+      "target": "id38",
+      "weight": -0.207
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6210764642082429,
+      "source": "id23",
+      "target": "id39",
+      "weight": 0.135
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id23",
+      "target": "id42",
+      "weight": 0.502
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id23",
+      "target": "id43",
+      "weight": 0.5292
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id23",
+      "target": "id44",
+      "weight": 0.5272
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.075,
+      "source": "id23",
+      "target": "id46",
+      "weight": 0.3137
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6522851966873707,
+      "source": "id23",
+      "target": "id48",
+      "weight": -0.1187
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.19146036585365855,
+      "source": "id23",
+      "target": "id50",
+      "weight": -0.2297
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5830525871766029,
+      "source": "id23",
+      "target": "id51",
+      "weight": 0.1304
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6487157172995781,
+      "source": "id23",
+      "target": "id52",
+      "weight": -0.1071
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.48819497455470734,
+      "source": "id23",
+      "target": "id53",
+      "weight": 0.1384
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3721191247974068,
+      "source": "id23",
+      "target": "id54",
+      "weight": -0.2556
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4479644808743169,
+      "source": "id24",
+      "target": "id25",
+      "weight": -0.1838
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.08336614173228347,
+      "source": "id24",
+      "target": "id26",
+      "weight": -0.3724
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.05114734299516908,
+      "source": "id24",
+      "target": "id27",
+      "weight": 0.4229
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6505172413793104,
+      "source": "id24",
+      "target": "id28",
+      "weight": -0.1259
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.12604166666666666,
+      "source": "id24",
+      "target": "id29",
+      "weight": -0.3131
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.684085929892892,
+      "source": "id24",
+      "target": "id30",
+      "weight": -0.1074
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2646875,
+      "source": "id24",
+      "target": "id32",
+      "weight": 0.2355
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1710796915167095,
+      "source": "id24",
+      "target": "id34",
+      "weight": 0.2932
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1881218905472637,
+      "source": "id24",
+      "target": "id36",
+      "weight": 0.2898
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1370845921450151,
+      "source": "id24",
+      "target": "id37",
+      "weight": -0.2947
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1710796915167095,
+      "source": "id24",
+      "target": "id38",
+      "weight": 0.2906
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id24",
+      "target": "id39",
+      "weight": -0.4844
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.12604166666666666,
+      "source": "id24",
+      "target": "id40",
+      "weight": -0.302
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.18528125,
+      "source": "id24",
+      "target": "id41",
+      "weight": 0.2769
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.30002049180327867,
+      "source": "id24",
+      "target": "id42",
+      "weight": 0.2087
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.43263532763532764,
+      "source": "id24",
+      "target": "id43",
+      "weight": 0.1886
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.19326388888888887,
+      "source": "id24",
+      "target": "id44",
+      "weight": 0.2732
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6773173459244533,
+      "source": "id24",
+      "target": "id45",
+      "weight": -0.1074
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5067249381188119,
+      "source": "id24",
+      "target": "id46",
+      "weight": 0.1462
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.031510416666666666,
+      "source": "id24",
+      "target": "id47",
+      "weight": -0.3465
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.21813611111111111,
+      "source": "id24",
+      "target": "id49",
+      "weight": -0.2196
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.05114734299516908,
+      "source": "id24",
+      "target": "id51",
+      "weight": -0.3688
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1370845921450151,
+      "source": "id24",
+      "target": "id52",
+      "weight": -0.2679
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.47806862745098033,
+      "source": "id24",
+      "target": "id54",
+      "weight": -0.2137
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3227191840277778,
+      "source": "id25",
+      "target": "id26",
+      "weight": 0.2207
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5384788438617403,
+      "source": "id25",
+      "target": "id27",
+      "weight": -0.1607
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3081820214669052,
+      "source": "id25",
+      "target": "id29",
+      "weight": 0.2253
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6198122959738847,
+      "source": "id25",
+      "target": "id30",
+      "weight": 0.1309
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4465082079343365,
+      "source": "id25",
+      "target": "id32",
+      "weight": -0.174
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1235702614379085,
+      "source": "id25",
+      "target": "id35",
+      "weight": -0.2526
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3202473730297723,
+      "source": "id25",
+      "target": "id36",
+      "weight": -0.2157
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6600556117290192,
+      "source": "id25",
+      "target": "id37",
+      "weight": 0.1167
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.25279485887096775,
+      "source": "id25",
+      "target": "id38",
+      "weight": -0.2342
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6863630836575876,
+      "source": "id25",
+      "target": "id41",
+      "weight": 0.1032
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4433333333333333,
+      "source": "id25",
+      "target": "id44",
+      "weight": -0.1735
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6210764642082429,
+      "source": "id25",
+      "target": "id47",
+      "weight": -0.1168
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.41908394160583945,
+      "source": "id25",
+      "target": "id50",
+      "weight": -0.1561
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5384788438617403,
+      "source": "id25",
+      "target": "id52",
+      "weight": 0.1289
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.660249747729566,
+      "source": "id25",
+      "target": "id54",
+      "weight": -0.1395
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.031510416666666666,
+      "source": "id26",
+      "target": "id27",
+      "weight": -0.4761
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.0935,
+      "source": "id26",
+      "target": "id28",
+      "weight": 0.3409
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id26",
+      "target": "id29",
+      "weight": 0.7003
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6462064413938754,
+      "source": "id26",
+      "target": "id31",
+      "weight": -0.1218
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1430157593123209,
+      "source": "id26",
+      "target": "id32",
+      "weight": -0.2863
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.36492455138662316,
+      "source": "id26",
+      "target": "id34",
+      "weight": -0.2057
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5042294520547945,
+      "source": "id26",
+      "target": "id35",
+      "weight": -0.1403
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id26",
+      "target": "id37",
+      "weight": 0.6634
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id26",
+      "target": "id38",
+      "weight": -0.449
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id26",
+      "target": "id39",
+      "weight": 0.6151
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id26",
+      "target": "id40",
+      "weight": 0.6111
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.58266206313416,
+      "source": "id26",
+      "target": "id41",
+      "weight": -0.1393
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6546457696228338,
+      "source": "id26",
+      "target": "id42",
+      "weight": -0.1117
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.25279485887096775,
+      "source": "id26",
+      "target": "id43",
+      "weight": -0.2394
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.08659351145038167,
+      "source": "id26",
+      "target": "id44",
+      "weight": -0.3134
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id26",
+      "target": "id47",
+      "weight": 0.4605
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1430157593123209,
+      "source": "id26",
+      "target": "id49",
+      "weight": 0.243
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2029746462264151,
+      "source": "id26",
+      "target": "id50",
+      "weight": -0.2245
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id26",
+      "target": "id51",
+      "weight": 0.5574
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5542344290657439,
+      "source": "id26",
+      "target": "id54",
+      "weight": -0.1826
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.25279485887096775,
+      "source": "id27",
+      "target": "id28",
+      "weight": -0.2482
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.06662995594713657,
+      "source": "id27",
+      "target": "id29",
+      "weight": -0.3714
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6916566698656429,
+      "source": "id27",
+      "target": "id30",
+      "weight": 0.1055
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4091852678571428,
+      "source": "id27",
+      "target": "id31",
+      "weight": -0.1921
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6500734522560336,
+      "source": "id27",
+      "target": "id33",
+      "weight": -0.1166
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id27",
+      "target": "id34",
+      "weight": 0.5043
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4005833333333334,
+      "source": "id27",
+      "target": "id35",
+      "weight": 0.1688
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.12801724137931034,
+      "source": "id27",
+      "target": "id36",
+      "weight": 0.2976
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.06215753424657534,
+      "source": "id27",
+      "target": "id37",
+      "weight": -0.3714
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.25279485887096775,
+      "source": "id27",
+      "target": "id38",
+      "weight": 0.2396
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.10877568493150686,
+      "source": "id27",
+      "target": "id39",
+      "weight": -0.3271
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.031510416666666666,
+      "source": "id27",
+      "target": "id40",
+      "weight": -0.3984
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.24231510416666663,
+      "source": "id27",
+      "target": "id41",
+      "weight": 0.2519
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.0378125,
+      "source": "id27",
+      "target": "id42",
+      "weight": 0.3985
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.30712455035971226,
+      "source": "id27",
+      "target": "id43",
+      "weight": 0.2219
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id27",
+      "target": "id44",
+      "weight": 0.5436
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id27",
+      "target": "id47",
+      "weight": -0.4062
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5517107558139535,
+      "source": "id27",
+      "target": "id49",
+      "weight": -0.115
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.11241554054054054,
+      "source": "id27",
+      "target": "id51",
+      "weight": -0.2914
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3990229007633588,
+      "source": "id27",
+      "target": "id52",
+      "weight": -0.1733
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.22933568329718004,
+      "source": "id27",
+      "target": "id53",
+      "weight": 0.2112
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5092083333333333,
+      "source": "id28",
+      "target": "id29",
+      "weight": 0.1466
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.684085929892892,
+      "source": "id28",
+      "target": "id31",
+      "weight": -0.1087
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id28",
+      "target": "id32",
+      "weight": -0.4284
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.031510416666666666,
+      "source": "id28",
+      "target": "id33",
+      "weight": 0.4702
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6145665212649946,
+      "source": "id28",
+      "target": "id34",
+      "weight": -0.1268
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.27763297872340426,
+      "source": "id28",
+      "target": "id37",
+      "weight": 0.2269
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.12604166666666666,
+      "source": "id28",
+      "target": "id40",
+      "weight": 0.3083
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5558002873563218,
+      "source": "id28",
+      "target": "id41",
+      "weight": 0.1347
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.05114734299516908,
+      "source": "id28",
+      "target": "id45",
+      "weight": -0.3629
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6528932584269663,
+      "source": "id28",
+      "target": "id46",
+      "weight": -0.1021
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.08336614173228347,
+      "source": "id28",
+      "target": "id47",
+      "weight": 0.2955
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.23161177105831535,
+      "source": "id28",
+      "target": "id51",
+      "weight": 0.2383
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.48738271208226214,
+      "source": "id28",
+      "target": "id52",
+      "weight": -0.1376
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.0378125,
+      "source": "id28",
+      "target": "id53",
+      "weight": -0.3474
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.7375172018348624,
+      "source": "id28",
+      "target": "id54",
+      "weight": -0.1089
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4896623743718592,
+      "source": "id29",
+      "target": "id30",
+      "weight": -0.1685
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.43263532763532764,
+      "source": "id29",
+      "target": "id32",
+      "weight": -0.1769
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6719517102615694,
+      "source": "id29",
+      "target": "id33",
+      "weight": -0.1119
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.30332052441229657,
+      "source": "id29",
+      "target": "id34",
+      "weight": -0.2303
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5425936385255649,
+      "source": "id29",
+      "target": "id36",
+      "weight": -0.1431
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id29",
+      "target": "id37",
+      "weight": 0.7245
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id29",
+      "target": "id38",
+      "weight": -0.4476
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id29",
+      "target": "id39",
+      "weight": 0.6966
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id29",
+      "target": "id40",
+      "weight": 0.6458
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5517107558139535,
+      "source": "id29",
+      "target": "id41",
+      "weight": -0.1529
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5882508389261746,
+      "source": "id29",
+      "target": "id42",
+      "weight": -0.1322
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4433333333333333,
+      "source": "id29",
+      "target": "id44",
+      "weight": -0.1718
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.16090425531914893,
+      "source": "id29",
+      "target": "id45",
+      "weight": 0.2705
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6232937365010799,
+      "source": "id29",
+      "target": "id46",
+      "weight": -0.1076
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.031510416666666666,
+      "source": "id29",
+      "target": "id47",
+      "weight": 0.3678
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1370845921450151,
+      "source": "id29",
+      "target": "id49",
+      "weight": 0.2631
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6432139065817409,
+      "source": "id29",
+      "target": "id50",
+      "weight": -0.1048
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id29",
+      "target": "id51",
+      "weight": 0.6175
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.14787011173184358,
+      "source": "id30",
+      "target": "id31",
+      "weight": -0.3112
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.13372713414634146,
+      "source": "id30",
+      "target": "id33",
+      "weight": 0.3303
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6096436403508771,
+      "source": "id30",
+      "target": "id34",
+      "weight": 0.1318
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.05114734299516908,
+      "source": "id30",
+      "target": "id35",
+      "weight": -0.354
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3848259493670886,
+      "source": "id30",
+      "target": "id36",
+      "weight": -0.1995
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.25279485887096775,
+      "source": "id30",
+      "target": "id37",
+      "weight": -0.256
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1959705528846154,
+      "source": "id30",
+      "target": "id38",
+      "weight": 0.2754
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.15985772357723577,
+      "source": "id30",
+      "target": "id39",
+      "weight": -0.2944
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2593288423153693,
+      "source": "id30",
+      "target": "id40",
+      "weight": -0.2374
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.464510067114094,
+      "source": "id30",
+      "target": "id41",
+      "weight": 0.1742
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3830701754385965,
+      "source": "id30",
+      "target": "id42",
+      "weight": -0.1947
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.08336614173228347,
+      "source": "id30",
+      "target": "id43",
+      "weight": -0.3394
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.16090425531914893,
+      "source": "id30",
+      "target": "id44",
+      "weight": -0.2706
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4854889896373057,
+      "source": "id30",
+      "target": "id47",
+      "weight": -0.1503
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5932881637168143,
+      "source": "id30",
+      "target": "id48",
+      "weight": 0.1395
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.36925692182410425,
+      "source": "id30",
+      "target": "id51",
+      "weight": -0.1976
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5929268292682928,
+      "source": "id30",
+      "target": "id52",
+      "weight": 0.1236
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.10877568493150686,
+      "source": "id30",
+      "target": "id53",
+      "weight": -0.2793
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6443730158730159,
+      "source": "id31",
+      "target": "id32",
+      "weight": 0.1098
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.46899535809018567,
+      "source": "id31",
+      "target": "id33",
+      "weight": -0.1768
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1566076294277929,
+      "source": "id31",
+      "target": "id34",
+      "weight": -0.2846
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.33092456896551725,
+      "source": "id31",
+      "target": "id35",
+      "weight": 0.1824
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5273656400966183,
+      "source": "id31",
+      "target": "id37",
+      "weight": 0.1522
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.28671489563567365,
+      "source": "id31",
+      "target": "id41",
+      "weight": -0.234
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.43476375176304655,
+      "source": "id31",
+      "target": "id43",
+      "weight": 0.1672
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.57313069476082,
+      "source": "id31",
+      "target": "id45",
+      "weight": 0.1301
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6557240853658537,
+      "source": "id31",
+      "target": "id46",
+      "weight": 0.1016
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6916566698656429,
+      "source": "id31",
+      "target": "id48",
+      "weight": 0.1046
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.21424199084668188,
+      "source": "id31",
+      "target": "id53",
+      "weight": 0.2129
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.7754563492063493,
+      "source": "id31",
+      "target": "id54",
+      "weight": -0.1058
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4465082079343365,
+      "source": "id32",
+      "target": "id33",
+      "weight": -0.1694
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4433333333333333,
+      "source": "id32",
+      "target": "id36",
+      "weight": -0.1678
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.09029850746268657,
+      "source": "id32",
+      "target": "id37",
+      "weight": -0.3097
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.36304942810457513,
+      "source": "id32",
+      "target": "id38",
+      "weight": 0.1876
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.31561725663716816,
+      "source": "id32",
+      "target": "id39",
+      "weight": -0.2127
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4896075031525851,
+      "source": "id32",
+      "target": "id40",
+      "weight": -0.1436
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5915406006674083,
+      "source": "id32",
+      "target": "id41",
+      "weight": -0.1248
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.22933568329718004,
+      "source": "id32",
+      "target": "id45",
+      "weight": 0.2376
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id32",
+      "target": "id46",
+      "weight": 0.4184
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.16090425531914893,
+      "source": "id32",
+      "target": "id49",
+      "weight": -0.2353
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5429624704491726,
+      "source": "id32",
+      "target": "id50",
+      "weight": 0.1282
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1631907894736842,
+      "source": "id32",
+      "target": "id54",
+      "weight": 0.3382
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.35474999999999995,
+      "source": "id33",
+      "target": "id34",
+      "weight": -0.2082
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.23161177105831535,
+      "source": "id33",
+      "target": "id35",
+      "weight": -0.2097
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.43930477528089895,
+      "source": "id33",
+      "target": "id37",
+      "weight": -0.1839
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.35666047854785476,
+      "source": "id33",
+      "target": "id38",
+      "weight": 0.2138
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.26182519920318725,
+      "source": "id33",
+      "target": "id39",
+      "weight": -0.2378
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4889333122629582,
+      "source": "id33",
+      "target": "id40",
+      "weight": -0.1553
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5896557971014492,
+      "source": "id33",
+      "target": "id41",
+      "weight": 0.1317
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.34956114808652244,
+      "source": "id33",
+      "target": "id43",
+      "weight": -0.2011
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6520695020746888,
+      "source": "id33",
+      "target": "id44",
+      "weight": -0.1197
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.031510416666666666,
+      "source": "id33",
+      "target": "id45",
+      "weight": -0.4419
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3939969135802469,
+      "source": "id33",
+      "target": "id46",
+      "weight": -0.1671
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5429624704491726,
+      "source": "id33",
+      "target": "id50",
+      "weight": 0.124
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2646875,
+      "source": "id33",
+      "target": "id51",
+      "weight": -0.2341
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6383235294117647,
+      "source": "id33",
+      "target": "id52",
+      "weight": 0.1145
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.07202380952380952,
+      "source": "id33",
+      "target": "id53",
+      "weight": -0.302
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6489421052631579,
+      "source": "id33",
+      "target": "id54",
+      "weight": -0.1527
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.42006550218340616,
+      "source": "id34",
+      "target": "id35",
+      "weight": 0.1591
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.29667201834862383,
+      "source": "id34",
+      "target": "id36",
+      "weight": 0.2293
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.22521655701754387,
+      "source": "id34",
+      "target": "id37",
+      "weight": -0.2514
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2176773648648649,
+      "source": "id34",
+      "target": "id40",
+      "weight": -0.2481
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.7037725760456274,
+      "source": "id34",
+      "target": "id41",
+      "weight": 0.1005
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.0378125,
+      "source": "id34",
+      "target": "id42",
+      "weight": 0.3404
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.33092456896551725,
+      "source": "id34",
+      "target": "id43",
+      "weight": 0.2101
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.12019867549668875,
+      "source": "id34",
+      "target": "id44",
+      "weight": 0.3073
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.46899535809018567,
+      "source": "id34",
+      "target": "id46",
+      "weight": 0.1496
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.40649850523168907,
+      "source": "id34",
+      "target": "id47",
+      "weight": -0.1762
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4682313829787234,
+      "source": "id34",
+      "target": "id48",
+      "weight": 0.1533
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.36235426929392445,
+      "source": "id34",
+      "target": "id50",
+      "weight": -0.1702
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3585646622734761,
+      "source": "id34",
+      "target": "id51",
+      "weight": -0.1944
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.58266206313416,
+      "source": "id34",
+      "target": "id52",
+      "weight": -0.1252
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2925493421052632,
+      "source": "id35",
+      "target": "id36",
+      "weight": 0.1981
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4854889896373057,
+      "source": "id35",
+      "target": "id39",
+      "weight": 0.1445
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.08659351145038167,
+      "source": "id35",
+      "target": "id42",
+      "weight": 0.3008
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.031510416666666666,
+      "source": "id35",
+      "target": "id43",
+      "weight": 0.417
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.0378125,
+      "source": "id35",
+      "target": "id44",
+      "weight": 0.3437
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.39226816074188564,
+      "source": "id35",
+      "target": "id45",
+      "weight": 0.1573
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5067249381188119,
+      "source": "id35",
+      "target": "id46",
+      "weight": 0.1108
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.19103287841191066,
+      "source": "id35",
+      "target": "id48",
+      "weight": -0.2237
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.37086991869918695,
+      "source": "id35",
+      "target": "id52",
+      "weight": 0.1475
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.14193548387096774,
+      "source": "id35",
+      "target": "id53",
+      "weight": 0.2245
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5429624704491726,
+      "source": "id35",
+      "target": "id54",
+      "weight": 0.1544
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.16849093264248705,
+      "source": "id36",
+      "target": "id41",
+      "weight": 0.2896
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id36",
+      "target": "id42",
+      "weight": 0.4468
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.12019867549668875,
+      "source": "id36",
+      "target": "id43",
+      "weight": 0.2971
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id36",
+      "target": "id44",
+      "weight": 0.5576
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.13070987654320987,
+      "source": "id36",
+      "target": "id45",
+      "weight": -0.2985
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4039425981873112,
+      "source": "id36",
+      "target": "id46",
+      "weight": 0.1689
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.35341832504145937,
+      "source": "id36",
+      "target": "id47",
+      "weight": -0.1901
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3140519538188277,
+      "source": "id36",
+      "target": "id50",
+      "weight": -0.1908
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.08336614173228347,
+      "source": "id36",
+      "target": "id54",
+      "weight": -0.4823
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.031510416666666666,
+      "source": "id37",
+      "target": "id38",
+      "weight": -0.4168
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id37",
+      "target": "id39",
+      "weight": 0.7113
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id37",
+      "target": "id40",
+      "weight": 0.7343
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.20082838479809975,
+      "source": "id37",
+      "target": "id41",
+      "weight": -0.2682
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3865541601255887,
+      "source": "id37",
+      "target": "id42",
+      "weight": -0.1822
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6528932584269663,
+      "source": "id37",
+      "target": "id43",
+      "weight": -0.1098
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.31927596830985916,
+      "source": "id37",
+      "target": "id44",
+      "weight": -0.203
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4054497751124438,
+      "source": "id37",
+      "target": "id46",
+      "weight": -0.166
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id37",
+      "target": "id47",
+      "weight": 0.5184
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.0378125,
+      "source": "id37",
+      "target": "id49",
+      "weight": 0.3142
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id37",
+      "target": "id51",
+      "weight": 0.6093
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5953173289183222,
+      "source": "id37",
+      "target": "id52",
+      "weight": -0.1079
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id38",
+      "target": "id39",
+      "weight": -0.5421
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.031510416666666666,
+      "source": "id38",
+      "target": "id40",
+      "weight": -0.4105
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5446068904593641,
+      "source": "id38",
+      "target": "id41",
+      "weight": 0.1349
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3848259493670886,
+      "source": "id38",
+      "target": "id43",
+      "weight": -0.1789
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2270397603485839,
+      "source": "id38",
+      "target": "id47",
+      "weight": -0.2267
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.49539580725907384,
+      "source": "id38",
+      "target": "id49",
+      "weight": -0.1293
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.05114734299516908,
+      "source": "id38",
+      "target": "id50",
+      "weight": 0.3188
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id38",
+      "target": "id51",
+      "weight": -0.5076
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4599150815217391,
+      "source": "id38",
+      "target": "id52",
+      "weight": -0.1569
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5512339743589744,
+      "source": "id38",
+      "target": "id54",
+      "weight": 0.1714
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id39",
+      "target": "id40",
+      "weight": 0.6336
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.19146036585365855,
+      "source": "id39",
+      "target": "id41",
+      "weight": -0.2639
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.48556129032258066,
+      "source": "id39",
+      "target": "id44",
+      "weight": -0.1621
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5327421780986763,
+      "source": "id39",
+      "target": "id45",
+      "weight": 0.136
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04702072538860104,
+      "source": "id39",
+      "target": "id47",
+      "weight": 0.3468
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.04296875,
+      "source": "id39",
+      "target": "id49",
+      "weight": 0.3189
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4889333122629582,
+      "source": "id39",
+      "target": "id50",
+      "weight": -0.1373
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id39",
+      "target": "id51",
+      "weight": 0.6123
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.333267094017094,
+      "source": "id39",
+      "target": "id52",
+      "weight": 0.1829
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.08336614173228347,
+      "source": "id40",
+      "target": "id41",
+      "weight": -0.3327
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.26852783203124997,
+      "source": "id40",
+      "target": "id42",
+      "weight": -0.2163
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3323861683848797,
+      "source": "id40",
+      "target": "id44",
+      "weight": -0.1984
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id40",
+      "target": "id47",
+      "weight": 0.5894
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id40",
+      "target": "id51",
+      "weight": 0.6637
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5763294551645857,
+      "source": "id40",
+      "target": "id53",
+      "weight": -0.1064
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5268114406779661,
+      "source": "id41",
+      "target": "id42",
+      "weight": 0.1395
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6511760124610593,
+      "source": "id41",
+      "target": "id43",
+      "weight": 0.1117
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3389734401349072,
+      "source": "id41",
+      "target": "id44",
+      "weight": 0.1952
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5379584826762246,
+      "source": "id41",
+      "target": "id45",
+      "weight": -0.1422
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.51105012300123,
+      "source": "id41",
+      "target": "id46",
+      "weight": -0.133
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.06215753424657534,
+      "source": "id41",
+      "target": "id47",
+      "weight": -0.3253
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.48556129032258066,
+      "source": "id41",
+      "target": "id49",
+      "weight": 0.1419
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2444476141078838,
+      "source": "id41",
+      "target": "id51",
+      "weight": -0.2315
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6789147000983284,
+      "source": "id41",
+      "target": "id54",
+      "weight": -0.1228
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.19326388888888887,
+      "source": "id42",
+      "target": "id43",
+      "weight": 0.2408
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id42",
+      "target": "id44",
+      "weight": 0.4151
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4180966325036603,
+      "source": "id42",
+      "target": "id45",
+      "weight": -0.169
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.43293971631205674,
+      "source": "id42",
+      "target": "id46",
+      "weight": 0.1482
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.10503472222222222,
+      "source": "id42",
+      "target": "id47",
+      "weight": -0.2787
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.13070987654320987,
+      "source": "id42",
+      "target": "id53",
+      "weight": 0.2387
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.01867283950617284,
+      "source": "id43",
+      "target": "id44",
+      "weight": 0.5176
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4161045655375552,
+      "source": "id43",
+      "target": "id46",
+      "weight": 0.1479
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5512339743589744,
+      "source": "id43",
+      "target": "id47",
+      "weight": -0.1228
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1631907894736842,
+      "source": "id44",
+      "target": "id47",
+      "weight": -0.2451
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5681814285714286,
+      "source": "id44",
+      "target": "id48",
+      "weight": -0.1262
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5892835195530727,
+      "source": "id44",
+      "target": "id50",
+      "weight": -0.1075
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4091852678571428,
+      "source": "id44",
+      "target": "id51",
+      "weight": -0.1667
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.30222499999999997,
+      "source": "id44",
+      "target": "id52",
+      "weight": -0.1994
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.2176773648648649,
+      "source": "id44",
+      "target": "id53",
+      "weight": 0.2028
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.6220422535211267,
+      "source": "id44",
+      "target": "id54",
+      "weight": -0.1502
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.43293971631205674,
+      "source": "id45",
+      "target": "id47",
+      "weight": -0.1523
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5213806196840827,
+      "source": "id45",
+      "target": "id48",
+      "weight": 0.1324
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.3389734401349072,
+      "source": "id45",
+      "target": "id51",
+      "weight": 0.1823
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.46746333333333334,
+      "source": "id45",
+      "target": "id52",
+      "weight": 0.1419
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.1235702614379085,
+      "source": "id45",
+      "target": "id53",
+      "weight": 0.2514
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id45",
+      "target": "id54",
+      "weight": 0.5989
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5190204767726161,
+      "source": "id46",
+      "target": "id48",
+      "weight": -0.1246
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4323283261802575,
+      "source": "id46",
+      "target": "id49",
+      "weight": -0.1237
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.02653508771929825,
+      "source": "id47",
+      "target": "id51",
+      "weight": 0.3822
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.16849093264248705,
+      "source": "id47",
+      "target": "id53",
+      "weight": -0.2021
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.21671127562642367,
+      "source": "id48",
+      "target": "id49",
+      "weight": -0.2006
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.46913474240422726,
+      "source": "id48",
+      "target": "id50",
+      "weight": 0.1393
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.23286670235546042,
+      "source": "id49",
+      "target": "id50",
+      "weight": -0.1867
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.39792879019908123,
+      "source": "id49",
+      "target": "id51",
+      "weight": 0.146
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.13070987654320987,
+      "source": "id49",
+      "target": "id53",
+      "weight": 0.2127
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5190204767726161,
+      "source": "id50",
+      "target": "id51",
+      "weight": -0.1216
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.4433333333333333,
+      "source": "id50",
+      "target": "id52",
+      "weight": 0.1273
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.22521655701754387,
+      "source": "id50",
+      "target": "id54",
+      "weight": 0.2813
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.5542344290657439,
+      "source": "id51",
+      "target": "id52",
+      "weight": 0.1135
+    },
+    {
+      "context_index": 0,
+      "pvalue": 0.48819497455470734,
+      "source": "id52",
+      "target": "id54",
+      "weight": 0.192
+    }
+  ],
+  "nodes": [
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id0",
+      "lineage": "k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Corynebacteriales;f__Corynebacteriaceae;g__Corynebacterium;s__",
+      "name": "Corynebacterium",
+      "taxid": 1716,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id1",
+      "lineage": "k__Bacteria;p__Fusobacteria;c__Fusobacteriia;o__Fusobacteriales;f__Fusobacteriaceae;g__Fusobacterium;s__",
+      "name": "Fusobacterium",
+      "taxid": 848,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id2",
+      "lineage": "k__Bacteria;p__Firmicutes;c__Negativicutes;o__Veillonellales;f__Veillonellaceae;g__Veillonella;s__",
+      "name": "Veillonella",
+      "taxid": 29465,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id3",
+      "lineage": "k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Actinomycetales;f__Actinomycetaceae;g__Actinomyces;s__",
+      "name": "Actinomyces",
+      "taxid": 1654,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id4",
+      "lineage": "k__Bacteria;p__Bacteroidetes;c__Bacteroidia;o__Bacteroidales;f__Prevotellaceae;g__Prevotella;s__",
+      "name": "Prevotella",
+      "taxid": 838,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id5",
+      "lineage": "k__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Streptococcaceae;g__Streptococcus;s__",
+      "name": "Streptococcus",
+      "taxid": 1301,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id6",
+      "lineage": "k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Micrococcales;f__Micrococcaceae;g__Rothia;s__",
+      "name": "Rothia",
+      "taxid": 32207,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id7",
+      "lineage": "k__Bacteria;p__Bacteroidetes;c__Bacteroidia;o__;f__;g__;s__",
+      "name": "Bacteroidia",
+      "taxid": 200643,
+      "taxlevel": "Class"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id8",
+      "lineage": "k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Pasteurellales;f__Pasteurellaceae;g__;s__",
+      "name": "Pasteurellaceae",
+      "taxid": 712,
+      "taxlevel": "Family"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id9",
+      "lineage": "k__Bacteria;p__Firmicutes;c__Negativicutes;o__Veillonellales;f__Veillonellaceae;g__Dialister;s__",
+      "name": "Dialister",
+      "taxid": 39948,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id10",
+      "lineage": "k__Bacteria;p__Proteobacteria;c__Epsilonproteobacteria;o__Campylobacterales;f__Campylobacteraceae;g__Campylobacter;s__",
+      "name": "Campylobacter",
+      "taxid": 194,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id11",
+      "lineage": "k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Actinomycetales;f__Actinomycetaceae;g__;s__",
+      "name": "Actinomycetaceae",
+      "taxid": 2049,
+      "taxlevel": "Family"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id12",
+      "lineage": "k__Bacteria;p__Proteobacteria;c__Betaproteobacteria;o__Neisseriales;f__Neisseriaceae;g__Neisseria;s__",
+      "name": "Neisseria",
+      "taxid": 482,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id13",
+      "lineage": "k__Bacteria;p__Fusobacteria;c__Fusobacteriia;o__Fusobacteriales;f__Leptotrichiaceae;g__Leptotrichia;s__",
+      "name": "Leptotrichia",
+      "taxid": 32067,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id14",
+      "lineage": "k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Pasteurellales;f__Pasteurellaceae;g__Haemophilus;s__",
+      "name": "Haemophilus",
+      "taxid": 724,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id15",
+      "lineage": "k__Bacteria;p__Proteobacteria;c__Betaproteobacteria;o__Neisseriales;f__Neisseriaceae;g__;s__",
+      "name": "Neisseriaceae",
+      "taxid": 481,
+      "taxlevel": "Family"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id16",
+      "lineage": "k__Bacteria;p__Bacteroidetes;c__Flavobacteriia;o__Flavobacteriales;f__Flavobacteriaceae;g__Capnocytophaga;s__",
+      "name": "Capnocytophaga",
+      "taxid": 1016,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id17",
+      "lineage": "k__Bacteria;p__Bacteroidetes;c__Bacteroidia;o__Bacteroidales;f__Tannerellaceae;g__Parabacteroides;s__",
+      "name": "Parabacteroides",
+      "taxid": 375288,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id18",
+      "lineage": "k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Lachnospiraceae;g__;s__",
+      "name": "Lachnospiraceae",
+      "taxid": 186803,
+      "taxlevel": "Family"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id19",
+      "lineage": "k__Bacteria;p__Firmicutes;c__Bacilli;o__Bacillales;f__;g__Gemella;s__",
+      "name": "Gemella",
+      "taxid": 1378,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id20",
+      "lineage": "k__Bacteria;p__Firmicutes;c__Negativicutes;o__Selenomonadales;f__Selenomonadaceae;g__Selenomonas;s__",
+      "name": "Selenomonas",
+      "taxid": 970,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id21",
+      "lineage": "k__Bacteria;p__Firmicutes;c__Bacilli;o__Bacillales;f__Bacillaceae;g__Bacillus;s__",
+      "name": "Bacillus",
+      "taxid": 1386,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id22",
+      "lineage": "k__Bacteria;p__Firmicutes;c__Bacilli;o__Bacillales;f__;g__Exiguobacterium;s__",
+      "name": "Exiguobacterium",
+      "taxid": 33986,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id23",
+      "lineage": "k__Bacteria;p__Bacteroidetes;c__Bacteroidia;o__Bacteroidales;f__Porphyromonadaceae;g__Porphyromonas;s__",
+      "name": "Porphyromonas",
+      "taxid": 836,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id24",
+      "lineage": "k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Clostridiales Family XIII. Incertae Sedis;g__;s__",
+      "name": "Clostridiales Family XIII. Incertae Sedis",
+      "taxid": 543314,
+      "taxlevel": "Family"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id25",
+      "lineage": "k__Bacteria;p__Proteobacteria;c__Betaproteobacteria;o__Burkholderiales;f__;g__;s__",
+      "name": "Burkholderiales",
+      "taxid": 80840,
+      "taxlevel": "Order"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id26",
+      "lineage": "k__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Enterococcaceae;g__Enterococcus;s__",
+      "name": "Enterococcus",
+      "taxid": 1350,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id27",
+      "lineage": "k__Bacteria;p__Spirochaetes;c__Spirochaetia;o__Spirochaetales;f__Spirochaetaceae;g__Treponema;s__",
+      "name": "Treponema",
+      "taxid": 157,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id28",
+      "lineage": "k__Bacteria;p__Bacteroidetes;c__Bacteroidia;o__Bacteroidales;f__;g__;s__",
+      "name": "Bacteroidales",
+      "taxid": 171549,
+      "taxlevel": "Order"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id29",
+      "lineage": "k__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Rhodobacterales;f__Rhodobacteraceae;g__Paracoccus;s__",
+      "name": "Paracoccus",
+      "taxid": 265,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id30",
+      "lineage": "k__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Enterococcaceae;g__;s__",
+      "name": "Enterococcaceae",
+      "taxid": 81852,
+      "taxlevel": "Family"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id31",
+      "lineage": "k__Bacteria;p__Firmicutes;c__Tissierellia;o__Tissierellales;f__Tissierellaceae;g__;s__",
+      "name": "Tissierellaceae",
+      "taxid": 1737406,
+      "taxlevel": "Family"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id32",
+      "lineage": "k__Bacteria;p__Actinobacteria;c__Coriobacteriia;o__Coriobacteriales;f__Atopobiaceae;g__Atopobium;s__",
+      "name": "Atopobium",
+      "taxid": 1380,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id33",
+      "lineage": "k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__;f__;g__;s__",
+      "name": "Gammaproteobacteria",
+      "taxid": 1236,
+      "taxlevel": "Class"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id34",
+      "lineage": "k__Bacteria;p__Firmicutes;c__Tissierellia;o__Tissierellales;f__Tissierellaceae;g__Tissierella;s__",
+      "name": "Tissierella",
+      "taxid": 41273,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id35",
+      "lineage": "k__Bacteria;p__Proteobacteria;c__Deltaproteobacteria;o__Desulfovibrionales;f__Desulfovibrionaceae;g__Desulfovibrio;s__",
+      "name": "Desulfovibrio",
+      "taxid": 872,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id36",
+      "lineage": "k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__;g__;s__",
+      "name": "Clostridiales",
+      "taxid": 186802,
+      "taxlevel": "Order"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id37",
+      "lineage": "k__Bacteria;p__Firmicutes;c__Erysipelotrichia;o__Erysipelotrichales;f__Erysipelotrichaceae;g__;s__",
+      "name": "Erysipelotrichaceae",
+      "taxid": 128827,
+      "taxlevel": "Family"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id38",
+      "lineage": "k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Hungateiclostridiaceae;g__;s__",
+      "name": "Hungateiclostridiaceae",
+      "taxid": 2304686,
+      "taxlevel": "Family"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id39",
+      "lineage": "k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Pseudomonadales;f__Pseudomonadaceae;g__Pseudomonas;s__",
+      "name": "Pseudomonas",
+      "taxid": 286,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id40",
+      "lineage": "k__Bacteria;p__Bacteroidetes;c__Bacteroidia;o__Bacteroidales;f__Porphyromonadaceae;g__Microbacter;s__",
+      "name": "Microbacter",
+      "taxid": 1548510,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id41",
+      "lineage": "k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Peptostreptococcaceae;g__;s__",
+      "name": "Peptostreptococcaceae",
+      "taxid": 186804,
+      "taxlevel": "Family"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id42",
+      "lineage": "k__Bacteria;p__;c__;o__;f__;g__;s__",
+      "name": "Bacteria",
+      "taxid": 2,
+      "taxlevel": "Kingdom"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id43",
+      "lineage": "k__Bacteria;p__Synergistetes;c__Synergistia;o__Synergistales;f__Synergistaceae;g__;s__",
+      "name": "Synergistaceae",
+      "taxid": 649777,
+      "taxlevel": "Family"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id44",
+      "lineage": "k__Bacteria;p__Firmicutes;c__;o__;f__;g__;s__",
+      "name": "Firmicutes",
+      "taxid": 1239,
+      "taxlevel": "Phylum"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id45",
+      "lineage": "k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Bifidobacteriales;f__Bifidobacteriaceae;g__;s__",
+      "name": "Bifidobacteriaceae",
+      "taxid": 31953,
+      "taxlevel": "Family"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id46",
+      "lineage": "k__Bacteria;p__Firmicutes;c__Negativicutes;o__Veillonellales;f__Veillonellaceae;g__Megasphaera;s__",
+      "name": "Megasphaera",
+      "taxid": 906,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id47",
+      "lineage": "k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Micrococcales;f__;g__;s__",
+      "name": "Micrococcales",
+      "taxid": 85006,
+      "taxlevel": "Order"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id48",
+      "lineage": "k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Peptostreptococcaceae;g__Peptostreptococcus;s__",
+      "name": "Peptostreptococcus",
+      "taxid": 1257,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id49",
+      "lineage": "k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Pseudomonadales;f__Moraxellaceae;g__Moraxella;s__",
+      "name": "Moraxella",
+      "taxid": 475,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id50",
+      "lineage": "k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Pasteurellales;f__Pasteurellaceae;g__Rodentibacter;s__",
+      "name": "Rodentibacter",
+      "taxid": 1960084,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id51",
+      "lineage": "k__Bacteria;p__Verrucomicrobia;c__Opitutae;o__Opitutales;f__Opitutaceae;g__;s__",
+      "name": "Opitutaceae",
+      "taxid": 134623,
+      "taxlevel": "Family"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id52",
+      "lineage": "k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Chromatiales;f__Chromatiaceae;g__;s__",
+      "name": "Chromatiaceae",
+      "taxid": 1046,
+      "taxlevel": "Family"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id53",
+      "lineage": "k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Pseudomonadales;f__Moraxellaceae;g__Acinetobacter;s__",
+      "name": "Acinetobacter",
+      "taxid": 469,
+      "taxlevel": "Genus"
+    },
+    {
+      "abundance": null,
+      "children": [],
+      "id": "id54",
+      "lineage": "k__Unclassified;p__;c__;o__;f__;g__;s__",
+      "name": "Unclassified",
+      "taxid": 12908,
+      "taxlevel": "Kingdom"
+    }
+  ]
+}

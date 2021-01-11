@@ -1,0 +1,10 @@
+braycurtis,database,sample,tax_level
+0.3690640772376465,GreenGenes,sample1,Family
+0.5025798168018304,GreenGenes,sample1,Genus
+0.9022821506121281,GreenGenes,sample1,Species
+0.36517895169661363,SILVA,sample1,Family
+0.43863919979976873,SILVA,sample1,Genus
+0.9811787889068035,SILVA,sample1,Species
+0.322722069062979,NCBI,sample1,Family
+0.5779954360847223,NCBI,sample1,Genus
+0.9829482943894166,NCBI,sample1,Species

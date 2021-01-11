@@ -34,8 +34,9 @@ make_dot_plot <- function(braycurtis_data) {
 
 emp_soil_data <- tidy_up_data("emp_soil_braycurtis.csv", "emp_soil")
 emp_water_data <- tidy_up_data("emp_water_braycurtis.csv", "emp_water")
+fmt_data <- tidy_up_data("mock12_braycurtis.csv", "stool")
 
-synth_data <- rbind(emp_soil_data, emp_water_data)
+synth_data <- rbind(emp_soil_data, emp_water_data, fmt_data)
 dot_plot <- make_dot_plot(synth_data)
 dot_plot_facet <- facet(dot_plot, facet.by="tax_level")
 # final_plot <- annotate_figure(dot_plot_facet, fig.lab="C", fig.lab.pos="top.left", fig.lab.size=20)

@@ -38,23 +38,28 @@ make_dot_plot <- function(unifrac_data, title) {
 # Weighted
 emp_soil_weighted <- read.csv("emp_soil_weighted_unifrac.csv", sep=",", header=TRUE)
 emp_water_weighted <- read.csv("emp_water_weighted_unifrac.csv", sep=",", header=TRUE)
+fmt_weighted <- read.csv("mock12_weighted_unifrac.csv", sep=",", header=TRUE)
 
 emp_soil_weighted_tidy <- tidy_up_data(emp_soil_weighted, "emp_soil")
 emp_water_weighted_tidy <- tidy_up_data(emp_water_weighted, "emp_water")
+fmt_weighted_tidy <- tidy_up_data(fmt_weighted, "stool")
 
-weighted_tidy <- rbind(emp_soil_weighted_tidy, emp_water_weighted_tidy)
+weighted_tidy <- rbind(emp_soil_weighted_tidy, emp_water_weighted_tidy, fmt_weighted_tidy)
 weighted_plot <- make_dot_plot(weighted_tidy, "weighted unifrac")
 
 # Unweighted
 emp_soil_unweighted <- read.csv("emp_soil_unweighted_unifrac.csv", sep=",", header=TRUE)
 emp_water_unweighted <- read.csv("emp_water_unweighted_unifrac.csv", sep=",", header=TRUE)
+fmt_unweighted <- read.csv("mock12_unweighted_unifrac.csv", sep=",", header=TRUE)
 
 emp_soil_unweighted_tidy <- tidy_up_data(emp_soil_unweighted, "emp_soil")
 emp_water_unweighted_tidy <- tidy_up_data(emp_water_unweighted, "emp_water")
+fmt_unweighted_tidy <- tidy_up_data(fmt_unweighted, "stool")
 
-unweighted_tidy <- rbind(emp_soil_unweighted_tidy, emp_water_unweighted_tidy)
+unweighted_tidy <- rbind(emp_soil_unweighted_tidy, emp_water_unweighted_tidy, fmt_unweighted_tidy)
 unweighted_plot <- make_dot_plot(unweighted_tidy, "unweighted unifrac")
 
+print(weighted_tidy)
 
 final_plot <- ggarrange(weighted_plot, unweighted_plot, labels=c("A", "B"), nrow=1, ncol=2, common.legend=TRUE, legend="right")
 

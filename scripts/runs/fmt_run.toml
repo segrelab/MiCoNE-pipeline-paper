@@ -1,0 +1,868 @@
+# User configuration file for analyzing FMT control data
+
+title = "Analysis of healthy stool samples from FMT study"
+
+order = """
+otu_assignment.sequence_processing.trim_filter_fixed
+(
+  otu_assignment.denoise_cluster.open_reference otu_assignment.chimera_checking.uchime
+  (
+    tax_assignment.assign.blast
+    (
+      otu_processing.filter.abundance.low otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+      |
+      otu_processing.filter.abundance.medium otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+      |
+      otu_processing.filter.abundance.high otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+    )
+    |
+    tax_assignment.assign.naive_bayes.gg
+    (
+      otu_processing.filter.abundance.low otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+      |
+      otu_processing.filter.abundance.medium otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+      |
+      otu_processing.filter.abundance.high otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+    )
+    |
+    tax_assignment.assign.naive_bayes.silva
+    (
+      otu_processing.filter.abundance.low otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+      |
+      otu_processing.filter.abundance.medium otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+      |
+      otu_processing.filter.abundance.high otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+    )
+  )
+  |
+  otu_assignment.denoise_cluster.closed_reference otu_assignment.chimera_checking.uchime
+  (
+    tax_assignment.assign.blast
+    (
+      otu_processing.filter.abundance.low otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+      |
+      otu_processing.filter.abundance.medium otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+      |
+      otu_processing.filter.abundance.high otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+    )
+    |
+    tax_assignment.assign.naive_bayes.gg
+    (
+      otu_processing.filter.abundance.low otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+      |
+      otu_processing.filter.abundance.medium otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+      |
+      otu_processing.filter.abundance.high otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+    )
+    |
+    tax_assignment.assign.naive_bayes.silva
+    (
+      otu_processing.filter.abundance.low otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+      |
+      otu_processing.filter.abundance.medium otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+      |
+      otu_processing.filter.abundance.high otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+    )
+  )
+  |
+  otu_assignment.denoise_cluster.de_novo otu_assignment.chimera_checking.uchime
+  (
+    tax_assignment.assign.blast
+    (
+      otu_processing.filter.abundance.low otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+      |
+      otu_processing.filter.abundance.medium otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+      |
+      otu_processing.filter.abundance.high otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+    )
+    |
+    tax_assignment.assign.naive_bayes.gg
+    (
+      otu_processing.filter.abundance.low otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+      |
+      otu_processing.filter.abundance.medium otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+      |
+      otu_processing.filter.abundance.high otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+    )
+    |
+    tax_assignment.assign.naive_bayes.silva
+    (
+      otu_processing.filter.abundance.low otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+      |
+      otu_processing.filter.abundance.medium otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+      |
+      otu_processing.filter.abundance.high otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+    )
+  )
+  |
+  otu_assignment.denoise_cluster.dada2 otu_assignment.chimera_checking.uchime
+  (
+    tax_assignment.assign.blast
+    (
+      otu_processing.filter.abundance.low otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+      |
+      otu_processing.filter.abundance.medium otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+      |
+      otu_processing.filter.abundance.high otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+    )
+    |
+    tax_assignment.assign.naive_bayes.gg
+    (
+      otu_processing.filter.abundance.low otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+      |
+      otu_processing.filter.abundance.medium otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+      |
+      otu_processing.filter.abundance.high otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+    )
+    |
+    tax_assignment.assign.naive_bayes.silva
+    (
+      otu_processing.filter.abundance.low otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+      |
+      otu_processing.filter.abundance.medium otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+      |
+      otu_processing.filter.abundance.high otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+    )
+  )
+  |
+  otu_assignment.denoise_cluster.deblur otu_assignment.chimera_checking.uchime
+  (
+    tax_assignment.assign.blast
+    (
+      otu_processing.filter.abundance.low otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+      |
+      otu_processing.filter.abundance.medium otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+      |
+      otu_processing.filter.abundance.high otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+    )
+    |
+    tax_assignment.assign.naive_bayes.gg
+    (
+      otu_processing.filter.abundance.low otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+      |
+      otu_processing.filter.abundance.medium otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+      |
+      otu_processing.filter.abundance.high otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+    )
+    |
+    tax_assignment.assign.naive_bayes.silva
+    (
+      otu_processing.filter.abundance.low otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+      |
+      otu_processing.filter.abundance.medium otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+      |
+      otu_processing.filter.abundance.high otu_processing.filter.group otu_processing.export.biom2tsv network_inference.bootstrap.resample
+      (
+        network_inference.correlation.sparcc network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.pearson network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.correlation.spearman network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.spieceasi network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.mldm network_inference.bootstrap.pvalue network_inference.network.make_network
+        |
+        network_inference.direct.magma network_inference.bootstrap.pvalue network_inference.network.make_network
+      )
+    )
+  )
+)
+"""
+
+output_location = "/home/dileep/Documents/results/fmt_controls"
+
+[otu_assignment.sequence_processing.trim_filter_fixed]
+  [[otu_assignment.sequence_processing.trim_filter_fixed.input]]
+    datatype = "sequence_16s"
+    format = ["fastq.gz"]
+    location = "/home/dileep/Documents/microbiome_analysis/seqs/fmt/fmt_controls/*.fastq.gz"
+  [[otu_assignment.sequence_processing.trim_filter_fixed.input]]
+    datatype = "sample_sequence_manifest"
+    format = [""]
+    location = "/home/dileep/Documents/microbiome_analysis/seqs/fmt/fmt_controls/MANIFEST"
+
+[otu_assignment.denoise_cluster.open_reference]
+  [[otu_assignment.denoise_cluster.open_reference.parameters]]
+    process = "pick_open_reference_otus"
+    ncpus = 1
+    reference_sequences = "/home/dileep/Documents/tax_reference_databases/NCBI/16SMicrobial/ncbi_seqs_final.fasta"
+
+[otu_assignment.denoise_cluster.closed_reference]
+  [[otu_assignment.denoise_cluster.closed_reference.parameters]]
+    process = "pick_closed_reference_otus"
+    ncpus = 1
+    reference_sequences = "/home/dileep/Documents/tax_reference_databases/NCBI/16SMicrobial/ncbi_seqs_final.fasta"
+
+[otu_assignment.denoise_cluster.de_novo]
+  [[otu_assignment.denoise_cluster.de_novo.parameters]]
+    process = "pick_de_novo_otus"
+    ncpus = 1
+
+[otu_assignment.denoise_cluster.dada2]
+  [[otu_assignment.denoise_cluster.dada2.parameters]]
+    process = "dada2"
+    ncpus = 4
+
+[otu_assignment.denoise_cluster.deblur]
+  [[otu_assignment.denoise_cluster.deblur.parameters]]
+    process = "deblur"
+    ncpus = 4
+
+[otu_assignment.chimera_checking.uchime]
+
+[tax_assignment.assign.blast]
+  [[tax_assignment.assign.blast.input]]
+    datatype = "sample_metadata"
+    format = ["tsv"]
+    location = "/home/dileep/Documents/microbiome_analysis/seqs/fmt/fmt_controls/sample_metadata.tsv"
+  [[tax_assignment.assign.blast.parameters]]
+    process = "assign_taxonomy"
+    reference_sequences = "/home/dileep/Documents/tax_reference_databases/NCBI/16SMicrobial/ncbi_seqs_final.fasta"
+    tax_map = "/home/dileep/Documents/tax_reference_databases/NCBI/16SMicrobial/ncbi_tax_final.txt"
+
+[tax_assignment.assign.naive_bayes.gg]
+  [[tax_assignment.assign.naive_bayes.gg.input]]
+    datatype = "sample_metadata"
+    format = ["tsv"]
+    location = "/home/dileep/Documents/microbiome_analysis/seqs/fmt/fmt_controls/sample_metadata.tsv"
+  [[tax_assignment.assign.naive_bayes.gg.parameters]]
+    process = "train_classifier"
+    classifier = "/home/dileep/Documents/tax_reference_databases/gg_13_8_otus/gg-modified.qza"
+
+[tax_assignment.assign.naive_bayes.silva]
+  [[tax_assignment.assign.naive_bayes.silva.input]]
+    datatype = "sample_metadata"
+    format = ["tsv"]
+    location = "/home/dileep/Documents/microbiome_analysis/seqs/fmt/fmt_controls/sample_metadata.tsv"
+  [[tax_assignment.assign.naive_bayes.silva.parameters]]
+    process = "train_classifier"
+    classifier = "/home/dileep/Documents/tax_reference_databases/Silva_132_release/silva-132-99-nb-classifier.qza"
+
+[otu_processing.filter.abundance.low]
+  [[otu_processing.filter.abundance.low.parameters]]
+    process = "filter"
+    count_thres = 10
+    prevalenc_thres = 0.05 # kept same as default
+    abundance_thres = 0.005
+
+[otu_processing.filter.abundance.medium]
+
+[otu_processing.filter.abundance.high]
+  [[otu_processing.filter.abundance.high.parameters]]
+    process = "filter"
+    count_thres = 1000
+    prevalenc_thres = 0.1
+    abundance_thres = 0.05
+
+[otu_processing.filter.group]
+  [[otu_processing.filter.group.parameters]]
+    process = "group"
+    tax_levels = "['Family', 'Genus', 'Species']"
+
+[otu_processing.export.biom2tsv]
+
+[network_inference.bootstrap.resample]
+  [[network_inference.bootstrap.resample.parameters]]
+    process = "resample"
+    bootstraps = 1000
+
+[network_inference.correlation.sparcc]
+
+[network_inference.correlation.pearson]
+
+[network_inference.correlation.spearman]
+
+[network_inference.direct.spieceasi]
+
+[network_inference.direct.mldm]
+  [[network_inference.direct.mldm.input]]
+    datatype = "sample_metadata"
+    format = ["tsv"]
+    location = "/home/dileep/Documents/microbiome_analysis/seqs/fmt/fmt_controls/mldm_sample_metadata.tsv"
+
+[network_inference.direct.magma]
+
+[network_inference.bootstrap.pvalue]
+
+[network_inference.network.make_network]
+  [[network_inference.network.make_network.input]]
+    datatype = "metadata"
+    format = ["json"]
+    location = "/home/dileep/Documents/results/fmt_controls/metadata.json"
+  [[network_inference.network.make_network.input]]
+    datatype = "computational_metadata"
+    format = ["json"]
+    location = "/home/dileep/Documents/results/fmt_controls/cmetadata.json"

@@ -29,13 +29,17 @@ def get_similarity(graph1, graph2):
         adj2[u_ind, v_ind] = edata["weight"]
         adj2[v_ind, u_ind] = edata["weight"]
     # E = sum(n(graph1_edges), n(graph2_edges))
-    E = n * n
+    E = 2 * (len(graph1.edges) + len(graph2.edges))
     # d = sum(|graph1_edges-graph2_edges|)
-    mismatch = np.ones((n, n), dtype=np.int)
+    mismatch = np.zeros((n, n), dtype=np.int)
     for u_ind, v_ind in product(range(n), range(n)):
         w1, w2 = adj1[u_ind, v_ind], adj2[u_ind, v_ind]
-        if (w1 * w2) >= 0:
-            mismatch[u_ind, v_ind] = 0
+        if (w1 * w2) < 0:
+            mismatch[u_ind, v_ind] = 1
+        elif w1 == 0 and w2:
+            mismatch[u_ind, v_ind] = 1
+        elif w2 == 0 and w1:
+            mismatch[u_ind, v_ind] = 1
     d = mismatch.sum()
     # S = E - d
     S = (E - d) / E
