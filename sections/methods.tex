@@ -129,8 +129,10 @@
 
   Fisher~\cite{fisher_224a_1948} proposed that for $k$ independent p-values, the statistic $\Psi$:
   \begin{equation*}
-    \Psi = \sum_{i=1}^k -2 \log \left( P_i \right)
-    \Psi \sim \chi^2_{2k}
+    \begin{aligned}
+        \Psi &= \sum_{i=1}^k -2 \log \left( P_i \right) \\
+        \Psi &\sim \chi^2_{2k}
+    \end{aligned}
   \end{equation*}
 
   Brown~\cite{brown_400_1975} extended Fisher's method to dependent p-values by using a re-scaled $\chi^2$ distribution:
@@ -144,20 +146,24 @@
 
   Furthermore, Brown showed that $\mathrm{E}[\Psi]$ and $\mathrm{Var}[\Psi]$ can be calculated directly via a numerical integration:
   \begin{equation*}
-    \mathrm{E}[\Psi] = 2k ~~~\text{and}~~~ \mathrm{Var}[\Psi] = 4k + 2\sum_{i<j} \mathrm{Cov} \left( -2\log(P_i), -2\log(P_j) \right)
+    \mathrm{E}[\Psi] = 2k ~~~\text{and}~~~ \mathrm{Var}[\Psi] = 4k + 2\sum_{i<j} \mathrm{Cov}\left( -2\log(P_i), -2\log(P_j) \right)
   \end{equation*}
 
   Kost and McDermott~\cite{kost_combining_2002} further fit a third-order polynomial to approximate the covariance
   \begin{equation*}
-    \mathrm{Cov} \left( -2\log(P_i), -2\log(P_j) \right) \approx 3.263 \rho_{ij} + 0.710 \rho_{ij}^2 + 0.027 \rho_{ij}^3
+    \mathrm{Cov}\left( -2\log(P_i), -2\log(P_j) \right) \approx 3.263 \rho_{ij} + 0.710 \rho_{ij}^2 + 0.027 \rho_{ij}^3
   \end{equation*}
   where, $\rho_{ij}$ is the correlation between method $i$ and method $j$
 
-  The final combined p-value is then given by:
+  The final combined p-value~\cite{Poole} is then given by:
   \begin{equation*}
-    P_{combined} = 1.0 - \Phi_{2f}\left( \psi / c \right)
-    \text{where},~ $\psi = -2 \sum_{i=1}^k \log(P_i) ~~~\text{and}~~~ \Phi_{2f} = \mathrm{CDF}\left( \chi^2_{2f} \right)
+    \begin{aligned}
+        & P_{combined} = 1.0 - \Phi_{2f}\left( \psi / c \right) \\
+        \text{where},~ &\psi = -2 \sum_{i=1}^k \log(P_i) ~~~\text{and}~~~ \Phi_{2f} = \mathrm{CDF}\left( \chi^2_{2f} \right)
+    \end{aligned}
   \end{equation*}
+  
+  The consensus method in \ac{micone} uses this method to merge the p-values (obtained from bootstrapping) from different methods. The final p-values are used to threshold for significance
 
   \subsection*{Code and Data Availability}
   Pipeline: \href{https://github.com/segrelab/MiCoNE}{https://github.com/segrelab/MiCoNE} \\
