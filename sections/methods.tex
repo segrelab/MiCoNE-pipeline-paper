@@ -48,7 +48,7 @@
   The chimera checking process handles the removal of chimeric sequences created during the \ac{pcr} step.
   The output of this module is a matrix of counts, that describes the number of reads of a particular \ac{otu} or \ac{esv} (rows of the matrix) present in each sample (columns of the matrix).
   The options currently available in the pipeline for denoising and clustering are: open reference clustering, closed reference clustering and de novo clustering methods from \ac{qiime1} v1.9.1~\cite{Caporaso2010} and denoising methods from \ac{dada2} v1.14~\cite{Callahan2016} and Deblur v1.1.0~\cite{Amir2017}.
-  The quality filtering and chimera checking tools are derived from those used in \ac{qiime2} v2019.10.0 and \ac{dada2}. 
+  The quality filtering and chimera checking tools are derived from those used in \ac{qiime2} v2019.10.0 and \ac{dada2}.
 
 
   \subsection*{Taxonomy Assignment (TA)}
@@ -83,20 +83,30 @@
  In order to compare across different networks, and analyze the degree of variability induced by the choice of different modules and parameters, we organized multiple networks into a single mathematical structure that we could use for linear regression.
  In particular, we transformed the adjacency matrix of each co-occurrence network into a vector.
  We then merged the networks generated from all possible combinations of tools into a table (N, see below) in which each column represents one network.
-  
+
+ The merged table $N$ with $p$ edges and $n$ networks, where, each column $N_j$ is the vector representation of one of the networks, each row $L_i$ is the vector representation of one particular edge in all networks (assigned a value of 0 if the edge did not exist in the network but in other networks), and each element $E_{i,j}$ belongs to edge $L_i$ and network $N_j$.
+
   \begin{equation*}
-    N = \begin{bmatrix}
-     edge_{1,1} & edge_{2,1} & \cdots  & edge_{n, 1} \\ 
-     edge_{1,2} & edge_{2,2} & \cdots  & edge_{n, 2} \\ 
-     \vdots & \vdots & \vdots  & \vdots \\ 
-     edge_{1,n} & edge_{2,n} & \cdots  & edge_{n, n}
-    \end{bmatrix}      
+   N_{p \times n} =
+   \begin{bmatrix}
+     L_1 \\
+     L_2 \\
+     \vdots \\
+     L_p
+   \end{bmatrix}
+   =
+   \begin{bmatrix}
+     E_{1,1} & E_{1,2} & \cdots  & E_{1, n} \\
+     E_{2,1} & E_{2,2} & \cdots  & E_{2, n} \\
+     \vdots & \vdots & \vdots  & \vdots \\
+     E_{p,1} & E_{p,2} & \cdots  & E_{p, n}
+   \end{bmatrix}
   \end{equation*}
-  
+
   In other words, $N$ is the merged table, each column $N_i$ is the vector representation of one of the networks, and each row $L_i$ represents one particular edge in all networks (assigned 0 if the edge does not exist in the network).
-      
+
   We use linear regression to express each link $L_i$ as a linear function of categorical variables that describe the possible options in each of the first three steps of the pipeline.
-  
+
   % TODO: Explain the categorical linear model and ANOVA better (text)
   In particular, we infer parameters $\alpha_i$ such that:
    \begin{equation*}
@@ -105,13 +115,49 @@
              \sum_{j=1}^2 \left( \alpha^{OP(j)}_i.\delta^{OP(j)}_i \right) +
              \epsilon_i
    \end{equation*}
-   
+
    where, $\alpha_i$ are the coefficients of the regression, $\epsilon_i$ are the residuals and $\delta_i$ are the indicator variables that correspond to the processes utilized in the pipeline used to create the network $N_i$; for example, $\delta^{DC(1)}_i = 1$ if the DC(1) process was used in the generation of the network $N_i$ .
    Here, (i) DC(1) = "closed reference", DC(2) = "open reference", DC(3) = "de novo", DC(4) = "dada2", DC(5) = "deblur"; (ii)  TA(1) = "GreenGenes", TA(2) = "SILVA", TA(3) = "NCBI"; (iii) OP(1) = "no filtering", OP(2) = "filtering".
-   
+
   The variance contributed by each step of the pipeline is calculated for every connection in the merged table through ANOVA using the Python statsmodels package and is shown in Figure~\ref{fig:figure2}B.
   The total variance for the network is calculated by adding the variances for each connection.
   The PCA analysis is also performed on the merged table to generate Figure~\ref{fig:figure2}C.
+
+  \subsection*{Consensus Network and p-value merging}
+  \vspace{-5mm}
+  Let there be $k$ p-values, denoted by $P_i$, generated from $k$ different methods.
+
+  Fisher~\cite{fisher_224a_1948} proposed that for $k$ independent p-values, the statistic $\Psi$:
+  \begin{equation*}
+    \Psi = \sum_{i=1}^k -2 \log \left( P_i \right)
+    \Psi \sim \chi^2_{2k}
+  \end{equation*}
+
+  Brown~\cite{brown_400_1975} extended Fisher's method to dependent p-values by using a re-scaled $\chi^2$ distribution:
+  \begin{equation*}
+    \Psi \sim c \chi^2_{2f}
+  \end{equation*}
+  where, $f$ is the degrees of freedom and $c$ is the scale factor and are given by:
+  \begin{equation*}
+    f = \frac{\mathrm{E}[\Psi]^2}{\mathrm{Var}[\Psi]} ~~~\text{and}~~~ c = \frac{\mathrm{Var}[\Psi]}{2\mathrm{E}[\Psi]} = \frac{k}{f}
+  \end{equation*}
+
+  Furthermore, Brown showed that $\mathrm{E}[\Psi]$ and $\mathrm{Var}[\Psi]$ can be calculated directly via a numerical integration:
+  \begin{equation*}
+    \mathrm{E}[\Psi] = 2k ~~~\text{and}~~~ \mathrm{Var}[\Psi] = 4k + 2\sum_{i<j} \mathrm{Cov} \left( -2\log(P_i), -2\log(P_j) \right)
+  \end{equation*}
+
+  Kost and McDermott~\cite{kost_combining_2002} further fit a third-order polynomial to approximate the covariance
+  \begin{equation*}
+    \mathrm{Cov} \left( -2\log(P_i), -2\log(P_j) \right) \approx 3.263 \rho_{ij} + 0.710 \rho_{ij}^2 + 0.027 \rho_{ij}^3
+  \end{equation*}
+  where, $\rho_{ij}$ is the correlation between method $i$ and method $j$
+
+  The final combined p-value is then given by:
+  \begin{equation*}
+    P_{combined} = 1.0 - \Phi_{2f}\left( \psi / c \right)
+    \text{where},~ $\psi = -2 \sum_{i=1}^k \log(P_i) ~~~\text{and}~~~ \Phi_{2f} = \mathrm{CDF}\left( \chi^2_{2f} \right)
+  \end{equation*}
 
   \subsection*{Code and Data Availability}
   Pipeline: \href{https://github.com/segrelab/MiCoNE}{https://github.com/segrelab/MiCoNE} \\
