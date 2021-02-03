@@ -125,6 +125,7 @@
 
   Unlike the previous steps of the pipeline, where were we evaluated the performance of methods on mock datasets, there is no equivalent dataset that contain a set of known interactions for the evaluation of the network inference algorithms.
   Therefore, we propose the construction of a consensus network (Figure~\ref{fig:figure5}C) involving \ac{magma}, \ac{mldm}, \ac{spieceasi} and \ac{sparcc}. This consensus network is built by merging the p-values generated from bootstraps of the original taxonomy counts table using the Browns p-value combining method~\cite{brown_400_1975} (see Methods section).
+  Note that we do not use Pearson and Spearman methods in the p-value merging step and these algorithms are only used for demonstration and comparison.
   Based on this approach, \ac{micone} reports as default output the consensus network, annotated with weights (correlations for \ac{sparcc} and direct associations for the other methods) for all four methods.
 
   \FloatBarrier

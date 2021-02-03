@@ -78,7 +78,7 @@
   These associations can be represented as a network, with nodes representing taxonomies of the micro-organisms and edges representing the association between them.
   A null model is created by re-sampling and bootstrapping the correlation/interaction matrix and is used to calculate the significance of the inferred associations by calculating the p-values against this null model \cite{Watts2018}.
   The pipeline includes Pearson, Spearman and FastSpar v0.0.10 (a faster implementation of \ac{sparcc})~\cite{Watts2018} as the pairwise correlation metrics, and \ac{spieceasi} v1.0.7~\cite{Kurtz2015}, \ac{mldm} v1.1~\cite{Yang2017} and \ac{magma}~\cite{Cougoul2019} as the direct association metrics.
-  The empirical Browns method~\cite{Poole} is used for combining p-values from the various methods to obtain a consensus p-value, which is used to create the consensus network.
+  The Brown's p-value merging method~\cite{brown_400_1975} is used for combining p-values from the various methods to obtain a consensus p-value, which is used to create the consensus network.
 
   \subsection*{Network Variability}
   \vspace{-5mm}
@@ -121,9 +121,9 @@
    where, $\alpha_i$ are the coefficients of the regression, $\epsilon_i$ are the residuals and $\delta_i$ are the indicator variables that correspond to the processes utilized in the pipeline used to create the network $N_i$; for example, $\delta^{DC(1)}_i = 1$ if the DC(1) process was used in the generation of the network $N_i$ .
    Here, (i) DC(1) = "closed reference", DC(2) = "open reference", DC(3) = "de novo", DC(4) = "dada2", DC(5) = "deblur"; (ii)  TA(1) = "GreenGenes", TA(2) = "SILVA", TA(3) = "NCBI"; (iii) OP(1) = "no filtering", OP(2) = "filtering".
 
-  The variance contributed by each step of the pipeline is calculated for every connection in the merged table through ANOVA using the Python statsmodels package and is shown in Figure~\ref{fig:figure2}B.
+  The variance contributed by each step of the pipeline is calculated for every connection in the merged table through ANOVA using the Python statsmodels package and is shown in Figure~\ref{fig:figure2}A.
   The total variance for the network is calculated by adding the variances for each connection.
-  The PCA analysis is also performed on the merged table to generate Figure~\ref{fig:figure2}C.
+  The merged network table $N_{p \times n}$ is used as the input to the PCA analysis to generate Figure~\ref{fig:figure2}B.
 
   \subsection*{Consensus Network and p-value merging}
   \vspace{-5mm}
@@ -163,7 +163,7 @@
   \end{equation}
   where, $\rho_{ij}$ is the correlation between method $i$ and method $j$
 
-  The final combined p-value~\cite{Poole} is then given by:
+  The final combined p-value~\cite{Poole_Gibbs_Shmulevich_Bernard_Knijnenburg_2016} is then given by:
   \begin{equation}
     \begin{aligned}
         & P_{combined} = 1.0 - \Phi_{2f}\left( \psi / c \right) \\
@@ -172,7 +172,9 @@
     \label{eqn:pvalue-combined}
   \end{equation}
 
-  The consensus method in \ac{micone} (refer Documentation) uses Equation~\ref{eqn:covariance-pvalues} to estimate the covariance of the pvalues and Equation~\ref{eqn:pvalue-combined} to merge the p-values (obtained from bootstrapping) from different methods. The combined p-values are used to threshold for significance during the consensus network step.
+  The consensus method in \ac{micone} (refer Documentation) uses Equation~\ref{eqn:covariance-pvalues} to estimate the covariance of the pvalues and Equation~\ref{eqn:pvalue-combined} to merge the p-values (obtained from bootstrapping) from different methods.
+  Note that we do not use Pearson and Spearman methods in the p-value merging step and these algorithms are only used for demonstration and comparison.
+  The combined p-values are used to threshold for significance during the consensus network step.
 
   \subsection*{Code and Data Availability}
   Pipeline: \href{https://github.com/segrelab/MiCoNE}{https://github.com/segrelab/MiCoNE} \\
