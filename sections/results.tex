@@ -109,13 +109,13 @@
 
   \subsection*{Networks generated using different network inference methods show notable difference in edge-density and connectivity}
 
-  % TODO: Talk about the difference between correlations and associations
   The six different network inference methods used in this study are \ac{magma}~\cite{Cougoul2019}, \ac{mldm}~\cite{Yang2017}, \ac{spieceasi}~\cite{Kurtz2015}, \ac{sparcc}~\cite{Friedman2012}, Spearman and Pearson.
   These network inference methods fall into two groups, the first set of methods (Pearson, Spearman, \ac{sparcc}) infer pairwise correlations while the second set infer direct associations (\ac{spieceasi}, \ac{mldm}, \ac{magma}).
   Pairwise correlation methods involve calculating the correlation coefficient between every pair of \ac{otu}/\ac{esv}s leading to the detection of spurious indirect connections.
   On the other hand, direct association methods use conditional independence to avoid the detection of correlated but indirectly connected \ac{otu}s~\cite{Kurtz2015,Menon2018}.
 
-  For the analysis presented in this section, we used the taxonomy composition table obtained using the \ac{ncbi} reference database as the input for algorithms that infer co-occurrence associations between the microbes.
+  For the analysis presented in this section, we used the taxonomy counts table obtained using the \ac{ncbi} reference database as the input for algorithms that infer co-occurrence associations between the microbes.
+  The taxonomy count tables are first collapsed to the Genus level (or the required taxonomy level) by summing up the counts of the lower taxonomy levels that map to the same higher taxonomy level name.
   Figure~\ref{fig:figure5}A shows the networks inferred from this dataset using the different inference algorithms.
   The different networks differ vastly in their edge-density and connectivity; even some of the edges in common to these networks have their signs inverted. Note, however, that some of these comparisons depend on the threshold that has to be applied to the pairwise correlations methods (currently 0.3, based on~\cite{Friedman2012}).
   To get a more quantitative picture of the differences between the inferred networks, we checked the distribution of common nodes and edges (Figure~\ref{fig:figure5}B) using UpSet plots~\cite{Lex} (only \ac{magma}, \ac{mldm}, \ac{spieceasi}, \ac{sparcc} are used in the comparison since Pearson and Spearman add a large number of spurious edges since they are not intended for compositional datasets).
