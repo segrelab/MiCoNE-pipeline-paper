@@ -66,9 +66,10 @@
   \subsection*{OTU and ESV Processing (OP)}
   \vspace{-5mm}
   This module deals with normalization, filtering and applying transformations to the \ac{otu} or \ac{esv} counts matrix.
-  Rarefaction is a normalization technique used to overcome the bias that might arise due to variable sampling depth in different samples.
-  This is performed either by sub-sampling or by normalization of the matrix to the lowest sampling depth \cite{Weiss2015}.
-  Rarefaction is usually followed by filtering, which is performed to remove samples or features (\ac{otu}s or \ac{esv}s) from the count matrix that are sparse.
+  The module also supports rarefaction, which is a normalization technique used to overcome the bias that might arise due to variable sampling depth in different samples.
+  This is performed either by sub-sampling or by normalization of the matrix to the lowest sampling depth~\cite{Weiss2015}.
+  Although the pipeline supports rarefaction, the analyses reported in the paper do not rareify the counts matrices.
+  Filtering, is performed to remove samples or features (\ac{otu}s or \ac{esv}s) from the count matrix that are sparse.
   In order to determine the filtering threshold we fix the number of samples and correlation detection power needed and determine the number of features to be used.
   Finally, transformations are performed in order to correct for and overcome the compositional bias that is inherent in a counts matrix (in most cases this is handled by the network inference algorithm).
 
