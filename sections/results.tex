@@ -90,7 +90,7 @@
   The assignments beyond Family level (Family, Genus and Species) are very dissimilar with $<70\%$ similarity between any pair of databases.
   There are no two reference databases that are more similar than the other pairs, with \ac{gg} and SILVA producing only marginally similar assignments compared to \ac{ncbi}.
   This implies that the taxonomy assignments from each reference database are fairly unique and are largely responsible for the differences observed in the co-occurrence networks generated from different taxonomy databases.
-  
+
   Supplementary Figure~\ref{fig:figureS4} shows that the top 20 most abundant genera in the three resulting taxonomy composition tables are different.
   For example, the most abundant genus in the \ac{gg} taxonomy table was \textit{Escherichia} whereas in the SILVA taxonomy table it was \textit{Escherichia-Shigella}.
   Although these are minor differences, when comparing a large number of taxonomy composition tables these problems are hard to diagnose.
@@ -124,13 +124,13 @@
   These results indicate that there is a substantial rewiring of connections in the inferred networks.
 
   Unlike the previous steps of the pipeline, where were we evaluated the performance of methods on mock datasets, there is no equivalent dataset that contain a set of known interactions for the evaluation of the network inference algorithms.
-  Therefore, we propose the construction of a consensus network (Figure~\ref{fig:figure5}C) involving \ac{magma}, \ac{mldm}, \ac{spieceasi} and \ac{sparcc}. This consensus network is built by merging the p-values generated from bootstraps of the original taxonomy composition table using the Browns p-value combining method~\cite{Poole} (see Methods section).
+  Therefore, we propose the construction of a consensus network (Figure~\ref{fig:figure5}C) involving \ac{magma}, \ac{mldm}, \ac{spieceasi} and \ac{sparcc}. This consensus network is built by merging the p-values generated from bootstraps of the original taxonomy counts table using the Browns p-value combining method~\cite{brown_400_1975} (see Methods section).
   Based on this approach, \ac{micone} reports as default output the consensus network, annotated with weights (correlations for \ac{sparcc} and direct associations for the other methods) for all four methods.
 
   \FloatBarrier
 
   \subsubsection*{The default pipeline}
-  
+
   The systematic analyses performed in the previous sections clearly show that the choice of tools and parameters can have a big impact on the final co-occurrence network. For some of these choices (e.g. \ac{dada2} vs. deblur) there is no clear metric to establish a best protocol.
   For other choices, the mock communities provide an opportunity to select combination of parameters that yield more accurate and robust results.
   Despite this partial degree of assessment, we wish to suggest a combination of tools and parameters that produce networks that are derived from the combination of tools which performed best on the mock communities, and displayed highest robustness to switching to alternative methods.
