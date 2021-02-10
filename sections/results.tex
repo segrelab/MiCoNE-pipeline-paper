@@ -81,8 +81,9 @@
   The three databases vastly differ in terms of their last update status - \ac{gg} was last updated on May 2013, SILVA was last updated on December 2017 at the time of writing and \ac{ncbi} is updated as new sequences are curated.
   Since updates to taxonomic classifications are frequent, these databases vary significantly in terms of taxonomy hierarchies including species names and phylogenetic relationships~\cite{Balvociute2017}.
 
-  The representative sequences obtained from the \ac{dada2} method in DC step were used for taxonomic assignment using the three reference databases.
+  The representative sequences obtained from the \ac{dada2} method in the DC step were used for taxonomic assignment using the three reference databases.
   Figure~\ref{fig:figure4}A depicts a flow diagram that shows how the top 50 representative sequences (sorted by abundance) are assigned a Genus according to the three different databases.
+  % TOOD: Update with a more quantitative description
   We observe that not only does the assigned Genus composition vary significantly, but the percentage of unassigned representative sequences (gray) also differ.
   Even the most abundant representative sequence is assigned to an "unknown" Genus in two of the three databases.
   A representative sequence might be assigned an "unknown" Genus for one of two reasons: the first is if the taxonomy identifier associated with the sequence in the database did not contain a Genus; the second (more likely) reason is that the database contains multiple sequences that are very similar to the query (representative) sequence and the consensus algorithm (from \ac{qiime2}) is unable to assign one particular Genus at the required confidence.
@@ -101,7 +102,7 @@
   In order to obtain an absolute measure of accuracy of the taxonomic assignments we use the expected reference sequences from the mock datasets as the query sequences for the databases and the expected taxonomic composition as the standard to compare against (Figure~\ref{fig:figure4}C).
   Again, we observe that none of the databases perform better than the others in absolute terms.
 
-  Given that no database performs better than others against mock datasets, and that databases are almost equally distant from each other in terms of final output, the choice of which database to use should be driven by other reason.
+  Given that no database performs better than others against mock datasets, and that databases are almost equally distant from each other in terms of final output, the choice of which database to use should be driven by other reasons.
   One user-specific way to choose, would be based on the known representation of taxa for the microbiome of interest (see also Discussion). Another reason could be the frequency of updates and the potential for future growth, which prompted us to set \ac{ncbi} as the \ac{micone} standard for taxonomy assignment.
  In addition to being regularly maintained and updated the \ac{ncbi} database already has the advantage that its accuracy of assignments is still comparable to the SILVA and \ac{gg} reference databases that are routinely used as reference databases.
 

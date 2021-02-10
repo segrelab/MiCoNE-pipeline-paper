@@ -77,9 +77,9 @@
   \vspace{-5mm}
   This module deals with the inference of co-occurrence associations from the \ac{otu} or \ac{esv} counts matrix.
   The counts matrices are collapsed to the Genus level (or the required taxonomy level) by adding up the counts of \ac{otu} or \ac{esv} that map to the same taxa.
-  These collapsed matrices are as input to the network inferrence methods to produce association matrices at the appropriate taxonomy level.
-  These associations can be represented as a network, with nodes representing taxonomies of the micro-organisms and edges representing the association between them.
-  A null model is created by re-sampling and bootstrapping the correlation/interaction matrix and is used to calculate the significance of the inferred associations by calculating the p-values against this null model \cite{Watts2018}.
+  These collapsed matrices are as used as input to the network inferrence methods to produce association matrices at the appropriate taxonomy level.
+  These associations can be represented as a network, with nodes representing taxonomies of the micro-organisms and edges representing the associations between them.
+  A null model is created by re-sampling and bootstrapping the correlation/interaction matrix and is used to calculate the significance of the inferred associations by calculating the p-values against this null model~\cite{Watts2018}.
   The pipeline includes Pearson, Spearman and FastSpar v0.0.10 (a faster implementation of \ac{sparcc})~\cite{Watts2018} as the pairwise correlation metrics, and \ac{spieceasi} v1.0.7~\cite{Kurtz2015}, \ac{mldm} v1.1~\cite{Yang2017} and \ac{magma}~\cite{Cougoul2019} as the direct association metrics.
   The Brown's p-value merging method~\cite{brown_400_1975} is used for combining p-values from the various methods to obtain a consensus p-value, which is used to create the consensus network.
 
