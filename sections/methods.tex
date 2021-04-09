@@ -179,6 +179,17 @@
   Note that we do not use Pearson and Spearman methods in the p-value merging step and these algorithms are only used for demonstration and comparison.
   The combined p-values are used to threshold for significance during the consensus network step.
 
+  \subsection*{Synthetic interaction data}
+  \vspace{-5mm}
+
+  We generated synthetic interaction data using two methodologies previously used for benchmarking network inference methods.
+
+  The first method, hereby referred to as ``seqtime'', used generalized Lotka-Volterra (gLV) equations to model the microbial community dynamics and utilized the Klemm–Eguı́luz algorithm to generate a clique-based interaction network \cite{rottjersHairballsHypothesesBiological2018}. We used the \href{https://github.com/hallucigenia-sparsa/seqtime}{seqtime} R package to simulate communities with number of species (\(N\)) varying from 10 to 150 and number of samples (\(S\)) varying from 50 to 500. The abundance values of the species in the community at the end of the simulation time are used to create the OTU table.
+
+  The second method, hereby referred to as ``NorTA'', used the Normal to Anything (NorTA) approach coupled with a given interaction network topology to generate the abundance distribution of the microbial community \cite{kurtzSparseCompositionallyRobust2015}. We used the \href{https://github.com/zdk123/SpiecEasi}{spieceasi} R package to simulate communities with different network topologies (scale-free, cluster, block, Erdos-Renyi, band and hub) and target abundance distributions (Negative Binomial, Poisson, Zero-Inflated Negative Binomial). The OTU table was generated using the American Gut Project example in the \texttt{spieceasi} package (amgut1.filt) with the default parameter options.
+
+  For each method, we generated the OTU table depicting the abundances of species and used this to generate association matrices using MiCoNE. The interaction matrix was used as the source of expected (true) interactions and the associations predicted using MiCoNE were the source of predicted interactions. We evaluated the precision and sensitivity of the associations predicted by the individual network inference methods as well as the consensus (Figure XXX).
+
   \subsection*{Code and Data Availability}
   Pipeline: \href{https://github.com/segrelab/MiCoNE}{https://github.com/segrelab/MiCoNE} \\
   Documentation: \href{https://micone.readthedocs.io}{https://micone.readthedocs.io} \\
