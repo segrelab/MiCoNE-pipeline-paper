@@ -257,3 +257,6 @@ scripts/**/*.gml
 
 # Comments about drafts
 comments/
+
+# Ignore the data directory
+data/
