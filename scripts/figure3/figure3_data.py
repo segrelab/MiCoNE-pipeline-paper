@@ -70,14 +70,14 @@ def get_unifrac(
 def main(trees: str, otus: str, weighted: bool, threshold: int, output: str):
     output_path = pathlib.Path(output)
     assert output_path.exists()
-    dataset_name = pathlib.Path(trees).parent.stem
     tree_files = get_files(trees)
     otu_files = get_files(otus)
-    otu_files_map = {otu_file.stem: otu_file for otu_file in otu_files}
+    otu_files_map = {otu_file.parent.parent.stem: otu_file for otu_file in otu_files}
     data = []
     for tree_file in tree_files:
-        method_1, method_2 = tree_file.stem.split("-")
+        method_1, method_2 = tree_file.parent.parent.stem.split("-")
         otu_file_1, otu_file_2 = otu_files_map[method_1], otu_files_map[method_2]
+        print(f"Generating unifrac for {method_1} and {method_2}")
         unifrac_data = get_unifrac(
             otu_file_1, otu_file_2, tree_file, weighted=weighted, threshold=threshold
         )
@@ -116,13 +116,9 @@ def main(trees: str, otus: str, weighted: bool, threshold: int, output: str):
             )
     unifrac_df = pd.DataFrame(data)
     if weighted:
-        unifrac_df.to_csv(
-            output_path / f"{dataset_name}_weighted_unifrac.csv", index=False
-        )
+        unifrac_df.to_csv(output_path / f"weighted_unifrac.csv", index=False)
     else:
-        unifrac_df.to_csv(
-            output_path / f"{dataset_name}_unweighted_unifrac.csv", index=False
-        )
+        unifrac_df.to_csv(output_path / f"unweighted_unifrac.csv", index=False)
 
 
 if __name__ == "__main__":

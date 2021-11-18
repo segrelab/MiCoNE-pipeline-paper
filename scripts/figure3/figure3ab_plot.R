@@ -4,9 +4,12 @@ library(dplyr)
 library(ggplot2)
 library(ggpubr)
 
-methods <- c("closed_reference", "de_novo", "open_reference", "deblur", "dada2")
+methods <- c("closed reference", "de novo", "open reference", "deblur", "dada2")
 
 tidy_up_data <- function(unifrac_data) {
+    unifrac_data[unifrac_data == "closed_reference"] = "closed reference"
+    unifrac_data[unifrac_data == "open_reference"] = "open reference"
+    unifrac_data[unifrac_data == "de_novo"] = "de novo"
     unifrac_data$method1 <- factor(unifrac_data$method1, levels=methods)
     unifrac_data$method2 <- factor(unifrac_data$method2, levels=methods)
     tidy_data <- unifrac_data %>%
@@ -40,13 +43,13 @@ plot_heatmap <- function(data, title) {
         coord_fixed()
 }
 
-unweighted <- read.csv("fmt_unweighted_unifrac.csv", sep=",", header=TRUE)
+unweighted <- read.csv("../../data/figure3/output/moving_pictures/unweighted_unifrac.csv", sep=",", header=TRUE)
 unweighted_tidy <- tidy_up_data(unweighted)
-weighted <- read.csv("fmt_weighted_unifrac.csv", sep=",", header=TRUE)
+weighted <- read.csv("../../data/figure3/output/moving_pictures/weighted_unifrac.csv", sep=",", header=TRUE)
 weighted_tidy <- tidy_up_data(weighted)
 
 weighted_plot <- plot_heatmap(weighted_tidy, "weighted unifrac")
 unweighted_plot <- plot_heatmap(unweighted_tidy, "unweighted unifrac")
 
 heatmap_plot <- ggarrange(weighted_plot, unweighted_plot, nrow=1, ncol=2, labels=c("A", "B"), common.legend=TRUE, legend="right")
-ggsave("figure3ab.pdf", heatmap_plot, width=11, height=8.5)
+ggsave("figure3ab.pdf", heatmap_plot, width=11, height=5.5)
