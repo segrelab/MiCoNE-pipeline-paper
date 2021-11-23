@@ -7,14 +7,15 @@ import networkx as nx
 import numpy as np
 import pandas as pd
 
-from mindpipe import NetworkGroup, Lineage
+from micone import Network, Lineage
 
 
 def write_networks(file_paths, multigraph, color_key_level, output_path):
     combined_graph = nx.Graph()
     for file in file_paths:
-        network = NetworkGroup.load_json(file)
-        network_name = file.stem
+        network = Network.load_json(file)
+        network_name = file.parent.parent.parent.stem
+        print(f"Writing network for {network_name}")
         graph = network.graph
         if multigraph:
             G = nx.MultiGraph()
@@ -43,6 +44,7 @@ def write_networks(file_paths, multigraph, color_key_level, output_path):
                 source_name, target_name, weight=weight, pvalue=pvalue
             )
         nx.write_gml(G, str(output_path / f"{network_name}.gml"))
+    print("Writing the combined graph")
     nx.write_gml(combined_graph, str(output_path / "combined.gml"))
     return list(combined_graph.nodes), list(combined_graph.edges)
 
@@ -50,13 +52,13 @@ def write_networks(file_paths, multigraph, color_key_level, output_path):
 def write_node_matrix(file_paths, nodes, output_path):
     node_set = set(nodes)
     rows = list(node_set)
-    cols = [f.stem for f in file_paths]
+    cols = [f.parent.parent.parent.stem for f in file_paths]
     node_df = pd.DataFrame(
         data=np.zeros((len(rows), len(cols))), index=rows, columns=cols
     )
     for file in file_paths:
-        network = NetworkGroup.load_json(file)
-        network_name = file.stem
+        network = Network.load_json(file)
+        network_name = file.parent.parent.parent.stem
         graph = network.graph
         for node, ndata in graph.nodes(data=True):
             name = ndata["name"]
@@ -64,6 +66,7 @@ def write_node_matrix(file_paths, nodes, output_path):
                 node_df.loc[name, network_name] += abs(edata["weight"])
     final_df = node_df.loc[(node_df != 0).any(axis=1)]
     final_df.index.name = "Nodes"
+    print("Writing node matrix")
     final_df.to_csv(output_path / "nmatrix.csv", sep=",", index=True)
 
 
@@ -76,13 +79,13 @@ def write_edge_matrix(file_paths, edges, output_path):
             edge_set.add(edge)
             rows.append(f"{source}-{target}-pos")
             rows.append(f"{source}-{target}-neg")
-    cols = [f.stem for f in file_paths]
+    cols = [f.parent.parent.parent.stem for f in file_paths]
     edge_df = pd.DataFrame(
         data=np.zeros((len(rows), len(cols))), index=rows, columns=cols
     )
     for file in file_paths:
-        network = NetworkGroup.load_json(file)
-        network_name = file.stem
+        network = Network.load_json(file)
+        network_name = file.parent.parent.parent.stem
         graph = network.graph
         id_name_map = dict()
         for node, ndata in graph.nodes(data=True):
@@ -101,6 +104,7 @@ def write_edge_matrix(file_paths, edges, output_path):
             edge_df.loc[ename, network_name] = abs(edata["weight"])
     final_df = edge_df.loc[(edge_df != 0).any(axis=1)]
     final_df.index.name = "Edges"
+    print("Writing edge matrix")
     final_df.to_csv(output_path / "ematrix.csv", sep=",", index=True)
 
 
