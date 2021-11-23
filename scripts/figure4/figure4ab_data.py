@@ -8,7 +8,7 @@ import click
 
 def write_tables(file_paths, notus, output_path):
     for file in file_paths:
-        db_name = file.stem
+        db_name = file.parent.parent.parent.stem
         otu = load_table(str(file))
         otu_df = otu.to_dataframe(dense=True)
         obs_metadata = otu.metadata_to_dataframe(axis="observation")
@@ -22,7 +22,9 @@ def write_tables(file_paths, notus, output_path):
         final_df.index = range(1, notus + 1)
         final_df.index.name = "OTU"
         final_df["empty"] = [""] * notus
-        final_df.to_csv(output_path / f"{db_name}.csv", sep=",", index=True)
+        output_file = output_path / f"{db_name}.csv"
+        print(f"Writing file {output_file}")
+        final_df.to_csv(output_file, sep=",", index=True)
 
 
 @click.command()

@@ -27,7 +27,9 @@ combine_data <- function(db1, db2) {
     final_tbl <- comb_tbl %>%
         gather(levels, key="tax_level", value="value") %>%
         select_at(.vars=c("tax_level", "value", "type"))
-    final_tbl$value = final_tbl$value / nrow(db1) * 100
+    # final_tbl$value = final_tbl$value / nrow(db1) * 100
+    # if we want to display the numbers instead
+    final_tbl$value = final_tbl$value
     return(final_tbl)
 }
 
@@ -51,9 +53,9 @@ make_bar_plot <- function(data, title) {
 }
 
 # Importing data
-gg <- tidy_up_data("fmt_gg.csv", notu)
-silva <- tidy_up_data("fmt_silva.csv", notu)
-ncbi <- tidy_up_data("fmt_ncbi.csv", notu)
+gg <- tidy_up_data("../../data/figure4/output/moving_pictures/gg.csv", notu)
+silva <- tidy_up_data("../../data/figure4/output/moving_pictures/silva.csv", notu)
+ncbi <- tidy_up_data("../../data/figure4/output/moving_pictures/ncbi.csv", notu)
 
 # Combinations
 gg_silva <- combine_data(gg, silva)

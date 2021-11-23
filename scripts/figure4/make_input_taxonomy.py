@@ -4,7 +4,7 @@ import click
 from ete3 import NCBITaxa
 import pandas as pd
 
-from mindpipe import Lineage
+from micone import Lineage
 
 NCBI = NCBITaxa()
 TAX_LEVELS = Lineage._fields

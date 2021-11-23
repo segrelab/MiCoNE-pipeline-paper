@@ -17,9 +17,9 @@ read_data <- function(data_file, n) {
     raw_df
 }
 
-gg <- read_data("fmt_gg.csv", notu)
-silva <- read_data("fmt_silva.csv", notu)
-ncbi <- read_data("fmt_ncbi.csv", notu)
+gg <- read_data("../../data/figure4/output/moving_pictures/gg.csv", notu)
+silva <- read_data("../../data/figure4/output/moving_pictures/silva.csv", notu)
+ncbi <- read_data("../../data/figure4/output/moving_pictures/ncbi.csv", notu)
 
 make_alluvial_plot <- function(db_data, title) {
     genus_factors <- levels(factor(db_data$Genus))
