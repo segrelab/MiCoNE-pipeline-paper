@@ -53,7 +53,7 @@ def get_unifrac(
         else:
             unifrac_value = unweighted_unifrac(u, v, otu_ids, tree, validate=True)
         unifrac_data[col] = unifrac_value
-    return pd.Series(unifrac_data)
+    return pd.Series(unifrac_data), otu_1.shape[0], otu_2.shape[0]
 
 
 @click.command()
@@ -78,38 +78,40 @@ def main(trees: str, otus: str, weighted: bool, threshold: int, output: str):
         method_1, method_2 = tree_file.parent.parent.stem.split("-")
         otu_file_1, otu_file_2 = otu_files_map[method_1], otu_files_map[method_2]
         print(f"Generating unifrac for {method_1} and {method_2}")
-        unifrac_data = get_unifrac(
+        unifrac_data, otu_count_1, otu_count_2 = get_unifrac(
             otu_file_1, otu_file_2, tree_file, weighted=weighted, threshold=threshold
         )
         for col in unifrac_data.index:
+            label_1 = f"{method_1.replace('_', ' ')} ({otu_count_1})"
+            label_2 = f"{method_2.replace('_', ' ')} ({otu_count_2})"
             data.append(
                 {
-                    "method1": method_1,
-                    "method2": method_2,
+                    "method1": label_1,
+                    "method2": label_2,
                     "unifrac": unifrac_data[col],
                     "sample": col,
                 }
             )
             data.append(
                 {
-                    "method2": method_1,
-                    "method1": method_2,
+                    "method2": label_1,
+                    "method1": label_2,
                     "unifrac": unifrac_data[col],
                     "sample": col,
                 }
             )
             data.append(
                 {
-                    "method1": method_1,
-                    "method2": method_1,
+                    "method1": label_1,
+                    "method2": label_1,
                     "unifrac": np.nan,
                     "sample": col,
                 }
             )
             data.append(
                 {
-                    "method1": method_2,
-                    "method2": method_2,
+                    "method1": label_2,
+                    "method2": label_2,
                     "unifrac": np.nan,
                     "sample": col,
                 }

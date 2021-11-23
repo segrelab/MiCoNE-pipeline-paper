@@ -7,11 +7,11 @@ library(ggpubr)
 methods <- c("closed reference", "de novo", "open reference", "deblur", "dada2")
 
 tidy_up_data <- function(unifrac_data) {
-    unifrac_data[unifrac_data == "closed_reference"] = "closed reference"
-    unifrac_data[unifrac_data == "open_reference"] = "open reference"
-    unifrac_data[unifrac_data == "de_novo"] = "de novo"
-    unifrac_data$method1 <- factor(unifrac_data$method1, levels=methods)
-    unifrac_data$method2 <- factor(unifrac_data$method2, levels=methods)
+    # unifrac_data[unifrac_data == "closed_reference"] = "closed reference"
+    # unifrac_data[unifrac_data == "open_reference"] = "open reference"
+    # unifrac_data[unifrac_data == "de_novo"] = "de novo"
+    unifrac_data$method1 <- factor(unifrac_data$method1)
+    unifrac_data$method2 <- factor(unifrac_data$method2)
     tidy_data <- unifrac_data %>%
         group_by(method1, method2) %>%
         select_at(c("method1", "method2", "unifrac")) %>%
