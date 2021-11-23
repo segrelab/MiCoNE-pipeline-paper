@@ -71,23 +71,34 @@ def parse_data(folder: pathlib.Path):
     return pd.DataFrame(data)
 
 
+# TODO: Add previous process as another option
 @click.command()
 @click.option("--folder", help="Path to the pipeline output", type=pathlib.Path)
 @click.option("--workflow")
 @click.option("--module")
 @click.option("--process")
+@click.option("--previous_process", default="")
 @click.argument("output_directory", type=pathlib.Path)
 def extract_data(
     folder: pathlib.Path,
     workflow: str,
     module: str,
     process: str,
+    previous_process: str,
     output_directory: pathlib.Path,
 ) -> None:
     df = parse_data(folder)
-    df_sub = df[
-        (df.workflow == workflow) & (df.module == module) & (df.process == process)
-    ]
+    if previous_process:
+        df_sub = df[
+            (df.workflow == workflow)
+            & (df.module == module)
+            & (df.process == process)
+            & (df.previous_process == previous_process)
+        ]
+    else:
+        df_sub = df[
+            (df.workflow == workflow) & (df.module == module) & (df.process == process)
+        ]
     output_directory.mkdir(parents=True, exist_ok=True)
     for _, df_row in df_sub.iterrows():
         if df_row.previous_process:
