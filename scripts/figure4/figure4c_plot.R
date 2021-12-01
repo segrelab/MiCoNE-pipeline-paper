@@ -35,9 +35,9 @@ make_dot_plot <- function(braycurtis_data) {
 }
 
 
-mock4_data <- tidy_up_data("mock4_braycurtis.csv", "mock4")
-mock12_data <- tidy_up_data("mock12_braycurtis.csv", "mock12")
-mock16_data <- tidy_up_data("mock16_braycurtis.csv", "mock16")
+mock4_data <- tidy_up_data("../../data/figure4/output/mock4/input_braycurtis.csv", "mock4")
+mock12_data <- tidy_up_data("../../data/figure4/output/mock12/input_braycurtis.csv", "mock12")
+mock16_data <- tidy_up_data("../../data/figure4/output/mock16/input_braycurtis.csv", "mock16")
 
 mock_data <- rbind(mock4_data, mock12_data, mock16_data)
 dot_plot <- make_dot_plot(mock_data)
