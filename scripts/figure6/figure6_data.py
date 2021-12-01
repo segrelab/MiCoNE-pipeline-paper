@@ -4,18 +4,16 @@ import pathlib
 
 import click
 import networkx as nx
-import numpy as np
-import pandas as pd
 
-from mindpipe import NetworkGroup, Lineage
+from micone import Network, Lineage
 
 
 def write_networks(file_paths, default_file, multigraph, color_key_level, output_path):
     combined_graph = nx.Graph()
     default_path = [f for f in file_paths if f.name == default_file][0]
-    default_graph = NetworkGroup.load_json(default_path).graph
+    default_graph = Network.load_json(default_path).graph
     for file in file_paths:
-        network = NetworkGroup.load_json(file)
+        network = Network.load_json(file)
         network_name = file.stem
         graph = network.graph
         if multigraph:
