@@ -65,9 +65,12 @@ def get_unifrac(
     type=bool,
     help="Flag to perform either weighted or unweighted unifrac",
 )
+@click.option(
+    "--asv", default=True, type=bool, help="To display ASV along with method name"
+)
 @click.option("--threshold", default=3, type=int, help="Threshold for sequence count")
 @click.option("--output", default=".", help="The path to the output directory")
-def main(trees: str, otus: str, weighted: bool, threshold: int, output: str):
+def main(trees: str, otus: str, weighted: bool, asv: bool, threshold: int, output: str):
     output_path = pathlib.Path(output)
     assert output_path.exists()
     tree_files = get_files(trees)
@@ -82,8 +85,12 @@ def main(trees: str, otus: str, weighted: bool, threshold: int, output: str):
             otu_file_1, otu_file_2, tree_file, weighted=weighted, threshold=threshold
         )
         for col in unifrac_data.index:
-            label_1 = f"{method_1.replace('_', ' ')} ({otu_count_1})"
-            label_2 = f"{method_2.replace('_', ' ')} ({otu_count_2})"
+            if asv:
+                label_1 = f"{method_1.replace('_', ' ')} ({otu_count_1})"
+                label_2 = f"{method_2.replace('_', ' ')} ({otu_count_2})"
+            else:
+                label_1 = f"{method_1.replace('_', ' ')}"
+                label_2 = f"{method_2.replace('_', ' ')}"
             data.append(
                 {
                     "method1": label_1,
