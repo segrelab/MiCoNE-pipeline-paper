@@ -5,7 +5,6 @@ import shutil
 
 import click
 import pandas as pd
-from pandas.core.indexes.base import default_index
 
 DC_processes = {
     "closed_reference",
@@ -15,16 +14,15 @@ DC_processes = {
     "deblur",
 }
 
-FOLDER = pathlib.Path(
-    "/home/dileep/Documents/Work/MIND/Results/micone_scc_testing/full_pipeline_testing/outputs/outputs"
-)
-
 
 def check_if_proctree(folder: pathlib.Path) -> bool:
     flag = False
     for dc_process in DC_processes:
         if folder.stem.startswith(dc_process):
             flag = True
+    # Check if execution of the pipeline started at an intermediate step
+    if folder.stem.startswith("-"):
+        flag = True
     return flag
 
 
