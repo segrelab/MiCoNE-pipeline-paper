@@ -700,7 +700,7 @@ python-versions = "*"
 
 [[package]]
 name = "micone"
-version = "0.10.3"
+version = "0.10.4"
 description = "The Microbial Co-occurrence Network Explorer"
 category = "main"
 optional = false
@@ -2076,8 +2076,8 @@ mccabe = [
     {file = "mccabe-0.6.1.tar.gz", hash = "sha256:dd8d182285a0fe56bace7f45b5e7d1a6ebcbf524e8f3bd87eb0f125271b8831f"},
 ]
 micone = [
-    {file = "micone-0.10.3-py3-none-any.whl", hash = "sha256:a36952c22ab80739b503da5beb80acbc5fa6935a7bb5b8742574be9548934ff1"},
-    {file = "micone-0.10.3.tar.gz", hash = "sha256:695951f548fda5809257133a7a79322ef00a3ef455ec0446b58ad040c3f45beb"},
+    {file = "micone-0.10.4-py3-none-any.whl", hash = "sha256:932cc12228de3149e22c06e9e368b047c3027cdbc4cb8ab2f5a2e7016e07b7e6"},
+    {file = "micone-0.10.4.tar.gz", hash = "sha256:0da31dacfd0db1ef17583028ed03685e3a8dc5a0a65243707d9660975cb892ec"},
 ]
 mistune = [
     {file = "mistune-0.8.4-py2.py3-none-any.whl", hash = "sha256:88a1051873018da288eee8538d476dffe1262495144b33ecb586c4ab266bb8d4"},
