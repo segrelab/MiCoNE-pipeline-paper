@@ -55,17 +55,22 @@ plot_network <- function(network_file, combined_layout, interaction_threshold, t
 combined_graph <- read_graph("../../data/figure5/output/moving_pictures/combined.gml", format="gml")
 combined_layout <- create_layout(graph=combined_graph, layout="linear", circular=TRUE)
 
-palette <- brewer.pal(n=6, name="Dark2")
+palette <- brewer.pal(n=10, name="Dark2")
+
 flashweave_plot <- plot_network("../../data/figure5/output/moving_pictures/flashweave.gml", combined_layout, 0.01, "flashweave", palette[[1]])
 mldm_plot <- plot_network("../../data/figure5/output/moving_pictures/mldm.gml", combined_layout, 0.01, "mldm", palette[[2]])
 spieceasi_plot <- plot_network("../../data/figure5/output/moving_pictures/spieceasi.gml", combined_layout, 0.01, "spieceasi", palette[[3]])
+cozine_plot <- plot_network("../../data/figure5/output/moving_pictures/cozine.gml", combined_layout, 0.01, "cozine", palette[[3]])
+harmonies_plot <- plot_network("../../data/figure5/output/moving_pictures/harmonies.gml", combined_layout, 0.01, "harmonies", palette[[3]])
+spring_plot <- plot_network("../../data/figure5/output/moving_pictures/spring.gml", combined_layout, 0.01, "spring", palette[[3]])
+
 sparcc_plot <- plot_network("../../data/figure5/output/moving_pictures/sparcc.gml", combined_layout, 0.3, "sparcc", palette[[4]])
 spearman_plot <- plot_network("../../data/figure5/output/moving_pictures/spearman.gml", combined_layout, 0.3, "spearman",  palette[[5]])
 pearson_plot <- plot_network("../../data/figure5/output/moving_pictures/pearson.gml", combined_layout, 0.3, "pearson", palette[[6]])
 propr_plot <- plot_network("../../data/figure5/output/moving_pictures/propr.gml", combined_layout, 0.3, "propr", palette[[7]])
 
-#combined_plot <- ggarrange(flashweave_plot, mldm_plot, spieceasi_plot, sparcc_plot, spearman_plot, pearson_plot, propr_plot, ncol=3, nrow=3, common.legend=TRUE, legend="bottom")
-combined_plot <- ggarrange(flashweave_plot, spieceasi_plot, sparcc_plot, spearman_plot, pearson_plot, propr_plot, ncol=3, nrow=3, common.legend=TRUE, legend="bottom")
+# NOTE: mldm did not work for moving_pictures
+combined_plot <- ggarrange(flashweave_plot, spieceasi_plot, cozine_plot, harmonies_plot, spring_plot, sparcc_plot, spearman_plot, pearson_plot, propr_plot, ncol=3, nrow=4, common.legend=TRUE, legend="bottom")
 annotate_figure(combined_plot, fig.lab = "A", fig.lab.pos = "top.left", fig.lab.size = 20)
 
 ggsave("figure5a.pdf", width=11, height=8.5)
