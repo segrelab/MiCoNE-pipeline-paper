@@ -111,39 +111,47 @@ def calculate_performance(
         index=observations.index,
         columns=observations.columns,
     )
-    if isinstance(predictions, Network):
-        table = predictions.get_adjacency_table("weight")
-        for row in table.index:
-            for col in table.columns:
-                prediction_df.loc[row, col] = table.loc[row, col]
-    elif isinstance(predictions, NetworkGroup):
-        vector_table = predictions.get_adjacency_vectors("weight")
-        for row in vector_table.index:
-            source, target = predictions.linkid_revmap[row][0][-1].split("-")
-            # FIXME: Is this the right thing to do?
-            val = np.mean(vector_table.loc[row, :])
-            prediction_df.loc[source, target] = val
-            prediction_df.loc[target, source] = val
+    if len(predictions.links):
+        if isinstance(predictions, Network):
+            table = predictions.get_adjacency_table("weight")
+            for row in table.index:
+                for col in table.columns:
+                    prediction_df.loc[row, col] = table.loc[row, col]
+        elif isinstance(predictions, NetworkGroup):
+            vector_table = predictions.get_adjacency_vectors("weight")
+            for row in vector_table.index:
+                if row not in predictions.linkid_revmap:
+                    continue
+                else:
+                    source, target = predictions.linkid_revmap[row][0][-1].split("-")
+                    # FIXME: Is this the right thing to do?
+                    val = np.mean(vector_table.loc[row, :])
+                    prediction_df.loc[source, target] = val
+                    prediction_df.loc[target, source] = val
+        else:
+            raise ValueError("Unsupported predictions object")
+        np.fill_diagonal(prediction_df.values, 0.0)
+        prediction_df.fillna(0.0, inplace=True)
+        if sign:
+            prediction_df[prediction_df > 0] = 1
+            prediction_df[prediction_df < 0] = -1
+            prediction_df = prediction_df.astype(int)
+        t_vec = observations.values.reshape(-1)
+        p_vec = prediction_df.values.reshape(-1)
+        cm = confusion_matrix(t_vec, p_vec, binary=True, positive_label=0)
+        cm_fixed = [[cm[1, 1], cm[1, 0]], [cm[0, 1], cm[0, 0]]]
+        cm_dict = {
+            "tn": cm_fixed[0][0],
+            "fp": cm_fixed[0][1],
+            "fn": cm_fixed[1][0],
+            "tp": cm_fixed[1][1],
+        }
+        precision = calculate_precision(cm_dict)
+        sensitivity = calculate_sensitivity(cm_dict)
     else:
-        raise ValueError("Unsupported predictions object")
-    np.fill_diagonal(prediction_df.values, 0.0)
-    prediction_df.fillna(0.0, inplace=True)
-    if sign:
-        prediction_df[prediction_df > 0] = 1
-        prediction_df[prediction_df < 0] = -1
-        prediction_df = prediction_df.astype(int)
-    t_vec = observations.values.reshape(-1)
-    p_vec = prediction_df.values.reshape(-1)
-    cm = confusion_matrix(t_vec, p_vec, binary=True, positive_label=0)
-    cm_fixed = [[cm[1, 1], cm[1, 0]], [cm[0, 1], cm[0, 0]]]
-    cm_dict = {
-        "tn": cm_fixed[0][0],
-        "fp": cm_fixed[0][1],
-        "fn": cm_fixed[1][0],
-        "tp": cm_fixed[1][1],
-    }
-    precision = calculate_precision(cm_dict)
-    sensitivity = calculate_sensitivity(cm_dict)
+        cm_dict = {"tn": np.nan, "fp": np.nan, "fn": np.nan, "tp": np.nan}
+        precision = np.nan
+        sensitivity = np.nan
     return cm_dict, precision, sensitivity
 
 
