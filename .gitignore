@@ -258,5 +258,6 @@ scripts/**/*.gml
 # Comments about drafts
 comments/
 
-# Ignore the data directory
+# Ignore the data directory and pickled files
 data/
+*.pkl
