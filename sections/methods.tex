@@ -25,29 +25,36 @@
   The pipeline integrates many publicly available tools as well as custom R or Python modules and scripts to extract co-occurrence associations from 16S sequence data.
   Each of these tools corresponds to a distinct R or python module that recapitulates the relevant analyses.
   All such individual modules are available as part of the \ac{micone} package.
-  The inputs to the pipeline by default are the raw community 16S rRNA sequence reads, but the software can be alternatively configured to use trimmed sequences, \ac{otu} tables and other types of intermediate data.
+  The inputs to the pipeline by default are raw untrimmed 16S rRNA sequence reads, but the software can be alternatively configured to use trimmed sequences, \ac{otu} tables and other types of intermediate data.
+  The pipeline supports both paired end and single end reads, and additionally supports independently processing multiple runs and merging the OTU tables in the DC step.
   The final output of the pipeline is the inferred network of co-occurrence relationships among the microbes present in the samples.
 
-  The \ac{micone} pipeline provides both a Python API as well as a command-line interface and only requires a single configuration file.
-  The configuration file lists the inputs, output and the steps to be performed during runtime, along with the parameters to be used (if different from defaults) for the various steps.
+  The \ac{micone} pipeline provides both a Python API as well as a command-line interface and only uses a single configuration file (nextflow.config) to contain the configuration parameters.
+  The configuration file along with the run file (main.nf) lists the inputs, output and the steps to be performed during runtime, along with the parameters to be used (if different from defaults) for the various steps.
   Since the entire pipeline run-through is stored in the form of a text file (the configuration file), subsequent runs are highly reproducible and changes can be easily tracked using version control.
   It uses the nextflow workflow manager~\cite{Tommaso2015} under the hood, making it readily usable on local machines, cluster or cloud with minimal configuration change.
   It also allows for automatic parallelization of all possible processes, both within and across samples.
   The pipeline is designed to be modular: each tool or method is organized into modules which can be easily modified or replaced.
   This modular architecture simplifies the process of adding new tools (refer to modules section in the \ac{micone} documentation).
-%   In addition to the Python package, the entire pipeline has been containerized into a Docker~\cite{Merkel1994} image (\hl{dockerhub link}) for easy deployment and setup.
+  % In addition to the Python package, the entire pipeline has been containerized into a Docker~\cite{Merkel1994} image (\hl{dockerhub link}) for easy deployment and setup.
   The main components of the pipeline are detailed in the subsequent sections.
+
+  \subsection*{Sequence Processing (SP)}
+  This module deals with processing the raw multiplexed 16S sequence data into demultiplexed, quality-controlled, trimmed sequences.
+  It consists of the following processes: demulitplexing and trimming (includes quality control and filtering).
+  The trimming process handles the quality control steps such as trimming adapters and trimming low-quality nucleotide stretches from the sequences.
+  The parameters and tools in this process are fixed and are not available for user customization.
+  The various tools used for the processes were adapted from \ac{qiime2} v2021.8.0~\cite{bolyenReproducibleInteractiveScalable2019}.
 
   \subsection*{Denoising and Clustering (DC)}
   \vspace{-5mm}
-  This module deals with processing the raw 16S sequence data into \ac{otu} or \ac{esv} count tables.
-  It consists of the following processes: quality control, denoising (or clustering) and chimera checking.
-  The quality control process handles the demultiplexing and quality control steps such as trimming adapters and trimming low-quality nucleotide stretches from the sequences.
+  This module deals with processing the quality-controlled, trimmed 16S sequence data into \ac{otu} or \ac{esv} count tables.
+  It consists of the following processes: denoising (or clustering) and chimera checking.
   The denoise/cluster process handles the conversion of the demultiplexed, trimmed sequences into \ac{otu} or \ac{esv} count tables (some methods, like closed reference and open reference clustering, perform clustering and taxonomy assignment in the same step).
   The chimera checking process handles the removal of chimeric sequences created during the \ac{pcr} step.
   The output of this module is a matrix of counts, that describes the number of reads of a particular \ac{otu} or \ac{esv} (rows of the matrix) present in each sample (columns of the matrix).
-  The options currently available in the pipeline for denoising and clustering are: open reference clustering, closed reference clustering and de novo clustering methods from \ac{qiime1} v1.9.1~\cite{Caporaso2010} and denoising methods from \ac{dada2} v1.14~\cite{Callahan2016} and Deblur v1.1.0~\cite{Amir2017}.
-  The quality filtering and chimera checking tools are derived from those used in \ac{qiime2} v2019.10.0 and \ac{dada2}.
+  The options currently available in the pipeline for denoising and clustering are: open reference clustering, closed reference clustering and de novo clustering methods from the vsearch plugin of \ac{qiime2} v2021.8.0~\cite{bolyenReproducibleInteractiveScalable2019} and denoising methods from \ac{dada2} v1.14~\cite{Callahan2016} and Deblur v1.1.0~\cite{Amir2017} (from the deblur plugin of \ac{qiime2}).
+  The quality filtering and chimera checking tools are derived from those used in \ac{qiime2} v2021.8.0 (uchime method) and \ac{dada2} (remove bimera method).
 
 
   \subsection*{Taxonomy Assignment (TA)}
@@ -133,20 +140,19 @@
 
  \subsection*{NOTATION}
 
-Note this section defines the notation for the network comparison component of our pipeline, which assumes that all networks to be compared have the same number of nodes
+  Note this section defines the notation for the network comparison component of our pipeline, which assumes that all networks to be compared have the same number of nodes
 
-q = number of nodes
+  q = number of nodes
 
-w = number of different networks from different approaches (previously x?)
+  w = number of different networks from different approaches (previously x?)
 
-$N^i$ = network k (currently Ni)
+  $N^i$ = network k (currently Ni)
 
-$N^i_{a,b}$ = edge (a,b) in network i
+  $N^i_{a,b}$ = edge (a,b) in network i
 
-It useful to define a "stretched" version of each adjacency matrix $N^i$ into a column vector, where all columns are stacked onto each other into an $q^2$ long vector:
+  It useful to define a "stretched" version of each adjacency matrix $N^i$ into a column vector, where all columns are stacked onto each other into an $q^2$ long vector:
 
-$\bar{N}^i_{j}$ , $j=1:q^2$
-
+  $\bar{N}^i_{j}$ , $j=1:q^2$
 
   \subsection*{Consensus method}
   \vspace{-5mm}
@@ -162,7 +168,7 @@ $\bar{N}^i_{j}$ , $j=1:q^2$
  
  \begin{equation}
  \begin{aligned}
- M_{i,j} &= | \left{ a | N^{(a)}_{i,j}>0 \right} | \\
+ M_{i,j} &= | \left{ a \mid N^{a}_{i,j}>0 \right} | \\
  M_{i,j} &\geq \lfloor \theta * w \rfloor
  \end{aligned}
   \label{eqn:simple-voting}
