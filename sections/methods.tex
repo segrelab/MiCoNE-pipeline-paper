@@ -41,7 +41,7 @@
 
   \subsection*{Sequence Processing (SP)}
   This module deals with processing the raw multiplexed 16S sequence data into demultiplexed, quality-controlled, trimmed sequences.
-  It consists of the following processes: demulitplexing and trimming (includes quality control and filtering).
+  It consists of the following processes: demultiplexing and trimming (includes quality control and filtering).
   The trimming process handles the quality control steps such as trimming adapters and trimming low-quality nucleotide stretches from the sequences.
   The parameters and tools in this process are fixed and are not available for user customization.
   The various tools used for the processes were adapted from \ac{qiime2} v2021.8.0~\cite{bolyenReproducibleInteractiveScalable2019}.
@@ -56,6 +56,25 @@
   The options currently available in the pipeline for denoising and clustering are: open reference clustering, closed reference clustering and de novo clustering methods from the vsearch plugin of \ac{qiime2} v2021.8.0~\cite{bolyenReproducibleInteractiveScalable2019} and denoising methods from \ac{dada2} v1.14~\cite{Callahan2016} and Deblur v1.1.0~\cite{Amir2017} (from the deblur plugin of \ac{qiime2}).
   The quality filtering and chimera checking tools are derived from those used in \ac{qiime2} v2021.8.0 (uchime method) and \ac{dada2} (remove bimera method).
 
+  \begin{table}[h]
+    \centering
+    \small
+    \begin{tabular}{|c|c|c|}
+      \hline
+      \textbf{Module} & \textbf{Tool} & \textbf{References} \\
+      \hline
+      Denoising and Clustering & Closed reference & \cite{rognesVSEARCHVersatileOpen2016,bolyenReproducibleInteractiveScalable2019} \\
+      Denoising and Clustering & Open reference & \cite{rognesVSEARCHVersatileOpen2016,bolyenReproducibleInteractiveScalable2019} \\
+      Denoising and Clustering & De novo & \cite{rognesVSEARCHVersatileOpen2016,bolyenReproducibleInteractiveScalable2019} \\
+      Denoising and Clustering & Dada2 & \cite{Callahan2016} \\
+      Denoising and Clustering & Deblur & \cite{Amir2017,bolyenReproducibleInteractiveScalable2019} \\
+      \hline
+      Chimera checking & Uchime & \cite{rognesVSEARCHVersatileOpen2016,bolyenReproducibleInteractiveScalable2019} \\
+      Chimera checking & Remove bimera & \cite{Callahan2016} \\
+    \end{tabular}
+    \caption{Tools used in the DC module}
+    \label{tab:dc_tools}
+  \end{table}
 
   \subsection*{Taxonomy Assignment (TA)}
   \vspace{-5mm}
@@ -63,8 +82,28 @@
   In order to assign taxonomies to a particular sequence we need a taxonomy database and a query tool.
   The taxonomy database contains the collection of 16S sequences of micro-organisms of interest and the query tool allows one to compare a sequence of interest to all the sequences in the database to identify the best matches.
   Finally, a consensus method is used to identify the most probable match from the list of best matches.
-  The pipeline incorporates \ac{gg} 13\_8~\cite{DeSantis2006}, SILVA 132~\cite{Quast2012} and the \ac{ncbi} (16S RefSeq as of Oct 2019)~\cite{Sayers2009} databases for taxonomy assignment and the Naive Bayes classifier from \ac{qiime2} and \ac{ncbi} blast as the query tools (from \ac{qiime2}).
+  The pipeline incorporates \ac{gg} 13\_8~\cite{DeSantis2006}, SILVA 138~\cite{Quast2012} and the \ac{ncbi} (16S RefSeq as of Oct 2021)~\cite{Sayers2009} databases for taxonomy assignment.
+  These databases were downloaded and built using the RESCRIPt qiime2 plugin~\cite{iiRESCRIPtReproducibleSequence2021}.
+  The Naive Bayes classifier from \ac{qiime2} and \ac{ncbi} blast as the query tools (from \ac{qiime2}).
   The consensus algorithm used is the default method used by the classifiers in \ac{qiime2}.
+
+  \begin{table}[h]
+    \centering
+    \small
+    \begin{tabular}{|c|c|c|}
+      \hline
+      \textbf{Module} & \textbf{Tool/Database} & \textbf{References} \\
+      \hline
+      Query tool & Blast & \cite{camachoBLASTArchitectureApplications2009} \\
+      Query tool & Naive bayes classifier & \cite{bokulichOptimizingTaxonomicClassification2018} \\
+      \hline
+      Database & Greengenes & \cite{DeSantis2006} \\
+      Database & SILVA & \cite{Quast2012} \\
+      Database & NCBI RefSeq & \cite{Sayers2009} \\
+    \end{tabular}
+    \caption{Tools used in the TA module}
+    \label{tab:ta_tools}
+  \end{table}
 
   % TODO: Add references and basic equations or details
   \subsection*{OTU and ESV Processing (OP)}
