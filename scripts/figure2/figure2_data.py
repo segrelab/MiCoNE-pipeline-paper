@@ -44,16 +44,16 @@ def create_edge_df(network: Network, hash: str) -> Optional[pd.DataFrame]:
     edge_data = []
     if len(graph.edges):
         for node, ndata in graph.nodes(data=True):
-            id_name_map[node] = ndata["name"]
+            id_name_map[node] = ndata["lineage"]
         for source, target, edata in graph.edges(data=True):
             source_name = id_name_map[source]
             target_name = id_name_map[target]
             ename = f"{source_name}-{target_name}"
             edge_data.append({"edge": ename, hash: edata["weight"]})
-        edge_df = pd.DataFrame(edge_data)
+        edge_df = pd.DataFrame(edge_data).drop_duplicates(subset=["edge"])
         edge_df.set_index("edge", inplace=True)
         # edge_df[hash] = edge_df[hash] / np.abs(edge_df[hash]).max()
-        return edge_df
+        return edge_df.T
     else:
         return None
 
@@ -189,7 +189,7 @@ def main(
         x_data = [item for item in x_all if item is not None]
         y_data = [item for item in y_all if item is not None]
         x_df: pd.DataFrame = pd.DataFrame(x_data).set_index("hash")
-        y_df = pd.concat(y_data, axis=0, join="outer").T
+        y_df = pd.concat(y_data, axis=0, join="outer")
         assert x_df.shape[0] == y_df.shape[0]
         print("Step2b: Saving the data")
         x_df.to_csv(output_path / "x.csv", index=True, sep=",")
