@@ -69,6 +69,11 @@
   Based on their slightly better performance on the mock datasets, their \textit{de novo} error correcting nature and other previous studies~\cite{Nearing2018}, \ac{dada2} and Deblur seem to be in general the most reliable.
   Given the unexpected poor performance of Deblur on the synthetic data, the default algorithm in the pipeline was chosen to be \ac{dada2} (Supplementary Figure~\ref{fig:figureS3}).
 
+
+  % TODO: This is the most important statement (look at the dada2 paper for better arguments)
+  We prefer dada2 because it peforms marginally better (value??) than the other methods and it is also performs independent of the taxonomy database (so does denovo why are you suggesting this then?).
+  Denovo also performs better but the denoising helps when there are more sequences (where is the proof?) [ref]
+
   \FloatBarrier
 
   \subsection*{Taxonomy databases vary widely in taxonomy hierarchy and update frequency}
@@ -105,6 +110,10 @@
   Given that no database performs better than others against mock datasets, and that databases are almost equally distant from each other in terms of final output, the choice of which database to use should be driven by other reasons.
   One user-specific way to choose, would be based on the known representation of taxa for the microbiome of interest (see also Discussion). Another reason could be the frequency of updates and the potential for future growth, which prompted us to set \ac{ncbi} as the \ac{micone} standard for taxonomy assignment.
  In addition to being regularly maintained and updated the \ac{ncbi} database already has the advantage that its accuracy of assignments is still comparable to the SILVA and \ac{gg} reference databases that are routinely used as reference databases.
+
+ % TODO: This is the most important statement here
+ From previous studies, (refer to the Bokulich2018 paper here) which have done more quantitative benchmarks on the subject of which tool is the best (for classifer)...
+ There are also other studies, [ref] that focus on the database aspect and they too have found that...
 
   \FloatBarrier
 
