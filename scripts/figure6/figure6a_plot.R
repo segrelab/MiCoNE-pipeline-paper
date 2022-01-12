@@ -34,7 +34,7 @@ plot_network <- function(network_file, combined_layout, interaction_threshold, t
   graph_layout <- data.frame(temp_layout)
   graph_layout$x <- combined_layout[match_inds,]$x
   graph_layout$y <- combined_layout[match_inds,]$y
-  graph_plot <- ggraph(graph=graph, layout="manual", node.positions=graph_layout, circular=TRUE) +
+  graph_plot <- ggraph(graph=graph, layout="manual", x=graph_layout$x, y=graph_layout$y, circular=TRUE) +
     geom_edge_arc(aes(color=factor(layer), edge_linetype=factor(color), edge_alpha=factor(layer))) +
     # geom_node_point(aes(color=factor(colorkey))) +
     geom_node_point() +
@@ -46,7 +46,7 @@ plot_network <- function(network_file, combined_layout, interaction_threshold, t
     coord_fixed() +
     theme_bw() +
     theme(
-        # legend.position="none",
+        legend.position="none",
         plot.title=element_text(hjust=0.5),
         axis.title=element_blank(),
         axis.text=element_blank(),
@@ -58,17 +58,19 @@ plot_network <- function(network_file, combined_layout, interaction_threshold, t
     )
 }
 
-combined_graph <- read_graph("combined.gml", format="gml")
+combined_graph <- read_graph("../../data/figure6/output/moving_pictures/combined.gml", format="gml")
 combined_layout <- create_layout(graph=combined_graph, layout="linear", circular=TRUE)
 
 palette <- brewer.pal(n=6, name="Pastel1")
-default_plot <- plot_network("default.gml", combined_layout, 0.3, "default", palette, 1)
-database_plot <- plot_network("gg.gml", combined_layout, 0.3, "TA=GG", palette, 2)
-clustering_plot <- plot_network("open_ref.gml", combined_layout, 0.3, "DC=open_reference", palette, 3)
-otu_filtering_plot <- plot_network("otu_filtering.gml", combined_layout, 0.3, "OP=no", palette, 4)
-network_inference_plot <- plot_network("spieceasi_direct.gml", combined_layout, 0.3, "NI=Spieceasi",  palette, 5)
+default_plot <- plot_network("../../data/figure6/output/moving_pictures/default.gml", combined_layout, 0.3, "default", palette, 1)
+database_plot <- plot_network("../../data/figure6/output/moving_pictures/TA.gml", combined_layout, 0.3, "TA=NCBI(blast)", palette, 2)
+clustering_plot <- plot_network("../../data/figure6/output/moving_pictures/DC.gml", combined_layout, 0.3, "DC=closed_reference", palette, 3)
+otu_filtering_plot <- plot_network("../../data/figure6/output/moving_pictures/CC.gml", combined_layout, 0.3, "CC=uchime", palette, 4)
+network_inference_plot <- plot_network("../../data/figure6/output/moving_pictures/NI.gml", combined_layout, 0.3, "NI=SparCC",  palette, 5)
 
-combined_plot <- ggarrange(default_plot, database_plot, clustering_plot, otu_filtering_plot, network_inference_plot, ncol=3, nrow=2, common.legend=TRUE, legend="bottom")
+legend_grob <- get_legend(database_plot)
+
+combined_plot <- ggarrange(default_plot, database_plot, clustering_plot, otu_filtering_plot, network_inference_plot, ncol=3, nrow=2, common.legend=FALSE, legend="right")
 final_plot <- annotate_figure(combined_plot, fig.lab = "A", fig.lab.pos = "top.left", fig.lab.size = 20)
 
 ggsave(final_plot, file="figure6a.pdf", width=11, height=8.5)
