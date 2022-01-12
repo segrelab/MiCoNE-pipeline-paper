@@ -261,3 +261,6 @@ comments/
 # Ignore the data directory and pickled files
 data/
 *.pkl
+
+# Ignore submitted manuscript
+submitted_manuscript.pdf
