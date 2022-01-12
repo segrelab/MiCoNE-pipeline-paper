@@ -250,7 +250,7 @@
   The re-scaling is performed because the associations reported by the direct association metrics are not necessarily correlations and are not directly comparable to the associations from the correlation-based methods due to their lower weights. This problem can also be alleviated by weighing each network inference method differently. Next, for each pair of nodes, we sum the weights of all reported edges (Equation \ref{eqn:scaled-sum}).
 
   \begin{equation}
-  \text{scaled\_sum}(\text{node}_{m}, \text{node}_{n}) = \sum_{i} N^{scaled}_{i}(\text{node}_{m}, \text{node}_{n})
+  \text{scaled\_sum}(\text{node}_{m}, \text{node}_{n}) = \mid \sum_{i} N^{scaled}_{i}(\text{node}_{m}, \text{node}_{n}) \mid
   \label{eqn:scaled-sum}
   \end{equation}
 
