@@ -264,3 +264,17 @@ data/
 
 # Ignore submitted manuscript
 submitted_manuscript.pdf
+
+## Pyton ignore
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+# pyenv
+.python-version
+# virtualenv
+.venv
+venv/
+ENV/
+# mypy
+.mypy_cache/

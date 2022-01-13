@@ -64,7 +64,13 @@ def extract_step_data(
 
     method_dict = dict()
     method_dict["TAX_LEVEL"] = tax_level
-    if step == "DC":
+    if step == "default":
+        method_dict["DC"] = default_dc
+        method_dict["CC"] = default_cc
+        method_dict["TA"] = default_ta
+        loop_list_1 = DC_METHODS
+        loop_list_2 = NI_METHODS
+    elif step == "DC":
         method_dict["CC"] = default_cc
         method_dict["TA"] = default_ta
         loop_list_1 = DC_METHODS
@@ -87,29 +93,47 @@ def extract_step_data(
         loop_list_2 = NI_METHODS
     else:
         raise ValueError(f"Unsupported step {step}")
-    for method in loop_list_1:
-        if method != DEFAULT[step]:
-            method_dict[step] = method
-            output_sub_folder = output_folder / method
-            for ni_type, ni_method in loop_list_2:
-                if step == "NI" and ni_method != method:
-                    continue
-                method_dict["NI"] = ni_method
-                process = make_process_string((ni_type, ni_method))
-                previous_process = make_prevprocess_string(**method_dict)
-                extract_data(
-                    input_folder,
-                    workflow,
-                    module,
-                    process,
-                    previous_process,
-                    output_sub_folder,
-                )
+    if step != "default":
+        for method in loop_list_1:
+            if method != DEFAULT[step]:
+                method_dict[step] = method
+                output_sub_folder = output_folder / method
+                for ni_type, ni_method in loop_list_2:
+                    if step == "NI" and ni_method != method:
+                        continue
+                    method_dict["NI"] = ni_method
+                    process = make_process_string((ni_type, ni_method))
+                    previous_process = make_prevprocess_string(**method_dict)
+                    extract_data(
+                        input_folder,
+                        workflow,
+                        module,
+                        process,
+                        previous_process,
+                        output_sub_folder,
+                    )
+    else:
+        output_sub_folder = output_folder
+        for ni_type, ni_method in loop_list_2:
+            method_dict["NI"] = ni_method
+            process = make_process_string((ni_type, ni_method))
+            previous_process = make_prevprocess_string(**method_dict)
+            extract_data(
+                input_folder,
+                workflow,
+                module,
+                process,
+                previous_process,
+                output_sub_folder,
+            )
 
 
 def extract_figure6_data(
     input_folder: pathlib.Path, output_folder: pathlib.Path
 ) -> None:
+    # STEP0: Extract default data
+    output_sub_folder = output_folder / "default"
+    extract_step_data("default", input_folder, output_sub_folder)
     # STEP1:  Extract DC data
     output_sub_folder = output_folder / "DC"
     extract_step_data("DC", input_folder, output_sub_folder)
