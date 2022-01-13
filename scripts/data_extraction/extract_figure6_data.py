@@ -113,7 +113,7 @@ def extract_step_data(
                         output_sub_folder,
                     )
     else:
-        output_sub_folder = output_folder
+        output_sub_folder = output_folder / "default"
         for ni_type, ni_method in loop_list_2:
             method_dict["NI"] = ni_method
             process = make_process_string((ni_type, ni_method))
