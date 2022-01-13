@@ -69,14 +69,6 @@ def parse_data(folder: pathlib.Path):
     return pd.DataFrame(data)
 
 
-# TODO: Add previous process as another option
-@click.command()
-@click.option("--folder", help="Path to the pipeline output", type=pathlib.Path)
-@click.option("--workflow")
-@click.option("--module")
-@click.option("--process")
-@click.option("--previous_process", default="")
-@click.argument("output_directory", type=pathlib.Path)
 def extract_data(
     folder: pathlib.Path,
     workflow: str,
@@ -84,7 +76,7 @@ def extract_data(
     process: str,
     previous_process: str,
     output_directory: pathlib.Path,
-) -> None:
+) -> pd.DataFrame:
     df = parse_data(folder)
     if previous_process:
         df_sub = df[
@@ -109,7 +101,26 @@ def extract_data(
             file_path_new = directory / file_path_old.name
             print(f"Copying {file_path_old} -> {file_path_new}")
             shutil.copy(file_path_old, file_path_new)
+    return df_sub
+
+
+@click.command()
+@click.option("--folder", help="Path to the pipeline output", type=pathlib.Path)
+@click.option("--workflow")
+@click.option("--module")
+@click.option("--process")
+@click.option("--previous_process", default="")
+@click.argument("output_directory", type=pathlib.Path)
+def main(
+    folder: pathlib.Path,
+    workflow: str,
+    module: str,
+    process: str,
+    previous_process: str,
+    output_directory: pathlib.Path,
+) -> None:
+    extract_data(folder, workflow, module, process, previous_process, output_directory)
 
 
 if __name__ == "__main__":
-    extract_data()
+    main()
