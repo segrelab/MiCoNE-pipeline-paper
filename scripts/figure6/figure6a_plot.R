@@ -63,10 +63,10 @@ combined_layout <- create_layout(graph=combined_graph, layout="linear", circular
 
 palette <- brewer.pal(n=6, name="Pastel1")
 default_plot <- plot_network("../../data/figure6/output/moving_pictures/default.gml", combined_layout, 0.3, "default", palette, 1)
-database_plot <- plot_network("../../data/figure6/output/moving_pictures/TA.gml", combined_layout, 0.3, "TA=NCBI(blast)", palette, 2)
-clustering_plot <- plot_network("../../data/figure6/output/moving_pictures/DC.gml", combined_layout, 0.3, "DC=closed_reference", palette, 3)
-otu_filtering_plot <- plot_network("../../data/figure6/output/moving_pictures/CC.gml", combined_layout, 0.3, "CC=uchime", palette, 4)
-network_inference_plot <- plot_network("../../data/figure6/output/moving_pictures/NI.gml", combined_layout, 0.3, "NI=SparCC",  palette, 5)
+database_plot <- plot_network("../../data/figure6/output/moving_pictures/TA_blast(ncbi).gml", combined_layout, 0.3, "TA=blast(NCBI)", palette, 2)
+clustering_plot <- plot_network("../../data/figure6/output/moving_pictures/DC_closed_reference(gg_97).gml", combined_layout, 0.3, "DC=closed_reference(gg_97)", palette, 3)
+otu_filtering_plot <- plot_network("../../data/figure6/output/moving_pictures/CC_uchime.gml", combined_layout, 0.3, "CC=uchime", palette, 4)
+network_inference_plot <- plot_network("../../data/figure6/output/moving_pictures/NI_sparcc.gml", combined_layout, 0.3, "NI=SparCC",  palette, 5)
 
 legend_grob <- get_legend(database_plot)
 
