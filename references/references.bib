@@ -431,6 +431,26 @@
   keywords = {classification,Classification,correspondence,fredhutch,jgolob,microbiome,Microbiome,mothur,Operational taxonomic un,operational taxonomic unit,optimization,org,qiime,unifrac}
 }
 
+@article{haCompositionalZeroinflatedNetwork2020a,
+  title = {Compositional Zero-Inflated Network Estimation for Microbiome Data},
+  author = {Ha, Min Jin and Kim, Junghi and Galloway-Peña, Jessica and Do, Kim-Anh and Peterson, Christine B.},
+  date = {2020-12-28},
+  journaltitle = {BMC Bioinformatics},
+  shortjournal = {BMC Bioinformatics},
+  volume = {21},
+  eprint = {33371887},
+  eprinttype = {pmid},
+  pages = {581},
+  issn = {1471-2105},
+  doi = {10.1186/s12859-020-03911-w},
+  url = {https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7768662/},
+  urldate = {2022-01-14},
+  abstract = {Background The estimation of microbial networks can provide important insight into the ecological relationships among the organisms that comprise the microbiome. However, there are a number of critical statistical challenges in the inference of such networks from high-throughput data. Since the abundances in each sample are constrained to have a fixed sum and there is incomplete overlap in microbial populations across subjects, the data are both compositional and zero-inflated. Results We propose the COmpositional Zero-Inflated Network Estimation (COZINE) method for inference of microbial networks which addresses these critical aspects of the data while maintaining computational scalability. COZINE relies on the multivariate Hurdle model to infer a sparse set of conditional dependencies which reflect not only relationships among the continuous values, but also among binary indicators of presence or absence and between the binary and continuous representations of the data. Our simulation results show that the proposed method is better able to capture various types of microbial relationships than existing approaches. We demonstrate the utility of the method with an application to understanding the oral microbiome network in a cohort of leukemic patients. Conclusions Our proposed method addresses important challenges in microbiome network estimation, and can be effectively applied to discover various types of dependence relationships in microbial communities. The procedure we have developed, which we refer to as COZINE, is available online at https://github.com/MinJinHa/COZINE.},
+  issue = {Suppl 21},
+  pmcid = {PMC7768662},
+  file = {/home/dileep/Zotero/storage/WVJPGZDD/Ha et al_2020_Compositional zero-inflated network estimation for microbiome data.pdf}
+}
+
 @article{Hong2014,
   title = {{{PathoScope}} 2.0: A Complete Computational Framework for Strain Identification in Environmental or Clinical Sequencing Samples.},
   author = {Hong, Changjin and Manimaran, Solaiappan and Shen, Ying and Perez-Rogers, Joseph F and Byrd, Allyson L and Castro-Nallar, Eduardo and Crandall, Keith A and Johnson, William Evan},
@@ -534,6 +554,20 @@
   url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/bit.27327},
   abstract = {Conventional microbial cell cultivation techniques are typically labor intensive, low throughput, and poorlyparallelized, rendering them inefficient. The development of automated, modular microbial cell micro-cultivation systems, particularly those employing droplet microfluidics, have gained attention for their high-throughput, highly paralellized and efficient cultivation capabilities. Here, we report the development of a microbial microdroplet culture system (MMC), which is an integrated platform for automated, high-throughput cultivation and adaptive evolution of microorganisms. We demonstrated that the MMC yielded both accurate and reproducible results for the manipulation and detection of droplets. The superior performance of MMC for microbial cell cultivation was validated by comparing the growth curves of six microbial strains grown in MMC, conventional shake flasks or well plates. The highest incipient growth rate for all six microbial strains was achieved by using MMC. We also conducted an 18-day process of adaptive evolution of methanol-essential Escherichia coli strain in MMC and obtained two strains exhibiting higher growth rates compared with the parent strain. Our study demonstrates the power of MMC to provide an efficient and reliable approach for automated, high-throughput microbial cultivation and adaptive evolution.},
   keywords = {automated operations,high-throughput,laboratory adaptive evolution,microbial cultivation,microbial microdroplet culture system}
+}
+
+@article{jiangHARMONIESHybridApproach2020,
+  title = {{{HARMONIES}}: {{A Hybrid Approach}} for {{Microbiome Networks Inference}} via {{Exploiting Sparsity}}},
+  shorttitle = {{{HARMONIES}}},
+  author = {Jiang, Shuang and Xiao, Guanghua and Koh, Andrew Y. and Chen, Yingfei and Yao, Bo and Li, Qiwei and Zhan, Xiaowei},
+  date = {2020},
+  journaltitle = {Frontiers in Genetics},
+  volume = {11},
+  issn = {1664-8021},
+  url = {https://www.frontiersin.org/article/10.3389/fgene.2020.00445},
+  urldate = {2022-01-14},
+  abstract = {The human microbiome is a collection of microorganisms. They form complex communities and collectively affect host health. Recently, the advances in next-generation sequencing technology enable the high-throughput profiling of the human microbiome. This calls for a statistical model to construct microbial networks from the microbiome sequencing count data. As microbiome count data are high-dimensional and suffer from uneven sampling depth, over-dispersion, and zero-inflation, these characteristics can bias the network estimation and require specialized analytical tools. Here we propose a general framework, HARMONIES, Hybrid Approach foR MicrobiOme Network Inferences via Exploiting Sparsity, to infer a sparse microbiome network. HARMONIES first utilizes a zero-inflated negative binomial (ZINB) distribution to model the skewness and excess zeros in the microbiome data, as well as incorporates a stochastic process prior for sample-wise normalization. This approach infers a sparse and stable network by imposing non-trivial regularizations based on the Gaussian graphical model. In comprehensive simulation studies, HARMONIES outperformed four other commonly used methods. When using published microbiome data from a colorectal cancer study, it discovered a novel community with disease-enriched bacteria. In summary, HARMONIES is a novel and useful statistical framework for microbiome network inference, and it is available at https://github.com/shuangj00/HARMONIES.},
+  file = {/home/dileep/Zotero/storage/AEFSMNMD/Jiang et al_2020_HARMONIES.pdf}
 }
 
 @article{Jiao2019,
@@ -740,6 +774,24 @@
   abstract = {The assessment of microbial diversity and distribution is a major concern in environmental microbiology. There are two general approaches for measuring community diversity: quantitative measures, which use the abundance of each taxon, and qualitative measures, which use only the presence/absence of data. Quantitative measures are ideally suited to revealing community differences that are due to changes in relative taxon abundance (e.g., when a particular set of taxa flourish because a limiting nutrient source becomes abundant). Qualitative measures are most informative when communities differ primarily by what can live in them (e.g., at high temperatures), in part because abundance information can obscure significant patterns of variation in which taxa are present. We illustrate these principles using two 16S rRNA-based surveys of microbial populations and two phylogenetic measures of community beta diversity: unweighted UniFrac, a qualitative measure, and weighted UniFrac, a new quantitative measure, which we have added to the UniFrac website (http://bmf.colorado.edu/unifrac). These studies considered the relative influences of mineral chemistry, temperature, and geography on microbial community composition in acidic thermal springs in Yellowstone National Park and the influences of obesity and kinship on microbial community composition in the mouse gut. We show that applying qualitative and quantitative measures to the same data set can lead to dramatically different conclusions about the main factors that structure microbial diversity and can provide insight into the nature of community differences. We also demonstrate that both weighted and unweighted UniFrac measurements are robust to the methods used to build the underlying phylogeny.}
 }
 
+@article{mcdonaldBiologicalObservationMatrix2012,
+  title = {The {{Biological Observation Matrix}} ({{BIOM}}) Format or: How {{I}} Learned to Stop Worrying and Love the Ome-Ome},
+  shorttitle = {The {{Biological Observation Matrix}} ({{BIOM}}) Format Or},
+  author = {McDonald, Daniel and Clemente, Jose C and Kuczynski, Justin and Rideout, Jai Ram and Stombaugh, Jesse and Wendel, Doug and Wilke, Andreas and Huse, Susan and Hufnagle, John and Meyer, Folker and Knight, Rob and Caporaso, J Gregory},
+  date = {2012-12-01},
+  journaltitle = {GigaScience},
+  shortjournal = {GigaScience},
+  volume = {1},
+  number = {1},
+  pages = {2047-217X-1-7},
+  issn = {2047-217X},
+  doi = {10.1186/2047-217X-1-7},
+  url = {https://doi.org/10.1186/2047-217X-1-7},
+  urldate = {2022-01-14},
+  abstract = {We present the Biological Observation Matrix (BIOM, pronounced “biome”) format: a JSON-based file format for representing arbitrary observation by sample contingency tables with associated sample and observation metadata. As the number of categories of comparative omics data types (collectively, the “ome-ome”) grows rapidly, a general format to represent and archive this data will facilitate the interoperability of existing bioinformatics tools and future meta-analyses.The BIOM file format is supported by an independent open-source software project (the biom-format project), which initially contains Python objects that support the use and manipulation of BIOM data in Python programs, and is intended to be an open development effort where developers can submit implementations of these objects in other programming languages.The BIOM file format and the biom-format project are steps toward reducing the “bioinformatics bottleneck” that is currently being experienced in diverse areas of biological sciences, and will help us move toward the next phase of comparative omics where basic science is translated into clinical and environmental applications. The BIOM file format is currently recognized as an Earth Microbiome Project Standard, and as a Candidate Standard by the Genomic Standards Consortium.},
+  file = {/home/dileep/Zotero/storage/W9VB525Z/McDonald et al_2012_The Biological Observation Matrix (BIOM) format or.pdf;/home/dileep/Zotero/storage/SAJL6CMV/2656152.html}
+}
+
 @article{Menon2018,
   title = {Interactions between Species Introduce Spurious Associations in Microbiome Studies},
   author = {Menon, Rajita and Ramanan, Vivek and Korolev, Kirill S.},
@@ -924,6 +976,29 @@
   keywords = {internet}
 }
 
+@article{quinnProprRpackageIdentifying2017,
+  title = {Propr: {{An R-package}} for {{Identifying Proportionally Abundant Features Using Compositional Data Analysis}}},
+  shorttitle = {Propr},
+  author = {Quinn, Thomas P. and Richardson, Mark F. and Lovell, David and Crowley, Tamsyn M.},
+  date = {2017-11-24},
+  journaltitle = {Scientific Reports},
+  shortjournal = {Sci Rep},
+  volume = {7},
+  number = {1},
+  pages = {16252},
+  publisher = {{Nature Publishing Group}},
+  issn = {2045-2322},
+  doi = {10.1038/s41598-017-16520-0},
+  url = {https://www.nature.com/articles/s41598-017-16520-0/},
+  urldate = {2022-01-14},
+  abstract = {In the life sciences, many assays measure only the relative abundances of components in each sample. Such data, called compositional data, require special treatment to avoid misleading conclusions. Awareness of the need for caution in analyzing compositional data is growing, including the understanding that correlation is not appropriate for relative data. Recently, researchers have proposed proportionality as a valid alternative to correlation for calculating pairwise association in relative data. Although the question of how to best measure proportionality remains open, we present here a computationally efficient R package that implements three measures of proportionality. In an effort to advance the understanding and application of proportionality analysis, we review the mathematics behind proportionality, demonstrate its application to genomic data, and discuss some ongoing challenges in the analysis of relative abundance data.},
+  issue = {1},
+  langid = {english},
+  keywords = {High-throughput screening,Software},
+  annotation = {Bandiera\_abtest: a Cc\_license\_type: cc\_by Cg\_type: Nature Research Journals Primary\_atype: Research Subject\_term: High-throughput screening;Software Subject\_term\_id: high-throughput-screening;software},
+  file = {/home/dileep/Zotero/storage/EHJZ7YIC/Quinn et al_2017_propr.pdf;/home/dileep/Zotero/storage/MNMTTCPQ/s41598-017-16520-0.html}
+}
+
 @article{Ritari2015,
   author = {Ritari, Jarmo and Salojärvi, Jarkko and Lahti, Leo and de Vos, Willem M.},
   options = {useprefix=true},
@@ -1051,6 +1126,24 @@
   doi = {10.1016/J.ATG.2016.02.001},
   url = {https://www.sciencedirect.com/science/article/pii/S2212066115300405\{#\}bb0225},
   abstract = {The recent advances in high-throughput omics technologies have enabled researchers to explore the intricacies of the human microbiome. On the clinical front, the gut microbial community has been the focus of many biomarker-discovery studies. While the recent deluge of high-throughput data in microbiome research has been vastly informative and groundbreaking, we have yet to capture the full potential of omics-based approaches. Realizing the promise of multi-omics data will require integration of disparate omics data, as well as a biologically relevant, mechanistic framework – or metabolic model – on which to overlay these data. Also, a new paradigm for metabolic model evaluation is necessary. Herein, we outline the need for multi-omics data integration, as well as the accompanying challenges. Furthermore, we present a framework for characterizing the ecology of the gut microbiome based on metabolic network modeling.}
+}
+
+@article{tackmannRapidInferenceDirect2019,
+  title = {Rapid {{Inference}} of {{Direct Interactions}} in {{Large-Scale Ecological Networks}} from {{Heterogeneous Microbial Sequencing Data}}},
+  author = {Tackmann, Janko and Matias Rodrigues, João Frederico and von Mering, Christian},
+  options = {useprefix=true},
+  date = {2019-09},
+  journaltitle = {Cell Systems},
+  shortjournal = {Cell Systems},
+  volume = {9},
+  number = {3},
+  pages = {286-296.e8},
+  issn = {24054712},
+  doi = {10.1016/j.cels.2019.08.002},
+  url = {https://linkinghub.elsevier.com/retrieve/pii/S2405471219302716},
+  urldate = {2021-02-11},
+  langid = {english},
+  file = {/home/dileep/Zotero/storage/2CHHRIBX/Tackmann et al_2019_Rapid Inference of Direct Interactions in Large-Scale Ecological Networks from.pdf}
 }
 
 @article{Thompson2017,
@@ -1205,6 +1298,19 @@
   doi = {10.1016/j.cels.2016.12.012},
   abstract = {The inference of associations between environmental factors and microbes and among microbes is critical to interpreting metagenomic data, but compositional bias, indirect associations resulting from common factors, and variance within metagenomic sequencing data limit the discovery of associations. To account for these problems, we propose metagenomic Lognormal-Dirichlet-Multinomial (mLDM), a hierarchical Bayesian model with sparsity constraints, to estimate absolute microbial abundance and simultaneously infer both conditionally dependent associations among microbes and direct associations between microbes and environmental factors. We empirically show the effectiveness of the mLDM model using synthetic data, data from the TARA Oceans project, and a colorectal cancer dataset. Finally, we apply mLDM to 16S sequencing data from the western English Channel and report several associations. Our model can be used on both natural environmental and human metagenomic datasets, promoting the understanding of associations in the microbial community.},
   keywords = {16S rRNA sequencing,compositional bias,environmental factor-microbe associations,hierarchical Bayesian statistical model,Lognormal-Dirichlet-Multinomial model,metagenomics,microbe-microbe associations,OTU-OTU associations}
+}
+
+@article{yoonMicrobialNetworksSPRING2019,
+  title = {Microbial {{Networks}} in {{SPRING}} - {{Semi-parametric Rank-Based Correlation}} and {{Partial Correlation Estimation}} for {{Quantitative Microbiome Data}}},
+  author = {Yoon, Grace and Gaynanova, Irina and Müller, Christian L.},
+  date = {2019},
+  journaltitle = {Frontiers in Genetics},
+  volume = {10},
+  issn = {1664-8021},
+  url = {https://www.frontiersin.org/article/10.3389/fgene.2019.00516},
+  urldate = {2022-01-14},
+  abstract = {High-throughput microbial sequencing techniques, such as targeted amplicon-based and metagenomic profiling, provide low-cost genomic survey data of microbial communities in their natural environment, ranging from marine ecosystems to host-associated habitats. While standard microbiome profiling data can provide sparse relative abundances of operational taxonomic units or genes, recent advances in experimental protocols give a more quantitative picture of microbial communities by pairing sequencing-based techniques with orthogonal measurements of microbial cell counts from the same sample. These tandem measurements provide absolute microbial count data albeit with a large excess of zeros due to limited sequencing depth. In this contribution we consider the fundamental statistical problem of estimating correlations and partial correlations from such quantitative microbiome data. To this end, we propose a semi-parametric rank-based approach to correlation estimation that can naturally deal with the excess zeros in the data. Combining this estimator with sparse graphical modeling techniques leads to the Semi-Parametric Rank-based approach for INference in Graphical model (SPRING). SPRING enables inference of statistical microbial association networks from quantitative microbiome data which can serve as high-level statistical summary of the underlying microbial ecosystem and can provide testable hypotheses for functional species-species interactions. Due to the absence of verified microbial associations we also introduce a novel quantitative microbiome data generation mechanism which mimics empirical marginal distributions of measured count data while simultaneously allowing user-specified dependencies among the variables. SPRING shows superior network recovery performance on a wide range of realistic benchmark problems with varying network topologies and is robust to misspecifications of the total cell count estimate. To highlight SPRING's broad applicability we infer taxon-taxon associations from the American Gut Project data and genus-genus associations from a recent quantitative gut microbiome dataset. We believe that, as quantitative microbiome profiling data will become increasingly available, the semi-parametric estimators for correlation and partial correlation estimation introduced here provide an important tool for reliable statistical analysis of quantitative microbiome data.},
+  file = {/home/dileep/Zotero/storage/TIA9M8BV/Yoon et al_2019_Microbial Networks in SPRING - Semi-parametric Rank-Based Correlation and.pdf}
 }
 
 @article{Zhang2015,

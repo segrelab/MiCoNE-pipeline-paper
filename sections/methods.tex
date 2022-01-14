@@ -16,7 +16,7 @@
     The mock4 community is composed of 21 bacterial strains.
     Two replicate samples from mock4 contain all species in equal abundances, and two additional replicate samples contain the same species in unequal abundances.
     The mock12 community is composed of 27 bacterial strains that include closely related taxa with some pairs having only one to two nucleotide difference from another.
-    The mock16 community is composed of 49 bacteria and 10 archea, all represented in equal amount.
+    The mock16 community is composed of 49 bacteria and 10 Archea, all represented in equal amount.
 
   \subsection*{\ac{micone}}
 
@@ -71,6 +71,7 @@
       \hline
       Chimera checking & Uchime & \cite{rognesVSEARCHVersatileOpen2016,bolyenReproducibleInteractiveScalable2019} \\
       Chimera checking & Remove bimera & \cite{Callahan2016} \\
+      \hline
     \end{tabular}
     \caption{Tools used in the DC module}
     \label{tab:dc_tools}
@@ -84,7 +85,7 @@
   Finally, a consensus method is used to identify the most probable match from the list of best matches.
   The pipeline incorporates \ac{gg} 13\_8~\cite{DeSantis2006}, SILVA 138~\cite{Quast2012} and the \ac{ncbi} (16S RefSeq as of Oct 2021)~\cite{Sayers2009} databases for taxonomy assignment.
   These databases were downloaded and built using the RESCRIPt qiime2 plugin~\cite{iiRESCRIPtReproducibleSequence2021}.
-  The Naive Bayes classifier from \ac{qiime2} and \ac{ncbi} blast as the query tools (from \ac{qiime2}).
+  The Naive Bayes classifier and the \ac{ncbi} blast used as the query tools in this study were from the \ac{qiime2} package and the parameters used were also the defaults in the package.
   The consensus algorithm used is the default method used by the classifiers in \ac{qiime2}.
 
   \begin{table}[h]
@@ -94,37 +95,73 @@
       \hline
       \textbf{Module} & \textbf{Tool/Database} & \textbf{References} \\
       \hline
-      Query tool & Blast & \cite{camachoBLASTArchitectureApplications2009} \\
+      Query tool & Blast & \cite{camachoBLASTArchitectureApplications2009,bokulichOptimizingTaxonomicClassification2018} \\
       Query tool & Naive bayes classifier & \cite{bokulichOptimizingTaxonomicClassification2018} \\
       \hline
       Database & Greengenes & \cite{DeSantis2006} \\
       Database & SILVA & \cite{Quast2012} \\
       Database & NCBI RefSeq & \cite{Sayers2009} \\
+      \hline
     \end{tabular}
     \caption{Tools used in the TA module}
     \label{tab:ta_tools}
   \end{table}
 
-  % TODO: Add references and basic equations or details
   \subsection*{OTU and ESV Processing (OP)}
   \vspace{-5mm}
-  This module deals with normalization, filtering and applying transformations to the \ac{otu} or \ac{esv} counts matrix.
+  This module deals with normalization, filtering, forking, grouping and applying transformations to the \ac{otu} or \ac{esv} counts matrix.
+  Normalization of the count matrix involves converting the count matrix of read counts into a count matrix containing relative abundances.
   The module also supports rarefaction, which is a normalization technique used to overcome the bias that might arise due to variable sampling depth in different samples.
   This is performed either by sub-sampling or by normalization of the matrix to the lowest sampling depth~\cite{Weiss2015}.
-  Although the pipeline supports rarefaction, the analyses reported in the paper do not rareify the counts matrices.
+  Although the pipeline supports rarefaction, these modules are turned off by default and the analyses reported in the paper do not normalize or rareify the counts matrices.
+  However, most of the network inference methods perform normalization and other transformation operations on the counts matrix as a part of their workflow.
   Filtering, is performed to remove samples or features (\ac{otu}s or \ac{esv}s) from the count matrix that are sparse.
-  In order to determine the filtering threshold we fix the number of samples and correlation detection power needed and determine the number of features to be used.
-  Finally, transformations are performed in order to correct for and overcome the compositional bias that is inherent in a counts matrix (in most cases this is handled by the network inference algorithm).
+  By default, samples are filtered out if the total reads in a sample are less than 500 and features are filtered out if the abundance of the 1\% and prevalence is less than 5\%.
+  The forking operation splits the count matrix into multiple matrices based on sample metadata column.
+  The group operation transforms the \ac{otu} or \ac{esv} count matrix into a taxonomic count matrix at the requested level by adding up counts that map to the same taxonomy.
+  Finally, transformations are performed in order to correct for and overcome the compositional bias that is inherent in a counts matrix (in analyses peformed in the study these are handled by the network inference algorithm).
+  All the modules in this step were implemented using functions from the \href{http://biom-format.org/}{biom-format} Python package~\cite{mcdonaldBiologicalObservationMatrix2012}.
 
   \subsection*{Network Inference (NI)}
   \vspace{-5mm}
-  This module deals with the inference of co-occurrence associations from the \ac{otu} or \ac{esv} counts matrix.
-  The counts matrices are collapsed to the Genus level (or the required taxonomy level) by adding up the counts of \ac{otu} or \ac{esv} that map to the same taxa.
-  These collapsed matrices are as used as input to the network inferrence methods to produce association matrices at the appropriate taxonomy level.
+  This module deals with the inference of co-occurrence associations from the processed \ac{otu} or \ac{esv} counts matrix.
+  The input count matrices are collapsed to the Genus level (or any other required taxonomy level) using the group module at the OP step.
+  These collapsed matrices are as used as input to the network inference methods to produce association matrices at the appropriate taxonomy level.
   These associations can be represented as a network, with nodes representing taxonomies of the micro-organisms and edges representing the associations between them.
-  A null model is created by re-sampling and bootstrapping the correlation/interaction matrix and is used to calculate the significance of the inferred associations by calculating the p-values against this null model~\cite{Watts2018}.
-  The pipeline includes Pearson, Spearman and FastSpar v0.0.10 (a faster implementation of \ac{sparcc})~\cite{Watts2018} as the pairwise correlation metrics, and \ac{spieceasi} v1.0.7~\cite{Kurtz2015}, \ac{mldm} v1.1~\cite{Yang2017} and \ac{magma}~\cite{Cougoul2019} as the direct association metrics.
-  The Brown's p-value merging method~\cite{brown_400_1975} is used for combining p-values from the various methods to obtain a consensus p-value, which is used to create the consensus network.
+  A null model is created by re-sampling and bootstrapping the counts matrix and recalculating the correlations/associations.
+  These bootstrapped association matrices are used to calculate the significance of the inferred associations by calculating the p-values against this null model~\cite{Watts2018}.
+  The pipeline includes 4 methods for pairwise correlation metrics, and 6 methods for direct association metrics (refer Table~\ref{tab:ni_tools}).
+  The Brown's p-value merging method~\cite{brown_400_1975} is used for combining p-values from the pairwise correlations methods to obtain a consensus p-value, which can be used to filter for significance.
+  In the final module of this step, the consensus algorithms are used to create the final consensus network using associations from all the network inference methods.
+  The output of this step are co-occurrence association networks encoded in the JSON format (refer Supplementary section).
+
+  \begin{table}[h]
+    \centering
+    \small
+    \begin{tabular}{|c|c|c|}
+      \hline
+      \textbf{Module} & \textbf{Tool/Database} & \textbf{References} \\
+      \hline
+      Booststrap & \texttt{fastspar\_bootstraps} v1.0 & \cite{Watts2018} \\
+      Booststrap & \texttt{fastspar\_pvalues} v1.0 & \cite{Watts2018} \\
+      \hline
+      Direct & \ac{spieceasi} v1.1.2 & \cite{Kurtz2015} \\
+      Direct & FlashWeave.jl v0.18.1 & \cite{tackmannRapidInferenceDirect2019} \\
+      Direct & \ac{cozine} v1.0 & \cite{haCompositionalZeroinflatedNetwork2020a} \\
+      Direct & \ac{harmonies} v1.0 & \cite{jiangHARMONIESHybridApproach2020} \\
+      Direct & \ac{spring} v1.0.4 & \cite{yoonMicrobialNetworksSPRING2019} \\
+      Direct & \ac{mldm} v1.1 & \cite{Yang2017} \\
+      \hline
+      Correlation & FastSpar (\ac{sparcc}) v1.0 & \cite{Watts2018} \\
+      Correlation & Pearson & - \\
+      Correlation & Spearman & - \\
+      Correlation & propr v2.1.2 & \cite{quinnProprRpackageIdentifying2017} \\
+      \hline
+    \end{tabular}
+    \caption{Tools used in the NI module}
+    \label{tab:ni_tools}
+  \end{table}
+
 
   \subsection*{Consensus Network and p-value merging}
   \vspace{-5mm}
@@ -173,88 +210,109 @@
     \label{eqn:pvalue-combined}
   \end{equation}
 
-  The consensus method in \ac{micone} (refer Documentation) uses Equation~\ref{eqn:covariance-pvalues} to estimate the covariance of the pvalues and Equation~\ref{eqn:pvalue-combined} to merge the p-values (obtained from bootstrapping) from different methods.
+  The p-value merging method in \ac{micone} (refer Documentation) uses Equation~\ref{eqn:covariance-pvalues} to estimate the covariance of the pvalues and Equation~\ref{eqn:pvalue-combined} to merge the p-values (obtained from bootstrapping) from the different correlation methods.
+  % FIXME: Not sure what our stance on this is?
   Note that we do not use Pearson and Spearman methods in the p-value merging step and these algorithms are only used for demonstration and comparison.
   The combined p-values are used to threshold for significance during the consensus network step.
 
- \subsection*{NOTATION}
+ \subsection*{Notation}
 
-  Note this section defines the notation for the network comparison component of our pipeline, which assumes that all networks to be compared have the same number of nodes
+  This section defines the notation for the consensus network component of our pipeline, which assumes that all networks to be compared have the same number of nodes.
 
-  q = number of nodes
+  q = the number of nodes
 
-  w = number of different networks from different approaches (previously x?)
+  w = the number of co-occurrence networks generated from different approaches
 
-  $N^i$ = network k (currently Ni)
+  $N^i$ = The $i^{th}$ occurrence network represented as a $q \times q$ adjacency matrix, where $i \in {1, q}$
 
-  $N^i_{a,b}$ = edge (a,b) in network i
+  $N^i_{a,b}$ = edge $(a,b)$ in network $i$
 
-  It useful to define a "stretched" version of each adjacency matrix $N^i$ into a column vector, where all columns are stacked onto each other into an $q^2$ long vector:
-
-  $\bar{N}^i_{j}$ , $j=1:q^2$
+  $\bar{N}^i$ is a "flattened" version of the adjacency matrix $N^i$ into a $q^2 \times 1$ column vector, where all columns are stacked onto each other into a $q^2$ long vector:
 
   \subsection*{Consensus method}
   \vspace{-5mm}
 
-  The consensus algorithm was designed to increase the number of true positives reported at the end of the network inference step. For this purpose, we designed two simple algorithms that combine the edges reported by the different network inference tools for each pair of nodes using a consensus based on a parameter \(p\). The inputs to both the algorithms are the interaction networks (association matrices) generated by each method \(N_{i}\) and the threshold parameter (p). Here, the \(N_{i}\) each have the same set of nodes and only differ by the value of the association inferred between every pair.
+  The consensus algorithm was designed to increase the precision (number of true positives) at the end of the network inference step.
+  For this purpose, we designed two simple algorithms that combine the edges reported by the different network inference tools for each pair of nodes using a consensus based on a parameter $p$.
+  The inputs to both the algorithms are the co-occurrence networks (association matrices) $\bar{N}^i$ (flattened version of $N^{i}$) generated by each method $i$ and the threshold parameter $p$.
+  Here, the $\bar{N}^{i}$ each have the same set of nodes $q$ and only differ by the value of the association inferred between every pair.
+  Networks which do not have a particular node, are updated such that the node is added as an isolated component.
+  In this manner, $\bar{N}^{i}_j$ represents edge $j$ in network $i$.
 
   \subsection*{Algorithm 1: Simple voting}
+   \vspace{-5mm}
 
+  The simple voting method performs a voting-based consensus to determine whether an edge will exist between a given node-pair in the final consensus network.
+  For each pair of nodes, we determine the number of network inference methods that report an edge $j=k$ between them, i.e. $\bar{N}^{i}_{j=k}, \forall i \in 1:w$.
+  Each node-pair will have an edge in the final consensus network if the number of reported edges is more than the threshold (Equation~\ref{eqn:simple-voting2})
 
-  The simple voting method performs a voting-based consensus to determine whether an edge will exist between a given node-pair in the final consensus network. For each pair of nodes \((\text{node}_{i}, \text{node}_{j})\), we determine the number of network inference methods that report an edge between them  (\(\text{edges}(\text{node}_{i}, \text{node}_{j})\)). Each node-pair will have an edge in the final consensus network if the number of reported edges is more than a threshold (Equation \ref{eqn:simple-voting})
-
- For each edge (i,j), we count number $M_{i,j}$ of networks in which that edge exists, i.e.:
-
- \begin{equation}
- \begin{aligned}
- M_{i,j} &= | \left{ a \mid N^{a}_{i,j}>0 \right} | \\
- M_{i,j} &\geq \lfloor \theta * w \rfloor
- \end{aligned}
-  \label{eqn:simple-voting}
-  \end{equation}
+ For each edge $j$, we obtain $M_j$ which represents the number of networks in which edge $j$ is reported, i.e.:
 
   \begin{equation}
-  \text{edges}(\text{node}_{i}, \text{node}_{j}) \geq \lfloor \theta * w \rfloor
-  \label{eqn:simple-voting}
+      M_j = f(g(\bar{N}^{i=1}_j), \dots, g(\bar{N}^{i=w}_j)) \\
+    \label{eq:simple-voting}
   \end{equation}
 
-   \begin{equation}
-   \sum_k N^k_{i,j} \geq \lfloor \theta * w \rfloor
-  \label{eqn:simple-voting2}
+  where,
+  $w$ is the number of network inference methods used in the consensus,
+  \begin{equation*}
+    g(x) =
+    \begin{cases}
+       & 0 \text{ if } x=0, \\
+       & -1 \text{ if } x<0, \\
+       & 1 \text{ if } x>0
+    \end{cases}
+  \end{equation*}
+  and
+  \begin{equation*}
+    f(x_1,\dots,x_w) = max
+    \begin{cases}
+       & \sum_i \mid x \in x_i \mid x_i = -1 \mid, \\
+       & \sum_i \left( x \in x_i \mid x_i = 1 \right) \\
+    \end{cases}
+  \end{equation*}
+
+  The edge $j$ appears in the final consensus network if the reported edges is greater than the threshold.
+  \begin{equation}
+     M_j \geq \lfloor p * w \rfloor
+    \label{eqn:simple-voting2}
   \end{equation}
+  where,
+  $p$ is the user-defined parameter threshold
 
+  The simple voting method gives the union of the networks when $p \in (0, \frac{1}{w})$ and will return the intersection when $p \in ((w - 1), 1)$.
+  In general, if $p \in ((n - 1), \frac{n}{w})$, this algorithm will report an edge in the consensus network when at least $n$ network inference methods report this edge.
 
-  where, \(w\) is the number of network inference methods used in the consensus.
-
-
- where, \theta is the user-defined threshold....
-
-  The simple voting method gives the union of the networks when \(p \in (0, \frac{1}{x})\) and will return the intersection when \(p \in ((x - 1), 1)\). In general, if \(p \in ((n - 1), \frac{n}{x})\), this algorithm will report an edge in the consensus network when at least \(n\) network inference methods report this edge.
 
   \subsubsection*{Algorithm 2: Scaled-sum method}
+   \vspace{-5mm}
 
-  This algorithm performs a consensus based on sum of all edges reported between a node-pair. First, the network generated by each network inference method is re-scaled so that (\max(\mid N_{i} \mid) = 1) (Equation \ref{eqn:scaled-sum-rescaling}).
-
-
-\begin{equation}
-  NS^{a}_{i,j} = \frac{N^{(a)}_{i,j}}{\max(\mid N_{i} \mid)}
-  \label{eqn:scaled-sum-rescaling}
-  \end{equation}
+  This algorithm performs a consensus based on the sum of all edges reported between a node-pair. First, the network generated by each network inference method is re-scaled so that $\max_{j}(\mid \bar{N}^i_j \mid) = 1$ (Equation~\ref{eqn:scaled-sum-rescaling})
 
 
   \begin{equation}
-  N^{scaled}_{i} = \frac{N_{i}}{\max(\mid N_{i} \mid)}
-  \label{eqn:scaled-sum-rescaling}
+    S^{i} = \frac{N^{i}}{\max(\mid N^{i} \mid)}
+    \label{eqn:scaled-sum-rescaling}
   \end{equation}
 
-  The re-scaling is performed because the associations reported by the direct association metrics are not necessarily correlations and are not directly comparable to the associations from the correlation-based methods due to their lower weights. This problem can also be alleviated by weighing each network inference method differently. Next, for each pair of nodes, we sum the weights of all reported edges (Equation \ref{eqn:scaled-sum}).
+  The re-scaling is performed because the associations reported by the direct association metrics are not necessarily correlations and are not directly comparable to the associations from the correlation-based methods due to their lower weights.
+  This problem can also be alleviated by weighing each network inference method differently, but for simplicity we chose the current approach.
+  Next, for each edge $j$, we sum the weights of all reported edges from the different networks (Equation \ref{eqn:scaled-sum}).
 
   \begin{equation}
-  \text{scaled\_sum}(\text{node}_{m}, \text{node}_{n}) = \mid \sum_{i} N^{scaled}_{i}(\text{node}_{m}, \text{node}_{n}) \mid
-  \label{eqn:scaled-sum}
+    s_j = \left\mid \sum_i S^i_j \right\mid
+    \label{eqn:scaled-sum}
   \end{equation}
 
-  An edge will exist between a given node-pair in the consensus network if \(\text{scaled\_sum} > (x - 1) * p\), where \(x\) is the number of network inference methods used in the consensus. The advantage of this method is that it also takes into account how the strength of the association reported for that particular node is in the inferred networks.
+
+  An edge $j$ will exist between a given node-pair in the consensus network if:
+  \begin{equation}
+    s_j > (w - 1) \times p
+    \label{eq:scaled-sum2}
+  \end{equation}
+  where, $w$ is the number of network inference methods used in the consensus.
+
+  The advantage of this method is that it also takes into account the strength of the association reported for that particular node in the inferred networks.
 
   \subsubsection*{Network Variability}
   \vspace{-5mm}
@@ -315,7 +373,7 @@
   The initial species concentrations are randomly sampled from a Poisson distribution and the simulation is rerun to generate a number of samples ($S$) varying from 50 to 500 (50, 100, 200, 500) for different communities.
   The abundance values of the species in the community at the end of the simulation time are used to create the OTU table.
 
-  The second method, hereby referred to as ``NorTA'', used the Normal to Anything (NorTA) approach coupled with a given interaction network topology to generate the abundance distribution of the microbial community \cite{kurtzSparseCompositionallyRobust2015}.
+  The second method, hereby referred to as ``NorTA'', used the Normal to Anything (NorTA) approach coupled with a given interaction network topology to generate the abundance distribution of the microbial community \cite{Kurtz2015}.
   We used the \href{https://github.com/zdk123/SpiecEasi}{spieceasi} R package to simulate communities with different network topologies (scale-free, cluster, block, Erdos-Renyi, band and hub) and target abundance distributions (Negative Binomial, Poisson, Zero-Inflated Negative Binomial).
   The OTU table was generated using the American Gut Project example in the \texttt{spieceasi} package (amgut1.filt) with the default parameter options.
 
