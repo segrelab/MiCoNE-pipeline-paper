@@ -1,0 +1,47 @@
+import pathlib
+
+from data_extraction import extract_data
+from extract_figure6_data import make_process_string, make_prevprocess_string
+
+NI_METHODS = (
+    ("dir", "cozine"),
+    ("dir", "flashweave"),
+    ("dir", "harmonies"),
+    ("dir", "mldm"),
+    ("dir", "spieceasi"),
+    ("dir", "spring"),
+    ("corr", "pearson"),
+    ("corr", "propr"),
+    ("corr", "sparcc"),
+    ("corr", "spearman"),
+)
+
+
+def extract_figure5_data(
+    input_folder: pathlib.Path, output_folder: pathlib.Path
+) -> None:
+    # STEP1: Loop through each NI method
+    for ni_type, ni_method in NI_METHODS:
+        workflow = "network_inference"
+        module = "network"
+        process = make_process_string((ni_type, ni_method))
+        prev_process = make_prevprocess_string(
+            DC="dada2",
+            CC="remove_bimera",
+            TA="naive_bayes(gg_13_8_99)",
+            TAX_LEVEL="Genus",
+            NI=ni_method,
+        )
+        # STEP2: Extract the data
+        output_subfolder = output_folder / ni_method
+        extract_data(
+            input_folder, workflow, module, process, prev_process, output_subfolder
+        )
+
+
+if __name__ == "__main__":
+    INPUT_FOLDER = pathlib.Path(
+        "/home/dileep/Documents/Work/MIND/Results/micone_scc_testing/full_pipeline_testing/outputs/outputs"
+    )
+    OUTPUT_FOLDER = pathlib.Path("../../data/figure5/input/moving_pictures")
+    extract_figure5_data(INPUT_FOLDER, OUTPUT_FOLDER)
