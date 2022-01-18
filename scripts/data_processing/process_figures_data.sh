@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+#$ -l h_rt=24:00:00
+#$ -N micone_data_processing
+#$ -P visant
+#$ -o qsub_outputs.txt
+#$ -e qsub_errors.txt
+#$ -m e
+#$ -pe omp 8
+
 PLATFORM="local" # change to scc on the SCC
 DATASET="moving_pictures"
 
@@ -11,13 +19,13 @@ fi
 # Figure 2
 echo "Processing Figure 2"
 cd ../figure2/
-# NOTE: This requires 4 cpu cores
+# NOTE: This requires 8 cpu cores
 python figure2_data.py \
   --files "../../data/figure2/input/$DATASET/**/*.json" \
   --level "Genus" \
   --interaction_threshold 0.1 \
   --pvalue_threshold 0.05 \
-  --ncpus 4 \
+  --ncpus 8 \
   --output "../../data/figure2/output/$DATASET"
 
 # Figure 4
