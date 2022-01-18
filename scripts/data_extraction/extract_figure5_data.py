@@ -1,4 +1,5 @@
 import pathlib
+import sys
 
 from data_extraction import extract_data
 from extract_figure6_data import make_process_string, make_prevprocess_string
@@ -40,8 +41,7 @@ def extract_figure5_data(
 
 
 if __name__ == "__main__":
-    INPUT_FOLDER = pathlib.Path(
-        "/home/dileep/Documents/Work/MIND/Results/micone_scc_testing/full_pipeline_testing/outputs/outputs"
-    )
-    OUTPUT_FOLDER = pathlib.Path("../../data/figure5/input/moving_pictures")
+    INPUT_FOLDER = pathlib.Path(sys.argv[1])
+    DATASET = sys.argv[2]
+    OUTPUT_FOLDER = pathlib.Path(f"../../data/figure5/input/{DATASET}")
     extract_figure5_data(INPUT_FOLDER, OUTPUT_FOLDER)
