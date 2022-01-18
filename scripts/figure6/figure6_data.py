@@ -178,6 +178,7 @@ def write_l1_distance(networks_dict: dict, output_directory):
 @click.option("--dc", help="The tool choice for DC step")
 @click.option("--cc", help="The tool choice for CC step")
 @click.option("--ta", help="The tool choice for TA step")
+@click.option("--op", help="The tool choice for OP step")
 @click.option("--ni", help="The tool choice for NI step")
 @click.option("--output", default=".", help="The path to the output directory")
 def main(
@@ -187,6 +188,7 @@ def main(
     dc: str,
     cc: str,
     ta: str,
+    op: str,
     ni: str,
     output: str,
 ):
@@ -197,6 +199,7 @@ def main(
         "DC": dict(),
         "CC": dict(),
         "TA": dict(),
+        "OP": dict(),
         "NI": dict(),
     }
     for step_folder in tqdm(list(folder.iterdir())):
@@ -229,6 +232,7 @@ def main(
         f"DC_{dc}": networks_dict["DC"][dc],
         f"CC_{cc}": networks_dict["CC"][cc],
         f"TA_{ta}": networks_dict["TA"][ta],
+        f"OP_{op}": networks_dict["OP"][op],
         f"NI_{ni}": networks_dict["NI"][ni],
         "default": networks_dict["default"]["default"],
     }

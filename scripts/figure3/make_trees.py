@@ -29,8 +29,8 @@ def get_artifact(fasta):
     print("Importing {}".format(fasta))
     cmd = """
     qiime tools import \
-        --input-path {fasta} \
-        --output-path {artifact} \
+        --input-path '{fasta}' \
+        --output-path '{artifact}' \
         --type 'FeatureData[Sequence]'
     """.format(
         fasta=fasta, artifact=artifact
@@ -45,11 +45,11 @@ def get_tree(artifact):
     print("Calculating tree for {}".format(artifact))
     cmd = """
     qiime phylogeny align-to-tree-mafft-fasttree \
-      --i-sequences {artifact} \
-      --o-alignment {parent}/{fname}_aligned-sequences.qza \
-      --o-masked-alignment {parent}/{fname}_masked-aligned-sequences.qza \
-      --o-tree {parent}/{fname}_unrooted-tree.qza \
-      --o-rooted-tree {parent}/{fname}_rooted-tree.qza \
+      --i-sequences '{artifact}' \
+      --o-alignment '{parent}/{fname}_aligned-sequences.qza' \
+      --o-masked-alignment '{parent}/{fname}_masked-aligned-sequences.qza' \
+      --o-tree '{parent}/{fname}_unrooted-tree.qza' \
+      --o-rooted-tree '{parent}/{fname}_rooted-tree.qza' \
       --p-n-threads 4 \
       --quiet
     """.format(
@@ -62,7 +62,7 @@ def get_tree(artifact):
 def export_tree(tree):
     folder = tree.parent / tree.stem
     print("Exporting tree {}".format(tree))
-    cmd = "qiime tools export --input-path {tree} --output-path {folder}".format(
+    cmd = "qiime tools export --input-path '{tree}' --output-path '{folder}'".format(
         tree=tree, folder=folder
     )
     call(cmd, shell=True)

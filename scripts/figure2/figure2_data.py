@@ -65,8 +65,7 @@ def parse_data(
     tqdm_func,
     global_tqdm,
 ) -> Tuple[Optional[dict], Optional[pd.DataFrame]]:
-    # HEADER = ["DC", "CC", "TA", "OP", "NI"]
-    HEADER = ["DC", "CC", "TA", "TL", "NI"]
+    HEADER = ["DC", "CC", "TA", "OP", "TL", "NI"]
     process_string = file_path.parent.parent.stem
     hash = hashlib.md5(process_string.encode("utf-8")).hexdigest()
     processes = process_string.split("-")
@@ -94,14 +93,13 @@ def perform_anova(X: pd.DataFrame, Y: pd.DataFrame) -> dict:
                 "DC": X.loc[i, "DC"],
                 "CC": X.loc[i, "CC"],
                 "TA": X.loc[i, "TA"],
-                # "OP": X.loc[i, "OP"],
+                "OP": X.loc[i, "OP"],
                 "NI": X.loc[i, "NI"],
             }
             for i in Y.index
         ]
         df = pd.DataFrame(data)
-        # lm = ols("Y ~ C(DC) + C(TA) + C(OP)", data=df).fit()
-        lm = ols("Y ~ C(DC) + C(CC) + C(TA) + C(NI)", data=df).fit()
+        lm = ols("Y ~ C(DC) + C(CC) + C(TA) + C(OP) + C(NI)", data=df).fit()
         anova_dict[component] = sm.stats.anova_lm(lm, typ=2)
     return anova_dict
 
