@@ -11,6 +11,12 @@
 # TODO: Change this before running
 INPUT_FOLDER="/home/dileep/Documents/Work/MIND/Results/micone_scc_testing/full_pipeline_testing/outputs/outputs"
 DATASET="moving_pictures"
+PLATFORM="local"
+
+if [ $PLATFORM == "scc" ]; then
+  module load miniconda
+  conda activate micone-figures-py
+fi
 
 python extract_figure2_data.py $INPUT_FOLDER $DATASET
 python extract_figure3_data.py $INPUT_FOLDER $DATASET
