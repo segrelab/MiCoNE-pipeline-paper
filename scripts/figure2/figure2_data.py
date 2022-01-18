@@ -111,7 +111,10 @@ def normalize_anova(anova_dict: dict, pca: PCA) -> list:
     assert np.isclose(sum(var_ratio), 1)
     variance_list = []
     for component in anova_dict:
-        variance = anova_dict[component]["sum_sq"]
+        anova_dict[component]["mean_sq"] = (
+            anova_dict[component]["sum_sq"] / anova_dict[component]["df"]
+        )
+        variance = anova_dict[component]["mean_sq"]
         ratio = var_ratio[component]
         variance_list.append(variance * ratio)
     return variance_list

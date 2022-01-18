@@ -20,9 +20,9 @@ percentage_variance <- read.csv("../../data/figure2/output/moving_pictures/perce
 
 percentage_variance <-
   percentage_variance %>%
-  mutate(labels = scales::percent(sum_sq, scale=1)) %>%
+  mutate(labels = scales::percent(mean_sq, scale=1)) %>%
   arrange(desc(X)) %>%
-  mutate(text_y = cumsum(sum_sq) - sum_sq / 2)
+  mutate(text_y = cumsum(mean_sq) - mean_sq / 2)
 
 
 # df <- y_reduced %>% select("hash", "X0", "X1") %>% filter((abs(X0) < 5) & (abs(X1) < 10)) %>% left_join(x, by="hash")
@@ -30,7 +30,7 @@ df <- y_reduced %>% select("hash", "X0", "X1") %>% left_join(x, by="hash")
 scatter_ta <- plot_scatter(df, "TA")
 scatter_ni <- plot_scatter(df, "NI")
 
-pie_chart <- ggplot(data = percentage_variance, aes(x = "", y = sum_sq, fill = X)) +
+pie_chart <- ggplot(data = percentage_variance, aes(x = "", y = mean_sq, fill = X)) +
                        geom_bar(stat = "identity") + 
                        geom_label_repel(aes(label = labels, y = text_y), nudge_x = 1.6) +
                        coord_polar(theta = "y") +
