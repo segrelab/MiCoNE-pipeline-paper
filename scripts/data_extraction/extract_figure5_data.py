@@ -30,7 +30,8 @@ def extract_figure5_data(
             DC="dada2",
             CC="remove_bimera",
             TA="naive_bayes(gg_13_8_99)",
-            TAX_LEVEL="Genus",
+            OP="normalize_filter(on)",
+            GROUP="group(Genus)",
             NI=ni_method,
         )
         # STEP2: Extract the data

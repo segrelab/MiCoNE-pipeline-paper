@@ -16,7 +16,9 @@ CC_METHODS = ("uchime", "remove_bimera")
 
 TA_METHODS = ("blast(ncbi)", "naive_bayes(gg_13_8_99)", "naive_bayes(silva_138_99)")
 
-TAX_LEVEL = "Genus"
+OP_METHODS = ("normalize_filter(on)", "normalize_filter(off)")
+
+GROUP_LEVEL = "group(Genus)"
 
 NI_METHODS = (
     ("dir", "cozine"),
@@ -35,6 +37,7 @@ DEFAULT = {
     "DC": "dada2",
     "CC": "remove_bimera",
     "TA": "naive_bayes(gg_13_8_99)",
+    "OP": "normalize filter(on)",
     "NI": "consensus",
 }
 
@@ -48,8 +51,10 @@ def make_process_string(ni_method: Tuple[str, str]) -> str:
         raise ValueError(f"Unknown method {ni_method[0]}")
 
 
-def make_prevprocess_string(DC: str, CC: str, TA: str, TAX_LEVEL: str, NI: str) -> str:
-    prevprocess_string = f"{DC}-{CC}-{TA}-{TAX_LEVEL}-{NI}"
+def make_prevprocess_string(
+    DC: str, CC: str, TA: str, OP: str, GROUP: str, NI: str
+) -> str:
+    prevprocess_string = f"{DC}-{CC}-{TA}-{OP}-{GROUP}-{NI}"
     return prevprocess_string
 
 
@@ -61,35 +66,47 @@ def extract_step_data(
     default_dc = DEFAULT["DC"]
     default_cc = DEFAULT["CC"]
     default_ta = DEFAULT["TA"]
-    tax_level = TAX_LEVEL
+    default_op = DEFAULT["OP"]
+    group_level = GROUP_LEVEL
 
     method_dict = dict()
-    method_dict["TAX_LEVEL"] = tax_level
+    method_dict["GROUP"] = group_level
     if step == "default":
         method_dict["DC"] = default_dc
         method_dict["CC"] = default_cc
         method_dict["TA"] = default_ta
+        method_dict["OP"] = default_op
         loop_list_1 = DC_METHODS
         loop_list_2 = NI_METHODS
     elif step == "DC":
         method_dict["CC"] = default_cc
         method_dict["TA"] = default_ta
+        method_dict["OP"] = default_op
         loop_list_1 = DC_METHODS
         loop_list_2 = NI_METHODS
     elif step == "CC":
         method_dict["DC"] = default_dc
         method_dict["TA"] = default_ta
+        method_dict["OP"] = default_op
         loop_list_1 = CC_METHODS
         loop_list_2 = NI_METHODS
     elif step == "TA":
         method_dict["DC"] = default_dc
         method_dict["CC"] = default_cc
+        method_dict["OP"] = default_op
         loop_list_1 = TA_METHODS
+        loop_list_2 = NI_METHODS
+    elif step == "OP":
+        method_dict["DC"] = default_dc
+        method_dict["CC"] = default_cc
+        method_dict["TA"] = default_ta
+        loop_list_1 = OP_METHODS
         loop_list_2 = NI_METHODS
     elif step == "NI":
         method_dict["DC"] = default_dc
         method_dict["CC"] = default_cc
         method_dict["TA"] = default_ta
+        method_dict["OP"] = default_op
         loop_list_1 = [m[1] for m in NI_METHODS]
         loop_list_2 = NI_METHODS
     else:
@@ -132,19 +149,22 @@ def extract_step_data(
 def extract_figure6_data(
     input_folder: pathlib.Path, output_folder: pathlib.Path
 ) -> None:
-    # STEP0: Extract default data
+    # STEP1: Extract default data
     output_sub_folder = output_folder / "default"
     extract_step_data("default", input_folder, output_sub_folder)
-    # STEP1:  Extract DC data
+    # STEP2:  Extract DC data
     output_sub_folder = output_folder / "DC"
     extract_step_data("DC", input_folder, output_sub_folder)
-    # STEP1:  Extract CC data
+    # STEP3:  Extract CC data
     output_sub_folder = output_folder / "CC"
     extract_step_data("CC", input_folder, output_sub_folder)
-    # STEP1:  Extract TA data
+    # STEP4:  Extract TA data
     output_sub_folder = output_folder / "TA"
     extract_step_data("TA", input_folder, output_sub_folder)
-    # STEP1:  Extract NI data
+    # STEP5:  Extract OP data
+    output_sub_folder = output_folder / "OP"
+    extract_step_data("OP", input_folder, output_sub_folder)
+    # STEP6:  Extract NI data
     output_sub_folder = output_folder / "NI"
     extract_step_data("NI", input_folder, output_sub_folder)
 

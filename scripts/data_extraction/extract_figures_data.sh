@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# TODO: Change this before running
 INPUT_FOLDER="/home/dileep/Documents/Work/MIND/Results/micone_scc_testing/full_pipeline_testing/outputs/outputs"
 DATASET="moving_pictures"
 
