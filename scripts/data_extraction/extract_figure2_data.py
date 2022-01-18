@@ -8,14 +8,7 @@ def extract_step_data(
 ) -> None:
     workflow = "network_inference"
     module = "network"
-    extract_data(
-        input_folder,
-        workflow,
-        module,
-        process,
-        "",
-        output_folder,
-    )
+    extract_data(input_folder, workflow, module, process, "", output_folder)
 
 
 def extract_figure2_data(
