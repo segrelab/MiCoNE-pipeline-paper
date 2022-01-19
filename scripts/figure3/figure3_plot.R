@@ -29,12 +29,12 @@ output_file <- paste0(output_folder, "figure3.pdf")
 output_file_ab <- paste0(output_folder, "figure3ab.pdf")
 output_file_cd <- paste0(output_folder, "figure3cd.pdf")
 
+# TODO: Should the figure tick labels we abbrevi for conscision?
+
 
 #########################################
 # ab
 #########################################
-
-methods_ab <- c("closed reference", "de novo", "open reference", "deblur", "dada2")
 
 tidy_up_data_ab <- function(unifrac_data) {
     unifrac_data$method1 <- factor(unifrac_data$method1)
@@ -89,8 +89,6 @@ ggsave(output_file_ab, heatmap_plot, width = 11, height = 5.5)
 # cd
 #########################################
 
-
-methods_cd <- c("input", "closed_reference", "de_novo", "open_reference", "deblur", "dada2")
 
 tidy_up_data_cd <- function(unifrac_data, name) {
     unifrac_data$dataset <- rep(name, nrow(unifrac_data))
