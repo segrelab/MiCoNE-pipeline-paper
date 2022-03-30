@@ -9,7 +9,6 @@
 #$ -pe omp 4
 
 # TODO: Change this before running
-<<<<<<< HEAD
 PLATFORM="scc"
 DATASET="moving_pictures_scc"
 OUTPUT_DIR="../../figures/moving_pictures_scc"

@@ -20,7 +20,7 @@ fi
 # Figure 2
 echo "Processing Figure 2"
 cd ../figure2/
-mkdir "../../data/figure2/output/$DATASET"
+mkdir -pv "../../data/figure2/output/$DATASET"
 # NOTE: This requires 8 cpu cores
 python figure2_data.py \
   --files "../../data/figure2/input/$DATASET/**/*.json" \
@@ -33,7 +33,7 @@ python figure2_data.py \
 # Figure 4
 echo "Processing Figure 4"
 cd ../figure4/
-mkdir ../../data/figure4/output/$DATASET
+mkdir -pv ../../data/figure4/output/$DATASET
 python figure4ab_data.py \
   --files ../../data/figure4/input/$DATASET/**/otu_table_wtax.biom \
   --notus 100 \
@@ -41,7 +41,7 @@ python figure4ab_data.py \
 
 # Figure 5
 echo "Processing Figure 5"
-mkdir ../../data/figure5/output/$DATASET
+mkdir -pv ../../data/figure5/output/$DATASET
 cd ../figure5/
 python -W ignore figure5_data.py \
   --files ../../data/figure5/input/$DATASET/**/*_network.json \
@@ -52,7 +52,7 @@ python -W ignore figure5_data.py \
 # Figure 6
 echo "Processing Figure 6"
 cd ../figure6/
-mkdir "../../data/figure6/output/$DATASET"
+mkdir -pv "../../data/figure6/output/$DATASET"
 python -W ignore figure6_data.py \
   --folder "../../data/figure6/input/$DATASET" \
   --color_key_level "Family" \
@@ -67,7 +67,7 @@ python -W ignore figure6_data.py \
 # Figure 7
 echo "Processing Figure 7"
 cd ../figure7/
-mkdir "../../data/figure7/output/norta"
+mkdir -pv "../../data/figure7/output/norta"
 python figure7_data.py \
   --files "../../data/figure7/input/norta/**/*.json" \
   --interaction_threshold 0.1 \
@@ -78,8 +78,8 @@ python figure7_data.py \
 # Figure 3
 echo "Processing Figure 3"
 cd ../figure3/
-mkdir ../../data/figure3/intermediate/$DATASET
-mkdir ../../data/figure3/output/$DATASET
+mkdir -pv ../../data/figure3/intermediate/$DATASET
+mkdir -pv ../../data/figure3/output/$DATASET
 if [ $PLATFORM == "local" ]; then
   export PATH=$HOME/anaconda3/bin:$PATH
   source activate micone-qiime2
