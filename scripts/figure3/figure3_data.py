@@ -56,6 +56,20 @@ def get_unifrac(
     return pd.Series(unifrac_data), otu_1.shape[0], otu_2.shape[0]
 
 
+def abbr_name(method: str) -> str:
+    """Replace method name with abbreviation"""
+    if method.startswith("closed_reference"):
+        return "CR"
+    if method.startswith("open_reference"):
+        return "OR"
+    if method.startswith("de_novo"):
+        return "DN"
+    if method.startswith("dada2"):
+        return "D2"
+    if method.startswith("deblur"):
+        return "DB"
+
+
 @click.command()
 @click.option("--trees", help="Path to the tree files (must contain glob)")
 @click.option("--otus", help="Path to the OTU files (must contain glob)")
@@ -84,13 +98,14 @@ def main(trees: str, otus: str, weighted: bool, asv: bool, threshold: int, outpu
         unifrac_data, otu_count_1, otu_count_2 = get_unifrac(
             otu_file_1, otu_file_2, tree_file, weighted=weighted, threshold=threshold
         )
+        abbr_1, abbr_2 = abbr_name(method_1), abbr_name(method_2)
         for col in unifrac_data.index:
             if asv:
-                label_1 = f"{method_1.replace('_', ' ')} ({otu_count_1})"
-                label_2 = f"{method_2.replace('_', ' ')} ({otu_count_2})"
+                label_1 = f"{abbr_1} ({otu_count_1})"
+                label_2 = f"{abbr_2} ({otu_count_2})"
             else:
-                label_1 = f"{method_1.replace('_', ' ')}"
-                label_2 = f"{method_2.replace('_', ' ')}"
+                label_1 = f"{abbr_1}"
+                label_2 = f"{abbr_2}"
             data.append(
                 {
                     "method1": label_1,

@@ -29,9 +29,6 @@ output_file <- paste0(output_folder, "figure3.pdf")
 output_file_ab <- paste0(output_folder, "figure3ab.pdf")
 output_file_cd <- paste0(output_folder, "figure3cd.pdf")
 
-# TODO: Should the figure tick labels we abbrevi for conscision?
-
-
 #########################################
 # ab
 #########################################
@@ -120,7 +117,7 @@ make_dot_plot <- function(unifrac_data, title) {
                 axis.text.x = element_text(angle = 30, hjust = 1),
             ),
         fun = "mean_sd"
-    )
+    ) #+ stat_compare_means()
 }
 
 # Weighted
