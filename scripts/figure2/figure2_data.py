@@ -162,7 +162,9 @@ def main(
     glob = "*" + glob
     base_path = pathlib.Path(base_dir)
     file_paths = [
-        f for f in base_path.glob(glob) if level in f.parent.parent.stem.split("-")
+        f
+        for f in base_path.glob(glob)
+        if f"group({level})" in f.parent.parent.stem.split("-")
     ]
 
     # Multiprocessing setup
