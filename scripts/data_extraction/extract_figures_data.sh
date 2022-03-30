@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash -l
 
 #$ -l h_rt=4:00:00
 #$ -N micone_data_extraction
@@ -9,9 +9,9 @@
 #$ -pe omp 4
 
 # TODO: Change this before running
-INPUT_FOLDER="/home/dileep/Documents/Work/MIND/Results/micone_scc_testing/full_pipeline_testing/outputs/outputs"
-DATASET="moving_pictures"
-PLATFORM="local"
+INPUT_FOLDER="/rprojectnb/visant/dkishore/micone_scc_testing/full_pipeline_testing/outputs/outputs"
+DATASET="moving_pictures_scc"
+PLATFORM="scc"
 
 if [ $PLATFORM == "scc" ]; then
   module load miniconda
