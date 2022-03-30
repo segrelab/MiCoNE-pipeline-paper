@@ -3,12 +3,13 @@
 #$ -l h_rt=4:00:00
 #$ -N micone_figure_generation
 #$ -P visant
-#$ -o qsub_outputs.txt
-#$ -e qsub_errors.txt
+#$ -o figure_outputs.txt
+#$ -e figure_errors.txt
 #$ -m e
 #$ -pe omp 4
 
-PLATFORM="local" # change to scc on the SCC
+# TODO: Change this before running
+PLATFORM="local"
 DATASET="moving_pictures"
 
 if [ $PLATFORM == "scc" ]; then
@@ -24,12 +25,18 @@ Rscript figure2_plot.R "../../data/figure2/output/$DATASET" "../../figures"
 # Figure 3
 echo "Generating Figure 3"
 cd ../figure3/
-Rscript figure3_plot.R "../../data/figure3/output/$DATASET" "../../data/figure3/output/"../../figures"
+Rscript figure3_plot.R \
+  "../../data/figure3/output/$DATASET" \
+  "../../data/figure3/output/" \
+  "../../figures"
 
 # Figure 4
 echo "Generating Figure 4"
 cd ../figure4/
-Rscript figure4_plot.R "../../data/figure4/output/$DATASET" "../../data/figure4/output/"../../figures"
+Rscript figure4_plot.R \
+  "../../data/figure4/output/$DATASET" \
+  "../../data/figure4/output/" \
+  "../../figures"
 
 # Figure 5
 echo "Generating Figure 5"

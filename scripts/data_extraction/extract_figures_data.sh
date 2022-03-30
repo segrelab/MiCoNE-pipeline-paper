@@ -3,8 +3,8 @@
 #$ -l h_rt=4:00:00
 #$ -N micone_data_extraction
 #$ -P visant
-#$ -o qsub_outputs.txt
-#$ -e qsub_errors.txt
+#$ -o extraction_outputs.txt
+#$ -e extraction_errors.txt
 #$ -m e
 #$ -pe omp 4
 

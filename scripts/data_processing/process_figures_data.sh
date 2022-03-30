@@ -3,12 +3,13 @@
 #$ -l h_rt=24:00:00
 #$ -N micone_data_processing
 #$ -P visant
-#$ -o qsub_outputs.txt
-#$ -e qsub_errors.txt
+#$ -o processing_outputs.txt
+#$ -e processing_errors.txt
 #$ -m e
 #$ -pe omp 8
 
-PLATFORM="local" # change to scc on the SCC
+# TODO: Change before running
+PLATFORM="local"
 DATASET="moving_pictures"
 
 if [ $PLATFORM == "scc" ]; then
@@ -58,6 +59,14 @@ python -W ignore figure6_data.py \
   --op "normalize_filter(off)" \
   --ni "sparcc" \
   --output "../../data/figure6/output/$DATASET"
+
+# Figure 7
+python figure7_data.py \
+  --files "../../data/figure7/input/norta/**/*.json" \
+  --interaction_threshold 0.1 \
+  --pvalue_threshold 0.05 \
+  --sign True \
+  --output "../../data/figure7/output/norta"
 
 # Figure 3
 echo "Processing Figure 3"
