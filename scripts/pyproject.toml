@@ -19,7 +19,7 @@ tqdm-multiprocess = "^0.0.11"
 matplotlib = "^3.5.1"
 seaborn = "^0.11.2"
 tabulate = "^0.8.9"
-micone = "^0.11.1"
+micone = "^0.11.5"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"
