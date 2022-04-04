@@ -22,6 +22,9 @@ if (length(args) == 0) {
 gg_csv <- paste0(data_folder, "naive_bayes(gg_13_8_99).csv")
 silva_csv <- paste0(data_folder, "naive_bayes(silva_138_99).csv")
 ncbi_csv <- paste0(data_folder, "blast(ncbi).csv")
+gg_silva_csv <- paste0(data_folder, "gg_silva.csv")
+gg_ncbi_csv <- paste0(data_folder, "gg_ncbi.csv")
+ncbi_silva_csv <- paste0(data_folder, "ncbi_silva.csv")
 mock4_braycurtis_csv <- paste0(mock_folder, "mock4/input_braycurtis.csv")
 mock12_braycurtis_csv <- paste0(mock_folder, "mock12/input_braycurtis.csv")
 mock16_braycurtis_csv <- paste0(mock_folder, "mock16/input_braycurtis.csv")
@@ -33,10 +36,8 @@ output_file_c <- paste0(output_folder, "figure4c.pdf")
 ################################################################################
 # Figure 4a
 ################################################################################
-# FIXME: Combine all the genus in all the files so that you get full legend
 notu <- 50
 
-# FIXME: This doesn't work all files get same values
 read_data <- function(data_file, n) {
     raw_df <- read.csv(data_file, header = TRUE, sep = ",", na.strings = "")[1:n, ]
     # df <- aggregate(Abundance ~ Genus, raw_df, sum)
@@ -132,27 +133,33 @@ notu <- 50
 levels <- c("Phylum", "Class", "Order", "Family", "Genus", "Species")
 
 
-tidy_up_data <- function(db_file, notu) {
-    db_data <- read_csv(db_file)[1:notu, ]
-    for (i in 1:length(levels)) {
-        cols <- levels[1:i]
-        db_data[levels[i]] <- apply(db_data[, cols], 1, paste, collapse = "-")
-    }
-    return(db_data)
-}
+# tidy_up_data <- function(db_file, notu) {
+#     db_data <- read_csv(db_file)[1:notu, ]
+#     for (i in 1:length(levels)) {
+#         cols <- levels[1:i]
+#         db_data[levels[i]] <- apply(db_data[, cols], 1, paste, collapse = "-")
+#     }
+#     return(db_data)
+# }
+#
+# combine_data <- function(db1, db2) {
+#     comb_tbl <- as_tibble(
+#         rbind(t(colSums(db1 == db2)), t(colSums(db1 != db2)))
+#     )
+#     comb_tbl$type <- c("matches", "mismatches")
+#     final_tbl <- comb_tbl %>%
+#         gather(levels, key = "tax_level", value = "value") %>%
+#         select_at(.vars = c("tax_level", "value", "type"))
+#     # final_tbl$value = final_tbl$value / nrow(db1) * 100
+#     # if we want to display the numbers instead
+#     final_tbl$value <- final_tbl$value
+#     return(final_tbl)
+# }
 
-combine_data <- function(db1, db2) {
-    comb_tbl <- as_tibble(
-        rbind(t(colSums(db1 == db2)), t(colSums(db1 != db2)))
-    )
-    comb_tbl$type <- c("matches", "mismatches")
-    final_tbl <- comb_tbl %>%
-        gather(levels, key = "tax_level", value = "value") %>%
-        select_at(.vars = c("tax_level", "value", "type"))
-    # final_tbl$value = final_tbl$value / nrow(db1) * 100
-    # if we want to display the numbers instead
-    final_tbl$value <- final_tbl$value
-    return(final_tbl)
+
+read_paired_data <- function(data_file) {
+    raw_df <- read.csv(data_file, header = TRUE, sep = ",", na.strings = "")
+    raw_df
 }
 
 
@@ -161,8 +168,8 @@ make_bar_plot <- function(data, title) {
         data,
         x = "tax_level",
         y = "value",
-        fill = "type",
-        color = "type",
+        fill = "assignment",
+        color = "assignment",
         label = TRUE,
         lab.pos = "in",
         title = title,
@@ -175,13 +182,13 @@ make_bar_plot <- function(data, title) {
 }
 
 # Combinations
-gg_silva <- combine_data(gg, silva)
-gg_ncbi <- combine_data(gg, ncbi)
-ncbi_silva <- combine_data(ncbi, silva)
+gg_silva <- read_paired_data(gg_silva_csv)
+gg_ncbi <- read_paired_data(gg_ncbi_csv)
+ncbi_silva <- read_paired_data(ncbi_silva_csv)
 
-gg_silva_plot <- make_bar_plot(gg_silva, "GreenGenes vs. SILVA")
-gg_ncbi_plot <- make_bar_plot(gg_ncbi, "GreenGenes vs. NCBI")
-ncbi_silva_plot <- make_bar_plot(ncbi_silva, "NCBI vs. SILVA")
+gg_silva_plot <- make_bar_plot(gg_silva, "NB(GG) vs. NB(SILVA)")
+gg_ncbi_plot <- make_bar_plot(gg_ncbi, "NB(GG) vs. BLAST(NCBI)")
+ncbi_silva_plot <- make_bar_plot(ncbi_silva, "BLAST(NCBI) vs. NB(SILVA)")
 
 combined_plot_b <- ggarrange(
     gg_silva_plot, gg_ncbi_plot, ncbi_silva_plot,

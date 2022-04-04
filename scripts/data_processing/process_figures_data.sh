@@ -35,9 +35,9 @@ echo "Processing Figure 4"
 cd ../figure4/
 mkdir -pv ../../data/figure4/output/$DATASET
 python figure4ab_data.py \
-  --files ../../data/figure4/input/$DATASET/**/otu_table_wtax.biom \
+  --files "../../data/figure4/input/$DATASET/**/otu_table_wtax.biom" \
   --notus 100 \
-  --output ../../data/figure4/output/$DATASET
+  --output "../../data/figure4/output/$DATASET"
 
 # Figure 5
 echo "Processing Figure 5"
