@@ -126,6 +126,21 @@ def done_callback(result):
     pass
 
 
+def fix_stepname(step_name: str) -> str:
+    if step_name == "C(DC)":
+        return "DC module"
+    if step_name == "C(CC)":
+        return "CC module"
+    if step_name == "C(TA)":
+        return "TA module"
+    if step_name == "C(OP)":
+        return "OP module"
+    if step_name == "C(NI)":
+        return "NI module"
+    else:
+        return step_name
+
+
 @click.command()
 @click.option(
     "--files", help="The path to the network files containing the glob pattern"
@@ -195,6 +210,14 @@ def main(
         y_df = pd.concat(y_data, axis=0, join="outer")
         assert x_df.shape[0] == y_df.shape[0]
         print("Step2b: Saving the data")
+        x_df.TA.replace(
+            {
+                "blast(ncbi)": "BLAST(NCBI)",
+                "naive_bayes(gg_13_8_99)": "NB(GG)",
+                "naive_bayes(silva_138_99)": "NB(SILVA)",
+            },
+            inplace=True,
+        )
         x_df.to_csv(output_path / "x.csv", index=True, sep=",")
         y_df.to_csv(output_path / "y.csv", index=True, sep=",")
         with open(step_1_2_pickle, "wb") as fid:
@@ -245,6 +268,8 @@ def main(
         variance_list = normalize_anova(anova_dict, pca)
         total_variance = sum(variance_list)
         percentage_variance = total_variance / total_variance.sum() * 100
+        percentage_variance.index = [fix_stepname(i) for i in percentage_variance.index]
+        percentage_variance.index.name = "Workflow"
         percentage_variance.to_csv(
             output_path / "percentage_variance.csv", index=True, sep=","
         )

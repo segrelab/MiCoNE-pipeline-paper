@@ -26,6 +26,9 @@ plot_scatter <- function(data, color_var) {
         x = "X0", y = "X1",
         color = color_var,
         # ellipse = TRUE
+    ) +
+    theme(
+        text = element_text(size = 16),
     )
 }
 
@@ -37,7 +40,7 @@ percentage_variance <- read.csv(percentage_variance_csv)
 percentage_variance <-
     percentage_variance %>%
     mutate(labels = scales::percent(mean_sq, scale = 1)) %>%
-    arrange(desc(X)) %>%
+    arrange(desc(Workflow)) %>%
     mutate(text_y = cumsum(mean_sq) - mean_sq / 2)
 
 
@@ -47,7 +50,7 @@ df <- y_reduced %>%
 scatter_ta <- plot_scatter(df, "TA")
 scatter_ni <- plot_scatter(df, "NI")
 
-pie_chart <- ggplot(data = percentage_variance, aes(x = "", y = mean_sq, fill = X)) +
+pie_chart <- ggplot(data = percentage_variance, aes(x = "", y = mean_sq, fill = Workflow)) +
     geom_bar(stat = "identity") +
     geom_label_repel(aes(label = labels, y = text_y), nudge_x = 1.6) +
     coord_polar(theta = "y") +
@@ -57,7 +60,10 @@ pie_chart <- ggplot(data = percentage_variance, aes(x = "", y = mean_sq, fill = 
         axis.line = element_blank(),
         axis.title = element_blank(),
         axis.text.y = element_blank(),
-        axis.text.x = element_blank()
+        axis.text.x = element_blank(),
+        legend.position="right",
+        legend.justification="right",
+        text = element_text(size = 16),
     )
 
 scatter_facet <- ggarrange(scatter_ta, scatter_ni, ncol = 2)
