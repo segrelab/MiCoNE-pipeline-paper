@@ -2,6 +2,7 @@
 
 #$ -l h_rt=4:00:00
 #$ -N micone_figure_generation
+#$ -hold_jid micone_data_extraction,micone_data_processing
 #$ -P visant
 #$ -o figure_outputs.txt
 #$ -e figure_errors.txt
@@ -10,9 +11,9 @@
 
 # TODO: Change this before running
 PLATFORM="scc"
-DATASET="moving_pictures_scc"
-OUTPUT_DIR="../../figures/moving_pictures_scc/"
-mkdir $OUTPUT_DIR
+DATASET="FMT"
+OUTPUT_DIR="../../figures/FMT/"
+mkdir -pv $OUTPUT_DIR
 
 if [ $PLATFORM == "scc" ]; then
   module load miniconda

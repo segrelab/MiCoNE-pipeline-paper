@@ -2,6 +2,7 @@
 
 #$ -l h_rt=24:00:00
 #$ -N micone_data_processing
+#$ -hold_jid micone_data_extraction
 #$ -P visant
 #$ -o processing_outputs.txt
 #$ -e processing_errors.txt
@@ -10,7 +11,7 @@
 
 # TODO: Change before running
 PLATFORM="scc"
-DATASET="moving_pictures_scc"
+DATASET="FMT"
 
 if [ $PLATFORM == "scc" ]; then
   module load miniconda

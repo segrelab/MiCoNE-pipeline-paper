@@ -9,8 +9,8 @@
 #$ -pe omp 4
 
 # TODO: Change this before running
-INPUT_FOLDER="/rprojectnb/visant/dkishore/micone_scc_testing/full_pipeline_testing/outputs/outputs"
-DATASET="moving_pictures_scc"
+INPUT_FOLDER="/rprojectnb/visant/dkishore/FMT/outputs"
+DATASET="FMT"
 PLATFORM="scc"
 
 if [ $PLATFORM == "scc" ]; then
