@@ -180,6 +180,7 @@ def write_l1_distance(networks_dict: dict, output_directory):
 @click.option("--ta", help="The tool choice for TA step")
 @click.option("--op", help="The tool choice for OP step")
 @click.option("--ni", help="The tool choice for NI step")
+@click.option("--dataset", help="The dataset (subset) for selection")
 @click.option("--output", default=".", help="The path to the output directory")
 def main(
     folder: pathlib.Path,
@@ -190,6 +191,7 @@ def main(
     ta: str,
     op: str,
     ni: str,
+    dataset: str,
     output: str,
 ):
     if not folder.exists():
@@ -208,7 +210,7 @@ def main(
         for process_folder in step_folder.iterdir():
             process_name = process_folder.stem
             # STEP1: Get all the `Network` for a particular folder (combination)
-            network_files = list(process_folder.glob("**/*.json"))
+            network_files = list(process_folder.glob("{dataset}/*.json"))
             if not network_files:
                 continue
             networks = [
@@ -226,7 +228,8 @@ def main(
             simple_consensus.pvalue_threshold = 0.05
             networks_dict[step_name][process_name] = simple_consensus.filter(True, True)
     # STEP4: Then, feed the above to the previous function
-    output_path = pathlib.Path(output)
+    output_path = pathlib.Path(output) / dataset
+    output_path.mkdir(parents=True, exist_ok=True)
     assert output_path.exists()
     networks_choice_dict = {
         f"DC_{dc}": networks_dict["DC"][dc],

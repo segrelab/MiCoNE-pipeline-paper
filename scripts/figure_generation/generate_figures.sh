@@ -49,7 +49,7 @@ Rscript figure5_plot.R "../../data/figure5/output/$DATASET/" "$OUTPUT_DIR"
 # Figure 6
 echo "Generating Figure 6"
 cd ../figure6/
-Rscript figure6_plot.R "../../data/figure6/output/$DATASET/" "$OUTPUT_DIR"
+Rscript figure6_plot.R "../../data/figure6/output/$DATASET/" "fmt-control" "fmt-autism" "$OUTPUT_DIR"
 
 # Figure 7
 echo "Generating Figure 7"

@@ -63,6 +63,18 @@ python -W ignore figure6_data.py \
   --ta "blast(ncbi)" \
   --op "normalize_filter(off)" \
   --ni "sparcc" \
+  --dataset "fmt-control" \
+  --output "../../data/figure6/output/$DATASET"
+python -W ignore figure6_data.py \
+  --folder "../../data/figure6/input/$DATASET" \
+  --color_key_level "Family" \
+  --multigraph "False" \
+  --dc "closed_reference(gg_97)" \
+  --cc "uchime" \
+  --ta "blast(ncbi)" \
+  --op "normalize_filter(off)" \
+  --ni "sparcc" \
+  --dataset "fmt-autism" \
   --output "../../data/figure6/output/$DATASET"
 
 # Figure 7
