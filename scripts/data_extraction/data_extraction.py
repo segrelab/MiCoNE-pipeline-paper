@@ -26,7 +26,7 @@ def check_if_proctree(folder: pathlib.Path) -> bool:
     return flag
 
 
-def parse_data(folder: pathlib.Path):
+def parse_data(folder: pathlib.Path, meta_id_list: tuple):
     # first level: workflow
     # second level: module with parameter in ()
     # third level: process name
@@ -41,6 +41,11 @@ def parse_data(folder: pathlib.Path):
                     # then it is list of previous processes
                     for previous_process in process.iterdir():
                         for meta_id in previous_process.iterdir():
+                            if (
+                                meta_id_list != ("*",)
+                                and meta_id.name not in meta_id_list
+                            ):
+                                continue
                             files = list(meta_id.iterdir())
                             data_item = {
                                 "workflow": workflow.stem,
@@ -55,6 +60,8 @@ def parse_data(folder: pathlib.Path):
                 else:
                     previous_process = ""
                     for meta_id in process.iterdir():
+                        if meta_id_list != ("*",) and meta_id.name not in meta_id_list:
+                            continue
                         files = list(meta_id.iterdir())
                         data_item = {
                             "workflow": workflow.stem,
@@ -76,8 +83,9 @@ def extract_data(
     process: str,
     previous_process: str,
     output_directory: pathlib.Path,
+    meta_id_list: tuple,
 ) -> pd.DataFrame:
-    df = parse_data(folder)
+    df = parse_data(folder, meta_id_list)
     if previous_process:
         df_sub = df[
             (df.workflow == workflow)
@@ -111,6 +119,7 @@ def extract_data(
 @click.option("--process")
 @click.option("--previous_process", default="")
 @click.argument("output_directory", type=pathlib.Path)
+@click.option("--meta_id_list", "-l", default=["*"], multiple=True)
 def main(
     folder: pathlib.Path,
     workflow: str,
@@ -118,8 +127,17 @@ def main(
     process: str,
     previous_process: str,
     output_directory: pathlib.Path,
+    meta_id_list: tuple,
 ) -> None:
-    extract_data(folder, workflow, module, process, previous_process, output_directory)
+    extract_data(
+        folder,
+        workflow,
+        module,
+        process,
+        previous_process,
+        output_directory,
+        meta_id_list,
+    )
 
 
 if __name__ == "__main__":

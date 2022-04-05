@@ -59,7 +59,10 @@ def make_prevprocess_string(
 
 
 def extract_step_data(
-    step: str, input_folder: pathlib.Path, output_folder: pathlib.Path
+    step: str,
+    input_folder: pathlib.Path,
+    output_folder: pathlib.Path,
+    meta_id_list: list,
 ):
     workflow = "network_inference"
     module = "network"
@@ -129,6 +132,7 @@ def extract_step_data(
                         process,
                         previous_process,
                         output_sub_folder,
+                        meta_id_list,
                     )
     else:
         output_sub_folder = output_folder / "default"
@@ -143,34 +147,36 @@ def extract_step_data(
                 process,
                 previous_process,
                 output_sub_folder,
+                meta_id_list,
             )
 
 
 def extract_figure6_data(
-    input_folder: pathlib.Path, output_folder: pathlib.Path
+    input_folder: pathlib.Path, output_folder: pathlib.Path, meta_id_list: list
 ) -> None:
     # STEP1: Extract default data
     output_sub_folder = output_folder / "default"
-    extract_step_data("default", input_folder, output_sub_folder)
+    extract_step_data("default", input_folder, output_sub_folder, meta_id_list)
     # STEP2:  Extract DC data
     output_sub_folder = output_folder / "DC"
-    extract_step_data("DC", input_folder, output_sub_folder)
+    extract_step_data("DC", input_folder, output_sub_folder, meta_id_list)
     # STEP3:  Extract CC data
     output_sub_folder = output_folder / "CC"
-    extract_step_data("CC", input_folder, output_sub_folder)
+    extract_step_data("CC", input_folder, output_sub_folder, meta_id_list)
     # STEP4:  Extract TA data
     output_sub_folder = output_folder / "TA"
-    extract_step_data("TA", input_folder, output_sub_folder)
+    extract_step_data("TA", input_folder, output_sub_folder, meta_id_list)
     # STEP5:  Extract OP data
     output_sub_folder = output_folder / "OP"
-    extract_step_data("OP", input_folder, output_sub_folder)
+    extract_step_data("OP", input_folder, output_sub_folder, meta_id_list)
     # STEP6:  Extract NI data
     output_sub_folder = output_folder / "NI"
-    extract_step_data("NI", input_folder, output_sub_folder)
+    extract_step_data("NI", input_folder, output_sub_folder, meta_id_list)
 
 
 if __name__ == "__main__":
     INPUT_FOLDER = pathlib.Path(sys.argv[1])
     DATASET = sys.argv[2]
+    META_ID_LIST = sys.argv[3:]
     OUTPUT_FOLDER = pathlib.Path(f"../../data/figure6/input/{DATASET}")
-    extract_figure6_data(INPUT_FOLDER, OUTPUT_FOLDER)
+    extract_figure6_data(INPUT_FOLDER, OUTPUT_FOLDER, META_ID_LIST)

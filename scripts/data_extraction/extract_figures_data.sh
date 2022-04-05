@@ -18,8 +18,8 @@ if [ $PLATFORM == "scc" ]; then
   conda activate micone-figures-py
 fi
 
-python extract_figure2_data.py $INPUT_FOLDER $DATASET
+python extract_figure2_data.py $INPUT_FOLDER $DATASET "fmt-control"
 python extract_figure3_data.py $INPUT_FOLDER $DATASET
 python extract_figure4_data.py $INPUT_FOLDER $DATASET
-python extract_figure5_data.py $INPUT_FOLDER $DATASET
-python extract_figure6_data.py $INPUT_FOLDER $DATASET
+python extract_figure5_data.py $INPUT_FOLDER $DATASET "fmt-control"
+python extract_figure6_data.py $INPUT_FOLDER $DATASET "fmt-control" "fmt-autism"
