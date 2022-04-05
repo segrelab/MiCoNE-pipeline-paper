@@ -1,6 +1,6 @@
 #!/bin/bash -l
 
-#$ -l h_rt=24:00:00
+#$ -l h_rt=8:00:00
 #$ -N micone_data_processing
 #$ -hold_jid micone_data_extraction
 #$ -P visant

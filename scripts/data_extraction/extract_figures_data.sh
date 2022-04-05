@@ -1,6 +1,6 @@
 #!/bin/bash -l
 
-#$ -l h_rt=4:00:00
+#$ -l h_rt=1:00:00
 #$ -N micone_data_extraction
 #$ -P visant
 #$ -o extraction_outputs.txt
@@ -19,7 +19,7 @@ if [ $PLATFORM == "scc" ]; then
 fi
 
 python extract_figure2_data.py $INPUT_FOLDER $DATASET "fmt-control"
-python extract_figure3_data.py $INPUT_FOLDER $DATASET
-python extract_figure4_data.py $INPUT_FOLDER $DATASET
+python extract_figure3_data.py $INPUT_FOLDER $DATASET "*"
+python extract_figure4_data.py $INPUT_FOLDER $DATASET "*"
 python extract_figure5_data.py $INPUT_FOLDER $DATASET "fmt-control"
 python extract_figure6_data.py $INPUT_FOLDER $DATASET "fmt-control" "fmt-autism"
