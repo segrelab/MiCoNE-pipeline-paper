@@ -33,6 +33,6 @@ def extract_figure2_data(
 if __name__ == "__main__":
     INPUT_FOLDER = pathlib.Path(sys.argv[1])
     DATASET = sys.argv[2]
-    META_ID_LIST = sys.argv[3:]
+    META_ID_LIST = tuple(sys.argv[3:])
     OUTPUT_FOLDER = pathlib.Path(f"../../data/figure2/input/{DATASET}")
     extract_figure2_data(INPUT_FOLDER, OUTPUT_FOLDER, META_ID_LIST)
