@@ -6,17 +6,30 @@ import pathlib
 from itertools import chain, combinations
 from subprocess import call
 
+from biom import load_table
 from Bio import SeqIO
 import click
 
 
+def parse_biom(biom_file, threshold=10):
+    otu = load_table(str(biom_file))
+    df = otu.to_dataframe(otu)
+    otu_sums = df.sum(axis=1)
+    return set(otu_sums[otu_sums > threshold].index)
+
+
 def merge_seqs(file1, file2):
+    filt_seqs1 = parse_biom(file1.parent / "otu_table.biom")
+    filt_seqs2 = parse_biom(file2.parent / "otu_table.biom")
+    filt_seqs = filt_seqs1.union(filt_seqs2)
     seqs1 = SeqIO.parse(str(file1), "fasta")
     seqs2 = SeqIO.parse(str(file2), "fasta")
     seqhash_set = set()
     seq_list = []
     for seq in chain(seqs1, seqs2):
         if seq.id not in seqhash_set:
+            if seq.id not in filt_seqs:
+                continue
             seq.name = ""
             seq.description = ""
             seq_list.append(seq)
@@ -85,6 +98,7 @@ def main(
     for method in methods:
         met_files = method.glob("**/rep_seqs.fasta")
         files.extend(met_files)
+    print(files)
     for file1, file2 in combinations(files, r=2):
         method1 = file1.parent.parent.name
         method2 = file2.parent.parent.name
