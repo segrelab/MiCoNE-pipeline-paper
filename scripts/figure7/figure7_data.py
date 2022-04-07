@@ -52,7 +52,7 @@ def get_consensus(predictions_map: Dict[str, Dict[str, Network]]):
     ]
     consensus_methods = ["simple_voting", "scaled_sum"]
     consensus_parameters = np.linspace(
-        0, 1, len(corr_methods) + len(direct_methods) + 1
+        0, 1, (len(corr_methods) + len(direct_methods) + 1) // 2
     )
     pvalue_mergers_map: Dict[str, Dict[str, NetworkGroup]] = defaultdict(dict)
     consensus1_map: Dict[str, Dict[str, NetworkGroup]] = defaultdict(dict)
@@ -125,7 +125,7 @@ def calculate_performance(
                 else:
                     source, target = predictions.linkid_revmap[row][0][-1].split("-")
                     # FIXME: Is this the right thing to do?
-                    val = np.mean(vector_table.loc[row, :])
+                    val = np.nanmean(vector_table.loc[row, :])
                     prediction_df.loc[source, target] = val
                     prediction_df.loc[target, source] = val
         else:
@@ -155,6 +155,20 @@ def calculate_performance(
     return cm_dict, precision, sensitivity
 
 
+def fix_name(name: str) -> str:
+    if name.startswith("scaled_sum"):
+        parameter_value = name.rsplit("_", 1)[-1]
+        return f"SS({parameter_value})"
+    elif name.startswith("simple_voting"):
+        parameter_value = name.rsplit("_", 1)[-1]
+        return f"SV({parameter_value})"
+    elif name.startswith("pvalue_merging"):
+        parameter_value = name.rsplit("_", 1)[-1]
+        return "PM"
+    else:
+        return name
+
+
 def get_peformance_data(observations_map, predictions_map, sign) -> list:
     data = []
     for dataset_name in tqdm(predictions_map):
@@ -168,7 +182,7 @@ def get_peformance_data(observations_map, predictions_map, sign) -> list:
                 {
                     "factor1": dataset_name.split("_")[0],
                     "factor2": dataset_name.split("_")[1],
-                    "algorithm": algorithm_name,
+                    "algorithm": fix_name(algorithm_name),
                     "tp": cm_dict["tp"],
                     "fp": cm_dict["fp"],
                     "tn": cm_dict["tn"],
@@ -178,6 +192,13 @@ def get_peformance_data(observations_map, predictions_map, sign) -> list:
                 }
             )
     return data
+
+
+def update_algo_name(df: pd.DataFrame) -> None:
+    algos = set(df.algorithm)
+    for algo in algos:
+        avg_precision = np.nanmean(df.loc[df.algorithm == algo, "precision"])
+        df.loc[df.algorithm == algo, "algorithm"] += f" Pre={avg_precision:.3f}"
 
 
 @click.command()
@@ -263,6 +284,7 @@ def main(
         data.extend(get_peformance_data(observations_map, consensus1_map, sign))
         data.extend(get_peformance_data(observations_map, consensus2_map, sign))
         df = pd.DataFrame(data)
+        update_algo_name(df)
         with open(step_4_pickle, "wb") as fid:
             pickle.dump(df, fid)
     df.to_csv(output_path / "performance.csv", index=False, sep=",")

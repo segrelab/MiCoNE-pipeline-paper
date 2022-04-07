@@ -21,6 +21,7 @@ fi
 # Figure 2
 echo "Processing Figure 2"
 cd ../figure2/
+rm -f *.pkl
 mkdir -pv "../../data/figure2/output/$DATASET"
 # NOTE: This requires 8 cpu cores
 python figure2_data.py \
@@ -80,8 +81,9 @@ python -W ignore figure6_data.py \
 # Figure 7
 echo "Processing Figure 7"
 cd ../figure7/
+rm -f *.pkl
 mkdir -pv "../../data/figure7/output/norta"
-python figure7_data.py \
+python -W ignore figure7_data.py \
   --files "../../data/figure7/input/norta/**/*.json" \
   --interaction_threshold 0.1 \
   --pvalue_threshold 0.05 \

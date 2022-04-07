@@ -25,8 +25,12 @@ def filter_biom(biom_file, output_file, threshold=10):
 
 
 def merge_seqs(file1, file2):
-    filt_seqs1 = filter_biom(file1.parent / "otu_table.biom", file1.parent / "otu_table_filtered.biom")
-    filt_seqs2 = filter_biom(file2.parent / "otu_table.biom", file2.parent / "otu_table_filtered.biom")
+    filt_seqs1 = filter_biom(
+        file1.parent / "otu_table.biom", file1.parent / "otu_table_filtered.biom"
+    )
+    filt_seqs2 = filter_biom(
+        file2.parent / "otu_table.biom", file2.parent / "otu_table_filtered.biom"
+    )
     filt_seqs = filt_seqs1.union(filt_seqs2)
     seqs1 = SeqIO.parse(str(file1), "fasta")
     seqs2 = SeqIO.parse(str(file2), "fasta")

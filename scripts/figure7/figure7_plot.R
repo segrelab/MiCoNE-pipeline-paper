@@ -29,7 +29,6 @@ plot_scatter <- function(data) {
 
 norta <- read.csv(performance_csv, sep = ",", header = TRUE)
 
-# TODO: Add average precision annotation to the figure subtitles
 p <- plot_scatter(norta)
 #+ geom_text(data=norta, mapping=aes(x="precision", y="sensitivity", label="algorithm"))
 final_plot <- facet(p, facet.by = "algorithm", ncol = 5)
