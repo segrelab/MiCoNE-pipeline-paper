@@ -102,7 +102,7 @@ else
   echo "Unknown platform"
 fi
 # Make trees
-# NOTE: This requires 4 cpu cores
+# NOTE: This requires 8 cpu cores
 python make_trees.py \
   --base_dir ../../data/figure3/input/$DATASET \
   --output_dir ../../data/figure3/intermediate/$DATASET
@@ -116,7 +116,7 @@ python figure3_data.py \
 # Weighted unifrac
 python figure3_data.py \
   --trees ../../data/figure3/intermediate/$DATASET/trees/**/*.nwk \
-  --otus ../../data/figure3/input/$DATASET/**/*.biom \
+  --otus ../../data/figure3/input/$DATASET/**/*_filtered.biom \
   --weighted True \
   --threshold 3 \
   --output ../../data/figure3/output/$DATASET

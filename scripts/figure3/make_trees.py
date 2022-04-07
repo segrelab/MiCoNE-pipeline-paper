@@ -7,20 +7,26 @@ from itertools import chain, combinations
 from subprocess import call
 
 from biom import load_table
+from biom.table import Table
+from biom.util import biom_open
 from Bio import SeqIO
 import click
 
 
-def parse_biom(biom_file, threshold=10):
+def filter_biom(biom_file, output_file, threshold=10):
     otu = load_table(str(biom_file))
     df = otu.to_dataframe(otu)
     otu_sums = df.sum(axis=1)
-    return set(otu_sums[otu_sums > threshold].index)
+    df_filtered = df[otu_sums > threshold]
+    otu_filtered = Table(df_filtered.values, df_filtered.index, df_filtered.columns)
+    with biom_open(str(output_file), "w") as fid:
+        otu_filtered.to_hdf5(fid, "Filtered biom file")
+    return set(df_filtered.index)
 
 
 def merge_seqs(file1, file2):
-    filt_seqs1 = parse_biom(file1.parent / "otu_table.biom")
-    filt_seqs2 = parse_biom(file2.parent / "otu_table.biom")
+    filt_seqs1 = filter_biom(file1.parent / "otu_table.biom", file1.parent / "otu_table_filtered.biom")
+    filt_seqs2 = filter_biom(file2.parent / "otu_table.biom", file2.parent / "otu_table_filtered.biom")
     filt_seqs = filt_seqs1.union(filt_seqs2)
     seqs1 = SeqIO.parse(str(file1), "fasta")
     seqs2 = SeqIO.parse(str(file2), "fasta")
@@ -63,7 +69,7 @@ def get_tree(artifact):
       --o-masked-alignment '{parent}/{fname}_masked-aligned-sequences.qza' \
       --o-tree '{parent}/{fname}_unrooted-tree.qza' \
       --o-rooted-tree '{parent}/{fname}_rooted-tree.qza' \
-      --p-n-threads 4 \
+      --p-n-threads 8 \
       --quiet
     """.format(
         artifact=artifact, parent=parentDir, fname=fname
