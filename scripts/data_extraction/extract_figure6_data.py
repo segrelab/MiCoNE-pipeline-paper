@@ -37,7 +37,7 @@ DEFAULT = {
     "DC": "dada2",
     "CC": "remove_bimera",
     "TA": "naive_bayes(gg_13_8_99)",
-    "OP": "normalize filter(on)",
+    "OP": "normalize_filter(on)",
     "NI": "consensus",
 }
 
