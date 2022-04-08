@@ -210,7 +210,7 @@ def main(
         for process_folder in step_folder.iterdir():
             process_name = process_folder.stem
             # STEP1: Get all the `Network` for a particular folder (combination)
-            network_files = list(process_folder.glob("{dataset}/*.json"))
+            network_files = list(process_folder.glob(f"**/{dataset}/*.json"))
             if not network_files:
                 continue
             networks = [
