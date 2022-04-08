@@ -198,7 +198,7 @@ def update_algo_name(df: pd.DataFrame) -> None:
     algos = set(df.algorithm)
     for algo in algos:
         avg_precision = np.nanmean(df.loc[df.algorithm == algo, "precision"])
-        df.loc[df.algorithm == algo, "algorithm"] += f" Pre={avg_precision:.3f}"
+        df.loc[df.algorithm == algo, "algorithm"] += f" P(avg)={avg_precision:.3f}"
 
 
 @click.command()
