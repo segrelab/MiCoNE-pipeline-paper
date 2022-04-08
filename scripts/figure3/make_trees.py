@@ -17,7 +17,7 @@ def filter_biom(biom_file, output_file, threshold=10):
     otu = load_table(str(biom_file))
     df = otu.to_dataframe(otu)
     otu_sums = df.sum(axis=1)
-    df_filtered = df[otu_sums > threshold]
+    df_filtered = df.loc[otu_sums > threshold, :]
     otu_filtered = Table(df_filtered.values, df_filtered.index, df_filtered.columns)
     with biom_open(str(output_file), "w") as fid:
         otu_filtered.to_hdf5(fid, "Filtered biom file")
