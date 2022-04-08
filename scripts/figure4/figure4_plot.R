@@ -46,9 +46,9 @@ read_data <- function(data_file, n) {
 }
 
 gg <- read_data(gg_csv, notu)
-gg$database <- "NB(GG)"
+gg$database <- "NaiveBayes(GG)"
 silva <- read_data(silva_csv, notu)
-silva$database <- "NB(SILVA)"
+silva$database <- "NaiveBayes(SILVA)"
 ncbi <- read_data(ncbi_csv, notu)
 ncbi$database <- "BLAST(NCBI)"
 combined <- rbind(gg, silva, ncbi)
@@ -97,7 +97,7 @@ ncbi_n_genus = length(unique(ncbi$Genus))
 # silva_plot <- make_alluvial_plot(silva, paste0("SILVA", " (", silva_n_genus, ")"))
 # ncbi_plot <- make_alluvial_plot(ncbi, paste0("NCBI", " (", ncbi_n_genus, ")"))
 
-combined_plot <- make_alluvial_plot2(combined, paste("NB(GG)=", gg_n_genus, ", NB(SILVA)=", silva_n_genus, ", BLAST(NCBI)=", ncbi_n_genus))
+combined_plot <- make_alluvial_plot2(combined, paste("NaiveBayes(GG)=", gg_n_genus, ", NaiveBayes(SILVA)=", silva_n_genus, ", BLAST(NCBI)=", ncbi_n_genus))
 
 # gg$OTU <- gg$empty
 # gg_plot <- gg_plot #+
@@ -186,9 +186,9 @@ gg_silva <- read_paired_data(gg_silva_csv)
 gg_ncbi <- read_paired_data(gg_ncbi_csv)
 ncbi_silva <- read_paired_data(ncbi_silva_csv)
 
-gg_silva_plot <- make_bar_plot(gg_silva, "NB(GG) vs. NB(SILVA)")
-gg_ncbi_plot <- make_bar_plot(gg_ncbi, "NB(GG) vs. BLAST(NCBI)")
-ncbi_silva_plot <- make_bar_plot(ncbi_silva, "BLAST(NCBI) vs. NB(SILVA)")
+gg_silva_plot <- make_bar_plot(gg_silva, "NaiveBayes(GG) vs. NaiveBayes(SILVA)")
+gg_ncbi_plot <- make_bar_plot(gg_ncbi, "NaiveBayes(GG) vs. BLAST(NCBI)")
+ncbi_silva_plot <- make_bar_plot(ncbi_silva, "BLAST(NCBI) vs. NaiveBayes(SILVA)")
 
 combined_plot_b <- ggarrange(
     gg_silva_plot, gg_ncbi_plot, ncbi_silva_plot,
