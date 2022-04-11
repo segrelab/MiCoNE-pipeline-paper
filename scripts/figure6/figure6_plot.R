@@ -122,7 +122,7 @@ l1_data <- read.csv(l1_distance_csv, header = TRUE, sep = ",")
 
 box_plot <- ggboxplot(
     l1_data,
-    x = "step", y = "l1_distance", add = "jitter", label = "process", repel = TRUE, order = c("DC", "CC", "TA", "NI"), color = "step", add = "jitter", palette = "Set2", ylab = "L1 distance", xlab = "Pipeline step"
+    x = "step", y = "l1_distance", label = "process", repel = TRUE, order = c("DC", "CC", "TA", "NI"), color = "step", add = "jitter", palette = "Set2", ylab = "L1 distance", xlab = "Pipeline step"
 )
 
 b_plot <- annotate_figure(box_plot, fig.lab = "B", fig.lab.pos = "top.left", fig.lab.size = 20)

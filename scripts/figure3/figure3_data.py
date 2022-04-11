@@ -22,7 +22,7 @@ def get_vectors(otu_1: pd.DataFrame, otu_2: pd.DataFrame, threshold: int):
     samples_1 = set(otu_1.columns)
     samples_2 = set(otu_2.columns)
     removed_samples = len(samples_1 - samples_2) + len(samples_2 - samples_1)
-    print(f"Warning {removed_samples} have been removed")
+    print(f"Warning {removed_samples} samples have been removed")
     common_samples = samples_1 & samples_2
     for col in common_samples:
         otu_1_col, otu_2_col = otu_1[[col]], otu_2[[col]]
