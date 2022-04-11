@@ -9,18 +9,16 @@
   Using \ac{micone} one can obtain co-occurrence networks by applying to 16S data (or to already processed taxonomic count matrices) any combination of the available tools.
   The effects of changing any of the intermediate step can be monitored and evaluated in terms of its final network outcome, as well as on any of the intermediate metrics and data outputs.
   The \ac{micone} pipeline workflow is shown in Figure~\ref{fig:figure1}.
-  The different steps for going from 16S data to co-occurrence networks can be grouped into four major modules; (i) the denoising and clustering (DC) step, which handles denoising of the raw 16S sequencing data into representative sequences; (ii) the taxonomy assignment (TA) step that assigns taxonomic labels to the representative sequences; (iii) the \ac{otu} processing (OP) step that filters and transforms the taxonomy abundance table; and finally (iv) the network inferences (NI) step which infers the microbial co-occurrence network.
+  The different steps for going from 16S data to co-occurrence networks can be grouped into five major modules; (i) the sequence processing (SP) step, which handles the demultiplexing, quality control and trimming of the raw 16S sequencing data into demultiplexed and trimmed sequences; (ii) the denoising and clustering (DC) step, which handles denoising of the demultiplexed and trimmed sequences into representative sequences; (iii) the taxonomy assignment (TA) step that assigns taxonomic labels to the representative sequences; (iv) the \ac{otu} processing (OP) step that filters and transforms the taxonomy abundance table; and finally (v) the network inferences (NI) step which infers the microbial co-occurrence network.
   Each process in the pipeline supports alternate tools for performing the same task (see Methods and Figure~\ref{fig:figure1}).
   A centralized configuration file contains all the specifications for what modules are used in the pipeline, and can be modified by the user to choose the desired set of tools.
+  The default tools and parameters for the configuration file can be found in the documentation (see Methods).
   In what follows, we perform a systematic analysis of each step of the pipeline to estimate how much the final co-occurrence network depends on the possible choices at each step.
   We also evaluate a large number of tool combinations to determine a set of recommended default options for the pipeline and provide the users with a set of guidelines to facilitate tool selection as appropriate for their data.
 
-  Our analysis involves two types of data: The first type consists of sets of 16S sequencing data from real communities sampled from human Stool and Oral microbiomes.
-  The second are datasets synthetically or artificially created for the specific goal of helping evaluate computational analysis tools (see Methods).
-  In particular, in order to objectively compare, to the extent possible, how well each step in \ac{micone} best captures the underlying data, we use both mock data (labelled mock4, mock12 and mock16) from mockrobiota~\cite{Bokulich2016} as well as, synthetically generated reads from an Illumina read simulator called ART~\cite{Huang2012}.
-  These mock datasets consist of fake sequencing reads generated from reads obtained from synthetic microbial isolates mixed in know proportions. They contain the expected compositions along with the reference sequences for the organisms in the mock community.
-  The synthetic reads were simulated using three different taxonomy distribution profiles, namely soil and water microbiomes obtained \ac{emp}~\cite{Thompson2017} and Stool microbiome that is used in our real community analysis~\cite{Kang2017}.
-  Reference sequences were generated using \ac{ncbi} and the Decard package~\cite{Golob2017} for these taxonomy profiles.
+  Our analysis involves two types of data: The first type consists of sets of 16S sequencing data from real communities sampled from human Stool microbiomes.
+  The second are datasets synthetically or artificially created for the specific goal of helping evaluate computational analysis tools.
+  In particular, in order to objectively compare, to the extent possible, how well each step in \ac{micone} best captures the underlying data, we use both mock data (labelled mock4, mock12 and mock16) from mockrobiota~\cite{Bokulich2016} as well as, synthetically generated networks using the NorTA~\cite{Kurtz2015} and seqtime~\cite{Rottjers2018}.
   Detailed information on the mock communities and the settings used to generate the synthetic data are provided in the Methods section.
 
   \FloatBarrier
