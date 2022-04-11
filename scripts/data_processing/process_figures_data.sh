@@ -111,14 +111,14 @@ python make_trees.py \
 # Unweighted unifrac
 python figure3_data.py \
   --trees ../../data/figure3/intermediate/$DATASET/trees/**/*.nwk \
-  --otus ../../data/figure3/input/$DATASET/**/*.biom \
+  --otus ../../data/figure3/input/$DATASET/**/*_filtered.biom \
   --weighted False \
-  --threshold 3 \
+  --threshold 10 \
   --output ../../data/figure3/output/$DATASET
 # Weighted unifrac
 python figure3_data.py \
   --trees ../../data/figure3/intermediate/$DATASET/trees/**/*.nwk \
   --otus ../../data/figure3/input/$DATASET/**/*_filtered.biom \
   --weighted True \
-  --threshold 3 \
+  --threshold 10 \
   --output ../../data/figure3/output/$DATASET

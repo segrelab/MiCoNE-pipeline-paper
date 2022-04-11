@@ -19,8 +19,12 @@ def get_files(path_glob: str) -> List[pathlib.Path]:
 
 
 def get_vectors(otu_1: pd.DataFrame, otu_2: pd.DataFrame, threshold: int):
-    assert all([col in otu_2.columns for col in otu_1.columns])
-    for col in otu_1.columns:
+    samples_1 = set(otu_1.columns)
+    samples_2 = set(otu_2.columns)
+    removed_samples = len(samples_1 - samples_2) + len(samples_2 - samples_1)
+    print(f"Warning {removed_samples} have been removed")
+    common_samples = samples_1 & samples_2
+    for col in common_samples:
         otu_1_col, otu_2_col = otu_1[[col]], otu_2[[col]]
         otu_1_col = otu_1_col[otu_1_col[col] > threshold]
         otu_2_col = otu_2_col[otu_2_col[col] > threshold]
@@ -82,7 +86,7 @@ def abbr_name(method: str) -> str:
 @click.option(
     "--asv", default=True, type=bool, help="To display ASV along with method name"
 )
-@click.option("--threshold", default=3, type=int, help="Threshold for sequence count")
+@click.option("--threshold", default=10, type=int, help="Threshold for sequence count")
 @click.option("--output", default=".", help="The path to the output directory")
 def main(trees: str, otus: str, weighted: bool, asv: bool, threshold: int, output: str):
     output_path = pathlib.Path(output)
