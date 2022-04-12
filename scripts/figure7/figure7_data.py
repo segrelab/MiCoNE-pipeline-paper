@@ -158,13 +158,13 @@ def calculate_performance(
 def fix_name(name: str) -> str:
     if name.startswith("scaled_sum"):
         parameter_value = name.rsplit("_", 1)[-1]
-        return f"SS({parameter_value})"
+        return f"SS[{parameter_value}]"
     elif name.startswith("simple_voting"):
         parameter_value = name.rsplit("_", 1)[-1]
-        return f"SV({parameter_value})"
+        return f"SV[{parameter_value}]"
     elif name.startswith("pvalue_merging"):
         parameter_value = name.rsplit("_", 1)[-1]
-        return "PM"
+        return "pvalue merging"
     else:
         return name
 
@@ -198,7 +198,7 @@ def update_algo_name(df: pd.DataFrame) -> None:
     algos = set(df.algorithm)
     for algo in algos:
         avg_precision = np.nanmean(df.loc[df.algorithm == algo, "precision"])
-        df.loc[df.algorithm == algo, "algorithm"] += f" P(avg)={avg_precision:.3f}"
+        df.loc[df.algorithm == algo, "algorithm"] += f", P(avg)={avg_precision:.3f}"
 
 
 @click.command()
