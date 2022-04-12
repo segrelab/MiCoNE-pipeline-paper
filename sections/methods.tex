@@ -53,7 +53,7 @@
   The denoise/cluster process handles the conversion of the demultiplexed, trimmed sequences into \ac{otu} or \ac{esv} count tables (some methods, like closed reference and open reference clustering, perform clustering and taxonomy assignment in the same step).
   The chimera checking process handles the removal of chimeric sequences created during the \ac{pcr} step.
   The output of this module is a matrix of counts, that describes the number of reads of a particular \ac{otu} or \ac{esv} (rows of the matrix) present in each sample (columns of the matrix).
-  The options currently available in the pipeline for denoising and clustering are: open reference clustering, closed reference clustering and de novo clustering methods from the vsearch plugin of \ac{qiime2} v2021.8.0~\cite{bolyenReproducibleInteractiveScalable2019} and denoising methods from \ac{dada2} v1.14~\cite{Callahan2016} and Deblur v1.1.0~\cite{Amir2017} (from the deblur plugin of \ac{qiime2}).
+  The options currently available in the pipeline for denoising and clustering are: open reference clustering, closed reference clustering and de novo clustering methods from the vsearch plugin of \ac{qiime2} v2021.8.0~\cite{bolyenReproducibleInteractiveScalable2019} and denoising methods from \ac{dada2} v1.14~\cite{Callahan2016} (from the \ac{dada2} R package) and Deblur v1.1.0~\cite{Amir2017} (from the deblur plugin of \ac{qiime2}).
   The quality filtering and chimera checking tools are derived from those used in \ac{qiime2} v2021.8.0 (uchime method) and \ac{dada2} (remove bimera method).
 
   \begin{table}[h]

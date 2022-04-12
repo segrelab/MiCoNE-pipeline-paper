@@ -26,12 +26,12 @@ def get_vectors(otu_1: pd.DataFrame, otu_2: pd.DataFrame, threshold: int):
     common_samples = samples_1 & samples_2
     for col in common_samples:
         otu_1_col, otu_2_col = otu_1[[col]], otu_2[[col]]
-        otu_1_col = otu_1_col[otu_1_col[col] > threshold]
-        otu_2_col = otu_2_col[otu_2_col[col] > threshold]
+        otu_1_col.loc[otu_1_col[col] <= threshold, :] = 0
+        otu_2_col.loc[otu_2_col[col] <= threshold, :] = 0
         otu_1_col.columns = ["1"]
         otu_2_col.columns = ["2"]
         joint_df = otu_1_col.join(otu_2_col, how="outer")
-        joint_df.fillna(0.0, inplace=True)
+        joint_df.fillna(0 inplace=True)
         otu_ids = list(joint_df.index)
         u = list(joint_df["1"])
         v = list(joint_df["2"])
