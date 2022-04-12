@@ -1,6 +1,7 @@
 #!/usr/bin/env Rscript
 
 library(RColorBrewer)
+library(dplyr)
 library(igraph)
 library(ggraph)
 library(tidygraph)
