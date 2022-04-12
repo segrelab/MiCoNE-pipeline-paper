@@ -93,12 +93,6 @@
 
   \subsection*{Taxonomy databases vary widely in taxonomy hierarchy and update frequency}
 
-  % How are the top assignments when compared
-  % How does these assignments vary across level
-  % What does this mean for us, conclusions
-  % What does the mock data show?
-  % Is there a best tool/database? What would you choose as the default?
-
   Taxonomy databases are used to assign taxonomic identities to the representative sequences obtained after the DC step.
   In order to compare the assigned taxonomies from different databases, we use the same reference sequences and assign taxonomies to them using different taxonomy reference databases.
   The three 16S taxonomic reference databases used in this study are SILVA~\cite{Quast2012}, \ac{gg}~\cite{DeSantis2006} and \ac{ncbi} RefSeq~\cite{Sayers2009}.
@@ -148,39 +142,56 @@
 
   \subsection*{Networks generated using different network inference methods show notable difference in edge-density and connectivity}
 
-  The six different network inference methods used in this study are \ac{magma}~\cite{Cougoul2019}, \ac{mldm}~\cite{Yang2017}, \ac{spieceasi}~\cite{Kurtz2015}, \ac{sparcc}~\cite{Friedman2012}, Spearman and Pearson.
-  These network inference methods fall into two groups, the first set of methods (Pearson, Spearman, \ac{sparcc}) infer pairwise correlations while the second set infer direct associations (\ac{spieceasi}, \ac{mldm}, \ac{magma}).
-  Pairwise correlation methods involve calculating the correlation coefficient between every pair of \ac{otu}/\ac{esv}s leading to the detection of spurious indirect connections.
-  On the other hand, direct association methods use conditional independence to avoid the detection of correlated but indirectly connected \ac{otu}s~\cite{Kurtz2015,Menon2018}.
+  The ten different network inference methods used in this study are: \ac{spieceasi}~\cite{Kurtz2015}, FlashWeave.jl~\cite{tackmannRapidInferenceDirect2019}, \ac{cozine}~\cite{haCompositionalZeroinflatedNetwork2020a}, \ac{harmonies}~\cite{jiangHARMONIESHybridApproach2020}, \ac{spring}~\cite{yoonMicrobialNetworksSPRING2019}, \ac{mldm}~\cite{Yang2017}, \ac{sparcc}~\cite{Friedman2012,Watts2018}, propr~\cite{quinnProprRpackageIdentifying2017}, Spearman and Pearson.
+  These network inference methods fall into two groups, the first set of methods (Pearson, Spearman, \ac{sparcc}, propr) infer pairwise correlations while the second set infer direct associations (\ac{spieceasi}, FlashWeave, \ac{cozine}, \ac{harmonies}, \ac{spring}, \ac{mldm}).
+  Pairwise correlation methods involve calculation of the correlation coefficient between every pair of node (taxonomic entity like Genus) leading to the detection of spurious indirect connections.
+  On the other hand, direct association methods use conditional independence to avoid the detection of correlated but indirectly connected taxonomic entities~\cite{Kurtz2015,Menon2018}.
 
-  For the analysis presented in this section, we used the taxonomy counts table obtained using the \ac{ncbi} reference database as the input for algorithms that infer co-occurrence associations between the microbes.
-  The taxonomy count tables are first collapsed to the Genus level (or the required taxonomy level) by summing up the counts of the lower taxonomy levels that map to the same higher taxonomy level name.
+  For the analysis presented in this section, we used the filtered (filtering during the OP step) Genus level counts table obtained using the \ac{gg} (dada2 and remove bimera methods in the DC step) reference database from the TA step as the input for the network inference algorithms.
+  The Genus count tables were obtained by summing up the counts of the lower taxonomy levels (Species and \ac{otu}) that map to the same higher taxonomy level name.
   Figure~\ref{fig:figure5}A shows the networks inferred from this dataset using the different inference algorithms.
-  The different networks differ vastly in their edge-density and connectivity; even some of the edges in common to these networks have their signs inverted. Note, however, that some of these comparisons depend on the threshold that has to be applied to the pairwise correlations methods (currently 0.3, based on~\cite{Friedman2012}).
-  To get a more quantitative picture of the differences between the inferred networks, we checked the distribution of common nodes and edges (Figure~\ref{fig:figure5}B) using UpSet plots~\cite{Lex} (only \ac{magma}, \ac{mldm}, \ac{spieceasi}, \ac{sparcc} are used in the comparison since Pearson and Spearman add a large number of spurious edges since they are not intended for compositional datasets).
-  The results for the node intersections show that the networks have a large number of nodes in common ($63$ out of $67$ nodes in the smallest network - \ac{magma}) and no network possesses any unique node.
-  The edge intersections in contrast show that only $19$ edges (out of $98$ edges in the smallest network - \ac{magma}) are in common between all the methods and each network has a large number of unique edges.
+  The different networks differ vastly in their edge-density and connectivity; even some of the edges in common to these networks can have their signs inverted.
+  Note, however, that some of these comparisons depend on the threshold that has to be applied to the networks (currently 0.3 for the correlation based methods, based on~\cite{Friedman2012} and 0.01 for the direct association methods).
+  \ac{mldm} is not shown in the comparisons because the algorithm failed to converge for most of the network combinations, hence, it is only used in the network variation analysis.
+
+  % TODO: Update after getting SparCC results
+  In order to obtain a quantitative picture of the differences between the inferred networks, we analyzed the distribution of common nodes and edges (Figure~\ref{fig:figure5}B) using UpSet plots~\cite{Lex}.
+  Only \ac{harmonies}, \ac{cozine},\ac{spieceasi}, \ac{spring}, propr, and \ac{sparcc} are used in the comparison since Pearson and Spearman add a large number of spurious edges since they are not intended for compositional datasets).
+  The results for the node intersections show that the networks have a large number of nodes in common ($33$ out of $68$ total nodes) and no network possesses any unique node.
+  The edge intersections in contrast show that only $8$ edges (out of $202$ total edges) are in common between all the methods and each network has a large number of unique edges.
   These results indicate that there is a substantial rewiring of connections in the inferred networks.
 
-  Unlike the previous steps of the pipeline, where were we evaluated the performance of methods on mock datasets, there is no equivalent dataset that contain a set of known interactions for the evaluation of the network inference algorithms.
-  Therefore, we propose the construction of a consensus network (Figure~\ref{fig:figure5}C) involving \ac{magma}, \ac{mldm}, \ac{spieceasi} and \ac{sparcc}. This consensus network is built by merging the p-values generated from bootstraps of the original taxonomy counts table using the Browns p-value combining method~\cite{brown_400_1975} (see Methods section).
+  % TODO: What is the final concluding statement here? How to segway to the next section
+
+  \FloatBarrier
+
+  \subsubsection*{The consensus network}
+
+  Therefore, we propose the construction of a consensus network (Figure~\ref{fig:figure5}C) involving \ac{mldm}, \ac{spieceasi} and \ac{sparcc}. This consensus network is built by merging the p-values generated from bootstraps of the original taxonomy counts table using the Browns p-value combining method~\cite{brown_400_1975} (see Methods section).
+
+  % FIXME: We have synthetic data
+  Similar to the previous steps of the pipeline, where were we evaluated the performance of methods on mock datasets, we can evaluate the network inference algorithms using synthetic interaction data.
+  Specifically, we use the ...
+
   Note that we do not use Pearson and Spearman methods in the p-value merging step and these algorithms are only used for demonstration and comparison.
   Based on this approach, \ac{micone} reports as default output the consensus network, annotated with weights (correlations for \ac{sparcc} and direct associations for the other methods) for all four methods.
 
   \FloatBarrier
 
   \subsubsection*{The default pipeline}
+  % TODO: Change the order of Figure 6 and 7
 
   The systematic analyses performed in the previous sections clearly show that the choice of tools and parameters can have a big impact on the final co-occurrence network. For some of these choices (e.g. \ac{dada2} vs. deblur) there is no clear metric to establish a best protocol.
   For other choices, the mock communities provide an opportunity to select combination of parameters that yield more accurate and robust results.
   Despite this partial degree of assessment, we wish to suggest a combination of tools and parameters that produce networks that are derived from the combination of tools which performed best on the mock communities, and displayed highest robustness to switching to alternative methods.
   These tools and parameters are chosen as the defaults for the pipeline and are given in Table~\ref{tab:default_options}.
 
-  The recommended tool for the \ac{dc} step (\ac{dada2} or Deblur) were chosen based on their accuracy in recapitulating the reference sequences in mock communities and synthetic data.
+  The recommended tool for the \ac{dc} step (\ac{dada2}) was chosen based on their accuracy in recapitulating the reference sequences in mock communities and synthetic data.
   The choice of the taxonomy reference database in the \ac{ta} step is dictated largely by the species expected to be present in the sample as well the database used in similar studies if comparison is a goal.
-  Nevertheless, we suggest \ac{ncbi} RefSeq along with blast+ as the query tool since the database is updated regularly and has a broad collection of taxonomies.
-  The abundance threshold at the \ac{op} step is determined automatically based on the number of samples and the required statistical power.
-  Finally, we use the Browns p-value combining method on the networks generated using \ac{magma}, \ac{mldm}, \ac{spieceasi} and \ac{sparcc} to obtain a final consensus network in the \ac{ni} step.
+  Nevertheless, we suggest \ac{gg} database along with the NaiveBayes classifier as the query tool since the database is used most often in taxonomic studies.
+  % TODO: Default OP step values and references
+  The abundance threshold at the \ac{op} step is set at ... because ....
+  Finally, we make use of the consensus methods developed in this paper ... on the networks generated using \ac{mldm}, \ac{spieceasi} and \ac{sparcc} to obtain a final consensus network in the \ac{ni} step.
 
   Figure~\ref{fig:figure6}A shows the default network compared against networks generated by altering one of the steps of the pipeline from the default.
   These results indicate that the biggest differences in networks occur when the reference database or the network inference algorithm are changed.
