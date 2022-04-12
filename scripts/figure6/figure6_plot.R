@@ -1,7 +1,6 @@
 #!/usr/bin/env Rscript
 
 library(RColorBrewer)
-library(dplyr)
 library(igraph)
 library(ggraph)
 library(tidygraph)
@@ -150,7 +149,6 @@ plot_network_c <- function(network_file, combined_layout, interaction_threshold,
   graph_layout$x <- combined_layout[match_inds,]$x
   graph_layout$y <- combined_layout[match_inds,]$y
   lo <- data.matrix(graph_layout[, c("x", "y")])
-  # FIXME: Cannot find function cart2pol
   angle <- as_tibble(cart2pol(lo)) %>% mutate(degree=phi*180/phi)
   graph_plot <- ggraph(graph=graph, layout="manual", node.positions=graph_layout, circular=TRUE) +
     geom_edge_arc(aes(color=color, edge_linetype=color, edge_alpha=color)) +
