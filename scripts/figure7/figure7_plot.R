@@ -151,7 +151,7 @@ plot_network_c <- function(network_file, combined_layout, interaction_threshold,
   graph_layout$y <- combined_layout[match_inds,]$y
   lo <- data.matrix(graph_layout[, c("x", "y")])
   angle <- as_tibble(cart2pol(lo)) %>% mutate(degree=phi*180/phi)
-  graph_plot <- ggraph(graph=graph, layout="manual", node.positions=graph_layout, circular=TRUE) +
+  graph_plot <- ggraph(graph = graph, layout = "manual", x = graph_layout$x, y = graph_layout$y, circular = TRUE) +
     geom_edge_arc(aes(color=color, edge_linetype=color, edge_alpha=color)) +
     # geom_node_point(aes(color=factor(colorkey))) +
     geom_node_point() +

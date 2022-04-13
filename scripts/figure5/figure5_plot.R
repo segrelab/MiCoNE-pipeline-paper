@@ -104,7 +104,7 @@ pearson_plot <- plot_network(pearson_gml, combined_layout, 0.3, "pearson", palet
 propr_plot <- plot_network(propr_gml, combined_layout, 0.3, "propr", palette[[9]])
 
 combined_plot <- ggarrange(
-    flashweave_plot, spieceasi_plot, cozine_plot, harmonies_plot, spring_plot, sparcc_plot, propr_plot, spearman_plot, pearson_plot
+    flashweave_plot, spieceasi_plot, cozine_plot, harmonies_plot, spring_plot, sparcc_plot, propr_plot, spearman_plot, pearson_plot,
     ncol = 3, nrow = 3, common.legend = TRUE, legend = "bottom"
 )
 a_plot <- annotate_figure(combined_plot, fig.lab = "A", fig.lab.pos = "top.left", fig.lab.size = 20)
