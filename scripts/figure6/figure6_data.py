@@ -1,248 +1,293 @@
 #!/usr/bin/env python3
 
+from collections import defaultdict
 import pathlib
+import pickle
+from typing import Dict, Tuple, Union
 
 import click
-import networkx as nx
-from networkx.algorithms import graph_edit_distance
 import numpy as np
 import pandas as pd
+from mlxtend.evaluate import confusion_matrix
 from tqdm import tqdm
 
-from micone import Network, NetworkGroup, Lineage
+from micone import Network, NetworkGroup
 
 
-def write_networks(networks_dict, multigraph, color_key_level, output_path):
-    combined_graph = nx.Graph()
-    default_graph = networks_dict["default"].graph
-    for network_name, network in tqdm(networks_dict.items()):
-        graph = network.graph
-        if multigraph:
-            G = nx.MultiGraph()
-        else:
-            G = nx.Graph()
-        id_name_map = dict()
-        for node, node_data in graph.nodes(data=True):
-            name = node_data["name"]
-            id_name_map[node] = name
-            taxlevel = node_data["taxlevel"]
-            colorkey = (
-                Lineage.from_str(node_data["lineage"])
-                .get_superset(color_key_level)
-                .name[-1]
-            )
-            G.add_node(
-                name,
-                name=name,
-                taxlevel=taxlevel,
-                colorkey=colorkey,
-                layer="foreground",
-            )
-            combined_graph.add_node(
-                name, name=name, taxlevel=taxlevel, colorkey=colorkey
-            )
-        for source, target, edge_data in graph.edges(data=True):
-            source_name, target_name = id_name_map[source], id_name_map[target]
-            weight = edge_data["weight"]
-            pvalue = edge_data["pvalue"]
-            G.add_edge(
-                source_name,
-                target_name,
-                weight=weight,
-                pvalue=pvalue,
-                layer="foreground",
-            )
-            combined_graph.add_edge(
-                source_name, target_name, weight=weight, pvalue=pvalue
-            )
-        id_name_map = dict()
-        if network_name != "default":
-            for node, node_data in default_graph.nodes(data=True):
-                name = node_data["name"]
-                id_name_map[node] = name
-                taxlevel = node_data["taxlevel"]
-                colorkey = (
-                    Lineage.from_str(node_data["lineage"])
-                    .get_superset(color_key_level)
-                    .name[-1]
-                )
-                if name not in G.nodes:
-                    G.add_node(
-                        name,
-                        name=name,
-                        taxlevel=taxlevel,
-                        colorkey=colorkey,
-                        layer="background",
-                    )
-                else:
-                    G.nodes[name]["layer"] = "common"
-            for source, target, edge_data in default_graph.edges(data=True):
-                source_name, target_name = id_name_map[source], id_name_map[target]
-                weight = edge_data["weight"]
-                pvalue = edge_data["pvalue"]
-                if (source_name, target_name) not in G.edges:
-                    G.add_edge(
-                        source_name,
-                        target_name,
-                        weight=weight,
-                        pvalue=pvalue,
-                        layer="background",
-                    )
-                else:
-                    G[source_name][target_name]["layer"] = "common"
-                    G[source_name][target_name]["weight"] = edge_data["weight"]
-        nx.write_gml(G, str(output_path / f"{network_name}.gml"))
-    nx.write_gml(combined_graph, str(output_path / "combined.gml"))
-    return list(combined_graph.nodes), list(combined_graph.edges)
+def read_predictions(
+    prediction_file: pathlib.Path,
+    interaction_threshold: float,
+    pvalue_threshold: float,
+) -> Network:
+    network = Network.load_json(str(prediction_file))
+    network.interaction_threshold = interaction_threshold
+    network.pvalue_threshold = pvalue_threshold
+    filtered_network = network.filter(pvalue_filter=True, interaction_filter=True)
+    return filtered_network
 
 
-def write_edit_distance(networks_dict: dict, output_directory: pathlib.Path):
-    data = []
-    default_network = networks_dict["default"]["default"]
-    default_graph = default_network.graph
-    node_fun = lambda x, y: x["name"] == y["name"]
-    edge_fun = lambda x, y: {x["source"], x["target"]} == {y["source"], y["target"]}
-    for step_name, step_network_dict in tqdm(networks_dict.items()):
-        if step_name == "default":
-            continue
-        for process_name, process_network in step_network_dict.items():
-            process_graph = process_network.graph
-            ed = graph_edit_distance(
-                default_graph, process_graph, node_match=node_fun, edge_match=edge_fun
-            )
-            data.append(
-                {
-                    "step": step_name,
-                    "process": process_name,
-                    "edit_distance": ed,
-                }
-            )
-    df = pd.DataFrame(data)
-    fname = output_directory / "edit_distance_to_ref.csv"
-    df.to_csv(fname, sep=",", index=False)
+def read_observations(
+    observation_file: pathlib.Path, interaction_threshold: float, sign: bool
+) -> pd.DataFrame:
+    interactions: pd.DataFrame = pd.read_table(observation_file, index_col=0)
+    np.fill_diagonal(interactions.values, 0.0)
+    interactions[np.abs(interactions) <= interaction_threshold] = 0
+    # NOTE: We don't need to apply threshold here again because we filter earlier
+    if sign:
+        interactions[interactions > 0] = 1
+        interactions[interactions < 0] = -1
+        interactions = interactions.astype(int)
+    return interactions
 
 
-def _get_adjmat(graph, combined_nodes) -> np.ndarray:
-    n = len(combined_nodes)
-    adjmat = pd.DataFrame(
-        np.zeros((n, n)), index=combined_nodes, columns=combined_nodes
+def get_consensus(predictions_map: Dict[str, Dict[str, Network]]):
+    corr_methods = ["sparcc", "propr", "spearman", "pearson"]
+    direct_methods = [
+        "spieceasi",
+        "flashweave",
+        "mldm",
+        "cozine",
+        "harmonies",
+        "spring",
+    ]
+    consensus_methods = ["simple_voting", "scaled_sum"]
+    consensus_parameters = np.linspace(
+        0, 1, (len(corr_methods) + len(direct_methods) + 1) // 2
     )
-    for source, target, data in graph.edges(data=True):
-        weight = data.get("weight", 0.0)
-        adjmat.loc[source, target] = 1 if weight > 0 else -1
-    return adjmat.values
+    pvalue_mergers_map: Dict[str, Dict[str, NetworkGroup]] = defaultdict(dict)
+    consensus1_map: Dict[str, Dict[str, NetworkGroup]] = defaultdict(dict)
+    consensus2_map: Dict[str, Dict[str, NetworkGroup]] = defaultdict(dict)
+    for dataset_name in tqdm(predictions_map):
+        corr_networks = []
+        direct_networks = []
+        for algorithm_name in predictions_map[dataset_name]:
+            if algorithm_name in corr_methods:
+                corr_networks.append(predictions_map[dataset_name][algorithm_name])
+            elif algorithm_name in direct_methods:
+                direct_networks.append(predictions_map[dataset_name][algorithm_name])
+        all_networks = corr_networks + direct_networks
+        networkgroup_corr = NetworkGroup(corr_networks, id_field="id")
+        # networkgroup_direct = NetworkGroup(direct_networks, id_field="id")
+        networkgroup_all = NetworkGroup(all_networks, id_field="id")
+        # Step3a: Calculate merged pvalues network with different parameter values (unsure)
+        cids = list(range(len(networkgroup_corr.contexts)))
+        networkgroup_pvalue_merged = networkgroup_corr.combine_pvalues(cids)
+        pvalue_mergers_map[dataset_name][
+            "pvalue_merging_default"
+        ] = networkgroup_pvalue_merged
+        # Step3b: Calculate consensus network with different parameter values for all methods
+        for method in consensus_methods:
+            for parameter in consensus_parameters:
+                cids = list(range(len(networkgroup_all.contexts)))
+                networkgroup_consensus = networkgroup_all.get_consensus_network(
+                    cids, method=method, parameter=parameter
+                )
+                if method == "simple_voting":
+                    consensus1_map[dataset_name][
+                        f"{method}_{parameter:.3f}"
+                    ] = networkgroup_consensus
+                elif method == "scaled_sum":
+                    consensus2_map[dataset_name][
+                        f"{method}_{parameter:.3f}"
+                    ] = networkgroup_consensus
+    return pvalue_mergers_map, consensus1_map, consensus2_map
 
 
-def write_l1_distance(networks_dict: dict, output_directory):
+def calculate_precision(confusion_matrix: dict) -> float:
+    pre = confusion_matrix["tp"] / (confusion_matrix["tp"] + confusion_matrix["fp"])
+    return pre
+
+
+def calculate_sensitivity(confusion_matrix: dict) -> float:
+    sen = confusion_matrix["tp"] / (confusion_matrix["fn"] + confusion_matrix["tp"])
+    return sen
+
+
+def calculate_performance(
+    observations: pd.DataFrame, predictions: Union[Network, NetworkGroup], sign: bool
+) -> Tuple[dict, float, float]:
+    prediction_df = pd.DataFrame(
+        np.zeros_like(observations.values),
+        index=observations.index,
+        columns=observations.columns,
+    )
+    if len(predictions.links):
+        if isinstance(predictions, Network):
+            table = predictions.get_adjacency_table("weight")
+            for row in table.index:
+                for col in table.columns:
+                    prediction_df.loc[row, col] = table.loc[row, col]
+        elif isinstance(predictions, NetworkGroup):
+            vector_table = predictions.get_adjacency_vectors("weight")
+            for row in vector_table.index:
+                if row not in predictions.linkid_revmap:
+                    continue
+                else:
+                    source, target = predictions.linkid_revmap[row][0][-1].split("-")
+                    # FIXME: Is this the right thing to do?
+                    val = np.nanmean(vector_table.loc[row, :])
+                    prediction_df.loc[source, target] = val
+                    prediction_df.loc[target, source] = val
+        else:
+            raise ValueError("Unsupported predictions object")
+        np.fill_diagonal(prediction_df.values, 0.0)
+        prediction_df.fillna(0.0, inplace=True)
+        if sign:
+            prediction_df[prediction_df > 0] = 1
+            prediction_df[prediction_df < 0] = -1
+            prediction_df = prediction_df.astype(int)
+        t_vec = observations.values.reshape(-1)
+        p_vec = prediction_df.values.reshape(-1)
+        cm = confusion_matrix(t_vec, p_vec, binary=True, positive_label=0)
+        cm_fixed = [[cm[1, 1], cm[1, 0]], [cm[0, 1], cm[0, 0]]]
+        cm_dict = {
+            "tn": cm_fixed[0][0],
+            "fp": cm_fixed[0][1],
+            "fn": cm_fixed[1][0],
+            "tp": cm_fixed[1][1],
+        }
+        precision = calculate_precision(cm_dict)
+        sensitivity = calculate_sensitivity(cm_dict)
+    else:
+        cm_dict = {"tn": np.nan, "fp": np.nan, "fn": np.nan, "tp": np.nan}
+        precision = np.nan
+        sensitivity = np.nan
+    return cm_dict, precision, sensitivity
+
+
+def fix_name(name: str) -> str:
+    if name.startswith("scaled_sum"):
+        parameter_value = name.rsplit("_", 1)[-1]
+        return f"SS[{parameter_value}]"
+    elif name.startswith("simple_voting"):
+        parameter_value = name.rsplit("_", 1)[-1]
+        return f"SV[{parameter_value}]"
+    elif name.startswith("pvalue_merging"):
+        parameter_value = name.rsplit("_", 1)[-1]
+        return "pvalue merging"
+    else:
+        return name
+
+
+def get_peformance_data(observations_map, predictions_map, sign) -> list:
     data = []
-    default_network = networks_dict["default"]["default"]
-    default_graph = default_network.graph
-    for step_name, step_network_dict in tqdm(networks_dict.items()):
-        if step_name == "default":
-            continue
-        for process_name, process_network in step_network_dict.items():
-            process_graph = process_network.graph
-            combined_nodes = list(set(default_graph.nodes) | set(process_graph.nodes))
-            default_adjmat = _get_adjmat(default_graph, combined_nodes)
-            process_adjmat = _get_adjmat(process_graph, combined_nodes)
-            l1 = np.abs(default_adjmat - process_adjmat).sum() / 2
+    for dataset_name in tqdm(predictions_map):
+        observations = observations_map[dataset_name]
+        for algorithm_name in predictions_map[dataset_name]:
+            predictions = predictions_map[dataset_name][algorithm_name]
+            cm_dict, precision, sensitivity = calculate_performance(
+                observations, predictions, sign
+            )
             data.append(
                 {
-                    "step": step_name,
-                    "process": process_name,
-                    "l1_distance": l1,
+                    "factor1": dataset_name.split("_")[0],
+                    "factor2": dataset_name.split("_")[1],
+                    "algorithm": fix_name(algorithm_name),
+                    "tp": cm_dict["tp"],
+                    "fp": cm_dict["fp"],
+                    "tn": cm_dict["tn"],
+                    "fn": cm_dict["fn"],
+                    "precision": precision,
+                    "sensitivity": sensitivity,
                 }
             )
-    df = pd.DataFrame(data)
-    fname = output_directory / "l1_distance_to_ref.csv"
-    df.to_csv(fname, sep=",", index=False)
+    return data
+
+
+def update_algo_name(df: pd.DataFrame) -> None:
+    algos = set(df.algorithm)
+    for algo in algos:
+        avg_precision = np.nanmean(df.loc[df.algorithm == algo, "precision"])
+        df.loc[df.algorithm == algo, "algorithm"] += f", P(avg)={avg_precision:.3f}"
 
 
 @click.command()
 @click.option(
-    "--folder",
-    help="The path to the folder containing the network files",
-    type=pathlib.Path,
+    "--files", help="The path to the network files containing the glob pattern"
 )
 @click.option(
-    "--color_key_level",
-    default="Family",
-    help="The taxonomy level to be used as color key",
+    "--interaction_threshold", default=0.1, help="Value to threshold interactions by"
 )
+@click.option("--pvalue_threshold", default=0.05, help="Value to threshold pvalues by")
 @click.option(
-    "--multigraph",
-    default=False,
-    type=bool,
-    help="Flag to switch between multigraph and graph",
+    "--sign", default=True, type=bool, help="Flag to convert matrices to sign matrices"
 )
-@click.option("--dc", help="The tool choice for DC step")
-@click.option("--cc", help="The tool choice for CC step")
-@click.option("--ta", help="The tool choice for TA step")
-@click.option("--op", help="The tool choice for OP step")
-@click.option("--ni", help="The tool choice for NI step")
-@click.option("--dataset", help="The dataset (subset) for selection")
 @click.option("--output", default=".", help="The path to the output directory")
 def main(
-    folder: pathlib.Path,
-    color_key_level: str,
-    multigraph: bool,
-    dc: str,
-    cc: str,
-    ta: str,
-    op: str,
-    ni: str,
-    dataset: str,
+    files: str,
+    interaction_threshold: float,
+    pvalue_threshold: float,
+    sign: bool,
     output: str,
 ):
-    if not folder.exists():
-        raise ValueError(f"Folder {folder} must exist")
-    networks_dict = {
-        "default": dict(),
-        "DC": dict(),
-        "CC": dict(),
-        "TA": dict(),
-        "OP": dict(),
-        "NI": dict(),
-    }
-    for step_folder in tqdm(list(folder.iterdir())):
-        step_name = step_folder.stem
-        assert step_name in networks_dict
-        for process_folder in step_folder.iterdir():
-            process_name = process_folder.stem
-            # STEP1: Get all the `Network` for a particular folder (combination)
-            network_files = list(process_folder.glob(f"**/{dataset}/*.json"))
-            if not network_files:
-                continue
-            networks = [
-                Network.load_json(str(network_file)) for network_file in network_files
-            ]
-            # STEP2: Convert all to `NetworkGroup` and perform `consensus`
-            network_group = NetworkGroup(networks)
-            cids = list(range(len(network_group.contexts)))
-            consensus_network = network_group.get_consensus_network(
-                cids, method="scaled_sum", parameter=0.5
-            )
-            # STEP3: Create a simple graph version of the consensus
-            simple_consensus = consensus_network.to_network()
-            simple_consensus.interaction_threshold = 0.1
-            simple_consensus.pvalue_threshold = 0.05
-            networks_dict[step_name][process_name] = simple_consensus.filter(True, True)
-    # STEP4: Then, feed the above to the previous function
-    output_path = pathlib.Path(output) / dataset
-    output_path.mkdir(parents=True, exist_ok=True)
+    output_path = pathlib.Path(output)
     assert output_path.exists()
-    networks_choice_dict = {
-        f"DC_{dc}": networks_dict["DC"][dc],
-        f"CC_{cc}": networks_dict["CC"][cc],
-        f"TA_{ta}": networks_dict["TA"][ta],
-        f"OP_{op}": networks_dict["OP"][op],
-        f"NI_{ni}": networks_dict["NI"][ni],
-        "default": networks_dict["default"]["default"],
-    }
-    nodes, edges = write_networks(
-        networks_choice_dict, multigraph, color_key_level, output_path
-    )
-    write_l1_distance(networks_dict, output_directory=output_path)
+
+    # Step1 and 2: Get observations and predictions
+    print("Step1 and 2: Get observations and predictions")
+    step_1_2_pickle = pathlib.Path("step_1_2.pkl")
+    if step_1_2_pickle.exists():
+        with open(step_1_2_pickle, "rb") as fid:
+            predictions_map = pickle.load(fid)
+            observations_map = pickle.load(fid)
+    else:
+        base_dir, glob = files.split("*", 1)
+        glob = "*" + glob
+        base_path = pathlib.Path(base_dir)
+        file_paths = list(base_path.glob(glob))
+        predictions_map: Dict[str, Dict[str, Network]] = defaultdict(dict)
+        observations_map: Dict[str, pd.DataFrame] = dict()
+        for prediction_file in tqdm(file_paths):
+            dataset = prediction_file.parent
+            algorithm_name = prediction_file.parent.parent.stem.split("-")[-1]
+            dataset_name = dataset.stem
+            observation_file = dataset / "interaction_matrix.tsv"
+            observations_map[dataset_name] = read_observations(
+                observation_file, interaction_threshold=interaction_threshold, sign=sign
+            )
+            predictions_map[dataset_name][algorithm_name] = read_predictions(
+                prediction_file,
+                interaction_threshold=interaction_threshold,
+                pvalue_threshold=pvalue_threshold,
+            )
+        with open(step_1_2_pickle, "wb") as fid:
+            pickle.dump(predictions_map, fid)
+            pickle.dump(observations_map, fid)
+
+    # Step3: Calculate consensus using predictions_map
+    print("Step3: Calculate consensus using predictions_map")
+    step_3_pickle = pathlib.Path("step_3.pkl")
+    if step_3_pickle.exists():
+        with open(step_3_pickle, "rb") as fid:
+            pvalue_mergers_map = pickle.load(fid)
+            consensus1_map = pickle.load(fid)
+            consensus2_map = pickle.load(fid)
+    else:
+        pvalue_mergers_map, consensus1_map, consensus2_map = get_consensus(
+            predictions_map
+        )
+        with open(step_3_pickle, "wb") as fid:
+            pickle.dump(pvalue_mergers_map, fid)
+            pickle.dump(consensus1_map, fid)
+            pickle.dump(consensus2_map, fid)
+
+    # Step4: Calculate precision and sensitivity for all
+    print("Step4: Calculate precision and sensitivity for all")
+    step_4_pickle = pathlib.Path("step_4.pkl")
+    if step_4_pickle.exists():
+        with open(step_4_pickle, "rb") as fid:
+            df = pickle.load(fid)
+    else:
+        data = []
+        data.extend(get_peformance_data(observations_map, predictions_map, sign))
+        data.extend(get_peformance_data(observations_map, pvalue_mergers_map, sign))
+        data.extend(get_peformance_data(observations_map, consensus1_map, sign))
+        data.extend(get_peformance_data(observations_map, consensus2_map, sign))
+        df = pd.DataFrame(data)
+        update_algo_name(df)
+        with open(step_4_pickle, "wb") as fid:
+            pickle.dump(df, fid)
+    df.to_csv(output_path / "performance.csv", index=False, sep=",")
 
 
 if __name__ == "__main__":

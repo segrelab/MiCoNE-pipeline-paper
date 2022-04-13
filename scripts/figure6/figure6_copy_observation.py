@@ -5,7 +5,7 @@ import pathlib
 import shutil
 
 ### NoRTA
-network_files = list(pathlib.Path("../data/figure7/input/norta/").glob("**/*.json"))
+network_files = list(pathlib.Path("../data/figure6/input/norta/").glob("**/*.json"))
 datasets = set(
     pathlib.Path(
         "/home/dileep/Documents/Work/MIND/synthetic_interactions/data/norta/input/"
@@ -21,7 +21,7 @@ for network_file in network_files:
     shutil.copy(input_file, output_file)
 
 ### Seqtime
-network_files = list(pathlib.Path("../data/figure7/input/seqtime/").glob("**/*.json"))
+network_files = list(pathlib.Path("../data/figure6/input/seqtime/").glob("**/*.json"))
 datasets = set(
     pathlib.Path(
         "/home/dileep/Documents/Work/MIND/synthetic_interactions/data/seqtime/input/"
