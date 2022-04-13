@@ -371,13 +371,14 @@ where, $g$ and $f$ are defined as follows:
 
   We generated synthetic interaction data using two methodologies previously used for benchmarking network inference methods.
 
+  % TODO: Add reference: Karoline Faust, Franziska Bauchinger, Béatrice Laroche, Sophie de Buyl, Leo Lahti, Alex D Washburne, Didier Gonze, Stefanie Widder, "Signatures of ecological processes in microbial community time series", Microbiome (2018).
   The first method, hereby referred to as ``seqtime'', used generalized Lotka-Volterra (gLV) equations to model the microbial community dynamics and utilized the Klemm–Eguı́luz algorithm to generate a clique-based interaction network~\cite{Rottjers2018}.
   We used the \href{https://github.com/hallucigenia-sparsa/seqtime}{seqtime} R package to simulate communities with number of species ($N$) varying from 10 to 150 (10, 25, 50, 100, 150 and 200).
   The initial species concentrations are randomly sampled from a Poisson distribution and the simulation is rerun to generate a number of samples ($S$) varying from 50 to 500 (50, 100, 200, 500) for different communities.
   The abundance values of the species in the community at the end of the simulation time are used to create the OTU table.
 
   The second method, hereby referred to as ``NorTA'', used the Normal to Anything (NorTA) approach coupled with a given interaction network topology to generate the abundance distribution of the microbial community~\cite{Kurtz2015}.
-  We used the \href{https://github.com/zdk123/SpiecEasi}{spieceasi} R package to simulate communities with different network topologies (scale-free, cluster, block, Erdos-Renyi, band and hub) and target abundance distributions (Negative Binomial, Poisson, Zero-Inflated Negative Binomial).
+  We used the \href{https://github.com/zdk123/SpiecEasi}{spieceasi} R package~\cite{Kurtz2015} to simulate communities with different network topologies (scale-free, cluster, block, Erdos-Renyi, band and hub) and target abundance distributions (Negative Binomial, Poisson, Zero-Inflated Negative Binomial).
   The OTU table was generated using the American Gut Project example in the \texttt{spieceasi} package (amgut1.filt) with the default parameter options.
 
   For each method, we generated the OTU table depicting the abundances of species and use this as input to generate association networks using \ac{micone} pipeline.
