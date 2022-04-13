@@ -14,6 +14,7 @@ PLATFORM="scc"
 DATASET="FMT"
 OUTPUT_DIR="../../figures/FMT/"
 mkdir -pv $OUTPUT_DIR
+rm -f $OUTPUT_DIR/*.pdf
 
 if [ $PLATFORM == "scc" ]; then
   module load miniconda
