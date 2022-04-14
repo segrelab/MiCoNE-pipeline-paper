@@ -29,7 +29,9 @@
   The pipeline supports both paired end and single end reads, and additionally supports independently processing multiple runs and merging the OTU tables in the DC step.
   The final output of the pipeline is the inferred network of co-occurrence relationships among the microbes present in the samples.
 
+  % TODO: Write about the JSON network format (supplementary)
   The \ac{micone} pipeline provides both a Python API as well as a command-line interface and only uses a single configuration file (nextflow.config) to contain the configuration parameters.
+  The \ac{micone} Python API several biom file and network related function and methods, enabling detailed comparison of counts tables and inferred networks if desired.
   The configuration file along with the run file (main.nf) lists the inputs, output and the steps to be performed during runtime, along with the parameters to be used (if different from defaults) for the various steps.
   Since the entire pipeline run-through is stored in the form of a text file (the configuration file), subsequent runs are highly reproducible and changes can be easily tracked using version control.
   It uses the nextflow workflow manager~\cite{Tommaso2015} under the hood, making it readily usable on local machines, cluster or cloud with minimal configuration change.
