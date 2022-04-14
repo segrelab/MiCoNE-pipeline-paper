@@ -178,7 +178,10 @@ make_bar_plot <- function(data, title) {
         palette = c("#00AFBB", "#FC4E07"),
         # palette="Paired"
     ) +
-        theme(axis.text.x = element_text(angle = 30, hjust = 1))
+        theme(
+        plot.title = element_text(size=8),
+        axis.text.x = element_text(angle = 30, hjust = 1)
+    )
 }
 
 # Combinations
