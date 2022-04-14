@@ -54,9 +54,21 @@ python -W ignore figure5_data.py \
 # Figure 6
 echo "Processing Figure 6"
 cd ../figure6/
-mkdir -pv "../../data/figure6/output/$DATASET"
+rm -f *.pkl
+mkdir -pv "../../data/figure6/output/norta"
 python -W ignore figure6_data.py \
-  --folder "../../data/figure6/input/$DATASET" \
+  --files "../../data/figure6/input/norta/**/*.json" \
+  --interaction_threshold 0.1 \
+  --pvalue_threshold 0.05 \
+  --sign True \
+  --output "../../data/figure6/output/norta"
+
+# Figure 7
+echo "Processing Figure 7"
+cd ../figure7/
+mkdir -pv "../../data/figure7/output/$DATASET"
+python -W ignore figure7_data.py \
+  --folder "../../data/figure7/input/$DATASET" \
   --color_key_level "Family" \
   --multigraph "False" \
   --dc "closed_reference(gg_97)" \
@@ -65,9 +77,9 @@ python -W ignore figure6_data.py \
   --op "normalize_filter(off)" \
   --ni "sparcc" \
   --dataset "fmt-control" \
-  --output "../../data/figure6/output/$DATASET"
-python -W ignore figure6_data.py \
-  --folder "../../data/figure6/input/$DATASET" \
+  --output "../../data/figure7/output/$DATASET"
+python -W ignore figure7_data.py \
+  --folder "../../data/figure7/input/$DATASET" \
   --color_key_level "Family" \
   --multigraph "False" \
   --dc "closed_reference(gg_97)" \
@@ -76,19 +88,7 @@ python -W ignore figure6_data.py \
   --op "normalize_filter(off)" \
   --ni "sparcc" \
   --dataset "fmt-autism" \
-  --output "../../data/figure6/output/$DATASET"
-
-# Figure 7
-echo "Processing Figure 7"
-cd ../figure7/
-rm -f *.pkl
-mkdir -pv "../../data/figure7/output/norta"
-python -W ignore figure7_data.py \
-  --files "../../data/figure7/input/norta/**/*.json" \
-  --interaction_threshold 0.1 \
-  --pvalue_threshold 0.05 \
-  --sign True \
-  --output "../../data/figure7/output/norta"
+  --output "../../data/figure7/output/$DATASET"
 
 # Figure 3
 echo "Processing Figure 3"

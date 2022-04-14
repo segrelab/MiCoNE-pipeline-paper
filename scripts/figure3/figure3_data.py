@@ -31,7 +31,7 @@ def get_vectors(otu_1: pd.DataFrame, otu_2: pd.DataFrame, threshold: int):
         otu_1_col.columns = ["1"]
         otu_2_col.columns = ["2"]
         joint_df = otu_1_col.join(otu_2_col, how="outer")
-        joint_df.fillna(0 inplace=True)
+        joint_df.fillna(0, inplace=True)
         otu_ids = list(joint_df.index)
         u = list(joint_df["1"])
         v = list(joint_df["2"])
