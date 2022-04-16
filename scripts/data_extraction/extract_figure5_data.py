@@ -2,7 +2,7 @@ import pathlib
 import sys
 
 from data_extraction import extract_data
-from extract_figure6_data import make_process_string, make_prevprocess_string
+from extract_figure7_data import make_process_string, make_prevprocess_string
 
 NI_METHODS = (
     ("dir", "cozine"),
