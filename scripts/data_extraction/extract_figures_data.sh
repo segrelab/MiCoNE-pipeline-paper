@@ -1,6 +1,6 @@
 #!/bin/bash -l
 
-#$ -l h_rt=1:00:00
+#$ -l h_rt=4:00:00
 #$ -N micone_data_extraction
 #$ -P visant
 #$ -o extraction_outputs.txt
