@@ -140,8 +140,8 @@ plot_network_c <- function(network_file, combined_layout, interaction_threshold,
   graph_raw <- as_tbl_graph(read_graph(network_file, format="gml"))
   graph <- graph_raw %>%
     activate(edges) %>%
-    filter(pvalue < pvalue_threshold) %>%
-    filter(abs(weight) > interaction_threshold) %>%
+    # filter(pvalue < pvalue_threshold) %>%
+    # filter(abs(weight) > interaction_threshold) %>%
     mutate(color=get_edgecolor(weight)) %>%
     activate(nodes) %>%
     mutate(isolated=node_is_isolated()) %>%
@@ -180,18 +180,20 @@ plot_network_c <- function(network_file, combined_layout, interaction_threshold,
         axis.ticks=element_blank(),
         panel.background=element_blank(),
         panel.border=element_blank(),
-        panel.grid=element_blank()
+        panel.grid=element_blank(),
     )
 }
 
 combined_graph_1 <- read_graph(combined_gml, format = "gml")
-combined_layout_1 <- create_layout(graph = combined_graph_1, layout = "linear", circular = TRUE)
+# combined_layout_1 <- create_layout(graph = combined_graph_1, layout = "linear", circular = TRUE)
 combined_graph_2 <- read_graph(combined_gml_2, format = "gml")
-combined_layout_2 <- create_layout(graph = combined_graph_2, layout = "linear", circular = TRUE)
+# combined_layout_2 <- create_layout(graph = combined_graph_2, layout = "linear", circular = TRUE)
+combined_graph_z <- union(combined_graph_1, combined_graph_2)
+combined_layout_z <- create_layout(graph = combined_graph_z, layout = "linear", circular = TRUE)
 
 palette <- brewer.pal(n = 6, name = "Pastel1")
-default_plot_1 <- plot_network_c(default_gml, combined_layout_1, 0.3, 0.05, "Control", palette[[1]])
-default_plot_2 <- plot_network_c(default_gml_2, combined_layout_2, 0.3, 0.05, "Autism", palette[[2]])
+default_plot_1 <- plot_network_c(default_gml, combined_layout_z, 0.05, 0.05, "Control", palette[[1]])
+default_plot_2 <- plot_network_c(default_gml_2, combined_layout_z, 0.05, 0.05, "Autism", palette[[2]])
 c_plot <- ggarrange(default_plot_1, default_plot_2, ncol=2, nrow=1, common.legend=TRUE, legend="bottom")
 
 ggsave(output_file_c, width = 11, height = 5)
