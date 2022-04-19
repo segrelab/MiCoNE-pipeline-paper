@@ -334,10 +334,13 @@ where, $g$ and $f$ are defined as follows:
   The UniFrac distance metric (unique fraction metric) is a beta-diversity measure that computes the distance between two sets of taxa as the fraction of the branch length of the tree that leads to descendants from either one environment or the other, but not both~\cite{Lozupone2005}
   The weighted UniFrac distance metric takes into account the abundances of the representative sequences when calculating shared and unshared branch lengths, whereas the unweighted UniFrac distance metric does not and hence gives equal weights to each sequence.
   In Figure~\ref{fig:figure3} the distances between methods are the average distance calculated between the reference sequence distribution generated for every corresponding sample in the dataset.
-  All UniFrac calculations were performed using the \texttt{scikit-bio}~\cite{thescikit-biodevelopmentteamScikitbioBioinformaticsLibrary2022} v0.5.7 Python package.
+  All UniFrac calculations were performed using the \texttt{scikit-bio}~\cite{thescikit-biodevelopmentteamScikitbioBioinformaticsLibrary2022} v0.5.6 Python package.
 
   \subsubsection*{TA step}
-  % Write about Braycurtis
+  In Figure~\ref{fig:figure4}C we use the Bray-Curtis distance metric to calculate the distance between the predicted (using the TA step) and expected taxonomic distribution.
+  The Bray-Curtis distance is used to quantify the compositional dissimilarity between two different taxonomic distributions.
+  It is defined as: $\sum{|u_i-v_i|} / \sum{|u_i+v_i|}$
+  The Bray-Curtis distance calculations were performed using the \texttt{scipy}~\cite{virtanenSciPyFundamentalAlgorithms2020} v1.8.0 Python package.
 
   \subsubsection*{NI step}
   % Write about precision and sensitivity equations used
