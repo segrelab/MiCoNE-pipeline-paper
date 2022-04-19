@@ -22,6 +22,75 @@
     \label{tab:default_options}
   \end{table}
 
+  \begin{table}[h]
+    \centering
+    \small
+    \begin{tabular}{|c|c|c|}
+      \hline
+      \textbf{Module} & \textbf{Tool} & \textbf{References} \\
+      \hline
+      Denoising and Clustering & Closed reference & \cite{rognesVSEARCHVersatileOpen2016,bolyenReproducibleInteractiveScalable2019} \\
+      Denoising and Clustering & Open reference & \cite{rognesVSEARCHVersatileOpen2016,bolyenReproducibleInteractiveScalable2019} \\
+      Denoising and Clustering & De novo & \cite{rognesVSEARCHVersatileOpen2016,bolyenReproducibleInteractiveScalable2019} \\
+      Denoising and Clustering & Dada2 & \cite{Callahan2016} \\
+      Denoising and Clustering & Deblur & \cite{Amir2017,bolyenReproducibleInteractiveScalable2019} \\
+      \hline
+      Chimera checking & Uchime & \cite{rognesVSEARCHVersatileOpen2016,bolyenReproducibleInteractiveScalable2019} \\
+      Chimera checking & Remove bimera & \cite{Callahan2016} \\
+      \hline
+    \end{tabular}
+    \caption{Tools used in the DC module}
+    \label{tab:dc_tools}
+  \end{table}
+
+  \begin{table}[h]
+    \centering
+    \small
+    \begin{tabular}{|c|c|c|}
+      \hline
+      \textbf{Module} & \textbf{Tool/Database} & \textbf{References} \\
+      \hline
+      Query tool & Blast & \cite{camachoBLASTArchitectureApplications2009,bokulichOptimizingTaxonomicClassification2018} \\
+      Query tool & Naive bayes classifier & \cite{bokulichOptimizingTaxonomicClassification2018} \\
+      \hline
+      Database & Greengenes & \cite{DeSantis2006} \\
+      Database & SILVA & \cite{Quast2012} \\
+      Database & NCBI RefSeq & \cite{Sayers2009} \\
+      \hline
+    \end{tabular}
+    \caption{Tools used in the TA module}
+    \label{tab:ta_tools}
+  \end{table}
+
+  \begin{table}[h]
+    \centering
+    \small
+    \begin{tabular}{|c|c|c|}
+      \hline
+      \textbf{Module} & \textbf{Tool/Database} & \textbf{References} \\
+      \hline
+      Booststrap & \texttt{fastspar\_bootstraps} v1.0 & \cite{Watts2018} \\
+      Booststrap & \texttt{fastspar\_pvalues} v1.0 & \cite{Watts2018} \\
+      \hline
+      Direct & \ac{spieceasi} v1.1.2 & \cite{Kurtz2015} \\
+      Direct & FlashWeave.jl v0.18.1 & \cite{tackmannRapidInferenceDirect2019} \\
+      Direct & \ac{cozine} v1.0 & \cite{haCompositionalZeroinflatedNetwork2020a} \\
+      Direct & \ac{harmonies} v1.0 & \cite{jiangHARMONIESHybridApproach2020} \\
+      Direct & \ac{spring} v1.0.4 & \cite{yoonMicrobialNetworksSPRING2019} \\
+      Direct & \ac{mldm} v1.1 & \cite{Yang2017} \\
+      \hline
+      Correlation & FastSpar (\ac{sparcc}) v1.0 & \cite{Watts2018} \\
+      Correlation & Pearson & - \\
+      Correlation & Spearman & - \\
+      Correlation & propr v2.1.2 & \cite{quinnProprRpackageIdentifying2017} \\
+      \hline
+    \end{tabular}
+    \caption{Tools used in the NI module}
+    \label{tab:ni_tools}
+  \end{table}
+
+
+
 % Figures
 
   \begin{figure}[H]
