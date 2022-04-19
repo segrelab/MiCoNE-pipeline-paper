@@ -344,4 +344,11 @@ where, $g$ and $f$ are defined as follows:
 
   \subsubsection*{NI step}
   % Write about precision and sensitivity equations used
+  In Figure~\ref{fig:figure6} we calculate the accuracy and robustness of the inferred association networks (using the various network inference algorithms and the consensus methods) against the original interaction used to create the taxonomic distribution.
+  We use precision and sensitivity to calculate the accuracy of the predictions.
+  Precision is given by, $\frac{TP}{TP + FP}$
+  Sensitivity is given by, $\frac{TP}{FN + TP}$
   % L1 distance equations used
+  In Figure~\ref{fig:figure7}B we use the L1 distance metric to measure to the distance between the network inferred using different tools at the same step of the workflow.
+  The L1 distance between networks $x$ and $y$ is calculated using the following formula:
+  $$ \frac{|A_{x}-A_{y}|}{2} $$, where $A$ is the adjacency matrix of the network.
