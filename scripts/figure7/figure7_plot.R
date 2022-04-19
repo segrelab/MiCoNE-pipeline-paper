@@ -38,6 +38,7 @@ default_gml_2 <- paste0(data_folder2, "default.gml")
 output_file <- paste0(output_folder, "figure7.pdf")
 output_file_a <- paste0(output_folder, "figure7a.pdf")
 output_file_b <- paste0(output_folder, "figure7b.pdf")
+output_file_c <- paste0(output_folder, "figure7c.pdf")
 
 #########################################
 # a
@@ -124,7 +125,7 @@ l1_data <- read.csv(l1_distance_csv, header = TRUE, sep = ",")
 
 box_plot <- ggboxplot(
     l1_data,
-    x = "step", y = "l1_distance", label = "process", repel = TRUE, order = c("DC", "CC", "TA", "NI"), color = "step", add = "jitter", palette = "Set2", ylab = "L1 distance", xlab = "Pipeline step"
+    x = "step", y = "l1_distance", label = "process", repel = TRUE, order = c("DC", "CC", "TA", "OP", "NI"), color = "step", add = "jitter", palette = "Set2", ylab = "L1 distance", xlab = "Pipeline step"
 )
 
 b_plot <- annotate_figure(box_plot, fig.lab = "B", fig.lab.pos = "top.left", fig.lab.size = 20)
@@ -192,9 +193,12 @@ palette <- brewer.pal(n = 6, name = "Pastel1")
 default_plot_1 <- plot_network_c(default_gml, combined_layout_1, 0.3, 0.05, "Control", palette[[1]])
 default_plot_2 <- plot_network_c(default_gml_2, combined_layout_2, 0.3, 0.05, "Autism", palette[[2]])
 c_plot <- ggarrange(default_plot_1, default_plot_2, ncol=2, nrow=1, common.legend=TRUE, legend="bottom")
+
+ggsave(output_file_c, width = 11, height = 5)
+
 annotate_figure(c_plot, fig.lab="C", fig.lab.pos="top.left", fig.lab.size=20)
 
 
 final_plot <- ggarrange(a_plot, b_plot, c_plot, ncol = 1)
-ggsave(output_file, final_plot, width = 11, height = 12)
+ggsave(output_file, width = 11, height = 12)
 
