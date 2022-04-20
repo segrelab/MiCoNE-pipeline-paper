@@ -122,3 +122,5 @@ python -W ignore figure3_data.py \
   --weighted True \
   --threshold 10 \
   --output ../../data/figure3/output/$DATASET
+
+#### Supplementary figures
