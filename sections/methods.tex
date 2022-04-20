@@ -8,9 +8,8 @@
     The study uses two kinds of 16S rRNA sequencing datasets: biological datasets and mock datasets.
     Biological datasets are collections of sequencing reads obtained from naturally occurring microbial community samples.
     The current analysis used stool samples from a fecal microbiome transplant study of autism~\cite{Kang2017} as biological datasets.
-    The study was composed of multiple sequencing runs and those runs that contained paired end reads (runs 2, 3 and 4), were downloaded from Qiita~\cite{qiita} from https://qiita.ucsd.edu/study/description/10532 and used as input sequences for the \ac{micone} pipeline.
-    % TODO: How many samples are there for each and average number of reads.
-    Sequences from both control (x samples containing xx reads) and autistic (y samples containing yy reads) patients were included in the analyses but the groups were analyzed independently in the pipeline.
+    The study was composed of multiple sequencing runs and those runs that contained paired end reads (runs 2 (10M reads), 3 (750K reads) and 4 (16M reads)), were downloaded from Qiita~\cite{qiita} from https://qiita.ucsd.edu/study/description/10532 and used as input sequences for the \ac{micone} pipeline.
+    Sequences from both control (212 samples including neurotypical and donors) and autistic (126 samples) patients were included in the analyses but the groups were analyzed independently in the pipeline.
     The mock community 16S datasets are sequencing data obtained for artificially assembled collections of species in known proportions.
     The mock datasets used for this study, obtained from mockrobiota~\cite{Bokulich2016}, are labelled mock4, mock12 and mock16.
     The mock4 community is composed of 21 bacterial strains.
@@ -320,12 +319,6 @@ where, $g$ and $f$ are defined as follows:
   The interaction matrix was used as the source of expected (true) interactions and the associations predicted using \ac{micone} were the source of predicted interactions.
   Finally, for each dataset we evaluated the precision and sensitivity of the associations predicted by the individual network inference methods as well as the consensus (Figure \ref{fig:figure7}).
 
-  \subsection*{Code and Data Availability}
-  Pipeline: \href{https://github.com/segrelab/MiCoNE}{https://github.com/segrelab/MiCoNE} \\
-  Documentation: \href{https://micone.readthedocs.io}{https://micone.readthedocs.io} \\
-  Data and scripts: \href{https://github.com/segrelab/MiCoNE-pipeline-paper}{https://github.com/segrelab/MiCoNE-pipeline-paper} \\
-  Synthetic data and scripts: \href{https://github.com/segrelab/MiCoNE-synthetic-data}{https://github.com/segrelab/MiCoNE-synthetic-data}
-
   \subsection*{Statistical analyses}
   \vspace{-5mm}
 
@@ -352,3 +345,10 @@ where, $g$ and $f$ are defined as follows:
   In Figure~\ref{fig:figure7}B we use the L1 distance metric to measure to the distance between the network inferred using different tools at the same step of the workflow.
   The L1 distance between networks $x$ and $y$ is calculated using the following formula:
   $$ \frac{|A_{x}-A_{y}|}{2} $$, where $A$ is the adjacency matrix of the network.
+
+  \subsection*{Code and Data Availability}
+  Pipeline: \href{https://github.com/segrelab/MiCoNE}{https://github.com/segrelab/MiCoNE} \\
+  Documentation: \href{https://micone.readthedocs.io}{https://micone.readthedocs.io} \\
+  Data and scripts: \href{https://github.com/segrelab/MiCoNE-pipeline-paper}{https://github.com/segrelab/MiCoNE-pipeline-paper} \\
+  Synthetic data and scripts: \href{https://github.com/segrelab/MiCoNE-synthetic-data}{https://github.com/segrelab/MiCoNE-synthetic-data}
+
