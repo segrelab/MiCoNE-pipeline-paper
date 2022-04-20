@@ -3,6 +3,34 @@
 \begin{tabular}{lllll}
 \hline
 \textbf{Step}                             & \textbf{Task}                                            & \textbf{Tool}                          & \textbf{Parameter}                     & \textbf{Value}                                                                                           \\ \hline
+\multirow{17}{*}{Sequence Processing}     & \multirow{4}{*}{Bootstrap}                               & \multirow{3}{*}{resample}              & bootstraps                             & 1000                                                                                                     \\
+                                          &                                                          &                                        & ncpus                                  & 1                                                                                                        \\
+                                          &                                                          &                                        & filter\_flag                           & True                                                                                                     \\
+                                          &                                                          & pvalue                                 & ncpus                                  & 1                                                                                                        \\ \cline{2-5}
+                                          & \multirow{12}{*}{Correlation}                            & \multirow{2}{*}{sparcc}                & iterations                             & 50                                                                                                       \\
+                                          &                                                          &                                        & ncpus                                  & 1                                                                                                        \\
+                                          &                                                          & pearson                                & -                                      & -                                                                                                        \\
+                                          &                                                          & spearman                               & -                                      & -                                                                                                        \\
+                                          &                                                          & \multirow{5}{*}{spieceasi}             & method                                 & mb                                                                                                       \\
+                                          &                                                          &                                        & ncpus                                  & 1                                                                                                        \\
+                                          &                                                          &                                        & nreps                                  & 50                                                                                                       \\
+                                          &                                                          &                                        & nlambda                                & 20                                                                                                       \\
+                                          &                                                          &                                        & lambda\_min\_ratio                     & 1e-2                                                                                                     \\
+                                          &                                                          & \multirow{2}{*}{mldm}                  & z\_mean                                & 1                                                                                                        \\
+                                          &                                                          &                                        & max\_iteration                         & 1500                                                                                                     \\
+                                          &                                                          & magma                                  & -                                      & -                                                                                                        \\ \cline{2-5}
+                                          & Network                                                  & make\_network                          & -                                      & -                                                                                                        \\ \hline
+\end{tabular}
+}
+\caption{The default parameters used in the various tools of the pipeline}
+\label{tab:all_parameters}
+\end{table}
+
+\begin{table}[h]
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lllll}
+\hline
+\textbf{Step}                             & \textbf{Task}                                            & \textbf{Tool}                          & \textbf{Parameter}                     & \textbf{Value}                                                                                           \\ \hline
 \multirow{29}{*}{Denosing and Clustering} & \multicolumn{1}{c}{\multirow{9}{*}{Sequence Processing}} & \multirow{2}{*}{join\_reads}           & min\_overlap                           & 6                                                                                                        \\
                                           & \multicolumn{1}{c}{}                                     &                                        & perc\_max\_diff                        & 8                                                                                                        \\
                                           & \multicolumn{1}{c}{}                                     & \multirow{2}{*}{demultiplex\_illumina} & rev\_comp\_barcodes                    & False                                                                                                    \\
@@ -32,6 +60,18 @@
                                           &                                                          & \multirow{3}{*}{deblur}                & ncpus                                  & 1                                                                                                        \\
                                           &                                                          &                                        & mind\_reads                            & 2                                                                                                        \\
                                           &                                                          &                                        & min\_size                              & 2                                                                                                        \\ \hline
+\end{tabular}
+}
+\caption{The default parameters used in the various tools of the pipeline}
+\label{tab:all_parameters}
+\end{table}
+
+
+\begin{table}[h]
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lllll}
+\hline
+\textbf{Step}                             & \textbf{Task}                                            & \textbf{Tool}                          & \textbf{Parameter}                     & \textbf{Value}                                                                                           \\ \hline
 \multirow{7}{*}{Taxonomy Assignment}      & \multirow{7}{*}{Assign}                                  & \multirow{3}{*}{naive\_bayes}          & confidence                             & 0.7                                                                                                      \\
                                           &                                                          &                                        & mem\_per\_core                         & 8G                                                                                                       \\
                                           &                                                          &                                        & ncpus                                  & 1                                                                                                        \\
@@ -39,6 +79,18 @@
                                           &                                                          &                                        & perc\_identity                         & 0.8                                                                                                      \\
                                           &                                                          &                                        & evalue                                 & 0.001                                                                                                    \\
                                           &                                                          &                                        & min\_consensus                         & 0.51                                                                                                     \\ \hline
+\end{tabular}
+}
+\caption{The default parameters used in the various tools of the pipeline}
+\label{tab:all_parameters}
+\end{table}
+
+
+\begin{table}[h]
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lllll}
+\hline
+\textbf{Step}                             & \textbf{Task}                                            & \textbf{Tool}                          & \textbf{Parameter}                     & \textbf{Value}                                                                                           \\ \hline
 \multirow{12}{*}{OTU/ESV Processing}      & \multirow{5}{*}{Filter}                                  & \multirow{3}{*}{abundance}             & count\_thres                           & 500                                                                                                      \\
                                           &                                                          &                                        & prevalence\_thres                      & 0.05                                                                                                     \\
                                           &                                                          &                                        & abundance\_thres                       & 0.01                                                                                                     \\
@@ -51,6 +103,18 @@
                                           &                                                          &                                        & rm\_sparse\_obs                        & True                                                                                                     \\
                                           &                                                          &                                        & rm\_sparse\_samples                    & True                                                                                                     \\ \cline{2-5}
                                           & Export                                                   & biom2tsv                               & -                                      & -                                                                                                        \\ \hline
+\end{tabular}
+}
+\caption{The default parameters used in the various tools of the pipeline}
+\label{tab:all_parameters}
+\end{table}
+
+
+\begin{table}[h]
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lllll}
+\hline
+\textbf{Step}                             & \textbf{Task}                                            & \textbf{Tool}                          & \textbf{Parameter}                     & \textbf{Value}                                                                                           \\ \hline
 \multirow{17}{*}{Network Inference}       & \multirow{4}{*}{Bootstrap}                               & \multirow{3}{*}{resample}              & bootstraps                             & 1000                                                                                                     \\
                                           &                                                          &                                        & ncpus                                  & 1                                                                                                        \\
                                           &                                                          &                                        & filter\_flag                           & True                                                                                                     \\
