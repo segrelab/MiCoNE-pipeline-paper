@@ -39,6 +39,14 @@ names(y_reduced)[names(y_reduced) == "X"] <- "hash"
 df <- y_reduced %>%
     select("hash", "X0", "X1") %>%
     left_join(x, by = "hash")
+df[df == "open_reference(gg_97)"] <- "OR"
+df[df == "closed_reference(gg_97)"] <- "CR"
+df[df == "de_novo"] <- "DN"
+df[df == "dada2"] <- "D2"
+df[df == "deblur"] <- "DB"
+df[df == "normalize_filter(on)"] <- "Filter(on)"
+df[df == "normalize_filter(off)"] <- "Filter(off)"
+
 scatter_dc <- plot_scatter(df, "DC")
 scatter_op <- plot_scatter(df, "OP")
 
