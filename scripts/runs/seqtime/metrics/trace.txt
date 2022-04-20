@@ -1,0 +1,673 @@
+task_id	hash	native_id	name	status	exit	submit	duration	realtime	%cpu	peak_rss	peak_vmem	rchar	wchar
+147	32/7b0e44	8840	network_inference_workflow:cozine_workflow:cozine (25N_100S)	CACHED	0	2021-12-02 10:20:14.063	1m 46s	1m 42s	98.6%	276.3 MB	663.5 MB	19.8 MB	4.9 KB
+181	e1/2211f2	22112	network_inference_workflow:flashweave_workflow:flashweave (50N_500S)	CACHED	0	2021-12-02 10:26:49.098	2m 35s	2m 34s	94.9%	1.4 GB	2.3 GB	178.1 MB	220.9 KB
+171	7a/0f652d	6243	network_inference_workflow:cozine_workflow:cozine (10N_500S)	CACHED	0	2021-12-02 10:22:15.864	22.9s	18.5s	96.9%	283.3 MB	666.5 MB	19.8 MB	4.5 KB
+96	45/ed463e	9252	network_inference_workflow:spieceasi_workflow:spieceasi (150N_200S)	CACHED	0	2021-12-02 10:19:18.530	1m 32s	1m 27s	99.2%	330.3 MB	587.9 MB	20 MB	55.5 KB
+61	8d/4a4dd4	18152	network_inference_workflow:flashweave_workflow:flashweave (10N_200S)	CACHED	0	2021-12-02 10:15:54.978	2m 32s	2m 31s	98.5%	1.3 GB	2.3 GB	178 MB	39.4 KB
+176	75/ed1426	2040	network_inference_workflow:flashweave_workflow:flashweave (10N_500S)	CACHED	0	2021-12-02 10:14:02.790	2m 39s	2m 37s	97.9%	1.5 GB	2.5 GB	178 MB	58.5 KB
+69	b4/3efda3	2075	network_inference_workflow:spieceasi_workflow:spieceasi (10N_200S)	CACHED	0	2021-12-02 10:14:02.823	48.8s	44.7s	98.6%	229.9 MB	488.1 MB	19.9 MB	3.1 KB
+166	46/0f61a8	1471	network_inference_workflow:spring_workflow:spring (100N_200S)	CACHED	0	2021-12-02 10:15:22.630	2m 34s	2m 29s	98.9%	323.5 MB	656.2 MB	24.4 MB	39.1 KB
+86	70/d13232	25754	network_inference_workflow:spring_workflow:spring (25N_50S)	CACHED	0	2021-12-02 10:15:03.730	35.7s	32s	97.9%	246.4 MB	577.7 MB	24.2 MB	10 KB
+125	bb/86601c	12803	network_inference_workflow:cozine_workflow:cozine (150N_500S)	CACHED	0	2021-12-02 10:14:14.960	40m 43s	40m 37s	73.3%	413.8 MB	798.9 MB	20.1 MB	58.9 KB
+53	ce/83dd80	31030	network_inference_workflow:spieceasi_workflow:spieceasi (100N_500S)	CACHED	0	2021-12-02 10:16:24.608	1m 1s	56.4s	99.0%	265.8 MB	522.2 MB	20.1 MB	29.4 KB
+230	8e/af3c58	30850	network_inference_workflow:spring_workflow:spring (200N_100S)	CACHED	0	2021-12-02 10:15:07.406	7m 31s	7m 26s	98.9%	425.6 MB	754.4 MB	24.4 MB	111.9 KB
+190	a0/7cb988	9144	network_inference_workflow:cozine_workflow:cozine (10N_50S)	CACHED	0	2021-12-02 10:16:48.625	25.6s	21.7s	98.3%	266.8 MB	654 MB	19.8 MB	4.6 KB
+122	c5/cbced4	5455	network_inference_workflow:spring_workflow:spring (150N_500S)	CACHED	0	2021-12-02 10:23:52.592	6m 50s	6m 46s	97.3%	389.6 MB	722.2 MB	24.6 MB	76.3 KB
+138	37/8e8ad3	367	network_inference_workflow:harmonies_workflow:harmonies (50N_100S)	CACHED	0	2021-12-02 10:21:00.430	7m 39s	7m 35s	98.9%	242.8 MB	438.9 MB	28.1 MB	8.8 KB
+162	62/4a123f	21614	network_inference_workflow:cozine_workflow:cozine (150N_50S)	CACHED	0	2021-12-02 10:24:44.540	11m 50s	11m 46s	82.6%	299.8 MB	686.9 MB	19.8 MB	57.2 KB
+1	ee/c56162	13623	network_inference_workflow:spieceasi_workflow:spieceasi (200N_50S)	CACHED	0	2021-12-02 10:14:44.763	1m 43s	1m 40s	98.2%	327.7 MB	586.1 MB	19.9 MB	91.7 KB
+22	5f/2599e0	6969	network_inference_workflow:flashweave_workflow:flashweave (150N_100S)	CACHED	0	2021-12-02 10:22:17.123	2m 27s	2m 27s	98.4%	1.3 GB	2.3 GB	178.3 MB	372.6 KB
+136	f9/3cd457	1179	network_inference_workflow:spring_workflow:spring (50N_100S)	CACHED	0	2021-12-02 10:23:37.541	54.1s	50.1s	98.3%	257.9 MB	591.2 MB	24.3 MB	15.8 KB
+9	68/3e662e	18146	network_inference_workflow:spieceasi_workflow:spieceasi (150N_100S)	CACHED	0	2021-12-02 10:26:38.452	1m 36s	1m 32s	98.5%	357 MB	615.5 MB	19.9 MB	54.9 KB
+73	03/9b9dac	2267	network_inference_workflow:spieceasi_workflow:spieceasi (10N_100S)	CACHED	0	2021-12-02 10:14:03.035	52.1s	48.2s	98.4%	230.7 MB	489 MB	19.9 MB	3.2 KB
+144	38/94aed0	20455	network_inference_workflow:harmonies_workflow:harmonies (25N_100S)	CACHED	0	2021-12-02 10:21:29.203	4m 17s	4m 13s	98.8%	222.5 MB	418.7 MB	28.1 MB	4.5 KB
+59	e7/237768	29295	network_inference_workflow:flashweave_workflow:flashweave (100N_500S)	CACHED	0	2021-12-02 10:17:25.620	2m 32s	2m 31s	99.1%	1.5 GB	2.5 GB	178.4 MB	455.4 KB
+186	49/101070	31259	network_inference_workflow:spieceasi_workflow:spieceasi (25N_200S)	CACHED	0	2021-12-02 10:14:10.903	53s	49.4s	98.9%	229.9 MB	488.1 MB	19.9 MB	5 KB
+11	94/f5083f	25905	network_inference_workflow:cozine_workflow:cozine (150N_100S)	CACHED	0	2021-12-02 10:15:03.917	18m 15s	18m 10s	94.5%	294.3 MB	681.5 MB	19.9 MB	54.7 KB
+128	e1/973f3b	25109	network_inference_workflow:spieceasi_workflow:spieceasi (150N_500S)	CACHED	0	2021-12-02 10:21:36.440	1m 16s	1m 11s	98.6%	330.8 MB	587.5 MB	20.2 MB	57.3 KB
+184	2b/46f815	34427	network_inference_workflow:cozine_workflow:cozine (25N_200S)	CACHED	0	2021-12-02 10:16:33.650	1m 45s	1m 41s	98.8%	288.1 MB	675.3 MB	19.8 MB	13.9 KB
+44	43/583fd6	35749	network_inference_workflow:flashweave_workflow:flashweave (50N_200S)	CACHED	0	2021-12-02 10:25:45.970	2m 29s	2m 28s	98.9%	1.4 GB	2.3 GB	178.1 MB	148.9 KB
+226	d1/f570e6	23293	network_inference_workflow:spring_workflow:spring (25N_200S)	CACHED	0	2021-12-02 10:14:19.144	38s	33.7s	98.7%	252.4 MB	585.3 MB	24.3 MB	10.2 KB
+25	ba/5e5e6c	16132	network_inference_workflow:spring_workflow:spring (50N_200S)	CACHED	0	2021-12-02 10:24:26.230	1m 2s	57.5s	98.6%	270 MB	602.9 MB	24.4 MB	16.8 KB
+24	bb/090e60	31565	network_inference_workflow:cozine_workflow:cozine (100N_50S)	CACHED	0	2021-12-02 10:14:10.980	5m 25s	5m 21s	98.9%	291.3 MB	678.3 MB	19.8 MB	28.3 KB
+19	f5/624fbe	2082	network_inference_workflow:cozine_workflow:cozine (50N_200S)	CACHED	0	2021-12-02 10:14:02.829	5m 22s	5m 18s	98.8%	289.7 MB	675 MB	19.9 MB	10.1 KB
+39	fe/033f26	5481	network_inference_workflow:cozine_workflow:cozine (100N_100S)	CACHED	0	2021-12-02 10:21:07.277	13m 15s	13m 12s	90.3%	283.3 MB	668.5 MB	19.8 MB	27.7 KB
+34	30/99e3b4	34240	network_inference_workflow:flashweave_workflow:flashweave (100N_100S)	CACHED	0	2021-12-02 10:15:12.581	2m 32s	2m 31s	98.8%	1.4 GB	2.3 GB	178.2 MB	249.7 KB
+161	ab/64ec9d	19753	network_inference_workflow:cozine_workflow:cozine (100N_200S)	CACHED	0	2021-12-02 10:24:39.840	37m 46s	37m 42s	59.1%	294.7 MB	679.9 MB	19.9 MB	27.7 KB
+119	9d/d9ab71	9432	network_inference_workflow:spring_workflow:spring (25N_500S)	CACHED	0	2021-12-02 10:21:10.062	38.2s	34.4s	97.8%	252.5 MB	585.5 MB	24.3 MB	10.7 KB
+203	91/813667	2165	network_inference_workflow:harmonies_workflow:harmonies (10N_500S)	CACHED	0	2021-12-02 10:14:02.920	1h 7m 55s	1h 7m 51s	62.9%	283.8 MB	478.5 MB	28.1 MB	4.5 KB
+20	dc/edfc3c	22299	network_inference_workflow:spring_workflow:spring (100N_50S)	CACHED	0	2021-12-02 10:22:52.504	2m 20s	2m 16s	98.5%	300.2 MB	631 MB	24.3 MB	34.9 KB
+2	49/b73d12	25983	network_inference_workflow:flashweave_workflow:flashweave (200N_50S)	CACHED	0	2021-12-02 10:17:19.094	2m 33s	2m 32s	98.8%	1.5 GB	2.4 GB	178.4 MB	480.4 KB
+121	b8/39acc3	3627	network_inference_workflow:flashweave_workflow:flashweave (150N_500S)	CACHED	0	2021-12-02 10:17:48.165	2m 32s	2m 31s	98.9%	1.3 GB	2.3 GB	178.6 MB	692.6 KB
+35	72/fbd679	6776	network_inference_workflow:flashweave_workflow:flashweave (100N_50S)	CACHED	0	2021-12-02 10:26:18.243	2m 28s	2m 27s	98.8%	1.4 GB	2.3 GB	178.1 MB	215.1 KB
+177	13/8b37e1	34216	network_inference_workflow:spieceasi_workflow:spieceasi (150N_50S)	CACHED	0	2021-12-02 10:20:00.745	1m 21s	1m 17s	99.0%	292.7 MB	551.1 MB	19.9 MB	54.8 KB
+232	33/964715	22040	network_inference_workflow:flashweave_workflow:flashweave (200N_500S)	CACHED	0	2021-12-02 10:18:28.057	2m 32s	2m 31s	98.8%	1.3 GB	2.3 GB	178.8 MB	928.1 KB
+79	4e/239fd0	22522	network_inference_workflow:flashweave_workflow:flashweave (10N_100S)	CACHED	0	2021-12-02 10:17:15.609	2m 30s	2m 29s	98.7%	1.4 GB	2.3 GB	178 MB	35.7 KB
+235	1b/a900f5	17240	network_inference_workflow:spieceasi_workflow:spieceasi (200N_500S)	CACHED	0	2021-12-02 10:14:16.594	1m 59s	1m 56s	98.7%	428.4 MB	686.2 MB	20.3 MB	96 KB
+57	25/9efb5b	20459	network_inference_workflow:cozine_workflow:cozine (100N_500S)	CACHED	0	2021-12-02 10:22:49.394	17m 59s	17m 55s	79.6%	314.5 MB	701.6 MB	20 MB	29.7 KB
+131	08/ffea55	31693	network_inference_workflow:spieceasi_workflow:spieceasi (50N_100S)	CACHED	0	2021-12-02 10:14:11.009	54.5s	50.9s	99.0%	232.4 MB	488.9 MB	19.9 MB	8.8 KB
+103	92/a1fb42	17118	network_inference_workflow:flashweave_workflow:flashweave (50N_50S)	CACHED	0	2021-12-02 10:19:35.773	2m 32s	2m 31s	99.1%	1.3 GB	2.3 GB	178 MB	102.3 KB
+60	2c/746bd1	2068	network_inference_workflow:spring_workflow:spring (100N_500S)	CACHED	0	2021-12-02 10:14:02.816	3m 16s	3m 12s	98.9%	280.2 MB	613 MB	24.5 MB	41.4 KB
+153	a5/bb7831	34382	network_inference_workflow:spring_workflow:spring (200N_200S)	CACHED	0	2021-12-02 10:20:56.605	9m 4s	9m	97.9%	438.3 MB	834.7 MB	24.5 MB	115.7 KB
+160	c7/f8b8ff	30737	network_inference_workflow:cozine_workflow:cozine (200N_200S)	CACHED	0	2021-12-02 10:14:10.632	1h 1m 48s	1h 1m 44s	65.2%	329.8 MB	713 MB	20 MB	94.2 KB
+238	5c/c1b564	27914	network_inference_workflow:cozine_workflow:cozine (200N_500S)	CACHED	0	2021-12-02 10:16:16.046	1h 1m 58s	1h 1m 53s	63.8%	370.6 MB	757.5 MB	20.2 MB	97.5 KB
+218	26/56a302	2257	network_inference_workflow:spring_workflow:spring (50N_500S)	CACHED	0	2021-12-02 10:14:03.025	1m 20s	1m 16s	98.3%	253.1 MB	586 MB	24.4 MB	17.5 KB
+215	c1/d946c3	5281	network_inference_workflow:spring_workflow:spring (10N_500S)	CACHED	0	2021-12-02 10:14:34.240	31.6s	27.8s	98.9%	244.6 MB	577.7 MB	24.3 MB	8.7 KB
+15	57/755b72	24634	network_inference_workflow:harmonies_workflow:harmonies (50N_200S)	CACHED	0	2021-12-02 10:19:50.237	44m 48s	44m 44s	60.2%	300.8 MB	496.9 MB	28.1 MB	9.2 KB
+80	3f/548ae5	31857	network_inference_workflow:harmonies_workflow:harmonies (10N_100S)	CACHED	0	2021-12-02 10:14:11.073	2m 23s	2m 19s	98.7%	222.8 MB	416.9 MB	28.1 MB	3.4 KB
+229	20/dbfc67	25777	network_inference_workflow:spieceasi_workflow:spieceasi (200N_100S)	CACHED	0	2021-12-02 10:18:34.009	2m 7s	2m 3s	99.1%	392 MB	650.3 MB	19.9 MB	100.7 KB
+120	6c/cee5e4	20568	network_inference_workflow:flashweave_workflow:flashweave (25N_500S)	CACHED	0	2021-12-02 10:19:45.397	2m 32s	2m 31s	99.1%	1.4 GB	2.4 GB	178.1 MB	122.7 KB
+205	d9/45aee6	2113	network_inference_workflow:harmonies_workflow:harmonies (50N_500S)	CACHED	0	2021-12-02 10:14:02.857	3h 1m 36s	3h 1m 32s	85.5%	289.6 MB	485.9 MB	28.2 MB	9 KB
+189	7e/511146	18192	network_inference_workflow:spieceasi_workflow:spieceasi (10N_50S)	CACHED	0	2021-12-02 10:14:55.125	50.2s	46.4s	98.2%	230.4 MB	488.8 MB	19.9 MB	3.2 KB
+145	0b/262589	2096	network_inference_workflow:flashweave_workflow:flashweave (25N_100S)	CACHED	0	2021-12-02 10:14:02.840	2m 38s	2m 36s	98.4%	1.3 GB	2.3 GB	178 MB	67.3 KB
+94	13/6c7424	18795	network_inference_workflow:spring_workflow:spring (150N_200S)	CACHED	0	2021-12-02 10:15:56.094	5m	4m 56s	98.9%	398.5 MB	731.1 MB	24.4 MB	68.6 KB
+207	fe/2005fe	22263	network_inference_workflow:harmonies_workflow:harmonies (25N_200S)	CACHED	0	2021-12-02 10:20:38.946	17m 59s	17m 55s	82.9%	230 MB	424.8 MB	28.1 MB	4.5 KB
+88	16/59476f	18078	network_inference_workflow:spieceasi_workflow:spieceasi (25N_50S)	CACHED	0	2021-12-02 10:21:23.861	50.2s	45.7s	98.5%	230.5 MB	488.8 MB	19.9 MB	4.3 KB
+174	db/cb1b1f	18342	network_inference_workflow:flashweave_workflow:flashweave (100N_200S)	CACHED	0	2021-12-02 10:18:21.992	2m 31s	2m 31s	98.8%	1.4 GB	2.4 GB	178.2 MB	315.2 KB
+29	da/b50d20	32248	network_inference_workflow:spring_workflow:spring (100N_100S)	CACHED	0	2021-12-02 10:23:14.915	2m 25s	2m 20s	98.4%	328.2 MB	661.1 MB	24.3 MB	36 KB
+233	6c/ce8057	20364	network_inference_workflow:spring_workflow:spring (200N_500S)	CACHED	0	2021-12-02 10:20:35.028	11m 48s	11m 44s	95.0%	460.3 MB	792.8 MB	24.7 MB	117.6 KB
+98	66/d0d0c3	16046	network_inference_workflow:flashweave_workflow:flashweave (150N_200S)	CACHED	0	2021-12-02 10:21:21.481	2m 31s	2m 30s	98.1%	1.3 GB	2.3 GB	178.4 MB	451.9 KB
+188	94/fd0786	16580	network_inference_workflow:flashweave_workflow:flashweave (10N_50S)	CACHED	0	2021-12-02 10:15:53.222	2m 29s	2m 28s	98.8%	1.4 GB	2.3 GB	178 MB	31 KB
+175	19/5222bb	28690	network_inference_workflow:spieceasi_workflow:spieceasi (100N_200S)	CACHED	0	2021-12-02 10:20:48.311	1m 3s	59s	98.3%	261.2 MB	517.5 MB	19.9 MB	27.1 KB
+5	3e/61111c	12042	network_inference_workflow:spieceasi_workflow:spieceasi (50N_200S)	CACHED	0	2021-12-02 10:26:27.858	54.1s	50.3s	98.8%	230 MB	488.2 MB	19.9 MB	9.8 KB
+75	71/680a1e	36009	network_inference_workflow:spring_workflow:spring (10N_100S)	CACHED	0	2021-12-02 10:16:37.255	31.3s	27.2s	98.6%	246.6 MB	577.7 MB	24.2 MB	8.6 KB
+49	8b/61fe83	2057	network_inference_workflow:spieceasi_workflow:spieceasi (100N_100S)	CACHED	0	2021-12-02 10:14:02.804	1m 10s	1m 6s	98.5%	256.7 MB	514.9 MB	19.9 MB	27.4 KB
+65	0b/8f3cc6	2036	network_inference_workflow:spring_workflow:spring (10N_200S)	CACHED	0	2021-12-02 10:14:02.784	33.5s	29.4s	97.5%	244.6 MB	577.7 MB	24.2 MB	8.6 KB
+83	1d/8dd111	4973	network_inference_workflow:flashweave_workflow:flashweave (25N_50S)	CACHED	0	2021-12-02 10:26:09.006	2m 25s	2m 24s	99.0%	1.3 GB	2.3 GB	178 MB	56.3 KB
+97	87/133d92	34842	network_inference_workflow:cozine_workflow:cozine (150N_200S)	CACHED	0	2021-12-02 10:14:27.156	47m 1s	46m 57s	65.9%	321 MB	706.6 MB	19.9 MB	56.6 KB
+109	d9/117bfb	25865	network_inference_workflow:cozine_workflow:cozine (50N_50S)	CACHED	0	2021-12-02 10:16:11.160	3m 53s	3m 49s	98.9%	272.3 MB	659.4 MB	19.8 MB	9.7 KB
+84	8b/d10bcc	16020	network_inference_workflow:cozine_workflow:cozine (25N_50S)	CACHED	0	2021-12-02 10:18:18.641	2m 49s	2m 46s	99.0%	272.9 MB	656.3 MB	19.8 MB	4.7 KB
+81	73/a1bd45	16138	network_inference_workflow:harmonies_workflow:harmonies (25N_50S)	CACHED	0	2021-12-02 10:14:16.142	1m 30s	1m 27s	98.4%	220.4 MB	416.5 MB	28.1 MB	4.6 KB
+156	62/4b00f2	28085	network_inference_workflow:flashweave_workflow:flashweave (200N_200S)	CACHED	0	2021-12-02 10:17:22.604	2m 33s	2m 32s	98.7%	1.4 GB	2.3 GB	178.6 MB	646.9 KB
+118	5c/2a4b21	6255	network_inference_workflow:harmonies_workflow:harmonies (25N_500S)	CACHED	0	2021-12-02 10:14:13.216	1h 54m 53s	1h 54m 50s	77.0%	288.1 MB	484.4 MB	28.1 MB	4.6 KB
+200	37/e05aa9	6469	network_inference_workflow:spring_workflow:spring (150N_50S)	CACHED	0	2021-12-02 10:21:08.114	5m 10s	5m 7s	98.9%	343.7 MB	676.5 MB	24.3 MB	65.7 KB
+115	d1/51d1f2	8048	network_inference_workflow:spieceasi_workflow:spieceasi (25N_500S)	CACHED	0	2021-12-02 10:14:13.932	53.5s	49.9s	98.4%	232.3 MB	490.6 MB	19.9 MB	4.3 KB
+66	24/ec0760	13572	network_inference_workflow:cozine_workflow:cozine (10N_200S)	CACHED	0	2021-12-02 10:24:15.898	23.9s	19.5s	97.3%	285.2 MB	670.5 MB	19.8 MB	4.6 KB
+150	cc/7e7784	29844	network_inference_workflow:spring_workflow:spring (25N_100S)	CACHED	0	2021-12-02 10:20:50.170	38.9s	34.6s	97.7%	251.1 MB	584 MB	24.3 MB	10.1 KB
+62	3b/896133	26056	network_inference_workflow:harmonies_workflow:harmonies (10N_200S)	CACHED	0	2021-12-02 10:19:51.901	7m 26s	7m 22s	98.9%	224.9 MB	421.2 MB	28.1 MB	3.9 KB
+212	6e/16cb06	21152	network_inference_workflow:cozine_workflow:cozine (200N_100S)	CACHED	0	2021-12-02 10:22:50.766	39m 48s	39m 43s	61.3%	305.9 MB	691 MB	19.9 MB	91.8 KB
+173	dc/d9fbe2	21480	network_inference_workflow:flashweave_workflow:flashweave (150N_50S)	CACHED	0	2021-12-02 10:17:14.233	2m 31s	2m 30s	98.9%	1.4 GB	2.4 GB	178.3 MB	340.1 KB
+14	cb/12aa61	30760	network_inference_workflow:spring_workflow:spring (150N_100S)	CACHED	0	2021-12-02 10:21:51.407	4m 30s	4m 26s	98.9%	384.4 MB	713.4 MB	24.4 MB	71 KB
+6	80/a8e60b	21652	network_inference_workflow:spring_workflow:spring (200N_50S)	CACHED	0	2021-12-02 10:14:18.244	7m 13s	7m 9s	98.9%	377.3 MB	755.6 MB	24.3 MB	113.4 KB
+157	f1/9a8177	2180	network_inference_workflow:spieceasi_workflow:spieceasi (200N_200S)	CACHED	0	2021-12-02 10:14:02.931	2m 22s	2m 18s	98.7%	433.8 MB	692.3 MB	20 MB	100.5 KB
+227	4a/92c88b	20058	network_inference_workflow:spring_workflow:spring (10N_50S)	CACHED	0	2021-12-02 10:14:57.174	32.1s	28.5s	98.7%	244.6 MB	577.7 MB	24.2 MB	8.5 KB
+142	d7/dbe9e4	28220	network_inference_workflow:spieceasi_workflow:spieceasi (25N_100S)	CACHED	0	2021-12-02 10:27:21.945	50.6s	46.9s	98.3%	232.4 MB	489.1 MB	19.9 MB	4.4 KB
+105	a0/62dd14	17697	network_inference_workflow:spieceasi_workflow:spieceasi (50N_50S)	CACHED	0	2021-12-02 10:22:45.400	52.1s	48.6s	98.1%	246.4 MB	503.2 MB	19.9 MB	8.7 KB
+21	cf/9e2de1	7617	network_inference_workflow:spieceasi_workflow:spieceasi (100N_50S)	CACHED	0	2021-12-02 10:15:35.588	1m 6s	1m 2s	98.4%	243.4 MB	501.7 MB	19.9 MB	26.7 KB
+183	b4/583dc8	2236	network_inference_workflow:flashweave_workflow:flashweave (25N_200S)	CACHED	0	2021-12-02 10:14:02.999	2m 40s	2m 39s	98.1%	1.3 GB	2.3 GB	178 MB	82.9 KB
+76	6f/a4d811	29315	network_inference_workflow:cozine_workflow:cozine (10N_100S)	CACHED	0	2021-12-02 10:21:48.226	22.1s	18s	98.0%	276.4 MB	663.7 MB	19.8 MB	4.6 KB
+178	ec/3215b4	33519	network_inference_workflow:spieceasi_workflow:spieceasi (10N_500S)	CACHED	0	2021-12-02 10:17:32.733	52.1s	47.4s	98.3%	232.2 MB	490.5 MB	19.9 MB	3.1 KB
+224	f7/321ee8	18458	network_inference_workflow:flashweave_workflow:flashweave (200N_100S)	CACHED	0	2021-12-02 10:18:22.179	2m 34s	2m 34s	99.2%	1.4 GB	2.4 GB	178.4 MB	508.4 KB
+135	b4/c4dcd1	31027	network_inference_workflow:cozine_workflow:cozine (50N_100S)	CACHED	0	2021-12-02 10:14:10.761	7m 19s	7m 16s	99.1%	282.5 MB	667.5 MB	19.8 MB	9.6 KB
+113	7e/745c3f	28782	network_inference_workflow:cozine_workflow:cozine (25N_500S)	CACHED	0	2021-12-02 10:15:05.833	1m 31s	1m 27s	98.2%	291.5 MB	678.8 MB	19.9 MB	14.3 KB
+140	93/25a6d5	12309	network_inference_workflow:flashweave_workflow:flashweave (50N_100S)	CACHED	0	2021-12-02 10:14:42.607	2m 33s	2m 32s	98.3%	1.3 GB	2.3 GB	178.1 MB	124.3 KB
+104	6d/7b2423	25966	network_inference_workflow:spring_workflow:spring (50N_50S)	CACHED	0	2021-12-02 10:22:57.630	55s	50.5s	98.2%	253.4 MB	646.2 MB	24.2 MB	15.2 KB
+10	07/c5e33c	27346	network_inference_workflow:cozine_workflow:cozine (200N_50S)	CACHED	0	2021-12-02 10:25:12.827	20m 14s	20m 10s	69.9%	302.6 MB	690 MB	19.8 MB	183.2 KB
+179	02/14617e	6729	network_inference_workflow:spieceasi_workflow:spieceasi (50N_500S)	CACHED	0	2021-12-02 10:17:54.735	54.5s	50.3s	98.8%	232.4 MB	490.6 MB	20 MB	9.4 KB
+180	2b/f3ace5	2050	network_inference_workflow:cozine_workflow:cozine (50N_500S)	CACHED	0	2021-12-02 10:14:02.798	5m 1s	4m 57s	99.0%	289.3 MB	676.7 MB	19.9 MB	11 KB
+293	00/4118c3	24850	network_inference_workflow:flashweave_workflow:export_gml (100N_50S)	CACHED	0	2021-12-02 11:04:19.285	5.6s	2.2s	27.7%	53.3 MB	258.9 MB	11 MB	70.8 KB
+280	1b/36bb2d	22259	network_inference_workflow:flashweave_workflow:export_gml (150N_200S)	CACHED	0	2021-12-02 10:55:03.161	5.8s	2.4s	28.2%	43.6 MB	246.1 MB	11.2 MB	157 KB
+279	0e/bb80ee	25222	network_inference_workflow:flashweave_workflow:export_gml (10N_50S)	CACHED	0	2021-12-02 10:39:55.567	5.6s	2.7s	24.0%	45.6 MB	248.1 MB	11 MB	2.2 KB
+288	69/4f64e4	32004	network_inference_workflow:flashweave_workflow:export_gml (25N_500S)	CACHED	0	2021-12-02 10:52:49.739	4.6s	1.6s	36.6%	11.1 MB	128.4 MB	11.1 MB	5.9 KB
+250	90/780e48	29948	network_inference_workflow:make_network_without_pvalue (10N_500S)	CACHED	0	2021-12-02 10:40:05.705	4s	2.8s	41.9%	72.9 MB	336.9 MB	20.4 MB	6 KB
+286	1f/9ced82	22708	network_inference_workflow:flashweave_workflow:export_gml (25N_100S)	CACHED	0	2021-12-02 10:36:04.874	5.1s	2.5s	25.8%	37.6 MB	235 MB	11 MB	5.9 KB
+275	93/c8ab14	20255	network_inference_workflow:flashweave_workflow:export_gml (25N_50S)	CACHED	0	2021-12-02 11:04:07.781	5.8s	2.2s	29.2%	51.2 MB	257.1 MB	11 MB	5.9 KB
+291	4f/dedc04	5434	network_inference_workflow:flashweave_workflow:export_gml (150N_500S)	CACHED	0	2021-12-02 10:48:29.365	5.3s	2.4s	32.6%	48.2 MB	252 MB	11.4 MB	157.3 KB
+256	93/41d22f	10172	network_inference_workflow:flashweave_workflow:export_gml (150N_50S)	CACHED	0	2021-12-02 10:43:29.210	4.3s	1.5s	34.6%	10.3 MB	127.6 MB	11.1 MB	156.9 KB
+249	67/47a694	9850	network_inference_workflow:flashweave_workflow:export_gml (200N_100S)	CACHED	0	2021-12-02 10:49:58.505	4.3s	1.5s	41.9%	12.6 MB	130.1 MB	11.1 MB	277.2 KB
+269	43/c59459	28417	network_inference_workflow:make_network_without_pvalue (25N_50S)	CACHED	0	2021-12-02 10:50:31.831	5.1s	4s	34.8%	91 MB	418.6 MB	22.1 MB	11.1 KB
+270	13/e25422	2688	network_inference_workflow:make_network_without_pvalue (50N_50S)	CACHED	0	2021-12-02 10:45:48.353	5.5s	4.6s	32.1%	92.8 MB	420.5 MB	25.1 MB	20.4 KB
+290	d1/72b592	9312	network_inference_workflow:flashweave_workflow:export_gml (10N_100S)	CACHED	0	2021-12-02 10:43:27.448	5.1s	2.5s	22.7%	42.2 MB	244.5 MB	11 MB	2.2 KB
+261	c7/62c231	17097	network_inference_workflow:make_network_without_pvalue (10N_50S)	CACHED	0	2021-12-02 10:33:40.786	4.1s	3.2s	40.3%	96.5 MB	423.6 MB	20.4 MB	5.9 KB
+262	f7/324d3f	440	network_inference_workflow:make_network_without_pvalue (25N_100S)	CACHED	0	2021-12-02 10:51:48.108	6.5s	5.4s	28.0%	96.4 MB	423.6 MB	22.1 MB	12 KB
+259	82/41fce3	9846	network_inference_workflow:make_network_without_pvalue (10N_200S)	CACHED	0	2021-12-02 11:01:28.336	10.6s	5.5s	25.3%	96.3 MB	423.6 MB	20.4 MB	7.3 KB
+295	a9/1d36ef	27079	network_inference_workflow:flashweave_workflow:export_gml (200N_50S)	CACHED	0	2021-12-02 10:44:03.532	4.5s	1.7s	35.3%	59.6 MB	265.4 MB	11.1 MB	277.1 KB
+277	9f/9825ff	11215	network_inference_workflow:make_network_without_pvalue (50N_200S)	CACHED	0	2021-12-02 11:01:31.334	7.6s	5.8s	25.6%	96.5 MB	423.6 MB	25.1 MB	24.3 KB
+258	e0/a40cb7	12460	network_inference_workflow:make_network_without_pvalue (200N_100S)	CACHED	0	2021-12-02 11:14:24.884	10.8s	9.5s	21.1%	99 MB	426.9 MB	42.8 MB	83.5 KB
+284	08/bdc2e9	19573	network_inference_workflow:make_network_without_pvalue (25N_50S)	CACHED	0	2021-12-02 10:52:24.410	4s	3.2s	40.8%	96.5 MB	423.6 MB	22.1 MB	10.9 KB
+246	20/d96af2	5760	network_inference_workflow:make_network_without_pvalue (200N_50S)	CACHED	0	2021-12-02 11:10:41.741	8.6s	7.8s	32.0%	105.2 MB	432.4 MB	42.9 MB	397.4 KB
+289	41/1a8740	15536	network_inference_workflow:flashweave_workflow:export_gml (50N_50S)	CACHED	0	2021-12-02 10:52:15.728	4.8s	1.9s	33.2%	50.8 MB	256.2 MB	11 MB	19 KB
+285	68/407582	11853	network_inference_workflow:make_network_without_pvalue (25N_200S)	CACHED	0	2021-12-02 11:08:32.277	5.3s	4.4s	30.9%	96.6 MB	423.6 MB	22.1 MB	11.3 KB
+266	26/324977	5373	network_inference_workflow:make_network_without_pvalue (25N_500S)	CACHED	0	2021-12-02 12:09:06.648	2.3s	1.9s	58.5%	89.2 MB	417.1 MB	22.1 MB	11.7 KB
+276	6d/b39894	1753	network_inference_workflow:make_network_without_pvalue (10N_100S)	CACHED	0	2021-12-02 10:36:40.922	3.9s	3s	40.2%	96.5 MB	423.6 MB	20.4 MB	6.3 KB
+298	45/bf5301	7615	network_inference_workflow:flashweave_workflow:export_gml (150N_100S)	CACHED	0	2021-12-02 10:55:46.045	4.2s	1.6s	37.7%	9.7 MB	127.1 MB	11.1 MB	156.9 KB
+271	43/14edd1	12997	network_inference_workflow:make_network_without_pvalue (25N_500S)	CACHED	0	2021-12-02 10:33:32.499	4.8s	3.7s	36.6%	96.3 MB	423.6 MB	22.1 MB	10.5 KB
+268	06/f3b10e	35996	network_inference_workflow:make_network_without_pvalue (25N_50S)	CACHED	0	2021-12-02 10:34:13.881	4s	3s	41.9%	96.5 MB	423.6 MB	22.1 MB	11.4 KB
+287	d0/a7cd46	6408	network_inference_workflow:make_network_without_pvalue (150N_200S)	CACHED	0	2021-12-02 10:49:51.746	6.7s	5.8s	33.4%	98.8 MB	427.6 MB	36.9 MB	101.5 KB
+247	e2/3ed937	21367	network_inference_workflow:make_network_without_pvalue (25N_500S)	CACHED	0	2021-12-02 10:36:02.649	4.2s	3.4s	42.0%	97.3 MB	424.4 MB	22.1 MB	44.3 KB
+300	68/5e6996	31553	network_inference_workflow:flashweave_workflow:export_gml (10N_200S)	CACHED	0	2021-12-02 10:40:09.683	3.9s	1.3s	40.3%	8.9 MB	126.3 MB	11 MB	2.2 KB
+263	6a/951d9d	34444	network_inference_workflow:make_network_without_pvalue (150N_100S)	CACHED	0	2021-12-02 10:58:07.629	7.1s	6s	30.1%	97.8 MB	426.6 MB	36.9 MB	109.4 KB
+297	24/876958	31377	network_inference_workflow:flashweave_workflow:export_gml (100N_500S)	CACHED	0	2021-12-02 10:44:12.308	4.5s	1.7s	35.6%	11.4 MB	128.9 MB	11.3 MB	71 KB
+251	7e/eede3f	17690	network_inference_workflow:make_network_without_pvalue (10N_100S)	CACHED	0	2021-12-02 10:52:20.579	3.8s	2.8s	44.1%	71.2 MB	335.4 MB	20.4 MB	10.8 KB
+273	96/e870d1	28473	network_inference_workflow:make_network_without_pvalue (10N_200S)	CACHED	0	2021-12-02 10:31:24.044	5s	4.1s	32.0%	92 MB	419.7 MB	20.4 MB	6 KB
+242	77/d5724e	33761	network_inference_workflow:flashweave_workflow:export_gml (50N_500S)	CACHED	0	2021-12-02 11:04:38.455	5.4s	2.1s	31.0%	57.3 MB	267.2 MB	11.2 MB	19.1 KB
+254	71/58362a	19417	network_inference_workflow:make_network_without_pvalue (50N_50S)	CACHED	0	2021-12-02 10:54:57.494	5.7s	4.7s	30.0%	96.6 MB	423.9 MB	25.1 MB	20.8 KB
+252	63/9d7e68	25112	network_inference_workflow:flashweave_workflow:export_gml (25N_200S)	CACHED	0	2021-12-02 10:36:11.013	4.3s	1.3s	40.3%	10.7 MB	128 MB	11 MB	5.9 KB
+243	a3/7f226e	19558	network_inference_workflow:make_network_without_pvalue (50N_500S)	CACHED	0	2021-12-02 10:41:05.726	7.6s	3.9s	37.0%	96.5 MB	423.6 MB	25.1 MB	23.1 KB
+278	e0/03eccb	9987	network_inference_workflow:make_network_without_pvalue (100N_200S)	CACHED	0	2021-12-02 10:52:05.041	6.1s	5.2s	32.4%	96.7 MB	424.9 MB	31 MB	48.1 KB
+260	4c/91537d	5172	network_inference_workflow:make_network_without_pvalue (10N_200S)	CACHED	0	2021-12-02 10:55:41.640	4.4s	3.5s	37.2%	96.5 MB	423.6 MB	20.4 MB	10.8 KB
+296	fb/d38521	16623	network_inference_workflow:flashweave_workflow:export_gml (50N_200S)	CACHED	0	2021-12-02 11:02:52.868	7.3s	3.6s	19.1%	55 MB	263.1 MB	11.1 MB	19 KB
+292	95/4703ed	25747	network_inference_workflow:flashweave_workflow:export_gml (200N_500S)	CACHED	0	2021-12-02 10:50:26.961	7.1s	2.2s	35.2%	64.3 MB	274.3 MB	11.5 MB	277.6 KB
+283	31/6c460b	4347	network_inference_workflow:flashweave_workflow:export_gml (100N_200S)	CACHED	0	2021-12-02 10:49:46.906	4.8s	2.1s	31.2%	53.7 MB	259.4 MB	11.1 MB	70.9 KB
+294	83/5a3b04	23501	network_inference_workflow:flashweave_workflow:export_gml (100N_100S)	CACHED	0	2021-12-02 10:38:44.720	7.1s	1.9s	35.3%	51.5 MB	257.1 MB	11.1 MB	70.9 KB
+267	86/48dc72	29305	network_inference_workflow:flashweave_workflow:export_gml (200N_200S)	CACHED	0	2021-12-02 10:44:08.064	4.2s	1.8s	37.4%	59.6 MB	267.2 MB	11.2 MB	277.4 KB
+245	eb/5ca288	23708	network_inference_workflow:make_network_without_pvalue (50N_500S)	CACHED	0	2021-12-02 10:41:13.327	4.8s	4s	35.6%	96.5 MB	423.6 MB	25.1 MB	25.7 KB
+257	e4/9e24ae	18105	network_inference_workflow:make_network_without_pvalue (200N_200S)	CACHED	0	2021-12-02 10:35:53.815	7.1s	6.2s	34.4%	99.6 MB	430.1 MB	42.8 MB	127.7 KB
+274	22/d727cf	14367	network_inference_workflow:make_network_without_pvalue (100N_100S)	CACHED	0	2021-12-02 10:33:35.219	5.6s	4.7s	33.0%	97.1 MB	425.1 MB	31 MB	49.1 KB
+272	2e/d35929	24863	network_inference_workflow:make_network_without_pvalue (150N_200S)	CACHED	0	2021-12-02 11:13:42.749	9.8s	8.8s	20.4%	97.8 MB	426.9 MB	36.9 MB	66.7 KB
+255	ef/eaa9fa	7627	network_inference_workflow:make_network_without_pvalue (25N_100S)	CACHED	0	2021-12-02 11:02:38.350	5.9s	4.8s	29.5%	96.5 MB	423.6 MB	22.1 MB	10.7 KB
+281	dd/2a156d	21072	network_inference_workflow:make_network_without_pvalue (100N_100S)	CACHED	0	2021-12-02 10:57:34.650	6.1s	5.2s	31.0%	97 MB	425.1 MB	31 MB	58.7 KB
+265	b6/368b26	31798	network_inference_workflow:make_network_without_pvalue (150N_50S)	CACHED	0	2021-12-02 10:58:00.566	7.1s	6.1s	31.8%	98.6 MB	427.4 MB	36.9 MB	91.2 KB
+299	c0/8c2a8c	23397	network_inference_workflow:flashweave_workflow:export_gml (10N_500S)	CACHED	0	2021-12-02 10:36:06.873	4.1s	1.3s	42.1%	10.9 MB	128.4 MB	11.1 MB	2.2 KB
+282	e5/c3c546	7674	network_inference_workflow:make_network_without_pvalue (200N_500S)	CACHED	0	2021-12-02 11:06:07.968	9.8s	8.4s	25.8%	99 MB	430.1 MB	42.8 MB	166.8 KB
+253	6c/2690d1	24402	network_inference_workflow:make_network_without_pvalue (100N_50S)	CACHED	0	2021-12-02 10:36:09.966	5.9s	5.1s	33.5%	96.6 MB	424.1 MB	31 MB	46.5 KB
+241	04/4eed78	25655	network_inference_workflow:make_network_without_pvalue (50N_50S)	CACHED	0	2021-12-02 10:55:08.961	5.7s	4.5s	33.1%	96.4 MB	423.6 MB	25.1 MB	23.4 KB
+248	bd/05461f	4193	network_inference_workflow:make_network_without_pvalue (50N_100S)	CACHED	0	2021-12-02 10:51:54.601	5.2s	4.3s	34.7%	96.4 MB	423.6 MB	25.1 MB	20.7 KB
+244	5b/b260fb	27885	network_inference_workflow:flashweave_workflow:export_gml (50N_100S)	CACHED	0	2021-12-02 10:37:34.652	6s	2.7s	25.6%	37.8 MB	235.1 MB	11 MB	19 KB
+264	ae/efd395	5629	network_inference_workflow:make_network_without_pvalue (200N_50S)	CACHED	0	2021-12-02 10:51:56.655	8.4s	7.6s	28.6%	100.5 MB	430.1 MB	42.8 MB	151.9 KB
+301	ca/61c44a	33744	network_inference_workflow:make_network_without_pvalue (10N_50S)	CACHED	0	2021-12-02 10:34:09.761	4.1s	3.2s	39.6%	96.5 MB	423.6 MB	20.4 MB	5.8 KB
+304	20/a87d9a	20845	network_inference_workflow:make_network_without_pvalue (10N_100S)	CACHED	0	2021-12-02 10:36:00.904	4s	3.1s	38.3%	96.5 MB	423.6 MB	20.4 MB	5.9 KB
+305	e7/59e0d9	10348	network_inference_workflow:make_network_without_pvalue (10N_500S)	CACHED	0	2021-12-02 10:33:27.727	4s	2.7s	44.6%	79.2 MB	403.9 MB	20.4 MB	6.3 KB
+302	63/97eac1	26969	network_inference_workflow:make_network_without_pvalue (50N_500S)	CACHED	0	2021-12-02 13:15:38.953	4s	3.8s	31.6%	96.2 MB	423.6 MB	25.1 MB	21.4 KB
+308	f9/3df902	35653	network_inference_workflow:make_network_without_pvalue (200N_500S)	CACHED	0	2021-12-02 11:18:13.630	7.3s	6.1s	28.6%	99.1 MB	427.1 MB	42.8 MB	100.4 KB
+303	5d/eb1609	30087	network_inference_workflow:make_network_without_pvalue (200N_100S)	CACHED	0	2021-12-02 10:49:25.057	9.7s	8.5s	26.7%	98.9 MB	430.1 MB	42.8 MB	128.4 KB
+306	33/e9b1d1	24168	network_inference_workflow:make_network_without_pvalue (50N_200S)	CACHED	0	2021-12-02 11:14:48.317	7.6s	6.5s	22.2%	96.5 MB	423.6 MB	25.1 MB	22.2 KB
+307	b5/9a99a7	15527	network_inference_workflow:make_network_without_pvalue (50N_500S)	CACHED	0	2021-12-02 10:33:37.326	5.3s	4s	36.8%	96.4 MB	423.6 MB	25.1 MB	32 KB
+309	ee/e061ed	10881	network_inference_workflow:make_network_without_pvalue (200N_200S)	CACHED	0	2021-12-02 11:16:56.929	24.8s	23.8s	8.5%	98.9 MB	426.9 MB	42.8 MB	92.2 KB
+312	46/8bf488	965	network_inference_workflow:make_network_without_pvalue (100N_500S)	CACHED	0	2021-12-02 10:37:54.901	6s	5s	33.2%	97.4 MB	425.6 MB	31 MB	77.7 KB
+311	63/4c3aa5	8169	network_inference_workflow:make_network_without_pvalue (50N_100S)	CACHED	0	2021-12-02 10:33:23.468	4.2s	3.3s	41.0%	96.6 MB	423.9 MB	25.1 MB	21 KB
+310	2a/6ae6b9	20591	network_inference_workflow:make_network_without_pvalue (200N_200S)	CACHED	0	2021-12-02 11:05:24.251	8.7s	7.7s	28.5%	100.8 MB	430.1 MB	42.8 MB	159.8 KB
+313	91/074907	34502	network_inference_workflow:make_network_without_pvalue (100N_500S)	CACHED	0	2021-12-02 11:09:13.161	6.8s	5.7s	28.8%	96.8 MB	424.9 MB	31 MB	49.6 KB
+317	83/8ffe45	7458	network_inference_workflow:make_network_without_pvalue (25N_500S)	CACHED	0	2021-12-02 10:51:59.811	5.5s	4.1s	33.0%	96.3 MB	423.6 MB	22.1 MB	14.2 KB
+314	e6/71ab2d	15057	network_inference_workflow:make_network_without_pvalue (200N_500S)	CACHED	0	2021-12-02 10:35:46.219	9.6s	7.3s	29.2%	100.3 MB	428.1 MB	42.8 MB	112.2 KB
+318	49/088099	16990	network_inference_workflow:make_network_without_pvalue (10N_500S)	CACHED	0	2021-12-02 11:21:57.688	4.2s	3.1s	35.3%	96.5 MB	423.6 MB	20.4 MB	9.2 KB
+316	e5/0d7271	10015	network_inference_workflow:make_network_without_pvalue (100N_50S)	CACHED	0	2021-12-02 10:55:50.290	6.8s	5.8s	29.2%	96.8 MB	424.9 MB	31 MB	54.6 KB
+315	bf/d3ad76	1101	network_inference_workflow:make_network_without_pvalue (150N_50S)	CACHED	0	2021-12-02 10:50:45.774	6.6s	5.7s	31.6%	97.5 MB	426.4 MB	36.9 MB	73.8 KB
+321	cf/7eff1e	4206	network_inference_workflow:make_network_without_pvalue (50N_200S)	CACHED	0	2021-12-02 10:43:15.239	6.7s	5.7s	27.0%	96.4 MB	423.6 MB	25.1 MB	22.4 KB
+319	50/693970	7413	network_inference_workflow:make_network_without_pvalue (100N_200S)	CACHED	0	2021-12-02 11:14:16.224	8.7s	7.8s	21.7%	96.6 MB	424.1 MB	31 MB	42.4 KB
+320	19/aef418	18350	network_inference_workflow:make_network_without_pvalue (100N_100S)	CACHED	0	2021-12-02 11:07:36.777	6.1s	5.1s	31.0%	96.7 MB	424.1 MB	31 MB	41.7 KB
+323	e3/651120	19371	network_inference_workflow:make_network_without_pvalue (50N_200S)	CACHED	0	2021-12-02 10:57:29.461	5.2s	4.2s	36.8%	96.5 MB	423.6 MB	25.1 MB	29.5 KB
+322	ac/afbfcb	6972	network_inference_workflow:make_network_without_pvalue (100N_50S)	CACHED	0	2021-12-02 10:43:21.972	5.5s	4.2s	36.7%	96.6 MB	423.9 MB	31 MB	43 KB
+324	f7/4a9392	27620	network_inference_workflow:make_network_without_pvalue (25N_200S)	CACHED	0	2021-12-02 10:32:43.817	3.9s	3s	42.5%	76.4 MB	382.6 MB	22.1 MB	12.4 KB
+326	20/c0b77e	5883	network_inference_workflow:make_network_without_pvalue (150N_500S)	CACHED	0	2021-12-02 10:54:29.520	7.2s	6.3s	29.7%	98.4 MB	427.1 MB	36.9 MB	82.2 KB
+325	22/6dd478	22336	network_inference_workflow:make_network_without_pvalue (25N_200S)	CACHED	0	2021-12-02 10:39:49.938	5.6s	4.6s	31.5%	97.2 MB	424.4 MB	22.1 MB	43.3 KB
+327	06/9be1d7	31163	network_inference_workflow:make_network_without_pvalue (150N_100S)	CACHED	0	2021-12-02 11:06:51.645	7.1s	6.3s	30.3%	97.3 MB	426.4 MB	36.9 MB	63 KB
+330	6a/d7f623	25941	network_inference_workflow:make_network_without_pvalue (10N_100S)	CACHED	0	2021-12-02 10:32:39.976	3.8s	2.7s	44.8%	74.9 MB	358.6 MB	20.4 MB	5.7 KB
+331	f9/bc5640	11214	network_inference_workflow:make_network_without_pvalue (150N_100S)	CACHED	0	2021-12-02 11:02:44.213	8.6s	7.4s	24.4%	97.6 MB	426.4 MB	36.9 MB	74 KB
+328	9f/617c30	5835	network_inference_workflow:make_network_without_pvalue (25N_200S)	CACHED	0	2021-12-02 10:33:18.616	4.8s	3.9s	34.8%	95.6 MB	423.4 MB	22.1 MB	13.1 KB
+329	b9/6d17b1	23590	network_inference_workflow:make_network_without_pvalue (25N_100S)	CACHED	0	2021-12-02 10:57:40.740	4.8s	3.9s	35.0%	96.4 MB	423.6 MB	22.1 MB	11.4 KB
+333	2a/566456	18756	network_inference_workflow:make_network_without_pvalue (200N_50S)	CACHED	0	2021-12-02 10:35:55.841	6.8s	5.7s	36.2%	99.2 MB	427.1 MB	42.8 MB	97.6 KB
+332	b6/b94411	2520	network_inference_workflow:make_network_without_pvalue (50N_100S)	CACHED	0	2021-12-02 10:55:36.719	4.9s	4s	36.4%	96.5 MB	423.6 MB	25.1 MB	26.4 KB
+336	06/7f8d8a	25684	network_inference_workflow:make_network_without_pvalue (10N_50S)	CACHED	0	2021-12-02 10:37:29.968	4.7s	3.8s	35.6%	95.5 MB	423.4 MB	20.4 MB	10.8 KB
+335	74/ab07b0	34012	network_inference_workflow:make_network_without_pvalue (150N_50S)	CACHED	0	2021-12-02 11:08:05.711	7.4s	6.5s	28.8%	97.5 MB	426.4 MB	36.9 MB	71.6 KB
+334	9d/aba495	22397	network_inference_workflow:make_network_without_pvalue (50N_100S)	CACHED	0	2021-12-02 11:04:13.580	5.7s	4.5s	32.4%	95.9 MB	423.6 MB	25.1 MB	20.8 KB
+337	30/0bf1e1	34549	network_inference_workflow:make_network_without_pvalue (200N_100S)	CACHED	0	2021-12-02 10:52:54.309	7.4s	6.5s	32.1%	100.3 MB	430.1 MB	42.8 MB	147.1 KB
+338	db/01f0da	35542	network_inference_workflow:make_network_without_pvalue (150N_500S)	CACHED	0	2021-12-02 11:05:51.431	9.1s	8.1s	25.3%	99.4 MB	426.7 MB	36.9 MB	128.3 KB
+339	0b/1414d9	20049	network_inference_workflow:make_network_without_pvalue (100N_500S)	CACHED	0	2021-12-02 10:38:37.639	7.1s	6.2s	29.9%	97.2 MB	425.4 MB	31 MB	55.8 KB
+340	16/a4953e	4867	network_inference_workflow:make_network_without_pvalue (150N_500S)	CACHED	0	2021-12-02 11:13:04.392	9s	8.1s	24.3%	97.4 MB	426.4 MB	36.9 MB	76.2 KB
+341	52/013477	31405	network_inference_workflow:make_network_without_pvalue (25N_50S)	CACHED	0	2021-12-02 10:34:05.577	4.2s	3.4s	40.3%	96.1 MB	423.4 MB	22.1 MB	11.8 KB
+342	8e/1f325f	9901	network_inference_workflow:make_network_without_pvalue (100N_200S)	CACHED	0	2021-12-02 10:39:24.841	6.6s	5.6s	31.4%	96.9 MB	424.9 MB	31 MB	69.6 KB
+343	f7/9471d2	23955	network_inference_workflow:make_network_without_pvalue (10N_200S)	CACHED	0	2021-12-02 10:32:35.531	4.4s	3.3s	40.5%	96.5 MB	423.6 MB	20.4 MB	5.9 KB
+345	dc/72bada	1951	network_inference_workflow:make_network_without_pvalue (10N_500S)	CACHED	0	2021-12-02 10:53:01.744	5s	4.1s	33.1%	92.8 MB	420.5 MB	20.4 MB	10.8 KB
+346	1d/29d5bb	13177	network_inference_workflow:make_network_without_pvalue (25N_100S)	CACHED	0	2021-12-02 10:52:11.161	4.6s	3.7s	36.4%	96.4 MB	423.6 MB	22.1 MB	11.6 KB
+344	46/fc8e34	621	network_inference_workflow:make_network_without_pvalue (150N_200S)	CACHED	0	2021-12-02 10:49:39.773	7.1s	6.1s	31.9%	98.1 MB	427.1 MB	36.9 MB	76.1 KB
+347	0c/46aeff	22011	network_inference_workflow:make_network_without_pvalue (100N_50S)	CACHED	0	2021-12-02 11:14:43.303	6.8s	6s	26.5%	96.4 MB	426.4 MB	31 MB	39.4 KB
+349	37/c7ff4b	23407	network_inference_workflow:make_network_without_pvalue (150N_500S)	CACHED	0	2021-12-02 11:11:17.536	7.4s	6.6s	28.5%	97 MB	430.5 MB	37 MB	84.6 KB
+348	c7/4b7bbf	22333	network_inference_workflow:make_network_without_pvalue (25N_500S)	CACHED	0	2021-12-02 11:12:28.817	4.4s	3.5s	36.8%	96.4 MB	423.6 MB	22.1 MB	16.1 KB
+350	e6/c34263	31806	network_inference_workflow:make_network_without_pvalue (10N_50S)	CACHED	0	2021-12-02 11:09:08.417	4.7s	3.9s	34.6%	91 MB	418.6 MB	20.4 MB	6.4 KB
+351	15/e69f54	6888	network_inference_workflow:make_network_without_pvalue (150N_200S)	CACHED	0	2021-12-02 11:13:08.365	8.1s	7.2s	26.4%	97.6 MB	430.5 MB	37 MB	69 KB
+352	cb/12752d	13056	network_inference_workflow:make_network_without_pvalue (150N_100S)	CACHED	0	2021-12-02 11:13:19.984	11.7s	8.1s	22.1%	96.9 MB	430.5 MB	37 MB	62 KB
+356	87/d9847c	33582	network_inference_workflow:make_network_without_pvalue (10N_100S)	CACHED	0	2021-12-02 11:10:22.804	4.7s	3.8s	34.0%	91 MB	418.6 MB	20.4 MB	7.1 KB
+354	de/f09bdf	1543	network_inference_workflow:make_network_without_pvalue (200N_50S)	CACHED	0	2021-12-02 11:10:32.522	8.1s	7.4s	27.0%	100.9 MB	437.5 MB	43 MB	76 KB
+353	0f/4cb61d	17817	network_inference_workflow:make_network_without_pvalue (50N_50S)	CACHED	0	2021-12-02 11:12:21.319	5.5s	4.2s	33.3%	96.4 MB	423.9 MB	25.1 MB	19.4 KB
+357	93/a32124	2245	network_inference_workflow:make_network_without_pvalue (200N_100S)	CACHED	0	2021-12-02 11:11:48.468	7.2s	6.2s	30.8%	104.2 MB	437.5 MB	43 MB	84.8 KB
+355	f9/a349ea	12954	network_inference_workflow:make_network_without_pvalue (50N_200S)	CACHED	0	2021-12-02 11:14:25.549	5.3s	4.4s	30.6%	96.7 MB	424.1 MB	25.1 MB	25.1 KB
+358	ff/17a46f	35071	network_inference_workflow:make_network_without_pvalue (150N_50S)	CACHED	0	2021-12-02 11:10:26.226	6.3s	5.4s	32.1%	96.9 MB	430.5 MB	37 MB	58.8 KB
+360	8e/afc978	29776	network_inference_workflow:make_network_without_pvalue (25N_100S)	CACHED	0	2021-12-02 11:07:58.160	5.4s	4.5s	31.0%	91 MB	418.6 MB	22.1 MB	13.3 KB
+359	5a/91213f	21762	network_inference_workflow:make_network_without_pvalue (25N_50S)	CACHED	0	2021-12-02 11:14:42.777	5.5s	4.5s	28.0%	96.5 MB	423.6 MB	22.1 MB	11.6 KB
+361	33/a78b44	1409	network_inference_workflow:make_network_without_pvalue (50N_100S)	CACHED	0	2021-12-02 11:08:13.350	5.9s	5s	29.1%	96.4 MB	423.9 MB	25.1 MB	23.7 KB
+363	a6/425a4e	16053	network_inference_workflow:make_network_without_pvalue (100N_100S)	CACHED	0	2021-12-02 11:08:39.987	6.1s	5.3s	29.8%	96.5 MB	426.4 MB	31 MB	44.2 KB
+364	81/de4035	36186	network_inference_workflow:make_network_without_pvalue (100N_200S)	CACHED	0	2021-12-02 11:11:43.516	7.8s	6.9s	26.1%	96.8 MB	426.4 MB	31 MB	49.7 KB
+365	88/323713	2503	network_inference_workflow:make_network_without_pvalue (200N_200S)	CACHED	0	2021-12-02 11:10:34.236	7.5s	6.6s	29.4%	102.1 MB	437.5 MB	43 MB	94 KB
+366	ab/421775	13428	network_inference_workflow:make_network_without_pvalue (200N_500S)	CACHED	0	2021-12-02 11:12:12.347	7.9s	7.1s	28.3%	102.3 MB	437.5 MB	43 MB	108.1 KB
+362	47/0a013b	31534	network_inference_workflow:make_network_without_pvalue (10N_500S)	CACHED	0	2021-12-02 11:08:01.297	4.4s	3.5s	35.7%	96.3 MB	423.6 MB	20.4 MB	7.6 KB
+368	16/518e21	24608	network_inference_workflow:make_network_without_pvalue (50N_500S)	CACHED	0	2021-12-02 11:14:49.178	6.7s	5.5s	25.0%	96.4 MB	423.9 MB	25.1 MB	28.6 KB
+370	7a/05fea5	34150	network_inference_workflow:make_network_without_pvalue (10N_200S)	CACHED	0	2021-12-02 11:09:12.587	4.8s	3.9s	31.1%	96.3 MB	423.6 MB	20.4 MB	6.6 KB
+367	44/2e5f55	32935	network_inference_workflow:make_network_without_pvalue (25N_200S)	CACHED	0	2021-12-02 11:08:03.414	5.3s	4.4s	31.7%	95.5 MB	423.4 MB	22.1 MB	14.6 KB
+369	9b/c4588a	5339	network_inference_workflow:make_network_without_pvalue (100N_500S)	CACHED	0	2021-12-02 11:10:40.677	7s	5.6s	29.0%	96.6 MB	426.4 MB	31 MB	57.6 KB
+37	1f/ef4ea1	11841	network_inference_workflow:mldm_workflow:mldm (150N_100S)	FAILED	1	2021-12-03 10:02:07.284	9.5s	9.5s	-	-	-	-	-
+43	6a/423482	11849	network_inference_workflow:mldm_workflow:mldm (100N_100S)	FAILED	1	2021-12-03 10:02:07.291	9.6s	9.5s	-	-	-	-	-
+168	3b/67cb9a	11863	network_inference_workflow:mldm_workflow:mldm (100N_200S)	FAILED	1	2021-12-03 10:02:07.366	9.5s	9.5s	-	-	-	-	-
+52	d0/13dd99	12030	network_inference_workflow:mldm_workflow:mldm (100N_500S)	FAILED	1	2021-12-03 10:02:07.767	9.1s	9s	-	-	-	-	-
+193	9e/806299	12042	network_inference_workflow:mldm_workflow:mldm (150N_50S)	FAILED	1	2021-12-03 10:02:07.880	9s	9s	-	-	-	-	-
+93	ab/022596	12053	network_inference_workflow:mldm_workflow:mldm (150N_200S)	FAILED	1	2021-12-03 10:02:07.971	9s	8.8s	-	-	-	-	-
+38	24/3fd5f3	12063	network_inference_workflow:mldm_workflow:mldm (200N_50S)	FAILED	1	2021-12-03 10:02:08.051	8.9s	8.8s	-	-	-	-	-
+234	cf/9717bb	11856	network_inference_workflow:mldm_workflow:mldm (200N_500S)	FAILED	1	2021-12-03 10:02:07.310	9.6s	9.6s	-	-	-	-	-
+228	6e/21ed1e	12821	network_inference_workflow:mldm_workflow:mldm (200N_100S)	FAILED	1	2021-12-03 10:02:08.378	8.8s	8.7s	-	-	-	-	-
+41	08/8b787a	15745	network_inference_workflow:mldm_workflow:mldm (100N_50S)	FAILED	1	2021-12-03 10:02:08.695	8.6s	8.5s	-	-	-	-	-
+108	0b/b83af3	24113	network_inference_workflow:mldm_workflow:mldm (50N_50S)	FAILED	1	2021-12-03 10:02:09.201	8.6s	8.5s	-	-	-	-	-
+159	45/de9cfc	25068	network_inference_workflow:mldm_workflow:mldm (200N_200S)	FAILED	1	2021-12-03 10:02:09.334	8.7s	8.6s	-	-	-	-	-
+129	88/aa578d	27449	network_inference_workflow:mldm_workflow:mldm (150N_500S)	FAILED	1	2021-12-03 10:02:09.921	8.2s	8s	-	-	-	-	-
+155	39/a3bdd6	8857	network_inference_workflow:spearman_workflow:resample (200N_200S)	CACHED	0	2021-12-02 10:28:14.751	36.4s	34.6s	60.2%	7.3 MB	299.6 MB	3.7 MB	354.1 MB
+127	f4/79fbad	30330	network_inference_workflow:spearman_workflow:resample (150N_500S)	CACHED	0	2021-12-02 10:25:20.132	48.9s	48s	80.6%	7.9 MB	299.8 MB	3.9 MB	677.1 MB
+148	29/6b583c	34654	network_inference_workflow:pearson_workflow:resample (25N_100S)	CACHED	0	2021-12-02 10:14:26.878	8.2s	7.2s	40.5%	7.1 MB	299.5 MB	3.5 MB	26.1 MB
+55	80/b16167	14233	network_inference_workflow:spearman_workflow:resample (100N_500S)	CACHED	0	2021-12-02 10:16:56.416	36.3s	35.3s	77.9%	7.6 MB	299.7 MB	3.8 MB	465.6 MB
+167	49/b04a81	9285	network_inference_workflow:pearson_workflow:resample (100N_200S)	CACHED	0	2021-12-02 10:15:37.559	18.5s	17.3s	69.2%	7.2 MB	299.5 MB	3.6 MB	188.3 MB
+50	60/759ea3	35645	network_inference_workflow:sparcc_workflow:resample (100N_100S)	CACHED	0	2021-12-02 10:20:02.262	12.3s	11.1s	59.3%	7.1 MB	299.5 MB	3.6 MB	93.6 MB
+71	ec/ddddc2	20402	network_inference_workflow:sparcc_workflow:resample (10N_100S)	CACHED	0	2021-12-02 10:17:12.587	6.5s	5.7s	35.8%	7 MB	299.4 MB	3.5 MB	11.3 MB
+134	0e/e16bb2	2134	network_inference_workflow:sparcc_workflow:resample (50N_100S)	CACHED	0	2021-12-02 10:14:02.893	10.3s	8.8s	50.4%	7.1 MB	299.5 MB	3.6 MB	50.8 MB
+8	1c/fdc9ab	32456	network_inference_workflow:propr_workflow:resample (150N_100S)	CACHED	0	2021-12-02 10:16:28.185	16.9s	15.7s	58.3%	7.2 MB	299.6 MB	3.6 MB	138.1 MB
+99	e7/70d820	7293	network_inference_workflow:spearman_workflow:resample (150N_200S)	CACHED	0	2021-12-02 10:22:17.519	24.6s	23.8s	69.6%	7.4 MB	299.6 MB	3.7 MB	275.4 MB
+170	ce/0be403	15697	network_inference_workflow:propr_workflow:resample (100N_200S)	CACHED	0	2021-12-02 10:19:32.717	18.9s	18s	66.4%	7.3 MB	299.5 MB	3.6 MB	188.3 MB
+51	51/f1f6d2	36188	network_inference_workflow:sparcc_workflow:resample (100N_500S)	CACHED	0	2021-12-02 10:14:28.039	35.7s	34.7s	80.1%	7.6 MB	299.7 MB	3.8 MB	465.6 MB
+31	00/8cbf5a	7655	network_inference_workflow:pearson_workflow:resample (150N_100S)	CACHED	0	2021-12-02 10:17:56.278	15.6s	14.8s	61.0%	7.3 MB	299.6 MB	3.6 MB	138.1 MB
+213	90/76612b	2158	network_inference_workflow:pearson_workflow:resample (25N_200S)	CACHED	0	2021-12-02 10:14:02.915	10.5s	9.2s	48.9%	7.1 MB	299.5 MB	3.6 MB	52.1 MB
+91	f3/52210e	9860	network_inference_workflow:propr_workflow:resample (150N_200S)	CACHED	0	2021-12-02 10:15:39.386	24.3s	23.5s	71.3%	7.4 MB	299.6 MB	3.7 MB	275.4 MB
+158	7c/5d4eaa	30493	network_inference_workflow:propr_workflow:resample (200N_200S)	CACHED	0	2021-12-02 10:15:07.199	30.4s	29.3s	70.9%	7.3 MB	299.6 MB	3.7 MB	354.1 MB
+64	1b/5bcabd	2127	network_inference_workflow:pearson_workflow:resample (10N_200S)	CACHED	0	2021-12-02 10:14:02.879	7.7s	6.4s	43.6%	7 MB	299.4 MB	3.5 MB	22.6 MB
+111	ee/c3abe6	5993	network_inference_workflow:sparcc_workflow:resample (25N_500S)	CACHED	0	2021-12-02 10:14:13.084	14.9s	13.8s	64.8%	7.2 MB	299.5 MB	3.6 MB	129.8 MB
+95	be/bddfd9	21324	network_inference_workflow:pearson_workflow:resample (150N_200S)	CACHED	0	2021-12-02 10:21:30.163	25.1s	24.2s	69.2%	7.4 MB	299.6 MB	3.7 MB	275.4 MB
+3	9a/c0c0fa	16802	network_inference_workflow:propr_workflow:resample (200N_50S)	CACHED	0	2021-12-02 10:14:51.623	11.9s	11s	58.0%	7.1 MB	299.5 MB	3.6 MB	89 MB
+123	8a/1e6217	17975	network_inference_workflow:pearson_workflow:resample (150N_500S)	CACHED	0	2021-12-02 10:24:31.601	48.5s	47.7s	81.2%	7.9 MB	299.8 MB	3.9 MB	677.1 MB
+231	0e/8fae7a	27173	network_inference_workflow:spearman_workflow:resample (200N_500S)	CACHED	0	2021-12-02 10:17:20.748	1m 1s	1m	82.9%	8.2 MB	299.9 MB	3.9 MB	885.2 MB
+210	88/6892ab	33416	network_inference_workflow:pearson_workflow:resample (50N_500S)	CACHED	0	2021-12-02 10:18:49.871	25s	23.7s	66.3%	7.3 MB	299.5 MB	3.7 MB	250.3 MB
+63	5e/b2ca84	2145	network_inference_workflow:spearman_workflow:resample (10N_200S)	CACHED	0	2021-12-02 10:14:02.904	7.8s	6.4s	43.2%	7 MB	299.4 MB	3.5 MB	22.6 MB
+192	cb/c6e780	7058	network_inference_workflow:spearman_workflow:resample (150N_50S)	CACHED	0	2021-12-02 10:19:14.827	10.9s	9.8s	53.2%	7.1 MB	299.5 MB	3.6 MB	69 MB
+133	1b/609c70	2173	network_inference_workflow:spearman_workflow:resample (50N_100S)	CACHED	0	2021-12-02 10:14:02.925	10.1s	8.9s	50.2%	7.1 MB	299.5 MB	3.6 MB	50.8 MB
+54	82/08967e	12774	network_inference_workflow:pearson_workflow:resample (100N_500S)	CACHED	0	2021-12-02 10:19:24.791	36.2s	35.4s	77.8%	7.6 MB	299.7 MB	3.8 MB	465.6 MB
+30	30/1f3436	25935	network_inference_workflow:pearson_workflow:resample (100N_50S)	CACHED	0	2021-12-02 10:19:51.654	9.1s	8.1s	49.6%	7.1 MB	299.5 MB	3.6 MB	47 MB
+236	db/b44d45	5161	network_inference_workflow:pearson_workflow:resample (200N_500S)	CACHED	0	2021-12-02 10:22:14.082	1m 1s	1m	83.1%	8.2 MB	299.9 MB	3.9 MB	885.2 MB
+4	06/ad5bd4	9696	network_inference_workflow:sparcc_workflow:resample (50N_200S)	CACHED	0	2021-12-02 10:21:10.351	13.5s	12.6s	56.3%	7.1 MB	299.5 MB	3.6 MB	100.3 MB
+163	89/cff202	16510	network_inference_workflow:sparcc_workflow:resample (150N_50S)	CACHED	0	2021-12-02 10:14:16.275	10.9s	9.9s	53.8%	7.1 MB	299.5 MB	3.6 MB	69 MB
+151	48/f9461f	25730	network_inference_workflow:pearson_workflow:resample (200N_200S)	CACHED	0	2021-12-02 10:17:18.845	29.3s	28.4s	73.1%	7.3 MB	299.6 MB	3.7 MB	354.1 MB
+42	a3/d847fb	2089	network_inference_workflow:spearman_workflow:resample (200N_50S)	CACHED	0	2021-12-02 10:14:02.834	13.3s	11.9s	53.9%	7.1 MB	299.5 MB	3.6 MB	89 MB
+239	db/bba01b	32120	network_inference_workflow:sparcc_workflow:resample (200N_500S)	CACHED	0	2021-12-02 10:25:28.056	59.8s	59.1s	84.1%	8.2 MB	299.9 MB	3.9 MB	885.2 MB
+13	8d/adaa62	2023	network_inference_workflow:pearson_workflow:resample (200N_50S)	CACHED	0	2021-12-02 10:14:02.764	13.5s	12s	53.2%	7.1 MB	299.5 MB	3.6 MB	89 MB
+116	3b/2421b4	2243	network_inference_workflow:propr_workflow:resample (25N_500S)	CACHED	0	2021-12-02 10:14:03.008	16.4s	15.1s	59.4%	7.2 MB	299.5 MB	3.6 MB	129.8 MB
+40	81/8bb9bc	26286	network_inference_workflow:spearman_workflow:resample (100N_100S)	CACHED	0	2021-12-02 10:20:44.420	13.1s	12.1s	54.3%	7.1 MB	299.5 MB	3.6 MB	93.6 MB
+141	b5/44790d	2152	network_inference_workflow:propr_workflow:resample (25N_100S)	CACHED	0	2021-12-02 10:14:02.909	7.9s	6.6s	45.4%	7.1 MB	299.5 MB	3.5 MB	26.1 MB
+172	96/8613bd	35271	network_inference_workflow:sparcc_workflow:resample (10N_500S)	CACHED	0	2021-12-02 10:27:42.775	9.2s	8.3s	54.1%	7.1 MB	299.5 MB	3.6 MB	56.2 MB
+191	87/025011	2138	network_inference_workflow:propr_workflow:resample (150N_50S)	CACHED	0	2021-12-02 10:14:02.898	12.1s	10.7s	50.1%	7.1 MB	299.5 MB	3.6 MB	69 MB
+126	1d/d2b995	34424	network_inference_workflow:sparcc_workflow:resample (150N_500S)	CACHED	0	2021-12-02 10:20:00.963	47.3s	46.6s	83.6%	7.9 MB	299.8 MB	3.9 MB	677.1 MB
+130	11/aec8b1	34441	network_inference_workflow:propr_workflow:resample (150N_500S)	CACHED	0	2021-12-02 10:25:39.743	48.1s	47.3s	81.9%	7.9 MB	299.8 MB	3.9 MB	677.1 MB
+220	53/9d6f39	11143	network_inference_workflow:sparcc_workflow:resample (200N_100S)	CACHED	0	2021-12-02 10:20:16.680	18.3s	17.4s	65.8%	7.3 MB	299.5 MB	3.6 MB	181.4 MB
+197	cb/fd6d45	34361	network_inference_workflow:spearman_workflow:resample (10N_500S)	CACHED	0	2021-12-02 10:20:56.580	10.7s	9.9s	45.8%	7.1 MB	299.5 MB	3.6 MB	56.2 MB
+164	25/312a5c	13689	network_inference_workflow:sparcc_workflow:resample (100N_200S)	CACHED	0	2021-12-02 10:22:38.336	19.3s	18.4s	64.6%	7.3 MB	299.5 MB	3.6 MB	188.3 MB
+68	4f/229997	17820	network_inference_workflow:propr_workflow:resample (10N_200S)	CACHED	0	2021-12-02 10:17:08.514	7.1s	6.2s	42.7%	7 MB	299.4 MB	3.5 MB	22.6 MB
+16	a4/b5e311	1751	network_inference_workflow:propr_workflow:resample (100N_50S)	CACHED	0	2021-12-02 10:27:51.952	8.2s	7.5s	52.1%	7.1 MB	299.5 MB	3.6 MB	47 MB
+195	7c/67f598	1210	network_inference_workflow:pearson_workflow:resample (150N_50S)	CACHED	0	2021-12-02 10:17:44.343	10.4s	9.4s	54.7%	7.1 MB	299.5 MB	3.6 MB	69 MB
+149	61/82300c	12073	network_inference_workflow:sparcc_workflow:resample (25N_100S)	CACHED	0	2021-12-02 10:26:27.906	6.8s	6.1s	45.8%	7.1 MB	299.5 MB	3.5 MB	26.1 MB
+237	ad/f321e6	9232	network_inference_workflow:propr_workflow:resample (200N_500S)	CACHED	0	2021-12-02 10:20:14.549	59.6s	58.7s	85.1%	8.2 MB	299.9 MB	3.9 MB	885.2 MB
+23	67/043599	8147	network_inference_workflow:propr_workflow:resample (50N_200S)	CACHED	0	2021-12-02 10:28:12.274	16.5s	15.5s	46.4%	7.1 MB	299.5 MB	3.6 MB	100.3 MB
+132	4c/613c55	7757	network_inference_workflow:pearson_workflow:resample (50N_100S)	CACHED	0	2021-12-02 10:26:21.104	8.1s	7.3s	57.7%	7.1 MB	299.5 MB	3.6 MB	50.8 MB
+92	09/f0d554	12283	network_inference_workflow:sparcc_workflow:resample (150N_200S)	CACHED	0	2021-12-02 10:20:19.877	24.5s	23.6s	71.0%	7.4 MB	299.6 MB	3.7 MB	275.4 MB
+27	87/fe982e	14817	network_inference_workflow:sparcc_workflow:resample (200N_50S)	CACHED	0	2021-12-02 10:14:46.175	13.1s	11.8s	53.8%	7.1 MB	299.5 MB	3.6 MB	89 MB
+206	db/34251b	13352	network_inference_workflow:propr_workflow:resample (25N_200S)	CACHED	0	2021-12-02 10:26:29.210	9.2s	8.1s	52.4%	7.1 MB	299.5 MB	3.6 MB	52.1 MB
+201	61/e9f8a2	13415	network_inference_workflow:propr_workflow:resample (50N_500S)	CACHED	0	2021-12-02 10:19:25.695	24.5s	23.5s	66.9%	7.3 MB	299.5 MB	3.7 MB	250.3 MB
+33	2b/555f48	35490	network_inference_workflow:pearson_workflow:resample (100N_100S)	CACHED	0	2021-12-02 10:20:01.899	12.2s	11.2s	58.8%	7.1 MB	299.5 MB	3.6 MB	93.6 MB
+211	11/67dde2	5425	network_inference_workflow:propr_workflow:resample (200N_100S)	CACHED	0	2021-12-02 10:23:52.243	17.7s	16.7s	67.3%	7.3 MB	299.5 MB	3.6 MB	181.4 MB
+7	96/7b4746	35340	network_inference_workflow:spearman_workflow:resample (50N_200S)	CACHED	0	2021-12-02 10:20:57.510	12.5s	11.7s	60.2%	7.1 MB	299.5 MB	3.6 MB	100.3 MB
+77	9f/ba7f2d	31144	network_inference_workflow:pearson_workflow:resample (10N_100S)	CACHED	0	2021-12-02 10:14:10.838	8.2s	7s	30.8%	7 MB	299.4 MB	3.5 MB	11.3 MB
+48	56/821313	2222	network_inference_workflow:propr_workflow:resample (100N_100S)	CACHED	0	2021-12-02 10:14:02.982	13.6s	12.4s	54.8%	7.1 MB	299.5 MB	3.6 MB	93.6 MB
+182	34/120a65	8177	network_inference_workflow:sparcc_workflow:resample (50N_500S)	CACHED	0	2021-12-02 10:28:12.514	22.4s	21.4s	73.1%	7.3 MB	299.5 MB	3.7 MB	250.3 MB
+72	97/987e8f	21216	network_inference_workflow:propr_workflow:resample (10N_100S)	CACHED	0	2021-12-02 10:18:26.855	7.1s	6.1s	32.6%	7 MB	299.4 MB	3.5 MB	11.3 MB
+222	f1/46f0a6	23731	network_inference_workflow:spearman_workflow:resample (200N_100S)	CACHED	0	2021-12-02 10:14:19.371	18.1s	17.2s	67.5%	7.2 MB	299.5 MB	3.6 MB	181.4 MB
+18	02/766c56	12221	network_inference_workflow:spearman_workflow:resample (100N_50S)	CACHED	0	2021-12-02 10:15:46.258	8.7s	7.7s	52.3%	7.1 MB	299.5 MB	3.6 MB	47 MB
+107	46/a9425e	2726	network_inference_workflow:propr_workflow:resample (50N_50S)	CACHED	0	2021-12-02 10:16:41.691	8.1s	7.3s	39.4%	7 MB	299.4 MB	3.5 MB	25.4 MB
+146	6e/969735	1846	network_inference_workflow:spearman_workflow:resample (25N_100S)	CACHED	0	2021-12-02 10:22:07.709	8.1s	7.2s	38.8%	7.1 MB	299.5 MB	3.5 MB	26.1 MB
+36	9d/9dd1f5	4764	network_inference_workflow:pearson_workflow:resample (50N_200S)	CACHED	0	2021-12-02 10:28:00.185	12.1s	11.2s	62.3%	7.1 MB	299.5 MB	3.6 MB	100.3 MB
+46	7f/a1af99	13777	network_inference_workflow:sparcc_workflow:resample (150N_100S)	CACHED	0	2021-12-02 10:18:11.912	16.1s	15.2s	59.9%	7.3 MB	299.6 MB	3.6 MB	138.1 MB
+139	9a/5ec38a	26507	network_inference_workflow:propr_workflow:resample (50N_100S)	CACHED	0	2021-12-02 10:19:52.623	9.3s	8.4s	51.1%	7.1 MB	299.5 MB	3.6 MB	50.8 MB
+110	cf/cace30	2194	network_inference_workflow:pearson_workflow:resample (50N_50S)	CACHED	0	2021-12-02 10:14:02.947	7.9s	6.5s	45.4%	7 MB	299.4 MB	3.5 MB	25.4 MB
+89	35/39478a	4004	network_inference_workflow:sparcc_workflow:resample (25N_50S)	CACHED	0	2021-12-02 10:15:29.294	6.3s	5.3s	39.2%	7 MB	299.4 MB	3.5 MB	13 MB
+185	2c/49ba1c	7517	network_inference_workflow:sparcc_workflow:resample (25N_200S)	CACHED	0	2021-12-02 10:14:36.328	9.8s	8.8s	50.1%	7.1 MB	299.5 MB	3.6 MB	52.1 MB
+26	e9/61c77c	15982	network_inference_workflow:spearman_workflow:resample (150N_100S)	CACHED	0	2021-12-02 10:26:34.722	14.4s	13.3s	67.1%	7.2 MB	299.6 MB	3.6 MB	138.1 MB
+117	27/6559db	31862	network_inference_workflow:spearman_workflow:resample (25N_500S)	CACHED	0	2021-12-02 10:14:11.082	15.8s	14.7s	60.8%	7.2 MB	299.5 MB	3.6 MB	129.8 MB
+219	4e/c59695	4254	network_inference_workflow:spearman_workflow:resample (10N_50S)	CACHED	0	2021-12-02 10:16:43.103	6s	5.1s	33.4%	7 MB	299.4 MB	3.5 MB	5.8 MB
+152	6f/b54d30	32994	network_inference_workflow:sparcc_workflow:resample (200N_200S)	CACHED	0	2021-12-02 10:18:49.289	29.2s	28s	74.1%	7.3 MB	299.6 MB	3.7 MB	354.1 MB
+45	2c/45a872	30352	network_inference_workflow:sparcc_workflow:resample (100N_50S)	CACHED	0	2021-12-02 10:19:57.716	9.2s	8.3s	48.4%	7.1 MB	299.5 MB	3.6 MB	47 MB
+70	7c/5d921e	11723	network_inference_workflow:sparcc_workflow:resample (10N_200S)	CACHED	0	2021-12-02 10:15:45.287	7.9s	6.9s	38.9%	7 MB	299.4 MB	3.5 MB	22.6 MB
+187	cb/e29483	16404	network_inference_workflow:sparcc_workflow:resample (10N_50S)	CACHED	0	2021-12-02 10:22:42.129	7.3s	6.2s	27.2%	7 MB	299.4 MB	3.5 MB	5.8 MB
+112	0e/ef86ec	2103	network_inference_workflow:pearson_workflow:resample (25N_500S)	CACHED	0	2021-12-02 10:14:02.847	16.3s	14.9s	60.1%	7.2 MB	299.5 MB	3.6 MB	129.8 MB
+198	79/472ed6	2026	network_inference_workflow:pearson_workflow:resample (10N_500S)	CACHED	0	2021-12-02 10:14:02.774	11.1s	9.7s	48.8%	7.1 MB	299.5 MB	3.6 MB	56.2 MB
+223	14/9b257e	30840	network_inference_workflow:pearson_workflow:resample (200N_100S)	CACHED	0	2021-12-02 10:27:25.983	16.8s	15.9s	71.2%	7.3 MB	299.5 MB	3.6 MB	181.4 MB
+78	3a/e3dfe3	9503	network_inference_workflow:spearman_workflow:resample (10N_100S)	CACHED	0	2021-12-02 10:16:49.062	7.3s	6.4s	31.4%	7 MB	299.4 MB	3.5 MB	11.3 MB
+169	e1/43e8c3	19883	network_inference_workflow:spearman_workflow:resample (100N_200S)	CACHED	0	2021-12-02 10:18:24.853	18.3s	17.5s	68.1%	7.3 MB	299.5 MB	3.6 MB	188.3 MB
+202	97/d02c6c	10375	network_inference_workflow:spearman_workflow:resample (50N_500S)	CACHED	0	2021-12-02 10:16:49.751	22.8s	22s	71.2%	7.3 MB	299.5 MB	3.7 MB	250.3 MB
+56	e3/920049	5904	network_inference_workflow:propr_workflow:resample (100N_500S)	CACHED	0	2021-12-02 10:16:45.078	35.7s	34.7s	79.3%	7.6 MB	299.7 MB	3.8 MB	465.6 MB
+194	bf/5ff943	609	network_inference_workflow:propr_workflow:resample (10N_500S)	CACHED	0	2021-12-02 10:21:00.830	9.5s	8.7s	52.3%	7.1 MB	299.5 MB	3.6 MB	56.2 MB
+214	d1/fd18b7	3224	network_inference_workflow:spearman_workflow:resample (25N_200S)	CACHED	0	2021-12-02 10:20:06.884	9.8s	8.6s	50.8%	7.1 MB	299.5 MB	3.6 MB	52.1 MB
+87	0a/fdcf08	11371	network_inference_workflow:propr_workflow:resample (25N_50S)	CACHED	0	2021-12-02 10:24:09.956	5.9s	5.2s	39.1%	7 MB	299.4 MB	3.5 MB	13 MB
+208	c2/7b3496	6138	network_inference_workflow:propr_workflow:resample (10N_50S)	CACHED	0	2021-12-02 10:14:35.048	7.6s	6.7s	26.7%	7 MB	299.4 MB	3.5 MB	5.8 MB
+101	5f/4aadff	21846	network_inference_workflow:spearman_workflow:resample (50N_50S)	CACHED	0	2021-12-02 10:14:59.277	7.9s	6.9s	42.5%	7 MB	299.4 MB	3.5 MB	25.4 MB
+82	ee/6f7723	30342	network_inference_workflow:spearman_workflow:resample (25N_50S)	CACHED	0	2021-12-02 10:18:43.203	6.7s	5.7s	35.6%	7 MB	299.4 MB	3.5 MB	13 MB
+85	a9/df580a	23080	network_inference_workflow:pearson_workflow:resample (25N_50S)	CACHED	0	2021-12-02 10:14:18.996	7.8s	6.8s	32.9%	7 MB	299.4 MB	3.5 MB	13 MB
+216	30/f5ac70	14263	network_inference_workflow:pearson_workflow:resample (10N_50S)	CACHED	0	2021-12-02 10:20:25.229	6.7s	5.6s	29.7%	7 MB	299.4 MB	3.5 MB	5.8 MB
+106	ff/8dfbf5	27440	network_inference_workflow:sparcc_workflow:resample (50N_50S)	CACHED	0	2021-12-02 10:27:18.279	7.7s	6.8s	41.0%	7 MB	299.4 MB	3.5 MB	25.4 MB
+371	55/94bf9c	27244	network_inference_workflow:spearman_workflow:spearman (200N_200S)	CACHED	0	2021-12-02 11:04:24.902	1h 31s	59m 33s	346.5%	353.8 MB	2 GB	369.3 MB	286.7 MB
+467	7b/7bcc89	35605	network_inference_workflow:spearman_workflow:pvalues (200N_200S)	CACHED	0	2021-12-02 12:04:56.769	30.7s	26s	96.2%	8.9 MB	300.3 MB	286.9 MB	380.7 KB
+378	21/1258df	4445	network_inference_workflow:spearman_workflow:spearman (150N_200S)	CACHED	0	2021-12-02 10:53:06.849	45m 44s	44m 53s	273.3%	355.8 MB	2 GB	290.6 MB	161.7 MB
+468	20/71f7f8	2176	network_inference_workflow:make_network_with_pvalue (200N_200S)	CACHED	0	2021-12-02 12:05:27.470	8s	7.8s	71.2%	146.1 MB	472.7 MB	43.3 MB	2.2 MB
+469	ad/68d545	25393	network_inference_workflow:spearman_workflow:pvalues (150N_200S)	CACHED	0	2021-12-02 11:38:51.475	20.5s	16.2s	94.3%	8.3 MB	300.1 MB	161.9 MB	257 KB
+470	5e/98d4d7	31474	network_inference_workflow:make_network_with_pvalue (150N_200S)	CACHED	0	2021-12-02 11:39:11.973	6s	5.6s	68.7%	123.8 MB	450.5 MB	37.2 MB	1.2 MB
+374	4a/b979dd	21915	network_inference_workflow:spearman_workflow:spearman (100N_500S)	CACHED	0	2021-12-02 10:38:42.203	37m 17s	36m 27s	174.1%	351 MB	2 GB	480.9 MB	72.5 MB
+448	55/936649	14725	network_inference_workflow:pearson_workflow:pearson (200N_100S)	CACHED	0	2021-12-02 11:01:39.017	11m 55s	10m 55s	162.0%	337.2 MB	1.9 GB	196.6 MB	285 MB
+471	10/714cf7	10965	network_inference_workflow:spearman_workflow:pvalues (100N_500S)	CACHED	0	2021-12-02 11:16:57.056	1m 24s	15.7s	44.4%	7.8 MB	299.9 MB	72.8 MB	167.5 KB
+381	d9/06b832	11861	network_inference_workflow:propr_workflow:propr (100N_200S)	CACHED	0	2021-12-02 10:43:33.520	7m 1s	5m 55s	155.8%	671.1 MB	1.6 GB	204.6 MB	185.5 MB
+453	d9/343b93	12401	network_inference_workflow:spearman_workflow:spearman (100N_200S)	CACHED	0	2021-12-02 10:40:51.253	34m 13s	33m 26s	169.7%	342.3 MB	2 GB	203.5 MB	72.4 MB
+473	a0/150e86	651	network_inference_workflow:make_network_with_pvalue (100N_500S)	CACHED	0	2021-12-02 11:18:21.413	8.3s	7.1s	35.2%	108.9 MB	436.1 MB	31.1 MB	600.7 KB
+393	a5/905b38	34432	network_inference_workflow:pearson_workflow:pearson (100N_50S)	CACHED	0	2021-12-02 10:44:16.895	4m 12s	3m 24s	154.2%	318 MB	1.9 GB	62.2 MB	72.2 MB
+472	20/0660e0	1958	network_inference_workflow:pearson_workflow:pvalues (200N_100S)	CACHED	0	2021-12-02 11:16:39.768	1m 51s	49.1s	54.3%	8.6 MB	300.1 MB	285.1 MB	380.7 KB
+474	6b/f3e826	13458	network_inference_workflow:propr_workflow:pvalues (100N_200S)	CACHED	0	2021-12-02 11:12:12.413	1m 12s	17.4s	44.7%	7.8 MB	299.8 MB	185.4 MB	167.5 KB
+475	13/b6af87	6918	network_inference_workflow:spearman_workflow:pvalues (100N_200S)	CACHED	0	2021-12-02 11:16:49.780	1m 20s	14s	49.7%	7.9 MB	299.8 MB	72.6 MB	167.5 KB
+390	59/903888	10167	network_inference_workflow:pearson_workflow:pearson (150N_200S)	CACHED	0	2021-12-02 10:52:05.406	9m 29s	8m 41s	148.7%	342 MB	1.9 GB	290.6 MB	161.9 MB
+402	4c/e7818e	25602	network_inference_workflow:pearson_workflow:pearson (200N_200S)	CACHED	0	2021-12-02 10:38:49.602	12m 58s	12m 9s	171.1%	345.8 MB	1.9 GB	369.4 MB	287.2 MB
+477	1d/faf165	2096	network_inference_workflow:make_network_with_pvalue (200N_100S)	CACHED	0	2021-12-02 11:18:30.711	14.2s	12.9s	43.9%	140.7 MB	467.5 MB	43.3 MB	1.9 MB
+478	58/ba9094	1004	network_inference_workflow:make_network_with_pvalue (100N_200S)	CACHED	0	2021-12-02 11:16:37.434	13.7s	12.3s	22.9%	107.1 MB	434.4 MB	31.2 MB	665.2 KB
+479	8f/985011	34747	network_inference_workflow:make_network_with_pvalue (100N_200S)	CACHED	0	2021-12-02 11:18:09.589	10.7s	9.7s	29.0%	109.6 MB	436.9 MB	31.1 MB	599.1 KB
+476	34/5a2ea7	21152	network_inference_workflow:pearson_workflow:pvalues (100N_50S)	CACHED	0	2021-12-02 11:11:12.607	1m 9s	18s	38.6%	7.8 MB	299.8 MB	72.3 MB	165.6 KB
+422	10/e55c3b	791	network_inference_workflow:propr_workflow:propr (150N_500S)	CACHED	0	2021-12-02 10:58:14.829	17m 50s	16m 34s	172.7%	1 GB	2 GB	693.6 MB	421.5 MB
+386	1b/5440ac	19571	network_inference_workflow:propr_workflow:propr (200N_200S)	CACHED	0	2021-12-02 10:33:44.976	9m 10s	8m 11s	182.9%	701.4 MB	1.6 GB	370.4 MB	742 MB
+424	56/0973cf	29728	network_inference_workflow:spearman_workflow:spearman (50N_200S)	CACHED	0	2021-12-02 10:50:34.162	10m 25s	9m 38s	150.9%	339.1 MB	2 GB	115.5 MB	18.4 MB
+411	f5/f556bb	12991	network_inference_workflow:spearman_workflow:spearman (100N_100S)	CACHED	0	2021-12-02 10:50:02.986	29m 11s	28m 24s	187.4%	335.7 MB	2 GB	108.8 MB	72.3 MB
+482	ea/cc5f7f	29926	network_inference_workflow:make_network_with_pvalue (100N_50S)	CACHED	0	2021-12-02 11:16:19.416	18s	17.1s	15.8%	99.8 MB	427.4 MB	31.1 MB	563.8 KB
+458	68/7a695b	12691	network_inference_workflow:spearman_workflow:spearman (50N_50S)	CACHED	0	2021-12-02 10:33:31.745	7m 38s	6m 50s	194.9%	322.6 MB	2 GB	40.6 MB	18.4 MB
+445	7e/d8e925	26719	network_inference_workflow:propr_workflow:propr (200N_100S)	CACHED	0	2021-12-02 10:55:11.574	6m 20s	5m 14s	152.0%	598.8 MB	1.5 GB	197.7 MB	731.7 MB
+480	d4/72eee4	4412	network_inference_workflow:pearson_workflow:pvalues (150N_200S)	CACHED	0	2021-12-02 11:14:10.802	1m 31s	34.5s	44.8%	8.3 MB	300.1 MB	162 MB	257 KB
+481	ab/da89ed	17027	network_inference_workflow:pearson_workflow:pvalues (200N_200S)	CACHED	0	2021-12-02 11:12:19.705	1m 51s	56.6s	48.5%	8.9 MB	300.3 MB	287.4 MB	380.7 KB
+395	94/fa235d	17989	network_inference_workflow:pearson_workflow:pearson (200N_500S)	CACHED	0	2021-12-02 10:54:54.951	17m 14s	16m 20s	155.5%	355 MB	1.9 GB	900.8 MB	287.5 MB
+484	32/55572c	10588	network_inference_workflow:propr_workflow:pvalues (200N_200S)	CACHED	0	2021-12-02 11:09:38.672	1m 57s	1m 8s	45.1%	8.9 MB	300.3 MB	742 MB	380.7 KB
+483	ad/d20e27	11376	network_inference_workflow:propr_workflow:pvalues (150N_500S)	CACHED	0	2021-12-02 11:16:57.661	1m 39s	30.8s	55.5%	8.5 MB	300.2 MB	421.6 MB	257 KB
+486	94/15ace7	6680	network_inference_workflow:spearman_workflow:pvalues (100N_100S)	CACHED	0	2021-12-02 11:19:15.696	1m 30s	11.8s	58.7%	7.9 MB	299.8 MB	72.4 MB	167.5 KB
+489	4f/c00384	9355	network_inference_workflow:make_network_with_pvalue (150N_200S)	CACHED	0	2021-12-02 11:16:54.199	25.8s	24.2s	17.3%	104.8 MB	432 MB	37.2 MB	1.2 MB
+432	1d/26865c	31002	network_inference_workflow:propr_workflow:propr (200N_500S)	CACHED	0	2021-12-02 10:50:36.985	22m 50s	21m 47s	161.0%	1.1 GB	2.1 GB	901.8 MB	749.6 MB
+485	3f/0dfdfd	22702	network_inference_workflow:spearman_workflow:pvalues (50N_200S)	CACHED	0	2021-12-02 11:13:38.751	1m 4s	10.2s	18.7%	7.3 MB	299.8 MB	18.5 MB	110.3 KB
+490	c9/c4c1f6	2618	network_inference_workflow:make_network_with_pvalue (200N_200S)	CACHED	0	2021-12-02 11:16:41.240	23.3s	22.3s	29.4%	133.1 MB	459.7 MB	43.3 MB	2.1 MB
+488	64/de283e	30079	network_inference_workflow:propr_workflow:pvalues (200N_100S)	CACHED	0	2021-12-02 11:13:52.658	1m 51s	58.4s	52.3%	8.6 MB	300.1 MB	731.6 MB	380.7 KB
+493	7d/90d13e	2951	network_inference_workflow:make_network_with_pvalue (150N_500S)	CACHED	0	2021-12-02 11:18:36.308	9.8s	8.5s	50.4%	127.5 MB	454.4 MB	37.4 MB	1.5 MB
+492	93/223837	25911	network_inference_workflow:make_network_with_pvalue (200N_200S)	CACHED	0	2021-12-02 11:16:10.800	31.7s	30.8s	22.9%	152.1 MB	478.5 MB	43.7 MB	2.5 MB
+496	d2/209b11	5990	network_inference_workflow:make_network_with_pvalue (50N_200S)	CACHED	0	2021-12-02 11:16:48.096	8.7s	7.8s	21.5%	98 MB	425.4 MB	25.1 MB	160.6 KB
+491	fc/779f61	27486	network_inference_workflow:pearson_workflow:pvalues (200N_500S)	CACHED	0	2021-12-02 11:16:14.275	1m 51s	49s	55.6%	9.1 MB	300.6 MB	288 MB	380.7 KB
+494	11/fcc5b3	13745	network_inference_workflow:make_network_with_pvalue (100N_100S)	CACHED	0	2021-12-02 11:20:46.263	8.2s	6.8s	36.7%	109.3 MB	436.6 MB	31.1 MB	586.3 KB
+487	75/17de4c	6340	network_inference_workflow:spearman_workflow:pvalues (50N_50S)	CACHED	0	2021-12-02 11:09:29.820	56.4s	6.5s	29.0%	7.3 MB	299.6 MB	18.4 MB	108.4 KB
+497	b3/370b50	10765	network_inference_workflow:make_network_with_pvalue (200N_100S)	CACHED	0	2021-12-02 11:16:56.710	33.4s	32.2s	21.1%	145.2 MB	471.5 MB	43.7 MB	2.6 MB
+495	a5/0f4431	1672	network_inference_workflow:propr_workflow:pvalues (200N_500S)	CACHED	0	2021-12-02 11:16:39.052	1m 57s	56.2s	54.0%	8.9 MB	300.4 MB	749.8 MB	380.7 KB
+498	fb/74b940	33820	network_inference_workflow:make_network_with_pvalue (200N_500S)	CACHED	0	2021-12-02 11:18:05.628	18.8s	17.9s	35.9%	121.7 MB	448.2 MB	43.3 MB	2.2 MB
+499	16/ca1ee1	23528	network_inference_workflow:make_network_with_pvalue (50N_50S)	CACHED	0	2021-12-02 11:16:04.670	10.9s	9.7s	16.8%	97.4 MB	424.9 MB	25.1 MB	151.5 KB
+500	c6/c42fcd	3002	network_inference_workflow:make_network_with_pvalue (200N_500S)	CACHED	0	2021-12-02 11:18:36.486	12.5s	11.4s	56.0%	151.8 MB	478.2 MB	43.7 MB	2.6 MB
+225	bf/305ca2	26330	network_inference_workflow:mldm_workflow:mldm (10N_50S)	COMPLETED	0	2021-12-03 10:02:09.520	20.8s	15.8s	95.4%	300.9 MB	620.6 MB	27.5 MB	42.2 KB
+410	e5/7a6a27	32485	network_inference_workflow:propr_workflow:propr (25N_500S)	CACHED	0	2021-12-02 10:30:00.800	6m 40s	5m 29s	224.4%	603.9 MB	1.5 GB	146.1 MB	11.8 MB
+502	4a/6bdf3c	35723	network_inference_workflow:propr_workflow:pvalues (25N_500S)	CACHED	0	2021-12-02 11:08:08.862	57.1s	3.6s	18.2%	6.8 MB	298.6 MB	11.6 MB	95.6 KB
+503	d4/f698df	14860	network_inference_workflow:make_network_with_pvalue (25N_500S)	CACHED	0	2021-12-02 11:15:46.649	5.8s	4.8s	29.5%	97.4 MB	424.6 MB	22.1 MB	47.6 KB
+383	e4/90b6dc	13347	network_inference_workflow:pearson_workflow:pearson (150N_100S)	CACHED	0	2021-12-02 10:39:31.540	7m 30s	6m 40s	170.1%	335.7 MB	1.9 GB	153.3 MB	161.5 MB
+372	0c/6ba829	26047	network_inference_workflow:spearman_workflow:spearman (150N_500S)	CACHED	0	2021-12-02 10:57:45.639	47m 16s	46m 20s	291.6%	353 MB	2 GB	692.6 MB	162.2 MB
+504	4a/32cd5d	9781	network_inference_workflow:pearson_workflow:pvalues (150N_100S)	CACHED	0	2021-12-02 11:10:51.319	1m 28s	38.3s	40.3%	8.1 MB	300 MB	161.6 MB	257 KB
+506	81/28ca64	28336	network_inference_workflow:make_network_with_pvalue (150N_100S)	CACHED	0	2021-12-02 11:16:16.120	24.7s	23.9s	17.6%	104.6 MB	431.7 MB	37.2 MB	1.2 MB
+438	3a/1cbff7	32748	network_inference_workflow:propr_workflow:propr (25N_200S)	CACHED	0	2021-12-02 11:00:59.526	4m 52s	3m 36s	141.7%	586.8 MB	1.5 GB	68.3 MB	11.7 MB
+505	49/637922	8994	network_inference_workflow:spearman_workflow:pvalues (150N_500S)	CACHED	0	2021-12-02 11:45:02.034	20.5s	16.4s	94.3%	8.4 MB	300.2 MB	162.6 MB	257 KB
+436	9b/d23d62	21646	network_inference_workflow:spearman_workflow:spearman (25N_100S)	CACHED	0	2021-12-02 10:52:28.419	3m 8s	2m 20s	157.6%	310.5 MB	2 GB	40 MB	4.8 MB
+428	02/feee44	21461	network_inference_workflow:propr_workflow:propr (50N_200S)	CACHED	0	2021-12-02 11:03:00.271	5m 32s	4m 14s	156.7%	620.9 MB	1.5 GB	116.5 MB	46.4 MB
+508	d8/6dba76	12063	network_inference_workflow:make_network_with_pvalue (150N_500S)	CACHED	0	2021-12-02 11:45:22.516	5.3s	5.1s	74.2%	120.8 MB	447.7 MB	37.2 MB	1.3 MB
+509	2a/eae282	11101	network_inference_workflow:spearman_workflow:pvalues (25N_100S)	CACHED	0	2021-12-02 11:13:16.493	59.7s	5.5s	11.5%	7.2 MB	299.6 MB	4.8 MB	95.6 KB
+507	12/1e6053	29749	network_inference_workflow:propr_workflow:pvalues (25N_200S)	CACHED	0	2021-12-02 11:15:00.225	1m 10s	4.8s	13.9%	7.3 MB	299.6 MB	11.5 MB	95.6 KB
+510	0f/2abec4	13541	network_inference_workflow:propr_workflow:pvalues (50N_200S)	CACHED	0	2021-12-02 11:15:44.097	1m 14s	11.1s	18.9%	7.3 MB	299.8 MB	46.3 MB	110.3 KB
+404	d5/6fab07	13723	network_inference_workflow:pearson_workflow:pearson (200N_50S)	CACHED	0	2021-12-02 10:29:26.271	9m 23s	8m 45s	226.8%	328.8 MB	1.9 GB	104.2 MB	287.1 MB
+447	a2/18e9ec	20848	network_inference_workflow:propr_workflow:propr (100N_100S)	CACHED	0	2021-12-02 10:29:41.001	3m 18s	2m 18s	199.5%	653.5 MB	1.6 GB	109.8 MB	183.9 MB
+511	ff/04b22c	3471	network_inference_workflow:make_network_with_pvalue (25N_100S)	CACHED	0	2021-12-02 11:16:42.822	6.7s	5.6s	24.3%	96.7 MB	423.9 MB	22.1 MB	44.3 KB
+512	cd/a83f11	14129	network_inference_workflow:make_network_with_pvalue (25N_200S)	CACHED	0	2021-12-02 11:17:02.654	8s	6.8s	18.6%	96.7 MB	423.9 MB	22.1 MB	46 KB
+513	8e/810c1e	19996	network_inference_workflow:make_network_with_pvalue (50N_200S)	CACHED	0	2021-12-02 11:17:16.550	7.5s	6.4s	25.1%	98.3 MB	426.6 MB	25.1 MB	173.1 KB
+373	70/d8fe38	27239	network_inference_workflow:pearson_workflow:pearson (25N_100S)	CACHED	0	2021-12-02 10:31:21.247	1m 14s	18.2s	153.6%	308.8 MB	1.9 GB	40 MB	4.8 MB
+399	2b/2601a6	5606	network_inference_workflow:spearman_workflow:spearman (150N_50S)	CACHED	0	2021-12-02 10:43:18.247	48m 27s	47m 40s	230.6%	323.7 MB	2 GB	84.2 MB	161.4 MB
+455	89/3dcb93	26817	network_inference_workflow:spearman_workflow:spearman (10N_50S)	CACHED	0	2021-12-02 10:36:15.912	1m 14s	23.9s	152.2%	317.6 MB	2 GB	19.7 MB	875 KB
+457	5b/b540d7	36769	network_inference_workflow:spearman_workflow:spearman (25N_200S)	CACHED	0	2021-12-02 10:47:01.610	3m 30s	2m 36s	146.6%	313.6 MB	2 GB	66 MB	4.8 MB
+406	a0/28c73b	27004	network_inference_workflow:pearson_workflow:pearson (150N_50S)	CACHED	0	2021-12-02 10:38:51.913	7m 13s	6m 24s	172.6%	322.1 MB	1.9 GB	84.2 MB	161.6 MB
+385	39/51bcd0	35476	network_inference_workflow:propr_workflow:propr (150N_200S)	CACHED	0	2021-12-02 10:35:16.273	8m 2s	7m	182.0%	615.5 MB	1.5 GB	291.7 MB	417.3 MB
+515	ee/f3e702	22891	network_inference_workflow:propr_workflow:pvalues (100N_100S)	CACHED	0	2021-12-02 11:06:36.565	1m 14s	19.3s	40.5%	7.9 MB	299.8 MB	183.8 MB	167.5 KB
+514	25/42af71	15283	network_inference_workflow:pearson_workflow:pvalues (200N_50S)	CACHED	0	2021-12-02 11:08:38.540	2m 3s	1m 11s	39.0%	8.7 MB	300.2 MB	287.2 MB	378.8 KB
+516	c1/727166	12653	network_inference_workflow:pearson_workflow:pvalues (25N_100S)	CACHED	0	2021-12-02 11:06:17.833	58.5s	3.4s	17.3%	6.8 MB	298.6 MB	4.8 MB	95.6 KB
+461	28/ebeb98	21986	network_inference_workflow:spearman_workflow:spearman (25N_50S)	CACHED	0	2021-12-02 10:41:10.364	2m 53s	2m 5s	161.9%	310.1 MB	2 GB	26.9 MB	4.8 MB
+462	e0/eabb1c	28274	network_inference_workflow:propr_workflow:propr (25N_50S)	CACHED	0	2021-12-02 10:55:14.736	2m 15s	1m 9s	129.1%	500.8 MB	1.4 GB	29.1 MB	11.5 MB
+517	31/5f2228	5820	network_inference_workflow:spearman_workflow:pvalues (150N_50S)	CACHED	0	2021-12-02 11:31:45.518	22.3s	17s	90.4%	8.3 MB	300 MB	161.4 MB	255.1 KB
+518	d3/3d4ab0	1324	network_inference_workflow:spearman_workflow:pvalues (10N_50S)	CACHED	0	2021-12-02 11:08:13.141	55.3s	2.9s	9.1%	6.8 MB	298.6 MB	933.1 KB	89 KB
+522	23/b31ee0	7685	network_inference_workflow:make_network_with_pvalue (100N_100S)	CACHED	0	2021-12-02 11:15:30.522	13.5s	12.5s	21.4%	109.9 MB	437.1 MB	31.2 MB	659.3 KB
+519	05/c266ba	11389	network_inference_workflow:spearman_workflow:pvalues (25N_200S)	CACHED	0	2021-12-02 11:12:08.649	59.7s	4.2s	14.9%	7.2 MB	299.6 MB	4.8 MB	95.6 KB
+413	91/bf7a1b	30621	network_inference_workflow:propr_workflow:propr (10N_200S)	CACHED	0	2021-12-02 10:37:40.694	3m 25s	2m 22s	173.2%	472.4 MB	1.4 GB	38.8 MB	2 MB
+523	fe/a54d9a	24976	network_inference_workflow:make_network_with_pvalue (200N_50S)	CACHED	0	2021-12-02 11:16:08.286	35.3s	32.6s	20.0%	140.1 MB	466.7 MB	43.3 MB	2.1 MB
+524	f2/980d12	5228	network_inference_workflow:make_network_with_pvalue (25N_100S)	CACHED	0	2021-12-02 11:15:25.636	4.8s	3.9s	32.3%	96.7 MB	423.9 MB	22.1 MB	43.8 KB
+521	1c/0feb4e	26557	network_inference_workflow:propr_workflow:pvalues (150N_200S)	CACHED	0	2021-12-02 11:10:09.470	1m 34s	43.9s	39.4%	8.3 MB	300.1 MB	417.3 MB	257 KB
+520	b6/40bf6e	8450	network_inference_workflow:pearson_workflow:pvalues (150N_50S)	CACHED	0	2021-12-02 11:10:47.769	1m 25s	34.6s	44.8%	8.3 MB	300 MB	161.7 MB	255.1 KB
+389	46/5be18c	33861	network_inference_workflow:propr_workflow:propr (200N_50S)	CACHED	0	2021-12-02 10:32:58.846	3m 32s	2m 31s	181.0%	593 MB	1.5 GB	105.2 MB	726.7 MB
+526	5d/523ba5	9410	network_inference_workflow:make_network_with_pvalue (150N_50S)	CACHED	0	2021-12-02 11:32:07.805	8.1s	7.9s	49.4%	118.1 MB	445 MB	37.2 MB	1.2 MB
+528	b5/203088	15867	network_inference_workflow:make_network_with_pvalue (10N_50S)	CACHED	0	2021-12-02 11:15:48.918	5.5s	4.5s	26.3%	96.6 MB	423.9 MB	20.4 MB	10.4 KB
+527	d0/3b6be0	15233	network_inference_workflow:propr_workflow:pvalues (25N_50S)	CACHED	0	2021-12-02 11:13:24.305	1m 1s	5.5s	11.8%	7.2 MB	299.6 MB	11.3 MB	93.7 KB
+525	99/fdecf5	35819	network_inference_workflow:spearman_workflow:pvalues (25N_50S)	CACHED	0	2021-12-02 11:10:27.575	53.5s	3.6s	17.1%	6.8 MB	298.6 MB	4.8 MB	93.7 KB
+442	65/878bfb	35326	network_inference_workflow:spearman_workflow:spearman (10N_100S)	CACHED	0	2021-12-02 10:36:34.720	1m 20s	29.3s	137.3%	310.1 MB	2 GB	25.3 MB	878.2 KB
+377	68/543a08	4395	network_inference_workflow:pearson_workflow:pearson (100N_200S)	CACHED	0	2021-12-02 10:34:22.163	3m 51s	3m 3s	186.4%	343.2 MB	1.9 GB	203.6 MB	72.5 MB
+441	35/22f247	8460	network_inference_workflow:spearman_workflow:spearman (25N_500S)	CACHED	0	2021-12-02 10:30:29.660	3m 3s	2m 5s	200.8%	332 MB	2 GB	143.8 MB	4.8 MB
+454	20/600185	4052	network_inference_workflow:spearman_workflow:spearman (50N_500S)	CACHED	0	2021-12-02 10:36:44.911	9m 47s	8m 57s	181.6%	342.3 MB	2 GB	264.3 MB	18.4 MB
+529	33/9b27ef	36407	network_inference_workflow:make_network_with_pvalue (25N_200S)	CACHED	0	2021-12-02 11:16:33.677	5.8s	4.4s	29.9%	97.4 MB	424.6 MB	22.1 MB	44.4 KB
+423	57/745539	16099	network_inference_workflow:propr_workflow:propr (25N_100S)	CACHED	0	2021-12-02 10:28:28.858	1m 14s	1m	264.1%	536.6 MB	1.5 GB	42.3 MB	11.6 MB
+532	5d/4c42e8	25931	network_inference_workflow:make_network_with_pvalue (150N_200S)	CACHED	0	2021-12-02 11:16:10.841	23.6s	22.4s	20.5%	110.6 MB	437.5 MB	37.4 MB	1.4 MB
+534	2f/2114ff	3965	network_inference_workflow:make_network_with_pvalue (25N_50S)	CACHED	0	2021-12-02 11:16:43.650	6.1s	4.7s	27.8%	97.3 MB	424.6 MB	22.1 MB	45.1 KB
+535	47/858684	25877	network_inference_workflow:make_network_with_pvalue (25N_50S)	CACHED	0	2021-12-02 11:16:10.601	6.9s	5.4s	24.8%	95.8 MB	423.6 MB	22.1 MB	44 KB
+530	2b/d8dffe	1150	network_inference_workflow:propr_workflow:pvalues (10N_200S)	CACHED	0	2021-12-02 11:09:20.042	55s	3.3s	8.1%	2.4 MB	220.5 MB	1.8 MB	90.9 KB
+531	3b/1d899b	28277	network_inference_workflow:make_network_with_pvalue (150N_50S)	CACHED	0	2021-12-02 11:16:15.991	24.7s	23.6s	17.9%	104.7 MB	432 MB	37.2 MB	1.2 MB
+401	e8/e6e5c9	12627	network_inference_workflow:spearman_workflow:spearman (200N_50S)	CACHED	0	2021-12-02 10:29:24.195	1h 16m 27s	1h 15m 50s	264.4%	336.1 MB	2 GB	104.2 MB	286.4 MB
+465	ab/dc4dca	7893	network_inference_workflow:pearson_workflow:pearson (10N_50S)	CACHED	0	2021-12-02 10:48:34.779	1m	9.8s	89.9%	308 MB	1.8 GB	19.7 MB	897.4 KB
+533	3d/866ec0	33036	network_inference_workflow:propr_workflow:pvalues (200N_50S)	CACHED	0	2021-12-02 11:08:03.657	2m 6s	1m 14s	42.0%	8.7 MB	300.2 MB	726.5 MB	378.8 KB
+392	be/7d93f5	26057	network_inference_workflow:pearson_workflow:pearson (50N_500S)	CACHED	0	2021-12-02 10:41:18.228	2m 11s	1m 22s	150.4%	329.1 MB	1.9 GB	264.3 MB	18.4 MB
+459	36/02b50c	8901	network_inference_workflow:propr_workflow:propr (100N_500S)	CACHED	0	2021-12-02 10:38:12.747	14m 37s	13m 35s	166.5%	842.8 MB	1.8 GB	482 MB	187.4 MB
+437	4a/53e120	23720	network_inference_workflow:pearson_workflow:pearson (25N_500S)	CACHED	0	2021-12-02 10:29:45.091	1m 11s	29.1s	161.4%	316.7 MB	1.9 GB	143.9 MB	4.8 MB
+536	98/dd12c6	3672	network_inference_workflow:spearman_workflow:pvalues (10N_100S)	CACHED	0	2021-12-02 11:08:16.940	54.6s	2.8s	9.5%	6.8 MB	298.6 MB	937.8 KB	90.9 KB
+408	d1/7ed1b9	22638	network_inference_workflow:propr_workflow:propr (100N_50S)	CACHED	0	2021-12-02 11:01:55.428	3m 10s	1m 56s	135.7%	646.7 MB	1.6 GB	63.2 MB	182.1 MB
+429	94/d32534	29240	network_inference_workflow:spearman_workflow:spearman (200N_100S)	CACHED	0	2021-12-02 10:31:25.893	1h 12m 47s	1h 11m 51s	254.3%	338.4 MB	2 GB	196.6 MB	284.7 MB
+394	b0/3e0d34	21728	network_inference_workflow:pearson_workflow:pearson (100N_500S)	CACHED	0	2021-12-02 10:45:09.408	5m 36s	4m 43s	153.7%	334.8 MB	1.9 GB	481 MB	72.5 MB
+379	c8/2c6cad	26577	network_inference_workflow:propr_workflow:propr (150N_100S)	CACHED	0	2021-12-02 10:36:15.323	4m 36s	3m 31s	175.9%	623.6 MB	1.5 GB	154.3 MB	413.1 MB
+435	78/4f0d46	33153	network_inference_workflow:pearson_workflow:pearson (10N_500S)	CACHED	0	2021-12-02 10:28:49.772	55.3s	14.9s	169.7%	310.1 MB	1.9 GB	70.2 MB	902.4 KB
+463	78/de0f8a	30662	network_inference_workflow:propr_workflow:propr (10N_50S)	CACHED	0	2021-12-02 10:31:29.130	1m 48s	40.1s	180.9%	429 MB	1.4 GB	19.8 MB	2 MB
+541	bf/43df65	20778	network_inference_workflow:make_network_with_pvalue (10N_200S)	CACHED	0	2021-12-02 11:15:58.680	9.6s	3.6s	33.2%	96.1 MB	423.6 MB	20.4 MB	10.8 KB
+421	f1/c49b34	34871	network_inference_workflow:propr_workflow:propr (150N_50S)	CACHED	0	2021-12-02 10:28:51.163	2m 30s	1m 34s	220.5%	626.5 MB	1.5 GB	85.2 MB	409.1 MB
+544	ec/b468e3	19045	network_inference_workflow:make_network_with_pvalue (200N_50S)	CACHED	0	2021-12-02 11:15:54.768	19.4s	17.5s	38.4%	133.5 MB	460 MB	43.7 MB	2.6 MB
+400	bc/cd65f1	16121	network_inference_workflow:spearman_workflow:spearman (10N_200S)	CACHED	0	2021-12-02 10:28:29.218	20.5s	14.8s	286.5%	310.5 MB	2 GB	36.5 MB	878.6 KB
+430	0e/1dc3d0	1160	network_inference_workflow:pearson_workflow:pearson (50N_200S)	CACHED	0	2021-12-02 11:02:26.270	2m 30s	1m 29s	133.0%	325.2 MB	1.9 GB	115.5 MB	18.4 MB
+434	7a/bcac84	2841	network_inference_workflow:spearman_workflow:spearman (100N_50S)	CACHED	0	2021-12-02 10:34:19.630	30m 1s	29m 13s	171.0%	321.8 MB	2 GB	62.2 MB	72.1 MB
+464	9c/4228fe	35068	network_inference_workflow:pearson_workflow:pearson (25N_50S)	CACHED	0	2021-12-02 10:30:05.423	1m 19s	19s	153.6%	308.5 MB	1.9 GB	26.9 MB	4.8 MB
+405	63/7ae583	22419	network_inference_workflow:spearman_workflow:spearman (50N_100S)	CACHED	0	2021-12-02 10:28:34.918	5m 31s	5m 15s	264.1%	314.2 MB	2 GB	64.8 MB	18.4 MB
+540	e4/b03513	6181	network_inference_workflow:propr_workflow:pvalues (25N_100S)	CACHED	0	2021-12-02 11:04:56.816	1m 3s	4.2s	16.1%	7.2 MB	299.6 MB	11.4 MB	95.7 KB
+452	fa/be7a6e	33428	network_inference_workflow:propr_workflow:propr (50N_50S)	CACHED	0	2021-12-02 10:36:30.805	2m 11s	1m 7s	166.5%	590.8 MB	1.5 GB	41.6 MB	45.6 MB
+391	3e/d66c0e	13662	network_inference_workflow:pearson_workflow:pearson (150N_500S)	CACHED	0	2021-12-02 10:55:57.190	10m 39s	9m 49s	157.3%	346.2 MB	1.9 GB	692.6 MB	162.4 MB
+384	ff/f390a1	30277	network_inference_workflow:pearson_workflow:pearson (25N_200S)	CACHED	0	2021-12-02 10:28:46.097	54.8s	18.5s	175.2%	309 MB	1.9 GB	66.1 MB	4.8 MB
+409	f0/4be839	26474	network_inference_workflow:spearman_workflow:spearman (10N_500S)	CACHED	0	2021-12-02 10:50:29.340	1m 27s	40.9s	140.0%	311 MB	2 GB	70.2 MB	878 KB
+426	0d/ff43b7	21785	network_inference_workflow:pearson_workflow:pearson (10N_100S)	CACHED	0	2021-12-02 10:29:43.031	46.6s	9.1s	112.1%	308.3 MB	1.8 GB	25.3 MB	900.9 KB
+396	9a/2722d9	27761	network_inference_workflow:spearman_workflow:spearman (200N_500S)	CACHED	0	2021-12-02 10:40:01.285	1h 21m 50s	1h 21m 2s	290.2%	352.5 MB	2 GB	900.8 MB	287.1 MB
+443	b4/1d90e6	11585	network_inference_workflow:propr_workflow:propr (50N_500S)	CACHED	0	2021-12-02 10:43:32.580	10m 57s	9m 55s	163.5%	655.7 MB	1.6 GB	266.6 MB	46.9 MB
+416	19/d8b403	9979	network_inference_workflow:pearson_workflow:pearson (100N_100S)	CACHED	0	2021-12-02 10:46:05.440	4m 24s	3m 30s	151.4%	324.9 MB	1.9 GB	108.8 MB	72.5 MB
+450	f7/986f34	11304	network_inference_workflow:propr_workflow:propr (10N_100S)	CACHED	0	2021-12-02 10:40:48.438	2m 27s	1m 27s	147.8%	454.5 MB	1.4 GB	27.5 MB	2 MB
+542	f7/0f2716	12881	network_inference_workflow:spearman_workflow:pvalues (200N_50S)	CACHED	0	2021-12-02 11:45:51.637	33.2s	28.3s	96.3%	8.7 MB	300.2 MB	286.5 MB	378.8 KB
+539	29/260b3c	9387	network_inference_workflow:spearman_workflow:pvalues (50N_500S)	CACHED	0	2021-12-02 11:10:50.465	58s	7.6s	25.0%	7.3 MB	299.7 MB	18.6 MB	110.3 KB
+538	03/bf9e19	35055	network_inference_workflow:spearman_workflow:pvalues (25N_500S)	CACHED	0	2021-12-02 11:06:58.817	59.3s	3.6s	17.2%	6.8 MB	298.6 MB	4.9 MB	95.6 KB
+547	fa/8f9c79	16321	network_inference_workflow:make_network_with_pvalue (10N_100S)	CACHED	0	2021-12-02 11:15:49.792	4.9s	4s	30.2%	96.4 MB	423.6 MB	20.4 MB	10.5 KB
+460	a5/325c3f	29763	network_inference_workflow:propr_workflow:propr (10N_500S)	CACHED	0	2021-12-02 10:50:34.241	7m 45s	6m 43s	152.0%	574.3 MB	1.5 GB	72.4 MB	2 MB
+537	d9/4c6518	4970	network_inference_workflow:pearson_workflow:pvalues (100N_200S)	CACHED	0	2021-12-02 11:08:19.339	1m 10s	18.7s	37.8%	7.9 MB	299.8 MB	72.6 MB	167.5 KB
+440	e5/732b9b	3915	network_inference_workflow:spearman_workflow:spearman (150N_100S)	CACHED	0	2021-12-02 11:01:15.608	37m 42s	36m 42s	296.8%	333 MB	2 GB	153.3 MB	161.3 MB
+456	8c/06fab5	29235	network_inference_workflow:propr_workflow:propr (50N_100S)	CACHED	0	2021-12-02 10:45:26.918	3m 26s	2m 17s	148.2%	599.9 MB	1.5 GB	67 MB	46 MB
+415	aa/f24ffa	23735	network_inference_workflow:pearson_workflow:pearson (50N_100S)	CACHED	0	2021-12-02 10:59:06.347	2m 9s	1m 9s	128.8%	309.8 MB	1.9 GB	64.8 MB	18.4 MB
+543	63/7b6d79	32236	network_inference_workflow:pearson_workflow:pvalues (10N_50S)	CACHED	0	2021-12-02 11:11:36.193	52.6s	3s	9.0%	6.8 MB	298.6 MB	933.2 KB	89 KB
+548	cd/d11b6c	3115	network_inference_workflow:pearson_workflow:pvalues (25N_500S)	CACHED	0	2021-12-02 11:05:59.105	1m 1s	4.8s	13.0%	7.4 MB	299.8 MB	4.9 MB	95.6 KB
+552	58/ce940e	10084	network_inference_workflow:pearson_workflow:pvalues (10N_500S)	CACHED	0	2021-12-02 11:05:05.452	1m 2s	2.7s	9.2%	6.8 MB	298.6 MB	965.2 KB	90.9 KB
+553	be/6b326a	36135	network_inference_workflow:propr_workflow:pvalues (150N_100S)	CACHED	0	2021-12-02 11:09:17.497	1m 34s	40.5s	43.7%	8.2 MB	300 MB	413 MB	257 KB
+545	5f/d9c337	29600	network_inference_workflow:pearson_workflow:pvalues (50N_500S)	CACHED	0	2021-12-02 11:10:15.069	57.5s	6.8s	27.6%	7.4 MB	299.7 MB	18.6 MB	110.3 KB
+550	8e/f1998d	4678	network_inference_workflow:spearman_workflow:pvalues (200N_100S)	CACHED	0	2021-12-02 11:44:13.492	31.5s	27.6s	96.4%	8.6 MB	300.1 MB	284.8 MB	380.7 KB
+546	d5/5debaf	21033	network_inference_workflow:propr_workflow:pvalues (100N_500S)	CACHED	0	2021-12-02 11:12:26.865	1m 16s	21.3s	36.4%	7.9 MB	299.9 MB	187.4 MB	167.5 KB
+554	1a/3d5347	24144	network_inference_workflow:propr_workflow:pvalues (10N_50S)	CACHED	0	2021-12-02 11:06:39.088	57.7s	2.7s	10.1%	7.2 MB	299.6 MB	1.8 MB	89 KB
+573	aa/a2adcc	25998	network_inference_workflow:make_network_with_pvalue (50N_500S)	CACHED	0	2021-12-02 11:16:10.927	9.8s	8.7s	19.4%	100.2 MB	427.4 MB	25.1 MB	160.6 KB
+549	df/19627d	27277	network_inference_workflow:propr_workflow:pvalues (100N_50S)	CACHED	0	2021-12-02 11:14:55.230	1m 28s	24.5s	32.1%	7.8 MB	299.8 MB	181.9 MB	165.6 KB
+570	47/757f43	31838	network_inference_workflow:make_network_with_pvalue (25N_100S)	CACHED	0	2021-12-02 11:15:04.504	5.5s	4.6s	29.5%	97.4 MB	424.6 MB	22.1 MB	47.7 KB
+572	6b/58603c	16206	network_inference_workflow:make_network_with_pvalue (200N_50S)	CACHED	0	2021-12-02 11:46:24.903	9s	8.7s	66.7%	146.4 MB	473 MB	43.3 MB	2.1 MB
+574	3c/c76ebc	17015	network_inference_workflow:make_network_with_pvalue (100N_200S)	CACHED	0	2021-12-02 11:15:50.964	17.3s	11.6s	23.4%	109.6 MB	436.9 MB	31.1 MB	596.9 KB
+560	7f/aca740	14741	network_inference_workflow:propr_workflow:pvalues (50N_50S)	CACHED	0	2021-12-02 11:08:37.590	1m 1s	8s	26.3%	7.5 MB	299.6 MB	45.4 MB	108.4 KB
+575	64/f1823a	8902	network_inference_workflow:make_network_with_pvalue (25N_500S)	CACHED	0	2021-12-02 11:15:33.286	7s	5.6s	22.4%	97.4 MB	424.6 MB	22.1 MB	44.5 KB
+563	5a/7c5e12	35386	network_inference_workflow:pearson_workflow:pvalues (10N_100S)	CACHED	0	2021-12-02 11:05:51.076	1m 1s	3.2s	8.2%	6.8 MB	298.5 MB	937.6 KB	90.9 KB
+565	3d/acf8cf	36193	network_inference_workflow:spearman_workflow:pvalues (50N_100S)	CACHED	0	2021-12-02 11:07:00.574	1m 3s	6.9s	27.6%	7.3 MB	299.6 MB	18.5 MB	110.4 KB
+551	c5/796baf	16701	network_inference_workflow:pearson_workflow:pvalues (100N_500S)	CACHED	0	2021-12-02 11:12:18.892	1m 15s	20.5s	34.2%	7.8 MB	299.9 MB	72.8 MB	167.5 KB
+577	35/49c65a	30631	network_inference_workflow:make_network_with_pvalue (10N_50S)	CACHED	0	2021-12-02 11:16:20.694	5.4s	4.3s	25.3%	96.4 MB	423.6 MB	20.4 MB	10.4 KB
+555	77/52ae61	3617	network_inference_workflow:propr_workflow:pvalues (150N_50S)	CACHED	0	2021-12-02 11:05:59.944	1m 40s	44.3s	39.6%	8.3 MB	300 MB	409 MB	255.1 KB
+557	29/28d8b5	21840	network_inference_workflow:spearman_workflow:pvalues (100N_50S)	CACHED	0	2021-12-02 11:14:42.996	1m 25s	16s	43.4%	7.8 MB	299.8 MB	72.1 MB	165.6 KB
+556	38/54d368	25542	network_inference_workflow:spearman_workflow:pvalues (10N_200S)	CACHED	0	2021-12-02 11:04:20.855	1m 3s	3.1s	8.9%	6.8 MB	298.6 MB	944.6 KB	90.9 KB
+566	d4/f13b1c	13025	network_inference_workflow:propr_workflow:pvalues (10N_100S)	CACHED	0	2021-12-02 11:09:43.651	50.6s	2.7s	10.2%	6.8 MB	298.6 MB	1.8 MB	90.9 KB
+558	47/112b5c	3879	network_inference_workflow:pearson_workflow:pvalues (25N_50S)	CACHED	0	2021-12-02 11:06:00.607	59.9s	4.9s	12.6%	7.2 MB	299.6 MB	4.8 MB	93.7 KB
+561	77/0c6bda	27034	network_inference_workflow:pearson_workflow:pvalues (50N_200S)	CACHED	0	2021-12-02 11:14:54.586	1m 16s	10.9s	17.4%	7.3 MB	299.8 MB	18.5 MB	110.3 KB
+569	ca/7c5acb	30490	network_inference_workflow:spearman_workflow:pvalues (200N_500S)	CACHED	0	2021-12-02 12:01:52.114	31.9s	27.7s	96.1%	9.1 MB	300.6 MB	287.6 MB	380.7 KB
+562	8a/842080	5168	network_inference_workflow:pearson_workflow:pvalues (25N_200S)	CACHED	0	2021-12-02 11:04:54.308	1m 5s	4.5s	13.9%	7.2 MB	299.6 MB	4.8 MB	95.6 KB
+571	02/e22f82	19446	network_inference_workflow:propr_workflow:pvalues (10N_500S)	CACHED	0	2021-12-02 11:13:31.778	59.2s	3.9s	7.4%	7.3 MB	299.8 MB	1.8 MB	90.9 KB
+559	89/0bb84b	34841	network_inference_workflow:pearson_workflow:pvalues (150N_500S)	CACHED	0	2021-12-02 11:15:10.110	1m 41s	35.1s	44.2%	8.4 MB	300.2 MB	162.7 MB	257 KB
+564	28/b7b8e1	25047	network_inference_workflow:propr_workflow:pvalues (50N_500S)	CACHED	0	2021-12-02 11:12:33.985	1m 5s	10.3s	20.3%	7.3 MB	299.7 MB	46.9 MB	110.3 KB
+586	41/4dea05	6546	network_inference_workflow:make_network_with_pvalue (10N_50S)	CACHED	0	2021-12-02 11:15:28.522	4.7s	3.7s	31.8%	93.3 MB	421 MB	20.4 MB	11.3 KB
+567	7a/9be53f	17334	network_inference_workflow:spearman_workflow:pvalues (10N_500S)	CACHED	0	2021-12-02 11:12:20.275	59.7s	5.5s	5.2%	7.3 MB	299.8 MB	965.1 KB	90.9 KB
+587	c3/e03d36	17660	network_inference_workflow:make_network_with_pvalue (100N_50S)	CACHED	0	2021-12-02 11:17:10.637	13.3s	11.9s	22.5%	106.4 MB	433.6 MB	31.2 MB	661 KB
+583	0f/fbbb98	24985	network_inference_workflow:make_network_with_pvalue (50N_500S)	CACHED	0	2021-12-02 11:16:08.296	11.1s	7.9s	21.1%	97.5 MB	424.9 MB	25.1 MB	158.4 KB
+582	6f/90b071	24980	network_inference_workflow:make_network_with_pvalue (150N_100S)	CACHED	0	2021-12-02 11:16:08.291	25.4s	22.7s	20.7%	110.6 MB	437.5 MB	37.4 MB	1.4 MB
+584	4b/3aa9d5	8376	network_inference_workflow:make_network_with_pvalue (200N_100S)	CACHED	0	2021-12-02 11:44:45.038	8.5s	8s	66.7%	141.7 MB	468.5 MB	43.3 MB	1.9 MB
+585	6d/a46f56	34571	network_inference_workflow:make_network_with_pvalue (10N_500S)	CACHED	0	2021-12-02 11:15:09.596	6.3s	5.3s	21.8%	90.9 MB	418.6 MB	20.4 MB	10.6 KB
+581	b0/b5341b	2478	network_inference_workflow:make_network_with_pvalue (100N_500S)	CACHED	0	2021-12-02 11:16:40.860	13.3s	12.1s	23.0%	107.6 MB	434.9 MB	31.2 MB	670 KB
+579	3e/fc7be0	25000	network_inference_workflow:propr_workflow:pvalues (50N_100S)	CACHED	0	2021-12-02 11:11:21.137	58.5s	7.5s	28.0%	7.3 MB	299.6 MB	45.8 MB	110.3 KB
+580	b6/e984e0	3669	network_inference_workflow:make_network_with_pvalue (25N_500S)	CACHED	0	2021-12-02 11:15:22.750	5.8s	4.2s	29.2%	96.6 MB	423.9 MB	22.1 MB	45.1 KB
+598	8e/cc18f7	11666	network_inference_workflow:make_network_with_pvalue (100N_50S)	CACHED	0	2021-12-02 11:16:58.066	18.5s	17.6s	15.1%	99.8 MB	427.1 MB	31.1 MB	563 KB
+597	18/3a73a3	33653	network_inference_workflow:make_network_with_pvalue (200N_500S)	CACHED	0	2021-12-02 12:02:24.022	9.4s	9.2s	63.0%	144.7 MB	471.2 MB	43.3 MB	2.2 MB
+589	f4/5bfdac	7045	network_inference_workflow:make_network_with_pvalue (150N_50S)	CACHED	0	2021-12-02 11:15:29.374	19.5s	18.5s	24.4%	108.7 MB	437.5 MB	37.4 MB	1.4 MB
+591	1c/6be91e	694	network_inference_workflow:make_network_with_pvalue (10N_100S)	CACHED	0	2021-12-02 11:15:16.672	6.1s	5s	26.3%	96.4 MB	423.6 MB	20.4 MB	10.5 KB
+600	5f/9e58e6	2414	network_inference_workflow:make_network_with_pvalue (50N_500S)	CACHED	0	2021-12-02 11:16:40.733	9s	8s	20.5%	97.5 MB	425.6 MB	25.1 MB	173.4 KB
+588	a7/cef193	17807	network_inference_workflow:make_network_with_pvalue (50N_50S)	CACHED	0	2021-12-02 11:15:52.486	15.8s	7.2s	23.1%	100.3 MB	428.1 MB	25.1 MB	164.5 KB
+596	ba/e74f5a	27601	network_inference_workflow:make_network_with_pvalue (10N_200S)	CACHED	0	2021-12-02 11:14:55.846	4.2s	3.2s	36.3%	96.6 MB	423.9 MB	20.4 MB	10.3 KB
+595	24/6a9d58	11846	network_inference_workflow:make_network_with_pvalue (50N_100S)	CACHED	0	2021-12-02 11:15:40.338	6.3s	5.3s	30.6%	97.4 MB	424.9 MB	25.1 MB	160.1 KB
+592	57/94c72d	15212	network_inference_workflow:make_network_with_pvalue (50N_200S)	CACHED	0	2021-12-02 11:17:04.656	11.5s	10s	16.6%	100 MB	427.4 MB	25.1 MB	161.4 KB
+568	01/525475	5680	network_inference_workflow:pearson_workflow:pvalues (100N_100S)	CACHED	0	2021-12-02 11:11:55.775	1m 9s	17.6s	39.9%	7.9 MB	299.8 MB	72.5 MB	167.5 KB
+594	28/02110b	1881	network_inference_workflow:make_network_with_pvalue (100N_500S)	CACHED	0	2021-12-02 11:16:39.449	12.6s	11.6s	22.9%	109.1 MB	436.4 MB	31.1 MB	600.1 KB
+576	0a/b8efeb	23002	network_inference_workflow:pearson_workflow:pvalues (50N_100S)	CACHED	0	2021-12-02 11:13:39.244	1m 4s	10.5s	18.3%	7.3 MB	299.6 MB	18.5 MB	110.3 KB
+593	87/cb48cb	4370	network_inference_workflow:make_network_with_pvalue (25N_50S)	CACHED	0	2021-12-02 11:15:24.018	5.4s	4.1s	32.3%	96.7 MB	423.9 MB	22.1 MB	43.4 KB
+578	44/72741e	27788	network_inference_workflow:spearman_workflow:pvalues (150N_100S)	CACHED	0	2021-12-02 11:38:58.174	20.1s	16.4s	92.9%	8.1 MB	300 MB	161.4 MB	257 KB
+590	f7/56d13c	24943	network_inference_workflow:make_network_with_pvalue (10N_100S)	CACHED	0	2021-12-02 11:16:08.235	7.9s	6s	20.0%	96.6 MB	423.9 MB	20.4 MB	10.9 KB
+602	9c/310306	17957	network_inference_workflow:make_network_with_pvalue (150N_500S)	CACHED	0	2021-12-02 11:17:11.251	16.5s	15.3s	28.3%	118.8 MB	445.7 MB	37.2 MB	1.3 MB
+601	98/8944f2	30800	network_inference_workflow:make_network_with_pvalue (25N_200S)	CACHED	0	2021-12-02 11:15:02.566	7s	4.5s	31.0%	97.4 MB	424.6 MB	22.1 MB	44.9 KB
+431	62/b68b71	21744	network_inference_workflow:pearson_workflow:pearson (50N_50S)	CACHED	0	2021-12-02 10:28:34.523	51.7s	35.4s	224.4%	312.2 MB	1.9 GB	40.6 MB	18.4 MB
+606	1a/100551	35211	network_inference_workflow:make_network_with_pvalue (100N_100S)	CACHED	0	2021-12-02 11:16:30.242	12s	10.7s	25.1%	106.3 MB	433.6 MB	31.1 MB	585.9 KB
+604	66/2224e2	29064	network_inference_workflow:make_network_with_pvalue (50N_100S)	CACHED	0	2021-12-02 11:16:17.477	12.7s	11.7s	14.4%	97.9 MB	426.1 MB	25.1 MB	173 KB
+599	52/9b6cd4	3990	network_inference_workflow:make_network_with_pvalue (10N_500S)	CACHED	0	2021-12-02 11:16:43.673	5.4s	3.9s	29.6%	96.4 MB	423.6 MB	20.4 MB	10.8 KB
+603	cd/552011	36633	network_inference_workflow:make_network_with_pvalue (10N_500S)	CACHED	0	2021-12-02 11:16:34.442	4.5s	3.5s	34.2%	96.4 MB	423.6 MB	20.4 MB	10.6 KB
+607	4f/012d36	32021	network_inference_workflow:make_network_with_pvalue (150N_100S)	CACHED	0	2021-12-02 11:39:18.237	5.2s	5.1s	73.6%	119.1 MB	446 MB	37.2 MB	1.2 MB
+605	b6/b937c2	6814	network_inference_workflow:make_network_with_pvalue (50N_100S)	CACHED	0	2021-12-02 11:16:49.556	8.1s	7.1s	23.9%	100.2 MB	427.4 MB	25.1 MB	160 KB
+608	9f/b42a8e	36398	network_inference_workflow:pearson_workflow:pvalues (50N_50S)	CACHED	0	2021-12-02 11:04:43.916	1m 7s	7.2s	26.5%	7.3 MB	299.6 MB	18.4 MB	108.4 KB
+609	95/698827	27616	network_inference_workflow:make_network_with_pvalue (50N_50S)	CACHED	0	2021-12-02 11:14:55.884	6.7s	5.4s	30.3%	97.4 MB	424.9 MB	25.1 MB	150.4 KB
+74	5e/091268	12617	network_inference_workflow:mldm_workflow:mldm (10N_100S)	COMPLETED	0	2021-12-03 10:02:08.271	29.6s	25.3s	94.2%	308.4 MB	625.9 MB	27.5 MB	51.5 KB
+387	4c/36f69b	8997	network_inference_workflow:pearson_workflow:pearson (10N_200S)	CACHED	0	2021-12-02 10:28:15.154	14s	8.7s	159.9%	308.9 MB	1.9 GB	36.6 MB	902.5 KB
+611	8b/1bfc91	11964	network_inference_workflow:pearson_workflow:pvalues (10N_200S)	CACHED	0	2021-12-02 11:03:51.043	1m 3s	2.8s	9.9%	7.2 MB	299.6 MB	944.6 KB	90.9 KB
+612	4d/4ea425	25141	network_inference_workflow:make_network_with_pvalue (10N_200S)	CACHED	0	2021-12-02 11:14:50.105	5s	3.6s	31.0%	93.5 MB	421.3 MB	20.4 MB	10.3 KB
+67	17/b7d3fb	11886	network_inference_workflow:mldm_workflow:mldm (10N_200S)	COMPLETED	0	2021-12-03 10:02:07.478	33.1s	28.7s	93.5%	316.4 MB	634 MB	27.5 MB	47.8 KB
+466	d9/64a4d6	12500	network_inference_workflow:sparcc_workflow:sparcc (50N_50S)	CACHED	0	2021-12-02 11:01:34.660	2m 33s	1m 32s	66.3%	16.4 MB	262.1 MB	56.1 MB	85.5 MB
+614	e2/d64078	16038	network_inference_workflow:sparcc_workflow:pvalues (50N_50S)	CACHED	0	2021-12-02 11:14:31.087	1m 14s	12.2s	15.9%	7.5 MB	299.6 MB	18.5 MB	108.4 KB
+615	c2/c36f48	10817	network_inference_workflow:make_network_with_pvalue (50N_50S)	CACHED	0	2021-12-02 11:16:56.812	10.8s	9.8s	17.1%	100.2 MB	427.4 MB	25.1 MB	158 KB
+375	34/56c3bf	22238	network_inference_workflow:sparcc_workflow:sparcc (100N_100S)	CACHED	0	2021-12-02 10:46:32.276	3m 55s	3m	110.9%	16.5 MB	423.6 MB	124.3 MB	207 MB
+616	33/1eb45c	3563	network_inference_workflow:sparcc_workflow:pvalues (100N_100S)	CACHED	0	2021-12-02 11:11:51.376	1m 11s	19s	37.5%	7.9 MB	299.8 MB	72.7 MB	167.5 KB
+617	b4/ba013b	33271	network_inference_workflow:make_network_with_pvalue (100N_100S)	CACHED	0	2021-12-02 11:16:26.057	14.6s	13.6s	20.0%	106.4 MB	433.6 MB	31.1 MB	603.8 KB
+380	49/fe9146	25696	network_inference_workflow:sparcc_workflow:sparcc (50N_100S)	CACHED	0	2021-12-02 10:28:39.396	1m 26s	57.2s	127.3%	16.4 MB	262.1 MB	81.2 MB	85.1 MB
+414	40/3e3844	34934	network_inference_workflow:sparcc_workflow:sparcc (150N_500S)	CACHED	0	2021-12-02 10:49:34.920	14m 35s	13m 43s	120.5%	71.3 MB	1.9 GB	708.1 MB	392.7 MB
+618	22/4b05a3	25434	network_inference_workflow:sparcc_workflow:pvalues (50N_100S)	CACHED	0	2021-12-02 11:05:32.969	1m 6s	7.1s	26.5%	7.3 MB	299.6 MB	18.5 MB	110.3 KB
+619	5e/fdb952	18520	network_inference_workflow:sparcc_workflow:pvalues (150N_500S)	CACHED	0	2021-12-02 11:14:35.772	1m 40s	38.7s	40.4%	8.5 MB	300.2 MB	163 MB	257 KB
+412	69/d7d463	15518	network_inference_workflow:sparcc_workflow:sparcc (200N_100S)	CACHED	0	2021-12-02 10:48:53.023	10m 13s	9m 20s	122.5%	102.7 MB	2 GB	212.4 MB	644.2 MB
+620	2b/5d4925	454	network_inference_workflow:make_network_with_pvalue (50N_100S)	CACHED	0	2021-12-02 11:15:16.091	7.9s	6.6s	25.7%	97.4 MB	424.9 MB	25.1 MB	159.3 KB
+621	66/fd5b21	16384	network_inference_workflow:make_network_with_pvalue (150N_500S)	CACHED	0	2021-12-02 11:17:07.627	19.3s	18s	24.8%	105.5 MB	432.7 MB	37.2 MB	1.3 MB
+403	09/bf1626	3027	network_inference_workflow:sparcc_workflow:sparcc (200N_500S)	CACHED	0	2021-12-02 10:58:19.542	19m 11s	18m 15s	147.7%	103.8 MB	2 GB	916.4 MB	644.3 MB
+397	9f/0b5e69	5495	network_inference_workflow:sparcc_workflow:sparcc (50N_200S)	CACHED	0	2021-12-02 10:50:52.454	2m 50s	1m 58s	84.3%	16.5 MB	422.8 MB	130.9 MB	90.6 MB
+622	c0/d57aa9	20555	network_inference_workflow:sparcc_workflow:pvalues (200N_100S)	CACHED	0	2021-12-02 11:13:33.787	1m 52s	56.9s	48.9%	8.6 MB	300.1 MB	288.9 MB	380.7 KB
+623	66/a1d339	25865	network_inference_workflow:sparcc_workflow:pvalues (200N_500S)	CACHED	0	2021-12-02 11:17:32.271	1m 51s	39.8s	69.0%	9.1 MB	300.6 MB	289 MB	380.7 KB
+625	7b/644660	7648	network_inference_workflow:make_network_with_pvalue (200N_100S)	CACHED	0	2021-12-02 11:16:51.149	31.8s	30.9s	22.6%	149.1 MB	475.5 MB	43.3 MB	2.3 MB
+624	f1/238e0e	24727	network_inference_workflow:sparcc_workflow:pvalues (50N_200S)	CACHED	0	2021-12-02 11:12:33.255	1m 5s	9.4s	20.7%	7.3 MB	299.8 MB	18.5 MB	110.3 KB
+626	7f/70f096	7264	network_inference_workflow:make_network_with_pvalue (200N_500S)	CACHED	0	2021-12-02 11:19:24.144	17.6s	16.5s	39.6%	138.5 MB	465 MB	43.3 MB	2.4 MB
+627	0e/85740f	2365	network_inference_workflow:make_network_with_pvalue (50N_200S)	CACHED	0	2021-12-02 11:16:40.655	8.9s	7.8s	21.1%	97.4 MB	424.9 MB	25.1 MB	160.2 KB
+418	56/2eae7d	8448	network_inference_workflow:sparcc_workflow:sparcc (25N_100S)	CACHED	0	2021-12-02 10:59:55.766	2m	57.3s	66.3%	16.4 MB	262.1 MB	56.6 MB	51.6 MB
+451	18/808724	32727	network_inference_workflow:sparcc_workflow:sparcc (200N_200S)	CACHED	0	2021-12-02 10:42:55.510	11m 59s	11m 8s	132.8%	93.2 MB	2 GB	384.9 MB	644.3 MB
+417	a1/72f2c2	14806	network_inference_workflow:sparcc_workflow:sparcc (10N_500S)	CACHED	0	2021-12-02 11:01:39.152	2m 12s	1m 11s	55.0%	16.4 MB	262.1 MB	90 MB	52.7 MB
+628	ff/ed619b	5225	network_inference_workflow:sparcc_workflow:pvalues (25N_100S)	CACHED	0	2021-12-02 11:14:11.930	1m 5s	7.7s	8.4%	7.2 MB	299.6 MB	4.8 MB	95.6 KB
+444	8e/8992cd	5049	network_inference_workflow:sparcc_workflow:sparcc (100N_50S)	CACHED	0	2021-12-02 10:45:54.110	3m 31s	2m 36s	106.8%	16.4 MB	262.1 MB	77.7 MB	203.6 MB
+629	61/54c4d6	3574	network_inference_workflow:sparcc_workflow:pvalues (200N_200S)	CACHED	0	2021-12-02 11:13:02.214	1m 41s	45.4s	61.0%	8.9 MB	300.3 MB	288.8 MB	380.7 KB
+630	e8/b99571	15997	network_inference_workflow:sparcc_workflow:pvalues (10N_500S)	CACHED	0	2021-12-02 11:14:31.006	1m 9s	7.5s	3.8%	6.8 MB	298.6 MB	965.5 KB	90.9 KB
+631	de/eecf73	7476	network_inference_workflow:make_network_with_pvalue (25N_100S)	CACHED	0	2021-12-02 11:16:50.769	6.3s	5.3s	26.1%	96.7 MB	423.9 MB	22.1 MB	43 KB
+633	59/67a396	6585	network_inference_workflow:make_network_with_pvalue (200N_200S)	CACHED	0	2021-12-02 11:16:49.127	31.2s	30.3s	22.8%	152.1 MB	478.5 MB	43.3 MB	2.3 MB
+634	7e/834d58	8369	network_inference_workflow:make_network_with_pvalue (10N_500S)	CACHED	0	2021-12-02 11:16:52.163	4.8s	3.8s	30.5%	95.4 MB	423.4 MB	20.4 MB	10.9 KB
+632	1e/e68239	26939	network_inference_workflow:sparcc_workflow:pvalues (100N_50S)	CACHED	0	2021-12-02 11:11:24.967	1m 9s	18.6s	38.4%	7.8 MB	299.8 MB	72.7 MB	165.6 KB
+420	f7/83e8df	29283	network_inference_workflow:sparcc_workflow:sparcc (200N_50S)	CACHED	0	2021-12-02 10:32:47.805	7m 2s	6m 11s	158.9%	58.7 MB	1.1 GB	119.7 MB	643 MB
+419	43/4afe5b	34878	network_inference_workflow:sparcc_workflow:sparcc (150N_200S)	CACHED	0	2021-12-02 10:49:34.801	8m 26s	7m 35s	116.8%	64.7 MB	1.5 GB	306.2 MB	390.6 MB
+433	e1/60a4e1	17973	network_inference_workflow:sparcc_workflow:sparcc (25N_200S)	CACHED	0	2021-12-02 10:32:23.329	1m 56s	1m 3s	78.9%	16.4 MB	262.1 MB	82.5 MB	58.7 MB
+635	2c/5ba65e	32045	network_inference_workflow:make_network_with_pvalue (100N_50S)	CACHED	0	2021-12-02 11:16:23.572	16.1s	14.9s	18.7%	106.4 MB	433.6 MB	31.1 MB	597.9 KB
+637	44/d4ad4b	16616	network_inference_workflow:sparcc_workflow:pvalues (150N_200S)	CACHED	0	2021-12-02 11:13:26.541	1m 28s	32.3s	48.4%	8.3 MB	300.1 MB	162.9 MB	257 KB
+636	6e/9f0c99	30839	network_inference_workflow:sparcc_workflow:pvalues (200N_50S)	CACHED	0	2021-12-02 11:09:06.097	2m 11s	1m 17s	36.7%	8.7 MB	300.2 MB	288.7 MB	378.8 KB
+427	1a/586c97	33047	network_inference_workflow:sparcc_workflow:sparcc (150N_100S)	CACHED	0	2021-12-02 10:40:13.653	5m 35s	4m 45s	140.2%	33.4 MB	694.9 MB	168.9 MB	390.6 MB
+638	74/3681a5	8220	network_inference_workflow:sparcc_workflow:pvalues (25N_200S)	CACHED	0	2021-12-02 11:07:16.395	1m	4.7s	13.4%	7.2 MB	299.6 MB	4.8 MB	95.6 KB
+425	8f/c5fa16	20799	network_inference_workflow:sparcc_workflow:sparcc (50N_500S)	CACHED	0	2021-12-02 11:04:09.653	4m 4s	3m 2s	101.8%	23.9 MB	685.5 MB	280.9 MB	95 MB
+640	99/388c0c	24987	network_inference_workflow:make_network_with_pvalue (200N_50S)	CACHED	0	2021-12-02 11:16:08.300	35.4s	32.8s	21.6%	141.3 MB	467.7 MB	43.3 MB	2.3 MB
+639	91/fd19d6	6898	network_inference_workflow:make_network_with_pvalue (150N_200S)	CACHED	0	2021-12-02 11:16:49.740	21.5s	20.5s	22.4%	121.8 MB	448.5 MB	37.2 MB	1.3 MB
+642	f2/925e3e	13467	network_inference_workflow:make_network_with_pvalue (25N_200S)	CACHED	0	2021-12-02 11:15:43.980	5.8s	4.8s	27.6%	97 MB	424.4 MB	22.1 MB	45.1 KB
+641	47/1039e6	5791	network_inference_workflow:sparcc_workflow:pvalues (150N_100S)	CACHED	0	2021-12-02 11:10:41.820	1m 31s	37.9s	42.5%	8.2 MB	300 MB	162.9 MB	257 KB
+388	c0/ac2cc2	18291	network_inference_workflow:sparcc_workflow:sparcc (25N_500S)	CACHED	0	2021-12-02 10:30:56.513	2m 39s	1m 39s	86.0%	17.9 MB	372.7 MB	160.3 MB	62.7 MB
+446	6b/3eb08f	1617	network_inference_workflow:sparcc_workflow:sparcc (10N_200S)	CACHED	0	2021-12-02 10:34:17.896	1m 28s	38.2s	71.2%	16.4 MB	262.1 MB	57.1 MB	52.4 MB
+382	b8/0a6c2e	4802	network_inference_workflow:sparcc_workflow:sparcc (100N_500S)	CACHED	0	2021-12-02 10:33:16.869	6m 49s	5m 58s	141.6%	36.8 MB	1.1 GB	496.4 MB	209.2 MB
+644	41/18df68	28034	network_inference_workflow:make_network_with_pvalue (150N_100S)	CACHED	0	2021-12-02 11:16:15.607	25.6s	24.3s	19.0%	105.5 MB	432.7 MB	37.2 MB	1.3 MB
+643	2d/7444c2	12807	network_inference_workflow:sparcc_workflow:pvalues (50N_500S)	CACHED	0	2021-12-02 11:15:42.274	1m 14s	10.6s	18.2%	7.3 MB	299.7 MB	18.6 MB	110.3 KB
+398	20/26ef54	12962	network_inference_workflow:sparcc_workflow:sparcc (150N_50S)	CACHED	0	2021-12-02 10:30:42.841	5m 11s	4m 10s	136.0%	28.9 MB	690.4 MB	99.7 MB	390.2 MB
+645	8e/f0fd9b	35717	network_inference_workflow:sparcc_workflow:pvalues (25N_500S)	CACHED	0	2021-12-02 11:06:59.789	1m 1s	5.1s	12.4%	7.4 MB	299.8 MB	4.9 MB	95.6 KB
+407	8b/41940f	9278	network_inference_workflow:sparcc_workflow:sparcc (100N_200S)	CACHED	0	2021-12-02 10:54:36.812	5m 19s	4m 20s	102.5%	17.9 MB	423.6 MB	219 MB	207.8 MB
+646	94/9d08c2	21335	network_inference_workflow:sparcc_workflow:pvalues (10N_200S)	CACHED	0	2021-12-02 11:07:42.960	57s	3.3s	8.1%	6.8 MB	298.5 MB	943.7 KB	90.9 KB
+647	87/70a920	33617	network_inference_workflow:sparcc_workflow:pvalues (100N_500S)	CACHED	0	2021-12-02 11:09:11.617	1m 11s	16.9s	41.6%	7.9 MB	299.9 MB	72.9 MB	167.5 KB
+648	c5/0769ee	19768	network_inference_workflow:make_network_with_pvalue (50N_500S)	CACHED	0	2021-12-02 11:17:16.147	7.8s	6.7s	23.1%	97.4 MB	424.9 MB	25.1 MB	161 KB
+650	04/5ae1f6	11833	network_inference_workflow:make_network_with_pvalue (25N_500S)	CACHED	0	2021-12-02 11:15:40.253	5.5s	4.4s	29.7%	97.4 MB	424.6 MB	22.1 MB	44.6 KB
+649	a6/07eae5	25573	network_inference_workflow:sparcc_workflow:pvalues (150N_50S)	CACHED	0	2021-12-02 11:07:50.570	1m 22s	29.2s	54.0%	8.3 MB	300 MB	162.8 MB	255.1 KB
+652	bc/69e88e	14379	network_inference_workflow:make_network_with_pvalue (10N_200S)	CACHED	0	2021-12-02 11:15:45.749	4.6s	3.6s	34.0%	92 MB	419.7 MB	20.4 MB	10.9 KB
+651	3a/971587	20829	network_inference_workflow:sparcc_workflow:pvalues (100N_200S)	CACHED	0	2021-12-02 11:13:34.300	1m 15s	20.2s	34.8%	7.9 MB	299.8 MB	72.7 MB	167.5 KB
+653	75/ff7f3c	20880	network_inference_workflow:make_network_with_pvalue (100N_500S)	CACHED	0	2021-12-02 11:15:58.843	11.9s	8.9s	30.8%	109.6 MB	436.9 MB	31.1 MB	611.9 KB
+501	4e/0591fb	15197	network_inference_workflow:make_network_without_pvalue (10N_50S)	COMPLETED	0	2021-12-03 10:02:30.358	14.4s	14.1s	10.4%	92.8 MB	420.3 MB	20.4 MB	7.7 KB
+654	ca/9133e8	16663	network_inference_workflow:make_network_with_pvalue (150N_50S)	CACHED	0	2021-12-02 11:15:50.312	20.5s	17.6s	25.6%	111.3 MB	438.2 MB	37.2 MB	1.3 MB
+655	ce/8c1c77	6823	network_inference_workflow:make_network_with_pvalue (100N_200S)	CACHED	0	2021-12-02 11:16:49.576	13.1s	12.2s	23.0%	107.6 MB	434.9 MB	31.1 MB	607.9 KB
+449	51/9a471b	22047	network_inference_workflow:sparcc_workflow:sparcc (10N_50S)	CACHED	0	2021-12-02 10:53:42.073	1m 29s	33.9s	63.4%	16.5 MB	262.1 MB	40.3 MB	49 MB
+656	f9/f90612	9616	network_inference_workflow:sparcc_workflow:pvalues (10N_50S)	CACHED	0	2021-12-02 11:13:13.478	58.4s	3.5s	7.9%	6.8 MB	298.6 MB	930.5 KB	89 KB
+376	83/e25977	4086	network_inference_workflow:sparcc_workflow:sparcc (10N_100S)	CACHED	0	2021-12-02 10:38:00.989	1m 24s	32.9s	73.4%	16.4 MB	262.1 MB	45.8 MB	51.1 MB
+657	39/a79cd4	3260	network_inference_workflow:make_network_with_pvalue (10N_50S)	CACHED	0	2021-12-02 11:16:42.258	5.8s	4.4s	26.8%	96.6 MB	423.9 MB	20.4 MB	10.8 KB
+439	7b/d26056	18311	network_inference_workflow:sparcc_workflow:sparcc (25N_50S)	CACHED	0	2021-12-02 10:33:42.663	1m 34s	44.6s	73.6%	16.4 MB	262.1 MB	43.4 MB	55.1 MB
+658	54/ce5160	19320	network_inference_workflow:sparcc_workflow:pvalues (10N_100S)	CACHED	0	2021-12-02 11:08:46.112	57.4s	3.4s	7.8%	1.7 MB	110.8 MB	935.3 KB	90.9 KB
+660	03/fac91c	18891	network_inference_workflow:make_network_with_pvalue (10N_100S)	CACHED	0	2021-12-02 11:15:54.438	13.8s	4.7s	24.8%	96.4 MB	423.6 MB	20.4 MB	10.8 KB
+659	7c/789de6	20001	network_inference_workflow:sparcc_workflow:pvalues (25N_50S)	CACHED	0	2021-12-02 11:07:39.545	58.9s	5.1s	12.3%	7.2 MB	299.6 MB	4.8 MB	93.7 KB
+661	38/64ad86	14059	network_inference_workflow:make_network_with_pvalue (25N_50S)	CACHED	0	2021-12-02 11:15:45.196	5.8s	4.8s	29.5%	97.4 MB	424.6 MB	22.1 MB	45.2 KB
+613	26/71233a	17118	network_inference_workflow:make_network_without_pvalue (10N_200S)	COMPLETED	0	2021-12-03 10:02:40.679	5.8s	5.5s	21.8%	96.5 MB	423.6 MB	20.4 MB	7.4 KB
+610	40/46aac7	16339	network_inference_workflow:make_network_without_pvalue (10N_100S)	COMPLETED	0	2021-12-03 10:02:38.045	8.5s	8.2s	15.9%	96.4 MB	423.6 MB	20.4 MB	7.2 KB
+199	4d/6f40b3	13752	network_inference_workflow:mldm_workflow:mldm (10N_500S)	COMPLETED	0	2021-12-03 10:02:08.584	41.1s	36.4s	96.9%	320.7 MB	640.2 MB	27.5 MB	29.9 KB
+662	b4/8c2f3d	18785	network_inference_workflow:make_network_without_pvalue (10N_500S)	COMPLETED	0	2021-12-03 10:02:49.713	6.9s	6.6s	18.9%	96.4 MB	423.6 MB	20.4 MB	10.6 KB
+217	fc/0ea06a	23124	network_inference_workflow:harmonies_workflow:harmonies (10N_50S)	COMPLETED	0	2021-12-03 10:02:09.101	56.6s	51.7s	98.3%	220.5 MB	414.9 MB	28.1 MB	3.4 KB
+90	36/12ce18	19111	network_inference_workflow:mldm_workflow:mldm (25N_50S)	COMPLETED	0	2021-12-03 10:02:08.881	59.5s	54.6s	98.3%	317.4 MB	636.9 MB	27.5 MB	54.1 KB
+665	ec/d18557	2483	network_inference_workflow:merge_pvalues	CACHED	0	2021-12-02 12:05:35.670	9m 52s	9m 52s	75.7%	1.1 GB	1.4 GB	2.2 GB	69.3 MB
+663	55/49b4b9	20932	network_inference_workflow:make_network_without_pvalue (10N_50S)	COMPLETED	0	2021-12-03 10:03:05.792	4s	3.7s	31.4%	89.2 MB	417.1 MB	20.4 MB	5.9 KB
+664	6d/5e5136	21138	network_inference_workflow:make_network_without_pvalue (25N_50S)	COMPLETED	0	2021-12-03 10:03:08.412	1.9s	1.7s	69.7%	86.5 MB	414.6 MB	22.1 MB	30.4 KB
+204	1f/01c62e	11896	network_inference_workflow:mldm_workflow:mldm (25N_200S)	COMPLETED	0	2021-12-03 10:02:07.553	1m 33s	1m 28s	97.7%	337 MB	654.6 MB	27.5 MB	53.2 KB
+666	30/63a173	24976	network_inference_workflow:make_network_without_pvalue (25N_200S)	COMPLETED	0	2021-12-03 10:03:40.098	2.4s	2.3s	51.5%	96.6 MB	423.9 MB	22.1 MB	26.1 KB
+114	9e/b0d7de	11870	network_inference_workflow:mldm_workflow:mldm (25N_500S)	COMPLETED	0	2021-12-03 10:02:07.424	1m 51s	1m 47s	98.4%	339.4 MB	658.9 MB	27.5 MB	38.2 KB
+667	63/69379b	26790	network_inference_workflow:make_network_without_pvalue (25N_500S)	COMPLETED	0	2021-12-03 10:03:58.876	1.5s	1.4s	82.0%	96.3 MB	423.6 MB	22.1 MB	28 KB
+143	50/5fa715	12038	network_inference_workflow:mldm_workflow:mldm (25N_100S)	COMPLETED	0	2021-12-03 10:02:07.834	2m 26s	2m 22s	98.8%	323.9 MB	643.4 MB	27.5 MB	63.5 KB
+668	0f/2b79cb	30314	network_inference_workflow:make_network_without_pvalue (25N_100S)	COMPLETED	0	2021-12-03 10:04:33.483	1.5s	1.3s	82.0%	96.3 MB	423.6 MB	22.1 MB	27.4 KB
+102	8d/bb6003	11835	network_inference_workflow:harmonies_workflow:harmonies (50N_50S)	FAILED	1	2021-12-03 10:02:07.276	2m 28s	2m 28s	-	-	-	-	-
+28	6d/a0a89a	11782	network_inference_workflow:harmonies_workflow:harmonies (100N_50S)	FAILED	1	2021-12-03 10:02:07.171	3m 45s	3m 45s	-	-	-	-	-
+209	b0/15fce1	17642	network_inference_workflow:mldm_workflow:mldm (50N_500S)	COMPLETED	0	2021-12-03 10:02:08.804	4m 40s	4m 35s	99.7%	292.6 MB	612.1 MB	27.6 MB	67.2 KB
+669	3e/9acc37	5238	network_inference_workflow:make_network_without_pvalue (50N_500S)	COMPLETED	0	2021-12-03 10:06:48.934	2.1s	1.9s	70.4%	92 MB	419.7 MB	25.1 MB	116.4 KB
+196	9d/a42a54	7765	network_inference_workflow:harmonies_workflow:harmonies (150N_50S)	FAILED	1	2021-12-03 10:02:16.871	5m 11s	5m 10s	-	-	-	-	-
+47	20/72120f	11797	network_inference_workflow:harmonies_workflow:harmonies (200N_50S)	FAILED	1	2021-12-03 10:02:07.188	6m 20s	6m 20s	-	-	-	-	-
+32	91/69044d	11821	network_inference_workflow:harmonies_workflow:harmonies (100N_100S)	FAILED	1	2021-12-03 10:02:07.215	11m 47s	11m 47s	-	-	-	-	-
+137	06/37e3eb	12535	network_inference_workflow:mldm_workflow:mldm (50N_100S)	COMPLETED	0	2021-12-03 10:02:08.132	15m 24s	15m 20s	99.8%	291.6 MB	609.1 MB	27.5 MB	98.8 KB
+670	ac/c4118e	28307	network_inference_workflow:make_network_without_pvalue (50N_100S)	COMPLETED	0	2021-12-03 10:17:31.738	4.4s	4.2s	31.7%	87.9 MB	415.8 MB	25.1 MB	99.8 KB
+12	37/e9adc9	11793	network_inference_workflow:harmonies_workflow:harmonies (150N_100S)	FAILED	1	2021-12-03 10:02:07.182	16m 38s	16m 38s	-	-	-	-	-
+221	64/bebe60	22202	network_inference_workflow:harmonies_workflow:harmonies (200N_100S)	FAILED	1	2021-12-03 10:02:09.027	20m 35s	20m 35s	-	-	-	-	-
+17	69/385690	12608	network_inference_workflow:mldm_workflow:mldm (50N_200S)	COMPLETED	0	2021-12-03 10:02:08.216	24m 37s	24m 32s	99.9%	295.3 MB	612.8 MB	27.5 MB	88.4 KB
+671	cd/68b910	33160	network_inference_workflow:make_network_without_pvalue (50N_200S)	COMPLETED	0	2021-12-03 10:26:44.923	2.9s	2.7s	47.1%	97.1 MB	425.1 MB	25.1 MB	107.5 KB
+165	16/1f5b7a	11828	network_inference_workflow:harmonies_workflow:harmonies (100N_200S)	FAILED	1	2021-12-03 10:02:07.260	42m 44s	42m 44s	-	-	-	-	-
+100	ca/8974be	11807	network_inference_workflow:harmonies_workflow:harmonies (150N_200S)	FAILED	1	2021-12-03 10:02:07.196	57m 19s	57m 19s	-	-	-	-	-
+154	1e/e6e2dd	11780	network_inference_workflow:harmonies_workflow:harmonies (200N_200S)	FAILED	1	2021-12-03 10:02:07.158	1h 8m 29s	1h 8m 28s	-	-	-	-	-
+58	a6/beeca6	7775	network_inference_workflow:harmonies_workflow:harmonies (100N_500S)	FAILED	1	2021-12-03 10:02:16.894	3h 53m 56s	3h 53m 56s	-	-	-	-	-
+124	7a/2be807	11814	network_inference_workflow:harmonies_workflow:harmonies (150N_500S)	FAILED	1	2021-12-03 10:02:07.206	5h 9m 16s	5h 9m 16s	-	-	-	-	-
+240	55/a5ac8a	20772	network_inference_workflow:harmonies_workflow:harmonies (200N_500S)	FAILED	1	2021-12-03 10:02:08.959	6h 19m 12s	6h 19m 12s	-	-	-	-	-
+672	d9/b7b2ae	35670	network_inference_workflow:create_consensus	COMPLETED	0	2021-12-03 16:21:21.598	16m 7s	16m 6s	61.4%	1.4 GB	1.7 GB	6.2 GB	180.5 KB

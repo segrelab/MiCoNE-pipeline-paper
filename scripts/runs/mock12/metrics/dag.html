@@ -1,0 +1,275 @@
+<!--
+  ~ Copyright 2013-2019, Centre for Genomic Regulation (CRG)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<html>
+
+    <head>
+        <title>Nextflow Cytoscape.js with Dagre</title>
+
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+
+        <script type="text/javascript">
+        var prot = (("https:" == document.location.protocol) ? "https://" : "http://");
+        document.write(unescape("%3Cscript src='" + prot + "code.jquery.com/jquery-2.0.3.min.js' type='text/javascript' %3E%3C/script%3E"));
+        document.write(unescape("%3Cscript src='" + prot + "cdnjs.cloudflare.com/ajax/libs/cytoscape/2.6.12/cytoscape.min.js' type='text/javascript' %3E%3C/script%3E"));
+        document.write(unescape("%3Cscript src='" + prot + "cdn.rawgit.com/cpettitt/dagre/v0.7.4/dist/dagre.min.js' type='text/javascript' %3E%3C/script%3E"));
+        document.write(unescape("%3Cscript src='" + prot + "cdn.rawgit.com/cytoscape/cytoscape.js-dagre/1.1.2/cytoscape-dagre.js' type='text/javascript' %3E%3C/script%3E"));
+        </script>
+
+        <style>
+            body {
+                font-family: helvetica;
+                font-size: 14px;
+            }
+
+            #cy {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 999;
+            }
+
+            h1 {
+                opacity: 0.5;
+                font-size: 1em;
+            }
+        </style>
+
+        <script>
+            $(function(){
+                var cy = window.cy = cytoscape({
+                    container: document.getElementById('cy'),
+                    boxSelectionEnabled: false,
+                    autounselectify: true,
+
+                    layout: {
+                        name: 'dagre'
+                    },
+
+                    style: cytoscape.stylesheet()
+                        .selector( 'node')
+                            .css({
+                                'width': 10,
+                                'height': 10,
+                                'content': 'data(label)',
+                                'text-valign': 'center',
+                                'text-halign': 'center',
+                                'text-opacity': 0.5,
+                            })
+                        .selector('node.PROCESS')
+                            .css({
+                                'width': 100,
+                                'height': 50,
+                                'text-opacity': 0.9,
+                                'background-color': '#009911'
+                            })
+                        .selector('node.OPERATOR')
+                            .css({
+                                'background-color': '#11479e',
+                                'text-halign': 'right',
+                            })
+                        .selector('node.ORIGIN')
+                            .css({
+                                'background-color': '#999999',
+                                'text-halign': 'right',
+                            })
+                        .selector('node.TERMINATION')
+                            .css({
+                                'background-color': '#999999',
+                                'text-halign': 'right',
+                            })
+                        .selector('edge')
+                            .css({
+                                'content': 'data(label)',
+                                'text-opacity': 0.5,
+                                'width': 4,
+                                'target-arrow-shape': 'triangle',
+                                'line-color': '#9dbaea',
+                                'target-arrow-color': '#9dbaea'
+                            }),
+
+elements: {
+nodes: [
+{ data: { id: 'p0', label: 'Channel.fromPath'}, classes: 'ORIGIN' },
+{ data: { id: 'p1', label: 'splitCsv'}, classes: 'OPERATOR' },
+{ data: { id: 'p2', label: 'map'}, classes: 'OPERATOR' },
+{ data: { id: 'p3', label: 'denoise_cluster_workflow:dada2_workflow:dada2_paired'}, classes: 'PROCESS' },
+{ data: { id: 'p4', label: 'denoise_cluster_workflow:dada2_workflow:make_biom_repseqs'}, classes: 'PROCESS' },
+{ data: { id: 'p5', label: 'first'}, classes: 'OPERATOR' },
+{ data: { id: 'p6', label: 'collect'}, classes: 'OPERATOR' },
+{ data: { id: 'p7', label: 'collect'}, classes: 'OPERATOR' },
+{ data: { id: 'p8', label: 'collect'}, classes: 'OPERATOR' },
+{ data: { id: 'p9', label: 'denoise_cluster_workflow:dada2_workflow:hash_seqtables'}, classes: 'PROCESS' },
+{ data: { id: 'p10', label: 'denoise_cluster_workflow:deblur_workflow:deblur'}, classes: 'PROCESS' },
+{ data: { id: 'p11', label: 'first'}, classes: 'OPERATOR' },
+{ data: { id: 'p12', label: 'collect'}, classes: 'OPERATOR' },
+{ data: { id: 'p13', label: 'collect'}, classes: 'OPERATOR' },
+{ data: { id: 'p14', label: 'collect'}, classes: 'OPERATOR' },
+{ data: { id: 'p15', label: 'denoise_cluster_workflow:deblur_workflow:hash_otutables'}, classes: 'PROCESS' },
+{ data: { id: 'p16', label: 'denoise_cluster_workflow:open_reference_workflow:join_reads'}, classes: 'PROCESS' },
+{ data: { id: 'p17', label: 'denoise_cluster_workflow:open_reference_workflow:fastq2fasta'}, classes: 'PROCESS' },
+{ data: { id: 'p18'}, classes: 'ORIGIN' },
+{ data: { id: 'p19', label: 'denoise_cluster_workflow:open_reference_workflow:open_reference'}, classes: 'PROCESS' },
+{ data: { id: 'p20', label: 'first'}, classes: 'OPERATOR' },
+{ data: { id: 'p21', label: 'collect'}, classes: 'OPERATOR' },
+{ data: { id: 'p22', label: 'collect'}, classes: 'OPERATOR' },
+{ data: { id: 'p23', label: 'collect'}, classes: 'OPERATOR' },
+{ data: { id: 'p24', label: 'denoise_cluster_workflow:open_reference_workflow:hash_otutables'}, classes: 'PROCESS' },
+{ data: { id: 'p25', label: 'denoise_cluster_workflow:de_novo_workflow:join_reads'}, classes: 'PROCESS' },
+{ data: { id: 'p26', label: 'denoise_cluster_workflow:de_novo_workflow:fastq2fasta'}, classes: 'PROCESS' },
+{ data: { id: 'p27', label: 'denoise_cluster_workflow:de_novo_workflow:de_novo'}, classes: 'PROCESS' },
+{ data: { id: 'p28', label: 'first'}, classes: 'OPERATOR' },
+{ data: { id: 'p29', label: 'collect'}, classes: 'OPERATOR' },
+{ data: { id: 'p30', label: 'collect'}, classes: 'OPERATOR' },
+{ data: { id: 'p31', label: 'collect'}, classes: 'OPERATOR' },
+{ data: { id: 'p32', label: 'denoise_cluster_workflow:de_novo_workflow:hash_otutables'}, classes: 'PROCESS' },
+{ data: { id: 'p33', label: 'denoise_cluster_workflow:closed_reference_workflow:join_reads'}, classes: 'PROCESS' },
+{ data: { id: 'p34', label: 'denoise_cluster_workflow:closed_reference_workflow:fastq2fasta'}, classes: 'PROCESS' },
+{ data: { id: 'p35'}, classes: 'ORIGIN' },
+{ data: { id: 'p36', label: 'denoise_cluster_workflow:closed_reference_workflow:closed_reference'}, classes: 'PROCESS' },
+{ data: { id: 'p37', label: 'first'}, classes: 'OPERATOR' },
+{ data: { id: 'p38', label: 'collect'}, classes: 'OPERATOR' },
+{ data: { id: 'p39', label: 'collect'}, classes: 'OPERATOR' },
+{ data: { id: 'p40', label: 'collect'}, classes: 'OPERATOR' },
+{ data: { id: 'p41', label: 'denoise_cluster_workflow:closed_reference_workflow:hash_otutables'}, classes: 'PROCESS' },
+{ data: { id: 'p42', label: 'mix'}, classes: 'OPERATOR' },
+{ data: { id: 'p43', label: 'denoise_cluster_workflow:uchime_workflow:import_files'}, classes: 'PROCESS' },
+{ data: { id: 'p44', label: 'denoise_cluster_workflow:uchime_workflow:uchime'}, classes: 'PROCESS' },
+{ data: { id: 'p45', label: 'denoise_cluster_workflow:uchime_workflow:export_files'}, classes: 'PROCESS' },
+{ data: { id: 'p46', label: 'denoise_cluster_workflow:remove_bimera_workflow:create_seqtable'}, classes: 'PROCESS' },
+{ data: { id: 'p47', label: 'denoise_cluster_workflow:remove_bimera_workflow:remove_bimera'}, classes: 'PROCESS' },
+{ data: { id: 'p48', label: 'denoise_cluster_workflow:remove_bimera_workflow:hash_seqtables'}, classes: 'PROCESS' },
+{ data: { id: 'p49', label: 'mix'}, classes: 'OPERATOR' },
+{ data: { id: 'p50'}, classes: 'ORIGIN' },
+{ data: { id: 'p51', label: 'tax_assignment_workflow:naive_bayes_workflow:naive_bayes'}, classes: 'PROCESS' },
+{ data: { id: 'p52', label: 'tax_assignment_workflow:naive_bayes_workflow:add_md2biom'}, classes: 'PROCESS' },
+{ data: { id: 'p53', label: 'tax_assignment_workflow:blast_workflow:import_reads'}, classes: 'PROCESS' },
+{ data: { id: 'p54'}, classes: 'ORIGIN' },
+{ data: { id: 'p55', label: 'tax_assignment_workflow:blast_workflow:blast'}, classes: 'PROCESS' },
+{ data: { id: 'p56', label: 'tax_assignment_workflow:blast_workflow:add_md2biom'}, classes: 'PROCESS' },
+{ data: { id: 'p57', label: 'mix'}, classes: 'OPERATOR' },
+{ data: { id: 'p58', label: 'otu_processing_workflow:fork'}, classes: 'PROCESS' },
+{ data: { id: 'p59', label: 'otu_processing_workflow:normalize'}, classes: 'PROCESS' },
+{ data: { id: 'p60'}, classes: 'ORIGIN' },
+{ data: { id: 'p61', label: 'otu_processing_workflow:group'}, classes: 'PROCESS' },
+{ data: { id: 'p62', label: 'otu_processing_workflow:biom2tsv'}, classes: 'PROCESS' },
+{ data: { id: 'p63'}, classes: 'NODE' },
+],
+edges: [
+{ data: { source: 'p0', target: 'p1', label: 'samplesheet' } },
+{ data: { source: 'p1', target: 'p2'} },
+{ data: { source: 'p2', target: 'p3', label: 'input_channel' } },
+{ data: { source: 'p3', target: 'p4'} },
+{ data: { source: 'p4', target: 'p5', label: 'meta' } },
+{ data: { source: 'p4', target: 'p6'} },
+{ data: { source: 'p4', target: 'p7'} },
+{ data: { source: 'p4', target: 'p8'} },
+{ data: { source: 'p5', target: 'p9'} },
+{ data: { source: 'p6', target: 'p9'} },
+{ data: { source: 'p7', target: 'p9'} },
+{ data: { source: 'p8', target: 'p9'} },
+{ data: { source: 'p9', target: 'p42'} },
+{ data: { source: 'p2', target: 'p10', label: 'input_channel' } },
+{ data: { source: 'p10', target: 'p11', label: 'new_meta' } },
+{ data: { source: 'p10', target: 'p12'} },
+{ data: { source: 'p10', target: 'p13'} },
+{ data: { source: 'p10', target: 'p14'} },
+{ data: { source: 'p11', target: 'p15'} },
+{ data: { source: 'p12', target: 'p15'} },
+{ data: { source: 'p13', target: 'p15'} },
+{ data: { source: 'p14', target: 'p15'} },
+{ data: { source: 'p15', target: 'p42'} },
+{ data: { source: 'p2', target: 'p16', label: 'input_channel' } },
+{ data: { source: 'p16', target: 'p17'} },
+{ data: { source: 'p17', target: 'p19'} },
+{ data: { source: 'p18', target: 'p19'} },
+{ data: { source: 'p19', target: 'p20', label: 'new_meta' } },
+{ data: { source: 'p19', target: 'p21'} },
+{ data: { source: 'p19', target: 'p22'} },
+{ data: { source: 'p19', target: 'p23'} },
+{ data: { source: 'p20', target: 'p24'} },
+{ data: { source: 'p21', target: 'p24'} },
+{ data: { source: 'p22', target: 'p24'} },
+{ data: { source: 'p23', target: 'p24'} },
+{ data: { source: 'p24', target: 'p42'} },
+{ data: { source: 'p2', target: 'p25', label: 'input_channel' } },
+{ data: { source: 'p25', target: 'p26'} },
+{ data: { source: 'p26', target: 'p27'} },
+{ data: { source: 'p27', target: 'p28', label: 'new_meta' } },
+{ data: { source: 'p27', target: 'p29'} },
+{ data: { source: 'p27', target: 'p30'} },
+{ data: { source: 'p27', target: 'p31'} },
+{ data: { source: 'p28', target: 'p32'} },
+{ data: { source: 'p29', target: 'p32'} },
+{ data: { source: 'p30', target: 'p32'} },
+{ data: { source: 'p31', target: 'p32'} },
+{ data: { source: 'p32', target: 'p42'} },
+{ data: { source: 'p2', target: 'p33', label: 'input_channel' } },
+{ data: { source: 'p33', target: 'p34'} },
+{ data: { source: 'p34', target: 'p36'} },
+{ data: { source: 'p35', target: 'p36'} },
+{ data: { source: 'p36', target: 'p37', label: 'new_meta' } },
+{ data: { source: 'p36', target: 'p38'} },
+{ data: { source: 'p36', target: 'p39'} },
+{ data: { source: 'p36', target: 'p40'} },
+{ data: { source: 'p37', target: 'p41'} },
+{ data: { source: 'p38', target: 'p41'} },
+{ data: { source: 'p39', target: 'p41'} },
+{ data: { source: 'p40', target: 'p41'} },
+{ data: { source: 'p41', target: 'p42'} },
+{ data: { source: 'p42', target: 'p43', label: 'input_channel' } },
+{ data: { source: 'p43', target: 'p44'} },
+{ data: { source: 'p44', target: 'p45'} },
+{ data: { source: 'p45', target: 'p49'} },
+{ data: { source: 'p42', target: 'p46', label: 'input_channel' } },
+{ data: { source: 'p46', target: 'p47'} },
+{ data: { source: 'p47', target: 'p48', label: 'new_meta' } },
+{ data: { source: 'p47', target: 'p48'} },
+{ data: { source: 'p47', target: 'p48'} },
+{ data: { source: 'p47', target: 'p48', label: 'samplemetadata_files' } },
+{ data: { source: 'p48', target: 'p49'} },
+{ data: { source: 'p49', target: 'p51', label: 'input_channel' } },
+{ data: { source: 'p50', target: 'p51'} },
+{ data: { source: 'p51', target: 'p52'} },
+{ data: { source: 'p52', target: 'p57'} },
+{ data: { source: 'p49', target: 'p53', label: 'input_channel' } },
+{ data: { source: 'p53', target: 'p55'} },
+{ data: { source: 'p54', target: 'p55'} },
+{ data: { source: 'p55', target: 'p56'} },
+{ data: { source: 'p56', target: 'p57'} },
+{ data: { source: 'p57', target: 'p58', label: 'input_channel' } },
+{ data: { source: 'p58', target: 'p59'} },
+{ data: { source: 'p59', target: 'p61'} },
+{ data: { source: 'p60', target: 'p61'} },
+{ data: { source: 'p61', target: 'p62'} },
+{ data: { source: 'p62', target: 'p63'} },
+],
+},
+
+                });
+
+            });
+        </script>
+    </head>
+
+    <body>
+        <h1>Nextflow Cytoscape.js with Dagre</h1>
+        <div id="cy"></div>
+    </body>
+
+</html>
