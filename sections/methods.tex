@@ -305,8 +305,7 @@ where, $g$ and $f$ are defined as follows:
 
   We generated synthetic interaction data using two methodologies previously used for benchmarking network inference methods.
 
-  % TODO: Add reference: Karoline Faust, Franziska Bauchinger, Béatrice Laroche, Sophie de Buyl, Leo Lahti, Alex D Washburne, Didier Gonze, Stefanie Widder, "Signatures of ecological processes in microbial community time series", Microbiome (2018).
-  The first method, hereby referred to as ``seqtime'', used generalized Lotka-Volterra (gLV) equations to model the microbial community dynamics and utilized the Klemm–Eguı́luz algorithm to generate a clique-based interaction network~\cite{Rottjers2018}.
+  The first method, hereby referred to as ``seqtime''~\cite{faustSignaturesEcologicalProcesses2018}, used generalized Lotka-Volterra (gLV) equations to model the microbial community dynamics and utilized the Klemm–Eguı́luz algorithm to generate a clique-based interaction network~\cite{Rottjers2018}.
   We used the \href{https://github.com/hallucigenia-sparsa/seqtime}{seqtime} R package to simulate communities with number of species ($N$) varying from 10 to 150 (10, 25, 50, 100, 150 and 200).
   The initial species concentrations are randomly sampled from a Poisson distribution and the simulation is rerun to generate a number of samples ($S$) varying from 50 to 500 (50, 100, 200, 500) for different communities.
   The abundance values of the species in the community at the end of the simulation time are used to create the OTU table.

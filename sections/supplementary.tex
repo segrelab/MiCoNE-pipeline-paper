@@ -45,9 +45,18 @@
   \subsection*{Synthetic interaction data}
 
     \subsubsection*{Data generation}
-    Figures describing the original OTU tables or the interactions used to generate the community. Also include the seed and scripts for reproducing the networks.
+    The synthetic interaction data for the study were generated using two methods.
+    The first method, ``seqtime''~\cite{faustSignaturesEcologicalProcesses2018} utilized generalized Lotka-Volterra (gLV) equations to model the microbial community dynamics and made use of the Klemm–Eguı́luz algorithm to generate clique-based interaction networks~\cite{Rottjers2018}.
+    We used the seqtime R package to simulate communities with different numbers of species and samples (see Methods for details).
+    The second method, ``NorTA'' used the Normal to Anything (NorTA) approach coupled with a given interaction network topology to generate the abundance distribution of the microbial community~\cite{Kurtz2015}.
+    We used the spieceasi R package to simulate communities with different abundance distributions and network topologies (see Methods for details).
+    The scripts to generate these datasets can be found in the synthetic data and scripts repository (\href{https://github.com/segrelab/MiCoNE-synthetic-data}{https://github.com/segrelab/MiCoNE-synthetic-data})
 
     \subsubsection*{Processing using the \ac{micone} pipeline}
+    The data was processed using the \ac{micone} pipeline using only the \ac{ni} step with the consensus networks as the final output.
+    The configuration files (main.nf and nextflow.config) used to run the \ac{micone} pipeline as well the details of the pipeline execution (dag, report, timeline and trace) are in the "runs/norta" and "runs/seqtime" directories of the data and scripts repository (\href{https://github.com/segrelab/MiCoNE-pipeline-paper}{https://github.com/segrelab/MiCoNE-pipeline-paper})
+    % TODO: Store pipeline results
+    The results of the pipeline execution are stored on Zenodo[REF] at ...
 
   \subsection*{Consensus and p-value}
 
@@ -95,6 +104,8 @@
   % FIXME: Not sure what our stance on this is?
   Note that we do not use Pearson and Spearman methods in the p-value merging step and these algorithms are only used for demonstration and comparison.
   The combined p-values are used to threshold for significance during the consensus network step.
+
+  \subsection*{Performance of network inference algorithms on seqtime data}
 
   \begin{figure}[h]
   \centering
