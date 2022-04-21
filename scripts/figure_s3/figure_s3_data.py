@@ -25,9 +25,12 @@ def get_vectors(otu_1: pd.DataFrame, otu_2: pd.DataFrame, threshold: int):
     print(f"Warning {removed_samples} samples have been removed")
     common_samples = samples_1 & samples_2
     for col in common_samples:
-        otu_1_col, otu_2_col = otu_1[[col]], otu_2[[col]]
-        otu_1_col.loc[otu_1_col[col] <= threshold, :] = 0
-        otu_2_col.loc[otu_2_col[col] <= threshold, :] = 0
+        otu_1_col = (
+            otu_1[[col]].sort_values(by=[col], ascending=False).iloc[: threshold + 1, :]
+        )
+        otu_2_col = (
+            otu_2[[col]].sort_values(by=[col], ascending=False).iloc[: threshold + 1, :]
+        )
         otu_1_col.columns = ["1"]
         otu_2_col.columns = ["2"]
         joint_df = otu_1_col.join(otu_2_col, how="outer")
@@ -86,7 +89,9 @@ def abbr_name(method: str) -> str:
 @click.option(
     "--asv", default=True, type=bool, help="To display ASV along with method name"
 )
-@click.option("--threshold", default=10, type=int, help="Threshold for sequence count")
+@click.option(
+    "--threshold", default=100, type=int, help="Number of top OTUs used in calculation"
+)
 @click.option("--output", default=".", help="The path to the output directory")
 def main(trees: str, otus: str, weighted: bool, asv: bool, threshold: int, output: str):
     output_path = pathlib.Path(output)
