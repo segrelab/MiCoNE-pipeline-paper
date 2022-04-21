@@ -63,3 +63,16 @@ Rscript figure7_plot.R "../../data/figure7/output/$DATASET/" "fmt-control" "fmt-
 echo "Generating Figure S1"
 cd ../figure_s1/
 Rscript figure_s1_plot.R "../../data/figure2/output/$DATASET/" "$OUTPUT_DIR"
+
+# Figure S2
+echo "Generating Figure S2"
+cd ../figure_s2/
+Rscript figure_s2_plot.R "../../data/figure2/output/$DATASET/" "$OUTPUT_DIR"
+
+# Figure S3
+echo "Generating Figure S3"
+cd ../figure_s3/
+Rscript figure_s3_plot.R \
+  "../../data/figure3/output/$DATASET/" \
+  "../../data/figure3/output/" \
+  "$OUTPUT_DIR"
