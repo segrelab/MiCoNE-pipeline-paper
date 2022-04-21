@@ -7,8 +7,8 @@ library(ggpubr)
 # inputs
 args <- commandArgs(trailingOnly = TRUE)
 if (length(args) == 0) {
-    data_folder <- "../../data/figure3/output/moving_pictures/"
-    mock_folder <- "../../data/figure3/output/"
+    data_folder <- "../../data/figure_s3/output/moving_pictures/"
+    mock_folder <- "../../data/figure_s3/output/"
     output_folder <- "../../figures/"
 } else if (length(args) == 3) {
     data_folder <- args[1]
