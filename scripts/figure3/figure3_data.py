@@ -72,6 +72,7 @@ def abbr_name(method: str) -> str:
         return "D2"
     if method.startswith("deblur"):
         return "DB"
+    return method
 
 
 @click.command()
