@@ -19,6 +19,7 @@ if (length(args) == 0) {
 } else {
     stop("Required number of arguments must equal 3")
 }
+otu_csv <- paste0(data_folder, "otu.csv")
 gg_csv <- paste0(data_folder, "naive_bayes(gg_13_8_99).csv")
 silva_csv <- paste0(data_folder, "naive_bayes(silva_138_99).csv")
 ncbi_csv <- paste0(data_folder, "blast(ncbi).csv")
@@ -45,6 +46,8 @@ read_data <- function(data_file, n) {
     raw_df
 }
 
+# otu <- read_data(otu_csv, notu)
+# otu$database <- "OTU"
 gg <- read_data(gg_csv, notu)
 gg$database <- "NaiveBayes(GG)"
 silva <- read_data(silva_csv, notu)
@@ -52,39 +55,17 @@ silva$database <- "NaiveBayes(SILVA)"
 ncbi <- read_data(ncbi_csv, notu)
 ncbi$database <- "BLAST(NCBI)"
 combined <- rbind(gg, silva, ncbi)
-
-# make_alluvial_plot <- function(db_data, title) {
-#     genus_factors <- levels(factor(db_data$Genus))
-#     n_genus <- length(genus_factors)
-#     palette <- get_palette(, n_genus)
-#     # palette[n_genus] <- "#d3d3d3"
-#     alluvial_plot <- ggplot(data = db_data, aes(axis1 = OTU, axis2 = Genus, y = Abundance)) +
-#         scale_x_discrete(limits = c("OTU", "Genus"), expand = c(.1, .05)) +
-#         geom_alluvium(aes(fill = Genus)) +
-#         geom_stratum(aes(fill = Genus)) +
-#         scale_fill_manual(values = palette) +
-#         scale_linetype_manual(values = c("blank", "solid")) +
-#         # geom_text_repel(aes(label=Genus), stat="stratum", size=2, direction="y", nudge_x=0.5) +
-#         ggtitle(title) +
-#         theme_pubr() +
-#         theme(plot.title = element_text(hjust = 0.5), axis.line.x = element_blank(), axis.title.x = element_blank())
-# }
+# combined <- rbind(otu, gg, silva, ncbi)
 
 make_alluvial_plot2 <- function(db_data, title) {
     genus_factors <- levels(factor(db_data$Genus))
     n_genus <- length(genus_factors)
     palette <- get_palette(, n_genus)
-    # palette[n_genus] <- "#d3d3d3"
     alluvial_plot <- ggplot(db_data, aes(x = database, y = Abundance, stratum = Genus, alluvium = OTU, fill = Genus)) +
-        # scale_fill_brewer(type = "qual", palette = "Set3") +
         stat_alluvium(geom="flow", lode.guidance="forward") +
         stat_stratum() +
-        # scale_x_discrete(limits = c("OTU", "Genus"), expand = c(.1, .05)) +
-        # geom_alluvium(aes(fill = Genus)) +
-        # geom_stratum(aes(stratum = Genus)) +
         scale_fill_manual(values = palette) +
-        # scale_linetype_manual(values = c("blank", "solid")) +
-        # geom_text_repel(aes(label=Genus), stat="stratum", size=2, direction="y", nudge_x=0.5) +
+        geom_text_repel(aes(label=Genus), stat="stratum", size=2, direction="y", nudge_x=0.5) +
         ggtitle(title) +
         theme_pubr()
 }
@@ -93,33 +74,9 @@ make_alluvial_plot2 <- function(db_data, title) {
 gg_n_genus = length(unique(gg$Genus))
 silva_n_genus = length(unique(silva$Genus))
 ncbi_n_genus = length(unique(ncbi$Genus))
-# gg_plot <- make_alluvial_plot(gg, paste0("GreenGenes", " (", gg_n_genus, ")"))
-# silva_plot <- make_alluvial_plot(silva, paste0("SILVA", " (", silva_n_genus, ")"))
-# ncbi_plot <- make_alluvial_plot(ncbi, paste0("NCBI", " (", ncbi_n_genus, ")"))
 
 combined_plot <- make_alluvial_plot2(combined, paste("NaiveBayes(GG)=", gg_n_genus, ", NaiveBayes(SILVA)=", silva_n_genus, ", BLAST(NCBI)=", ncbi_n_genus))
 
-# gg$OTU <- gg$empty
-# gg_plot <- gg_plot #+
-# geom_text_repel(stat="stratum", label.strata=TRUE, data=gg[,c("OTU", "Genus", "Abundance")], nudge_x=1)
-
-# silva$OTU <- silva$empty
-# silva_plot <- silva_plot #+
-# geom_text_repel(stat="stratum", label.strata=TRUE, data=silva[,c("OTU", "Genus", "Abundance")], nudge_x=1)
-
-# ncbi$OTU <- ncbi$empty
-# ncbi_plot <- ncbi_plot #+
-# geom_text_repel(stat="stratum", label.strata=TRUE, data=ncbi[,c("OTU", "Genus", "Abundance")], nudge_x=1)
-
-# final_plot_a <- ggarrange(
-#     gg_plot,
-#     silva_plot + rremove("y.axis") + rremove("y.text") + rremove("y.ticks") + rremove("y.title"),
-#     ncbi_plot + rremove("y.axis") + rremove("y.text") + rremove("y.ticks") + rremove("y.title"),
-#     nrow = 1,
-#     ncol = 3,
-#     common.legend = TRUE,
-#     legend = "right"
-# )
 final_plot_a <- ggarrange(combined_plot, nrow=1, ncol=1, common.legend=TRUE, legend="right")
 annotate_figure(final_plot_a, fig.lab = "A", fig.lab.pos = "top.left", fig.lab.size = 20)
 ggsave(output_file_a, width = 11, height = 8.5)
@@ -179,7 +136,7 @@ make_bar_plot <- function(data, title) {
         # palette="Paired"
     ) +
         theme(
-        plot.title = element_text(size=8),
+        plot.title = element_text(size=10),
         axis.text.x = element_text(angle = 30, hjust = 1)
     )
 }

@@ -11,6 +11,26 @@ import pandas as pd
 LEVELS = ["Phylum", "Class", "Order", "Family", "Genus", "Species"]
 
 
+SILVA_PHYLUM_MAP = {
+    "Acidobacteriota": "Acidobacteria",
+    "Actinobacteriota": "Actinobacteria",
+    "Armatimonadota": "Armatimonadetes",
+    "Bacteroidota": "Bacteroidetes",
+    "Caldisericota": "Caldiserica",
+    "Deferribacterota": "Deferribacteres",
+    "Elusimicrobiota": "Elusimicrobia",
+    "Fibrobacterota": "Fibrobacteres",
+    "Fusobacteriota": "Fusobacteria",
+    "Gemmatimonadota": "Gemmatimonadetes",
+    "Nitrospirota": "Nitrospirae",
+    "Planctomycetota": "Planctomycetes",
+    "Spirochaetota": "Spirochaetes",
+    "Synergistota": "Synergistetes",
+    "Thermotogota": "Thermotogae",
+    "Verrucomicrobiota": "Verrucomicrobia",
+}
+
+
 def create_tables(file_paths, notus, output_path):
     tables = dict()
     for file in file_paths:
@@ -25,16 +45,27 @@ def create_tables(file_paths, notus, output_path):
             :notus
         ]
         final_df.replace("", "unknown", inplace=True)
-        final_df.index = range(1, notus + 1)
+        # # FIXME: What happened to the original OTU hash?
+        # final_df.index = range(1, notus + 1)
         final_df.index.name = "OTU"
         final_df["empty"] = [""] * notus
         tables[db_name] = final_df
     return tables
 
 
+def check_fix_tables(tables):
+    assert all(
+        tables["naive_bayes(gg_13_8_99)"].index
+        == tables["naive_bayes(silva_138_99)"].index
+    )
+    assert all(tables["naive_bayes(gg_13_8_99)"].index == tables["blast(ncbi)"].index)
+    tables["naive_bayes(silva_138_99)"].Phylum.replace(SILVA_PHYLUM_MAP, inplace=True)
+
+
 # Table headers for combined dataframes:
 # tax_level, value, assignment(match/mismatch)
 def get_mismatches(db1: pd.DataFrame, db2: pd.DataFrame) -> pd.DataFrame:
+    # FIXME: These files aren't in the same order!
     db1_lin_df = db1.drop(["empty", "Abundance"], axis=1)
     db1_lineages = [Lineage(**record) for record in db1_lin_df.to_dict("records")]
     db2_lin_df = db2.drop(["empty", "Abundance"], axis=1)
@@ -77,6 +108,7 @@ def main(files: str, notus: int, output: str):
     base_path = pathlib.Path(base_dir)
     file_paths = list(base_path.glob(glob))
     tables = create_tables(file_paths, notus, output_path)
+    check_fix_tables(tables)
     for db_name, df in tables.items():
         output_file = output_path / f"{db_name}.csv"
         print(f"Writing file {output_file}")
