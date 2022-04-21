@@ -117,10 +117,8 @@
   However, the number of mismatches for taxonomy assignments beyond the Genus level (Genus, Species) are very high ($>67\%$), implying that the taxonomy assignments from each reference database are fairly unique and are largely responsible for the differences observed in the co-occurrence networks generated from different taxonomy databases.
   The assignment between SILVA and the other two databases were originally significantly different ($40\%$ mismatch) even at the Phylum level, indicating that 40 of the top 100 assignments at the Phylum level in the SILVA database are different in SILVA.
   However, this was fixed by making minor adjustments to the taxonomic names, such as changing Bacteroidota to Bacteroidetes in the SILVA Phylum assignments.
-
-  % TODO: Supplementary work - Figure S5
-  The comparison of all assigned genera instead of the just the top 20 contains the same percentage of matches and mismatches, implying that there does not seem to exist a correlation between abundance and mismatch.
-  This suggests that the most abundant sequences are not necessarily the ones that are consistently matched to the same taxonomies in the different reference databases.
+  The comparison of all assigned genera (Figure~\ref{fig:figure_s5}) instead of the just the top 20 contains a higher percentage of mismatches.
+  This suggests that the most abundant sequences are the ones that are consistently matched to the same taxonomies in the different reference databases, at least for the dataset tested in the current analysis.
 
   As in the previous section, the comparisons so far only indicate similarity or dissimilarity between methods.
   In order to obtain an absolute measure of accuracy of the taxonomic assignments we use the expected reference sequences from the mock datasets as the query sequences for the databases and the expected taxonomic composition as the standard to compare against (Figure~\ref{fig:figure4}C).

@@ -89,31 +89,6 @@ ggsave(output_file_a, width = 11, height = 8.5)
 notu <- 50
 levels <- c("Phylum", "Class", "Order", "Family", "Genus", "Species")
 
-
-# tidy_up_data <- function(db_file, notu) {
-#     db_data <- read_csv(db_file)[1:notu, ]
-#     for (i in 1:length(levels)) {
-#         cols <- levels[1:i]
-#         db_data[levels[i]] <- apply(db_data[, cols], 1, paste, collapse = "-")
-#     }
-#     return(db_data)
-# }
-#
-# combine_data <- function(db1, db2) {
-#     comb_tbl <- as_tibble(
-#         rbind(t(colSums(db1 == db2)), t(colSums(db1 != db2)))
-#     )
-#     comb_tbl$type <- c("matches", "mismatches")
-#     final_tbl <- comb_tbl %>%
-#         gather(levels, key = "tax_level", value = "value") %>%
-#         select_at(.vars = c("tax_level", "value", "type"))
-#     # final_tbl$value = final_tbl$value / nrow(db1) * 100
-#     # if we want to display the numbers instead
-#     final_tbl$value <- final_tbl$value
-#     return(final_tbl)
-# }
-
-
 read_paired_data <- function(data_file) {
     raw_df <- read.csv(data_file, header = TRUE, sep = ",", na.strings = "")
     raw_df
