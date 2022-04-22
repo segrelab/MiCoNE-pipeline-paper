@@ -41,7 +41,8 @@ def read_observations(
 
 
 def get_consensus(predictions_map: Dict[str, Dict[str, Network]]):
-    corr_methods = ["sparcc", "propr", "spearman", "pearson"]
+    # corr_methods = ["sparcc", "propr", "spearman", "pearson"]
+    corr_methods = ["sparcc", "propr"]
     direct_methods = [
         "spieceasi",
         "flashweave",
@@ -158,18 +159,18 @@ def calculate_performance(
 def fix_name(name: str) -> str:
     if name.startswith("scaled_sum"):
         parameter_value = name.rsplit("_", 1)[-1]
-        return f"SS[{parameter_value}]"
+        return f"X:SS[{parameter_value}]"
     elif name.startswith("simple_voting"):
         parameter_value = name.rsplit("_", 1)[-1]
-        return f"SV[{parameter_value}]"
+        return f"X:SV[{parameter_value}]"
     elif name.startswith("pvalue_merging"):
         parameter_value = name.rsplit("_", 1)[-1]
-        return "pvalue merging"
+        return "X:Pvalue Merging"
     else:
-        return name
+        return f"I:{name}"
 
 
-def get_peformance_data(observations_map, predictions_map, sign) -> list:
+def get_performance_data(observations_map, predictions_map, sign) -> list:
     data = []
     for dataset_name in tqdm(predictions_map):
         observations = observations_map[dataset_name]
@@ -279,10 +280,10 @@ def main(
             df = pickle.load(fid)
     else:
         data = []
-        data.extend(get_peformance_data(observations_map, predictions_map, sign))
-        data.extend(get_peformance_data(observations_map, pvalue_mergers_map, sign))
-        data.extend(get_peformance_data(observations_map, consensus1_map, sign))
-        data.extend(get_peformance_data(observations_map, consensus2_map, sign))
+        data.extend(get_performance_data(observations_map, predictions_map, sign))
+        data.extend(get_performance_data(observations_map, pvalue_mergers_map, sign))
+        data.extend(get_performance_data(observations_map, consensus1_map, sign))
+        data.extend(get_performance_data(observations_map, consensus2_map, sign))
         df = pd.DataFrame(data)
         update_algo_name(df)
         with open(step_4_pickle, "wb") as fid:

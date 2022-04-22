@@ -30,8 +30,6 @@ plot_scatter <- function(data) {
 norta <- read.csv(performance_csv, sep = ",", header = TRUE)
 
 p <- plot_scatter(norta)
-#+ geom_text(data=norta, mapping=aes(x="precision", y="sensitivity", label="algorithm"))
 final_plot <- facet(p, facet.by = "algorithm", ncol = 5)
 
-# ggarrange(final_plot, labels = c("B"))
 ggsave(output_file, width = 14, height = 12)
