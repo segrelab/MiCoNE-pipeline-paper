@@ -112,7 +112,7 @@ def main(trees: str, otus: str, weighted: bool, asv: bool, threshold: int, outpu
         abbr = abbr_name(dc_method)
         for col in unifrac_data.index:
             if asv:
-                label = f"{abbr} ({otu_count})"
+                label = f"{abbr}"
             else:
                 label = f"{abbr}"
             data.append(

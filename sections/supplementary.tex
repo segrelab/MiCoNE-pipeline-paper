@@ -118,7 +118,13 @@
     \FloatBarrier
     \newpage
 
-    % TODO: Figure S4 - Unifrac bar plot for CC methods
+    We find that the two chimera checking methods, uchime and remove bimera, produce similar outputs.
+    This can be verified by comparing the output (representative sequence distributions) of the two chimera checking methods for each denoising method (Figure~\ref{fig:figure_s4}).
+    We find that with the exception of de novo and open-reference under the unweighted UniFrac metric, all the other methods have low dissimilarity.
+    This is especially true for the \ac{dada2} and Deblur methods which are the recommended denoising methods in the \ac{micone} pipeline.
+    % TODO: Can we verify this?
+    Therefore, we recommended remove bimera as the default chimera method if one is using \ac{dada2} and uchime when one is using Deblur, since these methods were developed for these respective algorithms.
+
     \begin{figure}[H]
       \centering
       \includegraphics[width=1.0\linewidth]{figure_s4.pdf}

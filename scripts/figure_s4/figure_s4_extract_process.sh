@@ -37,15 +37,15 @@ python figure_s4_make_trees.py \
   --output_dir ../../data/figure_s4/intermediate/$DATASET
 # Unweighted unifrac
 python -W ignore figure_s4_data.py \
-  --trees ../../data/figure_s4/intermediate/$DATASET/trees/**/*.nwk \
-  --otus ../../data/figure_s4/input/$DATASET/**/*_filtered.biom \
+  --trees "../../data/figure_s4/intermediate/$DATASET/trees/**/*.nwk" \
+  --otus "../../data/figure_s4/input/$DATASET/**/*_filtered.biom" \
   --weighted False \
   --threshold 10 \
-  --output ../../data/figure_s4/output/$DATASET
+  --output "../../data/figure_s4/output/$DATASET"
 # Weighted unifrac
 python -W ignore figure_s4_data.py \
-  --trees ../../data/figure_s4/intermediate/$DATASET/trees/**/*.nwk \
-  --otus ../../data/figure_s4/input/$DATASET/**/*_filtered.biom \
+  --trees "../../data/figure_s4/intermediate/$DATASET/trees/**/*.nwk" \
+  --otus "../../data/figure_s4/input/$DATASET/**/*_filtered.biom" \
   --weighted True \
   --threshold 10 \
-  --output ../../data/figure_s4/output/$DATASET
+  --output "../../data/figure_s4/output/$DATASET"

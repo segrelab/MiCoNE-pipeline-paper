@@ -80,11 +80,10 @@
   Based on their slightly better performance on the mock datasets, their \textit{de novo} error correcting nature and other previous studies~\cite{Nearing2018}, \ac{dada2} and Deblur seem to be in general the most reliable.
   Overall, since \ac{dada2} as compared to Deblur, displays better performance on all the mock datasets and under the weighted UniFrac metric, we have decided to recommend this tool for the DC step of the pipeline.
 
-  % TODO: Supplementary work - Figure S4
   After the denoising, the sequences are subject to chimera checking.
   The \ac{micone} pipeline supports two different chimera checking methods, uchime and remove bimera.
   The uchime method is from \ac{qiime2}, whereas the remove bimera method is from the \ac{dada2} R package.
-  We did not notice any significant difference between the two chimera checking methods, implying that they identify and remove mostly the same set of sequences as chimeras (Figure ???).
+  We did not notice any significant difference between the two chimera checking methods (Figure~\ref{fig:figure_s4}), implying that they identify and remove mostly the same set of sequences as chimeras.
 
   \FloatBarrier
 
