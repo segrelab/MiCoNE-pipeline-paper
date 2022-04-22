@@ -40,9 +40,13 @@ def read_observations(
     return interactions
 
 
-def get_consensus(predictions_map: Dict[str, Dict[str, Network]]):
-    # corr_methods = ["sparcc", "propr", "spearman", "pearson"]
-    corr_methods = ["sparcc", "propr"]
+def get_consensus(
+    predictions_map: Dict[str, Dict[str, Network]], subset_methods: bool = True
+):
+    if subset_methods:
+        corr_methods = ["sparcc", "propr"]
+    else:
+        corr_methods = ["sparcc", "propr", "spearman", "pearson"]
     direct_methods = [
         "spieceasi",
         "flashweave",
@@ -213,12 +217,19 @@ def update_algo_name(df: pd.DataFrame) -> None:
 @click.option(
     "--sign", default=True, type=bool, help="Flag to convert matrices to sign matrices"
 )
+@click.option(
+    "--subset_methods",
+    default=True,
+    type=bool,
+    help="Flag to choose subset of correlation methods for consensus",
+)
 @click.option("--output", default=".", help="The path to the output directory")
 def main(
     files: str,
     interaction_threshold: float,
     pvalue_threshold: float,
     sign: bool,
+    subset_methods: bool,
     output: str,
 ):
     output_path = pathlib.Path(output)
@@ -265,7 +276,7 @@ def main(
             consensus2_map = pickle.load(fid)
     else:
         pvalue_mergers_map, consensus1_map, consensus2_map = get_consensus(
-            predictions_map
+            predictions_map, subset_methods
         )
         with open(step_3_pickle, "wb") as fid:
             pickle.dump(pvalue_mergers_map, fid)
