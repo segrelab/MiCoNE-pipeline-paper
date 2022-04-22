@@ -25,20 +25,19 @@ output_file <- paste0(output_folder, "figure_s4.pdf")
 # ab
 #########################################
 
-tidy_up_data_ab <- function(unifrac_data) {
+tidy_up_data <- function(unifrac_data) {
     unifrac_data$method1 <- factor(unifrac_data$method1)
     unifrac_data$method2 <- factor(unifrac_data$method2)
     tidy_data <- unifrac_data %>%
-        group_by(method1, method2) %>%
-        select_at(c("method1", "method2", "unifrac")) %>%
+        group_by(method) %>%
+        select_at(c("method", "unifrac")) %>%
         summarize_all(.funs = mean) %>%
-        rowwise() %>%
-        mutate(pair = sort(c(method1, method2)) %>% paste(collapse = ",")) %>%
-        group_by(pair) %>%
-        distinct(pair, .keep_all = TRUE)
+        distinct(method, .keep_all = TRUE)
 }
 
-plot_heatmap <- function(data, title) {
+plot_dotplot <- function(data, title) {
+    ggdotchart(data, x = "method", y ="unifrac")
+    # TODO: Update from here
     ggplot(data = data, aes(x = method1, y = method2, fill = unifrac)) +
         geom_tile(color = "white") +
         geom_text(aes(label = abbreviate(unifrac))) +
@@ -60,12 +59,12 @@ plot_heatmap <- function(data, title) {
 }
 
 unweighted <- read.csv(unweighted_unifrac_csv, sep = ",", header = TRUE)
-unweighted_tidy <- tidy_up_data_ab(unweighted)
+unweighted_tidy <- tidy_up_data(unweighted)
 weighted <- read.csv(weighted_unifrac_csv, sep = ",", header = TRUE)
-weighted_tidy <- tidy_up_data_ab(weighted)
+weighted_tidy <- tidy_up_data(weighted)
 
-weighted_plot <- plot_heatmap(weighted_tidy, "weighted unifrac")
-unweighted_plot <- plot_heatmap(unweighted_tidy, "unweighted unifrac")
+weighted_plot <- plot_dotplot(weighted_tidy, "weighted unifrac")
+unweighted_plot <- plot_dotplot(unweighted_tidy, "unweighted unifrac")
 
 heatmap_plot <- ggarrange(
     weighted_plot, unweighted_plot,
