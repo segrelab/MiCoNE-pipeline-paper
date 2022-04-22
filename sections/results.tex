@@ -32,8 +32,7 @@
   Figure \ref{fig:figure2}A, shows the percentage of total variation among the co-occurrence networks due to the different steps of the pipeline.
   The TA step, more specifically, the choice of 16S reference database contributes the most ($\sim65.4\%$) to the variation in the networks, followed by the OP step ($\sim26.8\%$).
   This result highlights the importance of the taxonomy assignment step in the 16S data analysis workflow, implying that a change in the reference database will result in drastically different inferred networks.
-  % TODO: Verify this: Figure S4
-  The reason for this seems to derive from the mislabelling of constitutive taxa that are present in high abundance in the community, which drastically alter the nodes and hence the underlying network topology.
+  The reason for this seems to derive from the differential labeling of constitutive representative sequences into taxonomic entities (Figure~\ref{fig:figure4} and Figure~\ref{fig:figure_s5}), which drastically alter the nodes and hence the underlying network topology.
   In fact the variability induced by taxonomy assignment is much more significant than that due to the variability induced based on how the reference sequences themselves are identified (in the DC step).
   The residual variation (Figure \ref{fig:figure2}A) can be seen as an artifact that arises when multiple steps are changed at the same time, however this is small.
 
@@ -117,7 +116,7 @@
   However, the number of mismatches for taxonomy assignments beyond the Genus level (Genus, Species) are very high ($>67\%$), implying that the taxonomy assignments from each reference database are fairly unique and are largely responsible for the differences observed in the co-occurrence networks generated from different taxonomy databases.
   The assignment between SILVA and the other two databases were originally significantly different ($40\%$ mismatch) even at the Phylum level, indicating that 40 of the top 100 assignments at the Phylum level in the SILVA database are different in SILVA.
   However, this was fixed by making minor adjustments to the taxonomic names, such as changing Bacteroidota to Bacteroidetes in the SILVA Phylum assignments.
-  The comparison of all assigned genera (Figure~\ref{fig:figure_s5}) instead of the just the top 20 contains a higher percentage of mismatches.
+  The comparison of all assigned genera (Figure~\ref{fig:figure_s5}) instead of the just the top 100 contains a higher percentage of mismatches.
   This suggests that the most abundant sequences are the ones that are consistently matched to the same taxonomies in the different reference databases, at least for the dataset tested in the current analysis.
 
   As in the previous section, the comparisons so far only indicate similarity or dissimilarity between methods.
@@ -128,7 +127,7 @@
   One user-specific way to choose, would be based on the known representation of taxa for the microbiome of interest (see also Discussion). Another reason could be the frequency of updates and the potential for future growth.
   % TODO: Find reference for this
   Since the \ac{gg} database is more widely used in the field~[ref], to enable easier comparison with published networks in literature, we set \ac{gg} as the \ac{micone} standard for taxonomy assignment.
-  On the other hand, since the degree of similarity of assignments between \ac{ncbi} and \ac{gg} is fairly high, and due to its regular updation and maintenance the \ac{ncbi} database is also a good choice for the user.
+  On the other hand, since the degree of similarity of assignments between \ac{ncbi} and \ac{gg} is fairly high (Figure~\ref{fig:figure_s5}), and due to its regular updation and maintenance the \ac{ncbi} database is also a good choice for the user.
 
   % TODO: More refs to support our argument?
  % There are also other studies, [ref, OTT paper] that focus on the database aspect and they too have found that...
