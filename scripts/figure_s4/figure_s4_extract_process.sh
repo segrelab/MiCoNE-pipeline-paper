@@ -31,11 +31,10 @@ if [ $PLATFORM == "scc" ]; then
   conda activate micone-qiime2
 fi
 
-cd ../figure3/
 mkdir -pv ../../data/figure_s4/intermediate/$DATASET
 mkdir -pv ../../data/figure_s4/output/$DATASET
 # Make trees
-python make_trees.py \
+python figure_s4_make_trees.py \
   --base_dir ../../data/figure_s4/input/$DATASET \
   --output_dir ../../data/figure_s4/intermediate/$DATASET
 # Unweighted unifrac
@@ -52,10 +51,3 @@ python -W ignore figure_s4_data.py \
   --weighted True \
   --threshold 10 \
   --output ../../data/figure_s4/output/$DATASET
-
-# Figure creation
-OUTPUT_DIR="../../figures/FMT/"
-Rscript figure_s4_plot.R \
-  "../../data/figure_s4/output/$DATASET/" \
-  "../../data/figure_s4/output/" \
-  "$OUTPUT_DIR"
