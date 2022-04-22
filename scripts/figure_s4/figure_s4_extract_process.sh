@@ -23,14 +23,12 @@ mkdir -pv ../../data/figure_s4/input/$DATASET
 python extract_figure_s4_data.py $INPUT_FOLDER $DATASET "*"
 
 # Data processing
-# TODO: Here we must change all the processing and figure scripts
-# We only need trees for <dc_method>_remove_bimera vs. <dc_method>_uchime
-# Then we just need a bar graph or something instead of heatmap
 if [ $PLATFORM == "scc" ]; then
   module load miniconda
   conda activate micone-qiime2
 fi
 
+cd ../figure_s4/
 mkdir -pv ../../data/figure_s4/intermediate/$DATASET
 mkdir -pv ../../data/figure_s4/output/$DATASET
 # Make trees
