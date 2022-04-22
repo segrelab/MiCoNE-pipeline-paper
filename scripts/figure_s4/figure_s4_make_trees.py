@@ -2,6 +2,7 @@
 
 # Use qiime2 env for this script
 
+from collections import defaultdict
 import pathlib
 from itertools import chain, combinations
 from subprocess import call
@@ -103,14 +104,15 @@ def main(
 ):
     if not output_dir.exists():
         raise ValueError("{} does not exist".format(output_dir))
-    files = dict()
+    files = defaultdict(dict)
     for cc_dir in base_dir.iterdir():
         if not cc_dir.is_dir():
             continue
         for dc_dir in cc_dir.iterdir():
             if not dc_dir.is_dir():
                 continue
-            files[dc_dir.name][cc_dir.name] = dc_dir.glob("**/rep_seqs.fasta")
+            assert len(list(dc_dir.glob("**/rep_seqs.fasta"))) == 1
+            files[dc_dir.name][cc_dir.name] = list(dc_dir.glob("**/rep_seqs.fasta"))[0]
     for dc_method in files:
         cc_method1, cc_method2 = files[dc_method].keys()
         file1, file2 = files[dc_method].values()

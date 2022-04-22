@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from collections import defaultdict
 import pathlib
 from typing import List
 
@@ -94,7 +95,7 @@ def main(trees: str, otus: str, weighted: bool, asv: bool, threshold: int, outpu
     assert output_path.exists()
     tree_files = get_files(trees)
     otu_files = get_files(otus)
-    otu_files_map = dict()
+    otu_files_map = defaultdict(dict)
     for otu_file in otu_files:
         dc_method = otu_file.parent.parent.stem
         cc_method = otu_file.parent.parent.parent.stem
