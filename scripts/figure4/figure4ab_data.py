@@ -45,8 +45,6 @@ def create_tables(file_paths, notus, output_path):
             :notus
         ]
         final_df.replace("", "unknown", inplace=True)
-        # # FIXME: What happened to the original OTU hash?
-        # final_df.index = range(1, notus + 1)
         final_df.index.name = "OTU"
         final_df["empty"] = [""] * notus
         tables[db_name] = final_df
@@ -65,8 +63,8 @@ def check_fix_tables(tables):
 # Table headers for combined dataframes:
 # tax_level, value, assignment(match/mismatch)
 def get_mismatches(db1: pd.DataFrame, db2: pd.DataFrame) -> pd.DataFrame:
-    # FIXME: These files aren't in the same order!
     db1_lin_df = db1.drop(["empty", "Abundance"], axis=1)
+    assert all(db1.index == db2.index)
     db1_lineages = [Lineage(**record) for record in db1_lin_df.to_dict("records")]
     db2_lin_df = db2.drop(["empty", "Abundance"], axis=1)
     db2_lineages = [Lineage(**record) for record in db2_lin_df.to_dict("records")]
