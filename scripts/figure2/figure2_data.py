@@ -213,8 +213,8 @@ def main(
         x_df.TA.replace(
             {
                 "blast(ncbi)": "BLAST(NCBI)",
-                "naive_bayes(gg_13_8_99)": "NB(GG)",
-                "naive_bayes(silva_138_99)": "NB(SILVA)",
+                "naive_bayes(gg_13_8_99)": "NaiveBayes(GG)",
+                "naive_bayes(silva_138_99)": "NaiveBayes(SILVA)",
             },
             inplace=True,
         )
