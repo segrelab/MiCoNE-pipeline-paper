@@ -2,12 +2,17 @@
 
 import hashlib
 import pathlib
+import pickle
 import multiprocessing as mp
 from typing import Optional
 
 import click
+from micone import Network
 import networkx as nx
+import numpy as np
+import pandas as pd
 import networkx.algorithms.community as nx_comm
+import tqdm
 from tqdm_multiprocess import TqdmMultiProcessPool
 
 
@@ -19,15 +24,21 @@ warnings.filterwarnings("ignore")
 def get_metrics(graph: nx.Graph) -> dict:
     metrics = dict()
     # Average shortest path
-    metrics["Average shortest path length"] = nx.average_shortest_path_length(graph)
+    try:
+        metrics["Average shortest path length"] = nx.average_shortest_path_length(graph)
+    except nx.exception.NetworkXError:
+        metrics["Average shortest path length"] = np.nan
     # Average clustering
     metrics["Average clustering"] = nx.average_clustering(graph)
     # Components
     metrics["No. of connected components"] = nx.number_connected_components(graph)
     # Modularity
-    metrics["Modularity"] = nx_comm.modularity(
-        graph, nx_comm.label_propagation_communities(graph)
-    )
+    try:
+        metrics["Modularity"] = nx_comm.modularity(
+            graph, nx_comm.label_propagation_communities(graph)
+        )
+    except ZeroDivisionError:
+        metrics["Modularity"] = np.nan
     # Connectivity
     metrics["Node connectivity"] = nx.node_connectivity(graph)
     metrics["Edge connectivity"] = nx.edge_connectivity(graph)
@@ -62,6 +73,29 @@ def process_data(
     # tqdm_func.update()
     global_tqdm.update()
     return data
+
+
+def error_callback(result):
+    print("Error!")
+
+
+def done_callback(result):
+    pass
+
+
+def summarize_metrics(df: pd.DataFrame) -> pd.DataFrame:
+    HEADER = ["DC", "CC", "TA", "OP", "TL", "NI"]
+    metrics = df.drop(HEADER, axis=1)
+    data = []
+    info_placeholder = dict(zip(HEADER, ["-"] * len(HEADER)))
+    for step in HEADER:
+        tools = set(df[step])
+        for tool in tools:
+            summarized_metrics_dict = metrics.loc[df[step] == tool, :].mean().to_dict()
+            data_item = {**info_placeholder, step: tool, **summarized_metrics_dict}
+            data.append(data_item)
+    summarized_df = pd.DataFrame(data)
+    return summarized_df
 
 
 @click.command()
@@ -136,6 +170,9 @@ def main(
             pickle.dump(df, fid)
 
     print(df.head())
+    df_summary = summarize_metrics(df)
+    df_summary.to_csv(output_path / "metrics_summary.csv", sep=",")
+    print(df_summary.head())
 
 
 if __name__ == "__main__":
