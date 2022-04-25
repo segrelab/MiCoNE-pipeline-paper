@@ -11,11 +11,9 @@
   The \ac{micone} pipeline is built in a modular fashion; its plug-and-play architecture will make it possible for users to add new tools and steps, either from existing packages, or from packages that were not examined in the present work, as well as those developed in the future.
   The easy-to-use nature, the configurability and modular nature of the \ac{micone} package enables users to start and end the pipeline at any point in the worflow, enabling users to run parts of the pipeline in isolation.
   The \ac{micone} Python package provides functions and methods to perform detailed analysis of the count matrices and the inferred networks.
-  % TODO: Ref and supplementary
-  Additionally, the inferred networks by default are created using a custom JSON format (see Supplementary), but are interchangeable to Cytoscape[ref], GML[ref], and many other popular formats via the \ac{micone} Python package.
+  Additionally, the inferred networks by default are exported to a custom JSON format (see Supplementary), but are interchangeable to Cytoscape~\cite{shannonCytoscapeSoftwareEnvironment2003}, GML~\cite{himsoltGMLPortableGraph2010}, and many other popular formats via the \ac{micone} Python package.
 
-  % TODO: Refs
-  There have been several tools/workflows such as \ac{qiime2}~\cite{bolyenReproducibleInteractiveScalable2019} and NetCoMi[ref] that have been developed for analysis of 16S sequencing data and to infer networks from these datasets.
+  There have been several tools/workflows such as \ac{qiime2}~\cite{bolyenReproducibleInteractiveScalable2019} and NetCoMi~\cite{peschelNetCoMiNetworkConstruction2020} that have been developed for analysis of 16S sequencing data and to infer networks from these datasets.
   However, there has been no single tool that completely integrates the process of inferring microbial interaction networks from 16S sequencing reads.
   \ac{micone} is unique as it offers this functionality packaged in a simple workflow that can be run locally, on the compute cluster or the cloud.
   For an end user who is interested in identifying the microbial interactions present in a specific sequencing dataset, \ac{micone} offers a fast and reproducible way to compare and test novel hypotheses related to interactions.
@@ -40,17 +38,14 @@
   The frequent changes in the taxonomy nomenclature coupled with the frequency of updates to the various 16S reference databases create inherent differences \cite{Balvociute2017} in taxonomy hierarchies in these databases.
   Our analysis revealed that no particular reference database performs better than the others across all scenarios. We suggest that that choice of the database should be made based on possible reported or inferred biases in the representation of given biomes in a specific databases \cite{Balvociute2017}.
   The default reference database in the pipeline is the \ac{gg} reference database along with the NaiveBayes classifier as the query tool.
-  The reason for our choice stem from the popularity of the \ac{gg} database in taxonomic studies, which would enable easy comparision across datasets.
+  The reason for our choice stem from the popularity of the \ac{gg} database in taxonomic studies, which would enable easy comparison across datasets.
   We also enable users to use custom databases \cite{Ritari2015} with the blast+ and naive bayes classifiers that are incorporated into the pipeline (from \ac{qiime2}).
 
-  The \ac{op} step of the pipeline the step that second in its contribution to total network variance.
+  The \ac{op} step of the pipeline is second in its contribution to total network variance.
   This can be attributed to the large number of nodes that are added to the final networks when filtering is turned off.
-  % TODO: Refs
-  Additionally, the large number of nodes also greatly decrease the accuracy of the network inference algorithms [ref] as well as increase the computational complexity.
-  % TODO: Supplementary work - Figure S5
-  We observe that filtering out taxa that are present in low abundances in all samples did not necessarily increase the proportion of taxa in common between taxonomy tables generated using different reference databases.
-  % TODO: Supplementary work - Figure S2
-  However, we do observe that the reduction in the number of taxa leads to better agreement in the networks inferred through different methods.
+  Additionally, a very large number of nodes also decreases the accuracy of the network inference algorithms for the same sample size~\cite{peschelNetCoMiNetworkConstruction2020} and increases the computational complexity~\cite{tackmannRapidInferenceDirect2019}.
+  We observe that filtering out taxa that are present in low abundances in all samples decrease the proportion of taxa in common between taxonomy tables generated using different reference databases, but not significantly (Figure~\cite{fig:figure_s5}).
+  However, we do observe that the reduction in the number of taxa leads to better agreement in the networks inferred through different methods (Figure~\ref{fig:figure_s1}).
   Moreover, filtering is necessary in order to increase the power in tests of significance when the number of taxa is much greater than the number of samples.
 
   The networks generated by different network inference methods show considerable differences in edge-density and connectivity.
