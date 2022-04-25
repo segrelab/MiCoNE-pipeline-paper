@@ -57,6 +57,7 @@
   The output of this module is a matrix of counts, that describes the number of reads of a particular \ac{otu} or \ac{esv} (rows of the matrix) present in each sample (columns of the matrix).
   The options currently available in the pipeline for denoising and clustering are: open reference clustering, closed reference clustering and de novo clustering methods from the vsearch plugin of \ac{qiime2} v2021.8.0~\cite{bolyenReproducibleInteractiveScalable2019} and denoising methods from \ac{dada2} v1.14~\cite{Callahan2016} (from the \ac{dada2} R package) and Deblur v1.1.0~\cite{Amir2017} (from the deblur plugin of \ac{qiime2}).
   The quality filtering and chimera checking tools are derived from those used in \ac{qiime2} v2021.8.0 (uchime method) and \ac{dada2} (remove bimera method).
+  The list of tools used in this step, along with their modules and references are provided in Table~\ref{tab:dc_tools}.
 
   \subsection*{Taxonomy Assignment (TA)}
   \vspace{-5mm}
@@ -68,8 +69,8 @@
   These databases were downloaded and built using the RESCRIPt qiime2 plugin~\cite{iiRESCRIPtReproducibleSequence2021}.
   The Naive Bayes classifier and the \ac{ncbi} blast used as the query tools in this study were from the \ac{qiime2} package and the parameters used were also the defaults in the package.
   The consensus algorithm used is the default method used by the classifiers in \ac{qiime2}.
+  The list of tools used in this step, along with their modules and references are provided in Table~\ref{tab:ta_tools}.
 
-  % TODO : Add information about filtering when OP=off
   \subsection*{OTU and ESV Processing (OP)}
   \vspace{-5mm}
   This module deals with normalization, filtering, forking, grouping and applying transformations to the \ac{otu} or \ac{esv} counts matrix.
@@ -79,7 +80,9 @@
   Although the pipeline supports rarefaction, these modules are turned off by default and the analyses reported in the paper do not normalize or rareify the counts matrices.
   However, most of the network inference methods perform normalization and other transformation operations on the counts matrix as a part of their workflow.
   Filtering, is performed to remove samples or features (\ac{otu}s or \ac{esv}s) from the count matrix that are sparse.
-  By default, samples are filtered out if the total reads in a sample are less than 500 and features are filtered out if the abundance of the 1\% and prevalence is less than 5\%.
+  By default, when the OP module is ``on'', the samples are filtered out if the total reads in a sample are less than 500 and features are filtered out if the abundance is less than 1\%, prevalence is less than 5\% and count sum across all the samples is less than 100.
+  When the OP module is ``off'', the filtering is still performed but only to remove those features that are very low in presence.
+  The parameters used are given in Table~\ref{tab:op_tools}.
   The forking operation splits the count matrix into multiple matrices based on sample metadata column.
   The group operation transforms the \ac{otu} or \ac{esv} count matrix into a taxonomic count matrix at the requested level by adding up counts that map to the same taxonomy.
   Finally, transformations are performed in order to correct for and overcome the compositional bias that is inherent in a counts matrix (in analyses peformed in the study these are handled by the network inference algorithm).
@@ -97,6 +100,7 @@
   The Brown's p-value merging method~\cite{brown_400_1975} is used for combining p-values from the pairwise correlations methods to obtain a consensus p-value, which can be used to filter for significance.
   In the final module of this step, the consensus algorithms are used to create the final consensus network using associations from all the network inference methods.
   The output of this step are co-occurrence association networks encoded in the JSON format (refer Supplementary section) and are also exportable to a variety of network formats like .gml.
+  The list of tools used in this step, along with their modules and references are provided in Table~\ref{tab:ni_tools}.
 
   \subsection*{Consensus Network and p-value merging}
   \vspace{-5mm}
