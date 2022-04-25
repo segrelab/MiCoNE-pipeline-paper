@@ -28,15 +28,16 @@
   The pipeline supports both paired end and single end reads, and additionally supports independently processing multiple runs and merging the OTU tables in the DC step.
   The final output of the pipeline is the inferred network of co-occurrence relationships among the microbes present in the samples.
 
-  % TODO: Write about the JSON network format (supplementary)
   The \ac{micone} pipeline provides both a Python API as well as a command-line interface and only uses a single configuration file (nextflow.config) to contain the configuration parameters.
-  The \ac{micone} Python API several biom file and network related function and methods, enabling detailed comparison of counts tables and inferred networks if desired.
+  The \ac{micone} Python API provides several biom file and network related functions and methods, enabling detailed comparison of counts tables and inferred networks if desired.
+  It also contains helper functions that can help in parsing taxonomies and communicate with the \ac{ncbi} taxonomy database to query taxonomy by name or taxonomic ids.
   The configuration file along with the run file (main.nf) lists the inputs, output and the steps to be performed during runtime, along with the parameters to be used (if different from defaults) for the various steps.
   Since the entire pipeline run-through is stored in the form of a text file (the configuration file), subsequent runs are highly reproducible and changes can be easily tracked using version control.
   It uses the nextflow workflow manager~\cite{Tommaso2015} under the hood, making it readily usable on local machines, cluster or cloud with minimal configuration change.
   It also allows for automatic parallelization of all possible processes, both within and across samples.
   The pipeline is designed to be modular: each tool or method is organized into modules which can be easily modified or replaced.
   This modular architecture simplifies the process of adding new tools (refer to modules section in the \ac{micone} documentation).
+  % TODO: Write a DockerFile for the package
   % In addition to the Python package, the entire pipeline has been containerized into a Docker~\cite{Merkel1994} image (\hl{dockerhub link}) for easy deployment and setup.
   The main components of the pipeline are detailed in the subsequent sections.
 
@@ -95,7 +96,7 @@
   The pipeline includes 4 methods for pairwise correlation metrics, and 6 methods for direct association metrics (refer Table~\ref{tab:ni_tools}).
   The Brown's p-value merging method~\cite{brown_400_1975} is used for combining p-values from the pairwise correlations methods to obtain a consensus p-value, which can be used to filter for significance.
   In the final module of this step, the consensus algorithms are used to create the final consensus network using associations from all the network inference methods.
-  The output of this step are co-occurrence association networks encoded in the JSON format (refer Supplementary section).
+  The output of this step are co-occurrence association networks encoded in the JSON format (refer Supplementary section) and are also exportable to a variety of network formats like .gml.
 
   \subsection*{Consensus Network and p-value merging}
   \vspace{-5mm}

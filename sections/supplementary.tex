@@ -292,7 +292,11 @@
     \newpage
 
 
-  % TODO: Write more about this and link to documentation
-  \subsection*{The JSON network format}
+  % TODO: Should we mention the MIND database here?
+  \subsection*{The JSON network format and network exports}
 
-    The default format
+    The default format \ac{micone} uses for storing the network files is the JSON format.
+    The custom JSON schema we have designed is able to store all network related information from nodes and links to metadata related to links and datasets.
+    Additionally, \ac{micone} also supports exporting of networks into a variety of other formats such as edge lists, .gml and cytoscape formats.
+    Since, we make use of \texttt{networkx}~\cite{hagbergExploringNetworkStructure2008} for the export functionality, networks can be exported to all supported formats but the corresponding metadata might not be exported appropriately.
+    The details of the format and information about importing/exporting it and other network formats can be found in the \ac{micone} documentation.
