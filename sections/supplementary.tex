@@ -140,7 +140,7 @@
     \FloatBarrier
     \newpage
 
-  \subsection*{Mismatches in all assignments at the \ac{TA} step}
+  \subsection*{Mismatches in all assignments at the \ac{ta} step}
 
     Figure~\ref{fig:figure_s5} is similar to Figure~\ref{fig:figure4}B, but instead of the matching only the top 100 taxonomic entities (by abundance), we match all the assignments from one database with those from the other two databases.
     We observe that the percentage of mismatches are indeed higher when considering all the assignments, implying that matching of the taxonomies in the more abundant sequences are more consistent.
@@ -170,45 +170,46 @@
     \item The number of connected components are the highest for the direct-association based methods and the lowest for the correlation-based methods. In the case of propr, all the networks have only one giant component.
     \item Modularity metric is the average modularity over all partitions in a graph calculated using a label propagation algorithm. Positive values imply that there are more edges between vertices of the same type than we would expect by chance, and negative means that there are less. The networks inferred by \ac{mldm} report very few edges, and skew the average modularity scores.
     \item Node connectivity refers to the minimum number of nodes that must be removed from the graph to make it disconnected. We observe that only the networks generated using propr have a high value since most of these networks are connected.
-    \item Edge connectivity refers to the minimum number of edges that must be removed from the graph to make it disconnected. These values are similar to node connectivity.
     \item Degree assortativity coefficient measures the similarity of connections in the graph with respect to the node degree. Again we observe that the direct-association based methods have negative degree assortativity, meaning that there are many hubs in these networks. The correlation-based methods have positive values implying that in these networks nodes with similar degrees attach to one another.
   \end{enumerate}
 
-  \begin{table}[]
+  \begin{landscape}
+  \begin{table}[H]
     \centering
     \small
-    \begin{tabular}{|l|l|l|l|l|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}
+    \begin{tabular}{|l|p{1cm}|p{1cm}|p{1cm}|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
   \hline
-  DC & CC            & TA                & OP          & NI         & Average shortest path length & Average clustering & No. of connected components & Modularity & Node connectivity & Edge connectivity & Degree assortativity coefficient \\ \hline
-  DB & -             & -                 & -           & -          & 2.066                        & 0.265              & 27.088                      & 0.387      & 1.868             & 1.868             & 0.070                            \\
-  OR & -             & -                 & -           & -          & 1.904                        & 0.273              & 24.868                      & -17.060    & 1.877             & 1.877             & 0.099                            \\
-  D2 & -             & -                 & -           & -          & 2.263                        & 0.267              & 28.228                      & 0.326      & 1.789             & 1.789             & 0.078                            \\
-  DN & -             & -                 & -           & -          & 2.065                        & 0.272              & 25.132                      & 0.302      & 1.754             & 1.754             & 0.093                            \\
-  CR & -             & -                 & -           & -          & 1.937                        & 0.276              & 24.289                      & -1.865     & 2.079             & 2.079             & 0.097                            \\
-  -  & remove bimera & -                 & -           & -          & 2.070                        & 0.272              & 25.968                      & -7.439     & 1.863             & 1.863             & 0.086                            \\
-  -  & uchime        & -                 & -           & -          & 2.066                        & 0.269              & 25.874                      & 0.275      & 1.884             & 1.884             & 0.089                            \\
-  -  & -             & BLAST(NCBI)       & -           & -          & 2.218                        & 0.262              & 22.784                      & -3.683     & 1.495             & 1.495             & 0.100                            \\
-  -  & -             & NaiveBayes(SILVA) & -           & -          & 1.872                        & 0.275              & 30.716                      & 0.415      & 2.674             & 2.674             & 0.074                            \\
-  -  & -             & NaiveBayes(GG)    & -           & -          & 2.086                        & 0.274              & 24.263                      & -7.478     & 1.453             & 1.453             & 0.088                            \\
-  -  & -             & -                 & Filter(on)  & -          & 1.975                        & 0.252              & 18.493                      & -7.194     & 1.880             & 1.880             & 0.073                            \\
-  -  & -             & -                 & Filter(off) & -          & 2.193                        & 0.291              & 34.174                      & 0.431      & 1.867             & 1.867             & 0.104                            \\
-  -  & -             & -                 & -           & propr      & 1.650                        & 0.528              & 1.000                       & 0.000      & 10.583            & 10.583            & 0.036                            \\
-  -  & -             & -                 & -           & harmonies  &                              & 0.108              & 82.633                      & 0.757      & 0.000             & 0.000             & 0.340                            \\
-  -  & -             & -                 & -           & flashweave & 3.878                        & 0.079              & 1.800                       & 0.458      & 0.383             & 0.383             & -0.032                           \\
-  -  & -             & -                 & -           & cozine     &                              & 0.090              & 82.167                      & 0.694      & 0.000             & 0.000             & -0.072                           \\
-  -  & -             & -                 & -           & spring     &                              & 0.092              & 11.767                      & 0.566      & 0.000             & 0.000             & -0.035                           \\
-  -  & -             & -                 & -           & sparcc     & 1.747                        & 0.525              & 1.033                       & 0.009      & 5.500             & 5.500             & -0.011                           \\
-  -  & -             & -                 & -           & spieceasi  &                              & 0.076              & 39.383                      & 0.717      & 0.000             & 0.000             & -0.031                           \\
-  -  & -             & -                 & -           & pearson    &                              & 0.457              & 23.883                      & 0.551      & 0.000             & 0.000             & 0.478                            \\
-  -  & -             & -                 & -           & spearman   & 1.875                        & 0.551              & 1.450                       & 0.044      & 1.117             & 1.117             & 0.170                            \\
-  -  & -             & -                 & -           & mldm       & 2.760                        & 0.130              & 2.267                       & -75.648    & 0.433             & 0.433             & -0.028                           \\ \hline
+  DC & CC            & TA                & OP          & NI         & Average shortest path length & Average clustering & No. of connected components & Modularity & Node connectivity & Degree assortativity coefficient \\ \hline
+  DB & -             & -                 & -           & -          & 2.066                        & 0.265              & 27.088                      & 0.387      & 1.868             & 0.070                            \\
+  OR & -             & -                 & -           & -          & 1.904                        & 0.273              & 24.868                      & -17.060    & 1.877             & 0.099                            \\
+  D2 & -             & -                 & -           & -          & 2.263                        & 0.267              & 28.228                      & 0.326      & 1.789             & 0.078                            \\
+  DN & -             & -                 & -           & -          & 2.065                        & 0.272              & 25.132                      & 0.302      & 1.754             & 0.093                            \\
+  CR & -             & -                 & -           & -          & 1.937                        & 0.276              & 24.289                      & -1.865     & 2.079             & 0.097                            \\
+  -  & remove bimera & -                 & -           & -          & 2.070                        & 0.272              & 25.968                      & -7.439     & 1.863             & 0.086                            \\
+  -  & uchime        & -                 & -           & -          & 2.066                        & 0.269              & 25.874                      & 0.275      & 1.884             & 0.089                            \\
+  -  & -             & NCBI              & -           & -          & 2.218                        & 0.262              & 22.784                      & -3.683     & 1.495             & 0.100                            \\
+  -  & -             & SILVA             & -           & -          & 1.872                        & 0.275              & 30.716                      & 0.415      & 2.674             & 0.074                            \\
+  -  & -             & GG                & -           & -          & 2.086                        & 0.274              & 24.263                      & -7.478     & 1.453             & 0.088                            \\
+  -  & -             & -                 & On          & -          & 1.975                        & 0.252              & 18.493                      & -7.194     & 1.880             & 0.073                            \\
+  -  & -             & -                 & Off         & -          & 2.193                        & 0.291              & 34.174                      & 0.431      & 1.867             & 0.104                            \\
+  -  & -             & -                 & -           & propr      & 1.650                        & 0.528              & 1.000                       & 0.000      & 10.583            & 0.036                            \\
+  -  & -             & -                 & -           & harmonies  &                              & 0.108              & 82.633                      & 0.757      & 0.000             & 0.340                            \\
+  -  & -             & -                 & -           & flashweave & 3.878                        & 0.079              & 1.800                       & 0.458      & 0.383             & -0.032                           \\
+  -  & -             & -                 & -           & cozine     &                              & 0.090              & 82.167                      & 0.694      & 0.000             & -0.072                           \\
+  -  & -             & -                 & -           & spring     &                              & 0.092              & 11.767                      & 0.566      & 0.000             & -0.035                           \\
+  -  & -             & -                 & -           & sparcc     & 1.747                        & 0.525              & 1.033                       & 0.009      & 5.500             & -0.011                           \\
+  -  & -             & -                 & -           & spieceasi  &                              & 0.076              & 39.383                      & 0.717      & 0.000             & -0.031                           \\
+  -  & -             & -                 & -           & pearson    &                              & 0.457              & 23.883                      & 0.551      & 0.000             & 0.478                            \\
+  -  & -             & -                 & -           & spearman   & 1.875                        & 0.551              & 1.450                       & 0.044      & 1.117             & 0.170                            \\
+  -  & -             & -                 & -           & mldm       & 2.760                        & 0.130              & 2.267                       & -75.648    & 0.433             & -0.028                           \\ \hline
   \end{tabular}
   \caption{
-    \textbf{Table of global network metrics for all combinations of networks}.
+    \textbf{Table of global network metrics for all combinations of networks.}
     The metrics are averaged for each tool in every step of the pipeline, implying that all combinations of networks that use a particular tool are grouped and averaged and their metrics are reported.
   }
   \label{tab:network_metrics}
   \end{table}
+  \end{landscape}
 
 
   \subsection*{p-value merging}
