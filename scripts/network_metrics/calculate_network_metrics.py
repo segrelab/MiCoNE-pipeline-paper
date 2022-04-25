@@ -171,7 +171,7 @@ def main(
 
     print(df.head())
     df_summary = summarize_metrics(df)
-    df_summary.to_csv(output_path / "metrics_summary.csv", sep=",")
+    df_summary.to_csv(output_path / "metrics_summary.csv", sep=",", float_format="%.3f")
     print(df_summary.head())
 
 
