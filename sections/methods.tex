@@ -237,58 +237,59 @@ where, $g$ and $f$ are defined as follows:
 
   \subsubsection*{Notation}
   \vspace{-5mm}
-  This section defines notation for the network variability analysis in our study\dots
+  This section defines notation for the network variability analysis in our study.
 
-  % TODO: Update W and Q in the entire subsection
-  $W$ =  number of co-occurrence networks generated from all possible combinations of tools and parameters in the workflow. Note that this is different from $w$, which counted only the possible network inference modules.
+  $W$, the number of co-occurrence networks generated from all possible combinations of tools and parameters in the workflow. Note that this is different from $w$, which counted only the possible network inference modules.
 
-  $Q$ =  number of combined nodes from all $W$ networks
+  $Q$, the number of combined nodes from all $W$ networks
 
-  % TODO: Should we use different variable names here?
-  $N^i$ = The weights of the $i^{th}$ co-occurrence network represented as a $q^\prime \times q^\prime$ adjacency matrix, where $i \in {1, w^\prime}$
+  $N^i$ = The weights of the $i^{th}$ co-occurrence network represented as a $Q \times Q$ adjacency matrix, where $i \in {1, \dots, W}$
 
   $N^i_{a,b}$ = edge $(a,b)$ in network $i$
 
-  $\bar{N}_i$ is a "flattened" version of the adjacency matrix $N^i$ into a $q^\prime^2 \times 1$ column vector, where all columns are stacked onto each other into a $q^\prime^2$ long vector:
+  $\bar{N}_i$ is a "flattened" version of the adjacency matrix $N^i$ into a $Q^2 \times 1$ column vector, where all columns are stacked onto each other into a $Q^2$ long vector:
 
 
   \subsubsection*{Principal Component Analysis and variability calculation}
+
   \vspace{-5mm}
- In order to compare across different networks, and analyze the degree of variability induced by the choice of different modules, we organized multiple networks into a single mathematical structure that we could use for linear regression.
- First, we obtain co-occurrence network $\bar{N}_i$ for each of the $W$ possible tool and parameter combinations in the workflow.
- Then, we construct a matrix $\mathbf{\bar{N}}$ whose $i^{th}$ column is the flattened version of the $i^{th}$ network, i.e. the column vector $\bar{N}^i$. Therefore $\bar{N}^i_j$ is the weight of edge $j$ in network $i$. $\bar{N}^i_j$ is assigned a value of 0 if edge $j$ did not exist in network $i$ but was present in other networks. Note that row $j$ of $\mathbf{\bar{N}}$, $\bar{N}_j$ is the vector that encodes the values of edge $j$ across all the networks.
+   In order to compare across different networks, and analyze the degree of variability induced by the choice of different modules, we organized multiple networks into a single mathematical structure that we could use for linear regression.
+   First, we obtain co-occurrence network $\bar{N}_i$ for each of the $W$ possible tool and parameter combinations in the workflow.
+   Then, we construct a matrix $\mathbf{\bar{N}}$ whose $i^{th}$ column is the flattened version of the $i^{th}$ network, i.e. the column vector $\bar{N}^i$.
+   Therefore $\bar{N}^i_j$ is the weight of edge $j$ in network $i$.
+   $\bar{N}^i_j$ is assigned a value of 0 if edge $j$ did not exist in network $i$ but was present in other networks.
+   Note that row $j$ of $\mathbf{\bar{N}}$, $\bar{N}_j$ is the vector that encodes the values of edge $j$ across all the networks.
 
   \begin{equation*}
    \mathbf{\bar{N}} =
      \begin{blockarray}{*{4}{c} l}
       \begin{block}{*{4}{>{$\footnotesize}c<{$}} l}
-        $\bar{N}$^1 & $\bar{N}$^2 & \dots & $\bar{N}$^{w^\prime} & \\
+        $\bar{N}$^1 & $\bar{N}$^2 & \dots & $\bar{N}$^{W} & \\
       \end{block}
       \begin{block}{[*{4}{c}]>{$\footnotesize}l<{$}}
-       n^1_1 & n^2_1 & \cdots  & n^{w^\prime}_1 \bigstrut[t]& $\bar{N}$_1 \\
-       n^1_2 & n^2_2 & \cdots  & n^{w^\prime}_2 & $\bar{N}$_2 \\
+       n^1_1 & n^2_1 & \cdots  & n^{W}_1 \bigstrut[t]& $\bar{N}$_1 \\
+       n^1_2 & n^2_2 & \cdots  & n^{W}_2 & $\bar{N}$_2 \\
        \vdots & \vdots & \vdots  & \vdots & \vdots \\
-       n^1_{q^\prime^2} & n^2_{q^\prime^2} & \cdots  & n^{w^\prime}_{q^\prime^2} & $\bar{N}$_{q^\prime^2}
+       n^1_{Q^2} & n^2_{Q^2} & \cdots  & n^{W}_{Q^2} & $\bar{N}$_{Q^2}
       \end{block}
      \end{blockarray}
   \end{equation*}
 
   To infer the variability contributed due to different steps in the pipeline we perform a linear regression on each edge in $\mathbf{\bar{N}}$ and a subsequent ANOVA to extract the within group variances.
   One issue with this approach is that the possible correlations between the edges of the network could lead to inaccurate estimates of the variance if a linear model were used to directly model the relationships between edges and steps in the workflow.
-  In order to remedy this issue, we perform Principal Component Analysis on the matrix $\mathbf{\bar{N}}$ to obtain the $\mathbf{C}$ matrix ($w^\prime \times c$) of components for each network, such that we reduce the dimensions from the $q^\prime^2$ dimensional edge space to a $c$ dimensional component space.
+  In order to remedy this issue, we perform Principal Component Analysis on the matrix $\mathbf{\bar{N}}$ to obtain the $\mathbf{C}$ matrix ($W \times c$) of components for each network, such that we reduce the dimensions from the $Q^2$ dimensional edge space to a $c$ dimensional component space.
 
   We then use linear regression to express each component $C_j$ (where $j \in 1:c$) as a linear function of categorical variables that describe the possible options in each of the steps of the pipeline.
 
-  % TODO: Should we remove CC from the LM model?
   In particular, we infer parameters $\alpha_i$ such that:
-   \begin{equation*}
-       C_j = \sum_{k=1}^5 \left( \alpha^{DC(k)}_j.\delta^{DC(k)}_j \right) +
+     \begin{multline*}
+      C_j = &\sum_{k=1}^5 \left( \alpha^{DC(k)}_j.\delta^{DC(k)}_j \right) +
              \sum_{k=1}^2 \left( \alpha^{CC(k)}_j.\delta^{CC(k)}_j \right) +
              \sum_{k=1}^3 \left( \alpha^{TA(k)}_j.\delta^{TA(k)}_j \right) +
              \sum_{k=1}^2 \left( \alpha^{OP(k)}_j.\delta^{OP(k)}_j \right) + \\
-             \sum_{k=1}^{10} \left( \alpha^{NI(k)}_j.\delta^{NI(k)}_j \right) +
+             &\sum_{k=1}^{10} \left( \alpha^{NI(k)}_j.\delta^{NI(k)}_j \right) +
              \epsilon_j
-   \end{equation*}
+     \end{multline*}
 
    where, $\alpha_i$ are the coefficients of the regression, $\epsilon_i$ are the residuals and $\delta_i$ are the indicator variables that correspond to the processes utilized in the pipeline used to create the network $N_i$; for example, $\delta^{DC(1)}_i = 1$ if the DC(1) process was used in the generation of the network $N_i$ .
    Here, (i) DC(1) = "closed reference", DC(2) = "open reference", DC(3) = "de novo", DC(4) = "dada2", DC(5) = "deblur";
@@ -297,7 +298,7 @@ where, $g$ and $f$ are defined as follows:
    (iv) OP(1) = "no filtering", OP(2) = "filtering";
    (v) NI(1) = "SparCC", NI(2) = "Pearson", NI(5) = "Spearman", NI(4) = "Propr", NI(5) = "SpiecEasi", NI(6) = "COZINE", NI(7) = "HARMONIES", NI(8) = "SPRING", NI(9) = "mLDM", NI(10) = "FlashWeave";
 
-  The variance contributed by each step of the pipeline is calculated for every component in $\mathbf{C}$ matrix through ANOVA using the Python \texttt{statsmodels} package and is shown in Figure~\ref{fig:figure2}A.
+   The variance contributed by each step of the pipeline is calculated for every component in $\mathbf{C}$ matrix through ANOVA using the Python \texttt{statsmodels}~\cite{seaboldStatsmodelsEconometricStatistical2010} package and is shown in Figure~\ref{fig:figure2}A.
   The total variance for the network is calculated by adding the variances for each connection.
   The merged network table $\mathbf{\bar{N}}$ is used as the input to the PCA analysis to generate Figure~\ref{fig:figure2}B.
 
