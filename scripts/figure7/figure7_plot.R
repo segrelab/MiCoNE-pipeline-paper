@@ -198,7 +198,7 @@ c_plot <- ggarrange(default_plot_1, default_plot_2, ncol=2, nrow=1, common.legen
 
 ggsave(output_file_c, width = 11, height = 5)
 
-annotate_figure(c_plot, fig.lab="C", fig.lab.pos="top.left", fig.lab.size=20)
+c_plot <- annotate_figure(c_plot, fig.lab="C", fig.lab.pos="top.left", fig.lab.size=20)
 
 
 final_plot <- ggarrange(a_plot, b_plot, c_plot, ncol = 1)
