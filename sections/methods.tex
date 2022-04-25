@@ -56,7 +56,7 @@
   The chimera checking process handles the removal of chimeric sequences created during the \ac{pcr} step.
   The output of this module is a matrix of counts, that describes the number of reads of a particular \ac{otu} or \ac{esv} (rows of the matrix) present in each sample (columns of the matrix).
   The options currently available in the pipeline for denoising and clustering are: open reference clustering, closed reference clustering and de novo clustering methods from the vsearch plugin of \ac{qiime2} v2021.8.0~\cite{bolyenReproducibleInteractiveScalable2019} and denoising methods from \ac{dada2} v1.14~\cite{Callahan2016} (from the \ac{dada2} R package) and Deblur v1.1.0~\cite{Amir2017} (from the deblur plugin of \ac{qiime2}).
-  The quality filtering and chimera checking tools are derived from those used in \ac{qiime2} v2021.8.0 (uchime method) and \ac{dada2} (remove bimera method).
+  The quality filtering and chimera checking tools are derived from those used in \ac{qiime2} v2021.8.0 (uchime-denovo method) and \ac{dada2} (remove bimera method).
   The list of tools used in this step, along with their modules and references are provided in Table~\ref{tab:dc_tools}.
 
   \subsection*{Taxonomy Assignment (TA)}
@@ -185,7 +185,7 @@ where, $g$ and $f$ are defined as follows:
     f(x_1,\dots,x_w) = max \left( \#(i \mid x_i=-1),\#(i \mid x_i=1)
        \right)
   \end{equation*}
-  where, $#$ refers to the cardinality of the set.
+  where, # refers to the cardinality of the set.
 
  The edge $j$ appears in the final consensus network if the reported edges is greater than the threshold:
   \begin{equation}
@@ -264,13 +264,13 @@ where, $g$ and $f$ are defined as follows:
    \mathbf{\bar{N}} =
      \begin{blockarray}{*{4}{c} l}
       \begin{block}{*{4}{>{$\footnotesize}c<{$}} l}
-        $\bar{N}$^1 & $\bar{N}$^2 & \dots & $\bar{N}$^{W} & \\
+        \bar{N}^1 & \bar{N}^2 & \dots & \bar{N}^{W} & \\
       \end{block}
       \begin{block}{[*{4}{c}]>{$\footnotesize}l<{$}}
-       n^1_1 & n^2_1 & \cdots  & n^{W}_1 \bigstrut[t]& $\bar{N}$_1 \\
-       n^1_2 & n^2_2 & \cdots  & n^{W}_2 & $\bar{N}$_2 \\
+       n^1_1 & n^2_1 & \cdots  & n^{W}_1 \bigstrut[t]& \bar{N}_1 \\
+       n^1_2 & n^2_2 & \cdots  & n^{W}_2 & \bar{N}_2 \\
        \vdots & \vdots & \vdots  & \vdots & \vdots \\
-       n^1_{Q^2} & n^2_{Q^2} & \cdots  & n^{W}_{Q^2} & $\bar{N}$_{Q^2}
+       n^1_{Q^2} & n^2_{Q^2} & \cdots  & n^{W}_{Q^2} & \bar{N}_{Q^2}
       \end{block}
      \end{blockarray}
   \end{equation*}
