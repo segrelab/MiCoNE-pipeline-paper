@@ -213,11 +213,21 @@ def main(
             network_files = list(process_folder.glob(f"**/{dataset}/*.json"))
             if not network_files:
                 continue
-            networks = [
-                Network.load_json(str(network_file)) for network_file in network_files
+            networks_for_consensus = [
+                Network.load_json(str(network_file))
+                for network_file in network_files
+                if not network_file.parent.parent.name.endswith("pearson")
+                and not network_file.parent.parent.name.endswith("spearman")
             ]
             # STEP2: Convert all to `NetworkGroup` and perform `consensus`
-            network_group = NetworkGroup(networks)
+            if len(networks_for_consensus) == 0:
+                networks = [
+                    Network.load_json(str(network_file))
+                    for network_file in network_files
+                ]
+                network_group = NetworkGroup(networks)
+            else:
+                network_group = NetworkGroup(networks_for_consensus)
             cids = list(range(len(network_group.contexts)))
             consensus_network = network_group.get_consensus_network(
                 cids, method="scaled_sum", parameter=0.5
