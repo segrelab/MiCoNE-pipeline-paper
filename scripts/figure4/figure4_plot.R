@@ -62,24 +62,28 @@ make_alluvial_plot2 <- function(db_data, title) {
     n_genus <- length(genus_factors)
     palette <- get_palette(, n_genus)
     alluvial_plot <- ggplot(db_data, aes(x = database, y = Abundance, stratum = Genus, alluvium = OTU, fill = Genus)) +
-        stat_alluvium(geom="flow", lode.guidance="forward") +
+        stat_alluvium(geom = "flow", lode.guidance = "forward") +
         stat_stratum() +
         scale_fill_manual(values = palette) +
-        geom_text_repel(aes(label=Genus), stat="stratum", size=2, direction="y", nudge_x=0.5) +
+        geom_text_repel(aes(label = Genus), stat = "stratum", size = 2, direction = "y", nudge_x = 0.5) +
         ggtitle(title) +
-        theme_pubr()
+        theme_pubr() +
+        theme(
+            text = element_text(size = 15),
+            legend.position = "none",
+        )
 }
 
 
-gg_n_genus = length(unique(gg$Genus))
-silva_n_genus = length(unique(silva$Genus))
-ncbi_n_genus = length(unique(ncbi$Genus))
+gg_n_genus <- length(unique(gg$Genus))
+silva_n_genus <- length(unique(silva$Genus))
+ncbi_n_genus <- length(unique(ncbi$Genus))
 
 combined_plot <- make_alluvial_plot2(combined, paste("NaiveBayes(GG)=", gg_n_genus, ", NaiveBayes(SILVA)=", silva_n_genus, ", BLAST(NCBI)=", ncbi_n_genus))
 
-final_plot_a <- ggarrange(combined_plot, nrow=1, ncol=1, common.legend=TRUE, legend="right")
+final_plot_a <- ggarrange(combined_plot, nrow = 1, ncol = 1, common.legend = FALSE)
 annotate_figure(final_plot_a, fig.lab = "A", fig.lab.pos = "top.left", fig.lab.size = 20)
-ggsave(output_file_a, width = 11, height = 8.5)
+ggsave(output_file_a, width = 11, height = 10)
 
 
 ################################################################################
@@ -111,9 +115,10 @@ make_bar_plot <- function(data, title) {
         # palette="Paired"
     ) +
         theme(
-        plot.title = element_text(size=10),
-        axis.text.x = element_text(angle = 30, hjust = 1)
-    )
+            text = element_text(size = 15),
+            # plot.title = element_text(size = 10),
+            axis.text.x = element_text(angle = 30, hjust = 1)
+        )
 }
 
 # Combinations
@@ -121,9 +126,9 @@ gg_silva <- read_paired_data(gg_silva_csv)
 gg_ncbi <- read_paired_data(gg_ncbi_csv)
 ncbi_silva <- read_paired_data(ncbi_silva_csv)
 
-gg_silva_plot <- make_bar_plot(gg_silva, "NaiveBayes(GG) vs. NaiveBayes(SILVA)")
-gg_ncbi_plot <- make_bar_plot(gg_ncbi, "NaiveBayes(GG) vs. BLAST(NCBI)")
-ncbi_silva_plot <- make_bar_plot(ncbi_silva, "BLAST(NCBI) vs. NaiveBayes(SILVA)")
+gg_silva_plot <- make_bar_plot(gg_silva, "GG vs. SILVA")
+gg_ncbi_plot <- make_bar_plot(gg_ncbi, "GG vs. NCBI")
+ncbi_silva_plot <- make_bar_plot(ncbi_silva, "NCBI vs. SILVA")
 
 combined_plot_b <- ggarrange(
     gg_silva_plot, gg_ncbi_plot, ncbi_silva_plot,
@@ -161,6 +166,7 @@ make_dot_plot <- function(braycurtis_data) {
         ) +
             theme(
                 plot.title = element_text(hjust = 0.5),
+                text = element_text(size = 15),
             ),
         fun = "mean_sd"
     )

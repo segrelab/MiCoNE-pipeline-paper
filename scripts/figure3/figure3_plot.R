@@ -62,7 +62,8 @@ plot_heatmap <- function(data, title) {
             plot.title = element_text(hjust = 0.5),
             axis.title = element_blank(),
             axis.text.x = element_text(angle = 30, hjust = 1),
-            axis.text.y = element_text(angle = 30)
+            axis.text.y = element_text(angle = 30),
+            text = element_text(size = 15),
         ) +
         coord_fixed()
 }
@@ -115,9 +116,10 @@ make_dot_plot <- function(unifrac_data, title) {
             theme(
                 plot.title = element_text(hjust = 0.5),
                 axis.text.x = element_text(angle = 30, hjust = 1),
+                text = element_text(size = 15),
             ),
         fun = "mean_sd"
-    ) #+ stat_compare_means()
+    )
 }
 
 # Weighted

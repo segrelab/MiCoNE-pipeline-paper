@@ -25,11 +25,10 @@ plot_scatter <- function(data, color_var) {
     ggscatter(data,
         x = "X0", y = "X1",
         color = color_var,
-        # ellipse = TRUE
     ) +
-    theme(
-        text = element_text(size = 16),
-    )
+        theme(
+            text = element_text(size = 15.5),
+        )
 }
 
 x <- read.csv(x_csv)
@@ -61,9 +60,9 @@ pie_chart <- ggplot(data = percentage_variance, aes(x = "", y = mean_sq, fill = 
         axis.title = element_blank(),
         axis.text.y = element_blank(),
         axis.text.x = element_blank(),
-        legend.position="right",
-        legend.justification="right",
-        text = element_text(size = 16),
+        legend.position = "right",
+        legend.justification = "right",
+        text = element_text(size = 20),
     )
 
 scatter_facet <- ggarrange(scatter_ta, scatter_ni, ncol = 2)

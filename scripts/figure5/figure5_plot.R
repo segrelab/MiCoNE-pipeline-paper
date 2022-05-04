@@ -82,7 +82,8 @@ plot_network <- function(network_file, combined_layout, interaction_threshold, t
             axis.ticks = element_blank(),
             panel.background = element_blank(),
             panel.border = element_blank(),
-            panel.grid = element_blank()
+            panel.grid = element_blank(),
+            text = element_text(size = 15),
         )
 }
 
@@ -124,7 +125,7 @@ plot_upset <- function(bmatrix, sets, kind) {
         mainbar.y.label = paste0("Intersection of ", kind),
         sets.x.label = paste0("Number of ", kind),
         queries = list(list(query = intersects, params = sets, color = "red", active = TRUE, query.name = "Common to all")),
-        text.scale = c(2, 1.3, 1.3, 1, 1.3, 1.3),
+        text.scale = c(2.2, 1.5, 1.5, 1, 1.5, 1.5),
     )
 }
 
@@ -180,5 +181,5 @@ bc_plot <- ggarrange(nmatrix_gg, ematrix_gg, labels = c("B", "C"))
 ggsave(output_file_bc, width = 11, height = 5)
 
 
-final_plot <- ggarrange(a_plot, bc_plot, ncol = 1, heights=c(1.3,1.0))
+final_plot <- ggarrange(a_plot, bc_plot, ncol = 1, heights = c(1.3, 1.0))
 ggsave(output_file, final_plot, width = 11, height = 12)

@@ -76,3 +76,5 @@ Rscript figure_s3_plot.R \
   "../../data/figure3/output/$DATASET/" \
   "../../data/figure3/output/" \
   "$OUTPUT_DIR"
+
+# NOTE: Other supplementary figures should be generated locally

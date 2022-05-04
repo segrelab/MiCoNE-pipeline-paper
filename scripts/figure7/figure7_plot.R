@@ -72,7 +72,7 @@ plot_network <- function(network_file, combined_layout, interaction_threshold, t
     graph_layout$x <- combined_layout[match_inds, ]$x
     graph_layout$y <- combined_layout[match_inds, ]$y
     graph_plot <- ggraph(graph = graph, layout = "manual", x = graph_layout$x, y = graph_layout$y, circular = TRUE) +
-        geom_edge_arc(aes(color = factor(layer), edge_linetype = factor(color), edge_alpha = factor(layer))) +
+        geom_edge_arc(aes(color = layer, edge_linetype = color, edge_alpha = layer)) +
         # geom_node_point(aes(color=factor(colorkey))) +
         geom_node_point() +
         # scale_edge_color_manual(values = c(background=palette[[1]], foreground=palette[[ind]], common="black")) +
@@ -92,6 +92,7 @@ plot_network <- function(network_file, combined_layout, interaction_threshold, t
             panel.background = element_blank(),
             panel.border = element_blank(),
             panel.grid = element_blank(),
+            text = element_text(size = 15),
         )
 }
 
@@ -100,17 +101,16 @@ combined_layout <- create_layout(graph = combined_graph, layout = "linear", circ
 
 palette <- brewer.pal(n = 6, name = "Pastel1")
 default_plot <- plot_network(default_gml, combined_layout, 0.3, "default", palette, 1)
-clustering_plot <- plot_network(clustering_gml, combined_layout, 0.3, "DC=closed_reference(gg_97)", palette, 3)
+clustering_plot <- plot_network(clustering_gml, combined_layout, 0.3, "DC=CR", palette, 3)
 chimera_checking_plot <- plot_network(chimera_checking_gml, combined_layout, 0.3, "CC=uchime", palette, 4)
-database_plot <- plot_network(database_gml, combined_layout, 0.3, "TA=blast(NCBI)", palette, 2)
-otu_filtering_plot <- plot_network(otu_filtering_gml, combined_layout, 0.3, "OP=off", palette, 4)
+database_plot <- plot_network(database_gml, combined_layout, 0.3, "TA=BLAST(NCBI)", palette, 2)
+otu_filtering_plot <- plot_network(otu_filtering_gml, combined_layout, 0.3, "OP=Filter(off)", palette, 4)
 network_inference_plot <- plot_network(network_inference_gml, combined_layout, 0.3, "NI=SparCC", palette, 5)
-
-legend_grob <- get_legend(database_plot)
+legend_grob <- get_legend(network_inference_plot)
 
 combined_plot <- ggarrange(
     default_plot, database_plot, chimera_checking_plot, clustering_plot, otu_filtering_plot, network_inference_plot,
-    ncol = 3, nrow = 2, common.legend = FALSE, legend = "right"
+    ncol = 3, nrow = 2, common.legend = TRUE, legend = "right", legend.grob = legend_grob
 )
 a_plot <- annotate_figure(combined_plot, fig.lab = "A", fig.lab.pos = "top.left", fig.lab.size = 20)
 
@@ -126,6 +126,9 @@ l1_data <- read.csv(l1_distance_csv, header = TRUE, sep = ",")
 box_plot <- ggboxplot(
     l1_data,
     x = "step", y = "l1_distance", label = "process", repel = TRUE, order = c("DC", "CC", "TA", "OP", "NI"), color = "step", add = "jitter", palette = "Set2", ylab = "L1 distance", xlab = "Pipeline step"
+) +
+theme(
+    text = element_text(size = 18),
 )
 
 b_plot <- annotate_figure(box_plot, fig.lab = "B", fig.lab.pos = "top.left", fig.lab.size = 20)
@@ -181,6 +184,7 @@ plot_network_c <- function(network_file, combined_layout, interaction_threshold,
         panel.background=element_blank(),
         panel.border=element_blank(),
         panel.grid=element_blank(),
+        text = element_text(size = 15),
     )
 }
 

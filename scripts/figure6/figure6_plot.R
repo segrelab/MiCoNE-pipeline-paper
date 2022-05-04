@@ -19,12 +19,14 @@ performance_csv <- paste0(data_folder, "performance.csv")
 output_file <- paste0(output_folder, "figure6.pdf")
 
 plot_scatter <- function(data) {
-  ggscatter(data,
-    x = "precision", y = "sensitivity",
-    color = "factor1", shape = "factor2"
-  ) +
-    theme_pubr() #+
-  # stat_stars(aes(color = "factor1"))
+    ggscatter(data,
+        x = "precision", y = "sensitivity",
+        color = "factor1", shape = "factor2"
+    ) +
+        theme_bw() +
+        theme(
+            text = element_text(size = 15),
+        )
 }
 
 norta <- read.csv(performance_csv, sep = ",", header = TRUE)
