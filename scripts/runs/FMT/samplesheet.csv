@@ -1,0 +1,4 @@
+id,run,forward,reverse,barcodes,mapping,sample_metadata
+fmt,run2,sequences/run2/seqs/forward.fastq.gz,sequences/run2/seqs/reverse.fastq.gz,sequences/run2/seqs/barcodes.fastq.gz,sequences/run2/mapping.tsv,sequences/run2/sample_metadata.tsv
+fmt,run3,sequences/run3/seqs/forward.fastq.gz,sequences/run3/seqs/reverse.fastq.gz,sequences/run3/seqs/barcodes.fastq.gz,sequences/run3/mapping.tsv,sequences/run3/sample_metadata.tsv
+fmt,run4,sequences/run4/seqs/forward.fastq.gz,sequences/run4/seqs/reverse.fastq.gz,sequences/run4/seqs/barcodes.fastq.gz,sequences/run4/mapping.tsv,sequences/run4/sample_metadata.tsv

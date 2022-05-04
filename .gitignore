@@ -252,7 +252,6 @@ tags
 
 # Ignore data files in scripts
 scripts/**/*.pdf
-scripts/**/*.csv
 scripts/**/*.gml
 
 # Comments about drafts

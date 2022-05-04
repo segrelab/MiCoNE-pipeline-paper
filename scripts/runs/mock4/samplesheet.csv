@@ -1,0 +1,2 @@
+id,run,forward,reverse,barcodes,mapping,sample_metadata
+mock4,run1,sequences/forward.fastq.gz,sequences/reverse.fastq.gz,sequences/barcodes.fastq.gz,mapping.tsv,sample-metadata.tsv

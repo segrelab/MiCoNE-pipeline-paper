@@ -1,0 +1,2 @@
+id,run,trimmed_sequences,manifest,sequence_metadata,sample_metadata
+mock16,run1,trimming/trimmed/*.fastq.gz,trimming/trimmed/MANIFEST,trimming/trimmed/metadata.yml,sample-metadata.tsv
