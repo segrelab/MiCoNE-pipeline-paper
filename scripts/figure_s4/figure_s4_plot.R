@@ -32,11 +32,14 @@ tidy_up_data <- function(unifrac_data) {
         distinct(method, .keep_all = TRUE)
 }
 
-plot_dotplot <- function(data, title) {
+plot_bar <- function(data, title) {
     ggbarplot(data, x = "method", y ="unifrac", fill="steelblue", label = TRUE, lab.pos = "out", lab.nb.digits = 3) +
         ylim(0, 1) +
         ggtitle(title) +
-        theme_pubr()
+        theme_pubr() +
+        theme(
+            text = element_text(size = 15),
+        )
 }
 
 unweighted <- read.csv(unweighted_unifrac_csv, sep = ",", header = TRUE)
@@ -44,11 +47,11 @@ unweighted_tidy <- tidy_up_data(unweighted)
 weighted <- read.csv(weighted_unifrac_csv, sep = ",", header = TRUE)
 weighted_tidy <- tidy_up_data(weighted)
 
-weighted_plot <- plot_dotplot(weighted_tidy, "weighted unifrac")
-unweighted_plot <- plot_dotplot(unweighted_tidy, "unweighted unifrac")
+weighted_plot <- plot_bar(weighted_tidy, "weighted unifrac")
+unweighted_plot <- plot_bar(unweighted_tidy, "unweighted unifrac")
 
-dotplot_plot <- ggarrange(
+bar_plot <- ggarrange(
     weighted_plot, unweighted_plot,
     nrow = 1, ncol = 2, labels = c("A", "B"), common.legend = TRUE, legend = "right"
 )
-ggsave(output_file, dotplot_plot, width = 11, height = 5.5)
+ggsave(output_file, bar_plot, width = 11, height = 5.5)

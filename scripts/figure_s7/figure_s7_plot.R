@@ -8,7 +8,7 @@ library(ggpubr)
 args <- commandArgs(trailingOnly = TRUE)
 if (length(args) == 0) {
     data_folder <- "../../data/figure_s7/output/seqtime/"
-    output_folder <- "../../figures/"
+    output_folder <- "../../figures/FMT/"
 } else if (length(args) == 2) {
     data_folder <- args[1]
     output_folder <- args[2]
@@ -23,8 +23,10 @@ plot_scatter <- function(data) {
     x = "precision", y = "sensitivity",
     color = "factor1", shape = "factor2"
   ) +
-    theme_pubr() #+
-  # stat_stars(aes(color = "factor1"))
+    theme_bw() +
+    theme(
+        text = element_text(size = 15),
+    )
 }
 
 seqtime <- read.csv(performance_csv, sep = ",", header = TRUE)

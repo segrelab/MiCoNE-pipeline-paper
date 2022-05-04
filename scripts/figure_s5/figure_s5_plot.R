@@ -11,7 +11,7 @@ args <- commandArgs(trailingOnly = TRUE)
 if (length(args) == 0) {
     data_folder <- "../../data/figure_s5/output/moving_pictures/"
     mock_folder <- "../../data/figure_s5/output/"
-    output_folder <- "../../figures/"
+    output_folder <- "../../figures/FMT/"
 } else if (length(args) == 3) {
     data_folder <- args[1]
     mock_folder <- args[2]
@@ -55,7 +55,8 @@ make_bar_plot <- function(data, title) {
     ) +
         theme(
         plot.title = element_text(size=10),
-        axis.text.x = element_text(angle = 30, hjust = 1)
+        axis.text.x = element_text(angle = 30, hjust = 1),
+        text = element_text(size = 15),
     )
 }
 
@@ -73,4 +74,4 @@ combined_plot_b <- ggarrange(
     nrow = 1, ncol = 3, common.legend = TRUE, legend = "right"
 )
 # annotate_figure(combined_plot_b, fig.lab = "A", fig.lab.pos = "top.left", fig.lab.size = 20)
-ggsave(output_file, width = 11, height = 4)
+ggsave(output_file, width = 11, height = 6)

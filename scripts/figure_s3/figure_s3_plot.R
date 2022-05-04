@@ -54,7 +54,8 @@ plot_heatmap <- function(data, title) {
             plot.title = element_text(hjust = 0.5),
             axis.title = element_blank(),
             axis.text.x = element_text(angle = 30, hjust = 1),
-            axis.text.y = element_text(angle = 30)
+            axis.text.y = element_text(angle = 30),
+            text = element_text(size = 15),
         ) +
         coord_fixed()
 }

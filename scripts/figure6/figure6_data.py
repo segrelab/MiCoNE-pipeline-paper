@@ -169,7 +169,7 @@ def fix_name(name: str) -> str:
         return f"X:SV[{parameter_value}]"
     elif name.startswith("pvalue_merging"):
         parameter_value = name.rsplit("_", 1)[-1]
-        return "X:Pvalue Merging"
+        return "X:PM"
     else:
         return f"I:{name}"
 
