@@ -122,6 +122,13 @@ ggsave(output_file_a, width = 11, height = 5.5)
 # b
 #########################################
 l1_data <- read.csv(l1_distance_csv, header = TRUE, sep = ",")
+l1_data[l1_data == "open_reference(gg_97)"] <- "OR"
+l1_data[l1_data == "closed_reference(gg_97)"] <- "CR"
+l1_data[l1_data == "de_novo"] <- "DN"
+l1_data[l1_data == "dada2"] <- "D2"
+l1_data[l1_data == "deblur"] <- "DB"
+l1_data[l1_data == "normalize_filter(on)"] <- "Filter(on)"
+l1_data[l1_data == "normalize_filter(off)"] <- "Filter(off)"
 
 box_plot <- ggboxplot(
     l1_data,
