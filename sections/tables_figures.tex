@@ -8,9 +8,59 @@
   \begin{table}[h]
     \centering
     \small
+    \begin{tabular}{|c|c|c|c|}
+      \hline
+      \textbf{Workflow step} & \textbf{Module/Condition} & \textbf{Tool/Parameter} & \textbf{References/Value} \\
+      \hline
+      \multirow{7}{*}{Denoising and Clustering} & \multirow{5}{*}{Denoising and Clustering} & Closed reference & \cite{rognesVSEARCHVersatileOpen2016,bolyenReproducibleInteractiveScalable2019} \\
+                                                &  & Open reference & \cite{rognesVSEARCHVersatileOpen2016,bolyenReproducibleInteractiveScalable2019} \\
+                                                &  & De novo & \cite{rognesVSEARCHVersatileOpen2016,bolyenReproducibleInteractiveScalable2019} \\
+                                                &  & Dada2 & \cite{Callahan2016} \\
+                                                &  & Deblur & \cite{Amir2017,bolyenReproducibleInteractiveScalable2019} \\
+                                                \cline{2-4}
+                                                & \multirow{2}{*}{Chimera checking} & Uchime-denovo & \cite{rognesVSEARCHVersatileOpen2016,bolyenReproducibleInteractiveScalable2019} \\
+                                                & & Remove bimera & \cite{Callahan2016} \\
+                                                \hline
+      \multirow{5}{*}{Taxonomy assignment} &  \multirow{2}{*}{Query tool} & Blast & \cite{camachoBLASTArchitectureApplications2009,bokulichOptimizingTaxonomicClassification2018} \\
+                                           &  & Naive bayes classifier & \cite{bokulichOptimizingTaxonomicClassification2018} \\
+                                           \cline{2-4}
+                                           & \multirow{3}{*}{Database} & Greengenes & \cite{DeSantis2006} \\
+                                           & & SILVA & \cite{Quast2012} \\
+                                           & & NCBI RefSeq & \cite{Sayers2009} \\
+      \hline
+      \multirow{6}{*}{OTU processing} & \multirow{3}{*}{Filter(off)} & Prevalence threshold      & 2 / n\_samples \\
+                                      & & Abundance threshold       & 0.001          \\
+                                      & & Observation sum threshold & 10             \\ \cline{2-4}
+                                      & \multirow{3}{*}{Filter(on)}  & Prevalence threshold      & 0.05           \\
+                                      & & Abundance threshold       & 0.01           \\
+                                      & & Observation sum threshold & 100            \\
+      \hline
+      \multirow{12}{*}{Network Inference} & \multirow{2}{*}{Bootstrapping}& \texttt{fastspar\_bootstraps} v1.0 & \cite{Watts2018} \\
+                                          & & \texttt{fastspar\_pvalues} v1.0 & \cite{Watts2018} \\
+                                          \cline{2-4}
+                                          & \multirow{6}{*}{Direct association} & \ac{spieceasi} v1.1.2 & \cite{Kurtz2015} \\
+                                          & & FlashWeave.jl v0.18.1 & \cite{tackmannRapidInferenceDirect2019} \\
+                                          & & \ac{cozine} v1.0 & \cite{haCompositionalZeroinflatedNetwork2020a} \\
+                                          & & \ac{harmonies} v1.0 & \cite{jiangHARMONIESHybridApproach2020} \\
+                                          & & \ac{spring} v1.0.4 & \cite{yoonMicrobialNetworksSPRING2019} \\
+                                          & & \ac{mldm} v1.1 & \cite{Yang2017} \\
+                                          \cline{2-4}
+                                          & \multirow{2}{*}{Correlation-based} & FastSpar (\ac{sparcc}) v1.0 & \cite{Watts2018} \\
+                                          & & Pearson & - \\
+                                          & & Spearman & - \\
+                                          & & propr v2.1.2 & \cite{quinnProprRpackageIdentifying2017} \\
+      \hline
+    \end{tabular}
+    \caption{Tools used in the \ac{micone} pipeline}
+    \label{tab:micone_tools}
+  \end{table}
+
+  \begin{table}[h]
+    \centering
+    \small
     \begin{tabular}{|c|c|c|}
       \hline
-      \textbf{Process} & \textbf{Tool} \\
+      \textbf{Workflow step} & \textbf{Default tool} \\
       \hline
       Denoising and Clustering & Dada2 and remove bimera \\
       Taxonomy Assignment & \ac{gg} with NaiveBayes classifier \\
@@ -18,92 +68,8 @@
       Network Inference & scaled-sum consensus method \\
       \hline
     \end{tabular}
-    \caption{Default tools and parameters for the pipeline}
+    \caption{Default tools and parameters of the \ac{micone} pipeline}
     \label{tab:default_options}
-  \end{table}
-
-  \begin{table}[h]
-    \centering
-    \small
-    \begin{tabular}{|c|c|c|}
-      \hline
-      \textbf{Module} & \textbf{Tool} & \textbf{References} \\
-      \hline
-      Denoising and Clustering & Closed reference & \cite{rognesVSEARCHVersatileOpen2016,bolyenReproducibleInteractiveScalable2019} \\
-      Denoising and Clustering & Open reference & \cite{rognesVSEARCHVersatileOpen2016,bolyenReproducibleInteractiveScalable2019} \\
-      Denoising and Clustering & De novo & \cite{rognesVSEARCHVersatileOpen2016,bolyenReproducibleInteractiveScalable2019} \\
-      Denoising and Clustering & Dada2 & \cite{Callahan2016} \\
-      Denoising and Clustering & Deblur & \cite{Amir2017,bolyenReproducibleInteractiveScalable2019} \\
-      \hline
-      Chimera checking & Uchime-denovo & \cite{rognesVSEARCHVersatileOpen2016,bolyenReproducibleInteractiveScalable2019} \\
-      Chimera checking & Remove bimera & \cite{Callahan2016} \\
-      \hline
-    \end{tabular}
-    \caption{Tools used in the DC module}
-    \label{tab:dc_tools}
-  \end{table}
-
-  \begin{table}[h]
-    \centering
-    \small
-    \begin{tabular}{|c|c|c|}
-      \hline
-      \textbf{Module} & \textbf{Tool/Database} & \textbf{References} \\
-      \hline
-      Query tool & Blast & \cite{camachoBLASTArchitectureApplications2009,bokulichOptimizingTaxonomicClassification2018} \\
-      Query tool & Naive bayes classifier & \cite{bokulichOptimizingTaxonomicClassification2018} \\
-      \hline
-      Database & Greengenes & \cite{DeSantis2006} \\
-      Database & SILVA & \cite{Quast2012} \\
-      Database & NCBI RefSeq & \cite{Sayers2009} \\
-      \hline
-    \end{tabular}
-    \caption{Tools used in the TA module}
-    \label{tab:ta_tools}
-  \end{table}
-
-  \begin{table}[h]
-    \centering
-    \small
-    \begin{tabular}{|c|c|c|}
-    \hline
-    Condition                    & Parameter                 & Value          \\ \hline
-    \multirow{3}{*}{Filter(off)} & Prevalence threshold      & 2 / n\_samples \\ \cline{2-3}
-                                 & Abundance threshold       & 0.001          \\ \cline{2-3}
-                                 & Observation sum threshold & 10             \\ \hline
-    \multirow{3}{*}{Filter(on)}  & Prevalence threshold      & 0.05           \\ \cline{2-3}
-                                 & Abundance threshold       & 0.01           \\ \cline{2-3}
-                                 & Observation sum threshold & 100            \\ \hline
-    \end{tabular}
-    \caption{Parameters used in the OP module}
-    \label{tab:ni_tools}
-  \end{table}
-
-  \begin{table}[h]
-    \centering
-    \small
-    \begin{tabular}{|c|c|c|}
-      \hline
-      \textbf{Module} & \textbf{Tool/Database} & \textbf{References} \\
-      \hline
-      Booststrap & \texttt{fastspar\_bootstraps} v1.0 & \cite{Watts2018} \\
-      Booststrap & \texttt{fastspar\_pvalues} v1.0 & \cite{Watts2018} \\
-      \hline
-      Direct & \ac{spieceasi} v1.1.2 & \cite{Kurtz2015} \\
-      Direct & FlashWeave.jl v0.18.1 & \cite{tackmannRapidInferenceDirect2019} \\
-      Direct & \ac{cozine} v1.0 & \cite{haCompositionalZeroinflatedNetwork2020a} \\
-      Direct & \ac{harmonies} v1.0 & \cite{jiangHARMONIESHybridApproach2020} \\
-      Direct & \ac{spring} v1.0.4 & \cite{yoonMicrobialNetworksSPRING2019} \\
-      Direct & \ac{mldm} v1.1 & \cite{Yang2017} \\
-      \hline
-      Correlation & FastSpar (\ac{sparcc}) v1.0 & \cite{Watts2018} \\
-      Correlation & Pearson & - \\
-      Correlation & Spearman & - \\
-      Correlation & propr v2.1.2 & \cite{quinnProprRpackageIdentifying2017} \\
-      \hline
-    \end{tabular}
-    \caption{Tools used in the NI module}
-    \label{tab:ni_tools}
   \end{table}
 
 
