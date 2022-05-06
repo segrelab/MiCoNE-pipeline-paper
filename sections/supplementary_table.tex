@@ -1,23 +1,23 @@
 \begin{table}[H]
 \centering
 \small
-\begin{tabular}{|c|c|c|c|c|}
+\begin{tabular}{|c|c|c|c|}
 \hline
-\textbf{Step}                         & \textbf{Task}                   & \textbf{Module}                                   & \textbf{Parameter}           & \textbf{Value}   \\ \hline
-\multirow{14}{*}{Sequence Processing} & \multirow{6}{*}{Demultiplexing} & \multirow{3}{*}{demultiplexing\_illumina\_single} & barcode\_column              & barcode-sequence \\
-                                      &                                 &                                                   & rev\_comp\_barcodes          & false            \\
-                                      &                                 &                                                   & rev\_comp\_mapping\_barcodes & false            \\ \cline{3-5}
-                                      &                                 & \multirow{3}{*}{demultiplexing\_illumina\_paired} & barcode\_column              & barcode-sequence \\
-                                      &                                 &                                                   & rev\_comp\_barcodes          & false            \\
-                                      &                                 &                                                   & rev\_comp\_mapping\_barcodes & false            \\ \cline{2-5}
-                                      & \multirow{8}{*}{Trimming}       & export\_visualization\_single                     & seq\_samplesize              & 10000            \\ \cline{3-5}
-                                      &                                 & export\_visualization\_paired                     & seq\_samplesize              & 10000            \\ \cline{3-5}
-                                      &                                 & \multirow{3}{*}{trimming\_single}                 & ncpus                        & 1                \\
-                                      &                                 &                                                   & max\_ee                      & 2                \\
-                                      &                                 &                                                   & trunc\_q                     & 2                \\ \cline{3-5}
-                                      &                                 & \multirow{3}{*}{trimming\_paired}                 & ncpus                        & 1                \\
-                                      &                                 &                                                   & max\_ee                      & 2                \\
-                                      &                                 &                                                   & trunc\_q                     & 2                \\ \hline
+ \textbf{Task}                   & \textbf{Module}                                   & \textbf{Parameter}           & \textbf{Value}   \\ \hline
+ \multirow{6}{*}{Demultiplexing} & \multirow{3}{*}{demultiplexing\_illumina\_single} & barcode\_column              & barcode-sequence \\
+                                 &                                                   & rev\_comp\_barcodes          & false            \\
+                                 &                                                   & rev\_comp\_mapping\_barcodes & false            \\ \cline{3-4}
+                                 & \multirow{3}{*}{demultiplexing\_illumina\_paired} & barcode\_column              & barcode-sequence \\
+                                 &                                                   & rev\_comp\_barcodes          & false            \\
+                                 &                                                   & rev\_comp\_mapping\_barcodes & false            \\ \cline{2-4}
+ \multirow{8}{*}{Trimming}       & export\_visualization\_single                     & seq\_samplesize              & 10000            \\ \cline{3-4}
+                                 & export\_visualization\_paired                     & seq\_samplesize              & 10000            \\ \cline{3-4}
+                                 & \multirow{3}{*}{trimming\_single}                 & ncpus                        & 1                \\
+                                 &                                                   & max\_ee                      & 2                \\
+                                 &                                                   & trunc\_q                     & 2                \\ \cline{3-4}
+                                 & \multirow{3}{*}{trimming\_paired}                 & ncpus                        & 1                \\
+                                 &                                                   & max\_ee                      & 2                \\
+                                 &                                                   & trunc\_q                     & 2                \\ \hline
 \end{tabular}
 \caption{The default parameters used in the Sequence Processing step of the \ac{micone} pipeline}
 \label{tab:sp_parameters}
