@@ -127,6 +127,8 @@ l1_data[l1_data == "closed_reference(gg_97)"] <- "CR"
 l1_data[l1_data == "de_novo"] <- "DN"
 l1_data[l1_data == "dada2"] <- "D2"
 l1_data[l1_data == "deblur"] <- "DB"
+l1_data[l1_data == "naive_bayes(silva_138_99)"] <- "NaiveBayes(SILVA)"
+l1_data[l1_data == "blast(ncbi)"] <- "BLAST(NCBI)"
 l1_data[l1_data == "normalize_filter(on)"] <- "Filter(on)"
 l1_data[l1_data == "normalize_filter(off)"] <- "Filter(off)"
 
@@ -213,5 +215,5 @@ c_plot <- annotate_figure(c_plot, fig.lab="C", fig.lab.pos="top.left", fig.lab.s
 
 
 final_plot <- ggarrange(a_plot, b_plot, c_plot, ncol = 1)
-ggsave(output_file, width = 11, height = 12)
+ggsave(output_file, width = 11, height = 14)
 

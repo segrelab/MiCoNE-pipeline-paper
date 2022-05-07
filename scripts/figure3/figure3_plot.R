@@ -73,8 +73,8 @@ unweighted_tidy <- tidy_up_data_ab(unweighted)
 weighted <- read.csv(weighted_unifrac_csv, sep = ",", header = TRUE)
 weighted_tidy <- tidy_up_data_ab(weighted)
 
-weighted_plot <- plot_heatmap(weighted_tidy, "weighted unifrac")
-unweighted_plot <- plot_heatmap(unweighted_tidy, "unweighted unifrac")
+weighted_plot <- plot_heatmap(weighted_tidy, "Weighted UniFrac")
+unweighted_plot <- plot_heatmap(unweighted_tidy, "UnWeighted UniFrac")
 
 heatmap_plot <- ggarrange(
     weighted_plot, unweighted_plot,
@@ -106,8 +106,8 @@ make_dot_plot <- function(unifrac_data, title) {
             y = "unifrac",
             color = "dataset",
             title = title,
-            xlab = "denoising/clustering method",
-            ylab = "unifrac distance",
+            xlab = "Denoising/Clustering method",
+            ylab = "UniFrac distance",
             ylim = c(0, 1),
             size = 3,
             add = "jitter",
@@ -132,7 +132,7 @@ mock12_weighted_tidy <- tidy_up_data_cd(mock12_weighted, "mock12")
 mock16_weighted_tidy <- tidy_up_data_cd(mock16_weighted, "mock16")
 
 mock_weighted_tidy <- rbind(mock4_weighted_tidy, mock12_weighted_tidy, mock16_weighted_tidy)
-mock_weighted_plot <- make_dot_plot(mock_weighted_tidy, "weighted unifrac")
+mock_weighted_plot <- make_dot_plot(mock_weighted_tidy, "Weighted UniFrac")
 
 # Unweighted
 mock4_unweighted <- read.csv(mock4_unweighted_csv, sep = ",", header = TRUE)
@@ -144,7 +144,7 @@ mock12_unweighted_tidy <- tidy_up_data_cd(mock12_unweighted, "mock12")
 mock16_unweighted_tidy <- tidy_up_data_cd(mock16_unweighted, "mock16")
 
 mock_unweighted_tidy <- rbind(mock4_unweighted_tidy, mock12_unweighted_tidy, mock16_unweighted_tidy)
-mock_unweighted_plot <- make_dot_plot(mock_unweighted_tidy, "unweighted unifrac")
+mock_unweighted_plot <- make_dot_plot(mock_unweighted_tidy, "UnWeighted UniFrac")
 
 
 final_dot_plot <- ggarrange(

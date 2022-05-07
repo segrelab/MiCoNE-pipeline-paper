@@ -182,4 +182,4 @@ ggsave(output_file_bc, width = 11, height = 5)
 
 
 final_plot <- ggarrange(a_plot, bc_plot, ncol = 1, heights = c(1.3, 1.0))
-ggsave(output_file, final_plot, width = 11, height = 12)
+ggsave(output_file, final_plot, width = 11, height = 15)

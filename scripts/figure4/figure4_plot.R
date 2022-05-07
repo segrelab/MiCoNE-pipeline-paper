@@ -187,5 +187,5 @@ ggsave(output_file_c, width = 11, height = 5)
 
 ################################################################################
 # Combine figures
-ggarrange(final_plot_a, combined_plot_b, dot_plot_facet_c, nrow = 3, ncol = 1)
+ggarrange(final_plot_a, combined_plot_b, dot_plot_facet_c, nrow = 3, ncol = 1, heights = c(2, 1, 1))
 ggsave(output_file, width = 11, height = 16)
