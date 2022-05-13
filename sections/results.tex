@@ -79,7 +79,9 @@
   The Deblur method returns a very small number of representative sequences (2388) and this could account for the reason for the high dissimilarity with the other methods as well as irregular performance on the mock data.
   There is no method that clearly outperforms the rest in all datasets.
   Based on their slightly better performance on the mock datasets, their \textit{de novo} error correcting nature and other previous studies~\cite{Nearing2018}, \ac{dada2} and Deblur appear to be the most reliable.
+  This is because the open-reference and de novo clustering methods return a much larger number of \ac{otu}s compared to the other pipelines and this would affect the accuracy of the network inference step if filtering is not performed.
   Overall, since \ac{dada2} as compared to Deblur, displays better performance on all the mock datasets and under the weighted UniFrac metric, we have decided to recommend this tool for the DC step of the pipeline.
+  However, if comparison across studies that have sequenced different 16S regions is required, closed-reference and open-reference might be a better option.
 
   After the denoising, the sequences are subject to chimera checking.
   The \ac{micone} pipeline supports two different chimera checking methods, uchime-denovo and remove bimera.
