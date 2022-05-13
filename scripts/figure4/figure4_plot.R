@@ -65,7 +65,7 @@ make_alluvial_plot2 <- function(db_data, title) {
         stat_alluvium(geom = "flow", lode.guidance = "forward") +
         stat_stratum() +
         scale_fill_manual(values = palette) +
-        geom_text_repel(aes(label = Genus), stat = "stratum", size = 2, direction = "y", nudge_x = 0.5) +
+        geom_text_repel(aes(label = Genus), stat = "stratum", size = 3.5, direction = "y", nudge_x = 0.5) +
         ggtitle(title) +
         theme_pubr() +
         theme(
