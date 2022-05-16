@@ -192,7 +192,7 @@
   \subsection*{The default pipeline}
 
   The systematic analyses performed in the previous sections clearly show that the choice of tools and parameters can have a big impact on the final co-occurrence network.
-  For some of these choices (e.g. \ac{dada2} vs. Deblur), there is no clear metric to establish the best protocol.
+  For some of these choices (e.g. for the \ac{ta} step), there is no clear metric to establish the best protocol.
   For other choices, the mock communities and synthetic data provide an opportunity to select the combinations of tools that yield more accurate and robust results.
   Despite this partial degree of assessment, we wish to suggest a combination of tools and parameters that produce networks that are derived from the combination of tools which performed best on the mock communities, and displayed the highest robustness to switching to alternative methods.
   These tools and parameters are chosen as the defaults for the pipeline and are given in Table~\ref{tab:micone_tools}.
@@ -217,5 +217,11 @@
   The low L1 distances show us that not only does the consensus help reconcile the variability in the edges due to multiple network inference algorithms, it also helps reconcile the variability to the other steps of the pipeline as well.
   This result is different from that observed in Figure~\ref{fig:figure2} since in this particular analysis all the steps other than the \ac{ni} step have the consensus algorithm applied to them, which drastically reduces the edges in the graph that have lower probabilities.
   This reinforces the importance of the consensus network in increasing the robustness of the inferred networks to different processing methods.
+
   Figure~\ref{fig:figure7}C shows the co-occurrence networks inferred for the healthy subjects (control) and autistic subjects in the fecal microbiome transplant study~\cite{Kang2017}.
+  This figure demonstrates a typical use case of comparative analysis of networks using the \ac{micone} pipeline.
   These consensus networks were generated using the default tools and parameters from Table~\ref{tab:micone_tools}.
+  As a consequence of using the consensus network algorithm, the final co-occurrence networks are sparse and can be visually compared and examined.
+  % TODO: How much detail should we go into?
+  We observe 10 unique links in the network for control samples and 3 unique links in the network for autistic subjects.
+  These unique connections can serve as potential starting points for literature surveys and further for experimental confirmations.

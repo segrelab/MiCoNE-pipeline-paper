@@ -39,10 +39,13 @@
   The choice of taxonomy database was found to be the most important factor in the inference of microbial co-occurrence networks, contributing $\sim65.4\%$ of the total variance.
   The frequent changes in the taxonomy nomenclature coupled with the frequency of updates to the various 16S reference databases create inherent differences \cite{Balvociute2017} in taxonomy hierarchies in these databases.
   Our analysis revealed that no particular reference database performs better than the others across the different mock dataset benchmarks.
-  We suggest that that choice of the database should be made based on possible reported or inferred biases in the representation of given biomes in a specific databases~\cite{Balvociute2017}.
   The default reference database in the pipeline is the \ac{gg} reference database along with the ``Naive Bayes'' classifier as the query tool.
   The reason for our choice stems from the popularity of the \ac{gg} database in taxonomic studies, which would enable easy comparison across datasets.
-  We also enable users to use custom databases~\cite{Ritari2015,iiRESCRIPtReproducibleSequence2021} with the BLAST and Naive Bayes classifiers that are incorporated into the pipeline (from \ac{qiime2}).
+  % TODO: Add ref: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6440677/
+  However, for newer studies we recommend using SILVA database because of its size and taxonomic comprehensiveness~\cite{iiRESCRIPtReproducibleSequence2021} and since \ac{gg} has not been updated since 2013.
+  Additionally, we also enable users to use custom databases~\cite{Ritari2015,iiRESCRIPtReproducibleSequence2021} with the BLAST and Naive Bayes classifiers that are incorporated into the pipeline (from \ac{qiime2}).
+  % TODO: Add ref: https://pubmed.ncbi.nlm.nih.gov/32106809/
+  We suggest that that choice of the database should be made based on possible reported or inferred biases in the representation of given biomes in a specific databases~\cite{Balvociute2017,iiRESCRIPtReproducibleSequence2021}.
 
   The \ac{op} step of the pipeline is second in its contribution to total network variance.
   This can be attributed to the large number of nodes that are added to the final networks when the filtering is turned off.
