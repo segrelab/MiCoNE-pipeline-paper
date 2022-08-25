@@ -23,29 +23,6 @@
 
   \FloatBarrier
 
-  \subsection*{The choice of reference database has the biggest impact on inferred networks}
-
-  In order to analyze the effect of different processing methods on the inferred co-occurrence networks, we generated co-occurrence networks using all possible combinations of methods and estimated the variability in the networks due to each choice (Figure \ref{fig:figure2}A).
-  All the network analysis in the study, unless explicitly mentioned, are performed only on the healthy samples in the fecal microbiome transplant study.
-  However, all other analysis are performed on all the samples in the fecal microbiome transplant study.
-  The networks are filtered on both association strength (0.1) and pvalue (0.05, only correlation methods) before the networks are subjected to the analyses.
-  The effects of various steps on the final co-occurrence network is estimated by building a linear model of the edges of the network as a function the various steps in the pipeline workflow (see Methods).
-  Figure \ref{fig:figure2}A, shows the percentage of total variation among the co-occurrence networks due to the different steps of the pipeline.
-  The \ac{ta} step, more specifically, the choice of 16S reference database contributes the most ($\sim65.4\%$) to the variation in the networks, followed by the \ac{op} step ($\sim26.8\%$).
-  This result highlights the importance of the taxonomy assignment step in the 16S data analysis workflow, implying that a change in the reference database will result in drastically different inferred networks.
-  The reason for this seems to derive from the differential labeling of constitutive representative sequences into taxonomic entities (Figure~\ref{fig:figure4} and Figure~\ref{fig:figure_s5}), which drastically alter the nodes and hence the underlying network topology.
-  In fact the variability induced by taxonomy assignment is much more significant than that due to the variability introduced based on how the reference sequences themselves are identified (in the DC step).
-  The residual variation (Figure \ref{fig:figure2}A) can be seen as an artifact that arises when multiple steps are changed at the same time, however this is negligible.
-
-  Figure \ref{fig:figure2}B is the PCA plot of all the generated co-occurrence networks, colored by the databases in the TA step (left) and the network inference algorithms in the NI step (right).
-  In other words, each point corresponds to a network generated using different combinations of tools, and captures how much the final network is affected by such a choice.
-  The importance of the TA step which was implied in Figure \ref{fig:figure2}A is also reflected here, since most of the networks can be separated based on the database used (Figure \ref{fig:figure2}B).
-  However, it is also evident that some networks, especially those inferred using the direct association based network inference methods, are much closer in the PCA plot regardless of the reference database used.
-  It can also be seen that the variation (on the first two principal axes) between the networks decreases when the low abundance \ac{otu}s are removed from the network (Figure~\ref{fig:figure_s1}).
-  These results suggest that the most important criterion for accurate comparative analysis of co-occurrence networks is the taxonomy reference database followed by the level of filtering of the taxonomy tables prior to network inference.
-
-  \FloatBarrier
-
   \subsection*{Denoising and clustering methods differ in their identification of less common reference sequences}
 
   The \ac{dc} step is commonly carried out to generate representative sequences from the demultiplexed and trimmed 16S sequencing data to obtain the \ac{otu}/\ac{esv} tables (counts of representative sequences for each sample).
@@ -189,6 +166,29 @@
 
   \FloatBarrier
 
+  \subsection*{The choice of reference database has the biggest impact on inferred networks}
+
+  In order to analyze the effect of different processing methods on the inferred co-occurrence networks, we generated co-occurrence networks using all possible combinations of methods and estimated the variability in the networks due to each choice (Figure \ref{fig:figure2}A).
+  All the network analysis in the study, unless explicitly mentioned, are performed only on the healthy samples in the fecal microbiome transplant study.
+  However, all other analysis are performed on all the samples in the fecal microbiome transplant study.
+  The networks are filtered on both association strength (0.1) and pvalue (0.05, only correlation methods) before the networks are subjected to the analyses.
+  The effects of various steps on the final co-occurrence network is estimated by building a linear model of the edges of the network as a function the various steps in the pipeline workflow (see Methods).
+  Figure \ref{fig:figure2}A, shows the percentage of total variation among the co-occurrence networks due to the different steps of the pipeline.
+  The \ac{ta} step, more specifically, the choice of 16S reference database contributes the most ($\sim65.4\%$) to the variation in the networks, followed by the \ac{op} step ($\sim26.8\%$).
+  This result highlights the importance of the taxonomy assignment step in the 16S data analysis workflow, implying that a change in the reference database will result in drastically different inferred networks.
+  The reason for this seems to derive from the differential labeling of constitutive representative sequences into taxonomic entities (Figure~\ref{fig:figure4} and Figure~\ref{fig:figure_s5}), which drastically alter the nodes and hence the underlying network topology.
+  In fact the variability induced by taxonomy assignment is much more significant than that due to the variability introduced based on how the reference sequences themselves are identified (in the DC step).
+  The residual variation (Figure \ref{fig:figure2}A) can be seen as an artifact that arises when multiple steps are changed at the same time, however this is negligible.
+
+  Figure \ref{fig:figure2}B is the PCA plot of all the generated co-occurrence networks, colored by the databases in the TA step (left) and the network inference algorithms in the NI step (right).
+  In other words, each point corresponds to a network generated using different combinations of tools, and captures how much the final network is affected by such a choice.
+  The importance of the TA step which was implied in Figure \ref{fig:figure2}A is also reflected here, since most of the networks can be separated based on the database used (Figure \ref{fig:figure2}B).
+  However, it is also evident that some networks, especially those inferred using the direct association based network inference methods, are much closer in the PCA plot regardless of the reference database used.
+  It can also be seen that the variation (on the first two principal axes) between the networks decreases when the low abundance \ac{otu}s are removed from the network (Figure~\ref{fig:figure_s1}).
+  These results suggest that the most important criterion for accurate comparative analysis of co-occurrence networks is the taxonomy reference database followed by the level of filtering of the taxonomy tables prior to network inference.
+
+  \FloatBarrier
+
   \subsection*{The default pipeline}
 
   The systematic analyses performed in the previous sections illustrate that the choice of tools and parameters can have a big impact on the final co-occurrence network.
@@ -225,3 +225,4 @@
   % TODO: How much detail should we go into?
   We observe 10 unique links in the network for control samples and 3 unique links in the network for autistic subjects.
   These unique connections can serve as potential starting points for literature surveys and further for experimental confirmations.
+
