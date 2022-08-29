@@ -4,19 +4,20 @@
 
   \subsection*{16S rRNA sequencing datasets}
   \vspace{-5mm}
-    This study utilized two kinds of 16S rRNA sequencing datasets: biological datasets and mock datasets.
-    Biological datasets are collections of sequencing reads obtained from naturally occurring microbial community samples.
-    The current analysis used stool samples from a fecal microbiome transplant study of autism~\cite{Kang2017} as biological datasets.
-    The study was composed of multiple sequencing runs and those runs that contained paired end reads (run 2 (10M reads), run 3 (750K reads) and run 4 (16M reads)), were downloaded from Qiita~\cite{qiita} (study ID 10532) and used as input sequences for the \ac{micone} pipeline.
-    Sequences from both control (212 samples including neurotypical and donors) and autistic (126 samples) patients were included in the analyses, but the groups were analyzed independently in the pipeline after the \ac{op} step.
-    All the network analyses in the study, unless explicitly mentioned, are performed indeed on the healthy and autistic samples in the fecal microbiome transplant study.
-    However, all other analysis (preceding the NI step) are performed together on all the samples in the fecal microbiome transplant study.
-    The mock community 16S datasets are sequencing data obtained for artificially assembled collections of species in known proportions.
-    The mock datasets used for this study, obtained from mockrobiota~\cite{Bokulich2016}, are labelled mock4, mock12 and mock16.
-    The mock4 community is composed of 21 bacterial strains.
-    Two replicate samples from mock4 contain all species in equal abundances, and two additional replicate samples contain the same species in unequal abundances.
-    The mock12 community is composed of 27 bacterial strains that include closely related taxa with some pairs having only one to two nucleotide difference from one another.
-    The mock16 community is composed of 49 bacteria and 10 Archaea, all represented in equal amount.
+  This study utilized two kinds of 16S rRNA sequencing datasets: biological datasets and mock datasets.
+  Biological datasets are collections of sequencing reads obtained from naturally occurring microbial community samples.
+  The current analysis used stool samples from a fecal microbiome transplant study of autism~\cite{Kang2017} as biological datasets.
+  The study was composed of multiple sequencing runs.
+  The runs that contained paired end reads (run 2 (10M reads), run 3 (750K reads) and run 4 (16M reads)), were downloaded from Qiita~\cite{qiita} (study ID 10532) and used as input sequences for the \ac{micone} pipeline.
+  Sequences from both control (212 samples including neurotypical and donors) and autistic (126 samples) patients were included in the analyses, but the groups were analyzed independently in the pipeline after the \ac{op} step.
+  All the network analyses in the study, unless explicitly mentioned, are performed indeed on the healthy and autistic samples in the fecal microbiome transplant study.
+  However, all other analysis (preceding the NI step) are performed together on all the samples in the fecal microbiome transplant study.
+  The mock community 16S datasets are experimental sequencing data obtained for artificially assembled collections of species in known proportions.
+  The mock datasets used for this study, obtained from mockrobiota~\cite{Bokulich2016}, are labelled mock4, mock12 and mock16.
+  The mock4 community is composed of 21 bacterial strains.
+  Two replicate samples from mock4 contain all species in equal abundances, and two additional replicate samples contain the same species in unequal abundances.
+  The mock12 community is composed of 27 bacterial strains that include closely related taxa with some pairs having only one to two nucleotide difference from one another.
+  The mock16 community is composed of 49 bacteria and 10 Archaea, all represented in equal amount.
 
   \subsection*{\ac{micone}}
   \vspace{-5mm}
@@ -29,12 +30,12 @@
   The pipeline supports both paired end and single end reads, and additionally supports independently processing reads from multiple runs and merging the OTU tables in the DC step.
   The final output of the pipeline is the inferred network of co-occurrence relationships among the microbes present in the samples.
 
-  The \ac{micone} pipeline provides both a Python API together with a command-line interface and only uses a single configuration file (nextflow.config) to contain the configuration parameters.
-  The \ac{micone} Python API provides several biom (\ac{otu} table) and network related functions and methods, enabling detailed comparison of counts tables and inferred networks if desired.
+  The \ac{micone} pipeline provides both a Python API together with a command-line interface and only uses a single configuration file (\texttt{nextflow.config}) to encode the configuration parameters.
+  The \ac{micone} Python API provides several \ac{otu} table and network related functions and methods, enabling detailed comparison of counts tables and inferred networks if desired.
   Exploring the effects of these combinations of methods on the resultant networks is difficult and inconvenient since different tools differ in their input and output formats and require interconversions between the various formats.
   The pipeline facilitates this comparative exploration by providing a variety of modules for interconversion between various formats, and by allowing for easy incorporation of new tools as modules.
   It also contains helper functions that can help in parsing taxonomies and communicate with the \ac{ncbi} taxonomy database to query taxonomy by name or taxonomic IDs.
-  The configuration file along with the run file (main.nf) lists the inputs, output and the steps to be performed during runtime, along with the parameters to be used (if different from defaults) for the various steps.
+  The configuration file along with the run file (\texttt{main.nf}) lists the inputs, output and the steps to be performed during runtime, along with the parameters to be used (if different from defaults) for the various steps.
   Since the entire pipeline run is stored in the form of a text file (the configuration file), subsequent runs are highly reproducible and changes can be easily tracked using version control.
   It makes use the nextflow workflow manager~\cite{Tommaso2015} under the hood, making it readily usable on the local machine, cluster or cloud with minimal configuration change.
   It also allows for automatic parallelization of all possible processes, both within and across samples.
@@ -48,6 +49,7 @@
   \vspace{-5mm}
   This module deals with processing the raw multiplexed 16S sequence data into demultiplexed, quality-controlled, trimmed sequences.
   It consists of the demultiplexing and trimming processes.
+  The demultiplexing process deals with separating the multiplexed sequences into individual samples based on barcodes.
   The trimming process handles the quality control steps such as trimming adapters and trimming low-quality nucleotide stretches from the sequences.
   The parameters and tools in this process are fixed and are not available for user customization.
   The various tools used for the processes were adapted from \ac{qiime2} v2021.8.0~\cite{bolyenReproducibleInteractiveScalable2019}.
@@ -89,11 +91,11 @@
   Although the pipeline supports normalization and rarefaction, these modules are turned off by default and the analysis reported in the paper do not normalize or rareify the counts matrices.
   However, most of the network inference methods perform normalization and other transformation operations on the counts matrix as a part of their workflow.
   Filtering, is performed to remove samples or features (\ac{otu}s or \ac{esv}s) from the counts matrix that are sparse.
-  By default, when the OP module is ``on'', the samples are filtered out if the total reads in a sample are less than 500 and features are filtered out if the abundance is less than 1\%, prevalence is less than 5\% and count sum across all the samples is less than 100.
+  By default, when the OP module is ``on'', the samples are filtered out if the total reads in a sample are less than 500 and features are filtered out if the relative abundance is less than 1\%, prevalence (percentage of samples containing feature) is less than 5\% and count sum across all the samples is less than 100.
   When the OP module is ``off'', the filtering is still performed but only to remove those features that are very low in presence.
   The parameters used are given in Table~\ref{tab:micone_tools}.
-  The forking operation splits the count matrix into multiple matrices based on sample metadata column.
-  The group operation transforms the \ac{otu} or \ac{esv} count matrix into a taxonomic count matrix at the requested level by adding up counts that map to the same taxonomy.
+  The forking operation splits the count matrix into multiple matrices based on sample metadata column, this is useful for example to compare case vs. control.
+  The group operation transforms the \ac{otu} or \ac{esv} count matrix into a taxonomic count matrix at the requested level by adding up counts that map to the same taxonomy and is carried out at the end of the OP step.
   Finally, transformations are performed in order to correct for and overcome the compositional bias that is inherent in the counts matrix (in the analysis performed in the study these are handled by the network inference algorithm).
   All the modules in this step were implemented using functions from the \href{http://biom-format.org/}{biom-format} Python package~\cite{mcdonaldBiologicalObservationMatrix2012}.
 
@@ -106,7 +108,7 @@
   A threshold of 0.3 was set for the correlation-based methods (\ac{sparcc}, Propr, Spearman and Pearson) and a threshold of 0.01 was set for the other direct association methods.
   After filtering out edges based on the threshold, the isolated nodes are removed.
 
-  A null model is created by re-sampling and bootstrapping the counts matrix and recalculating the correlations.
+  A null model is created by re-sampling and bootstrapping the counts matrix and recalculating the correlations (see next section for details on network analysis and statistics).
   These bootstrapped association matrices are used to calculate the significance of the inferred correlations by calculating the p-values against this null model~\cite{Watts2018}.
   The pipeline includes 4 methods for pairwise correlation metrics, and 6 methods for direct association metrics (refer Table~\ref{tab:micone_tools}).
   The Brown's p-value merging method~\cite{brown_400_1975} is used for combining p-values from the pairwise correlations methods to obtain a consensus p-value, which can be used to filter for significance.
@@ -122,7 +124,7 @@
  This section defines the notation used below to describe the consensus network algorithm used in the \ac{micone} pipeline.
  Note that all networks to be compared have the same number of nodes.
 
-  $w$, the number of co-occurrence networks to be integrated into the consensus network (corresponding to the number of the different approaches used to infer co-occurrence networks excluding Spearman and Pearson)
+  $w$, the number of co-occurrence networks to be integrated into the consensus network (corresponding to the number of the different approaches used to infer co-occurrence networks excluding Spearman and Pearson, $k$)
 
   $q$, the number of unique nodes across all $w$ co-occurrence networks
 
@@ -140,7 +142,7 @@
 
   \subsubsection*{Bootstrapping and p-value calculation}
   \vspace{-5mm}
-  For all correlation-based methods $k \subset w$, $1000$ permutations of the original \ac{otu} counts data were generated~\cite{Watts2018}.
+  For all correlation-based methods $k < w$, $1000$ permutations of the original \ac{otu} counts data were generated~\cite{Watts2018}.
   All the direct association based methods used in the study have their own regularization methods built-in and hence do not need to undergo bootstrapping.
   The correlations in the permuted \ac{otu} tables are recalculated using the different correlation-based algorithms.
   Finally, the p-value is determined based on how often a more extreme association is observed for randomly permuted data.
@@ -177,12 +179,13 @@
 
   \paragraph*{Algorithm 1 - Simple voting:}
   The simple voting method performs a voting-based consensus to determine whether an edge will exist between a given node-pair in the final consensus network~\cite{bustinceFuzzySetsTheir2008,tsarevApplicationMajorityVoting2018}.
-  For each pair of nodes, we determine the number of network inference methods that report an edge $j=l$ between them, i.e. $\bar{N}^{i}_{j=l}, \forall i \in \{1,\dots,w\}$.
+  For each pair of nodes, we determine the number of network inference methods that report an edge $j$ between them, i.e. $\bar{N}^{i}_{j}, \forall i \in \{1,\dots,w\}$.
   Each node-pair will have an edge in the final consensus network if the number of reported edges is larger than a user-defined threshold (Equation~\ref{eqn:simple-voting2}).
 
  The number of reported edges is computed as follows:
 
  For each edge $j$, we obtain $M_j$ which represents the number of networks in which edge $j$ is reported.
+ Formally, $M_j$ is calculated as the following function:
   \begin{equation}
       M_j = f(g(\bar{N}^{i=1}_j), \dots, g(\bar{N}^{i=w}_j)) \\
     \label{eq:simple-voting}
@@ -205,7 +208,7 @@ where, $g$ and $f$ are defined as follows:
   \end{equation*}
   where, $\#$ refers to the cardinality of the set.
 
- The edge $j$ appears in the final consensus network if the number of reported edges is greater than the threshold.
+ The edge $j$ is selected to be present in the final consensus network if the number of networks in which $j$ appears is greater than a threshold, i.e:
   \begin{equation}
      M_j \geq \lfloor p \times w \rfloor
     \label{eqn:simple-voting2}
@@ -289,11 +292,11 @@ where, $g$ and $f$ are defined as follows:
 
   In particular, we infer parameters $\alpha_i$ such that:
   \begin{multline}
-  C_j = &\sum_{k=1}^5 \left( \alpha^{DC(k)}_j.\delta^{DC(k)}_j \right) +
-         \sum_{k=1}^2 \left( \alpha^{CC(k)}_j.\delta^{CC(k)}_j \right) +
-         \sum_{k=1}^3 \left( \alpha^{TA(k)}_j.\delta^{TA(k)}_j \right) +
-         \sum_{k=1}^2 \left( \alpha^{OP(k)}_j.\delta^{OP(k)}_j \right) + \\
-         &\sum_{k=1}^{10} \left( \alpha^{NI(k)}_j.\delta^{NI(k)}_j \right) +
+  C_j = &\sum_{i=1}^5 \left( \alpha^{DC(i)}_j.\delta^{DC(i)}_j \right) +
+         \sum_{i=1}^2 \left( \alpha^{CC(i)}_j.\delta^{CC(i)}_j \right) +
+         \sum_{i=1}^3 \left( \alpha^{TA(i)}_j.\delta^{TA(i)}_j \right) +
+         \sum_{i=1}^2 \left( \alpha^{OP(i)}_j.\delta^{OP(i)}_j \right) + \\
+         &\sum_{i=1}^{10} \left( \alpha^{NI(i)}_j.\delta^{NI(i)}_j \right) +
          \epsilon_j
   \end{multline}
 
@@ -301,11 +304,11 @@ where, $g$ and $f$ are defined as follows:
 
    Here,
    \begin{enumerate}
-     \item $DC(k) \subset$ \{CR, OR, DN, D2, DB\}
-     \item $CC(k) \subset$ \{remove bimera, uchime-denovo\}
-     \item $TA(k) \subset$ \{NaiveBayes(GG), NaiveBayes(SILVA), BLAST(NCBI)\}
-     \item $OP(k) \subset$ \{Filter(on), Filter(off)\}
-     \item $NI(k) \subset$ \{\ac{sparcc}, propr, Spearman, Pearson, \ac{spieceasi}, \ac{cozine}, \ac{harmonies}, \ac{spring}, \ac{mldm}, FlashWeave\}
+     \item $DC(i) \in$ \{CR, OR, DN, D2, DB\}
+     \item $CC(i) \in$ \{remove bimera, uchime-denovo\}
+     \item $TA(i) \in$ \{NaiveBayes(GG), NaiveBayes(SILVA), BLAST(NCBI)\}
+     \item $OP(i) \in$ \{Filter(on), Filter(off)\}
+     \item $NI(i) \in$ \{\ac{sparcc}, propr, Spearman, Pearson, \ac{spieceasi}, \ac{cozine}, \ac{harmonies}, \ac{spring}, \ac{mldm}, FlashWeave\}
    \end{enumerate}
 
    The variance contributed by each step of the pipeline is calculated for every component in $\mathbf{C}$ matrix through ANOVA using the Python statsmodels~\cite{seaboldStatsmodelsEconometricStatistical2010} package and is shown in Figure~\ref{fig:figure6}A.
@@ -334,7 +337,7 @@ where, $g$ and $f$ are defined as follows:
   \subsubsection*{DC step}
   \vspace{-5mm}
   In order to compare the representative sequences generated by the various methods in the DC step, we employ both the weighted~\cite{Lozupone2007} (Figure~\ref{fig:figure2}A) and unweighted UniFrac method~\cite{Lozupone2005} (Figure~\ref{fig:figure2}B).
-  The UniFrac distance metric (unique fraction metric) is a beta-diversity measure that computes the distance between two sets of taxa as the fraction of the branch length of the tree that leads to descendants from either one environment or the other, but not both~\cite{Lozupone2005}
+  The UniFrac distance metric (unique fraction metric) is a beta-diversity measure that computes the distance between two sets of taxa as the fraction of the branch length of the tree that leads to descendants from either one environment or the other, but not both~\cite{Lozupone2005}.
   The weighted UniFrac distance metric takes into account the abundances of the representative sequences when calculating shared and unshared branch lengths, whereas the unweighted UniFrac distance metric does not and hence gives equal weights to each sequence.
   In Figure~\ref{fig:figure2} the distances between methods are the average distance calculated between the reference sequence distribution for a pair of methods generated for every corresponding sample in the dataset.
   All UniFrac calculations were performed using the \texttt{scikit-bio}~\cite{thescikit-biodevelopmentteamScikitbioBioinformaticsLibrary2022} v0.5.6 Python package.
@@ -342,14 +345,14 @@ where, $g$ and $f$ are defined as follows:
   \subsubsection*{TA step}
   \vspace{-5mm}
   In Figure~\ref{fig:figure3}C we use the Bray-Curtis distance metric to calculate the distance between the predicted (using the taxonomy databases in the TA step) and expected taxonomic distribution.
-  The Bray-Curtis distance is used to quantify the compositional dissimilarity between two different taxonomic distributions.
+  The Bray-Curtis distance is used to quantify the compositional dissimilarity between two different taxonomic distributions defined by vectors $u$ and $v$.
   It is defined as:
   $$\sum{|u_i-v_i|} / \sum{|u_i+v_i|}$$
   The Bray-Curtis distance calculations were performed using the \texttt{scipy}~\cite{virtanenSciPyFundamentalAlgorithms2020} v1.8.0 Python package.
 
   \subsubsection*{NI step}
   \vspace{-5mm}
-  In Figure~\ref{fig:figure5} we calculate the accuracy and robustness of the inferred association networks (using the various network inference algorithms and the consensus methods) against the original interaction used to create the taxonomic distribution.
+  In Figure~\ref{fig:figure5} we calculate the accuracy and robustness of the inferred association networks (using the various network inference algorithms and the consensus methods) against the original interaction network used to create the taxonomic distribution.
   We use precision and sensitivity to calculate the accuracy of the predictions.
 
   Precision = $\frac{TP}{TP + FP}$
