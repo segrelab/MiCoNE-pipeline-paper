@@ -25,6 +25,7 @@
   Each of these tools corresponds to a distinct module that recapitulates the relevant analyses.
   All such individual modules are available as part of the \ac{micone} package.
   The inputs to the pipeline by default are raw untrimmed 16S rRNA sequence reads, but the software can be alternatively configured to use trimmed sequences, \ac{otu} tables and other types of intermediate data (see documentation).
+  The easy-to-use nature, the configurability and modular nature of the \ac{micone} package enables users to start and end the pipeline at any point in the workflow, and to run parts of the pipeline in isolation.
   The pipeline supports both paired end and single end reads, and additionally supports independently processing reads from multiple runs and merging the OTU tables in the DC step.
   The final output of the pipeline is the inferred network of co-occurrence relationships among the microbes present in the samples.
 
@@ -76,7 +77,7 @@
   The consensus algorithm used is the default method used by the classifiers in \ac{qiime2}.
   The assignment between SILVA and the other two databases were originally significantly different ($40\%$ mismatch) even at the Phylum level.
   However, this was fixed by making minor adjustments to the taxonomic names, such as changing Bacteroidota to Bacteroidetes in the SILVA Phylum assignments.
-  The full list of changes can be found in \texttt{figure4ab_data.py} in the data and scripts  repository.
+  The full list of changes can be found in \texttt{figure4ab\_data.py} in the data and scripts  repository.
   The list of tools used in this step, along with their modules and references are provided in Table~\ref{tab:micone_tools}.
 
   \subsection*{OTU and ESV Processing (OP)}

@@ -257,3 +257,29 @@
     Since, we make use of \texttt{networkx}~\cite{hagbergExploringNetworkStructure2008} for the export functionality, networks can be exported to all formats supported by the package.
     However, not all the corresponding metadata will be exported appropriately, since most formats do not support this additional metadata.
     The details of the format and information about importing/exporting it and other network formats can be found in the \ac{micone} documentation.
+
+  \subsection*{Supplementary discussion}
+
+  Additionally, it is worth pointing out some additional more specific conclusions stemming from the individual steps of our analysis.
+  The different denoising/clustering methods differ mostly in their identification of sequences that are in low abundances.
+  Hence, they do not have much of an impact on the inferred co-occurrence networks when the sequences of low abundance are removed (Figure~\ref{fig:figure_s1}).
+  Comparison of inferred and expected reference sequences and their abundances in mock community datasets has allowed us to identify \ac{dada2} as the method which best recapitulates the expected sequence composition.
+  For the chimera checking module, we suggest using the remove bimera method since it was developed in conjunction with \ac{dada2} and its performance does not significantly differ from uchime-denovo.
+  For the current work we have decided to focus on the tools most widely used at the time of the analysis.
+  Some tools which were not as widely used (e.g. dbOTU3~\cite{Olesen2017}) as well as older popular methods like mothur~\cite{Schloss2009} have not been included in the study, but could be added into the pipelines in future updated analyses.
+
+  The choice of taxonomy database was found to be the most important factor in the inference of microbial co-occurrence networks, contributing $65.4\%$ of the total variance.
+  The frequent changes in the taxonomy nomenclature coupled with the frequency of updates to the various 16S reference databases create inherent differences \cite{Balvociute2017} in taxonomy hierarchies in these databases.
+  Our analysis revealed that no particular reference database performs better than the others across the different mock dataset benchmarks.
+  The default reference database in the pipeline is the \ac{gg} reference database along with the ``Naive Bayes'' classifier as the query tool.
+  The reason for our choice stems from the popularity of the \ac{gg} database~\cite{parkEvaluation16SRRNA2018} in taxonomic studies, which would enable easy comparison across datasets.
+  However, for newer studies we recommend using SILVA database because of its size and taxonomic comprehensiveness~\cite{iiRESCRIPtReproducibleSequence2021} and since \ac{gg} has not been updated since 2013.
+  Additionally, we also enable users to use custom databases~\cite{Ritari2015,iiRESCRIPtReproducibleSequence2021} with the BLAST and Naive Bayes classifiers that are incorporated into the pipeline (from \ac{qiime2}).
+  We suggest that that choice of the database should be made based on possible reported or inferred biases in the representation of given biomes in a specific databases~\cite{Balvociute2017,iiRESCRIPtReproducibleSequence2021}, as choosing taxon-specific databases have also been observed to compromise classification~\cite{rmarcelinoUseTaxonspecificReference2020}.
+
+  The \ac{op} step of the pipeline is second in its contribution to total network variance.
+  This can be attributed to the large number of nodes that are added to the final networks when the filtering is turned off.
+  Additionally, a very large number of nodes also decreases the accuracy of the network inference algorithms for the same sample size~\cite{peschelNetCoMiNetworkConstruction2020} and increases the computational complexity~\cite{tackmannRapidInferenceDirect2019}.
+  We observe that filtering out taxa that are present in low abundances in all samples increases the proportion of taxa in common between taxonomy tables generated using different reference databases (Figure~\ref{fig:figure_s5}), providing another reason for filtering.
+  We also observe that the reduction in the number of taxa leads to better agreement in the networks inferred through different methods (Figure~\ref{fig:figure_s1}).
+  Moreover, filtering is necessary in order to increase the power in tests of significance when the number of taxa is much greater than the number of samples.
