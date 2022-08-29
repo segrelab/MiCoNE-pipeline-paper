@@ -6,7 +6,7 @@
   These microbial communities, or microbiomes, often comprise several hundreds of different microbial strains interacting with each other and their environment, often through intricate metabolic and signaling relationships.
   Understanding how these interconnections shape community structure and functionalities is a fundamental challenge in microbial ecology, and has applications in the study of microbial ecosystems across different biomes.
   With the advancement in DNA sequencing technologies \cite{Narihiro2017} and data processing methods,  more information can be extracted from these microbial community samples than ever before.
-  In particular, high-throughput sequencing, including metagenomic sequencing and sequencing of 16S rRNA gene amplicons of microbial communities, has the potential to help detect, identify and quantify a large portion of the constitutive microorganisms of a microbiome \cite{Jovel2016,Lloyd-Price2016}.
+  In particular, high-throughput sequencing, including metagenomic sequencing and sequencing of 16S rRNA gene amplicons (hereafter referred to as 16S data) of microbial communities, has the potential to help detect, identify and quantify a large portion of the constitutive microorganisms of a microbiome \cite{Jovel2016,Lloyd-Price2016}.
   These advances have led to large-scale data collection efforts involving environmental (\acl{emp}) \cite{Thompson2017}, marine (Tara Oceans Project) \cite{Zhang2015} and human-associated microbiota (Human Microbiome Project) \cite{HumanMicrobiomeProjectConsortium2012}.
 
  This wealth of information on the composition and functions of a community at different times and under different environmental conditions has the potential to help us understand how communities assemble and operate.
@@ -31,7 +31,7 @@ The different methods and tools developed to solve issues arising in 16S analysi
 
  In this study, we present a standardized 16S data analysis pipeline called \ac{micone} that produces robust and reproducible co-occurrence networks from community 16S sequence data, and allow users to interactively explore how the network would change upon using different alternative tools and parameters at each step.
   % TODO: Link or describe MIND here (?)
-  Our pipeline is coupled to an online integrative tool for the organization, visualization and analysis of inter-microbial networks.
+ Our pipeline is coupled to an online integrative tool for the organization, visualization and analysis of inter-microbial networks [MIND REF], called \ac{mind}, that is available at [link].
   In addition to making this tool freely available, we completed a systematic comparative analysis to determine which steps of the pipeline have the largest influence on the final network, and what choice seems to have the best agreement with the tested mock and synthetic datasets.
   We believe that these steps will ensure better reproducibility and easier comparison of co-occurrence networks across datasets.
   We expect that our tool will also be useful for benchmarking future alternative methods, and for ensuring a transparent evaluation of the possible biases introduced by the use of specific tools.

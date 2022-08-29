@@ -64,12 +64,7 @@
 % Figures
   \FloatBarrier
   \newpage
-
-  \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.74\linewidth]{figure1.pdf}
-  \end{figure}
-  \begin{figure}[H]
+\begin{figure}[H]
     \centering
     \caption{
       \textbf{The workflow of the \ac{micone} pipeline}.
@@ -82,36 +77,6 @@
     \label{fig:figure1}
   \end{figure}
 
-  \FloatBarrier
-  \newpage
-
-  % TODO: Add equations for the linear model to the left of the pie chart
-  \begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{figure2.pdf}
-  \end{figure}
-  \begin{figure}[H]
-    \centering
-      \caption{
-      \textbf{The choice of reference database contributes to the most variance in the networks}.
-      \textbf{(A)} The percentage of variance in the networks contributed by the DC, CC (chimera checking), TA and OP steps of the pipeline (right) and the linear model used to calculate the variance (left), see the Methods section for details.
-      The data used for the analysis were the healthy stool samples from the fecal microbiome transplant dataset~\cite{Kang2017}.
-      The taxonomy database contributes most to the variance between the networks (65.4\%) followed by the filtering of the counts matrix (26.8\%) in the OP step.
-      The variation due to the DC and CC steps are comparatively not as significant.
-      \textbf{(B)} All combinations of inferred networks are shown as points on a PCA plot.
-      Each point on the PCA plot represents a network inferred using different combinations of tools and parameters that are available in the \ac{micone} pipeline.
-      The color of the points corresponds to the reference taxonomy database used to reconstruct those networks (left), and the network inference algorithm used to infer the networks (right).
-      The points on the PCA plot can be grouped based on the TA step, but at the NI step only some methods create high variability in the inferred networks.
-    }
-    \label{fig:figure2}
-  \end{figure}
-  \FloatBarrier
-  \newpage
-
-  \begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{figure3.pdf}
-  \end{figure}
   \begin{figure}[H]
     \centering
     \caption{
@@ -125,15 +90,9 @@
       The good performance of dada2 (D2) under both distance metrics combined with its approach of identifying \ac{esv}s using de novo methods, prompts us to propose it as the default method for the DC step.
       The data used for the analysis in \textbf{(C, D)} were the mock datasets from mockrobiota~\cite{Bokulich2016}.
     }
-    \label{fig:figure3}
+    \label{fig:figure2}
   \end{figure}
-  \FloatBarrier
-  \newpage
 
-  \begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth,height=1.2\textwidth]{figure4.pdf}
-  \end{figure}
   \begin{figure}[H]
     \centering
     \caption{
@@ -149,16 +108,9 @@
       Due to the popularity of the \ac{gg} database, comparison against existing networks in literature will be easier since many published datasets make use of this database in their analyses.
       The datasets used for the analysis in \textbf{(C)} were the mock datasets from mockrobiota.
     }
-    \label{fig:figure4}
+    \label{fig:figure3}
   \end{figure}
-  \FloatBarrier
-  \newpage
 
-
-  \begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{figure5.pdf}
-  \end{figure}
   \begin{figure}[H]
     \centering
     \caption{
@@ -170,15 +122,13 @@
       \textbf{(B)} The node overlap Upset plot indicates that all the networks have a large proportion of common nodes involved in connections (33 out of 68).
       Whereas, \textbf{(C)} the edge overlap Upset plot shows that a very small fraction of these connections are actually shared (8 out of 202).
       The data used in this analysis were the healthy stool samples from the fecal microbiome transplant dataset.
+      \ac{mldm} is not shown in the comparisons because the algorithm failed to converge for most of the network combinations.
     }
-    \label{fig:figure5}
+    \label{fig:figure4}
   \end{figure}
-  \FloatBarrier
-  \newpage
 
   \begin{figure}[H]
     \centering
-    \includegraphics[width=1.0\linewidth]{figure6.pdf}
     \caption{
       \textbf{The precision and sensitivity of the inferred networks on the NorTA synthetic interaction data.}
       The ``I'' prefix indicates the individual network inference methods and the ``X'' prefix denotes the consensus based methods that are a part of \ac{micone}.
@@ -189,17 +139,25 @@
       Although \ac{spieceasi} has a higher performance on sensitivity, if the goal of network inference is to obtain the list of associations that have a high probability of existing in the real microbial community, then the consensus methods perform better.
       Therefore, we recommend the scaled-sum consensus method as the default tool for network inference.
     }
-    \label{fig:figure6}
+    \label{fig:figure5}
   \end{figure}
-  \FloatBarrier
-  \newpage
 
-  % TODO: Verify the validity of Figure 7A and 7B again
-  % Are they both using consensus?
   \begin{figure}[H]
     \centering
-    \includegraphics[width=1.0\linewidth]{figure7.pdf}
+      \caption{
+      \textbf{The choice of reference database contributes to the most variance in the networks}.
+      \textbf{(A)} The percentage of variance in the networks contributed by the DC, CC (chimera checking), TA and OP steps of the pipeline (right) and the linear model used to calculate the variance (left), see the Methods section for details.
+      The data used for the analysis were the healthy stool samples from the fecal microbiome transplant dataset~\cite{Kang2017}.
+      The taxonomy database contributes most to the variance between the networks (65.4\%) followed by the filtering of the counts matrix (26.8\%) in the OP step.
+      The variation due to the DC and CC steps are comparatively not as significant.
+      \textbf{(B)} All combinations of inferred networks are shown as points on a PCA plot.
+      Each point on the PCA plot represents a network inferred using different combinations of tools and parameters that are available in the \ac{micone} pipeline.
+      The color of the points corresponds to the reference taxonomy database used to reconstruct those networks (left), and the network inference algorithm used to infer the networks (right).
+      The points on the PCA plot can be grouped based on the TA step, but at the NI step only some methods create high variability in the inferred networks.
+    }
+    \label{fig:figure6}
   \end{figure}
+
   \begin{figure}[H]
     \centering
     \caption{
@@ -216,3 +174,64 @@
     }
     \label{fig:figure7}
   \end{figure}
+
+  \FloatBarrier
+  \newpage
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.74\linewidth]{figure1.pdf}
+  \end{figure}
+
+
+  \FloatBarrier
+  \newpage
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figure2.pdf}
+  \end{figure}
+
+  \FloatBarrier
+  \newpage
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figure3.pdf}
+  \end{figure}
+
+  \FloatBarrier
+  \newpage
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figure4.pdf}
+  \end{figure}
+
+  \FloatBarrier
+  \newpage
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\linewidth]{figure5.pdf}
+  \end{figure}
+
+  \FloatBarrier
+  \newpage
+
+  % TODO: Add equations for the linear model to the left of the pie chart
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figure6.pdf}
+  \end{figure}
+
+  \FloatBarrier
+  \newpage
+
+  % TODO: Verify the validity of Figure 7A and 7B again
+  % Are they both using consensus?
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\linewidth]{figure7.pdf}
+  \end{figure}
+

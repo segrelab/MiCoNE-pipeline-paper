@@ -277,3 +277,6 @@ venv/
 ENV/
 # mypy
 .mypy_cache/
+
+# Drafts
+draft_*
