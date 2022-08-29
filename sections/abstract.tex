@@ -10,8 +10,8 @@
     There are many tools for performing each step of the 16S analysis workflow, but the extent to which these steps affect the final network is still unclear.
     In this study, we perform a meticulous analysis of each step of a pipeline that can convert 16S sequencing data into a network of microbial associations.
     Through this process, we map how different choices of algorithms and parameters affect the co-occurrence network and estimate steps that contribute most significantly to the variance.
-    We further determine the tools and parameters that generate the most accurate and robust co-occurrence networks and develop consensus network algorithms based on benchmarks with mock and synthetic datasets.
-    Ultimately, we develop a standardized pipeline (available at \href{https://github.com/segrelab/MiCoNE}{https://github.com/segrelab/MiCoNE}) that follows these default tools and parameters, but that can also help explore the outcome of any other combination of choices.
+    We further determine the tools and parameters that generate robust co-occurrence networks and develop consensus network algorithms based on benchmarks with mock and synthetic datasets.
+    The Microbial Co-occurrence Network Explorer or \acs{micone} (available at \href{https://github.com/segrelab/MiCoNE}{https://github.com/segrelab/MiCoNE}), follows these default tools and parameters, and can help explore the outcome of these combinations of choices on the inferred networks.
     We envisage that this pipeline could be used for integrating multiple data-sets, and for generating comparative analyses and consensus networks that can help understand microbial community assembly in different biomes.
   }
 \end{abstract}
@@ -21,10 +21,10 @@
 
 
 \section*{Importance}
-  Mapping the interrelationships between the species in a microbial community is essential to understand and control their structure and function.
+  Mapping the interrelationships between different species in a microbial community is essential to understand and control their structure and function.
   The surge in the high-throughput sequencing of microbial communities has led to the creation of thousands of datasets containing information about microbial abundances.
   These abundances can be transformed into co-occurrence networks, providing a glimpse into the associations within microbiomes.
   However, processing these datasets to obtain co-occurrence information relies on several complex steps, each of which involves numerous choices of tools and corresponding parameters.
-  These multiple options pose questions about the accuracy and uniqueness of the inferred networks.
+  These multiple options pose questions about the robustness and uniqueness of the inferred networks.
   In this study, we address this workflow and provide a systematic analysis of how these choices of tools affect the final network, and guidelines on appropriate tool selection for a particular dataset.
-  We also develop a consensus network algorithm that helps generate more robust and accurate occurrence networks based on benchmarks synthetic datasets.
+  We also develop a consensus network algorithm that helps generate more robust co-occurrence networks based on benchmarks synthetic datasets.
