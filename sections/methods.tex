@@ -87,6 +87,7 @@
   This module deals with normalization, filtering, forking, grouping and applying transformations to the \ac{otu} or \ac{esv} counts matrix.
   Normalization of the count matrix involves converting the count matrix of read counts into a count matrix containing relative abundances.
   The module also supports rarefaction, which is a normalization technique used to overcome the bias that might arise due to variable sampling depth in different samples.
+  However, due to the potential biases and false positives~\cite{mcmurdieWasteNotWant2014,chaoCoveragebasedRarefactionExtrapolation2012} that might arise during the process, the rarefaction module is disabled by default and can be enabled in the configuration if needed.
   This is performed either by sub-sampling or by normalization of the matrix to the lowest sampling depth~\cite{Weiss2015}.
   Although the pipeline supports normalization and rarefaction, these modules are turned off by default and the analysis reported in the paper do not normalize or rareify the counts matrices.
   However, most of the network inference methods perform normalization and other transformation operations on the counts matrix as a part of their workflow.

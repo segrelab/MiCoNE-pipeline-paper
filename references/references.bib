@@ -248,6 +248,26 @@
   keywords = {generation sequencing,Microbial ecology,Next,Software}
 }
 
+@article{chaoCoveragebasedRarefactionExtrapolation2012,
+  title = {Coverage-Based Rarefaction and Extrapolation: Standardizing Samples by Completeness Rather than Size},
+  shorttitle = {Coverage-Based Rarefaction and Extrapolation},
+  author = {Chao, Anne and Jost, Lou},
+  date = {2012},
+  journaltitle = {Ecology},
+  volume = {93},
+  number = {12},
+  pages = {2533--2547},
+  issn = {1939-9170},
+  doi = {10.1890/11-1952.1},
+  url = {https://onlinelibrary.wiley.com/doi/abs/10.1890/11-1952.1},
+  urldate = {2022-08-30},
+  abstract = {We propose an integrated sampling, rarefaction, and extrapolation methodology to compare species richness of a set of communities based on samples of equal completeness (as measured by sample coverage) instead of equal size. Traditional rarefaction or extrapolation to equal-sized samples can misrepresent the relationships between the richnesses of the communities being compared because a sample of a given size may be sufficient to fully characterize the lower diversity community, but insufficient to characterize the richer community. Thus, the traditional method systematically biases the degree of differences between community richnesses. We derived a new analytic method for seamless coverage-based rarefaction and extrapolation. We show that this method yields less biased comparisons of richness between communities, and manages this with less total sampling effort. When this approach is integrated with an adaptive coverage-based stopping rule during sampling, samples may be compared directly without rarefaction, so no extra data is taken and none is thrown away. Even if this stopping rule is not used during data collection, coverage-based rarefaction throws away less data than traditional size-based rarefaction, and more efficiently finds the correct ranking of communities according to their true richnesses. Several hypothetical and real examples demonstrate these advantages.},
+  langid = {english},
+  keywords = {diversity,extrapolation,interpolation,prediction,rarefaction,replication principle,sample coverage,species accumulation curve,species richness,standardization},
+  annotation = {\_eprint: https://onlinelibrary.wiley.com/doi/pdf/10.1890/11-1952.1},
+  file = {/home/dileep/Zotero/storage/85GJNJM3/Chao_Jost_2012_Coverage-based rarefaction and extrapolation.pdf;/home/dileep/Zotero/storage/NKKLBCXI/11-1952.html}
+}
+
 @article{Chen2018,
   title = {Oral Microbiota of Periodontal Health and Disease and Their Changes after Nonsurgical Periodontal Therapy},
   author = {Chen, Casey and Hemme, Chris and Beleno, Joan and Shi, Zhou Jason and Ning, Daliang and Qin, Yujia and Tu, Qichao and Jorgensen, Michael and He, Zhili and Wu, Liyou and Zhou, Jizhong},
@@ -941,6 +961,27 @@
   urldate = {2022-01-14},
   abstract = {We present the Biological Observation Matrix (BIOM, pronounced “biome”) format: a JSON-based file format for representing arbitrary observation by sample contingency tables with associated sample and observation metadata. As the number of categories of comparative omics data types (collectively, the “ome-ome”) grows rapidly, a general format to represent and archive this data will facilitate the interoperability of existing bioinformatics tools and future meta-analyses.The BIOM file format is supported by an independent open-source software project (the biom-format project), which initially contains Python objects that support the use and manipulation of BIOM data in Python programs, and is intended to be an open development effort where developers can submit implementations of these objects in other programming languages.The BIOM file format and the biom-format project are steps toward reducing the “bioinformatics bottleneck” that is currently being experienced in diverse areas of biological sciences, and will help us move toward the next phase of comparative omics where basic science is translated into clinical and environmental applications. The BIOM file format is currently recognized as an Earth Microbiome Project Standard, and as a Candidate Standard by the Genomic Standards Consortium.},
   file = {/home/dileep/Zotero/storage/W9VB525Z/McDonald et al_2012_The Biological Observation Matrix (BIOM) format or.pdf;/home/dileep/Zotero/storage/SAJL6CMV/2656152.html}
+}
+
+@article{mcmurdieWasteNotWant2014,
+  title = {Waste {{Not}}, {{Want Not}}: {{Why Rarefying Microbiome Data Is Inadmissible}}},
+  shorttitle = {Waste {{Not}}, {{Want Not}}},
+  author = {McMurdie, Paul J. and Holmes, Susan},
+  date = {2014-04-03},
+  journaltitle = {PLOS Computational Biology},
+  shortjournal = {PLOS Computational Biology},
+  volume = {10},
+  number = {4},
+  pages = {e1003531},
+  publisher = {{Public Library of Science}},
+  issn = {1553-7358},
+  doi = {10.1371/journal.pcbi.1003531},
+  url = {https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003531},
+  urldate = {2022-08-30},
+  abstract = {Current practice in the normalization of microbiome count data is inefficient in the statistical sense. For apparently historical reasons, the common approach is either to use simple proportions (which does not address heteroscedasticity) or to use rarefying of counts, even though both of these approaches are inappropriate for detection of differentially abundant species. Well-established statistical theory is available that simultaneously accounts for library size differences and biological variability using an appropriate mixture model. Moreover, specific implementations for DNA sequencing read count data (based on a Negative Binomial model for instance) are already available in RNA-Seq focused R packages such as edgeR and DESeq. Here we summarize the supporting statistical theory and use simulations and empirical data to demonstrate substantial improvements provided by a relevant mixture model framework over simple proportions or rarefying. We show how both proportions and rarefied counts result in a high rate of false positives in tests for species that are differentially abundant across sample classes. Regarding microbiome sample-wise clustering, we also show that the rarefying procedure often discards samples that can be accurately clustered by alternative methods. We further compare different Negative Binomial methods with a recently-described zero-inflated Gaussian mixture, implemented in a package called metagenomeSeq. We find that metagenomeSeq performs well when there is an adequate number of biological replicates, but it nevertheless tends toward a higher false positive rate. Based on these results and well-established statistical theory, we advocate that investigators avoid rarefying altogether. We have provided microbiome-specific extensions to these tools in the R package, phyloseq.},
+  langid = {english},
+  keywords = {Binomials,DNA sequencing,Experimental design,Microbiome,RNA sequencing,Simulation and modeling,Source code,Statistical data},
+  file = {/home/dileep/Zotero/storage/KSJWD8FQ/McMurdie_Holmes_2014_Waste Not, Want Not.pdf;/home/dileep/Zotero/storage/IEARYB27/article.html}
 }
 
 @article{Menon2018,

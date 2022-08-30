@@ -1,144 +1,144 @@
 % TODO: Convert to booktabs style?
-% \begin{table}[H]
-% \centering
-% \small
-% \begin{tabular}{|c|c|c|c|}
-% \hline
-%  \textbf{Task}                   & \textbf{Module}                                   & \textbf{Parameter}           & \textbf{Value}   \\ \hline
-%  \multirow{6}{*}{Demultiplexing} & \multirow{3}{*}{demultiplexing\_illumina\_single} & barcode\_column              & barcode-sequence \\
-%                                  &                                                   & rev\_comp\_barcodes          & false            \\
-%                                  &                                                   & rev\_comp\_mapping\_barcodes & false            \\ \cline{3-4}
-%                                  & \multirow{3}{*}{demultiplexing\_illumina\_paired} & barcode\_column              & barcode-sequence \\
-%                                  &                                                   & rev\_comp\_barcodes          & false            \\
-%                                  &                                                   & rev\_comp\_mapping\_barcodes & false            \\ \cline{2-4}
-%  \multirow{8}{*}{Trimming}       & export\_visualization\_single                     & seq\_samplesize              & 10000            \\ \cline{3-4}
-%                                  & export\_visualization\_paired                     & seq\_samplesize              & 10000            \\ \cline{3-4}
-%                                  & \multirow{3}{*}{trimming\_single}                 & ncpus                        & 1                \\
-%                                  &                                                   & max\_ee                      & 2                \\
-%                                  &                                                   & trunc\_q                     & 2                \\ \cline{3-4}
-%                                  & \multirow{3}{*}{trimming\_paired}                 & ncpus                        & 1                \\
-%                                  &                                                   & max\_ee                      & 2                \\
-%                                  &                                                   & trunc\_q                     & 2                \\ \hline
-% \end{tabular}
-% \caption{The default parameters used in the Sequence Processing step of the \ac{micone} pipeline}
-% \label{tab:sp_parameters}
-% \end{table}
-%
-% \begin{table}[H]
-% \centering
-% \small
-% \begin{tabular}{|c|c|c|c|}
-% \hline
-% \textbf{Task}                     & \textbf{Tool}                     & \textbf{Parameter}   & \textbf{Value}       \\ \hline
-% \multirow{15}{*}{OTU assignment}  & \multirow{4}{*}{Closed reference} & ncpus                & 1                    \\
-%                                   &                                   & percent\_identity    & 0.97                 \\
-%                                   &                                   & strand               & ``plus"               \\
-%                                   &                                   & reference\_sequences & ``gg\_97" \\ \cline{2-4}
-%                                   & \multirow{4}{*}{Open reference}   & ncpus                & 1                    \\
-%                                   &                                   & percent\_identity    & 0.97                 \\
-%                                   &                                   & strand               & ``plus"               \\
-%                                   &                                   & reference\_sequences & ``gg\_97" \\ \cline{2-4}
-%                                   & \multirow{2}{*}{De novo}          & ncpus                & 1                    \\
-%                                   &                                   & percent\_identity    & 0.97                 \\ \cline{2-4}
-%                                   & \multirow{2}{*}{Dada2}            & ncpus                & 1                    \\
-%                                   &                                   & big\_data            & ``FALSE"              \\ \cline{2-4}
-%                                   & \multirow{3}{*}{Deblur}           & ncpus                & 1                    \\
-%                                   &                                   & min\_reads           & 2                    \\
-%                                   &                                   & min\_size            & 2                    \\ \hline
-% \multirow{2}{*}{Chimera checking} & \multirow{2}{*}{Remove bimera}    & ncpus                & 1                    \\
-%                                   &                                   & chimera\_method      & ``consensus"          \\ \hline
-% \end{tabular}
-% \caption{The default parameters used in the Denoising and Clustering step of the \ac{micone} pipeline}
-% \label{tab:dc_parameters}
-% \end{table}
-%
-% \begin{table}[H]
-% \centering
-% \small
-% \begin{tabular}{|c|c|c|c|}
-% \hline
-% \textbf{Task}           & \textbf{Tool}                & \textbf{Parameter} & \textbf{Value}            \\ \hline
-% \multirow{8}{*}{Assign} & \multirow{3}{*}{Naive Bayes} & classifer          & ``gg\_13\_8\_99\_515\_806" \\
-%                         &                              & confidence         & 0.7                       \\
-%                         &                              & ncpus              & 1                         \\ \cline{2-4}
-%                         & \multirow{5}{*}{BLAST}       & references         & ``ncbi\_refseq"            \\
-%                         &                              & max\_accepts       & 10                        \\
-%                         &                              & perc\_identity     & 0.8                       \\
-%                         &                              & evalue             & 0.001                     \\
-%                         &                              & min\_consensus     & 0.51                      \\ \hline
-% \end{tabular}
-% \caption{The default parameters used in the Taxonomy Assignment step of the \ac{micone} pipeline}
-% \label{tab:ta_parameters}
-% \end{table}
-%
-% \begin{table}[H]
-% \centering
-% \small
-% \begin{tabular}{|c|c|c|c|}
-% \hline
-% \textbf{Task}               & \textbf{Tool}                        & \textbf{Parameter}  & \textbf{Value}                                                                                           \\ \hline
-% \multirow{10}{*}{Transform} & \multirow{2}{*}{Fork}                & axis                & ``sample"                                                                                                 \\
-%                             &                                      & column              & ``"                                                                                                       \\ \cline{2-4}
-%                             & \multirow{7}{*}{Normalize \& Filter} & axis                & ``None"                                                                                                   \\
-%                             &                                      & count\_thres        & 500                                                                                                      \\
-%                             &                                      & prevalence\_thres   & 0.05                                                                                                     \\
-%                             &                                      & obssum\_thres       & 100                                                                                                      \\
-%                             &                                      & rm\_sparse\_obs     & {[}true, false{]}                                                                                        \\
-%                             &                                      & rm\_sparse\_samples & true                                                                                                     \\
-%                             &                                      & abundance\_thres    & 0.01                                                                                                     \\ \cline{2-4}
-%                             & Group                                & tax\_levels         & \begin{tabular}[c]{@{}c@{}}{[}`Phylum', `Class', `Order',\\ `Family', `Genus', `Species'{]}\end{tabular} \\ \hline
-% \end{tabular}
-% \caption{The default parameters used in the OTU Processing step of the \ac{micone} pipeline}
-% \label{tab:op_parameters}
-% \end{table}
-%
-% \begin{table}[H]
-% \centering
-% \small
-% \begin{tabular}{|c|c|c|c|}
-% \hline
-% \textbf{Task}                & \textbf{Tool}                                                                           & \textbf{Parameter}     & \textbf{Value} \\ \hline
-% \multirow{4}{*}{Bootstrap}   & \multirow{2}{*}{Resample}                                                               & bootstraps             & 1000           \\
-%                              &                                                                                         & ncpus                  & 1              \\ \cline{2-4}
-%                              & \multirow{2}{*}{Pvalue}                                                                 & slim                   & false          \\
-%                              &                                                                                         & ncpus                  & 1              \\ \hline
-% \multirow{5}{*}{Correlation} & \multirow{2}{*}{sparcc}                                                                 & ncpus                  & 1              \\
-%                              &                                                                                         & iterations             & 50             \\ \cline{2-4}
-%                              & pearson                                                                                 & ncpus                  & 1              \\ \cline{2-4}
-%                              & spearman                                                                                & ncpus                  & 1              \\ \cline{2-4}
-%                              & propr                                                                                   & ncpus                  & 1              \\ \hline
-% \multirow{17}{*}{Direct}     & \multirow{5}{*}{spieceasi}                                                              & method                 & ``mb"           \\
-%                              &                                                                                         & ncpus                  & 1              \\
-%                              &                                                                                         & nreps                  & 50             \\
-%                              &                                                                                         & nlambda                & 20             \\
-%                              &                                                                                         & lambda\_min\_ratio     & 1e-2           \\ \cline{2-4}
-%                              & \multirow{4}{*}{flashweave}                                                             & ncpus                  & 1              \\
-%                              &                                                                                         & sensitive              & ``true"         \\
-%                              &                                                                                         & heterogeneous          & ``false"        \\
-%                              &                                                                                         & fdr\_correction        & ``true"         \\ \cline{2-4}
-%                              & \multirow{2}{*}{mldm}                                                                   & Z\_mean                & 1              \\
-%                              &                                                                                         & max\_iteration         & 1500           \\ \cline{2-4}
-%                              & cozine                                                                                  & lambda\_min\_ratio     & 0.1            \\ \cline{2-4}
-%                              & \multirow{2}{*}{harmonies}                                                              & iterations             & 10000          \\
-%                              &                                                                                         & sparsity\_cutoff       & 0.5            \\ \cline{2-4}
-%                              & \multirow{3}{*}{spring}                                                                 & ncpus                  & 1              \\
-%                              &                                                                                         & nlambda                & 20             \\
-%                              &                                                                                         & lambda\_min\_ratio     & 0.01           \\ \hline
-% \multirow{11}{*}{Network}    & \multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}Make network\\ with pvalues\end{tabular}}    & interaction\_threshold & 0.3            \\
-%                              &                                                                                         & pvalue\_threshold      & 0.05           \\
-%                              &                                                                                         & metadata\_file         & ``"             \\ \cline{2-4}
-%                              & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Make network\\ without pvalues\end{tabular}} & interaction\_threshold & 0.3            \\
-%                              &                                                                                         & metadata\_file         & ``"             \\ \cline{2-4}
-%                              & Merge pvalues                                                                           & id\_field              & ``taxid"        \\ \cline{2-4}
-%                              & \multirow{5}{*}{Create consensus}                                                       & method                 & ``scaled\_sum"  \\
-%                              &                                                                                         & parameter              & 0.3            \\
-%                              &                                                                                         & pvalue\_filter         & ``true"         \\
-%                              &                                                                                         & interaction\_filter    & ``true"         \\
-%                              &                                                                                         & id\_field              & ``taxid"        \\ \hline
-% \end{tabular}
-% \caption{The default parameters used in the Network Inference step of the \ac{micone} pipeline}
-% \label{tab:ni_parameters}
-% \end{table}
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|c|c|c|c|}
+\hline
+ \textbf{Task}                   & \textbf{Module}                                   & \textbf{Parameter}           & \textbf{Value}   \\ \hline
+ \multirow{6}{*}{Demultiplexing} & \multirow{3}{*}{demultiplexing\_illumina\_single} & barcode\_column              & barcode-sequence \\
+                                 &                                                   & rev\_comp\_barcodes          & false            \\
+                                 &                                                   & rev\_comp\_mapping\_barcodes & false            \\ \cline{3-4}
+                                 & \multirow{3}{*}{demultiplexing\_illumina\_paired} & barcode\_column              & barcode-sequence \\
+                                 &                                                   & rev\_comp\_barcodes          & false            \\
+                                 &                                                   & rev\_comp\_mapping\_barcodes & false            \\ \cline{2-4}
+ \multirow{8}{*}{Trimming}       & export\_visualization\_single                     & seq\_samplesize              & 10000            \\ \cline{3-4}
+                                 & export\_visualization\_paired                     & seq\_samplesize              & 10000            \\ \cline{3-4}
+                                 & \multirow{3}{*}{trimming\_single}                 & ncpus                        & 1                \\
+                                 &                                                   & max\_ee                      & 2                \\
+                                 &                                                   & trunc\_q                     & 2                \\ \cline{3-4}
+                                 & \multirow{3}{*}{trimming\_paired}                 & ncpus                        & 1                \\
+                                 &                                                   & max\_ee                      & 2                \\
+                                 &                                                   & trunc\_q                     & 2                \\ \hline
+\end{tabular}
+\caption{The default parameters used in the Sequence Processing step of the \ac{micone} pipeline}
+\label{tab:sp_parameters}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Task}                     & \textbf{Tool}                     & \textbf{Parameter}   & \textbf{Value}       \\ \hline
+\multirow{15}{*}{OTU assignment}  & \multirow{4}{*}{Closed reference} & ncpus                & 1                    \\
+                                  &                                   & percent\_identity    & 0.97                 \\
+                                  &                                   & strand               & ``plus"               \\
+                                  &                                   & reference\_sequences & ``gg\_97" \\ \cline{2-4}
+                                  & \multirow{4}{*}{Open reference}   & ncpus                & 1                    \\
+                                  &                                   & percent\_identity    & 0.97                 \\
+                                  &                                   & strand               & ``plus"               \\
+                                  &                                   & reference\_sequences & ``gg\_97" \\ \cline{2-4}
+                                  & \multirow{2}{*}{De novo}          & ncpus                & 1                    \\
+                                  &                                   & percent\_identity    & 0.97                 \\ \cline{2-4}
+                                  & \multirow{2}{*}{Dada2}            & ncpus                & 1                    \\
+                                  &                                   & big\_data            & ``FALSE"              \\ \cline{2-4}
+                                  & \multirow{3}{*}{Deblur}           & ncpus                & 1                    \\
+                                  &                                   & min\_reads           & 2                    \\
+                                  &                                   & min\_size            & 2                    \\ \hline
+\multirow{2}{*}{Chimera checking} & \multirow{2}{*}{Remove bimera}    & ncpus                & 1                    \\
+                                  &                                   & chimera\_method      & ``consensus"          \\ \hline
+\end{tabular}
+\caption{The default parameters used in the Denoising and Clustering step of the \ac{micone} pipeline}
+\label{tab:dc_parameters}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Task}           & \textbf{Tool}                & \textbf{Parameter} & \textbf{Value}            \\ \hline
+\multirow{8}{*}{Assign} & \multirow{3}{*}{Naive Bayes} & classifer          & ``gg\_13\_8\_99\_515\_806" \\
+                        &                              & confidence         & 0.7                       \\
+                        &                              & ncpus              & 1                         \\ \cline{2-4}
+                        & \multirow{5}{*}{BLAST}       & references         & ``ncbi\_refseq"            \\
+                        &                              & max\_accepts       & 10                        \\
+                        &                              & perc\_identity     & 0.8                       \\
+                        &                              & evalue             & 0.001                     \\
+                        &                              & min\_consensus     & 0.51                      \\ \hline
+\end{tabular}
+\caption{The default parameters used in the Taxonomy Assignment step of the \ac{micone} pipeline}
+\label{tab:ta_parameters}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Task}               & \textbf{Tool}                        & \textbf{Parameter}  & \textbf{Value}                                                                                           \\ \hline
+\multirow{10}{*}{Transform} & \multirow{2}{*}{Fork}                & axis                & ``sample"                                                                                                 \\
+                            &                                      & column              & ``"                                                                                                       \\ \cline{2-4}
+                            & \multirow{7}{*}{Normalize \& Filter} & axis                & ``None"                                                                                                   \\
+                            &                                      & count\_thres        & 500                                                                                                      \\
+                            &                                      & prevalence\_thres   & 0.05                                                                                                     \\
+                            &                                      & obssum\_thres       & 100                                                                                                      \\
+                            &                                      & rm\_sparse\_obs     & {[}true, false{]}                                                                                        \\
+                            &                                      & rm\_sparse\_samples & true                                                                                                     \\
+                            &                                      & abundance\_thres    & 0.01                                                                                                     \\ \cline{2-4}
+                            & Group                                & tax\_levels         & \begin{tabular}[c]{@{}c@{}}{[}`Phylum', `Class', `Order',\\ `Family', `Genus', `Species'{]}\end{tabular} \\ \hline
+\end{tabular}
+\caption{The default parameters used in the OTU Processing step of the \ac{micone} pipeline}
+\label{tab:op_parameters}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Task}                & \textbf{Tool}                                                                           & \textbf{Parameter}     & \textbf{Value} \\ \hline
+\multirow{4}{*}{Bootstrap}   & \multirow{2}{*}{Resample}                                                               & bootstraps             & 1000           \\
+                             &                                                                                         & ncpus                  & 1              \\ \cline{2-4}
+                             & \multirow{2}{*}{Pvalue}                                                                 & slim                   & false          \\
+                             &                                                                                         & ncpus                  & 1              \\ \hline
+\multirow{5}{*}{Correlation} & \multirow{2}{*}{sparcc}                                                                 & ncpus                  & 1              \\
+                             &                                                                                         & iterations             & 50             \\ \cline{2-4}
+                             & pearson                                                                                 & ncpus                  & 1              \\ \cline{2-4}
+                             & spearman                                                                                & ncpus                  & 1              \\ \cline{2-4}
+                             & propr                                                                                   & ncpus                  & 1              \\ \hline
+\multirow{17}{*}{Direct}     & \multirow{5}{*}{spieceasi}                                                              & method                 & ``mb"           \\
+                             &                                                                                         & ncpus                  & 1              \\
+                             &                                                                                         & nreps                  & 50             \\
+                             &                                                                                         & nlambda                & 20             \\
+                             &                                                                                         & lambda\_min\_ratio     & 1e-2           \\ \cline{2-4}
+                             & \multirow{4}{*}{flashweave}                                                             & ncpus                  & 1              \\
+                             &                                                                                         & sensitive              & ``true"         \\
+                             &                                                                                         & heterogeneous          & ``false"        \\
+                             &                                                                                         & fdr\_correction        & ``true"         \\ \cline{2-4}
+                             & \multirow{2}{*}{mldm}                                                                   & Z\_mean                & 1              \\
+                             &                                                                                         & max\_iteration         & 1500           \\ \cline{2-4}
+                             & cozine                                                                                  & lambda\_min\_ratio     & 0.1            \\ \cline{2-4}
+                             & \multirow{2}{*}{harmonies}                                                              & iterations             & 10000          \\
+                             &                                                                                         & sparsity\_cutoff       & 0.5            \\ \cline{2-4}
+                             & \multirow{3}{*}{spring}                                                                 & ncpus                  & 1              \\
+                             &                                                                                         & nlambda                & 20             \\
+                             &                                                                                         & lambda\_min\_ratio     & 0.01           \\ \hline
+\multirow{11}{*}{Network}    & \multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}Make network\\ with pvalues\end{tabular}}    & interaction\_threshold & 0.3            \\
+                             &                                                                                         & pvalue\_threshold      & 0.05           \\
+                             &                                                                                         & metadata\_file         & ``"             \\ \cline{2-4}
+                             & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Make network\\ without pvalues\end{tabular}} & interaction\_threshold & 0.3            \\
+                             &                                                                                         & metadata\_file         & ``"             \\ \cline{2-4}
+                             & Merge pvalues                                                                           & id\_field              & ``taxid"        \\ \cline{2-4}
+                             & \multirow{5}{*}{Create consensus}                                                       & method                 & ``scaled\_sum"  \\
+                             &                                                                                         & parameter              & 0.3            \\
+                             &                                                                                         & pvalue\_filter         & ``true"         \\
+                             &                                                                                         & interaction\_filter    & ``true"         \\
+                             &                                                                                         & id\_field              & ``taxid"        \\ \hline
+\end{tabular}
+\caption{The default parameters used in the Network Inference step of the \ac{micone} pipeline}
+\label{tab:ni_parameters}
+\end{table}
 
 
 \begin{landscape}
