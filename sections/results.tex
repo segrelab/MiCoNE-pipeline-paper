@@ -105,7 +105,7 @@
   Since the \ac{gg} database is used frequently as a 16S reference database in studies~\cite{Balvociute2017}, to enable easier comparison with published networks in literature, we set \ac{gg} as the default for taxonomy assignment.
   On the other hand, since the degree of similarity of assignments between \ac{ncbi} and \ac{gg} is fairly high (Figure~\ref{fig:figure_s5}), and due to its regular revision and maintenance the \ac{ncbi} database is also a good choice for the user.
   The TA step results in a taxonomic counts table that is used as input to the subsequent steps of the pipeline.
-  The count tables at different levels can be obtained by aggregation, for example, Genus count tables were obtained by summing up the counts of the lower taxonomy levels (Species and \ac{otu}) that map to the same higher taxonomy level name.
+  The count tables at different levels can be obtained through aggregation, for example, Genus count tables were obtained by summing up the counts of the lower taxonomy levels (Species and \ac{otu}) that map to the same higher taxonomy level name.
 
   \FloatBarrier
 
@@ -146,7 +146,7 @@
   Based on this approach, \ac{micone} reports as default output, the consensus network, where is each edge is annotated with weights (correlations for the correlation-based methods and direct associations for the other methods) from all the methods used in the consensus algorithm.
 
   Similar to what was done for the previous steps of the pipeline, we evaluated the network inference algorithms and the final consensus network using synthetic interaction data.
-  For this purpose, we generated synthetic interaction data using the ``NorTA''~\cite{Kurtz2015} and ``seqtime''~\cite{faustSignaturesEcologicalProcesses2018} methods (see Methods), which have been previously used for benchmarking network inference methods.
+  For this purpose, we generated synthetic interaction data using the ``NorTA''~\cite{Kurtz2015} and ``seqtime''~\cite{faustSignaturesEcologicalProcesses2018} methods (see Methods), which have been previously used for benchmarking network inference methods~\cite{Kurtz2015,Weiss2016}.
   For each method, an \ac{otu} counts table is generated based on the selected interaction network topology and properties.
   This counts table is used as the input to the \ac{micone} pipeline to generate predicted associations.
   The interaction network used to generate the counts table is used as the source of true interactions to calculate the precision and sensitivity for each network inference algorithm for the NorTA datasets (Figure \ref{fig:figure5}).

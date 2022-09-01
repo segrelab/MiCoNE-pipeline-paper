@@ -143,7 +143,7 @@
 
   \subsubsection*{Bootstrapping and p-value calculation}
   \vspace{-5mm}
-  For all correlation-based methods $k < w$, $1000$ permutations of the original \ac{otu} counts data were generated~\cite{Watts2018}.
+  For all correlation-based methods $k \le w$, $1000$ permutations of the original \ac{otu} counts data were generated~\cite{Watts2018}.
   All the direct association based methods used in the study have their own regularization methods built-in and hence do not need to undergo bootstrapping.
   The correlations in the permuted \ac{otu} tables are recalculated using the different correlation-based algorithms.
   Finally, the p-value is determined based on how often a more extreme association is observed for randomly permuted data.
@@ -249,7 +249,7 @@ where, $g$ and $f$ are defined as follows:
 
   The advantage of this method over the simple voting method is that it also takes into account the strength of the association reported for that particular node in the inferred networks.
 
-  \subsection*{Network Variability}
+  \subsection*{Network variability}
 
   \subsubsection*{Notation}
   \vspace{-5mm}
