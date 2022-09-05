@@ -10,7 +10,7 @@ for ((i = 0; i < ${#CORR[@]}; i++)); do
     --module network \
     --process make_network_with_pvalue \
     --previous_process "----${CORR[$i]}" \
-    "../data/figure6/input/norta/${CORR[$i]}"
+    "../data/figure5/input/norta/${CORR[$i]}"
 done
 
 DIR=("spieceasi" "flashweave" "mldm" "cozine" "harmonies" "spring")
@@ -21,7 +21,7 @@ for ((i = 0; i < ${#DIR[@]}; i++)); do
     --module network \
     --process make_network_without_pvalue \
     --previous_process "----${DIR[$i]}" \
-    "../data/figure6/input/norta/${DIR[$i]}"
+    "../data/figure5/input/norta/${DIR[$i]}"
 done
 
 ### Seqtime
@@ -33,7 +33,7 @@ for ((i = 0; i < ${#CORR[@]}; i++)); do
     --module network \
     --process make_network_with_pvalue \
     --previous_process "----${CORR[$i]}" \
-    "../data/figure6/input/seqtime/${CORR[$i]}"
+    "../data/figure5/input/seqtime/${CORR[$i]}"
 done
 
 DIR=("spieceasi" "flashweave" "mldm" "cozine" "harmonies" "spring")
@@ -44,5 +44,5 @@ for ((i = 0; i < ${#DIR[@]}; i++)); do
     --module network \
     --process make_network_without_pvalue \
     --previous_process "----${DIR[$i]}" \
-    "../data/figure6/input/seqtime/${DIR[$i]}"
+    "../data/figure5/input/seqtime/${DIR[$i]}"
 done

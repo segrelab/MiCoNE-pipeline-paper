@@ -24,7 +24,10 @@ fi
 # Figure 2
 echo "Generating Figure 2"
 cd ../figure2/
-Rscript figure2_plot.R "../../data/figure2/output/$DATASET/" "$OUTPUT_DIR"
+Rscript figure2_plot.R \
+  "../../data/figure2/output/$DATASET/" \
+  "../../data/figure2/output/" \
+  "$OUTPUT_DIR"
 
 # Figure 3
 echo "Generating Figure 3"
@@ -37,20 +40,17 @@ Rscript figure3_plot.R \
 # Figure 4
 echo "Generating Figure 4"
 cd ../figure4/
-Rscript figure4_plot.R \
-  "../../data/figure4/output/$DATASET/" \
-  "../../data/figure4/output/" \
-  "$OUTPUT_DIR"
+Rscript figure4_plot.R "../../data/figure4/output/$DATASET/" "$OUTPUT_DIR"
 
 # Figure 5
 echo "Generating Figure 5"
 cd ../figure5/
-Rscript figure5_plot.R "../../data/figure5/output/$DATASET/" "$OUTPUT_DIR"
+Rscript figure5_plot.R "../../data/figure5/output/norta/" "$OUTPUT_DIR"
 
 # Figure 6
 echo "Generating Figure 6"
 cd ../figure6/
-Rscript figure6_plot.R "../../data/figure6/output/norta/" "$OUTPUT_DIR"
+Rscript figure6_plot.R "../../data/figure6/output/$DATASET/" "$OUTPUT_DIR"
 
 # Figure 7
 echo "Generating Figure 7"

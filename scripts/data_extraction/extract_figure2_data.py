@@ -3,31 +3,28 @@ import sys
 
 from data_extraction import extract_data
 
-
-def extract_step_data(
-    process: str,
-    input_folder: pathlib.Path,
-    output_folder: pathlib.Path,
-    meta_id_list: list,
-) -> None:
-    workflow = "network_inference"
-    module = "network"
-    extract_data(
-        input_folder, workflow, module, process, "", output_folder, meta_id_list
-    )
+DC_METHODS = (
+    "closed_reference(gg_97)",
+    "open_reference(gg_97)",
+    "de_novo",
+    "dada2",
+    "deblur",
+)
 
 
 def extract_figure2_data(
     input_folder: pathlib.Path, output_folder: pathlib.Path, meta_id_list: list
 ) -> None:
-    # STEP1: Extract make_network_with_pvalue
-    extract_step_data(
-        "make_network_with_pvalue", input_folder, output_folder, meta_id_list
-    )
-    # STEP2: Extract make_network_without_pvalue
-    extract_step_data(
-        "make_network_without_pvalue", input_folder, output_folder, meta_id_list
-    )
+    # STEP1: Loop through each DC method
+    for dc_method in DC_METHODS:
+        workflow = "denoise_cluster"
+        module = dc_method
+        process = "hashed_output"
+        # STEP2: Extract the data
+        output_subfolder = output_folder / module
+        extract_data(
+            input_folder, workflow, module, process, "", output_subfolder, meta_id_list
+        )
 
 
 if __name__ == "__main__":

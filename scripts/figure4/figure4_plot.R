@@ -1,191 +1,185 @@
 #!/usr/bin/env Rscript
 
-library(tidyverse)
-library(ggplot2)
+library(RColorBrewer)
+library(igraph)
+library(ggraph)
+library(tidygraph)
+library(UpSetR)
+library(grid)
 library(ggpubr)
-library(ggalluvial)
-library(ggrepel)
 
 # inputs
 args <- commandArgs(trailingOnly = TRUE)
 if (length(args) == 0) {
     data_folder <- "../../data/figure4/output/moving_pictures/"
-    mock_folder <- "../../data/figure4/output/"
     output_folder <- "../../figures/"
-} else if (length(args) == 3) {
+} else if (length(args) == 2) {
     data_folder <- args[1]
-    mock_folder <- args[2]
-    output_folder <- args[3]
+    output_folder <- args[2]
 } else {
-    stop("Required number of arguments must equal 3")
+    stop("Required number of arguments must equal 2")
 }
-otu_csv <- paste0(data_folder, "otu.csv")
-gg_csv <- paste0(data_folder, "naive_bayes(gg_13_8_99).csv")
-silva_csv <- paste0(data_folder, "naive_bayes(silva_138_99).csv")
-ncbi_csv <- paste0(data_folder, "blast(ncbi).csv")
-gg_silva_csv <- paste0(data_folder, "gg_silva.csv")
-gg_ncbi_csv <- paste0(data_folder, "gg_ncbi.csv")
-ncbi_silva_csv <- paste0(data_folder, "ncbi_silva.csv")
-mock4_braycurtis_csv <- paste0(mock_folder, "mock4/input_braycurtis.csv")
-mock12_braycurtis_csv <- paste0(mock_folder, "mock12/input_braycurtis.csv")
-mock16_braycurtis_csv <- paste0(mock_folder, "mock16/input_braycurtis.csv")
+combined_gml <- paste0(data_folder, "combined.gml")
+sparcc_gml <- paste0(data_folder, "sparcc.gml")
+propr_gml <- paste0(data_folder, "propr.gml")
+pearson_gml <- paste0(data_folder, "pearson.gml")
+spearman_gml <- paste0(data_folder, "spearman.gml")
+spieceasi_gml <- paste0(data_folder, "spieceasi.gml")
+mldm_gml <- paste0(data_folder, "mldm.gml")
+flashweave_gml <- paste0(data_folder, "flashweave.gml")
+cozine_gml <- paste0(data_folder, "cozine.gml")
+harmonies_gml <- paste0(data_folder, "harmonies.gml")
+spring_gml <- paste0(data_folder, "spring.gml")
+nmatrix_csv <- paste0(data_folder, "nmatrix.csv")
+ematrix_csv <- paste0(data_folder, "ematrix.csv")
 output_file <- paste0(output_folder, "figure4.pdf")
 output_file_a <- paste0(output_folder, "figure4a.pdf")
-output_file_b <- paste0(output_folder, "figure4b.pdf")
-output_file_c <- paste0(output_folder, "figure4c.pdf")
+output_file_bc <- paste0(output_folder, "figure4bc.pdf")
 
-################################################################################
-# Figure 4a
-################################################################################
-notu <- 50
 
-read_data <- function(data_file, n) {
-    raw_df <- read.csv(data_file, header = TRUE, sep = ",", na.strings = "")[1:n, ]
-    # df <- aggregate(Abundance ~ Genus, raw_df, sum)
-    # df
-    raw_df
+#########################################
+# a
+#########################################
+
+get_edgecolor <- function(x) {
+    sapply(x, function(y) if (y > 0) "positive" else "negative")
 }
 
-# otu <- read_data(otu_csv, notu)
-# otu$database <- "OTU"
-gg <- read_data(gg_csv, notu)
-gg$database <- "NaiveBayes(GG)"
-silva <- read_data(silva_csv, notu)
-silva$database <- "NaiveBayes(SILVA)"
-ncbi <- read_data(ncbi_csv, notu)
-ncbi$database <- "BLAST(NCBI)"
-combined <- rbind(gg, silva, ncbi)
-# combined <- rbind(otu, gg, silva, ncbi)
+get_edgestyle <- function(x) {
+    sapply(x, function(y) if (y > 0) "solid" else "dashed")
+}
 
-make_alluvial_plot2 <- function(db_data, title) {
-    genus_factors <- levels(factor(db_data$Genus))
-    n_genus <- length(genus_factors)
-    palette <- get_palette(, n_genus)
-    alluvial_plot <- ggplot(db_data, aes(x = database, y = Abundance, stratum = Genus, alluvium = OTU, fill = Genus)) +
-        stat_alluvium(geom = "flow", lode.guidance = "forward") +
-        stat_stratum() +
-        scale_fill_manual(values = palette) +
-        geom_text_repel(aes(label = Genus), stat = "stratum", size = 3.5, direction = "y", nudge_x = 0.5) +
-        ggtitle(title) +
-        theme_pubr() +
+plot_network <- function(network_file, combined_layout, interaction_threshold, title, edgecolor) {
+    graph_raw <- as_tbl_graph(read_graph(network_file, format = "gml"))
+    graph <- graph_raw %>%
+        activate(edges) %>%
+        filter(abs(weight) > interaction_threshold) %>%
+        mutate(color = get_edgecolor(weight)) %>%
+        activate(nodes) %>%
+        mutate(isolated = node_is_isolated()) %>%
+        filter(isolated == FALSE)
+    temp_layout <- create_layout(graph = graph, layout = "linear", circular = TRUE)
+    match_inds <- match(temp_layout$name, combined_layout$name)
+    graph_layout <- data.frame(temp_layout)
+    graph_layout$x <- combined_layout[match_inds, ]$x
+    graph_layout$y <- combined_layout[match_inds, ]$y
+    graph_plot <- ggraph(graph = graph, layout = "manual", x = graph_layout$x, y = graph_layout$y, circular = TRUE) +
+        geom_edge_arc(aes(color = color, edge_linetype = color, edge_alpha = color)) +
+        # geom_node_point(aes(color=factor(colorkey))) +
+        geom_node_point() +
+        scale_edge_color_manual(values = c(negative = "#d95f02", positive = "#1b9e77")) +
+        scale_edge_linetype_manual(values = c(negative = "solid", positive = "solid")) +
+        scale_edge_alpha_manual(values = c(negative = 0.6, positive = 0.3)) +
+        labs(title = title) +
+        coord_fixed() +
+        theme_bw() +
         theme(
+            # legend.position="none",
+            plot.title = element_text(hjust = 0.5),
+            axis.title = element_blank(),
+            axis.text = element_blank(),
+            axis.line = element_blank(),
+            axis.ticks = element_blank(),
+            panel.background = element_blank(),
+            panel.border = element_blank(),
+            panel.grid = element_blank(),
             text = element_text(size = 15),
-            legend.position = "none",
         )
 }
 
+combined_graph <- read_graph(combined_gml, format = "gml")
+combined_layout <- create_layout(graph = combined_graph, layout = "linear", circular = TRUE)
 
-gg_n_genus <- length(unique(gg$Genus))
-silva_n_genus <- length(unique(silva$Genus))
-ncbi_n_genus <- length(unique(ncbi$Genus))
+palette <- brewer.pal(n = 10, name = "Dark2")
 
-combined_plot <- make_alluvial_plot2(combined, paste("NaiveBayes(GG)=", gg_n_genus, ", NaiveBayes(SILVA)=", silva_n_genus, ", BLAST(NCBI)=", ncbi_n_genus))
+flashweave_plot <- plot_network(flashweave_gml, combined_layout, 0.01, "flashweave", palette[[1]])
+# mldm_plot <- plot_network(mldm_gml, combined_layout, 0.01, "mldm", palette[[2]])
+spieceasi_plot <- plot_network(spieceasi_gml, combined_layout, 0.01, "spieceasi", palette[[2]])
+cozine_plot <- plot_network(cozine_gml, combined_layout, 0.01, "cozine", palette[[3]])
+harmonies_plot <- plot_network(harmonies_gml, combined_layout, 0.01, "harmonies", palette[[4]])
+spring_plot <- plot_network(spring_gml, combined_layout, 0.01, "spring", palette[[5]])
 
-final_plot_a <- ggarrange(combined_plot, nrow = 1, ncol = 1, common.legend = FALSE)
-annotate_figure(final_plot_a, fig.lab = "A", fig.lab.pos = "top.left", fig.lab.size = 20)
-ggsave(output_file_a, width = 11, height = 10)
+sparcc_plot <- plot_network(sparcc_gml, combined_layout, 0.3, "sparcc", palette[[6]])
+spearman_plot <- plot_network(spearman_gml, combined_layout, 0.3, "spearman", palette[[7]])
+pearson_plot <- plot_network(pearson_gml, combined_layout, 0.3, "pearson", palette[[8]])
+propr_plot <- plot_network(propr_gml, combined_layout, 0.3, "propr", palette[[9]])
 
-
-################################################################################
-# Figure 4b
-################################################################################
-# Parameters
-notu <- 50
-levels <- c("Phylum", "Class", "Order", "Family", "Genus", "Species")
-
-read_paired_data <- function(data_file) {
-    raw_df <- read.csv(data_file, header = TRUE, sep = ",", na.strings = "")
-    raw_df
-}
-
-
-make_bar_plot <- function(data, title) {
-    ggbarplot(
-        data,
-        x = "tax_level",
-        y = "value",
-        fill = "assignment",
-        color = "assignment",
-        label = TRUE,
-        lab.pos = "in",
-        title = title,
-        xlab = "Taxonomy level",
-        ylab = "Number of Assignments",
-        palette = c("#00AFBB", "#FC4E07"),
-        # palette="Paired"
-    ) +
-        theme(
-            text = element_text(size = 15),
-            # plot.title = element_text(size = 10),
-            axis.text.x = element_text(angle = 30, hjust = 1)
-        )
-}
-
-# Combinations
-gg_silva <- read_paired_data(gg_silva_csv)
-gg_ncbi <- read_paired_data(gg_ncbi_csv)
-ncbi_silva <- read_paired_data(ncbi_silva_csv)
-
-gg_silva_plot <- make_bar_plot(gg_silva, "GG vs. SILVA")
-gg_ncbi_plot <- make_bar_plot(gg_ncbi, "GG vs. NCBI")
-ncbi_silva_plot <- make_bar_plot(ncbi_silva, "NCBI vs. SILVA")
-
-combined_plot_b <- ggarrange(
-    gg_silva_plot, gg_ncbi_plot, ncbi_silva_plot,
-    nrow = 1, ncol = 3, common.legend = TRUE, legend = "right"
+combined_plot <- ggarrange(
+    flashweave_plot, spieceasi_plot, cozine_plot, harmonies_plot, spring_plot, sparcc_plot, propr_plot, spearman_plot, pearson_plot,
+    ncol = 3, nrow = 3, common.legend = TRUE, legend = "bottom"
 )
-annotate_figure(combined_plot_b, fig.lab = "B", fig.lab.pos = "top.left", fig.lab.size = 20)
-ggsave(output_file_b, width = 11, height = 3.5)
+a_plot <- annotate_figure(combined_plot, fig.lab = "A", fig.lab.pos = "top.left", fig.lab.size = 20)
+
+ggsave(output_file_a, width = 11, height = 5.5)
 
 
-################################################################################
-# Figure 4c
-################################################################################
-levels <- c("Family", "Genus", "Species")
-
-tidy_up_data <- function(data_file, name) {
-    data <- read_csv(data_file)
-    data$dataset <- rep(name, nrow(data))
-    data$tax_level <- factor(data$tax_level, levels = levels)
-    return(data)
-}
-
-
-make_dot_plot <- function(braycurtis_data) {
-    add_summary(
-        ggstripchart(
-            braycurtis_data,
-            x = "database",
-            y = "braycurtis",
-            color = "dataset",
-            xlab = "database",
-            ylab = "Braycurtis dissimilarity",
-            ylim = c(0, 1),
-            size = 3,
-            add = "jitter",
-        ) +
-            theme(
-                plot.title = element_text(hjust = 0.5),
-                text = element_text(size = 15),
-            ),
-        fun = "mean_sd"
+#########################################
+# cd
+#########################################
+plot_upset <- function(bmatrix, sets, kind) {
+    upset(
+        bmatrix,
+        sets = sets,
+        order.by = "freq",
+        query.legend = "top",
+        mainbar.y.label = paste0("Intersection of ", kind),
+        sets.x.label = paste0("Number of ", kind),
+        queries = list(list(query = intersects, params = sets, color = "red", active = TRUE, query.name = "Common to all")),
+        text.scale = c(2.2, 1.5, 1.5, 1, 1.5, 1.5),
     )
 }
 
+# Node matrix
+nmatrix <- read.csv(nmatrix_csv, header = TRUE, sep = ",")
+nmatrix_bool <- data.frame(nmatrix)
 
-mock4_data <- tidy_up_data(mock4_braycurtis_csv, "mock4")
-mock12_data <- tidy_up_data(mock12_braycurtis_csv, "mock12")
-mock16_data <- tidy_up_data(mock16_braycurtis_csv, "mock16")
+# nmatrix_bool["sparcc"][nmatrix_bool["sparcc"] < 0.3] <- 0
+nmatrix_bool["propr"][nmatrix_bool["propr"] < 0.3] <- 0
+nmatrix_bool["spearman"][nmatrix_bool["spearman"] < 0.3] <- 0
+nmatrix_bool["pearson"][nmatrix_bool["pearson"] < 0.3] <- 0
+nmatrix_bool["flashweave"][nmatrix_bool["flashweave"] < 0.01] <- 0
+nmatrix_bool["cozine"][nmatrix_bool["cozine"] < 0.01] <- 0
+nmatrix_bool["harmonies"][nmatrix_bool["harmonies"] < 0.01] <- 0
+nmatrix_bool["spring"][nmatrix_bool["spring"] < 0.01] <- 0
+# nmatrix_bool["mldm"][nmatrix_bool["mldm"] < 0.01] = 0
+nmatrix_bool["spieceasi"][nmatrix_bool["spieceasi"] < 0.01] <- 0
+nmatrix_bool[nmatrix_bool > 0] <- 1
 
-mock_data <- rbind(mock4_data, mock12_data, mock16_data)
-dot_plot <- make_dot_plot(mock_data)
-dot_plot_facet_c <- facet(dot_plot, facet.by = "tax_level")
-annotate_figure(dot_plot_facet_c, fig.lab = "C", fig.lab.pos = "top.left", fig.lab.size = 20)
-ggsave(output_file_c, width = 11, height = 5)
+# nmatrix_plot <- plot_upset(nmatrix_bool, c("flashweave", "spieceasi", "cozine", "harmonies", "spring", "sparcc", "propr"), "nodes")
+nmatrix_plot <- plot_upset(nmatrix_bool, c("flashweave", "spieceasi", "cozine", "harmonies", "spring", "sparcc", "propr"), "nodes")
+nmatrix_plot
+nmatrix_gg <- as_ggplot(grid.grab())
 
 
+# Edge matrix
+ematrix <- read.csv(ematrix_csv, header = TRUE, sep = ",")
+ematrix_bool <- data.frame(ematrix)
 
-################################################################################
-# Combine figures
-ggarrange(final_plot_a, combined_plot_b, dot_plot_facet_c, nrow = 3, ncol = 1, heights = c(2, 1, 1), labels = c("A", "B", "C"))
-ggsave(output_file, width = 11, height = 16)
+ematrix_bool["sparcc"][abs(ematrix_bool["sparcc"]) < 0.3] <- 0
+ematrix_bool["propr"][abs(ematrix_bool["propr"]) < 0.3] <- 0
+ematrix_bool["spearman"][abs(ematrix_bool["spearman"]) < 0.3] <- 0
+ematrix_bool["pearson"][abs(ematrix_bool["pearson"]) < 0.3] <- 0
+ematrix_bool["flashweave"][abs(ematrix_bool["flashweave"]) < 0.01] <- 0
+ematrix_bool["cozine"][ematrix_bool["cozine"] < 0.01] <- 0
+ematrix_bool["harmonies"][ematrix_bool["harmonies"] < 0.01] <- 0
+ematrix_bool["spring"][ematrix_bool["spring"] < 0.01] <- 0
+# ematrix_bool["mldm"][abs(ematrix_bool["mldm"]) < 0.01] = 0
+ematrix_bool["spieceasi"][abs(ematrix_bool["spieceasi"]) < 0.01] <- 0
+ematrix_bool[ematrix_bool > 0] <- 1
+
+# ematrix_plot <- plot_upset(ematrix_bool, c("flashweave", "spieceasi", "cozine", "harmonies", "spring", "sparcc", "propr"), "edges")
+ematrix_plot <- plot_upset(ematrix_bool, c("flashweave", "spieceasi", "cozine", "harmonies", "spring", "sparcc", "propr"), "edges")
+ematrix_plot
+ematrix_gg <- as_ggplot(grid.grab())
+
+
+# Plotting
+nmatrix_gg
+ematrix_gg
+bc_plot <- ggarrange(nmatrix_gg, ematrix_gg, labels = c("B", "C"))
+
+ggsave(output_file_bc, width = 11, height = 5)
+
+
+final_plot <- ggarrange(a_plot, bc_plot, ncol = 1, heights = c(1.3, 1.0))
+ggsave(output_file, final_plot, width = 11, height = 15)

@@ -1,283 +1,153 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
-import hashlib
 import pathlib
-import pickle
-import multiprocessing as mp
-from typing import Optional, Tuple
+from typing import List
 
+from biom import load_table
 import click
-from micone import Network
 import numpy as np
 import pandas as pd
-from sklearn.decomposition import PCA, SparsePCA
-from sklearn.manifold import TSNE
-from statsmodels.formula.api import ols
-import statsmodels.api as sm
-import tqdm
-from tqdm_multiprocess import TqdmMultiProcessPool
-
-import warnings
-
-warnings.filterwarnings("ignore")
-
-CORR = [
-    "sparcc",
-    "propr",
-    "spearman",
-    "pearson",
-]
-
-DIR = [
-    "flashweave",
-    "mldm",
-    "spieceasi",
-    "cozine",
-    "harmonies",
-    "spring",
-]
+from skbio.tree import TreeNode
+from skbio.diversity.beta import weighted_unifrac, unweighted_unifrac
 
 
-def create_edge_df(network: Network, hash: str) -> Optional[pd.DataFrame]:
-    graph = network.graph
-    id_name_map = dict()
-    edge_data = []
-    if len(graph.edges):
-        for node, ndata in graph.nodes(data=True):
-            id_name_map[node] = ndata["lineage"]
-        for source, target, edata in graph.edges(data=True):
-            source_name = id_name_map[source]
-            target_name = id_name_map[target]
-            ename = f"{source_name}-{target_name}"
-            edge_data.append({"edge": ename, hash: edata["weight"]})
-        edge_df = pd.DataFrame(edge_data).drop_duplicates(subset=["edge"])
-        edge_df.set_index("edge", inplace=True)
-        # edge_df[hash] = edge_df[hash] / np.abs(edge_df[hash]).max()
-        return edge_df.T
-    else:
-        return None
+def get_files(path_glob: str) -> List[pathlib.Path]:
+    base_dir, glob = path_glob.split("*", 1)
+    glob = "*" + glob
+    base_path = pathlib.Path(base_dir)
+    return list(base_path.glob(glob))
 
 
-def parse_data(
-    file_path: pathlib.Path,
-    interaction_threshold: float,
-    pvalue_threshold: float,
-    tqdm_func,
-    global_tqdm,
-) -> Tuple[Optional[dict], Optional[pd.DataFrame]]:
-    HEADER = ["DC", "CC", "TA", "OP", "TL", "NI"]
-    process_string = file_path.parent.parent.stem
-    hash = hashlib.md5(process_string.encode("utf-8")).hexdigest()
-    processes = process_string.split("-")
-    x_dataitem = dict(zip(HEADER, processes))
-    x_dataitem["hash"] = hash
-    network = Network.load_json(str(file_path))
-    network.interaction_threshold = interaction_threshold
-    network.pvalue_threshold = pvalue_threshold
-    filtered_network = network.filter(pvalue_filter=True, interaction_filter=True)
-    # Create edge list
-    y_dataitem = create_edge_df(filtered_network, hash)
-    # tqdm_func.update()
-    global_tqdm.update()
-    if y_dataitem is None:
-        return None, None
-    return x_dataitem, y_dataitem
+def get_vectors(otu_1: pd.DataFrame, otu_2: pd.DataFrame, threshold: int):
+    samples_1 = set(otu_1.columns)
+    samples_2 = set(otu_2.columns)
+    removed_samples = len(samples_1 - samples_2) + len(samples_2 - samples_1)
+    print(f"Warning {removed_samples} samples have been removed")
+    common_samples = samples_1 & samples_2
+    for col in common_samples:
+        otu_1_col, otu_2_col = otu_1[[col]], otu_2[[col]]
+        otu_1_col.loc[otu_1_col[col] <= threshold, :] = 0
+        otu_2_col.loc[otu_2_col[col] <= threshold, :] = 0
+        otu_1_col.columns = ["1"]
+        otu_2_col.columns = ["2"]
+        joint_df = otu_1_col.join(otu_2_col, how="outer")
+        joint_df.fillna(0, inplace=True)
+        otu_ids = list(joint_df.index)
+        u = list(joint_df["1"])
+        v = list(joint_df["2"])
+        yield u, v, otu_ids, col
 
 
-def perform_anova(X: pd.DataFrame, Y: pd.DataFrame) -> dict:
-    anova_dict = dict()
-    for component in Y.columns:
-        data = [
-            {
-                "Y": Y.loc[i, component],
-                "DC": X.loc[i, "DC"],
-                "CC": X.loc[i, "CC"],
-                "TA": X.loc[i, "TA"],
-                "OP": X.loc[i, "OP"],
-                "NI": X.loc[i, "NI"],
-            }
-            for i in Y.index
-        ]
-        df = pd.DataFrame(data)
-        lm = ols("Y ~ C(DC) + C(CC) + C(TA) + C(OP) + C(NI)", data=df).fit()
-        anova_dict[component] = sm.stats.anova_lm(lm, typ=2)
-    return anova_dict
+def get_unifrac(
+    otu_file_1: pathlib.Path,
+    otu_file_2: pathlib.Path,
+    tree_file: pathlib.Path,
+    weighted: bool,
+    threshold: int,
+):
+    otu_1 = load_table(str(otu_file_1)).to_dataframe(dense=True)
+    otu_2 = load_table(str(otu_file_2)).to_dataframe(dense=True)
+    tree = TreeNode.read(str(tree_file))
+    unifrac_data = dict()
+    for u, v, otu_ids, col in get_vectors(otu_1, otu_2, threshold):
+        if weighted:
+            unifrac_value = weighted_unifrac(
+                u, v, otu_ids, tree, normalized=True, validate=True
+            )
+        else:
+            unifrac_value = unweighted_unifrac(u, v, otu_ids, tree, validate=True)
+        unifrac_data[col] = unifrac_value
+    return pd.Series(unifrac_data), otu_1.shape[0], otu_2.shape[0]
 
 
-def normalize_anova(anova_dict: dict, pca: PCA) -> list:
-    var_ratio = pca.explained_variance_ratio_
-    assert np.isclose(sum(var_ratio), 1)
-    variance_list = []
-    for component in anova_dict:
-        anova_dict[component]["mean_sq"] = (
-            anova_dict[component]["sum_sq"] / anova_dict[component]["df"]
-        )
-        variance = anova_dict[component]["mean_sq"]
-        ratio = var_ratio[component]
-        variance_list.append(variance * ratio)
-    return variance_list
-
-
-def error_callback(result):
-    print("Error!")
-
-
-def done_callback(result):
-    pass
-
-
-def fix_stepname(step_name: str) -> str:
-    if step_name == "C(DC)":
-        return "DC module"
-    if step_name == "C(CC)":
-        return "CC module"
-    if step_name == "C(TA)":
-        return "TA module"
-    if step_name == "C(OP)":
-        return "OP module"
-    if step_name == "C(NI)":
-        return "NI module"
-    else:
-        return step_name
+def abbr_name(method: str) -> str:
+    """Replace method name with abbreviation"""
+    if method.startswith("closed_reference"):
+        return "CR"
+    if method.startswith("open_reference"):
+        return "OR"
+    if method.startswith("de_novo"):
+        return "DN"
+    if method.startswith("dada2"):
+        return "D2"
+    if method.startswith("deblur"):
+        return "DB"
+    return method
 
 
 @click.command()
+@click.option("--trees", help="Path to the tree files (must contain glob)")
+@click.option("--otus", help="Path to the OTU files (must contain glob)")
 @click.option(
-    "--files", help="The path to the network files containing the glob pattern"
+    "--weighted",
+    default=True,
+    type=bool,
+    help="Flag to perform either weighted or unweighted unifrac",
 )
 @click.option(
-    "--level", default="Genus", help="The taxonomy level to use for the data processing"
+    "--asv", default=True, type=bool, help="To display ASV along with method name"
 )
-@click.option(
-    "--interaction_threshold",
-    default=0.1,
-    type=float,
-    help="The interaction threshold to apply",
-)
-@click.option(
-    "--pvalue_threshold",
-    default=0.05,
-    type=float,
-    help="The pvalue threshold to apply",
-)
-@click.option("--ncpus", default=4, type=int, help="The number of cpus to use")
+@click.option("--threshold", default=10, type=int, help="Threshold for sequence count")
 @click.option("--output", default=".", help="The path to the output directory")
-def main(
-    files: str,
-    level: str,
-    interaction_threshold: float,
-    pvalue_threshold: float,
-    ncpus: int,
-    output: str,
-):
+def main(trees: str, otus: str, weighted: bool, asv: bool, threshold: int, output: str):
     output_path = pathlib.Path(output)
     assert output_path.exists()
-
-    base_dir, glob = files.split("*", 1)
-    glob = "*" + glob
-    base_path = pathlib.Path(base_dir)
-    file_paths = [
-        f
-        for f in base_path.glob(glob)
-        if f"group({level})" in f.parent.parent.stem.split("-")
-    ]
-
-    # Multiprocessing setup
-    pool = TqdmMultiProcessPool(ncpus)
-    tasks = [
-        (parse_data, (file_path, interaction_threshold, pvalue_threshold))
-        for file_path in file_paths
-    ]
-    task_count = len(tasks)
-
-    print("Step1: Compiling the X and Y matrices from networks")
-    step_1_2_pickle = pathlib.Path("step_1_2.pkl")
-    if step_1_2_pickle.exists():
-        with open(step_1_2_pickle, "rb") as fid:
-            x_df = pickle.load(fid)
-            y_df = pickle.load(fid)
-    else:
-        with tqdm.tqdm(total=task_count, dynamic_ncols=True) as global_progress:
-            global_progress.set_description("global")
-            # Step1: For each file note down all the `HEADER` categories and get edge list
-            # Step2: Compile the header values and edge lists using join
-            results = pool.map(global_progress, tasks, error_callback, done_callback)
-        print("Step2a: Creating the dataframes using join")
-        x_all, y_all = zip(*results)
-        x_data = [item for item in x_all if item is not None]
-        y_data = [item for item in y_all if item is not None]
-        x_df: pd.DataFrame = pd.DataFrame(x_data).set_index("hash")
-        y_df = pd.concat(y_data, axis=0, join="outer")
-        assert x_df.shape[0] == y_df.shape[0]
-        print("Step2b: Saving the data")
-        x_df.TA.replace(
-            {
-                "blast(ncbi)": "BLAST(NCBI)",
-                "naive_bayes(gg_13_8_99)": "NaiveBayes(GG)",
-                "naive_bayes(silva_138_99)": "NaiveBayes(SILVA)",
-            },
-            inplace=True,
+    tree_files = get_files(trees)
+    otu_files = get_files(otus)
+    otu_files_map = {otu_file.parent.parent.stem: otu_file for otu_file in otu_files}
+    data = []
+    for tree_file in tree_files:
+        method_1, method_2 = tree_file.parent.parent.stem.split("-")
+        otu_file_1, otu_file_2 = otu_files_map[method_1], otu_files_map[method_2]
+        print(f"Generating unifrac for {method_1} and {method_2}")
+        unifrac_data, otu_count_1, otu_count_2 = get_unifrac(
+            otu_file_1, otu_file_2, tree_file, weighted=weighted, threshold=threshold
         )
-        x_df.to_csv(output_path / "x.csv", index=True, sep=",")
-        y_df.to_csv(output_path / "y.csv", index=True, sep=",")
-        with open(step_1_2_pickle, "wb") as fid:
-            pickle.dump(x_df, fid)
-            pickle.dump(y_df, fid)
-
-    print(x_df.head())
-    print(y_df.head())
-
-    # Step3: Perform PCA on the edge matrix (Y) and then transform Y to PCA coordinates
-    print("Step 3: Performing PCA on Y")
-    step_3_pickle = pathlib.Path("step_3.pkl")
-    if step_3_pickle.exists():
-        with open(step_3_pickle, "rb") as fid:
-            y_reduced = pickle.load(fid)
-            y_reduced2 = pickle.load(fid)
-            pca = pickle.load(fid)
+        abbr_1, abbr_2 = abbr_name(method_1), abbr_name(method_2)
+        for col in unifrac_data.index:
+            if asv:
+                label_1 = f"{abbr_1} ({otu_count_1})"
+                label_2 = f"{abbr_2} ({otu_count_2})"
+            else:
+                label_1 = f"{abbr_1}"
+                label_2 = f"{abbr_2}"
+            data.append(
+                {
+                    "method1": label_1,
+                    "method2": label_2,
+                    "unifrac": unifrac_data[col],
+                    "sample": col,
+                }
+            )
+            data.append(
+                {
+                    "method2": label_1,
+                    "method1": label_2,
+                    "unifrac": unifrac_data[col],
+                    "sample": col,
+                }
+            )
+            data.append(
+                {
+                    "method1": label_1,
+                    "method2": label_1,
+                    "unifrac": np.nan,
+                    "sample": col,
+                }
+            )
+            data.append(
+                {
+                    "method1": label_2,
+                    "method2": label_2,
+                    "unifrac": np.nan,
+                    "sample": col,
+                }
+            )
+    unifrac_df = pd.DataFrame(data)
+    if weighted:
+        unifrac_df.to_csv(output_path / f"weighted_unifrac.csv", index=False)
     else:
-        y_df.fillna(0.0, inplace=True)
-        # TODO: Set variance to be 0.95 using n_components=0.95
-        pca = PCA()
-        pca2 = PCA(n_components=2)
-        tsne = TSNE(n_components=2)
-        pca.fit(y_df)
-        pca2.fit(y_df)
-        y_reduced = pd.DataFrame(pca.transform(y_df), index=y_df.index)
-        y_reduced2 = pd.DataFrame(pca2.transform(y_df), index=y_df.index)
-        y_reduced_tsne = pd.DataFrame(tsne.fit_transform(y_df), index=y_df.index)
-        y_reduced.to_csv(output_path / "y_reduced.csv", index=True, sep=",")
-        y_reduced2.to_csv(output_path / "y_reduced2.csv", index=True, sep=",")
-        y_reduced_tsne.to_csv(output_path / "y_reduced_tsne.csv", index=True, sep=",")
-        with open(step_3_pickle, "wb") as fid:
-            pickle.dump(y_reduced, fid)
-            pickle.dump(y_reduced2, fid)
-            pickle.dump(pca, fid)
-
-    print(y_reduced.head())
-
-    # Step4: Perform ANOVA and normalize by total variance
-    print("Step 4: Performing ANOVA and calculating total variance")
-    step_4_pickle = pathlib.Path("step_4.pkl")
-    if step_4_pickle.exists():
-        with open(step_4_pickle, "rb") as fid:
-            variance_list = pickle.load(fid)
-            percentage_variance = pickle.load(fid)
-    else:
-        anova_dict = perform_anova(x_df, y_reduced)
-        variance_list = normalize_anova(anova_dict, pca)
-        total_variance = sum(variance_list)
-        percentage_variance = total_variance / total_variance.sum() * 100
-        percentage_variance.index = [fix_stepname(i) for i in percentage_variance.index]
-        percentage_variance.index.name = "Workflow"
-        percentage_variance.to_csv(
-            output_path / "percentage_variance.csv", index=True, sep=","
-        )
-        with open(step_4_pickle, "wb") as fid:
-            pickle.dump(variance_list, fid)
-            pickle.dump(percentage_variance, fid)
-
-    print(percentage_variance)
+        unifrac_df.to_csv(output_path / f"unweighted_unifrac.csv", index=False)
 
 
 if __name__ == "__main__":

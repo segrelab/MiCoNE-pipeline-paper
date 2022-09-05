@@ -1,209 +1,144 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
-from collections import defaultdict
+import hashlib
 import pathlib
 import pickle
-from typing import Dict, Tuple, Union
+import multiprocessing as mp
+from typing import Optional, Tuple
 
 import click
+from micone import Network
 import numpy as np
 import pandas as pd
-from mlxtend.evaluate import confusion_matrix
-from tqdm import tqdm
+from sklearn.decomposition import PCA, SparsePCA
+from sklearn.manifold import TSNE
+from statsmodels.formula.api import ols
+import statsmodels.api as sm
+import tqdm
+from tqdm_multiprocess import TqdmMultiProcessPool
 
-from micone import Network, NetworkGroup
+import warnings
+
+warnings.filterwarnings("ignore")
+
+CORR = [
+    "sparcc",
+    "propr",
+    "spearman",
+    "pearson",
+]
+
+DIR = [
+    "flashweave",
+    "mldm",
+    "spieceasi",
+    "cozine",
+    "harmonies",
+    "spring",
+]
 
 
-def read_predictions(
-    prediction_file: pathlib.Path,
+def create_edge_df(network: Network, hash: str) -> Optional[pd.DataFrame]:
+    graph = network.graph
+    id_name_map = dict()
+    edge_data = []
+    if len(graph.edges):
+        for node, ndata in graph.nodes(data=True):
+            id_name_map[node] = ndata["lineage"]
+        for source, target, edata in graph.edges(data=True):
+            source_name = id_name_map[source]
+            target_name = id_name_map[target]
+            ename = f"{source_name}-{target_name}"
+            edge_data.append({"edge": ename, hash: edata["weight"]})
+        edge_df = pd.DataFrame(edge_data).drop_duplicates(subset=["edge"])
+        edge_df.set_index("edge", inplace=True)
+        # edge_df[hash] = edge_df[hash] / np.abs(edge_df[hash]).max()
+        return edge_df.T
+    else:
+        return None
+
+
+def parse_data(
+    file_path: pathlib.Path,
     interaction_threshold: float,
     pvalue_threshold: float,
-) -> Network:
-    network = Network.load_json(str(prediction_file))
+    tqdm_func,
+    global_tqdm,
+) -> Tuple[Optional[dict], Optional[pd.DataFrame]]:
+    HEADER = ["DC", "CC", "TA", "OP", "TL", "NI"]
+    process_string = file_path.parent.parent.stem
+    hash = hashlib.md5(process_string.encode("utf-8")).hexdigest()
+    processes = process_string.split("-")
+    x_dataitem = dict(zip(HEADER, processes))
+    x_dataitem["hash"] = hash
+    network = Network.load_json(str(file_path))
     network.interaction_threshold = interaction_threshold
     network.pvalue_threshold = pvalue_threshold
     filtered_network = network.filter(pvalue_filter=True, interaction_filter=True)
-    return filtered_network
+    # Create edge list
+    y_dataitem = create_edge_df(filtered_network, hash)
+    # tqdm_func.update()
+    global_tqdm.update()
+    if y_dataitem is None:
+        return None, None
+    return x_dataitem, y_dataitem
 
 
-def read_observations(
-    observation_file: pathlib.Path, interaction_threshold: float, sign: bool
-) -> pd.DataFrame:
-    interactions: pd.DataFrame = pd.read_table(observation_file, index_col=0)
-    np.fill_diagonal(interactions.values, 0.0)
-    interactions[np.abs(interactions) <= interaction_threshold] = 0
-    # NOTE: We don't need to apply threshold here again because we filter earlier
-    if sign:
-        interactions[interactions > 0] = 1
-        interactions[interactions < 0] = -1
-        interactions = interactions.astype(int)
-    return interactions
+def perform_anova(X: pd.DataFrame, Y: pd.DataFrame) -> dict:
+    anova_dict = dict()
+    for component in Y.columns:
+        data = [
+            {
+                "Y": Y.loc[i, component],
+                "DC": X.loc[i, "DC"],
+                "CC": X.loc[i, "CC"],
+                "TA": X.loc[i, "TA"],
+                "OP": X.loc[i, "OP"],
+                "NI": X.loc[i, "NI"],
+            }
+            for i in Y.index
+        ]
+        df = pd.DataFrame(data)
+        lm = ols("Y ~ C(DC) + C(CC) + C(TA) + C(OP) + C(NI)", data=df).fit()
+        anova_dict[component] = sm.stats.anova_lm(lm, typ=2)
+    return anova_dict
 
 
-def get_consensus(
-    predictions_map: Dict[str, Dict[str, Network]], subset_methods: bool = True
-):
-    if subset_methods:
-        corr_methods = ["sparcc", "propr"]
+def normalize_anova(anova_dict: dict, pca: PCA) -> list:
+    var_ratio = pca.explained_variance_ratio_
+    assert np.isclose(sum(var_ratio), 1)
+    variance_list = []
+    for component in anova_dict:
+        anova_dict[component]["mean_sq"] = (
+            anova_dict[component]["sum_sq"] / anova_dict[component]["df"]
+        )
+        variance = anova_dict[component]["mean_sq"]
+        ratio = var_ratio[component]
+        variance_list.append(variance * ratio)
+    return variance_list
+
+
+def error_callback(result):
+    print("Error!")
+
+
+def done_callback(result):
+    pass
+
+
+def fix_stepname(step_name: str) -> str:
+    if step_name == "C(DC)":
+        return "DC module"
+    if step_name == "C(CC)":
+        return "CC module"
+    if step_name == "C(TA)":
+        return "TA module"
+    if step_name == "C(OP)":
+        return "OP module"
+    if step_name == "C(NI)":
+        return "NI module"
     else:
-        corr_methods = ["sparcc", "propr", "spearman", "pearson"]
-    direct_methods = [
-        "spieceasi",
-        "flashweave",
-        "mldm",
-        "cozine",
-        "harmonies",
-        "spring",
-    ]
-    consensus_methods = ["simple_voting", "scaled_sum"]
-    consensus_parameters = np.linspace(
-        0, 1, (len(corr_methods) + len(direct_methods) + 1) // 2
-    )
-    pvalue_mergers_map: Dict[str, Dict[str, NetworkGroup]] = defaultdict(dict)
-    consensus1_map: Dict[str, Dict[str, NetworkGroup]] = defaultdict(dict)
-    consensus2_map: Dict[str, Dict[str, NetworkGroup]] = defaultdict(dict)
-    for dataset_name in tqdm(predictions_map):
-        corr_networks = []
-        direct_networks = []
-        for algorithm_name in predictions_map[dataset_name]:
-            if algorithm_name in corr_methods:
-                corr_networks.append(predictions_map[dataset_name][algorithm_name])
-            elif algorithm_name in direct_methods:
-                direct_networks.append(predictions_map[dataset_name][algorithm_name])
-        all_networks = corr_networks + direct_networks
-        networkgroup_corr = NetworkGroup(corr_networks, id_field="id")
-        # networkgroup_direct = NetworkGroup(direct_networks, id_field="id")
-        networkgroup_all = NetworkGroup(all_networks, id_field="id")
-        # Step3a: Calculate merged pvalues network with different parameter values (unsure)
-        cids = list(range(len(networkgroup_corr.contexts)))
-        networkgroup_pvalue_merged = networkgroup_corr.combine_pvalues(cids)
-        pvalue_mergers_map[dataset_name][
-            "pvalue_merging_default"
-        ] = networkgroup_pvalue_merged
-        # Step3b: Calculate consensus network with different parameter values for all methods
-        for method in consensus_methods:
-            for parameter in consensus_parameters:
-                cids = list(range(len(networkgroup_all.contexts)))
-                networkgroup_consensus = networkgroup_all.get_consensus_network(
-                    cids, method=method, parameter=parameter
-                )
-                if method == "simple_voting":
-                    consensus1_map[dataset_name][
-                        f"{method}_{parameter:.3f}"
-                    ] = networkgroup_consensus
-                elif method == "scaled_sum":
-                    consensus2_map[dataset_name][
-                        f"{method}_{parameter:.3f}"
-                    ] = networkgroup_consensus
-    return pvalue_mergers_map, consensus1_map, consensus2_map
-
-
-def calculate_precision(confusion_matrix: dict) -> float:
-    pre = confusion_matrix["tp"] / (confusion_matrix["tp"] + confusion_matrix["fp"])
-    return pre
-
-
-def calculate_sensitivity(confusion_matrix: dict) -> float:
-    sen = confusion_matrix["tp"] / (confusion_matrix["fn"] + confusion_matrix["tp"])
-    return sen
-
-
-def calculate_performance(
-    observations: pd.DataFrame, predictions: Union[Network, NetworkGroup], sign: bool
-) -> Tuple[dict, float, float]:
-    prediction_df = pd.DataFrame(
-        np.zeros_like(observations.values),
-        index=observations.index,
-        columns=observations.columns,
-    )
-    if len(predictions.links):
-        if isinstance(predictions, Network):
-            table = predictions.get_adjacency_table("weight")
-            for row in table.index:
-                for col in table.columns:
-                    prediction_df.loc[row, col] = table.loc[row, col]
-        elif isinstance(predictions, NetworkGroup):
-            vector_table = predictions.get_adjacency_vectors("weight")
-            for row in vector_table.index:
-                if row not in predictions.linkid_revmap:
-                    continue
-                else:
-                    source, target = predictions.linkid_revmap[row][0][-1].split("-")
-                    # FIXME: Is this the right thing to do?
-                    val = np.nanmean(vector_table.loc[row, :])
-                    prediction_df.loc[source, target] = val
-                    prediction_df.loc[target, source] = val
-        else:
-            raise ValueError("Unsupported predictions object")
-        np.fill_diagonal(prediction_df.values, 0.0)
-        prediction_df.fillna(0.0, inplace=True)
-        if sign:
-            prediction_df[prediction_df > 0] = 1
-            prediction_df[prediction_df < 0] = -1
-            prediction_df = prediction_df.astype(int)
-        t_vec = observations.values.reshape(-1)
-        p_vec = prediction_df.values.reshape(-1)
-        cm = confusion_matrix(t_vec, p_vec, binary=True, positive_label=0)
-        cm_fixed = [[cm[1, 1], cm[1, 0]], [cm[0, 1], cm[0, 0]]]
-        cm_dict = {
-            "tn": cm_fixed[0][0],
-            "fp": cm_fixed[0][1],
-            "fn": cm_fixed[1][0],
-            "tp": cm_fixed[1][1],
-        }
-        precision = calculate_precision(cm_dict)
-        sensitivity = calculate_sensitivity(cm_dict)
-    else:
-        cm_dict = {"tn": np.nan, "fp": np.nan, "fn": np.nan, "tp": np.nan}
-        precision = np.nan
-        sensitivity = np.nan
-    return cm_dict, precision, sensitivity
-
-
-def fix_name(name: str) -> str:
-    if name.startswith("scaled_sum"):
-        parameter_value = name.rsplit("_", 1)[-1]
-        return f"X:SS[{parameter_value}]"
-    elif name.startswith("simple_voting"):
-        parameter_value = name.rsplit("_", 1)[-1]
-        return f"X:SV[{parameter_value}]"
-    elif name.startswith("pvalue_merging"):
-        parameter_value = name.rsplit("_", 1)[-1]
-        return "X:PM"
-    else:
-        return f"I:{name}"
-
-
-def get_performance_data(observations_map, predictions_map, sign) -> list:
-    data = []
-    for dataset_name in tqdm(predictions_map):
-        observations = observations_map[dataset_name]
-        for algorithm_name in predictions_map[dataset_name]:
-            predictions = predictions_map[dataset_name][algorithm_name]
-            cm_dict, precision, sensitivity = calculate_performance(
-                observations, predictions, sign
-            )
-            data.append(
-                {
-                    "factor1": dataset_name.split("_")[0],
-                    "factor2": dataset_name.split("_")[1],
-                    "algorithm": fix_name(algorithm_name),
-                    "tp": cm_dict["tp"],
-                    "fp": cm_dict["fp"],
-                    "tn": cm_dict["tn"],
-                    "fn": cm_dict["fn"],
-                    "precision": precision,
-                    "sensitivity": sensitivity,
-                }
-            )
-    return data
-
-
-def update_algo_name(df: pd.DataFrame) -> None:
-    algos = set(df.algorithm)
-    for algo in algos:
-        avg_precision = np.nanmean(df.loc[df.algorithm == algo, "precision"])
-        df.loc[df.algorithm == algo, "algorithm"] += f", P(avg)={avg_precision:.3f}"
+        return step_name
 
 
 @click.command()
@@ -211,95 +146,138 @@ def update_algo_name(df: pd.DataFrame) -> None:
     "--files", help="The path to the network files containing the glob pattern"
 )
 @click.option(
-    "--interaction_threshold", default=0.1, help="Value to threshold interactions by"
-)
-@click.option("--pvalue_threshold", default=0.05, help="Value to threshold pvalues by")
-@click.option(
-    "--sign", default=True, type=bool, help="Flag to convert matrices to sign matrices"
+    "--level", default="Genus", help="The taxonomy level to use for the data processing"
 )
 @click.option(
-    "--subset_methods",
-    default=True,
-    type=bool,
-    help="Flag to choose subset of correlation methods for consensus",
+    "--interaction_threshold",
+    default=0.1,
+    type=float,
+    help="The interaction threshold to apply",
 )
+@click.option(
+    "--pvalue_threshold",
+    default=0.05,
+    type=float,
+    help="The pvalue threshold to apply",
+)
+@click.option("--ncpus", default=4, type=int, help="The number of cpus to use")
 @click.option("--output", default=".", help="The path to the output directory")
 def main(
     files: str,
+    level: str,
     interaction_threshold: float,
     pvalue_threshold: float,
-    sign: bool,
-    subset_methods: bool,
+    ncpus: int,
     output: str,
 ):
     output_path = pathlib.Path(output)
     assert output_path.exists()
 
-    # Step1 and 2: Get observations and predictions
-    print("Step1 and 2: Get observations and predictions")
+    base_dir, glob = files.split("*", 1)
+    glob = "*" + glob
+    base_path = pathlib.Path(base_dir)
+    file_paths = [
+        f
+        for f in base_path.glob(glob)
+        if f"group({level})" in f.parent.parent.stem.split("-")
+    ]
+
+    # Multiprocessing setup
+    pool = TqdmMultiProcessPool(ncpus)
+    tasks = [
+        (parse_data, (file_path, interaction_threshold, pvalue_threshold))
+        for file_path in file_paths
+    ]
+    task_count = len(tasks)
+
+    print("Step1: Compiling the X and Y matrices from networks")
     step_1_2_pickle = pathlib.Path("step_1_2.pkl")
     if step_1_2_pickle.exists():
         with open(step_1_2_pickle, "rb") as fid:
-            predictions_map = pickle.load(fid)
-            observations_map = pickle.load(fid)
+            x_df = pickle.load(fid)
+            y_df = pickle.load(fid)
     else:
-        base_dir, glob = files.split("*", 1)
-        glob = "*" + glob
-        base_path = pathlib.Path(base_dir)
-        file_paths = list(base_path.glob(glob))
-        predictions_map: Dict[str, Dict[str, Network]] = defaultdict(dict)
-        observations_map: Dict[str, pd.DataFrame] = dict()
-        for prediction_file in tqdm(file_paths):
-            dataset = prediction_file.parent
-            algorithm_name = prediction_file.parent.parent.stem.split("-")[-1]
-            dataset_name = dataset.stem
-            observation_file = dataset / "interaction_matrix.tsv"
-            observations_map[dataset_name] = read_observations(
-                observation_file, interaction_threshold=interaction_threshold, sign=sign
-            )
-            predictions_map[dataset_name][algorithm_name] = read_predictions(
-                prediction_file,
-                interaction_threshold=interaction_threshold,
-                pvalue_threshold=pvalue_threshold,
-            )
+        with tqdm.tqdm(total=task_count, dynamic_ncols=True) as global_progress:
+            global_progress.set_description("global")
+            # Step1: For each file note down all the `HEADER` categories and get edge list
+            # Step2: Compile the header values and edge lists using join
+            results = pool.map(global_progress, tasks, error_callback, done_callback)
+        print("Step2a: Creating the dataframes using join")
+        x_all, y_all = zip(*results)
+        x_data = [item for item in x_all if item is not None]
+        y_data = [item for item in y_all if item is not None]
+        x_df: pd.DataFrame = pd.DataFrame(x_data).set_index("hash")
+        y_df = pd.concat(y_data, axis=0, join="outer")
+        assert x_df.shape[0] == y_df.shape[0]
+        print("Step2b: Saving the data")
+        x_df.TA.replace(
+            {
+                "blast(ncbi)": "BLAST(NCBI)",
+                "naive_bayes(gg_13_8_99)": "NaiveBayes(GG)",
+                "naive_bayes(silva_138_99)": "NaiveBayes(SILVA)",
+            },
+            inplace=True,
+        )
+        x_df.to_csv(output_path / "x.csv", index=True, sep=",")
+        y_df.to_csv(output_path / "y.csv", index=True, sep=",")
         with open(step_1_2_pickle, "wb") as fid:
-            pickle.dump(predictions_map, fid)
-            pickle.dump(observations_map, fid)
+            pickle.dump(x_df, fid)
+            pickle.dump(y_df, fid)
 
-    # Step3: Calculate consensus using predictions_map
-    print("Step3: Calculate consensus using predictions_map")
+    print(x_df.head())
+    print(y_df.head())
+
+    # Step3: Perform PCA on the edge matrix (Y) and then transform Y to PCA coordinates
+    print("Step 3: Performing PCA on Y")
     step_3_pickle = pathlib.Path("step_3.pkl")
     if step_3_pickle.exists():
         with open(step_3_pickle, "rb") as fid:
-            pvalue_mergers_map = pickle.load(fid)
-            consensus1_map = pickle.load(fid)
-            consensus2_map = pickle.load(fid)
+            y_reduced = pickle.load(fid)
+            y_reduced2 = pickle.load(fid)
+            pca = pickle.load(fid)
     else:
-        pvalue_mergers_map, consensus1_map, consensus2_map = get_consensus(
-            predictions_map, subset_methods
-        )
+        y_df.fillna(0.0, inplace=True)
+        # TODO: Set variance to be 0.95 using n_components=0.95
+        pca = PCA()
+        pca2 = PCA(n_components=2)
+        tsne = TSNE(n_components=2)
+        pca.fit(y_df)
+        pca2.fit(y_df)
+        y_reduced = pd.DataFrame(pca.transform(y_df), index=y_df.index)
+        y_reduced2 = pd.DataFrame(pca2.transform(y_df), index=y_df.index)
+        y_reduced_tsne = pd.DataFrame(tsne.fit_transform(y_df), index=y_df.index)
+        y_reduced.to_csv(output_path / "y_reduced.csv", index=True, sep=",")
+        y_reduced2.to_csv(output_path / "y_reduced2.csv", index=True, sep=",")
+        y_reduced_tsne.to_csv(output_path / "y_reduced_tsne.csv", index=True, sep=",")
         with open(step_3_pickle, "wb") as fid:
-            pickle.dump(pvalue_mergers_map, fid)
-            pickle.dump(consensus1_map, fid)
-            pickle.dump(consensus2_map, fid)
+            pickle.dump(y_reduced, fid)
+            pickle.dump(y_reduced2, fid)
+            pickle.dump(pca, fid)
 
-    # Step4: Calculate precision and sensitivity for all
-    print("Step4: Calculate precision and sensitivity for all")
+    print(y_reduced.head())
+
+    # Step4: Perform ANOVA and normalize by total variance
+    print("Step 4: Performing ANOVA and calculating total variance")
     step_4_pickle = pathlib.Path("step_4.pkl")
     if step_4_pickle.exists():
         with open(step_4_pickle, "rb") as fid:
-            df = pickle.load(fid)
+            variance_list = pickle.load(fid)
+            percentage_variance = pickle.load(fid)
     else:
-        data = []
-        data.extend(get_performance_data(observations_map, predictions_map, sign))
-        data.extend(get_performance_data(observations_map, pvalue_mergers_map, sign))
-        data.extend(get_performance_data(observations_map, consensus1_map, sign))
-        data.extend(get_performance_data(observations_map, consensus2_map, sign))
-        df = pd.DataFrame(data)
-        update_algo_name(df)
+        anova_dict = perform_anova(x_df, y_reduced)
+        variance_list = normalize_anova(anova_dict, pca)
+        total_variance = sum(variance_list)
+        percentage_variance = total_variance / total_variance.sum() * 100
+        percentage_variance.index = [fix_stepname(i) for i in percentage_variance.index]
+        percentage_variance.index.name = "Workflow"
+        percentage_variance.to_csv(
+            output_path / "percentage_variance.csv", index=True, sep=","
+        )
         with open(step_4_pickle, "wb") as fid:
-            pickle.dump(df, fid)
-    df.to_csv(output_path / "performance.csv", index=False, sep=",")
+            pickle.dump(variance_list, fid)
+            pickle.dump(percentage_variance, fid)
+
+    print(percentage_variance)
 
 
 if __name__ == "__main__":
