@@ -1,0 +1,28 @@
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Task}                     & \textbf{Tool}                     & \textbf{Parameter}   & \textbf{Value}       \\ \hline
+\multirow{15}{*}{OTU assignment}  & \multirow{4}{*}{Closed reference} & ncpus                & 1                    \\
+                                  &                                   & percent\_identity    & 0.97                 \\
+                                  &                                   & strand               & ``plus"               \\
+                                  &                                   & reference\_sequences & ``gg\_97" \\ \cline{2-4}
+                                  & \multirow{4}{*}{Open reference}   & ncpus                & 1                    \\
+                                  &                                   & percent\_identity    & 0.97                 \\
+                                  &                                   & strand               & ``plus"               \\
+                                  &                                   & reference\_sequences & ``gg\_97" \\ \cline{2-4}
+                                  & \multirow{2}{*}{De novo}          & ncpus                & 1                    \\
+                                  &                                   & percent\_identity    & 0.97                 \\ \cline{2-4}
+                                  & \multirow{2}{*}{Dada2}            & ncpus                & 1                    \\
+                                  &                                   & big\_data            & ``FALSE"              \\ \cline{2-4}
+                                  & \multirow{3}{*}{Deblur}           & ncpus                & 1                    \\
+                                  &                                   & min\_reads           & 2                    \\
+                                  &                                   & min\_size            & 2                    \\ \hline
+\multirow{2}{*}{Chimera checking} & \multirow{2}{*}{Remove bimera}    & ncpus                & 1                    \\
+                                  &                                   & chimera\_method      & ``consensus"          \\ \hline
+\end{tabular}
+\caption{The default parameters used in the Denoising and Clustering step of the MiCoNE pipeline}
+\label{tab:dc_parameters}
+\end{table}
+

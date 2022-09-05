@@ -1,0 +1,49 @@
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Task}                & \textbf{Tool}                                                                           & \textbf{Parameter}     & \textbf{Value} \\ \hline
+\multirow{4}{*}{Bootstrap}   & \multirow{2}{*}{Resample}                                                               & bootstraps             & 1000           \\
+                             &                                                                                         & ncpus                  & 1              \\ \cline{2-4}
+                             & \multirow{2}{*}{Pvalue}                                                                 & slim                   & false          \\
+                             &                                                                                         & ncpus                  & 1              \\ \hline
+\multirow{5}{*}{Correlation} & \multirow{2}{*}{sparcc}                                                                 & ncpus                  & 1              \\
+                             &                                                                                         & iterations             & 50             \\ \cline{2-4}
+                             & pearson                                                                                 & ncpus                  & 1              \\ \cline{2-4}
+                             & spearman                                                                                & ncpus                  & 1              \\ \cline{2-4}
+                             & propr                                                                                   & ncpus                  & 1              \\ \hline
+\multirow{17}{*}{Direct}     & \multirow{5}{*}{spieceasi}                                                              & method                 & ``mb"           \\
+                             &                                                                                         & ncpus                  & 1              \\
+                             &                                                                                         & nreps                  & 50             \\
+                             &                                                                                         & nlambda                & 20             \\
+                             &                                                                                         & lambda\_min\_ratio     & 1e-2           \\ \cline{2-4}
+                             & \multirow{4}{*}{flashweave}                                                             & ncpus                  & 1              \\
+                             &                                                                                         & sensitive              & ``true"         \\
+                             &                                                                                         & heterogeneous          & ``false"        \\
+                             &                                                                                         & fdr\_correction        & ``true"         \\ \cline{2-4}
+                             & \multirow{2}{*}{mldm}                                                                   & Z\_mean                & 1              \\
+                             &                                                                                         & max\_iteration         & 1500           \\ \cline{2-4}
+                             & cozine                                                                                  & lambda\_min\_ratio     & 0.1            \\ \cline{2-4}
+                             & \multirow{2}{*}{harmonies}                                                              & iterations             & 10000          \\
+                             &                                                                                         & sparsity\_cutoff       & 0.5            \\ \cline{2-4}
+                             & \multirow{3}{*}{spring}                                                                 & ncpus                  & 1              \\
+                             &                                                                                         & nlambda                & 20             \\
+                             &                                                                                         & lambda\_min\_ratio     & 0.01           \\ \hline
+\multirow{11}{*}{Network}    & \multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}Make network\\ with pvalues\end{tabular}}    & interaction\_threshold & 0.3            \\
+                             &                                                                                         & pvalue\_threshold      & 0.05           \\
+                             &                                                                                         & metadata\_file         & ``"             \\ \cline{2-4}
+                             & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Make network\\ without pvalues\end{tabular}} & interaction\_threshold & 0.3            \\
+                             &                                                                                         & metadata\_file         & ``"             \\ \cline{2-4}
+                             & Merge pvalues                                                                           & id\_field              & ``taxid"        \\ \cline{2-4}
+                             & \multirow{5}{*}{Create consensus}                                                       & method                 & ``scaled\_sum"  \\
+                             &                                                                                         & parameter              & 0.3            \\
+                             &                                                                                         & pvalue\_filter         & ``true"         \\
+                             &                                                                                         & interaction\_filter    & ``true"         \\
+                             &                                                                                         & id\_field              & ``taxid"        \\ \hline
+\end{tabular}
+\caption{The default parameters used in the Network Inference step of the MiCoNE pipeline}
+\label{tab:ni_parameters}
+\end{table}
+
+

@@ -1,0 +1,38 @@
+﻿Task,Tool,Parameter,Value
+Bootstrap,Resample,bootstraps,1000
+Bootstrap,Resample,ncpus,1
+Bootstrap,Pvalue,slim,false
+Bootstrap,Pvalue,ncpus,1
+Correlation,sparcc,ncpus,1
+Correlation,sparcc,iterations,50
+Correlation,pearson,ncpus,1
+Correlation,spearman,ncpus,1
+Correlation,propr,ncpus,1
+Direct,spieceasi,method,"mb"
+Direct,spieceasi,ncpus,1
+Direct,spieceasi,nreps,50
+Direct,spieceasi,nlambda,20
+Direct,spieceasi,lambda_min_ratio,1e-2
+Direct,flashweave,ncpus,1
+Direct,flashweave,sensitive,"true"
+Direct,flashweave,heterogeneous,"false"
+Direct,flashweave,fdr_correction,"true"
+Direct,mldm,Z_mean,1
+Direct,mldm,max_iteration,1500
+Direct,cozine,lambda_min_ratio,0.1
+Direct,harmonies,iterations,10000
+Direct,harmonies,sparsity_cutoff,0.5
+Direct,spring,ncpus,1
+Direct,spring,nlambda,20
+Direct,spring,lambda_min_ratio,0.01
+Network,Make network with pvalues,interaction_threshold,0.3
+Network,Make network with pvalues,pvalue_threshold,0.05
+Network,Make network with pvalues,metadata_file,""
+Network,Make network without pvalues,interaction_threshold,0.3
+Network,Make network without pvalues,metadata_file,""
+Network,Merge pvalues,id_field,"taxid"
+Network,Create consensus,method,"scaled_sum"
+Network,Create consensus,parameter,0.3
+Network,Create consensus,pvalue_filter,"true"
+Network,Create consensus,interaction_filter,"true"
+Network,Create consensus,id_field,"taxid"

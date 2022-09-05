@@ -1,0 +1,19 @@
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Task}           & \textbf{Tool}                & \textbf{Parameter} & \textbf{Value}            \\ \hline
+\multirow{8}{*}{Assign} & \multirow{3}{*}{Naive Bayes} & classifer          & ``gg\_13\_8\_99\_515\_806" \\
+                        &                              & confidence         & 0.7                       \\
+                        &                              & ncpus              & 1                         \\ \cline{2-4}
+                        & \multirow{5}{*}{BLAST}       & references         & ``ncbi\_refseq"            \\
+                        &                              & max\_accepts       & 10                        \\
+                        &                              & perc\_identity     & 0.8                       \\
+                        &                              & evalue             & 0.001                     \\
+                        &                              & min\_consensus     & 0.51                      \\ \hline
+\end{tabular}
+\caption{The default parameters used in the Taxonomy Assignment step of the MiCoNE pipeline}
+\label{tab:ta_parameters}
+\end{table}
+
