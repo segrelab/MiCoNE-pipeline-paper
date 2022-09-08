@@ -7,17 +7,18 @@
   This study utilized two kinds of 16S rRNA sequencing datasets: biological datasets and mock datasets.
   Biological datasets are collections of sequencing reads obtained from naturally occurring microbial community samples.
   The current analysis used stool samples from a fecal microbiome transplant study of autism~\cite{Kang2017} as biological datasets.
+  This dataset was chosen because the sequences were easily accessible on Qiita~\cite{qiita} and optimally pre-processed according to the \ac{emp}~\cite{Thompson2017} protocol and can be used directly as input to the \ac{micone} pipeline.
   The study was composed of multiple sequencing runs.
-  The runs that contained paired end reads (run 2 (10M reads), run 3 (750K reads) and run 4 (16M reads)), were downloaded from Qiita~\cite{qiita} (study ID 10532) and used as input sequences for the \ac{micone} pipeline.
+  The runs that contained paired-end reads (run 2 (10M reads), run 3 (750K reads) and run 4 (16M reads)), were downloaded from Qiita~\cite{qiita} (study ID 10532) and used as input sequences for the \ac{micone} pipeline.
   Sequences from both control (212 samples including neurotypical and donors) and autistic (126 samples) patients were included in the analyses, but the groups were analyzed independently in the pipeline after the \ac{op} step.
   All the network analyses in the study, unless explicitly mentioned, are performed indeed on the healthy and autistic samples in the fecal microbiome transplant study.
-  However, all other analysis (preceding the NI step) are performed together on all the samples in the fecal microbiome transplant study.
+  However, all other analyses (preceding the NI step) are performed together on all the samples in the fecal microbiome transplant study.
   The mock community 16S datasets are experimental sequencing data obtained for artificially assembled collections of species in known proportions.
-  The mock datasets used for this study, obtained from mockrobiota~\cite{Bokulich2016}, are labelled mock4, mock12 and mock16.
+  The mock datasets used for this study, obtained from mockrobiota~\cite{Bokulich2016}, are labeled mock4, mock12, and mock16.
   The mock4 community is composed of 21 bacterial strains.
   Two replicate samples from mock4 contain all species in equal abundances, and two additional replicate samples contain the same species in unequal abundances.
-  The mock12 community is composed of 27 bacterial strains that include closely related taxa with some pairs having only one to two nucleotide difference from one another.
-  The mock16 community is composed of 49 bacteria and 10 Archaea, all represented in equal amount.
+  The mock12 community is composed of 27 bacterial strains that include closely related taxa with some pairs having only one to two nucleotide differences from one another.
+  The mock16 community is composed of 49 bacteria and 10 Archaea, all represented in equal amounts.
 
   \subsection*{\ac{micone}}
   \vspace{-5mm}
@@ -26,18 +27,18 @@
   Each of these tools corresponds to a distinct module that recapitulates the relevant analyses.
   All such individual modules are available as part of the \ac{micone} package.
   The inputs to the pipeline by default are raw untrimmed 16S rRNA sequence reads, but the software can be alternatively configured to use trimmed sequences, \ac{otu} tables and other types of intermediate data (see documentation).
-  The easy-to-use nature, the configurability and modular nature of the \ac{micone} package enables users to start and end the pipeline at any point in the workflow, and to run parts of the pipeline in isolation.
-  The pipeline supports both paired end and single end reads, and additionally supports independently processing reads from multiple runs and merging the OTU tables in the DC step.
+  The configuration and modular nature of the \ac{micone} package enables users to start and end the pipeline at any point in the workflow, and to run parts of the pipeline in isolation.
+  The pipeline supports both paired-end and single-end reads, and additionally supports independently processing reads from multiple runs and merging the OTU tables in the DC step.
   The final output of the pipeline is the inferred network of co-occurrence relationships among the microbes present in the samples.
 
   The \ac{micone} pipeline provides both a Python API together with a command-line interface and only uses a single configuration file (\texttt{nextflow.config}) to encode the configuration parameters.
-  The \ac{micone} Python API provides several \ac{otu} table and network related functions and methods, enabling detailed comparison of counts tables and inferred networks if desired.
+  The \ac{micone} Python API provides several \ac{otu} table and network-related functions and methods, enabling detailed comparison of counts tables and inferred networks if desired.
   Exploring the effects of these combinations of methods on the resultant networks is difficult and inconvenient since different tools differ in their input and output formats and require interconversions between the various formats.
   The pipeline facilitates this comparative exploration by providing a variety of modules for interconversion between various formats, and by allowing for easy incorporation of new tools as modules.
   It also contains helper functions that can help in parsing taxonomies and communicate with the \ac{ncbi} taxonomy database to query taxonomy by name or taxonomic IDs.
-  The configuration file along with the run file (\texttt{main.nf}) lists the inputs, output and the steps to be performed during runtime, along with the parameters to be used (if different from defaults) for the various steps.
+  The configuration file along with the run file (\texttt{main.nf}) lists the inputs, output, and the steps to be performed during runtime, along with the parameters to be used (if different from defaults) for the various steps.
   Since the entire pipeline run is stored in the form of a text file (the configuration file), subsequent runs are highly reproducible and changes can be easily tracked using version control.
-  It makes use the nextflow workflow manager~\cite{Tommaso2015} under the hood, making it readily usable on the local machine, cluster or cloud with minimal configuration change.
+  It makes use of the nextflow workflow manager~\cite{Tommaso2015} under the hood, making it readily usable on the local machine, cluster, or cloud with minimal configuration change.
   It also allows for automatic parallelization of all possible processes, both within and across samples.
   The pipeline is designed to be modular: each tool or method is organized into modules which can be easily modified or replaced.
   This modular architecture simplifies the process of adding new tools (refer to modules section in the \ac{micone} documentation).
@@ -65,6 +66,7 @@
   The options currently available in the pipeline for denoising and clustering are: open reference clustering, closed reference clustering and de novo clustering methods from the vsearch plugin of \ac{qiime2} v2021.8.0~\cite{bolyenReproducibleInteractiveScalable2019} and denoising methods from \ac{dada2} v1.14~\cite{Callahan2016} (from the \ac{dada2} R package) and Deblur v1.1.0~\cite{Amir2017} (from the deblur plugin of \ac{qiime2}).
   The quality filtering and chimera checking tools are derived from those used in \ac{qiime2} v2021.8.0 (uchime-denovo method) and \ac{dada2} (remove bimera method).
   The list of tools used in this step, along with their modules and references are provided in Table~\ref{tab:micone_tools}.
+  In all UniFrac comparisons, we set a count threshold of 10, such that if the count of the representative sequences in a particular sample is less than the threshold, it is omitted from the analysis.
 
   \subsection*{Taxonomy Assignment (TA)}
   \vspace{-5mm}
@@ -112,11 +114,13 @@
 
   A null model is created by re-sampling and bootstrapping the counts matrix and recalculating the correlations (see next section for details on network analysis and statistics).
   These bootstrapped association matrices are used to calculate the significance of the inferred correlations by calculating the p-values against this null model~\cite{Watts2018}.
-  The pipeline includes 4 methods for pairwise correlation metrics, and 6 methods for direct association metrics (refer Table~\ref{tab:micone_tools}).
-  The Brown's p-value merging method~\cite{brown_400_1975} is used for combining p-values from the pairwise correlations methods to obtain a consensus p-value, which can be used to filter for significance.
+  The pipeline includes 4 methods for pairwise correlation metrics, and 6 methods for direct association metrics (refer to Table~\ref{tab:micone_tools}).
+  Pairwise correlation methods involve the calculation of the correlation coefficient between each pair of nodes (taxonomic entity like Genera) leading to the inclusion of spurious indirect connections.
+  On the other hand, direct association methods use conditional independence to avoid the detection of correlated but indirectly connected taxonomic entities~\cite{Kurtz2015,Menon2018}.
+  Brown's p-value merging method~\cite{brown_400_1975} is used for combining p-values from the pairwise correlations methods to obtain a consensus p-value, which can be used to filter for significance.
   The bootstrapping and p-value calculations are only performed on the correlations-based methods.
   In the final module of this step, the consensus algorithms are used to create the final consensus network using associations from all the network inference methods (except Pearson and Spearman, by default).
-  The output of this step are co-occurrence association networks encoded in the JSON format (refer Supplementary section) and which can also be exportable to a variety of network formats.
+  The outputs of this step are co-occurrence association networks encoded in the JSON format (refer to Supplementary section) and which can also be exportable to a variety of network formats.
   The list of tools used in this step, along with their modules and references are provided in Table~\ref{tab:micone_tools}.
 
   \subsection*{Consensus network and p-value merging}
@@ -145,7 +149,7 @@
   \subsubsection*{Bootstrapping and p-value calculation}
   \vspace{-5mm}
   For all correlation-based methods $k \le w$, $1000$ permutations of the original \ac{otu} counts data were generated~\cite{Watts2018}.
-  All the direct association based methods used in the study have their own regularization methods built-in and hence do not need to undergo bootstrapping.
+  All the direct association-based methods used in the study have their own regularization methods built in and hence do not need to undergo bootstrapping.
   The correlations in the permuted \ac{otu} tables are recalculated using the different correlation-based algorithms.
   Finally, the p-value is determined based on how often a more extreme association is observed for randomly permuted data.
 
@@ -178,6 +182,7 @@
 
     Note that this method is only used to filter relevant interactions.
     If a given pair of nodes is inferred to have edges that satisfy the above relationships, all corresponding edges from the $w$ networks will be returned by the algorithm, as a multigraph.
+    Based on this approach, \ac{micone} reports as the default output, the consensus network where each edge is annotated with weights (correlations for the correlation-based methods and direct associations for the other methods) from all the methods used in the consensus algorithm.
 
   \paragraph*{Algorithm 1 - Simple voting:}
   The simple voting method performs a voting-based consensus to determine whether an edge will exist between a given node-pair in the final consensus network~\cite{bustinceFuzzySetsTheir2008,tsarevApplicationMajorityVoting2018}.
