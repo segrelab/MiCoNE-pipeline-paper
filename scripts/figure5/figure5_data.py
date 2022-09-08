@@ -163,15 +163,15 @@ def calculate_performance(
 def fix_name(name: str) -> str:
     if name.startswith("scaled_sum"):
         parameter_value = name.rsplit("_", 1)[-1]
-        return f"X:SS[{parameter_value}]"
+        return f"SS[{parameter_value}]"
     elif name.startswith("simple_voting"):
         parameter_value = name.rsplit("_", 1)[-1]
-        return f"X:SV[{parameter_value}]"
+        return f"SV[{parameter_value}]"
     elif name.startswith("pvalue_merging"):
         parameter_value = name.rsplit("_", 1)[-1]
-        return "X:PM"
+        return "PM"
     else:
-        return f"I:{name}"
+        return f"{name}"
 
 
 def get_performance_data(observations_map, predictions_map, sign) -> list:
@@ -187,7 +187,8 @@ def get_performance_data(observations_map, predictions_map, sign) -> list:
                 {
                     "factor1": dataset_name.split("_")[0],
                     "factor2": dataset_name.split("_")[1],
-                    "algorithm": fix_name(algorithm_name),
+                    "algorithm": algorithm_name.split("_", 1)[0],
+                    "title": fix_name(algorithm_name),
                     "tp": cm_dict["tp"],
                     "fp": cm_dict["fp"],
                     "tn": cm_dict["tn"],
@@ -200,10 +201,13 @@ def get_performance_data(observations_map, predictions_map, sign) -> list:
 
 
 def update_algo_name(df: pd.DataFrame) -> None:
-    algos = set(df.algorithm)
+    algos = set(df.title)
     for algo in algos:
-        avg_precision = np.nanmean(df.loc[df.algorithm == algo, "precision"])
-        df.loc[df.algorithm == algo, "algorithm"] += f", P(avg)={avg_precision:.3f}"
+        avg_precision = np.nanmean(df.loc[df.title == algo, "precision"])
+        avg_sensitivity = np.nanmean(df.loc[df.title == algo, "sensitivity"])
+        df.loc[
+            df.title == algo, "title"
+        ] += f"\nP(avg)={avg_precision:.3f}, S(avg)={avg_sensitivity:.3f}"
 
 
 @click.command()
