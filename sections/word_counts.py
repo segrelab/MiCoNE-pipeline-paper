@@ -4,11 +4,12 @@ import subprocess
 
 def main(files: list[pathlib.Path]) -> None:
     for file in files:
-        cmd = f"detex {file} | wc -w"
+        cmd = f"texcount -brief {file}"
         process_output = subprocess.run(
             cmd, shell=True, capture_output=True, text=True
         ).stdout.strip()
-        print(f"{file.name} has {process_output} words")
+        word_count = eval(process_output.split(" ")[0])
+        print(f"{file.name} has {word_count} words")
 
 
 if __name__ == "__main__":
