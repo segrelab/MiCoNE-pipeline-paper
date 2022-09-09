@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-cd ../figure6/
+cd ../figure_s6/
 rm -f *.pkl
 mkdir -pv "../../data/figure_s7/output/seqtime"
-python -W ignore figure6_data.py \
-  --files "../../data/figure6/input/seqtime/**/*.json" \
+python -W ignore figure_s6_data.py \
+  --files "../../data/figure5/input/seqtime/**/*.json" \
   --interaction_threshold 0.1 \
   --pvalue_threshold 0.05 \
   --sign True \
