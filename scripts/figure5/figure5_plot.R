@@ -31,29 +31,36 @@ plot_scatter <- function(data) {
         )
 }
 
+plot_boxplot <- function(data, title) {
+    my_comparisons <- list(c("spieceasi", "SS[0.667]"), c("spieceasi", "SV[1.000]"))
+    precision_plot <- ggboxplot(data, x = "title", y = "precision", facet.by = "type", color = "type", add = "jitter") +
+        facet_grid(. ~ type, scales = "free", space = "free") +
+        theme_pubr() +
+        theme(
+            axis.text.x = element_text(angle = 30, hjust = 1),
+            text = element_text(size = 18),
+        ) +
+        xlab("Algorithm") +
+        ylab("Precision") +
+        labs(title = title)
+}
+
 methods <- c("propr", "sparcc", "flashweave", "spieceasi", "SS[0.333]", "SS[0.667]", "SS[1.000]", "SV[0.333]", "SV[0.667]", "SV[1.000]")
 norta <- read.csv(norta_performance_csv, sep = ",", header = TRUE)
 norta <- subset(norta, title %in% methods)
 norta$dataset <- "NorTA"
+norta[norta["type"] == "IND", "type"] <- "Individual"
+norta[norta["type"] == "SS", "type"] <- "SS (consensus)"
+norta[norta["type"] == "SV", "type"] <- "SV (consensus)"
 seqtime <- read.csv(seqtime_performance_csv, sep = ",", header = TRUE)
 seqtime <- subset(seqtime, title %in% methods)
 seqtime$dataset <- "Seqtime"
-data <- rbind(norta, seqtime)
-data[data["type"] == "SS", "type"] <- "SS (consensus)"
-data[data["type"] == "SV", "type"] <- "SV (consensus)"
+seqtime[seqtime["type"] == "IND", "type"] <- "Individual"
+seqtime[seqtime["type"] == "SS", "type"] <- "SS (consensus)"
+seqtime[seqtime["type"] == "SV", "type"] <- "SV (consensus)"
 
-my_comparisons <- list(c("spieceasi", "SS[0.667]"), c("spieceasi", "SV[1.000]"))
-precision_plot <- ggboxplot(data, x = "title", y = "precision", color = "type", add = "jitter") +
-    facet_grid(dataset ~ type, scales = "free", space = "free") +
-    stat_compare_means(comparisons = my_comparisons) +
-    theme_pubr() +
-    theme(
-        axis.text.x = element_text(angle = 30, hjust = 1),
-        text = element_text(size = 18),
-    ) +
-    xlab("Algorithm") +
-    ylab("Precision")
-# facet_precision <- gghistogram(data, x = "precision", bins = 20, facet.by = "dataset", palette = "Set2", add = "mean", rug = TRUE, color = "type", fill = "type")
-# facet_sensitivity <- gghistogram(data, x = "sensitivity", bins = 20, facet.by = "dataset", palette = "Set2", add = "mean", rug = TRUE, color = "type", fill = "type")
-# final_plot <- ggarrange(facet_precision, facet_sensitivity, ncol = 1, common.legend = TRUE, legend = "right")
+plot_norta <- plot_boxplot(norta, "NorTA")
+plot_seqtime <- plot_boxplot(seqtime, "Seqtime")
+
+final_plot <- ggarrange(plot_norta, plot_seqtime, ncol = 1, labels = c("A", "B"), common.legend = TRUE, legend = "right")
 ggsave(output_file, width = 14, height = 12)
