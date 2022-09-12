@@ -56,9 +56,7 @@ def get_consensus(
         "spring",
     ]
     consensus_methods = ["simple_voting", "scaled_sum"]
-    consensus_parameters = np.linspace(
-        0, 1, (len(corr_methods) + len(direct_methods) + 1) // 2
-    )
+    consensus_parameters = [0.333, 0.667, 1.000]
     pvalue_mergers_map: Dict[str, Dict[str, NetworkGroup]] = defaultdict(dict)
     consensus1_map: Dict[str, Dict[str, NetworkGroup]] = defaultdict(dict)
     consensus2_map: Dict[str, Dict[str, NetworkGroup]] = defaultdict(dict)
@@ -160,6 +158,17 @@ def calculate_performance(
     return cm_dict, precision, sensitivity
 
 
+def get_type(name: str) -> str:
+    if name.startswith("scaled_sum"):
+        return "SS"
+    elif name.startswith("simple_voting"):
+        return "SV"
+    elif name.startswith("pvalue_merging"):
+        return "PM"
+    else:
+        return "IND"
+
+
 def fix_name(name: str) -> str:
     if name.startswith("scaled_sum"):
         parameter_value = name.rsplit("_", 1)[-1]
@@ -187,7 +196,8 @@ def get_performance_data(observations_map, predictions_map, sign) -> list:
                 {
                     "factor1": dataset_name.split("_")[0],
                     "factor2": dataset_name.split("_")[1],
-                    "algorithm": algorithm_name.split("_", 1)[0],
+                    "algorithm": algorithm_name,
+                    "type": get_type(algorithm_name),
                     "title": fix_name(algorithm_name),
                     "tp": cm_dict["tp"],
                     "fp": cm_dict["fp"],
@@ -198,16 +208,6 @@ def get_performance_data(observations_map, predictions_map, sign) -> list:
                 }
             )
     return data
-
-
-def update_algo_name(df: pd.DataFrame) -> None:
-    algos = set(df.title)
-    for algo in algos:
-        avg_precision = np.nanmean(df.loc[df.title == algo, "precision"])
-        avg_sensitivity = np.nanmean(df.loc[df.title == algo, "sensitivity"])
-        df.loc[
-            df.title == algo, "title"
-        ] += f"\nP(avg)={avg_precision:.3f}, S(avg)={avg_sensitivity:.3f}"
 
 
 @click.command()
@@ -240,8 +240,9 @@ def main(
     assert output_path.exists()
 
     # Step1 and 2: Get observations and predictions
+    dataset_name = output_path.stem
     print("Step1 and 2: Get observations and predictions")
-    step_1_2_pickle = pathlib.Path("step_1_2.pkl")
+    step_1_2_pickle = pathlib.Path(f"{dataset_name}_step_1_2.pkl")
     if step_1_2_pickle.exists():
         with open(step_1_2_pickle, "rb") as fid:
             predictions_map = pickle.load(fid)
@@ -272,7 +273,7 @@ def main(
 
     # Step3: Calculate consensus using predictions_map
     print("Step3: Calculate consensus using predictions_map")
-    step_3_pickle = pathlib.Path("step_3.pkl")
+    step_3_pickle = pathlib.Path(f"{dataset_name}_step_3.pkl")
     if step_3_pickle.exists():
         with open(step_3_pickle, "rb") as fid:
             pvalue_mergers_map = pickle.load(fid)
@@ -289,7 +290,7 @@ def main(
 
     # Step4: Calculate precision and sensitivity for all
     print("Step4: Calculate precision and sensitivity for all")
-    step_4_pickle = pathlib.Path("step_4.pkl")
+    step_4_pickle = pathlib.Path(f"{dataset_name}_step_4.pkl")
     if step_4_pickle.exists():
         with open(step_4_pickle, "rb") as fid:
             df = pickle.load(fid)
@@ -300,7 +301,6 @@ def main(
         data.extend(get_performance_data(observations_map, consensus1_map, sign))
         data.extend(get_performance_data(observations_map, consensus2_map, sign))
         df = pd.DataFrame(data)
-        update_algo_name(df)
         with open(step_4_pickle, "wb") as fid:
             pickle.dump(df, fid)
     df.to_csv(output_path / "performance.csv", index=False, sep=",")
