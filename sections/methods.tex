@@ -79,6 +79,7 @@
   The three databases vastly differ in terms of their last update status - \ac{gg} was last updated on May 2013, SILVA was last updated on August 2020 at the time of writing and \ac{ncbi} is updated regularly as new sequences are curated.
   These databases were downloaded and built using the RESCRIPt \ac{qiime2} plugin~\cite{iiRESCRIPtReproducibleSequence2021}.
   The Naive Bayes classifier and the \ac{ncbi} blast used as the query tools in this study were from the \ac{qiime2} package and the parameters used were the defaults of the package.
+  During the assignment, a representative sequence might be assigned an "unknown" Genus for one of two reasons: the first is if the taxonomy identifier associated with the sequence in the database did not contain a given Genus; the second, more likely reason, is that the database contains multiple sequences that are very similar to the query (representative) sequence and the consensus algorithm (from \ac{qiime2}) is unable to assign one particular Genus at the required confidence.
   The consensus algorithm used is the default method used by the classifiers in \ac{qiime2}.
   The assignment between SILVA and the other two databases were originally significantly different ($40\%$ mismatch) even at the Phylum level.
   However, this was fixed by making minor adjustments to the taxonomic names, such as changing Bacteroidota to Bacteroidetes in the SILVA Phylum assignments.
@@ -124,6 +125,11 @@
   The list of tools used in this step, along with their modules and references are provided in Table~\ref{tab:micone_tools}.
 
   \subsection*{Consensus network and p-value merging}
+  The consensus methods combine networks inferred from both correlation-based and direct association methods. 
+  First, for the correlation-based methods, we calculate p-values using null models and then merge the p-values using Brown's p-value merging method~\cite{Poole_Gibbs_Shmulevich_Bernard_Knijnenburg_2016,faustCoNetAppInference2016} (see Methods).
+  Second, we filter all the inferred networks based on an association strength threshold of 0.1 and a p-value cutoff of 0.05.
+  Finally, we apply the consensus algorithms we have developed on these filtered networks.
+  These steps are elaborated on in the subsequent sections.
 
  \subsubsection*{Notation}
   \vspace{-5mm}
@@ -149,7 +155,7 @@
   \subsubsection*{Bootstrapping and p-value calculation}
   \vspace{-5mm}
   For all correlation-based methods $k \le w$, $1000$ permutations of the original \ac{otu} counts data were generated~\cite{Watts2018}.
-  All the direct association-based methods used in the study have their own regularization methods built in and hence do not need to undergo bootstrapping.
+  All the direct association-based methods used in the study have their own regularization methods built-in and hence do not need to undergo bootstrapping.
   The correlations in the permuted \ac{otu} tables are recalculated using the different correlation-based algorithms.
   Finally, the p-value is determined based on how often a more extreme association is observed for randomly permuted data.
 
