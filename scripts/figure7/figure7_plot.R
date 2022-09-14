@@ -31,7 +31,7 @@ clustering_gml <- paste0(data_folder1, "DC_closed_reference(gg_97).gml")
 chimera_checking_gml <- paste0(data_folder1, "CC_uchime.gml")
 database_gml <- paste0(data_folder1, "TA_blast(ncbi).gml")
 otu_filtering_gml <- paste0(data_folder1, "OP_normalize_filter(off).gml")
-network_inference_gml <- paste0(data_folder1, "NI_sparcc.gml")
+# network_inference_gml <- paste0(data_folder1, "NI_sparcc.gml")
 l1_distance_csv <- paste0(data_folder1, "l1_distance_to_ref.csv")
 edit_distance_csv <- paste0(data_folder1, "edit_distance_to_ref.csv")
 combined_gml_2 <- paste0(data_folder2, "combined.gml")
@@ -106,11 +106,11 @@ clustering_plot <- plot_network(clustering_gml, combined_layout, 0.3, "DC=CR", p
 chimera_checking_plot <- plot_network(chimera_checking_gml, combined_layout, 0.3, "CC=uchime", palette, 4)
 database_plot <- plot_network(database_gml, combined_layout, 0.3, "TA=BLAST(NCBI)", palette, 2)
 otu_filtering_plot <- plot_network(otu_filtering_gml, combined_layout, 0.3, "OP=Filter(off)", palette, 4)
-network_inference_plot <- plot_network(network_inference_gml, combined_layout, 0.3, "NI=SparCC", palette, 5)
-legend_grob <- get_legend(network_inference_plot)
+legend_grob <- get_legend(otu_filtering_plot)
+# network_inference_plot <- plot_network(network_inference_gml, combined_layout, 0.3, "NI=SparCC", palette, 5)
 
 combined_plot <- ggarrange(
-    default_plot, database_plot, chimera_checking_plot, clustering_plot, otu_filtering_plot, network_inference_plot,
+    default_plot, database_plot, chimera_checking_plot, clustering_plot, otu_filtering_plot,
     ncol = 3, nrow = 2, common.legend = TRUE, legend = "right", legend.grob = legend_grob
 )
 a_plot <- annotate_figure(combined_plot, fig.lab = "A", fig.lab.pos = "top.left", fig.lab.size = 20)
@@ -164,10 +164,10 @@ plot_network_c <- function(network_file, combined_layout, interaction_threshold,
   graph_layout <- data.frame(temp_layout)
   graph_layout$x <- combined_layout[match_inds,]$x
   graph_layout$y <- combined_layout[match_inds,]$y
-  lo <- data.matrix(graph_layout[, c("x", "y")])
-  angle <- as_tibble(cart2pol(lo)) %>% mutate(degree=phi*180/phi)
+  # lo <- data.matrix(graph_layout[, c("x", "y")])
+  # angle <- as_tibble(cart2pol(lo)) %>% mutate(degree=phi*180/phi)
   graph_plot <- ggraph(graph = graph, layout = "manual", x = graph_layout$x, y = graph_layout$y) +
-    geom_edge_arc(aes(color=color, edge_linetype=color, edge_alpha=color)) +
+    geom_edge_link(aes(color=color, edge_linetype=color, edge_alpha=color)) +
     # geom_node_point(aes(color=factor(colorkey))) +
     geom_node_point() +
     geom_node_text(aes(label = name), size=2, repel=TRUE, angle=0) +
@@ -198,9 +198,9 @@ plot_network_c <- function(network_file, combined_layout, interaction_threshold,
     )
 }
 
-combined_graph_1 <- read_graph(combined_gml, format = "gml")
+combined_graph_1 <- read_graph(default_gml, format = "gml")
 # combined_layout_1 <- create_layout(graph = combined_graph_1, layout = "linear", circular = TRUE)
-combined_graph_2 <- read_graph(combined_gml_2, format = "gml")
+combined_graph_2 <- read_graph(default_gml_2, format = "gml")
 # combined_layout_2 <- create_layout(graph = combined_graph_2, layout = "linear", circular = TRUE)
 combined_graph_z <- union(combined_graph_1, combined_graph_2)
 combined_layout_z <- create_layout(graph = combined_graph_z, layout = "fr")

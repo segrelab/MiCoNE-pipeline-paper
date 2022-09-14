@@ -74,7 +74,7 @@
   In order to assign taxonomies to a particular sequence a taxonomy database and a query tool are necessary.
   The taxonomy database contains the collection of 16S sequences of microorganisms of interest and the query tool allows one to compare a sequence of interest to all the sequences in the database to identify the best matches.
   Finally, a consensus method is used to identify the most probable match from the list of best matches.
-  The pipeline incorporates \ac{gg} 13\_8~\cite{DeSantis2006}, SILVA 138~\cite{Quast2012} and the \ac{ncbi} (16S RefSeq as of Oct 2021)~\cite{Sayers2009} databases for taxonomy assignment.
+  The pipeline incorporates \ac{gg} 13\_8~\cite{DeSantis2006} (99\% identity), SILVA 138~\cite{Quast2012} (99\% identity) and the \ac{ncbi} (16S RefSeq as of Oct 2021)~\cite{Sayers2009} databases for taxonomy assignment.
   SILVA and \ac{gg} are two popular 16S databases used for taxonomy identification and the \ac{ncbi} RefSeq nucleotide database contains 16S rRNA sequences as a part of two BioProjects - 33175 and 33317.
   The three databases vastly differ in terms of their last update status - \ac{gg} was last updated on May 2013, SILVA was last updated on August 2020 at the time of writing and \ac{ncbi} is updated regularly as new sequences are curated.
   These databases were downloaded and built using the RESCRIPt \ac{qiime2} plugin~\cite{iiRESCRIPtReproducibleSequence2021}.
@@ -125,7 +125,7 @@
   The list of tools used in this step, along with their modules and references are provided in Table~\ref{tab:micone_tools}.
 
   \subsection*{Consensus network and p-value merging}
-  The consensus methods combine networks inferred from both correlation-based and direct association methods. 
+  The consensus methods combine networks inferred from both correlation-based and direct association methods.
   First, for the correlation-based methods, we calculate p-values using null models and then merge the p-values using Brown's p-value merging method~\cite{Poole_Gibbs_Shmulevich_Bernard_Knijnenburg_2016,faustCoNetAppInference2016} (see Methods).
   Second, we filter all the inferred networks based on an association strength threshold of 0.1 and a p-value cutoff of 0.05.
   Finally, we apply the consensus algorithms we have developed on these filtered networks.

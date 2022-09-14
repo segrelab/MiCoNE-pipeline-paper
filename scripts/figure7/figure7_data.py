@@ -224,10 +224,12 @@ def main(
         "CC": dict(),
         "TA": dict(),
         "OP": dict(),
-        "NI": dict(),
+        # "NI": dict(),
     }
     for step_folder in tqdm(list(folder.iterdir())):
         step_name = step_folder.stem
+        if step_name == "NI":
+            continue
         assert step_name in networks_dict
         for process_folder in step_folder.iterdir():
             process_name = process_folder.stem
@@ -268,7 +270,7 @@ def main(
         f"CC_{cc}": networks_dict["CC"][cc],
         f"TA_{ta}": networks_dict["TA"][ta],
         f"OP_{op}": networks_dict["OP"][op],
-        f"NI_{ni}": networks_dict["NI"][ni],
+        # f"NI_{ni}": networks_dict["NI"][ni],
         "default": networks_dict["default"]["default"],
     }
     nodes, edges = write_networks(
