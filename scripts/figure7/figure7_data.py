@@ -157,6 +157,28 @@ def write_l1_distance(networks_dict: dict, output_directory):
     fname = output_directory / "l1_distance_to_ref.csv"
     df.to_csv(fname, sep=",", index=False)
 
+def write_edit_distance(networks_dict: dict, output_directory):
+    data = []
+    default_network = networks_dict["default"]["default"]
+    default_graph = default_network.graph
+    for step_name, step_network_dict in tqdm(networks_dict.items()):
+        if step_name == "default":
+            continue
+        for process_name, process_network in step_network_dict.items():
+            process_graph = process_network.graph
+            approx_edits = nx.optimize_graph_edit_distance(default_graph, process_graph)
+            edit_distance = next(approx_edits)
+            data.append(
+                {
+                    "step": step_name,
+                    "process": process_name,
+                    "edit_distance": edit_distance,
+                }
+            )
+    df = pd.DataFrame(data)
+    fname = output_directory / "edit_distance_to_ref.csv"
+    df.to_csv(fname, sep=",", index=False)
+
 
 @click.command()
 @click.option(
@@ -253,6 +275,7 @@ def main(
         networks_choice_dict, multigraph, color_key_level, output_path
     )
     write_l1_distance(networks_dict, output_directory=output_path)
+    write_edit_distance(networks_dict, output_directory=output_path)
 
 
 if __name__ == "__main__":

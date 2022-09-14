@@ -33,6 +33,7 @@ database_gml <- paste0(data_folder1, "TA_blast(ncbi).gml")
 otu_filtering_gml <- paste0(data_folder1, "OP_normalize_filter(off).gml")
 network_inference_gml <- paste0(data_folder1, "NI_sparcc.gml")
 l1_distance_csv <- paste0(data_folder1, "l1_distance_to_ref.csv")
+edit_distance_csv <- paste0(data_folder1, "edit_distance_to_ref.csv")
 combined_gml_2 <- paste0(data_folder2, "combined.gml")
 default_gml_2 <- paste0(data_folder2, "default.gml")
 output_file <- paste0(output_folder, "figure7.pdf")
@@ -121,20 +122,20 @@ ggsave(output_file_a, width = 11, height = 5.5)
 #########################################
 # b
 #########################################
-l1_data <- read.csv(l1_distance_csv, header = TRUE, sep = ",")
-l1_data[l1_data == "open_reference(gg_97)"] <- "OR"
-l1_data[l1_data == "closed_reference(gg_97)"] <- "CR"
-l1_data[l1_data == "de_novo"] <- "DN"
-l1_data[l1_data == "dada2"] <- "D2"
-l1_data[l1_data == "deblur"] <- "DB"
-l1_data[l1_data == "naive_bayes(silva_138_99)"] <- "NaiveBayes(SILVA)"
-l1_data[l1_data == "blast(ncbi)"] <- "BLAST(NCBI)"
-l1_data[l1_data == "normalize_filter(on)"] <- "Filter(on)"
-l1_data[l1_data == "normalize_filter(off)"] <- "Filter(off)"
+edit_data <- read.csv(edit_distance_csv, header = TRUE, sep = ",")
+edit_data[edit_data == "open_reference(gg_97)"] <- "OR"
+edit_data[edit_data == "closed_reference(gg_97)"] <- "CR"
+edit_data[edit_data == "de_novo"] <- "DN"
+edit_data[edit_data == "dada2"] <- "D2"
+edit_data[edit_data == "deblur"] <- "DB"
+edit_data[edit_data == "naive_bayes(silva_138_99)"] <- "NaiveBayes(SILVA)"
+edit_data[edit_data == "blast(ncbi)"] <- "BLAST(NCBI)"
+edit_data[edit_data == "normalize_filter(on)"] <- "Filter(on)"
+edit_data[edit_data == "normalize_filter(off)"] <- "Filter(off)"
 
-box_plot <- ggboxplot(
-    l1_data,
-    x = "step", y = "l1_distance", label = "process", repel = TRUE, order = c("DC", "CC", "TA", "OP", "NI"), color = "step", add = "jitter", palette = "Set2", ylab = "L1 distance", xlab = "Pipeline step"
+box_plot <- ggdotplot(
+    edit_data,
+    x = "step", y = "edit_distance", label = "process", repel = TRUE, order = c("DC", "CC", "TA", "OP", "NI"), fill = "step", add = "jitter", palette = "Set2", ylab = "edit distance", xlab = "Pipeline step"
 ) +
 theme(
     text = element_text(size = 18),
@@ -158,14 +159,14 @@ plot_network_c <- function(network_file, combined_layout, interaction_threshold,
     activate(nodes) %>%
     mutate(isolated=node_is_isolated()) %>%
     filter(isolated==FALSE)
-  temp_layout <- create_layout(graph=graph, layout="linear", circular=TRUE)
+  temp_layout <- create_layout(graph=graph, layout="kk")
   match_inds <- match(temp_layout$name, combined_layout$name)
   graph_layout <- data.frame(temp_layout)
   graph_layout$x <- combined_layout[match_inds,]$x
   graph_layout$y <- combined_layout[match_inds,]$y
   lo <- data.matrix(graph_layout[, c("x", "y")])
   angle <- as_tibble(cart2pol(lo)) %>% mutate(degree=phi*180/phi)
-  graph_plot <- ggraph(graph = graph, layout = "manual", x = graph_layout$x, y = graph_layout$y, circular = TRUE) +
+  graph_plot <- ggraph(graph = graph, layout = "manual", x = graph_layout$x, y = graph_layout$y) +
     geom_edge_arc(aes(color=color, edge_linetype=color, edge_alpha=color)) +
     # geom_node_point(aes(color=factor(colorkey))) +
     geom_node_point() +
@@ -202,7 +203,7 @@ combined_graph_1 <- read_graph(combined_gml, format = "gml")
 combined_graph_2 <- read_graph(combined_gml_2, format = "gml")
 # combined_layout_2 <- create_layout(graph = combined_graph_2, layout = "linear", circular = TRUE)
 combined_graph_z <- union(combined_graph_1, combined_graph_2)
-combined_layout_z <- create_layout(graph = combined_graph_z, layout = "linear", circular = TRUE)
+combined_layout_z <- create_layout(graph = combined_graph_z, layout = "fr")
 
 palette <- brewer.pal(n = 6, name = "Pastel1")
 default_plot_1 <- plot_network_c(default_gml, combined_layout_z, 0.05, 0.05, "Control", palette[[1]])

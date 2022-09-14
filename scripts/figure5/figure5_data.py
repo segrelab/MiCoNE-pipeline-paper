@@ -240,9 +240,9 @@ def main(
     assert output_path.exists()
 
     # Step1 and 2: Get observations and predictions
-    dataset_name = output_path.stem
+    synth_method_name = output_path.stem
     print("Step1 and 2: Get observations and predictions")
-    step_1_2_pickle = pathlib.Path(f"{dataset_name}_step_1_2.pkl")
+    step_1_2_pickle = pathlib.Path(f"{synth_method_name}_step_1_2.pkl")
     if step_1_2_pickle.exists():
         with open(step_1_2_pickle, "rb") as fid:
             predictions_map = pickle.load(fid)
@@ -273,7 +273,7 @@ def main(
 
     # Step3: Calculate consensus using predictions_map
     print("Step3: Calculate consensus using predictions_map")
-    step_3_pickle = pathlib.Path(f"{dataset_name}_step_3.pkl")
+    step_3_pickle = pathlib.Path(f"{synth_method_name}_step_3.pkl")
     if step_3_pickle.exists():
         with open(step_3_pickle, "rb") as fid:
             pvalue_mergers_map = pickle.load(fid)
@@ -290,7 +290,7 @@ def main(
 
     # Step4: Calculate precision and sensitivity for all
     print("Step4: Calculate precision and sensitivity for all")
-    step_4_pickle = pathlib.Path(f"{dataset_name}_step_4.pkl")
+    step_4_pickle = pathlib.Path(f"{synth_method_name}_step_4.pkl")
     if step_4_pickle.exists():
         with open(step_4_pickle, "rb") as fid:
             df = pickle.load(fid)
