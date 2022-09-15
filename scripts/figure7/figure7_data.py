@@ -12,8 +12,16 @@ from tqdm import tqdm
 from micone import Network, NetworkGroup, Lineage
 
 
+def fix_title(title: str):
+    try:
+        step, tool = title.split("_", 1)
+    except:
+        return title
+    return f"{step}={tool}"
+
+
 def write_networks(networks_dict, multigraph, color_key_level, output_path):
-    combined_graph = nx.Graph()
+    combined_graph = nx.MultiGraph()
     default_graph = networks_dict["default"].graph
     for network_name, network in tqdm(networks_dict.items()):
         graph = network.graph
@@ -53,7 +61,11 @@ def write_networks(networks_dict, multigraph, color_key_level, output_path):
                 layer="foreground",
             )
             combined_graph.add_edge(
-                source_name, target_name, weight=weight, pvalue=pvalue
+                source_name,
+                target_name,
+                weight=weight,
+                pvalue=pvalue,
+                title=f"{fix_title(network_name)}",
             )
         id_name_map = dict()
         if network_name != "default":
@@ -156,6 +168,7 @@ def write_l1_distance(networks_dict: dict, output_directory):
     df = pd.DataFrame(data)
     fname = output_directory / "l1_distance_to_ref.csv"
     df.to_csv(fname, sep=",", index=False)
+
 
 def write_edit_distance(networks_dict: dict, output_directory):
     data = []

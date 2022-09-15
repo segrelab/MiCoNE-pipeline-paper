@@ -52,36 +52,33 @@ get_edgestyle <- function(x) {
     sapply(x, function(y) if (y > 0) "solid" else "dashed")
 }
 
+get_layer <- function(x) {
+    sapply(x, function(y) if (y == "default") "#c1c1c1" else "#7570B3")
+}
 
-plot_network <- function(network_file, combined_layout, interaction_threshold, title, palette, ind) {
+
+plot_facet_network <- function(network_file, interaction_threshold) {
     graph_raw <- as_tbl_graph(read_graph(network_file, format = "gml"))
-    if (title == "default") {
-        foreground <- "#c1c1c1"
-    } else {
-        foreground <- "#7570B3"
-    }
     graph <- graph_raw %>%
         activate(edges) %>%
         filter(abs(weight) > interaction_threshold) %>%
         mutate(color = get_edgecolor(weight)) %>%
+        mutate(layer = get_layer(title)) %>%
+        mutate(step = factor(title, levels=c("default", "DC=closed_reference(gg_97)", "CC=uchime", "TA=blast(ncbi)", "OP=normalize_filter(off)"))) %>%
         activate(nodes) %>%
         mutate(isolated = node_is_isolated()) %>%
         filter(isolated == FALSE)
-    temp_layout <- create_layout(graph = graph, layout = "linear", circular = TRUE)
-    match_inds <- match(temp_layout$name, combined_layout$name)
-    graph_layout <- data.frame(temp_layout)
-    graph_layout$x <- combined_layout[match_inds, ]$x
-    graph_layout$y <- combined_layout[match_inds, ]$y
-    graph_plot <- ggraph(graph = graph, layout = "manual", x = graph_layout$x, y = graph_layout$y, circular = TRUE) +
-        geom_edge_arc(aes(color = layer, edge_linetype = color, edge_alpha = layer)) +
-        # geom_node_point(aes(color=factor(colorkey))) +
+    graph_plot <- ggraph(graph = graph, layout = "nicely") +
+        geom_edge_link(aes(color = color)) +
+        # geom_edge_link(aes(color = layer, edge_linetype = color)) +
         geom_node_point() +
-        # scale_edge_color_manual(values = c(background=palette[[1]], foreground=palette[[ind]], common="black")) +
-        scale_edge_color_manual(values = c(foreground = foreground, background = "#c1c1c1", common = "black")) +
-        scale_edge_linetype_manual(values = c(negative = "dashed", positive = "solid")) +
-        scale_edge_alpha_manual(values = c(foreground = 0.4, background = 0.4, common = 0.7)) +
-        labs(title = title) +
-        coord_fixed() +
+        facet_edges(~step, drop = FALSE) +
+    scale_edge_color_manual(values = c(negative="#d95f02", positive="#1b9e77")) +
+    scale_edge_linetype_manual(values = c(negative="solid", positive="solid")) +
+    scale_edge_alpha_manual(values = c(negative=0.6, positive=0.3)) +
+        # scale_edge_color_manual(values = c(foreground = foreground, background = "#c1c1c1", common = "black")) +
+        # scale_edge_linetype_manual(values = c(negative = "dashed", positive = "solid")) +
+        # scale_edge_alpha_manual(values = c(foreground = 0.4, background = 0.4, common = 0.7)) +
         theme_bw() +
         theme(
             legend.position = "none",
@@ -97,23 +94,22 @@ plot_network <- function(network_file, combined_layout, interaction_threshold, t
         )
 }
 
-combined_graph <- read_graph(combined_gml, format = "gml")
-combined_layout <- create_layout(graph = combined_graph, layout = "linear", circular = TRUE)
+a_plot <- plot_facet_network(combined_gml, 0.0)
 
-palette <- brewer.pal(n = 6, name = "Pastel1")
-default_plot <- plot_network(default_gml, combined_layout, 0.3, "default", palette, 1)
-clustering_plot <- plot_network(clustering_gml, combined_layout, 0.3, "DC=CR", palette, 3)
-chimera_checking_plot <- plot_network(chimera_checking_gml, combined_layout, 0.3, "CC=uchime", palette, 4)
-database_plot <- plot_network(database_gml, combined_layout, 0.3, "TA=BLAST(NCBI)", palette, 2)
-otu_filtering_plot <- plot_network(otu_filtering_gml, combined_layout, 0.3, "OP=Filter(off)", palette, 4)
-legend_grob <- get_legend(otu_filtering_plot)
-# network_inference_plot <- plot_network(network_inference_gml, combined_layout, 0.3, "NI=SparCC", palette, 5)
-
-combined_plot <- ggarrange(
-    default_plot, database_plot, chimera_checking_plot, clustering_plot, otu_filtering_plot,
-    ncol = 3, nrow = 2, common.legend = TRUE, legend = "right", legend.grob = legend_grob
-)
-a_plot <- annotate_figure(combined_plot, fig.lab = "A", fig.lab.pos = "top.left", fig.lab.size = 20)
+# palette <- brewer.pal(n = 6, name = "Pastel1")
+# default_plot <- plot_network(default_gml, combined_layout, 0.3, "default", palette, 1)
+# clustering_plot <- plot_network(clustering_gml, combined_layout, 0.3, "DC=CR", palette, 3)
+# chimera_checking_plot <- plot_network(chimera_checking_gml, combined_layout, 0.3, "CC=uchime", palette, 4)
+# database_plot <- plot_network(database_gml, combined_layout, 0.3, "TA=BLAST(NCBI)", palette, 2)
+# otu_filtering_plot <- plot_network(otu_filtering_gml, combined_layout, 0.3, "OP=Filter(off)", palette, 4)
+# legend_grob <- get_legend(otu_filtering_plot)
+# # network_inference_plot <- plot_network(network_inference_gml, combined_layout, 0.3, "NI=SparCC", palette, 5)
+#
+# combined_plot <- ggarrange(
+#     default_plot, database_plot, chimera_checking_plot, clustering_plot, otu_filtering_plot,
+#     ncol = 3, nrow = 2, common.legend = TRUE, legend = "right", legend.grob = legend_grob
+# )
+# a_plot <- annotate_figure(combined_plot, fig.lab = "A", fig.lab.pos = "top.left", fig.lab.size = 20)
 
 ggsave(output_file_a, width = 11, height = 5.5)
 
