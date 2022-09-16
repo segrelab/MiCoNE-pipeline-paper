@@ -27,7 +27,7 @@ data_folder1 <- paste0(data_folder, dataset1, "/")
 data_folder2 <- paste0(data_folder, dataset2, "/")
 combined_gml <- paste0(data_folder1, "combined.gml")
 default_gml <- paste0(data_folder1, "default.gml")
-clustering_gml <- paste0(data_folder1, "DC_closed_reference(gg_97).gml")
+clustering_gml <- paste0(data_folder1, "DC_de_novo.gml")
 chimera_checking_gml <- paste0(data_folder1, "CC_uchime.gml")
 database_gml <- paste0(data_folder1, "TA_blast(ncbi).gml")
 otu_filtering_gml <- paste0(data_folder1, "OP_normalize_filter(off).gml")
@@ -64,24 +64,97 @@ plot_facet_network <- function(network_file, interaction_threshold) {
         filter(abs(weight) > interaction_threshold) %>%
         mutate(color = get_edgecolor(weight)) %>%
         mutate(layer = get_layer(title)) %>%
-        mutate(step = factor(title, levels=c("default", "DC=closed_reference(gg_97)", "CC=uchime", "TA=blast(ncbi)", "OP=normalize_filter(off)"))) %>%
+        mutate(step = factor(title, levels = c("default", "DC=de_novo", "CC=uchime", "TA=blast(ncbi)", "OP=normalize_filter(off)"))) %>%
+        mutate(weight = abs(weight)) %>%
         activate(nodes) %>%
-        mutate(isolated = node_is_isolated()) %>%
-        filter(isolated == FALSE)
+        filter(!node_is_isolated())
     graph_plot <- ggraph(graph = graph, layout = "nicely") +
         geom_edge_link(aes(color = color)) +
-        # geom_edge_link(aes(color = layer, edge_linetype = color)) +
         geom_node_point() +
-        facet_edges(~step, drop = FALSE) +
-    scale_edge_color_manual(values = c(negative="#d95f02", positive="#1b9e77")) +
-    scale_edge_linetype_manual(values = c(negative="solid", positive="solid")) +
-    scale_edge_alpha_manual(values = c(negative=0.6, positive=0.3)) +
-        # scale_edge_color_manual(values = c(foreground = foreground, background = "#c1c1c1", common = "black")) +
-        # scale_edge_linetype_manual(values = c(negative = "dashed", positive = "solid")) +
-        # scale_edge_alpha_manual(values = c(foreground = 0.4, background = 0.4, common = 0.7)) +
+        facet_edges(~step) +
+        scale_edge_color_manual(values = c(negative = "#d95f02", positive = "#1b9e77")) +
+        # coord_fixed() +
         theme_bw() +
         theme(
-            legend.position = "none",
+            legend.position = "bottom",
+            plot.title = element_text(hjust = 0.5),
+            axis.title = element_blank(),
+            axis.text = element_blank(),
+            axis.line = element_blank(),
+            axis.ticks = element_blank(),
+            text = element_text(size = 15),
+        )
+}
+
+a_plot <- plot_facet_network(combined_gml, 0.1)
+
+ggsave(output_file_a, width = 11, height = 5.5)
+
+
+#########################################
+# b
+#########################################
+edit_data <- read.csv(edit_distance_csv, header = TRUE, sep = ",")
+edit_data[edit_data == "de_novo"] <- "OR"
+edit_data[edit_data == "closed_reference(gg_97)"] <- "CR"
+edit_data[edit_data == "de_novo"] <- "DN"
+edit_data[edit_data == "dada2"] <- "D2"
+edit_data[edit_data == "deblur"] <- "DB"
+edit_data[edit_data == "naive_bayes(silva_138_99)"] <- "NaiveBayes(SILVA)"
+edit_data[edit_data == "blast(ncbi)"] <- "BLAST(NCBI)"
+edit_data[edit_data == "normalize_filter(on)"] <- "Filter(on)"
+edit_data[edit_data == "normalize_filter(off)"] <- "Filter(off)"
+
+box_plot <- ggdotplot(
+    edit_data,
+    x = "step", y = "edit_distance", label = "process", repel = TRUE, order = c("DC", "CC", "TA", "OP"), fill = "step", add = "jitter", palette = "Set2", ylab = "edit distance", xlab = "Pipeline step"
+) +
+    theme(
+        text = element_text(size = 18),
+    )
+
+b_plot <- annotate_figure(box_plot, fig.lab = "B", fig.lab.pos = "top.left", fig.lab.size = 20)
+
+ggsave(output_file_b, width = 11, height = 5)
+
+
+#########################################
+# c
+#########################################
+plot_network_c <- function(network_file, combined_layout, interaction_threshold, title, edgecolor) {
+    graph_raw <- as_tbl_graph(read_graph(network_file, format = "gml"))
+    graph <- graph_raw %>%
+        activate(edges) %>%
+        filter(abs(weight) > interaction_threshold) %>%
+        mutate(color = get_edgecolor(weight)) %>%
+        mutate(weight = abs(weight)) %>%
+        activate(nodes) %>%
+        filter(!node_is_isolated())
+    temp_layout <- create_layout(graph = graph, layout = "nicely")
+    match_inds <- match(temp_layout$name, combined_layout$name)
+    graph_layout <- data.frame(temp_layout)
+    graph_layout$x <- combined_layout[match_inds, ]$x
+    graph_layout$y <- combined_layout[match_inds, ]$y
+    # lo <- data.matrix(graph_layout[, c("x", "y")])
+    # angle <- as_tibble(cart2pol(lo)) %>% mutate(degree=phi*180/phi)
+    graph_plot <- ggraph(graph = graph, layout = "manual", x = graph_layout$x, y = graph_layout$y) +
+        geom_edge_link(aes(color = color)) +
+        # geom_node_point(aes(color=factor(colorkey))) +
+        geom_node_point() +
+        geom_node_text(aes(label = name), size = 2, repel = TRUE, angle = 0) +
+        # geom_node_text(aes(label = name),
+        #                size = 2,
+        #                hjust = ifelse(lo[,1] > 0, -0.2, 1.2),
+        #                angle = case_when(lo[,2] > 0 & lo[,1] > 0 ~ angle$degree,
+        #                                  lo[,2] < 0 & lo[,1] > 0 ~ angle$degree,
+        #                                  lo[,1] == 1 ~angle$degree,
+        #                                  TRUE ~ angle$degree - 180)) +
+        scale_edge_color_manual(values = c(negative = "#d95f02", positive = "#1b9e77")) +
+        labs(title = title) +
+        coord_fixed() +
+        theme_bw() +
+        theme(
+            # legend.position="none",
             plot.title = element_text(hjust = 0.5),
             axis.title = element_blank(),
             axis.text = element_blank(),
@@ -94,123 +167,22 @@ plot_facet_network <- function(network_file, interaction_threshold) {
         )
 }
 
-a_plot <- plot_facet_network(combined_gml, 0.0)
-
-# palette <- brewer.pal(n = 6, name = "Pastel1")
-# default_plot <- plot_network(default_gml, combined_layout, 0.3, "default", palette, 1)
-# clustering_plot <- plot_network(clustering_gml, combined_layout, 0.3, "DC=CR", palette, 3)
-# chimera_checking_plot <- plot_network(chimera_checking_gml, combined_layout, 0.3, "CC=uchime", palette, 4)
-# database_plot <- plot_network(database_gml, combined_layout, 0.3, "TA=BLAST(NCBI)", palette, 2)
-# otu_filtering_plot <- plot_network(otu_filtering_gml, combined_layout, 0.3, "OP=Filter(off)", palette, 4)
-# legend_grob <- get_legend(otu_filtering_plot)
-# # network_inference_plot <- plot_network(network_inference_gml, combined_layout, 0.3, "NI=SparCC", palette, 5)
-#
-# combined_plot <- ggarrange(
-#     default_plot, database_plot, chimera_checking_plot, clustering_plot, otu_filtering_plot,
-#     ncol = 3, nrow = 2, common.legend = TRUE, legend = "right", legend.grob = legend_grob
-# )
-# a_plot <- annotate_figure(combined_plot, fig.lab = "A", fig.lab.pos = "top.left", fig.lab.size = 20)
-
-ggsave(output_file_a, width = 11, height = 5.5)
-
-
-
-#########################################
-# b
-#########################################
-edit_data <- read.csv(edit_distance_csv, header = TRUE, sep = ",")
-edit_data[edit_data == "open_reference(gg_97)"] <- "OR"
-edit_data[edit_data == "closed_reference(gg_97)"] <- "CR"
-edit_data[edit_data == "de_novo"] <- "DN"
-edit_data[edit_data == "dada2"] <- "D2"
-edit_data[edit_data == "deblur"] <- "DB"
-edit_data[edit_data == "naive_bayes(silva_138_99)"] <- "NaiveBayes(SILVA)"
-edit_data[edit_data == "blast(ncbi)"] <- "BLAST(NCBI)"
-edit_data[edit_data == "normalize_filter(on)"] <- "Filter(on)"
-edit_data[edit_data == "normalize_filter(off)"] <- "Filter(off)"
-
-box_plot <- ggdotplot(
-    edit_data,
-    x = "step", y = "edit_distance", label = "process", repel = TRUE, order = c("DC", "CC", "TA", "OP", "NI"), fill = "step", add = "jitter", palette = "Set2", ylab = "edit distance", xlab = "Pipeline step"
-) +
-theme(
-    text = element_text(size = 18),
-)
-
-b_plot <- annotate_figure(box_plot, fig.lab = "B", fig.lab.pos = "top.left", fig.lab.size = 20)
-
-ggsave(output_file_b, width = 11, height = 5)
-
-
-#########################################
-# c
-#########################################
-plot_network_c <- function(network_file, combined_layout, interaction_threshold, pvalue_threshold, title, edgecolor) {
-  graph_raw <- as_tbl_graph(read_graph(network_file, format="gml"))
-  graph <- graph_raw %>%
-    activate(edges) %>%
-    # filter(pvalue < pvalue_threshold) %>%
-    # filter(abs(weight) > interaction_threshold) %>%
-    mutate(color=get_edgecolor(weight)) %>%
-    activate(nodes) %>%
-    mutate(isolated=node_is_isolated()) %>%
-    filter(isolated==FALSE)
-  temp_layout <- create_layout(graph=graph, layout="kk")
-  match_inds <- match(temp_layout$name, combined_layout$name)
-  graph_layout <- data.frame(temp_layout)
-  graph_layout$x <- combined_layout[match_inds,]$x
-  graph_layout$y <- combined_layout[match_inds,]$y
-  # lo <- data.matrix(graph_layout[, c("x", "y")])
-  # angle <- as_tibble(cart2pol(lo)) %>% mutate(degree=phi*180/phi)
-  graph_plot <- ggraph(graph = graph, layout = "manual", x = graph_layout$x, y = graph_layout$y) +
-    geom_edge_link(aes(color=color, edge_linetype=color, edge_alpha=color)) +
-    # geom_node_point(aes(color=factor(colorkey))) +
-    geom_node_point() +
-    geom_node_text(aes(label = name), size=2, repel=TRUE, angle=0) +
-      # geom_node_text(aes(label = name),
-      #                size = 2,
-      #                hjust = ifelse(lo[,1] > 0, -0.2, 1.2),
-      #                angle = case_when(lo[,2] > 0 & lo[,1] > 0 ~ angle$degree,
-      #                                  lo[,2] < 0 & lo[,1] > 0 ~ angle$degree,
-      #                                  lo[,1] == 1 ~angle$degree,
-      #                                  TRUE ~ angle$degree - 180)) +
-    scale_edge_color_manual(values = c(negative="#d95f02", positive="#1b9e77")) +
-    scale_edge_linetype_manual(values = c(negative="solid", positive="solid")) +
-    scale_edge_alpha_manual(values = c(negative=0.6, positive=0.3)) +
-    labs(title=title) +
-    coord_fixed() +
-    theme_bw() +
-    theme(
-        # legend.position="none",
-        plot.title=element_text(hjust=0.5),
-        axis.title=element_blank(),
-        axis.text=element_blank(),
-        axis.line=element_blank(),
-        axis.ticks=element_blank(),
-        panel.background=element_blank(),
-        panel.border=element_blank(),
-        panel.grid=element_blank(),
-        text = element_text(size = 15),
-    )
-}
-
 combined_graph_1 <- read_graph(default_gml, format = "gml")
 # combined_layout_1 <- create_layout(graph = combined_graph_1, layout = "linear", circular = TRUE)
 combined_graph_2 <- read_graph(default_gml_2, format = "gml")
 # combined_layout_2 <- create_layout(graph = combined_graph_2, layout = "linear", circular = TRUE)
 combined_graph_z <- union(combined_graph_1, combined_graph_2)
-combined_layout_z <- create_layout(graph = combined_graph_z, layout = "fr")
+combined_layout_z <- create_layout(graph = combined_graph_z, layout = "nicely")
 
 palette <- brewer.pal(n = 6, name = "Pastel1")
-default_plot_1 <- plot_network_c(default_gml, combined_layout_z, 0.05, 0.05, "Control", palette[[1]])
-default_plot_2 <- plot_network_c(default_gml_2, combined_layout_z, 0.05, 0.05, "Autism", palette[[2]])
-c_plot <- ggarrange(default_plot_1, default_plot_2, ncol=2, nrow=1, common.legend=TRUE, legend="bottom")
+default_plot_1 <- plot_network_c(default_gml, combined_layout_z, 0.1, "Control", palette[[1]])
+default_plot_2 <- plot_network_c(default_gml_2, combined_layout_z, 0.1, "Autism", palette[[2]])
+c_plot <- ggarrange(default_plot_1, default_plot_2, ncol = 2, nrow = 1, common.legend = TRUE, legend = "bottom")
 
 ggsave(output_file_c, width = 11, height = 5)
 
-c_plot <- annotate_figure(c_plot, fig.lab="C", fig.lab.pos="top.left", fig.lab.size=20)
+c_plot <- annotate_figure(c_plot, fig.lab = "C", fig.lab.pos = "top.left", fig.lab.size = 20)
 
 
 final_plot <- ggarrange(a_plot, b_plot, c_plot, ncol = 1)
 ggsave(output_file, width = 11, height = 14)
-

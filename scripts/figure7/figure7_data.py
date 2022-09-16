@@ -267,13 +267,14 @@ def main(
                 network_group = NetworkGroup(networks_for_consensus)
             cids = list(range(len(network_group.contexts)))
             consensus_network = network_group.get_consensus_network(
-                cids, method="scaled_sum", parameter=0.5
+                cids, method="scaled_sum", parameter=0.333
             )
             # STEP3: Create a simple graph version of the consensus
             simple_consensus = consensus_network.to_network()
             simple_consensus.interaction_threshold = 0.1
-            simple_consensus.pvalue_threshold = 0.05
-            networks_dict[step_name][process_name] = simple_consensus.filter(True, True)
+            networks_dict[step_name][process_name] = simple_consensus.filter(
+                False, True
+            )
     # STEP4: Then, feed the above to the previous function
     output_path = pathlib.Path(output) / dataset
     output_path.mkdir(parents=True, exist_ok=True)

@@ -5,7 +5,7 @@ python -W ignore figure7_data.py \
   --folder "../../data/figure7/input/$DATASET" \
   --color_key_level "Family" \
   --multigraph "False" \
-  --dc "closed_reference(gg_97)" \
+  --dc "de_novo" \
   --cc "uchime" \
   --ta "blast(ncbi)" \
   --op "normalize_filter(off)" \
@@ -16,7 +16,7 @@ python -W ignore figure7_data.py \
   --folder "../../data/figure7/input/$DATASET" \
   --color_key_level "Family" \
   --multigraph "False" \
-  --dc "closed_reference(gg_97)" \
+  --dc "de_novo" \
   --cc "uchime" \
   --ta "blast(ncbi)" \
   --op "normalize_filter(off)" \
