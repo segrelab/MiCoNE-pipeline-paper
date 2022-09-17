@@ -94,20 +94,20 @@ ggsave(output_file_a, width = 11, height = 5.5)
 #########################################
 # b
 #########################################
-edit_data <- read.csv(edit_distance_csv, header = TRUE, sep = ",")
-edit_data[edit_data == "de_novo"] <- "OR"
-edit_data[edit_data == "closed_reference(gg_97)"] <- "CR"
-edit_data[edit_data == "de_novo"] <- "DN"
-edit_data[edit_data == "dada2"] <- "D2"
-edit_data[edit_data == "deblur"] <- "DB"
-edit_data[edit_data == "naive_bayes(silva_138_99)"] <- "NaiveBayes(SILVA)"
-edit_data[edit_data == "blast(ncbi)"] <- "BLAST(NCBI)"
-edit_data[edit_data == "normalize_filter(on)"] <- "Filter(on)"
-edit_data[edit_data == "normalize_filter(off)"] <- "Filter(off)"
+l1_data <- read.csv(l1_distance_csv, header = TRUE, sep = ",")
+l1_data[l1_data == "de_novo"] <- "OR"
+l1_data[l1_data == "closed_reference(gg_97)"] <- "CR"
+l1_data[l1_data == "de_novo"] <- "DN"
+l1_data[l1_data == "dada2"] <- "D2"
+l1_data[l1_data == "deblur"] <- "DB"
+l1_data[l1_data == "naive_bayes(silva_138_99)"] <- "NaiveBayes(SILVA)"
+l1_data[l1_data == "blast(ncbi)"] <- "BLAST(NCBI)"
+l1_data[l1_data == "normalize_filter(on)"] <- "Filter(on)"
+l1_data[l1_data == "normalize_filter(off)"] <- "Filter(off)"
 
 box_plot <- ggdotplot(
-    edit_data,
-    x = "step", y = "edit_distance", label = "process", repel = TRUE, order = c("DC", "CC", "TA", "OP"), fill = "step", add = "jitter", palette = "Set2", ylab = "edit distance", xlab = "Pipeline step"
+    l1_data,
+    x = "step", y = "l1_distance", label = "process", repel = TRUE, order = c("DC", "CC", "TA", "OP"), fill = "step", add = "jitter", palette = "Set2", ylab = "L1 distance", xlab = "Pipeline step"
 ) +
     theme(
         text = element_text(size = 18),

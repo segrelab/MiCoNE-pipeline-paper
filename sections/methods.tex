@@ -67,6 +67,7 @@
   The quality filtering and chimera checking tools are derived from those used in \ac{qiime2} v2021.8.0 (uchime-denovo method) and \ac{dada2} (remove bimera method).
   The list of tools used in this step, along with their modules and references are provided in Table~\ref{tab:micone_tools}.
   In all UniFrac comparisons, we set a count threshold of 10, such that if the count of the representative sequences in a particular sample is less than the threshold, it is omitted from the analysis.
+  The expected sequences from the mock communities are trimmed to the V4 region before being subject to UniFrac analyses.
 
   \subsection*{Taxonomy Assignment (TA)}
   \vspace{-5mm}
@@ -375,7 +376,7 @@ where, $g$ and $f$ are defined as follows:
   In Figure~\ref{fig:figure7}B we use the L1 distance metric to measure to the distance between the network inferred using different tools at the same step of the workflow.
   The L1 distance between networks $x$ and $y$ is calculated using the following formula:
   $$\frac{|A_{x} - A_{y}|}{2}$$
-  where, $A$ is the adjacency matrix of the network.
+  where, $A$ is the adjacency matrix of the network where edges with weights greater than $0.1$ are assigned a value of $+1$ and those lesser than $-0.1$ are assigned a value of $-1$.
 
   \subsection*{Code and Data Availability}
   Pipeline: \href{https://github.com/segrelab/MiCoNE}{https://github.com/segrelab/MiCoNE} \\
