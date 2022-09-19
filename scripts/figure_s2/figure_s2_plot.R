@@ -3,54 +3,73 @@
 library(dplyr)
 library(ggplot2)
 library(ggpubr)
-library(ggrepel)
 
 # inputs
 args <- commandArgs(trailingOnly = TRUE)
 if (length(args) == 0) {
-    data_folder <- "../../data/figure2/output/moving_pictures/"
+    data_folder <- "../../data/figure_s2/output/moving_pictures/"
+    mock_folder <- "../../data/figure_s2/output/"
     output_folder <- "../../figures/"
-} else if (length(args) == 2) {
+} else if (length(args) == 3) {
     data_folder <- args[1]
-    output_folder <- args[2]
+    mock_folder <- args[2]
+    output_folder <- args[3]
 } else {
-    stop("Required number of arguments must equal 2")
+    stop("Required number of arguments must equal 3")
 }
-x_csv <- paste0(data_folder, "x.csv")
-y_reduced_tsne_csv <- paste0(data_folder, "y_reduced_tsne.csv")
-percentage_variance_csv <- paste0(data_folder, "percentage_variance.csv")
+unweighted_unifrac_csv <- paste0(data_folder, "threshold_unweighted_unifrac.csv")
+weighted_unifrac_csv <- paste0(data_folder, "threshold_weighted_unifrac.csv")
 output_file <- paste0(output_folder, "figure_s2.pdf")
 
-plot_scatter <- function(data, color_var) {
-    ggscatter(data,
-        x = "X0", y = "X1",
-        color = color_var,
-        # ellipse = TRUE
-    ) +
-    theme(
-        text = element_text(size = 16),
-    )
+#########################################
+# ab
+#########################################
+
+tidy_up_data_ab <- function(unifrac_data) {
+    unifrac_data$method1 <- factor(unifrac_data$method1)
+    unifrac_data$method2 <- factor(unifrac_data$method2)
+    tidy_data <- unifrac_data %>%
+        group_by(method1, method2) %>%
+        select_at(c("method1", "method2", "unifrac")) %>%
+        summarize_all(.funs = mean) %>%
+        rowwise() %>%
+        mutate(pair = sort(c(method1, method2)) %>% paste(collapse = ",")) %>%
+        group_by(pair) %>%
+        distinct(pair, .keep_all = TRUE)
 }
 
-x <- read.csv(x_csv)
-y_reduced_tsne <- read.csv(y_reduced_tsne_csv)
-names(y_reduced_tsne)[names(y_reduced_tsne) == "X"] <- "hash"
+plot_heatmap <- function(data, title) {
+    ggplot(data = data, aes(x = method1, y = method2, fill = unifrac)) +
+        geom_tile(color = "white") +
+        geom_text(aes(label = abbreviate(unifrac))) +
+        scale_fill_distiller(
+            palette = "Spectral",
+            limits = c(0, 1),
+            breaks = c(0, 0.25, 0.5, 0.75, 1),
+            labels = c("Similar", 0.25, 0.5, 0.75, "Dissimilar")
+        ) +
+        ggtitle(title) +
+        theme_pubr() +
+        theme(
+            plot.title = element_text(hjust = 0.5),
+            axis.title = element_blank(),
+            axis.text.x = element_text(angle = 30, hjust = 1),
+            axis.text.y = element_text(angle = 30),
+            text = element_text(size = 15),
+        ) +
+        coord_fixed()
+}
 
-df <- y_reduced_tsne %>%
-    select("hash", "X0", "X1") %>%
-    left_join(x, by = "hash")
-df[df == "open_reference(gg_97)"] <- "OR"
-df[df == "closed_reference(gg_97)"] <- "CR"
-df[df == "de_novo"] <- "DN"
-df[df == "dada2"] <- "D2"
-df[df == "deblur"] <- "DB"
-df[df == "normalize_filter(on)"] <- "Filter(on)"
-df[df == "normalize_filter(off)"] <- "Filter(off)"
+unweighted <- read.csv(unweighted_unifrac_csv, sep = ",", header = TRUE)
+unweighted_tidy <- tidy_up_data_ab(unweighted)
+weighted <- read.csv(weighted_unifrac_csv, sep = ",", header = TRUE)
+weighted_tidy <- tidy_up_data_ab(weighted)
 
-scatter_dc <- plot_scatter(df, "DC")
-scatter_ta <- plot_scatter(df, "TA")
-scatter_op <- plot_scatter(df, "OP")
-scatter_ni <- plot_scatter(df, "NI")
+weighted_plot <- plot_heatmap(weighted_tidy, "weighted unifrac")
+unweighted_plot <- plot_heatmap(unweighted_tidy, "unweighted unifrac")
 
-ggarrange(scatter_dc, scatter_ta, scatter_op, scatter_ni, nrow=2, ncol = 2, labels = c("A", "B", "C", "D"))
-ggsave(output_file, width = 14, height = 12)
+heatmap_plot <- ggarrange(
+    weighted_plot, unweighted_plot,
+    nrow = 1, ncol = 2, labels = c("A", "B"), common.legend = TRUE, legend = "right"
+)
+ggsave(output_file, heatmap_plot, width = 11, height = 5.5)

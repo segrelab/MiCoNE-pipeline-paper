@@ -26,6 +26,7 @@ plot_scatter <- function(data, color_var) {
         x = "PC1", y = "PC2",
         color = color_var,
     ) +
+        coord_fixed() +
         theme(
             text = element_text(size = 15.5),
         )

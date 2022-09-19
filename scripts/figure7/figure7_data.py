@@ -4,7 +4,6 @@ import pathlib
 
 import click
 import networkx as nx
-from networkx.algorithms import graph_edit_distance
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
@@ -20,7 +19,7 @@ def fix_title(title: str):
     return f"{step}={tool}"
 
 
-def write_networks(networks_dict, multigraph, color_key_level, output_path):
+def write_networks(networks_dict, multigraph, dataset, color_key_level, output_path):
     combined_graph = nx.MultiGraph()
     default_graph = networks_dict["default"].graph
     for network_name, network in tqdm(networks_dict.items()):
@@ -44,10 +43,14 @@ def write_networks(networks_dict, multigraph, color_key_level, output_path):
                 name=name,
                 taxlevel=taxlevel,
                 colorkey=colorkey,
-                layer="foreground",
+                dataset="Control" if dataset == "fmt-control" else "Autism",
             )
             combined_graph.add_node(
-                name, name=name, taxlevel=taxlevel, colorkey=colorkey
+                name,
+                name=name,
+                taxlevel=taxlevel,
+                colorkey=colorkey,
+                title=f"{fix_title(network_name)}",
             )
         for source, target, edge_data in graph.edges(data=True):
             source_name, target_name = id_name_map[source], id_name_map[target]
@@ -58,7 +61,7 @@ def write_networks(networks_dict, multigraph, color_key_level, output_path):
                 target_name,
                 weight=weight,
                 pvalue=pvalue,
-                layer="foreground",
+                dataset="Control" if dataset == "fmt-control" else "Autism",
             )
             combined_graph.add_edge(
                 source_name,
@@ -84,10 +87,8 @@ def write_networks(networks_dict, multigraph, color_key_level, output_path):
                         name=name,
                         taxlevel=taxlevel,
                         colorkey=colorkey,
-                        layer="background",
+                        dataset="Control" if dataset == "fmt-control" else "Autism",
                     )
-                else:
-                    G.nodes[name]["layer"] = "common"
             for source, target, edge_data in default_graph.edges(data=True):
                 source_name, target_name = id_name_map[source], id_name_map[target]
                 weight = edge_data["weight"]
@@ -98,40 +99,13 @@ def write_networks(networks_dict, multigraph, color_key_level, output_path):
                         target_name,
                         weight=weight,
                         pvalue=pvalue,
-                        layer="background",
+                        dataset="Control" if dataset == "fmt-control" else "Autism",
                     )
                 else:
-                    G[source_name][target_name]["layer"] = "common"
                     G[source_name][target_name]["weight"] = edge_data["weight"]
         nx.write_gml(G, str(output_path / f"{network_name}.gml"))
     nx.write_gml(combined_graph, str(output_path / "combined.gml"))
     return list(combined_graph.nodes), list(combined_graph.edges)
-
-
-def write_edit_distance(networks_dict: dict, output_directory: pathlib.Path):
-    data = []
-    default_network = networks_dict["default"]["default"]
-    default_graph = default_network.graph
-    node_fun = lambda x, y: x["name"] == y["name"]
-    edge_fun = lambda x, y: {x["source"], x["target"]} == {y["source"], y["target"]}
-    for step_name, step_network_dict in tqdm(networks_dict.items()):
-        if step_name == "default":
-            continue
-        for process_name, process_network in step_network_dict.items():
-            process_graph = process_network.graph
-            ed = graph_edit_distance(
-                default_graph, process_graph, node_match=node_fun, edge_match=edge_fun
-            )
-            data.append(
-                {
-                    "step": step_name,
-                    "process": process_name,
-                    "edit_distance": ed,
-                }
-            )
-    df = pd.DataFrame(data)
-    fname = output_directory / "edit_distance_to_ref.csv"
-    df.to_csv(fname, sep=",", index=False)
 
 
 def _get_adjmat(graph, combined_nodes) -> np.ndarray:
@@ -145,7 +119,40 @@ def _get_adjmat(graph, combined_nodes) -> np.ndarray:
     return adjmat.values
 
 
-def write_l1_distance(networks_dict: dict, output_directory):
+def calculate_l1_distance(default_graph: nx.Graph, process_graph: nx.Graph) -> float:
+    combined_nodes = list(set(default_graph.nodes) | set(process_graph.nodes))
+    default_adjmat = _get_adjmat(default_graph, combined_nodes)
+    process_adjmat = _get_adjmat(process_graph, combined_nodes)
+    l1 = np.abs(default_adjmat - process_adjmat).sum() / 2
+    return l1
+
+
+def calculate_edit_distance(default_graph: nx.Graph, process_graph: nx.Graph) -> float:
+    approx_edits = nx.optimize_graph_edit_distance(default_graph, process_graph)
+    edit_distance = next(approx_edits)
+    return edit_distance
+
+
+def _get_nodes_edges(graph: nx.Graph):
+    graph.remove_nodes_from(list(nx.isolates(graph)))
+    id_name_map = {id_: data["name"] for (id_, data) in graph.nodes(data=True)}
+    edges = [frozenset([id_name_map[s], id_name_map[t]]) for s, t in graph.edges]
+    return list(id_name_map.values()), edges
+
+
+def calculate_fraction(
+    default_graph: nx.Graph, process_graph: nx.Graph
+) -> tuple[float, float]:
+    default_nodes, default_edges = _get_nodes_edges(default_graph)
+    process_nodes, process_edges = _get_nodes_edges(process_graph)
+    common_nodes = set(default_nodes) & set(process_nodes)
+    common_edges = set(default_edges) & set(process_edges)
+    node_fraction = len(common_nodes) / len(process_graph.nodes)
+    edge_fraction = len(common_edges) / len(process_graph.edges)
+    return node_fraction, edge_fraction
+
+
+def write_distances(networks_dict: dict, output_directory: pathlib.Path):
     data = []
     default_network = networks_dict["default"]["default"]
     default_graph = default_network.graph
@@ -154,42 +161,23 @@ def write_l1_distance(networks_dict: dict, output_directory):
             continue
         for process_name, process_network in step_network_dict.items():
             process_graph = process_network.graph
-            combined_nodes = list(set(default_graph.nodes) | set(process_graph.nodes))
-            default_adjmat = _get_adjmat(default_graph, combined_nodes)
-            process_adjmat = _get_adjmat(process_graph, combined_nodes)
-            l1 = np.abs(default_adjmat - process_adjmat).sum() / 2
-            data.append(
-                {
-                    "step": step_name,
-                    "process": process_name,
-                    "l1_distance": l1,
-                }
+            l1_distance = calculate_l1_distance(default_graph, process_graph)
+            edit_distance = calculate_edit_distance(default_graph, process_graph)
+            node_fraction, edge_fraction = calculate_fraction(
+                default_graph, process_graph
             )
-    df = pd.DataFrame(data)
-    fname = output_directory / "l1_distance_to_ref.csv"
-    df.to_csv(fname, sep=",", index=False)
-
-
-def write_edit_distance(networks_dict: dict, output_directory):
-    data = []
-    default_network = networks_dict["default"]["default"]
-    default_graph = default_network.graph
-    for step_name, step_network_dict in tqdm(networks_dict.items()):
-        if step_name == "default":
-            continue
-        for process_name, process_network in step_network_dict.items():
-            process_graph = process_network.graph
-            approx_edits = nx.optimize_graph_edit_distance(default_graph, process_graph)
-            edit_distance = next(approx_edits)
             data.append(
                 {
                     "step": step_name,
                     "process": process_name,
+                    "l1_distance": l1_distance,
                     "edit_distance": edit_distance,
+                    "node_fraction": node_fraction,
+                    "edge_fraction": edge_fraction,
                 }
             )
     df = pd.DataFrame(data)
-    fname = output_directory / "edit_distance_to_ref.csv"
+    fname = output_directory / "distance_to_ref.csv"
     df.to_csv(fname, sep=",", index=False)
 
 
@@ -288,10 +276,9 @@ def main(
         "default": networks_dict["default"]["default"],
     }
     nodes, edges = write_networks(
-        networks_choice_dict, multigraph, color_key_level, output_path
+        networks_choice_dict, multigraph, dataset, color_key_level, output_path
     )
-    write_l1_distance(networks_dict, output_directory=output_path)
-    write_edit_distance(networks_dict, output_directory=output_path)
+    write_distances(networks_dict, output_directory=output_path)
 
 
 if __name__ == "__main__":

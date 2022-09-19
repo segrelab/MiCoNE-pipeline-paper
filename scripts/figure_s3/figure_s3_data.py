@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from collections import defaultdict
 import pathlib
 from typing import List
 
@@ -25,12 +26,9 @@ def get_vectors(otu_1: pd.DataFrame, otu_2: pd.DataFrame, threshold: int):
     print(f"Warning {removed_samples} samples have been removed")
     common_samples = samples_1 & samples_2
     for col in common_samples:
-        otu_1_col = (
-            otu_1[[col]].sort_values(by=[col], ascending=False).iloc[: threshold + 1, :]
-        )
-        otu_2_col = (
-            otu_2[[col]].sort_values(by=[col], ascending=False).iloc[: threshold + 1, :]
-        )
+        otu_1_col, otu_2_col = otu_1[[col]], otu_2[[col]]
+        otu_1_col.loc[otu_1_col[col] <= threshold, :] = 0
+        otu_2_col.loc[otu_2_col[col] <= threshold, :] = 0
         otu_1_col.columns = ["1"]
         otu_2_col.columns = ["2"]
         joint_df = otu_1_col.join(otu_2_col, how="outer")
@@ -75,6 +73,7 @@ def abbr_name(method: str) -> str:
         return "D2"
     if method.startswith("deblur"):
         return "DB"
+    return method
 
 
 @click.command()
@@ -89,71 +88,45 @@ def abbr_name(method: str) -> str:
 @click.option(
     "--asv", default=True, type=bool, help="To display ASV along with method name"
 )
-@click.option(
-    "--threshold", default=100, type=int, help="Number of top OTUs used in calculation"
-)
+@click.option("--threshold", default=10, type=int, help="Threshold for sequence count")
 @click.option("--output", default=".", help="The path to the output directory")
 def main(trees: str, otus: str, weighted: bool, asv: bool, threshold: int, output: str):
     output_path = pathlib.Path(output)
     assert output_path.exists()
     tree_files = get_files(trees)
     otu_files = get_files(otus)
-    otu_files_map = {otu_file.parent.parent.stem: otu_file for otu_file in otu_files}
+    otu_files_map = defaultdict(dict)
+    for otu_file in otu_files:
+        dc_method = otu_file.parent.parent.stem
+        cc_method = otu_file.parent.parent.parent.stem
+        otu_files_map[dc_method][cc_method] = otu_file
     data = []
     for tree_file in tree_files:
-        method_1, method_2 = tree_file.parent.parent.stem.split("-")
-        otu_file_1, otu_file_2 = otu_files_map[method_1], otu_files_map[method_2]
-        print(f"Generating unifrac for {method_1} and {method_2}")
+        dc_method = tree_file.parent.parent.stem
+        cc_files = otu_files_map[dc_method]
+        otu_file_1, otu_file_2 = cc_files["uchime"], cc_files["remove_bimera"]
+        print(f"Generating unifrac for {dc_method}")
         unifrac_data, otu_count_1, otu_count_2 = get_unifrac(
             otu_file_1, otu_file_2, tree_file, weighted=weighted, threshold=threshold
         )
-        abbr_1, abbr_2 = abbr_name(method_1), abbr_name(method_2)
+        abbr = abbr_name(dc_method)
         for col in unifrac_data.index:
             if asv:
-                label_1 = f"{abbr_1} ({otu_count_1})"
-                label_2 = f"{abbr_2} ({otu_count_2})"
+                label = f"{abbr}"
             else:
-                label_1 = f"{abbr_1}"
-                label_2 = f"{abbr_2}"
+                label = f"{abbr}"
             data.append(
                 {
-                    "method1": label_1,
-                    "method2": label_2,
+                    "method": label,
                     "unifrac": unifrac_data[col],
-                    "sample": col,
-                }
-            )
-            data.append(
-                {
-                    "method2": label_1,
-                    "method1": label_2,
-                    "unifrac": unifrac_data[col],
-                    "sample": col,
-                }
-            )
-            data.append(
-                {
-                    "method1": label_1,
-                    "method2": label_1,
-                    "unifrac": np.nan,
-                    "sample": col,
-                }
-            )
-            data.append(
-                {
-                    "method1": label_2,
-                    "method2": label_2,
-                    "unifrac": np.nan,
                     "sample": col,
                 }
             )
     unifrac_df = pd.DataFrame(data)
     if weighted:
-        unifrac_df.to_csv(output_path / f"threshold_weighted_unifrac.csv", index=False)
+        unifrac_df.to_csv(output_path / f"weighted_unifrac.csv", index=False)
     else:
-        unifrac_df.to_csv(
-            output_path / f"threshold_unweighted_unifrac.csv", index=False
-        )
+        unifrac_df.to_csv(output_path / f"unweighted_unifrac.csv", index=False)
 
 
 if __name__ == "__main__":
