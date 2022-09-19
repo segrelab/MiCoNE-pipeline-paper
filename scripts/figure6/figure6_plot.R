@@ -23,7 +23,7 @@ output_file <- paste0(output_folder, "figure6.pdf")
 
 plot_scatter <- function(data, color_var) {
     ggscatter(data,
-        x = "X0", y = "X1",
+        x = "PC1", y = "PC2",
         color = color_var,
     ) +
         theme(
@@ -34,6 +34,8 @@ plot_scatter <- function(data, color_var) {
 x <- read.csv(x_csv)
 y_reduced <- read.csv(y_reduced_csv)
 names(y_reduced)[names(y_reduced) == "X"] <- "hash"
+names(y_reduced)[names(y_reduced) == "X0"] <- "PC1"
+names(y_reduced)[names(y_reduced) == "X1"] <- "PC2"
 percentage_variance <- read.csv(percentage_variance_csv)
 
 percentage_variance <-
@@ -44,9 +46,18 @@ percentage_variance <-
 
 
 df <- y_reduced %>%
-    select("hash", "X0", "X1") %>%
+    select("hash", "PC1", "PC2") %>%
     left_join(x, by = "hash")
+df[df == "open_reference(gg_97)"] <- "OR"
+df[df == "closed_reference(gg_97)"] <- "CR"
+df[df == "de_novo"] <- "DN"
+df[df == "dada2"] <- "D2"
+df[df == "deblur"] <- "DB"
+df[df == "normalize_filter(on)"] <- "Filter(on)"
+df[df == "normalize_filter(off)"] <- "Filter(off)"
+scatter_dc <- plot_scatter(df, "DC")
 scatter_ta <- plot_scatter(df, "TA")
+scatter_op <- plot_scatter(df, "OP")
 scatter_ni <- plot_scatter(df, "NI")
 
 pie_chart <- ggplot(data = percentage_variance, aes(x = "", y = mean_sq, fill = Workflow)) +
@@ -65,6 +76,6 @@ pie_chart <- ggplot(data = percentage_variance, aes(x = "", y = mean_sq, fill = 
         text = element_text(size = 20),
     )
 
-scatter_facet <- ggarrange(scatter_ta, scatter_ni, ncol = 2)
-ggarrange(pie_chart, scatter_facet, labels = c("A", "B"), ncol = 1)
+scatter_facet <- ggarrange(scatter_dc, scatter_ta, scatter_op, scatter_ni, ncol = 2, nrow = 2)
+ggarrange(pie_chart, scatter_facet, labels = c("A", "B"), ncol = 1, heights = c(1, 2))
 ggsave(output_file, width = 14, height = 12)
