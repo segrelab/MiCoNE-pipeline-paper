@@ -36,6 +36,8 @@ output_file <- paste0(output_folder, "figure4.pdf")
 output_file_a <- paste0(output_folder, "figure4a.pdf")
 output_file_bc <- paste0(output_folder, "figure4bc.pdf")
 
+corr_thres <- 0.3
+direct_thres <- 0.01
 
 #########################################
 # a
@@ -55,6 +57,7 @@ plot_network <- function(network_file, combined_layout, interaction_threshold, t
         activate(edges) %>%
         filter(abs(weight) > interaction_threshold) %>%
         mutate(color = get_edgecolor(weight)) %>%
+        mutate(abs_weight = abs(weight)) %>%
         activate(nodes) %>%
         mutate(isolated = node_is_isolated()) %>%
         filter(isolated == FALSE)
@@ -69,7 +72,7 @@ plot_network <- function(network_file, combined_layout, interaction_threshold, t
         geom_node_point() +
         scale_edge_color_manual(values = c(negative = "#d95f02", positive = "#1b9e77")) +
         scale_edge_linetype_manual(values = c(negative = "solid", positive = "solid")) +
-        scale_edge_alpha_manual(values = c(negative = 0.6, positive = 0.3)) +
+        scale_edge_alpha_manual(values = c(negative = 0.5, positive = 0.5)) +
         labs(title = title) +
         coord_fixed() +
         theme_bw() +
@@ -92,17 +95,17 @@ combined_layout <- create_layout(graph = combined_graph, layout = "linear", circ
 
 palette <- brewer.pal(n = 10, name = "Dark2")
 
-flashweave_plot <- plot_network(flashweave_gml, combined_layout, 0.01, "flashweave", palette[[1]])
-# mldm_plot <- plot_network(mldm_gml, combined_layout, 0.01, "mldm", palette[[2]])
-spieceasi_plot <- plot_network(spieceasi_gml, combined_layout, 0.01, "spieceasi", palette[[2]])
-cozine_plot <- plot_network(cozine_gml, combined_layout, 0.01, "cozine", palette[[3]])
-harmonies_plot <- plot_network(harmonies_gml, combined_layout, 0.01, "harmonies", palette[[4]])
-spring_plot <- plot_network(spring_gml, combined_layout, 0.01, "spring", palette[[5]])
+flashweave_plot <- plot_network(flashweave_gml, combined_layout, direct_thres, "flashweave", palette[[1]])
+# mldm_plot <- plot_network(mldm_gml, combined_layout, direct_thres, "mldm", palette[[2]])
+spieceasi_plot <- plot_network(spieceasi_gml, combined_layout, direct_thres, "spieceasi", palette[[2]])
+cozine_plot <- plot_network(cozine_gml, combined_layout, direct_thres, "cozine", palette[[3]])
+harmonies_plot <- plot_network(harmonies_gml, combined_layout, direct_thres, "harmonies", palette[[4]])
+spring_plot <- plot_network(spring_gml, combined_layout, direct_thres, "spring", palette[[5]])
 
-sparcc_plot <- plot_network(sparcc_gml, combined_layout, 0.3, "sparcc", palette[[6]])
-spearman_plot <- plot_network(spearman_gml, combined_layout, 0.3, "spearman", palette[[7]])
-pearson_plot <- plot_network(pearson_gml, combined_layout, 0.3, "pearson", palette[[8]])
-propr_plot <- plot_network(propr_gml, combined_layout, 0.3, "propr", palette[[9]])
+sparcc_plot <- plot_network(sparcc_gml, combined_layout, corr_thres, "sparcc", palette[[6]])
+spearman_plot <- plot_network(spearman_gml, combined_layout, corr_thres, "spearman", palette[[7]])
+pearson_plot <- plot_network(pearson_gml, combined_layout, corr_thres, "pearson", palette[[8]])
+propr_plot <- plot_network(propr_gml, combined_layout, corr_thres, "propr", palette[[9]])
 
 combined_plot <- ggarrange(
     flashweave_plot, spieceasi_plot, cozine_plot, harmonies_plot, spring_plot, sparcc_plot, propr_plot, spearman_plot, pearson_plot,
@@ -110,7 +113,7 @@ combined_plot <- ggarrange(
 )
 a_plot <- annotate_figure(combined_plot, fig.lab = "A", fig.lab.pos = "top.left", fig.lab.size = 20)
 
-ggsave(output_file_a, width = 11, height = 5.5)
+# ggsave(output_file_a, width = 11, height = 5.5)
 
 
 #########################################
@@ -133,16 +136,16 @@ plot_upset <- function(bmatrix, sets, kind) {
 nmatrix <- read.csv(nmatrix_csv, header = TRUE, sep = ",")
 nmatrix_bool <- data.frame(nmatrix)
 
-# nmatrix_bool["sparcc"][nmatrix_bool["sparcc"] < 0.3] <- 0
-nmatrix_bool["propr"][nmatrix_bool["propr"] < 0.3] <- 0
-nmatrix_bool["spearman"][nmatrix_bool["spearman"] < 0.3] <- 0
-nmatrix_bool["pearson"][nmatrix_bool["pearson"] < 0.3] <- 0
-nmatrix_bool["flashweave"][nmatrix_bool["flashweave"] < 0.01] <- 0
-nmatrix_bool["cozine"][nmatrix_bool["cozine"] < 0.01] <- 0
-nmatrix_bool["harmonies"][nmatrix_bool["harmonies"] < 0.01] <- 0
-nmatrix_bool["spring"][nmatrix_bool["spring"] < 0.01] <- 0
-# nmatrix_bool["mldm"][nmatrix_bool["mldm"] < 0.01] = 0
-nmatrix_bool["spieceasi"][nmatrix_bool["spieceasi"] < 0.01] <- 0
+nmatrix_bool["sparcc"][nmatrix_bool["sparcc"] < corr_thres] <- 0
+nmatrix_bool["propr"][nmatrix_bool["propr"] < corr_thres] <- 0
+nmatrix_bool["spearman"][nmatrix_bool["spearman"] < corr_thres] <- 0
+nmatrix_bool["pearson"][nmatrix_bool["pearson"] < corr_thres] <- 0
+nmatrix_bool["flashweave"][nmatrix_bool["flashweave"] < direct_thres] <- 0
+nmatrix_bool["cozine"][nmatrix_bool["cozine"] < direct_thres] <- 0
+nmatrix_bool["harmonies"][nmatrix_bool["harmonies"] < direct_thres] <- 0
+nmatrix_bool["spring"][nmatrix_bool["spring"] < direct_thres] <- 0
+# nmatrix_bool["mldm"][nmatrix_bool["mldm"] < direct_thres] = 0
+nmatrix_bool["spieceasi"][nmatrix_bool["spieceasi"] < direct_thres] <- 0
 nmatrix_bool[nmatrix_bool > 0] <- 1
 
 # nmatrix_plot <- plot_upset(nmatrix_bool, c("flashweave", "spieceasi", "cozine", "harmonies", "spring", "sparcc", "propr"), "nodes")
@@ -155,16 +158,16 @@ nmatrix_gg <- as_ggplot(grid.grab())
 ematrix <- read.csv(ematrix_csv, header = TRUE, sep = ",")
 ematrix_bool <- data.frame(ematrix)
 
-ematrix_bool["sparcc"][abs(ematrix_bool["sparcc"]) < 0.3] <- 0
-ematrix_bool["propr"][abs(ematrix_bool["propr"]) < 0.3] <- 0
-ematrix_bool["spearman"][abs(ematrix_bool["spearman"]) < 0.3] <- 0
-ematrix_bool["pearson"][abs(ematrix_bool["pearson"]) < 0.3] <- 0
-ematrix_bool["flashweave"][abs(ematrix_bool["flashweave"]) < 0.01] <- 0
-ematrix_bool["cozine"][ematrix_bool["cozine"] < 0.01] <- 0
-ematrix_bool["harmonies"][ematrix_bool["harmonies"] < 0.01] <- 0
-ematrix_bool["spring"][ematrix_bool["spring"] < 0.01] <- 0
-# ematrix_bool["mldm"][abs(ematrix_bool["mldm"]) < 0.01] = 0
-ematrix_bool["spieceasi"][abs(ematrix_bool["spieceasi"]) < 0.01] <- 0
+ematrix_bool["sparcc"][abs(ematrix_bool["sparcc"]) < corr_thres] <- 0
+ematrix_bool["propr"][abs(ematrix_bool["propr"]) < corr_thres] <- 0
+ematrix_bool["spearman"][abs(ematrix_bool["spearman"]) < corr_thres] <- 0
+ematrix_bool["pearson"][abs(ematrix_bool["pearson"]) < corr_thres] <- 0
+ematrix_bool["flashweave"][abs(ematrix_bool["flashweave"]) < direct_thres] <- 0
+ematrix_bool["cozine"][ematrix_bool["cozine"] < direct_thres] <- 0
+ematrix_bool["harmonies"][ematrix_bool["harmonies"] < direct_thres] <- 0
+ematrix_bool["spring"][ematrix_bool["spring"] < direct_thres] <- 0
+# ematrix_bool["mldm"][abs(ematrix_bool["mldm"]) < direct_thres] = 0
+ematrix_bool["spieceasi"][abs(ematrix_bool["spieceasi"]) < direct_thres] <- 0
 ematrix_bool[ematrix_bool > 0] <- 1
 
 # ematrix_plot <- plot_upset(ematrix_bool, c("flashweave", "spieceasi", "cozine", "harmonies", "spring", "sparcc", "propr"), "edges")
@@ -178,7 +181,7 @@ nmatrix_gg
 ematrix_gg
 bc_plot <- ggarrange(nmatrix_gg, ematrix_gg, labels = c("B", "C"))
 
-ggsave(output_file_bc, width = 11, height = 5)
+# ggsave(output_file_bc, width = 11, height = 5)
 
 
 final_plot <- ggarrange(a_plot, bc_plot, ncol = 1, heights = c(1.3, 1.0))
