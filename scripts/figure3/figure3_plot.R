@@ -83,7 +83,7 @@ combined_plot <- make_alluvial_plot2(combined, paste("NaiveBayes(GG)=", gg_n_gen
 
 final_plot_a <- ggarrange(combined_plot, nrow = 1, ncol = 1, common.legend = FALSE)
 annotate_figure(final_plot_a, fig.lab = "A", fig.lab.pos = "top.left", fig.lab.size = 20)
-ggsave(output_file_a, width = 11, height = 10)
+# ggsave(output_file_a, width = 11, height = 10)
 
 
 ################################################################################
@@ -135,7 +135,7 @@ combined_plot_b <- ggarrange(
     nrow = 1, ncol = 3, common.legend = TRUE, legend = "right"
 )
 annotate_figure(combined_plot_b, fig.lab = "B", fig.lab.pos = "top.left", fig.lab.size = 20)
-ggsave(output_file_b, width = 11, height = 3.5)
+# ggsave(output_file_b, width = 11, height = 3.5)
 
 
 ################################################################################
@@ -181,7 +181,7 @@ mock_data <- rbind(mock4_data, mock12_data, mock16_data)
 dot_plot <- make_dot_plot(mock_data)
 dot_plot_facet_c <- facet(dot_plot, facet.by = "tax_level")
 annotate_figure(dot_plot_facet_c, fig.lab = "C", fig.lab.pos = "top.left", fig.lab.size = 20)
-ggsave(output_file_c, width = 11, height = 5)
+# ggsave(output_file_c, width = 11, height = 5)
 
 
 

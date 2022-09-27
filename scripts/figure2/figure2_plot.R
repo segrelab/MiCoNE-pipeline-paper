@@ -80,7 +80,7 @@ heatmap_plot <- ggarrange(
     weighted_plot, unweighted_plot,
     nrow = 1, ncol = 2, labels = c("A", "B"), common.legend = TRUE, legend = "right"
 )
-ggsave(output_file_ab, heatmap_plot, width = 11, height = 5.5)
+# ggsave(output_file_ab, heatmap_plot, width = 11, height = 5.5)
 
 
 #########################################
@@ -151,7 +151,7 @@ final_dot_plot <- ggarrange(
     mock_weighted_plot, mock_unweighted_plot,
     labels = c("C", "D"), nrow = 1, ncol = 2, common.legend = TRUE, legend = "right"
 )
-ggsave(output_file_cd, width = 11, height = 5)
+# ggsave(output_file_cd, width = 11, height = 5)
 
 
 ############
