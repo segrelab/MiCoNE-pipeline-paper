@@ -105,19 +105,24 @@
     f = \frac{\mathrm{E}[\Psi]^2}{\mathrm{Var}[\Psi]} ~~~\text{and}~~~ c = \frac{\mathrm{Var}[\Psi]}{2\mathrm{E}[\Psi]} = \frac{k}{f}
   \end{equation*}
 
-  Furthermore, Brown showed that $\mathrm{E}[\Psi]$ and $\mathrm{Var}[\Psi]$ can be calculated via a numerical integration:
+  We first calculate $E[\Psi]$ and $Var[\Psi]$ under the null hypothesis that the data are drawn from a multivariate Gaussian with some covariance matrix.
+  We then use these values to parametrize a $\chi^2$ distribution from which p-value corresponding to $\frac{\psi}{c}$ can be calculated.
+  Furthermore, Brown showed that $\mathrm{E}[\Psi]$ and $\mathrm{Var}[\Psi]$ can be calculated via a numerical approximation:
   \begin{equation*}
     \mathrm{E}[\Psi] = 2k ~~~\text{and}~~~ \mathrm{Var}[\Psi] = 4k + 2\sum_{i<j} \mathrm{Cov}\left( -2\log(\bar{P}^i), -2\log(\bar{P}^j) \right)
   \end{equation*}
 
-  Kost and McDermott~\cite{kost_combining_2002} further fit a third-order polynomial to approximate the covariance
+  The above formulation was improved by Kost and McDermott~\cite{kost_combining_2002} by further fitting a third-order polynomial to approximate the covariance
   \begin{equation}
     \mathrm{Cov}\left( -2\log(\bar{P}^i), -2\log(\bar{P}^j) \right) \approx 3.263 \rho_{ij} + 0.710 \rho_{ij}^2 + 0.027 \rho_{ij}^3
     \label{eqn:suppl_covariance-pvalues}
   \end{equation}
   where, $\rho_{ij}$ is the correlation between method $i$ and method $j$
 
-  The final combined p-value~\cite{Poole_Gibbs_Shmulevich_Bernard_Knijnenburg_2016} is then given by:
+  Using $E[\Psi]$ and $Var[\Psi]$ one then fits a $\chi^2$ distribution with the parameters $c$ and $f$.
+  Note that since, in general, $f$ will not be an integer, this should be understood as a Gamma distribution with a shape parameter $f$, as mentioned by Brown~\cite{brown_400_1975}.
+  Using this, one calculates the test $\psi$ and computes the p-value from the CDF of the $\chi^2$ distribution, given in Equation~\ref{eqn:suppl_pvalue-combined}.
+  Therefore, the final combined p-value~\cite{Poole_Gibbs_Shmulevich_Bernard_Knijnenburg_2016} is then given by:
   \begin{equation}
     \begin{aligned*}
         & \hat{P}_j = 1.0 - \Phi_{2f}\left( \psi / c \right) \\
@@ -126,7 +131,7 @@
     \label{eqn:suppl_pvalue-combined}
   \end{equation}
 
-  The p-value merging and consensus method in \ac{micone} (refer Methods) uses Equation~\ref{eqn:suppl_covariance-pvalues} to estimate the covariance of the p-values and Equation~\ref{eqn:suppl_pvalue-combined} to merge the p-values (obtained from bootstrapping) from the different correlation methods.
+  The p-value merging and consensus method in \ac{micone} (see Methods) uses Equation~\ref{eqn:suppl_covariance-pvalues} to estimate the covariance of the p-values and Equation~\ref{eqn:suppl_pvalue-combined} to merge the p-values (obtained from bootstrapping) from the different correlation methods.
   Note that we do not use Pearson and Spearman methods in the p-value merging step and these algorithms are only used for demonstration and comparison.
   The combined p-values are used to threshold for significance the correlation-based networks during the consensus network step.
 
