@@ -67,6 +67,7 @@ make_alluvial_plot2 <- function(db_data, title) {
         scale_fill_manual(values = palette) +
         geom_text_repel(aes(label = Genus), stat = "stratum", size = 3.5, direction = "y", nudge_x = 0.5) +
         ggtitle(title) +
+        xlab("Database") +
         theme_pubr() +
         theme(
             text = element_text(size = 15),
@@ -79,7 +80,8 @@ gg_n_genus <- length(unique(gg$Genus))
 silva_n_genus <- length(unique(silva$Genus))
 ncbi_n_genus <- length(unique(ncbi$Genus))
 
-combined_plot <- make_alluvial_plot2(combined, paste("NaiveBayes(GG)=", gg_n_genus, ", NaiveBayes(SILVA)=", silva_n_genus, ", BLAST(NCBI)=", ncbi_n_genus))
+# TODO: Fix this
+combined_plot <- make_alluvial_plot2(combined, paste("NaiveBayes(GG) =", gg_n_genus, ", NaiveBayes(SILVA) =", silva_n_genus, ", BLAST(NCBI) =", ncbi_n_genus))
 
 final_plot_a <- ggarrange(combined_plot, nrow = 1, ncol = 1, common.legend = FALSE)
 annotate_figure(final_plot_a, fig.lab = "A", fig.lab.pos = "top.left", fig.lab.size = 20)
@@ -114,6 +116,7 @@ make_bar_plot <- function(data, title) {
         palette = c("#00AFBB", "#FC4E07"),
         # palette="Paired"
     ) +
+        labs(fill="Assignments") +
         theme(
             text = element_text(size = 15),
             # plot.title = element_text(size = 10),
@@ -164,6 +167,7 @@ make_dot_plot <- function(braycurtis_data) {
             size = 3,
             add = "jitter",
         ) +
+        labs(fill="Dataset") +
             theme(
                 plot.title = element_text(hjust = 0.5),
                 text = element_text(size = 15),

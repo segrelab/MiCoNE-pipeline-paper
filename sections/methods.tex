@@ -80,8 +80,8 @@
   The three databases vastly differ in terms of their last update status - \ac{gg} was last updated on May 2013, SILVA was last updated on August 2020 at the time of writing and \ac{ncbi} is updated regularly as new sequences are curated.
   These databases were downloaded and built using the RESCRIPt \ac{qiime2} plugin~\cite{iiRESCRIPtReproducibleSequence2021}.
   The Naive Bayes classifier and the \ac{ncbi} blast used as the query tools in this study were from the \ac{qiime2} package and the parameters used were the defaults of the package.
-  During the assignment, a representative sequence might be assigned an "unknown" Genus for one of two reasons: the first is if the taxonomy identifier associated with the sequence in the database did not contain a given Genus; the second, more likely reason, is that the database contains multiple sequences that are very similar to the query (representative) sequence and the consensus algorithm (from \ac{qiime2}) is unable to assign one particular Genus at the required confidence.
   The consensus algorithm used is the default method used by the classifiers in \ac{qiime2}.
+  During the assignment, a representative sequence might be assigned an "unknown" Genus for one of two reasons: the first is if the taxonomy identifier associated with the sequence in the database did not contain a given Genus; the second, more likely reason, is that the database contains multiple sequences that are very similar to the query (representative) sequence and the consensus algorithm (from \ac{qiime2}) is unable to assign one particular Genus at the required confidence.
   The assignment between SILVA and the other two databases were originally significantly different ($40\%$ mismatch) even at the Phylum level.
   However, this was fixed by making minor adjustments to the taxonomic names, such as changing Bacteroidota to Bacteroidetes in the SILVA Phylum assignments.
   The full list of changes can be found in \texttt{figure4ab\_data.py} in the data and scripts  repository.
@@ -344,7 +344,7 @@ where, $g$ and $f$ are defined as follows:
 
   For each method, we generated the OTU table depicting the abundances of species and used this as input to generate association networks using \ac{micone} pipeline.
   The interaction matrix was used as the source of expected (true) interactions and the associations predicted using \ac{micone} were the source of predicted interactions.
-  Finally, for each dataset we evaluated the precision and sensitivity of the associations predicted by the individual network inference methods as well as the consensus (Figure \ref{fig:figure5}).
+  Finally, for each dataset we evaluated the precision of the associations predicted by the individual network inference methods as well as the consensus (Figure \ref{fig:figure5}).
 
   \subsection*{Statistical analyses}
 
@@ -372,11 +372,6 @@ where, $g$ and $f$ are defined as follows:
   Precision = $\frac{TP}{TP + FP}$
 
   Sensitivity = $\frac{TP}{FN + TP}$
-
-  In Figure~\ref{fig:figure7}B we use the L1 distance metric to measure to the distance between the network inferred using different tools at the same step of the workflow.
-  The L1 distance between networks $x$ and $y$ is calculated using the following formula:
-  $$\frac{|A_{x} - A_{y}|}{2}$$
-  where, $A$ is the adjacency matrix of the network where edges with weights greater than $0.1$ are assigned a value of $+1$ and those lesser than $-0.1$ are assigned a value of $-1$.
 
   \subsection*{Code and Data Availability}
   Pipeline: \href{https://github.com/segrelab/MiCoNE}{https://github.com/segrelab/MiCoNE} \\

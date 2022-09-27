@@ -42,7 +42,7 @@ plot_boxplot <- function(data, title) {
         ) +
         xlab("Algorithm") +
         ylab("Precision") +
-        labs(title = title)
+        labs(title = title, fill = "NI method")
 }
 
 methods <- c("propr", "sparcc", "flashweave", "spieceasi", "SS[0.333]", "SS[0.667]", "SS[1.000]", "SV[0.333]", "SV[0.667]", "SV[1.000]")

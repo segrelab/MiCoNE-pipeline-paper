@@ -56,7 +56,7 @@ plot_network <- function(network_file, combined_layout, interaction_threshold, t
     graph <- graph_raw %>%
         activate(edges) %>%
         filter(abs(weight) > interaction_threshold) %>%
-        mutate(color = get_edgecolor(weight)) %>%
+        mutate(interaction = get_edgecolor(weight)) %>%
         mutate(abs_weight = abs(weight)) %>%
         activate(nodes) %>%
         mutate(isolated = node_is_isolated()) %>%
@@ -67,7 +67,7 @@ plot_network <- function(network_file, combined_layout, interaction_threshold, t
     graph_layout$x <- combined_layout[match_inds, ]$x
     graph_layout$y <- combined_layout[match_inds, ]$y
     graph_plot <- ggraph(graph = graph, layout = "manual", x = graph_layout$x, y = graph_layout$y, circular = TRUE) +
-        geom_edge_arc(aes(color = color, edge_linetype = color, edge_alpha = color)) +
+        geom_edge_arc(aes(color = interaction, edge_linetype = interaction, edge_alpha = interaction)) +
         # geom_node_point(aes(color=factor(colorkey))) +
         geom_node_point() +
         scale_edge_color_manual(values = c(negative = "#d95f02", positive = "#1b9e77")) +

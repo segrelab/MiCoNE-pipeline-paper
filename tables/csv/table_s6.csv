@@ -1,4 +1,4 @@
-﻿Task,Tool,Parameter,Value
+Task,Tool,Parameter,Value
 Bootstrap,Resample,bootstraps,1000
 Bootstrap,Resample,ncpus,1
 Bootstrap,Pvalue,slim,false
@@ -32,7 +32,7 @@ Network,Make network without pvalues,interaction_threshold,0.3
 Network,Make network without pvalues,metadata_file,""
 Network,Merge pvalues,id_field,"taxid"
 Network,Create consensus,method,"scaled_sum"
-Network,Create consensus,parameter,0.3
+Network,Create consensus,parameter,0.333
 Network,Create consensus,pvalue_filter,"true"
 Network,Create consensus,interaction_filter,"true"
 Network,Create consensus,id_field,"taxid"

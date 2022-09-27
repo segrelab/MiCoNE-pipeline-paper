@@ -57,6 +57,7 @@ plot_heatmap <- function(data, title) {
             labels = c("Similar", 0.25, 0.5, 0.75, "Dissimilar")
         ) +
         ggtitle(title) +
+        labs(fill="UniFrac") +
         theme_pubr() +
         theme(
             plot.title = element_text(hjust = 0.5),
@@ -74,7 +75,7 @@ weighted <- read.csv(weighted_unifrac_csv, sep = ",", header = TRUE)
 weighted_tidy <- tidy_up_data_ab(weighted)
 
 weighted_plot <- plot_heatmap(weighted_tidy, "Weighted UniFrac")
-unweighted_plot <- plot_heatmap(unweighted_tidy, "UnWeighted UniFrac")
+unweighted_plot <- plot_heatmap(unweighted_tidy, "Unweighted UniFrac")
 
 heatmap_plot <- ggarrange(
     weighted_plot, unweighted_plot,
@@ -112,6 +113,7 @@ make_dot_plot <- function(unifrac_data, title) {
             size = 3,
             add = "jitter",
         ) +
+        labs(fill="Dataset") +
             theme_pubr() +
             theme(
                 plot.title = element_text(hjust = 0.5),
@@ -144,7 +146,7 @@ mock12_unweighted_tidy <- tidy_up_data_cd(mock12_unweighted, "mock12")
 mock16_unweighted_tidy <- tidy_up_data_cd(mock16_unweighted, "mock16")
 
 mock_unweighted_tidy <- rbind(mock4_unweighted_tidy, mock12_unweighted_tidy, mock16_unweighted_tidy)
-mock_unweighted_plot <- make_dot_plot(mock_unweighted_tidy, "UnWeighted UniFrac")
+mock_unweighted_plot <- make_dot_plot(mock_unweighted_tidy, "Unweighted UniFrac")
 
 
 final_dot_plot <- ggarrange(
