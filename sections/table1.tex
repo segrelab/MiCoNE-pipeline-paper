@@ -1,0 +1,48 @@
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+      \hline
+      \textbf{Workflow step} & \textbf{Module/Condition} & \textbf{Tool/Parameter} & \textbf{References/Value} \\
+      \hline
+      \multirow{7}{*}{Denoising and Clustering} & \multirow{5}{*}{Denoise and Cluster} & Closed reference & \cite{rognesVSEARCHVersatileOpen2016,bolyenReproducibleInteractiveScalable2019} \\
+                                                &  & Open reference & \cite{rognesVSEARCHVersatileOpen2016,bolyenReproducibleInteractiveScalable2019} \\
+                                                &  & De novo & \cite{rognesVSEARCHVersatileOpen2016,bolyenReproducibleInteractiveScalable2019} \\
+                                                &  & \rowcolor{lightgray} Dada2 & \cite{Callahan2016} \\
+                                                &  & Deblur & \cite{Amir2017,bolyenReproducibleInteractiveScalable2019} \\
+                                                \cline{2-4}
+                                                & \multirow{2}{*}{Chimera checking} & Uchime-denovo & \cite{rognesVSEARCHVersatileOpen2016,bolyenReproducibleInteractiveScalable2019} \\
+                                                & & \rowcolor{lightgray} Remove bimera & \cite{Callahan2016} \\
+                                                \hline
+      \multirow{5}{*}{Taxonomy assignment} &  \multirow{2}{*}{Query tool} & Blast & \cite{camachoBLASTArchitectureApplications2009,bokulichOptimizingTaxonomicClassification2018} \\
+                                           &  & \rowcolor{lightgray} Naive bayes classifier & \cite{bokulichOptimizingTaxonomicClassification2018} \\
+                                           \cline{2-4}
+                                           & \multirow{3}{*}{Database} & \rowcolor{lightgray} Greengenes 13\_8 & \cite{DeSantis2006} \\
+                                           & & SILVA 138 & \cite{Quast2012} \\
+                                           & & NCBI RefSeq (Oct 2021) & \cite{Sayers2009} \\
+      \hline
+      \multirow{6}{*}{OTU processing} & \multirow{3}{*}{Filter(off)} & Prevalence threshold      & 2 / n\_samples \\
+                                      & & Abundance threshold       & 0.001          \\
+                                      & & Observation sum threshold & 10             \\ \cline{2-4}
+                                      & \multirow{3}{*}{Filter(on)}  & \rowcolor{lightgray} Prevalence threshold      & 0.05           \\
+                                      & & \rowcolor{lightgray} Abundance threshold       & 0.01           \\
+                                      & & \rowcolor{lightgray} Observation sum threshold & 100            \\
+      \hline
+      \multirow{12}{*}{Network Inference} & \multirow{2}{*}{Bootstrapping}& fastspar\_bootstraps v1.0 & \cite{Watts2018} \\
+                                          & & fastspar\_pvalues v1.0 & \cite{Watts2018} \\
+                                          \cline{2-4}
+                                          & \multirow{6}{*}{Direct association} & \ac{spieceasi} v1.1.2 & \cite{Kurtz2015} \\
+                                          & & FlashWeave.jl v0.18.1 & \cite{tackmannRapidInferenceDirect2019} \\
+                                          & & \ac{cozine} v1.0 & \cite{haCompositionalZeroinflatedNetwork2020a} \\
+                                          & & \ac{harmonies} v1.0 & \cite{jiangHARMONIESHybridApproach2020} \\
+                                          & & \ac{spring} v1.0.4 & \cite{yoonMicrobialNetworksSPRING2019} \\
+                                          & & \ac{mldm} v1.1 & \cite{Yang2017} \\
+                                          \cline{2-4}
+                                          & \multirow{2}{*}{Correlation-based} & FastSpar (\ac{sparcc}) v1.0 & \cite{Watts2018} \\
+                                          & & Pearson & - \\
+                                          & & Spearman & - \\
+                                          & & propr v2.1.2 & \cite{quinnProprRpackageIdentifying2017} \\ \cline{2-4}
+                                          & \multirow{2}{*}{Consensus algorithm} & \rowcolor{lightgray} scaled-sum & 0.333 \\
+                                          & & simple voting & 1.000 \\
+      \hline
+    \end{tabular}
+  \end{table}

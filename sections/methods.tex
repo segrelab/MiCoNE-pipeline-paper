@@ -37,6 +37,7 @@
   The pipeline facilitates this comparative exploration by providing a variety of modules for interconversion between various formats, and by allowing for easy incorporation of new tools as modules.
   It also contains helper functions that can help in parsing taxonomies and communicate with the \ac{ncbi} taxonomy database to query taxonomy by name or taxonomic IDs.
   The configuration file along with the run file (\texttt{main.nf}) lists the inputs, output, and the steps to be performed during runtime, along with the parameters to be used (if different from defaults) for the various steps.
+  The default settings of the pipeline are shown in Table~\ref{tab:micone_tools} (with default parameter values shown in Tables S2-S6 at \href{https://github.com/segrelab/MiCoNE-pipeline-paper}{https://github.com/segrelab/MiCoNE-pipeline-paper}).
   Since the entire pipeline run is stored in the form of a text file (the configuration file), subsequent runs are highly reproducible and changes can be easily tracked using version control.
   It makes use of the nextflow workflow manager~\cite{Tommaso2015} under the hood, making it readily usable on the local machine, cluster, or cloud with minimal configuration change.
   It also allows for automatic parallelization of all possible processes, both within and across samples.
