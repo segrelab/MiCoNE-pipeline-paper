@@ -36,7 +36,7 @@
   To determine which tool most accurately recapitulates the reference sequences in the samples, we applied the same pipeline step to process the mock datasets (mock4, mock12, and mock16) and compared the predicted representative sequences with the true sequences and their distribution.
   The results (Figure~\ref{fig:figure2}C and \ref{fig:figure2}D) show that the predicted sequence distributions are overall different from the expected ones.
   The variation across datasets indicates that the datasets themselves play a big role in method performance.
-  There is no method that outperforms the rest in all datasets (see Supplementary for an extended discussion).
+  We note that there is no method that outperforms the rest in all datasets (see Supplementary for an extended discussion).
   Based on their slightly better performance on the mock datasets, their de novo error correcting nature and previous independent evaluation~\cite{Nearing2018}, \ac{dada2} and Deblur appear to be the most reliable.
   This is because the open-reference and de novo clustering methods return a much larger number of \ac{otu}s compared to the other pipelines and would affect the accuracy of the network inference step if stringent filtering is not performed.
   Overall, since \ac{dada2} as compared to Deblur, displays better performance on all the mock datasets on the weighted UniFrac metric, we set this tool as the default for the DC step of the pipeline.
@@ -53,25 +53,25 @@
   \subsection*{TA: Taxonomy databases vary widely in taxonomy assignments beyond Order level}
 
   Taxonomy databases are used to assign taxonomic identities to the representative sequences obtained after the DC step.
-  The three 16S taxonomic reference databases used in this study are SILVA~\cite{Quast2012}, \acs{gg}~\cite{DeSantis2006} and \acs{ncbi} RefSeq~\cite{Sayers2009} (see Methods).
-  These databases vary significantly in terms of taxonomy hierarchies, including species names and phylogenetic relationships~\cite{Balvociute2017}.
+  The three 16S taxonomic reference databases used in this study are SILVA~\cite{Quast2012}, \ac{gg}~\cite{DeSantis2006} and \ac{ncbi} RefSeq~\cite{Sayers2009} (Methods).
+  These databases vary substantially in terms of taxonomy hierarchies, including species names and phylogenetic relationships~\cite{Balvociute2017}.
   Assignment using a particular database also requires a query tool.
-  We use the ``Naive Bayes'' classifier from \ac{qiime2} for the \ac{gg} and SILVA databases and the ``BLAST'' tool (included as a \ac{qiime2} plugin) for the \ac{ncbi} database.
-  These tools have been well quantified and optimized~\cite{bokulichOptimizingTaxonomicClassification2018}, hence, we make use of the default parameters in our analyses.
+  We used the ``Naive Bayes'' classifier from \ac{qiime2} for the \ac{gg} and SILVA databases and the ``BLAST'' tool (included as a \ac{qiime2} plugin) for the \ac{ncbi} database.
+  These tools have been well quantified and optimized~\cite{bokulichOptimizingTaxonomicClassification2018}, hence, we made use of the default parameters in our analyses.
 
   The representative sequences obtained using the default settings of the DC step were used for taxonomic assignment using the three reference databases.
   Figure~\ref{fig:figure3}A depicts a flow diagram that shows how the top 50 representative sequences (sorted by abundance) are assigned a Genus according to the three databases.
   The different databases lead to assignments that qualitatively display similar distributions. However, the assigned Genus compositions also display clear differences, as does the percentage of unassigned representative sequences (pink).
   Some of the differences in Genus composition have a clear explanation, for example, abundant Genera like Bacteroides and Escherichia are assigned to different representative sequences.
-  The large percentage of unassigned sequences is due to the large fraction of the representative sequences assigned to an "unknown" Genus during the assignment process (see Methods).
+  The large percentage of unassigned sequences is due to the large fraction of the representative sequences assigned to an "unknown" Genus during the assignment process (Methods).
 
-  After assigning all the representative sequences to taxonomies we performed a pairwise comparison of the similarity between the top 100 assignments (by abundance) from different databases at every taxonomic level (Figure~\ref{fig:figure3}B).
-  The comparisons of the assignments beyond the Family level (Family, Genus, and Species) show less than $45\%$ similarity between any pair of databases.
+  After the assignment, we performed a pairwise comparison of the similarity between the top 100 assignments (by abundance) from different databases at every taxonomic level (Figure~\ref{fig:figure3}B).
+  The comparisons of the assignments below the Order level (Family, Genus, and Species) show less than $45\%$ similarity between any pair of databases.
   This implies that the taxonomy assignments from each reference database are fairly unique.
   The comparison of all assigned genera (Figure~\ref{fig:figure_s4}), instead of just the top 100, contains a higher percentage of mismatches.
-  This suggests that many of the most abundant sequences are consistently matched to the same taxonomies in the different reference databases, at least for the dataset tested in the current analysis.
+  This suggests that, comparatively, the most abundant sequences are more consistently matched to the same taxonomies, at least for the dataset tested in the current analysis.
 
-  In order to obtain an absolute measure of the accuracy of the taxonomic assignments, we used the representative sequences from the DC step for mock datasets as the query sequences and the expected taxonomic composition as the standard to compare against.
+  To obtain an absolute measure of the accuracy of the taxonomic assignments, we used the representative sequences from the DC step for mock datasets as the query sequences and the expected taxonomic composition as the standard to compare against.
   We used the Bray-Curtis distance metric~\cite{virtanenSciPyFundamentalAlgorithms2020} to calculate the distance between the predicted and expected taxonomic distribution (Figure~\ref{fig:figure3}C).
   We find that none of the databases perform better than the others in absolute terms and that the dissimilarity with the expected composition is high ($>0.5$ for Family and Genus and $>0.9$ for Species), indicating that all the databases have some limitations when trying to recapture the expected taxonomic composition.
 
@@ -81,44 +81,44 @@
   In our default pipeline, we choose \ac{gg} as the default method.
 
   The TA step results in a taxonomic counts table that is used as input to the subsequent steps of the pipeline.
-  Note that the count tables at different levels can be obtained through aggregation: for example, Genus count tables were obtained by summing up the counts of the lower taxonomy levels (Species and \ac{otu}) that map to the same higher taxonomy level entity.
+  Note that the count tables at different levels can be obtained through aggregation; for example, Genus count tables were obtained by summing up the counts of the lower taxonomy levels (Species and \ac{otu}) that map to the same higher taxonomy level entity.
 
   \FloatBarrier
 
   \subsection*{NI: Different network inference methods drastically affect edge-density and connectivity}
 
-   The ten network inference methods we used in this step fall into two groups: the first set of methods (Pearson, Spearman, \acs{sparcc}~\cite{Friedman2012,Watts2018}, and propr~\cite{quinnProprRpackageIdentifying2017}) infer pairwise correlations while the second set infer direct associations (\acs{spieceasi}~\cite{Kurtz2015}, FlashWeave~\cite{tackmannRapidInferenceDirect2019}, \acs{cozine}~\cite{haCompositionalZeroinflatedNetwork2020a}, \acs{harmonies}~\cite{jiangHARMONIESHybridApproach2020}, \acs{spring}~\cite{yoonMicrobialNetworksSPRING2019}, and \acs{mldm}~\cite{Yang2017}).
+   The ten network inference methods we used in this step fall into two groups: the first set of methods (Pearson, Spearman, \acs{sparcc}~\cite{Friedman2012,Watts2018}, and propr~\cite{quinnProprRpackageIdentifying2017}) infer pairwise correlations while the second set (\acs{spieceasi}~\cite{Kurtz2015}, FlashWeave~\cite{tackmannRapidInferenceDirect2019}, \acs{cozine}~\cite{haCompositionalZeroinflatedNetwork2020a}, \acs{harmonies}~\cite{jiangHARMONIESHybridApproach2020}, \acs{spring}~\cite{yoonMicrobialNetworksSPRING2019}, and \acs{mldm}~\cite{Yang2017}) infer direct associations.
    Note that while Pearson and Spearman methods are included in the pipeline for completeness, they tend to generate a large number of spurious edges as they are not intended for compositional datasets.
-   Thus they are not included in subsequent quantitative analyses.
+   Thus, they are not included in subsequent quantitative analyses.
 
-  Filtered (see \ac{op} step in Methods) genus-level counts table obtained using the default settings in the previous steps were used as input for the different network inference algorithms (Figure~\ref{fig:figure4}A).
-  Even from a visual inspection, one can see that the different networks differ vastly in their edge-density and connectivity, with common edges often displaying inverted signs.
+  Filtered (see \ac{op} step in Methods) genus-level counts table obtained using the default settings in the previous steps were used as input for the different network inference algorithms (Figure~\ref{fig:figure4}).
+  Even from a visual inspection (Figure~\ref{fig:figure4}A), one can see that the different networks differ vastly in their edge-density and connectivity, with common edges often displaying inverted signs.
 
-  In order to quantify the differences between the networks, we analyzed the distribution of common nodes and edges (Figure~\ref{fig:figure4} B and C) using UpSet plots~\cite{Lex}.
+  To quantify the differences between the networks, we analyzed the distribution of common nodes and edges (Figure~\ref{fig:figure4} B and \ref{fig:figure4}C) using UpSet plots~\cite{Lex}.
   The node intersection analysis shows that the networks have $33$ out of $68$ total unique nodes in common and that no network possesses a unique node.
-  Edge intersections in contrast show that only $8$ edges (out of $202$ total unique edges) are in common between all the methods and each network has a large number of unique edges.
-  These results indicate that there is a substantial rewiring of connections in different inferred networks, prompting us to identify associations robust across methods, through consensus algorithms.
+  Edge intersections in contrast show that only $8$ edges (out of $202$ total unique edges) are in common between all the methods and each network has many unique edges.
+  These results showed a substantial rewiring of connections in different inferred networks and prompted us to identify associations robust across methods, through consensus algorithms.
 
   \FloatBarrier
 
-  \subsection*{NI: The consensus network algorithms}
+  \subsection*{NI: The scaled-sum consensus method shows high precision on benchmark datasets}
 
- Inspired by previous approaches~\cite{bustinceFuzzySetsTheir2008,tsarevApplicationMajorityVoting2018}, we developed two methods that take into consideration the evidence offered by each network inference algorithm and generate a consensus network that contains the most probable associations.
+ Inspired by previous approaches~\cite{bustinceFuzzySetsTheir2008,tsarevApplicationMajorityVoting2018}, we developed two methods that take into consideration the evidence offered by each network inference algorithm and generate a consensus network that contains the common edges among the inferred networks.
 
-  Both of our approaches - simple voting (SV) and scaled-sum (SS) - combine appropriately filtered networks inferred from correlation-based and direct association methods (see Methods, section "Consensus network and p-value merging").
+  Both of our approaches - simple voting (SV) and scaled-sum (SS) - combine appropriately filtered networks inferred from correlation-based and direct association methods (see Methods).
   We chose the scaled-sum method as the pipeline default since this method takes into account the weights of the associations in the determination of the final consensus.
-  The pipeline allows for any choice of a subset of methods for the consensus calculation. Currently, by default, all direct methods are used, together with \acs{sparcc} and propr.
+  The pipeline enables the selection of any subset of methods for the consensus calculation. Currently, by default, all direct methods are used, together with \acs{sparcc} and propr.
 
   Similar to what was done for the previous steps of the pipeline, and in analogy with previous estimations of network inference accuracy~\cite{Kurtz2015,Weiss2016}, we evaluated the network inference algorithms and the final consensus network using synthetic interaction data.
   For this purpose, we generated synthetic interaction data using the ``NorTA''~\cite{Kurtz2015} and ``seqtime''~\cite{faustSignaturesEcologicalProcesses2018} methods (see Methods).
-  For each method, an \ac{otu} counts table is generated based on the selected interaction network topology and properties.
-  This counts table is used as the input to the \ac{micone} pipeline to generate predicted associations.
-  The interaction network used to generate the counts table is used as the source of true interactions to calculate the precision (Figure \ref{fig:figure5}) and sensitivity (Figure \ref{fig:figure_s5} and Figure \ref{fig:figure_s6}) for each network inference algorithm.
+  For each method, an \ac{otu} counts table was generated based on the selected parameters and abundance distributions.
+  This counts table was used as the input to the \ac{micone} pipeline to generate predicted associations.
+  The interaction network used to generate the counts table was used as the source of true interactions to calculate the precision (Figure \ref{fig:figure5}) and sensitivity (Figure \ref{fig:figure_s5} and Figure \ref{fig:figure_s6}) for each network inference algorithm.
   As shown in Figure \ref{fig:figure5} the consensus algorithm, especially the scaled-sum method, captures true associations with high precision (through the removal of edges that are either not present in most of the inference methods or whose association strength is low across methods).
   Overall, the scaled-sum method for $p=1.000$ performs the best (precision = $1.000$ for both NorTA and seqtime).
   The scaled-sum method for $p=0.333$ (default option in the pipeline) shows a high precision ($0.956$ with NorTA; $0.688$ with seqtime), without displaying significant reduction in sensitivity (Figure~\ref{fig:figure_s5} and Figure~\ref{fig:figure_s6}).
   However, if higher precision is required $p>0.5$ can be considered.
-  Therefore, the consensus networks provide the means to obtain a short list of associations that would have a high probability of being present in the real association network.
+  Therefore, the consensus networks provide the means to obtain a short list of associations that would have a high likelihood of being present in the real association network.
 
   \FloatBarrier
 
@@ -127,16 +127,16 @@
   In order to analyze the effect of different processing methods on the inferred co-occurrence networks (before consensus estimation), we generated networks using all possible combinations of methods and quantified the variability due to each choice (Figure \ref{fig:figure6}A).
  This was achieved by building a linear model of the edges of the network as a function of the various steps in the pipeline workflow (see Methods).
   Figure \ref{fig:figure6}A, shows the percentage of total variation among the co-occurrence networks due to the different steps of the pipeline.
-  The \ac{ta} step, or more specifically the choice of 16S reference database, contributes the most ($\sim65.4\%$) to the variation in the networks, followed by the \ac{op} step ($\sim26.8\%$).
+  The \ac{ta} step, or more specifically the choice of 16S reference database, contributes the most ($65.4\%$) to the variation in the networks, followed by the \ac{op} step ($26.8\%$).
   This result highlights the importance of the taxonomy assignment step in the 16S data analysis workflow, implying that a change in the reference database will result in drastically different inferred networks.
   This is likely due to the differential assignment of representative sequences to taxonomic entities (Figure~\ref{fig:figure3} and Figure~\ref{fig:figure_s4}), which drastically alter the nodes and hence the underlying network topology.
 
-  The effects of the different steps of the pipeline on the inferred networks can be best visualized through dimensionality reduction.
-  The PCA in Figure \ref{fig:figure6}B shows all the above networks, colored by the databases used in TA (left) and by the NI approach (right).
+  The effects of the different steps of the pipeline on the inferred networks can be visualized through dimensionality reduction.
+  The PCA in Figure \ref{fig:figure6}B shows all the above networks, colored by the tools used in the DC, TA, OP, and NI steps in each subfigure.
   The major effect of the TA step choice, shown before in Figure \ref{fig:figure6}A, is also reflected in the PCA plot, where networks segregate based on the database used (Figure~\ref{fig:figure6}B and Figure~\ref{fig:figure_s1}).
-  It is also evident that some networks, especially those inferred using the direct association network inference methods, are much closer in the PCA plot regardless of the reference database used.
-  Additionally, the variation (on the first two principal axes) between the networks decreases when the low abundance \ac{otu}s are removed from the network.
-  These results suggest that the most important criterion for accurate comparative analysis of co-occurrence networks is the taxonomy reference database followed by the level of filtering of the taxonomy tables.
+  Additionally, the plot also shows that the variation between the networks decreases when the low abundance \ac{otu}s are removed from the network.
+  It is also evident that in the NI step, some networks, especially those inferred using the direct association network inference methods, are much closer in the PCA plot regardless of the reference database used.
+  These results suggest that the most important criterion for accurate comparative analysis of co-occurrence networks is the taxonomy reference database followed by the level of filtering of the taxonomy tables and the network inference algorithm used.
 
   \FloatBarrier
 
@@ -146,15 +146,14 @@
   However, the mock communities and synthetic data provide an opportunity to select combinations of tools that yield the most accurate and robust results.
   As highlighted in the above sections for individual steps, we propose a set of tools and parameters as the defaults for the pipeline (Table~\ref{tab:micone_tools}).
 
-  Figure~\ref{fig:figure7} shows the co-occurrence networks inferred for the healthy subjects (control) and subjects with autism specific disorder (ASD) in the fecal microbiome transplant study~\cite{Kang2017} (using the default tools and parameters from Table~\ref{tab:micone_tools}).
+  Figure~\ref{fig:figure7} shows the co-occurrence networks inferred for the healthy subjects (control) and subjects with autism specific disorder (ASD) in the fecal microbiome transplant study~\cite{Kang2017} (constructed using the default tools and parameters from Table~\ref{tab:micone_tools}).
   This figure demonstrates a typical use case of comparative analysis of networks using the \ac{micone} pipeline.
   As a consequence of using the consensus network algorithm, the final co-occurrence networks are sparse and can be visually compared and examined.
 
   The analysis of the rewiring of associations in the ASD samples with respect to the control provides a guide for the identification of key genera that could be linked to dysbiosis.
-  We observed 20 unique links in the network for control samples, 12 unique links in the network for ASD subjects, and 7 edges in common between both networks.
-  Although these unique connections do not imply real interactions, they can still serve as potential starting points for literature surveys and further experimental confirmations.
-  For example, the changed connectivity of Prevotella and Porphyromonas in our networks show that these genera could be useful candidates for further downstream verification.
-  Correspondingly, we have found previous studies that indicate that these genera are implicated in ASD~\cite{Kang2017,hoGutMicrobiotaChanges2020} and cognitive impairment~\cite{chiPorphyromonasGingivalisInducedCognitive2021}.
+  We observed 22 unique links in the network for control samples, 12 unique links in the network for ASD subjects, and 7 edges in common between the two networks.
+  Although these unique associations do not imply actual interactions, they can still serve as potential starting points for literature surveys and further experimental exploration of mechanistic processes underlying dysbiosis.
+  For example, \textit{Prevotella} and \textit{Porphyromonas}, genera previously implicated in ASD~\cite{Kang2017,hoGutMicrobiotaChanges2020} and cognitive impairment~\cite{chiPorphyromonasGingivalisInducedCognitive2021} display modified connectivity in our network, suggesting that the observed associations may be relevant for understanding the role of these bacteria in disease.
   Additional visualization and comparison of networks can be performed using the \acl{mind}~\cite{huResourceComparisonIntegration2022}.
 
   Figure~\ref{fig:figure_s7} shows a sensitivity analysis in which we compared the default network against networks generated by altering one of the steps of the pipeline relative to the default.
