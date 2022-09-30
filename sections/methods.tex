@@ -130,9 +130,9 @@
   The consensus methods combine networks inferred from both correlation-based and direct association methods.
   \todo[noline]{R1.1}
   \todo[noline]{R1.4}
+  First, for the correlation-based methods, we calculate p-values using null models and then merge the p-values using Brown's p-value merging method~\cite{Poole_Gibbs_Shmulevich_Bernard_Knijnenburg_2016,faustCoNetAppInference2016}.
   \todo[noline]{R2.2}
   \todo[noline]{R2.3}
-  First, for the correlation-based methods, we calculate p-values using null models and then merge the p-values using Brown's p-value merging method~\cite{Poole_Gibbs_Shmulevich_Bernard_Knijnenburg_2016,faustCoNetAppInference2016} (see Methods).
   Second, we filter all the inferred networks based on an association strength threshold of 0.1 and a p-value cutoff of 0.05.
   Finally, we apply the consensus algorithms we have developed on these filtered networks.
   These steps are elaborated on in the subsequent sections.
