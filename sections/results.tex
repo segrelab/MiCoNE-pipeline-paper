@@ -13,6 +13,7 @@
   Through a systematic analysis of tool combinations at each step of the pipeline, we estimated how much the final co-occurrence network depends on the possible choices at each step.
 
   Our analysis involved two types of data: The first type consisted of 16S sequencing data from samples of human stool microbiomes from a fecal microbiome transplant (FMT) study of autism~\cite{Kang2017}.
+  \todo[noline]{R2.4}
   The second type was a collection of datasets synthetically or artificially created for the specific goal of evaluating computational analysis tools.
   In particular, in order to benchmark each step in \ac{micone}, we used both mock data (labeled mock4, mock12, and mock16) from mockrobiota~\cite{Bokulich2016} and synthetic networks generated using the NorTA~\cite{Kurtz2015} and seqtime~\cite{Rottjers2018} approaches (See Methods).
 
@@ -39,7 +40,9 @@
   We note that there is no method that outperforms the rest in all datasets (see Supplementary for an extended discussion).
   Based on their slightly better performance on the mock datasets, their de novo error correcting nature and previous independent evaluation~\cite{Nearing2018}, \ac{dada2} and Deblur appear to be the most reliable.
   This is because the open-reference and de novo clustering methods return a much larger number of \ac{otu}s compared to the other pipelines and would affect the accuracy of the network inference step if stringent filtering is not performed.
+  \todo[noline]{R2.6}
   Overall, since \ac{dada2} as compared to Deblur, displays better performance on all the mock datasets on the weighted UniFrac metric, we set this tool as the default for the DC step of the pipeline.
+  \todo[noline]{R2.10}
   However, if comparison across studies that have sequenced different 16S regions is required, closed-reference and open-reference might be a better option.
 
   After the denoising, the sequences are subject to Chimera Checking (CC).
@@ -76,11 +79,13 @@
   We find that none of the databases perform better than the others in absolute terms and that the dissimilarity with the expected composition is high ($>0.5$ for Family and Genus and $>0.9$ for Species), indicating that all the databases have some limitations when trying to recapture the expected taxonomic composition.
 
   Since no database performs better than others against mock datasets, the choice of which database to use could be driven by other reasons (see Supplementary discussion).
+  \todo[noline]{R2.2a}
   One reason to choose a particular database could be the frequency of updates and the potential for future growth.
   Both \ac{gg}, due to its frequent use in the literature~\cite{Balvociute2017}, and \ac{ncbi}, due to its regular revision and maintenance, could be good choices for taxonomy assignment.
   In our default pipeline, we choose \ac{gg} as the default method.
 
   The TA step results in a taxonomic counts table that is used as input to the subsequent steps of the pipeline.
+  \todo[noline]{R2.1b}
   Note that the count tables at different levels can be obtained through aggregation; for example, Genus count tables were obtained by summing up the counts of the lower taxonomy levels (Species and \ac{otu}) that map to the same higher taxonomy level entity.
 
   \FloatBarrier
@@ -92,6 +97,7 @@
    Thus, they are not included in subsequent quantitative analyses.
 
   Filtered (see \ac{op} step in Methods) genus-level counts table obtained using the default settings in the previous steps were used as input for the different network inference algorithms (Figure~\ref{fig:figure4}).
+  \todo[noline]{R2.1b}
   Even from a visual inspection (Figure~\ref{fig:figure4}A), one can see that the different networks differ vastly in their edge-density and connectivity, with common edges often displaying inverted signs.
 
   To quantify the differences between the networks, we analyzed the distribution of common nodes and edges (Figure~\ref{fig:figure4} B and \ref{fig:figure4}C) using UpSet plots~\cite{lexUpSetVisualizationIntersecting2014}.
@@ -104,6 +110,8 @@
   \subsection*{NI: The scaled-sum consensus method shows high precision on benchmark datasets}
 
  Inspired by previous approaches~\cite{bustinceFuzzySetsTheir2008,tsarevApplicationMajorityVoting2018}, we developed two methods that take into consideration the evidence offered by each network inference algorithm and generate a consensus network that contains the common edges among the inferred networks.
+  \todo[noline]{R1.1}
+  \todo[noline]{R1.4}
 
   Both of our approaches - simple voting (SV) and scaled-sum (SS) - combine appropriately filtered networks inferred from correlation-based and direct association methods (see Methods).
   We chose the scaled-sum method as the pipeline default since this method takes into account the weights of the associations in the determination of the final consensus.
@@ -151,6 +159,7 @@
   As a consequence of using the consensus network algorithm, the final co-occurrence networks are sparse and can be visually compared and examined.
 
   The analysis of the rewiring of associations in the ASD samples with respect to the control provides a guide for the identification of key genera that could be linked to dysbiosis.
+  \todo[noline]{R2.14}
   We observed 22 unique links in the network for control samples, 12 unique links in the network for ASD subjects, and 7 edges in common between the two networks.
   Although these unique associations do not imply actual interactions, they can still serve as potential starting points for literature surveys and further experimental exploration of mechanistic processes underlying dysbiosis.
   For example, \textit{Prevotella} and \textit{Porphyromonas}, genera previously implicated in ASD~\cite{Kang2017,hoGutMicrobiotaChanges2020} and cognitive impairment~\cite{chiPorphyromonasGingivalisInducedCognitive2021} display modified connectivity in our network, suggesting that the observed associations may be relevant for understanding the role of these bacteria in disease.
