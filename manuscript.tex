@@ -313,7 +313,7 @@ We expect that our tool will also be useful for benchmarking future alternative 
   Through a systematic analysis of tool combinations at each step of the pipeline, we estimated how much the final co-occurrence network depends on the possible choices at each step.
 
   Our analysis involved two types of data: The first type consisted of 16S sequencing data from samples of human stool microbiomes from a fecal microbiome transplant (FMT) study of autism~\cite{Kang2017}.
-  \todo[noline]{R2.4}
+  %\todo[noline]{R2.4}
   The second type was a collection of datasets synthetically or artificially created for the specific goal of evaluating computational analysis tools.
   In particular, in order to benchmark each step in \ac{micone}, we used both mock data (labeled mock4, mock12, and mock16) from mockrobiota~\cite{Bokulich2016} and synthetic networks generated using the NorTA~\cite{Kurtz2015} and seqtime~\cite{Rottjers2018} approaches (See Methods).
 
@@ -340,9 +340,9 @@ We expect that our tool will also be useful for benchmarking future alternative 
   We note that there is no method that outperforms the rest in all datasets (see Supplementary for an extended discussion).
   Based on their slightly better performance on the mock datasets, their de novo error correcting nature and previous independent evaluation~\cite{Nearing2018}, \ac{dada2} and Deblur appear to be the most reliable.
   This is because the open-reference and de novo clustering methods return a much larger number of \ac{otu}s compared to the other pipelines and would affect the accuracy of the network inference step if stringent filtering is not performed.
-  \todo[noline]{R2.6}
+  %\todo[noline]{R2.6}
   Overall, since \ac{dada2} as compared to Deblur, displays better performance on all the mock datasets on the weighted UniFrac metric, we set this tool as the default for the DC step of the pipeline.
-  \todo[noline]{R2.10}
+  %\todo[noline]{R2.10}
   However, if comparison across studies that have sequenced different 16S regions is required, closed-reference and open-reference might be a better option.
 
   After the denoising, the sequences are subject to Chimera Checking (CC).
@@ -379,13 +379,13 @@ We expect that our tool will also be useful for benchmarking future alternative 
   We find that none of the databases perform better than the others in absolute terms and that the dissimilarity with the expected composition is high ($>0.5$ for Family and Genus and $>0.9$ for Species), indicating that all the databases have some limitations when trying to recapture the expected taxonomic composition.
 
   Since no database performs better than others against mock datasets, the choice of which database to use could be driven by other reasons (see Supplementary discussion).
-  \todo[noline]{R2.2a}
+  %\todo[noline]{R2.2a}
   One reason to choose a particular database could be the frequency of updates and the potential for future growth.
   Both \ac{gg}, due to its frequent use in the literature~\cite{Balvociute2017}, and \ac{ncbi}, due to its regular revision and maintenance, could be good choices for taxonomy assignment.
   In our default pipeline, we choose \ac{gg} as the default method.
 
   The TA step results in a taxonomic counts table that is used as input to the subsequent steps of the pipeline.
-  \todo[noline]{R2.1b}
+  %\todo[noline]{R2.1b}
   Note that the count tables at different levels can be obtained through aggregation; for example, Genus count tables were obtained by summing up the counts of the lower taxonomy levels (Species and \ac{otu}) that map to the same higher taxonomy level entity.
 
   \FloatBarrier
@@ -397,7 +397,7 @@ We expect that our tool will also be useful for benchmarking future alternative 
    Thus, they are not included in subsequent quantitative analyses.
 
   Filtered (see \ac{op} step in Methods) genus-level counts table obtained using the default settings in the previous steps were used as input for the different network inference algorithms (Figure~\ref{fig:figure4}).
-  \todo[noline]{R2.1b}
+  %\todo[noline]{R2.1b}
   Even from a visual inspection (Figure~\ref{fig:figure4}A), one can see that the different networks differ vastly in their edge-density and connectivity, with common edges often displaying inverted signs.
 
   To quantify the differences between the networks, we analyzed the distribution of common nodes and edges (Figure~\ref{fig:figure4} B and \ref{fig:figure4}C) using UpSet plots~\cite{lexUpSetVisualizationIntersecting2014}.
@@ -410,8 +410,8 @@ We expect that our tool will also be useful for benchmarking future alternative 
   \subsection*{NI: The scaled-sum consensus method shows high precision on benchmark datasets}
 
  Inspired by previous approaches~\cite{bustinceFuzzySetsTheir2008,tsarevApplicationMajorityVoting2018}, we developed two methods that take into consideration the evidence offered by each network inference algorithm and generate a consensus network that contains the common edges among the inferred networks.
-  \todo[noline]{R1.1}
-  \todo[noline]{R1.4}
+  %\todo[noline]{R1.1}
+  %\todo[noline]{R1.4}
 
   Both of our approaches - simple voting (SV) and scaled-sum (SS) - combine appropriately filtered networks inferred from correlation-based and direct association methods (see Methods).
   We chose the scaled-sum method as the pipeline default since this method takes into account the weights of the associations in the determination of the final consensus.
@@ -459,7 +459,7 @@ We expect that our tool will also be useful for benchmarking future alternative 
   As a consequence of using the consensus network algorithm, the final co-occurrence networks are sparse and can be visually compared and examined.
 
   The analysis of the rewiring of associations in the ASD samples with respect to the control provides a guide for the identification of key genera that could be linked to dysbiosis.
-  \todo[noline]{R2.14}
+  %\todo[noline]{R2.14}
   We observed 22 unique links in the network for control samples, 12 unique links in the network for ASD subjects, and 7 edges in common between the two networks.
   Although these unique associations do not imply actual interactions, they can still serve as potential starting points for literature surveys and further experimental exploration of mechanistic processes underlying dysbiosis.
   For example, \textit{Prevotella} and \textit{Porphyromonas}, genera previously implicated in ASD~\cite{Kang2017,hoGutMicrobiotaChanges2020} and cognitive impairment~\cite{chiPorphyromonasGingivalisInducedCognitive2021} display modified connectivity in our network, suggesting that the observed associations may be relevant for understanding the role of these bacteria in disease.
@@ -488,7 +488,7 @@ We expect that our tool will also be useful for benchmarking future alternative 
   \subsection*{The default pipeline and recommended tools}
 
   Through \ac{micone}, in addition to transparently revealing the dependence of co-occurrence networks on tool and parameter choices (see Discussion in Supplementary Text for details on the DC, TA and OP steps), we have taken advantage of our spectrum of computational options and the availability of mock and synthetic datasets, to suggest a default standard setting.
-  \todo[noline]{R1.3}
+  %\todo[noline]{R1.3}
   Additionally, we have developed a consensus approach, that can reliably generate networks that are fairly robust across multiple tool choices.
   An important caveat related to these results is that due to the lack of a universal standard for microbial interaction data, our conclusions are based on the specific datasets used in our analysis.
   While our analysis is based on several mock and synthetic datasets that cover a diverse range of abundance distributions and network topologies, datasets that have drastically different distributions may require a re-assessment of the best settings.
@@ -506,17 +506,17 @@ We expect that our tool will also be useful for benchmarking future alternative 
   Incorporating datasets from a broad spectrum of biomes with varying microbial distributions into \ac{micone} will likely increase the robustness and generalizability of the results from these analyses.
 
   The network analyses in this study are primarily at the Genus level, wherein the lowest resolution of a node is a Genus and if an entity cannot be resolved to the Genus level, the next lowest taxonomic level is used (for example, Family).
-  \todo[noline]{R2.1c}
+  %\todo[noline]{R2.1c}
   As a consequence, two entities belonging to the same lineage where one entity is resolved to the Genus level and another is resolved to the Family level are treated as two different nodes in the network.
   Thus, the development of a metric of overlap to compare nodes with shared lineages within and across networks could enable more biologically and phylogenetically relevant comparisons.
 
   Although direct comparisons between co-occurrence networks and directly measured interactions are difficult to interpret and highly debated~\cite{hiranoDifficultyInferringMicrobial2019,gobernaCautionaryNotesUse2022}.
-  \todo[noline]{R2.2}
+  %\todo[noline]{R2.2}
   Further, benchmarking of co-occurrence networks could also be pursued through the use of literature-based interactions~\cite{lima-mendezDeterminantsCommunityStructure2015a} or biological benchmark interaction data~\cite{sungGlobalMetabolicInteraction2017a}.
   Additionally, \ac{micone} could be extended to enable the processing of metagenomics sequencing data, facilitating the analysis of a much larger and diverse range of datasets and domains of life.
 
   Although in the current analysis, we have only used default parameter values recommended by the tool creators, the \ac{micone} pipeline could be used in the future to explore any combinations of parameters and to optimize these values for improved network inference.
-  \todo[noline]{R1.3}
+  %\todo[noline]{R1.3}
   Overall, there likely is no ``best method'' for the various steps of 16S data analysis, and hence, \ac{micone} is intended to help researchers to identify the methods and algorithms that are most suitable for their datasets in an easy-to-use and reproducible manner.
 
   We envision that \ac{micone}, and its underlying tools and databases, will be increasingly useful for building large comparative analyses across studies.
@@ -529,7 +529,7 @@ We expect that our tool will also be useful for benchmarking future alternative 
   \subsection*{16S rRNA sequencing datasets}
   \vspace{-5mm}
   This study utilized two types of 16S rRNA sequencing datasets: biological datasets and mock/synthetic datasets.
-  \todo[noline]{R2.4}
+  %\todo[noline]{R2.4}
   Biological datasets are collections of sequencing reads obtained from naturally occurring microbial community samples.
   The current analysis used stool samples from a fecal microbiome transplant study of autism~\cite{Kang2017} as the biological dataset.
   This dataset was chosen because the sequences were easily accessible on Qiita~\cite{qiita} and optimally pre-processed according to the \ac{emp}~\cite{Thompson2017} protocol, allowing them to be used directly as input to the \ac{micone} pipeline.
@@ -567,7 +567,7 @@ We expect that our tool will also be useful for benchmarking future alternative 
   It also allows for automatic parallelization of all possible processes, both within and across samples.
   The pipeline is designed to be modular: each tool or method is organized into modules that can be easily modified or replaced.
   This modular architecture simplifies the process of adding new tools (refer to the modules section in the \ac{micone} documentation).
-  \todo[noline]{R2.11}
+  %\todo[noline]{R2.11}
   The main components of the pipeline are detailed in the subsequent sections.
 
   \subsection*{Sequence Processing (SP)}
@@ -617,7 +617,7 @@ We expect that our tool will also be useful for benchmarking future alternative 
   This module deals with normalization, filtering, forking, grouping, and applying transformations to the \ac{otu} or \ac{esv} counts matrix.
   Normalization of the count matrix involves converting the count matrix of read counts into a count matrix containing relative abundances.
   The module also supports rarefaction, which is a normalization technique used to overcome the bias that might arise due to variable sampling depth in different samples.
-  \todo[noline]{R2.5}
+  %\todo[noline]{R2.5}
   This is performed either by sub-sampling or by normalization of the matrix to the lowest sampling depth~\cite{Weiss2015}.
   However, due to the potential biases and false positives~\cite{mcmurdieWasteNotWant2014,chaoCoveragebasedRarefactionExtrapolation2012} that might arise during the process, the rarefaction module is disabled by default and can be enabled in the configuration if needed.
   Hence, although the pipeline supports normalization and rarefaction, these modules are turned off by default, and the analyses reported in the paper do not normalize or rareify the counts matrices.
@@ -628,7 +628,7 @@ We expect that our tool will also be useful for benchmarking future alternative 
   The parameters used are given in Table~\ref{tab:micone_tools}.
   The forking operation splits the count matrix into multiple matrices based on sample metadata column, this is useful for example to compare case vs. control.
   The group operation transforms the \ac{otu} or \ac{esv} count matrix into a taxonomic count matrix at the requested level by adding up counts that map to the same taxonomy and is carried out at the end of the OP step.
-  \todo[noline]{R2.1b}
+  %\todo[noline]{R2.1b}
   Finally, transformations are performed in order to correct for and overcome the compositional bias that is inherent in the counts matrix (in the analysis performed in the study these were disabled and directly handled by the network inference algorithm).
   All the modules in this step were implemented using functions from the \href{http://biom-format.org/}{biom-format} Python package~\cite{mcdonaldBiologicalObservationMatrix2012}.
 
@@ -652,11 +652,11 @@ We expect that our tool will also be useful for benchmarking future alternative 
 
   \subsection*{Consensus network and p-value merging}
   The consensus methods combine networks inferred from both correlation-based and direct association methods.
-  \todo[noline]{R1.1}
-  \todo[noline]{R1.4}
+  %\todo[noline]{R1.1}
+  %\todo[noline]{R1.4}
   First, for the correlation-based methods, we calculate p-values using null models and then merge the p-values using Brown's p-value merging method~\cite{Poole_Gibbs_Shmulevich_Bernard_Knijnenburg_2016,faustCoNetAppInference2016}.
-  \todo[noline]{R2.2}
-  \todo[noline]{R2.3}
+  %\todo[noline]{R2.2}
+  %\todo[noline]{R2.3}
   Second, we filter all the inferred networks based on an association strength threshold of 0.1 and a p-value cutoff of 0.05.
   Finally, we apply the consensus algorithms we have developed on these filtered networks.
   These steps are elaborated on in the subsequent sections.
@@ -692,7 +692,7 @@ We expect that our tool will also be useful for benchmarking future alternative 
   \subsubsection*{p-value merging}
   \vspace{-5mm}
   The next step in the consensus algorithm workflow is to merge the p-values for the networks generated by the correlation-based methods.
-  \todo[noline]{R1.1}
+  %\todo[noline]{R1.1}
   This step is performed using the Brown's p-value merging method~\cite{Poole_Gibbs_Shmulevich_Bernard_Knijnenburg_2016,faustCoNetAppInference2016}.
 
   As described in more detail in the Supplementary section and in the original reference~\cite{Poole_Gibbs_Shmulevich_Bernard_Knijnenburg_2016}, the final combined p-value is given by:
@@ -799,9 +799,9 @@ where, $g$ and $f$ are defined as follows:
   \subsubsection*{Notation}
   \vspace{-5mm}
   This section defines the notation used for the network variability analysis performed for Figure~\ref{fig:figure6}.
-  \todo[noline]{R1.2}
-  \todo[noline]{R1.8}
-  \todo[noline]{R2.1b,d}
+  %\todo[noline]{R1.2}
+  %\todo[noline]{R1.8}
+  %\todo[noline]{R2.1b,d}
 
   $W$, the number of co-occurrence networks generated from all possible combinations of tools and parameters in the workflow.
   Note that this is different from $w$, which counted only the different network inference modules.
@@ -822,8 +822,8 @@ where, $g$ and $f$ are defined as follows:
    Therefore, $\bar{N}^i_j$ is the weight of edge $j$ in the network $i$.
    $\bar{N}^i_j$ is assigned a value of 0 if edge $j$ did not exist in network $i$ but was present in one of the other networks.
    Note that row $j$ of $\mathbf{\bar{N}}$, $\bar{N}_j$ is the vector that encodes the values of edge $j$ across all the networks.
-  \todo[noline]{R1.5}
-  \todo[noline]{R2.1b}
+  %\todo[noline]{R1.5}
+  %\todo[noline]{R2.1b}
 
   \begin{equation*}
    \mathbf{\bar{N}} =
@@ -863,17 +863,17 @@ where, $g$ and $f$ are defined as follows:
    \end{enumerate}
 
    The variance contributed by each step of the pipeline was calculated for every component in $\mathbf{C}$ matrix through ANOVA using the Python statsmodels~\cite{seaboldStatsmodelsEconometricStatistical2010} package and is shown in Figure~\ref{fig:figure6}A.
-  \todo[noline]{R1.6}
+  %\todo[noline]{R1.6}
   The total variance for the network was calculated by adding the variances for each connection and normalizing with the degrees of freedom.
   The merged network table $\mathbf{\bar{N}}$ was used as the input to the PCA analysis to generate Figure~\ref{fig:figure6}B.
-  \todo[noline]{R1.7}
+  %\todo[noline]{R1.7}
 
   \subsection*{Synthetic interaction data}
   \vspace{-5mm}
   We generated synthetic interaction data using two methodologies previously used for benchmarking network inference methods.
-  \todo[noline]{R1.4}
-  \todo[noline]{R2.2}
-  \todo[noline]{R2.4}
+  %\todo[noline]{R1.4}
+  %\todo[noline]{R2.2}
+  %\todo[noline]{R2.4}
 
   The first method, ``seqtime''~\cite{faustSignaturesEcologicalProcesses2018}, used generalized Lotka-Volterra (gLV) equations to model the microbial community dynamics and utilized the Klemm–Eguı́luz algorithm to generate a clique-based interaction network~\cite{Rottjers2018}.
   We used the \href{https://github.com/hallucigenia-sparsa/seqtime}{seqtime} R package to simulate communities with number of species ($N$) varying from 10 to 150 (10, 25, 50, 100, 150 and 200).
