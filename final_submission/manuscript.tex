@@ -338,7 +338,7 @@ We expect that our tool will also be useful for benchmarking future alternative 
   The results (Figure~\ref{fig:figure2}C and \ref{fig:figure2}D) show that the predicted sequence distributions are overall different from the expected ones.
   The variation across datasets indicates that the datasets themselves play a big role in method performance.
   We note that there is no method that outperforms the rest in all datasets (see Supplementary for an extended discussion).
-  Based on their slightly better performance on the mock datasets, their de novo error correcting nature and previous independent evaluation~\cite{Nearing2018}, \ac{dada2} and Deblur appear to be the most reliable.
+  Based on being among the top performers on the mock datasets, their de novo error correcting nature and previous independent evaluation~\cite{Nearing2018}, \ac{dada2} and Deblur appear to be the most reliable.
   This is because the open-reference and de novo clustering methods return a much larger number of \ac{otu}s compared to the other pipelines and would affect the accuracy of the network inference step if stringent filtering is not performed.
   %\todo[noline]{R2.6}
   Overall, since \ac{dada2} as compared to Deblur, displays better performance on all the mock datasets on the weighted UniFrac metric, we set this tool as the default for the DC step of the pipeline.
@@ -415,7 +415,7 @@ We expect that our tool will also be useful for benchmarking future alternative 
 
   Both of our approaches - simple voting (SV) and scaled-sum (SS) - combine appropriately filtered networks inferred from correlation-based and direct association methods (see Methods).
   We chose the scaled-sum method as the pipeline default since this method takes into account the weights of the associations in the determination of the final consensus.
-  The pipeline enables the selection of any subset of methods for the consensus calculation. Currently, by default, all direct methods are used, together with \acs{sparcc} and propr.
+  The pipeline enables the selection of any subset of methods for the consensus calculation. Currently, by default, all direct association methods (\acs{spieceasi}, \acs{cozine}, \acs{harmonies}, \acs{spring}, \acs{mldm}, and FlashWeave) are used, together with \acs{sparcc} and propr.
 
   Similar to what was done for the previous steps of the pipeline, and in analogy with previous estimations of network inference accuracy~\cite{Kurtz2015,Weiss2016}, we evaluated the network inference algorithms and the final consensus network using synthetic interaction data.
   For this purpose, we generated synthetic interaction data using the ``NorTA''~\cite{Kurtz2015} and ``seqtime''~\cite{faustSignaturesEcologicalProcesses2018} methods (see Methods).
@@ -423,9 +423,9 @@ We expect that our tool will also be useful for benchmarking future alternative 
   This counts table was used as the input to the \ac{micone} pipeline to generate predicted associations.
   The interaction network used to generate the counts table was used as the source of true interactions to calculate the precision (Figure \ref{fig:figure5}) and sensitivity (Figure \ref{fig:figure_s5} and Figure \ref{fig:figure_s6}) for each network inference algorithm.
   As shown in Figure \ref{fig:figure5} the consensus algorithm, especially the scaled-sum method, captures true associations with high precision (through the removal of edges that are either not present in most of the inference methods or whose association strength is low across methods).
-  Overall, the scaled-sum method for $p=1.000$ performs the best (precision = $1.000$ for both NorTA and seqtime).
-  The scaled-sum method for $p=0.333$ (default option in the pipeline) shows a high precision ($0.956$ with NorTA; $0.688$ with seqtime), without displaying significant reduction in sensitivity (Figure~\ref{fig:figure_s5} and Figure~\ref{fig:figure_s6}).
-  However, if higher precision is required $p>0.5$ can be considered.
+  Overall, the scaled-sum method for $\theta=1.000$ performs the best (precision = $1.000$ for both NorTA and seqtime).
+  The scaled-sum method for $\theta=0.333$ (default option in the pipeline) shows a high precision ($0.956$ with NorTA; $0.688$ with seqtime), without displaying significant reduction in sensitivity (Figure~\ref{fig:figure_s5} and Figure~\ref{fig:figure_s6}).
+  However, if higher precision is required $\theta>0.5$ can be considered.
   Therefore, the consensus networks provide the means to obtain a short list of associations that would have a high likelihood of being present in the real association network.
 
   \FloatBarrier
@@ -713,8 +713,8 @@ We expect that our tool will also be useful for benchmarking future alternative 
   \vspace{-5mm}
   The consensus algorithm was designed to increase the precision (number of true positives) at the end of the network inference step.
   For this purpose, we developed two simple algorithms that combine the edges reported by the different network inference tools.
-  Both the algorithms make use of a user-defined parameter $p$ ($0 \leq p \leq 1$), in order to threshold the edges from the individual methods.
-  The inputs to both the algorithms are the co-occurrence networks (association matrices) $\bar{N}^i$ (flattened version of $N^{i}$) generated by each method $i$, and the threshold parameter $p$.
+  Both the algorithms make use of a user-defined parameter $\theta$ ($0 \leq \theta \leq 1$), in order to threshold the edges from the individual methods.
+  The inputs to both the algorithms are the co-occurrence networks (association matrices) $\bar{N}^i$ (flattened version of $N^{i}$) generated by each method $i$, and the threshold parameter $\theta$.
   Here, the $\bar{N}^{i}$ each have the same set of nodes $q$ and only differ by the value of the association inferred between every pair.
   Networks that do not have a particular node, are updated such that the node is added as an isolated component.
   In this manner, $\bar{N}^{i}_j$ represents edge $j$ in network $i$.
@@ -756,13 +756,13 @@ where, $g$ and $f$ are defined as follows:
 
  The edge $j$ is selected to be present in the final consensus network if the number of networks in which $j$ appears is greater than a threshold, i.e:
   \begin{equation}
-     M_j \geq \lfloor p \times w \rfloor
+     M_j \geq \lfloor \theta \times w \rfloor
     \label{eqn:simple-voting2}
   \end{equation}
-  where, $p$ is the user-defined threshold parameter.
+  where, $\theta$ is the user-defined threshold parameter.
 
-  The simple voting method returns the union of the networks when $0 \leq p \leq \frac{1}{w}$ and will return the intersection when $\frac{(w - 1)}{w} \leq p \leq 1$.
-  In general, if $\frac{(n - 1)}{w} \leq p \leq \frac{n}{w}$, this algorithm will report an edge in the consensus network when at least $n$ network inference methods report this edge.
+  The simple voting method returns the union of the networks when $0 \leq \theta \leq \frac{1}{w}$ and will return the intersection when $\frac{(w - 1)}{w} \leq \theta \leq 1$.
+  In general, if $\frac{(n - 1)}{w} \leq \theta \leq \frac{n}{w}$, this algorithm will report an edge in the consensus network when at least $n$ network inference methods report this edge.
 
 
   \paragraph*{Algorithm 2 - Scaled-sum method:}
@@ -788,7 +788,7 @@ where, $g$ and $f$ are defined as follows:
 
   An edge $j$ will be included in the consensus network if $s_j$ passes a threshold.
   \begin{equation}
-    \mid s_j \mid > (w - 1) \times p
+    \mid s_j \mid > (w - 1) \times \theta
     \label{eq:scaled-sum2}
   \end{equation}
 
@@ -1098,9 +1098,9 @@ Designed the research project: DK, KK, DS, ZH, CDL. Performed analysis: DK, GB. 
       The independent algorithms chosen for the comparison are the two best-performing correlation-based (propr, sparcc) and direct association based (spieceasi, flashweave) methods.
       For consensus network inference, we used the scaled-sum (SS) and simple voting (SV) methods.
       A weight threshold of 0.1 and a p-value threshold of 0.05 was applied to each network before the calculation of precision.
-      The overall best precision was consistently obtained by the scaled-sum consensus method for $p \geq 0.333$ on both benchmark datasets. Among all the individual network inference methods, spieceasi shows the best average precision.
-      The simple voting method, when using the presence of edges in all inferred networks as a requirement ($p = 1.000$), also outperforms spieceasi on average precision.
-      Therefore, we set the scaled-sum consensus method with $p = 0.333$ as the default tool for consensus network inference, since this option provides a good balance of precision and sensitivity (see also Figure~\ref{fig:figure_s5} and \ref{fig:figure_s6}).
+      The overall best precision was consistently obtained by the scaled-sum consensus method for $\theta \geq 0.333$ on both benchmark datasets. Among all the individual network inference methods, spieceasi shows the best average precision.
+      The simple voting method, when using the presence of edges in all inferred networks as a requirement ($\theta = 1.000$), also outperforms spieceasi on average precision.
+      Therefore, we set the scaled-sum consensus method with $\theta = 0.333$ as the default tool for consensus network inference, since this option provides a good balance of precision and sensitivity (see also Figure~\ref{fig:figure_s5} and \ref{fig:figure_s6}).
     }
     \label{fig:figure5}
   \end{figure}
@@ -1251,7 +1251,7 @@ Designed the research project: DK, KK, DS, ZH, CDL. Performed analysis: DK, GB. 
         The different consensus methods used are scaled-sum (SS) and simple voting (SV) methods.
         Pearson and Spearman methods are not used in the calculation of the consensus.
         Among all the independent network inference methods, \acs{spieceasi} has the best average precision (0.944), but the overall best precision was consistently obtained by the scaled-sum method (0.956, 0.985, and 1.000).
-        The simple voting method when using the presence of edges in all inferred networks as a requirement ($p = 1.000$), also outperforms \acs{spieceasi} on average precision (0.969).
+        The simple voting method when using the presence of edges in all inferred networks as a requirement ($\theta = 1.000$), also outperforms \acs{spieceasi} on average precision (0.969).
         Although \acs{spieceasi} has a higher sensitivity, if the goal of network inference is to obtain the list of associations that have a high probability of existing in the real microbial community, then the consensus methods perform better.
       }
     \label{fig:figure_s5}
@@ -1270,7 +1270,7 @@ Designed the research project: DK, KK, DS, ZH, CDL. Performed analysis: DK, GB. 
         The different consensus methods used are scaled-sum (SS) and simple voting (SV) methods.
         Pearson and Spearman methods are not used in the calculation of the consensus.
         Among all the independent network inference methods, \acs{spieceasi} has the best average precision (0.624), but the overall best precision was consistently obtained by the scaled-sum method (0.688, 0.820, and 1.000).
-        The simple voting method when using the presence of edges in all inferred networks as a requirement ($p = 1.000$), also outperforms \acs{spieceasi} on average precision (0.692).
+        The simple voting method when using the presence of edges in all inferred networks as a requirement ($\theta = 1.000$), also outperforms \acs{spieceasi} on average precision (0.692).
         These results show that the scaled-sum method is not only much better suited for inferring robust and accurate interactions from count data generated from network topologies (NorTA), but it is also capable of accurately extracting real associations from Lotka-Volterra simulations.
       }
     \label{fig:figure_s6}
@@ -1308,7 +1308,176 @@ Designed the research project: DK, KK, DS, ZH, CDL. Performed analysis: DK, GB. 
     \label{txt:text_s1}
   \end{figure}
 
-% \input{sections/supplementary.tex}
+\newpage
+\section*{Supplementary Text}
+
+  \subsection*{Processing the FMT data}
+
+    \subsubsection*{Data download and pre-processing}
+    The main biological dataset used in this study was the collection of 16S rRNA sequencing reads from stool samples (healthy and autistic individuals) for a fecal microbiome transplant study~\cite{Kang2017}.
+    The data containing the 16S sequencing reads (V4 region) was downloaded from Qiita~\cite{gonzalezQiitaRapidWebenabled2018} (study ID: 10532).
+    Only runs 2, 3, and 4 were used for the subsequent analysis as these runs consisted of paired-end sequencing data, and run 1 contained single-end data.
+    The sample metadata was updated to contain only BMI, sex, height, weight, and experimental group.
+    This was necessary as two of the network inference algorithms (\acs{mldm} and FlashWeave) required information about environmental heterogeneity.
+    However, these environmental correlations were not included in the current analyses.
+
+    \subsubsection*{Processing using the \ac{micone} pipeline}
+    The data was then processed using the \ac{micone} pipeline starting at the \ac{sp} step and ending at the \ac{ni} step with the consensus algorithm.
+    The configuration files (main.nf and nextflow.config) used to run the \ac{micone} pipeline as well the details of the pipeline execution (dag, report, timeline and trace) are in the "runs/FMT" directory of the data and scripts repository (\href{https://github.com/segrelab/MiCoNE-pipeline-paper}{https://github.com/segrelab/MiCoNE-pipeline-paper})
+    The results of the pipeline execution for reproducing the analyses in the manuscript are stored on Zenodo.
+
+  \subsection*{Processing the mock data}
+
+    \subsubsection*{Data download and pre-processing}
+    The mock datasets, mock4, mock12 and mock16 used for this study, were obtained from mockrobiota~\cite{Bokulich2016}.
+    Mock 4 is a mock community composed of 21 bacterial strains represented in equal abundances in two replicate samples, and the same strains represented in uneven abundances in two other replicate samples.
+    Mock 12 is composed of 27 bacterial strains containing closely related taxa, the members of which were chosen in part for their well-separated 16S rRNA gene sequences. Some pairs of strains differ by as little as one nucleotide, but all the strains are distinguishable over the sequenced region of the 16S rRNA gene.
+    Mock 16 is a mock community composed of even amounts of purified genomic DNA from 49 bacteria and 10 archaea.
+    The datasets did not require any preprocessing and could be directly used as input to the pipeline
+
+    \subsubsection*{Processing using the \ac{micone} pipeline}
+    The data was processed using the \ac{micone} pipeline starting at the \ac{sp} step and ending at the \ac{op} step with the filtered taxonomic tables as the final output.
+    The configuration files (main.nf and nextflow.config) used to run the \ac{micone} pipeline as well the details of the pipeline execution (dag, report, timeline and trace) are in the "runs/mock*" directory of the data and scripts repository (\href{https://github.com/segrelab/MiCoNE-pipeline-paper}{https://github.com/segrelab/MiCoNE-pipeline-paper})
+    The results of the pipeline execution for reproducing the analyses in the manuscript are stored on Zenodo.
+
+    \subsubsection*{Interpretation of Unifrac results in the DC step}
+  In Figure \ref{fig:figure_s3}, we observe that both the weighted and unweighted UniFrac distances are increased for the top 1000 representative sequences, implying that the top representative sequences generated by the different methods are not as similar to each other.
+  Therefore, since the weighted UniFrac distances are lower than the unweighted distances, we conclude that the representative sequences in the middle range of the abundance distribution are those that must be the most similar between the methods.
+
+    Open-reference and de novo clustering methods perform the best under the weighted UniFrac metric and the worst (marginally) under the unweighted UniFrac metric (Figure~\ref{fig:figure2}C and \ref{fig:figure2}D).
+    This result can be attributed to the large number of low abundance representative sequences that are generated by these methods.
+    Deblur performs poorly under weighted Unifrac and although its performance on the mock4 dataset is the best under unweighted UniFrac, its performance on the other datasets is average.
+    The Deblur method returns a very small number of representative sequences (2388) and this could account for the reason for the high dissimilarity with the other methods as well as irregular performance on the mock data.
+
+  \subsection*{Synthetic interaction data}
+
+    \subsubsection*{Data generation}
+    The synthetic interaction data for the study were generated using two methods.
+    The first method, ``seqtime''~\cite{faustSignaturesEcologicalProcesses2018} utilized generalized Lotka-Volterra (gLV) equations to model the microbial community dynamics and made use of the Klemm–Eguı́luz algorithm to generate clique-based interaction networks~\cite{Rottjers2018}.
+    We used the seqtime R package to simulate communities with different numbers of species and samples (see Methods for details).
+    The second method, ``NorTA'' used the Normal to Anything (NorTA) approach coupled with a given interaction network topology to generate the abundance distribution of the microbial community~\cite{Kurtz2015}.
+    We used the spieceasi R package to simulate communities with different abundance distributions and network topologies (see Methods for details).
+    The scripts to generate these datasets can be found in the synthetic data and scripts repository (\href{https://github.com/segrelab/MiCoNE-synthetic-data}{https://github.com/segrelab/MiCoNE-synthetic-data})
+
+    \subsubsection*{Processing using the \ac{micone} pipeline}
+    The data was processed using the \ac{micone} pipeline using only the \ac{ni} step with the consensus networks as the final output.
+    The configuration files (main.nf and nextflow.config) used to run the \ac{micone} pipeline as well the details of the pipeline execution (dag, report, timeline and trace) are in the "runs/norta" and "runs/seqtime" directories of the data and scripts repository (\href{https://github.com/segrelab/MiCoNE-pipeline-paper}{https://github.com/segrelab/MiCoNE-pipeline-paper})
+    The results of the pipeline execution for reproducing the analyses in the manuscript are stored on Zenodo.
+
+
+  \subsection*{Network metrics}
+
+  In Table~\ref{tab:network_metrics} we show various global network metrics calculated for each tool in the pipeline.
+  %\todo[noline]{R2.1a}
+  %\todo[noline]{R2.7}
+  All the networks that make use of a particular tool are grouped together, and the following average metrics are calculated for each group:
+  \begin{enumerate}
+    \item The average shortest path length describes the average of all the shortest paths in the graph. No number is reported if the graph is not connected, therefore, the results indicate that none of the networks that make use of \acs{harmonies}, \acs{cozine}, \acs{spring}, \acs{spieceasi} and Pearson are connected.
+    \item The average clustering is the average clustering coefficient of the graph. The closer the value is to 1.0, the more densely connected is the graph. We can observe that the networks that use correlation-based methods have the highest values while the direct association based methods have the lowest.
+    \item The number of connected components is the highest for the direct association based methods and the lowest for the correlation-based methods. In the case of propr, all the networks have only one giant component.
+    \item The modularity metric is the modularity over all partitions in a graph calculated using a label propagation algorithm~\cite{cordascoCommunityDetectionSemisynchronous2010}. Positive values imply that there are more edges between vertices of the same type than we would expect by chance, and negative implies that there are less. The networks inferred by \acs{mldm} report very few edges, and skew the average modularity scores. This could also be an artifact of incomplete convergence of the \acs{mldm} algorithm for some combinations.
+    \item Node connectivity refers to the minimum number of nodes that must be removed from the graph to make it disconnected. We observe that only the networks generated using propr have a high value since most of these networks are connected.
+    \item Degree assortativity coefficient measures the similarity of connections in the graph with respect to the node degree. Again we observe that the direct association based methods have a negative degree of assortativity, meaning that there are many hubs in these networks. The correlation-based methods have positive values implying that in these networks nodes with similar degrees attach to one another.
+  \end{enumerate}
+  A weight threshold of 0.1 and a p-value threshold of 0.05 were applied to each network before the analysis.
+  All the metrics were calculated using the \texttt{networkx} Python package~\cite{hagbergExploringNetworkStructure2008}.
+
+  \subsection*{p-value merging}
+
+  Fisher~\cite{fisher_224a_1948} proposed that for $k$ independent p-values, each generated by $k$ different methods and denoted by $\bar{P}^i$ (notations are same as used in the "Consensus network and p-value merging" subsection of the Methods).
+  %\todo[noline]{R1.1}
+  The following will hold true for the statistic $\Psi$:
+  \begin{equation*}
+    \begin{aligned}
+      \Psi &= \sum_{i=1}^k -2 \log \left( \bar{P}^i \right) \\
+        \Psi &\sim \chi^2_{2k}
+    \end{aligned}
+  \end{equation*}
+
+  Brown~\cite{brown_400_1975} extended Fisher's method to dependent p-values by using a re-scaled $\chi^2$ distribution:
+  \begin{equation*}
+    \Psi \sim c \chi^2_{2f}
+  \end{equation*}
+  where, $f$ is the degrees of freedom and $c$ is the scale factor and are given by:
+  \begin{equation*}
+    f = \frac{\mathrm{E}[\Psi]^2}{\mathrm{Var}[\Psi]} ~~~\text{and}~~~ c = \frac{\mathrm{Var}[\Psi]}{2\mathrm{E}[\Psi]} = \frac{k}{f}
+  \end{equation*}
+
+  We can calculate $E[\Psi]$ and $Var[\Psi]$ under the null hypothesis that the data are drawn from a multivariate Gaussian with some covariance matrix.
+  We then use these values to parametrize a $\chi^2$ distribution from which the p-value corresponding to $\frac{\psi}{c}$ can be calculated.
+  Furthermore, Brown showed that $\mathrm{E}[\Psi]$ and $\mathrm{Var}[\Psi]$ can be calculated via the following numerical approximation:
+  \begin{equation*}
+    \mathrm{E}[\Psi] = 2k ~~~\text{and}~~~ \mathrm{Var}[\Psi] = 4k + 2\sum_{i<j} \mathrm{Cov}\left( -2\log(\bar{P}^i), -2\log(\bar{P}^j) \right)
+  \end{equation*}
+
+  The above formulation was improved by Kost and McDermott~\cite{kost_combining_2002} by further fitting a third-order polynomial to approximate the covariance
+  \begin{equation}
+    \mathrm{Cov}\left( -2\log(\bar{P}^i), -2\log(\bar{P}^j) \right) \approx 3.263 \rho_{ij} + 0.710 \rho_{ij}^2 + 0.027 \rho_{ij}^3
+    \label{eqn:suppl_covariance-pvalues}
+  \end{equation}
+  where, $\rho_{ij}$ is the correlation between method $i$ and method $j$
+
+  Using $E[\Psi]$ and $Var[\Psi]$ we then fit a $\chi^2$ distribution with the parameters $c$ and $f$.
+  Note that since, in general, $f$ will not be an integer, this should be understood as a Gamma distribution with a shape parameter $f$, as mentioned by Brown~\cite{brown_400_1975}.
+  Using this, we calculate the test $\psi$ and compute the p-value from the CDF of the $\chi^2$ distribution, given in Equation~\ref{eqn:suppl_pvalue-combined}.
+  Therefore, the final combined p-value~\cite{Poole_Gibbs_Shmulevich_Bernard_Knijnenburg_2016} is then given by:
+  \begin{equation}
+    \begin{aligned*}
+        & \hat{P}_j = 1.0 - \Phi_{2f}\left( \psi / c \right) \\
+        \text{where},~ &\psi = -2 \sum_{i=1}^k \log(\bar{P}^i_j) ~~~\text{and}~~~ \Phi_{2f} = \mathrm{CDF}\left( \chi^2_{2f} \right)
+    \end{aligned*}
+    \label{eqn:suppl_pvalue-combined}
+  \end{equation}
+
+  The p-value merging and consensus method in \ac{micone} (see Methods) uses Equation~\ref{eqn:suppl_covariance-pvalues} to estimate the covariance of the p-values and Equation~\ref{eqn:suppl_pvalue-combined} to merge the p-values (obtained from bootstrapping) from the different correlation methods.
+  Note that we do not use Pearson and Spearman methods in the p-value merging step and these algorithms are only used for demonstration and comparison.
+  The combined p-values are used to threshold for significance in the correlation-based networks during the consensus network step.
+
+  \subsection*{The JSON network format and network exports}
+
+    The default format \ac{micone} uses for storing the network files is the JSON (JavaScript Object Notation) format which is supported by the \acf{mind}~\cite{huResourceComparisonIntegration2022}.
+    The custom JSON schema we have designed is able to store all network-related information pertaining to nodes, links, and the metadata related to the links and datasets.
+    Additionally, \ac{micone} also supports exporting of networks into a variety of other formats such as edge lists, GML, and Cytoscape formats.
+    Since we make use of \texttt{networkx}~\cite{hagbergExploringNetworkStructure2008} for the export functionality, networks can be exported to all formats supported by the package.
+    However, not all the corresponding metadata will be exported appropriately, as most formats do not support this additional metadata.
+    The details of the format and information about importing/exporting it and other network formats can be found in the \ac{micone} documentation.
+
+  \subsection*{Supplementary discussion}
+
+  It is worth pointing out some additional, more specific, conclusions stemming from the individual steps of our analysis.
+  The different denoising/clustering methods differ mostly in their identification of sequences that are in low abundance.
+  Hence, they do not have much of an impact on the inferred co-occurrence networks when the sequences of low abundance are removed (Figure~\ref{fig:figure1}).
+  Comparison of inferred and expected reference sequences and their abundances in mock community datasets has allowed us to identify \ac{dada2} as the method which best recapitulates the expected sequence composition.
+  For the chimera checking module, we suggest using the remove bimera method since it was developed in conjunction with \ac{dada2} and its performance does not significantly differ from uchime-denovo.
+  For the current work, we have decided to focus on the tools most widely used at the time of the analysis.
+  Some tools which were not as widely used (e.g. dbOTU3~\cite{Olesen2017}) as well as older popular methods like mothur~\cite{Schloss2009} have not been included in the study but could be added into the pipelines in future updated analyses.
+
+  The choice of taxonomy database was found to be the most important factor in the inference of microbial co-occurrence networks, contributing $65.4\%$ of the total variance.
+  %\todo[noline]{R2.2a}
+  The frequent changes in the taxonomy nomenclature coupled with the frequency of updates to the various 16S reference databases create inherent differences \cite{Balvociute2017} in taxonomy hierarchies in these databases.
+  Our analysis revealed that no particular reference database performs better than the others across the different mock dataset benchmarks.
+  %\todo[noline]{R2.12}
+  The default reference database in the pipeline is the \ac{gg} reference database along with the ``Naive Bayes'' classifier as the query tool.
+  The reason for our choice stems from the popularity of the \ac{gg} database~\cite{parkEvaluation16SRRNA2018} in taxonomic studies, which would enable easy comparison across datasets.
+  However, for newer studies we recommend using SILVA database because of its size and taxonomic comprehensiveness~\cite{iiRESCRIPtReproducibleSequence2021} and since \ac{gg} has not been updated since 2013.
+  Additionally, a particular database might be more appropriate than the rest based on specific requirements.
+  For example, to generate a dataset that is compatible with the \ac{mind} platform~\cite{huResourceComparisonIntegration2022} \ac{ncbi} is the most appropriate choice as it guarantees compatibility of taxonomic hierarchy and therefore comparability with other datasets.
+  Furthermore, we also enable users to use custom databases~\cite{Ritari2015,iiRESCRIPtReproducibleSequence2021} with the BLAST and Naive Bayes classifiers that are incorporated into the pipeline (from \ac{qiime2}).
+  We suggest that the choice of the database should be made based on possible reported or inferred biases in the representation of given biomes in a specific databases~\cite{Balvociute2017,iiRESCRIPtReproducibleSequence2021}, as choosing taxon-specific databases have also been observed to compromise classification~\cite{rmarcelinoUseTaxonspecificReference2020}.
+
+  The \ac{op} step of the pipeline is second in its contribution to total network variance.
+  This can be attributed to the large number of nodes that are added to the final networks when the filtering is turned off.
+  Additionally, a very large number of nodes also decreases the accuracy of the network inference algorithms for the same sample size~\cite{peschelNetCoMiNetworkConstruction2020} and increases the computational complexity~\cite{tackmannRapidInferenceDirect2019}.
+  We observe that filtering out taxa that are present in low abundances in all samples increases the proportion of taxa in common between taxonomy tables generated using different reference databases (Figure~\ref{fig:figure_s4}), providing another reason for filtering.
+  We also observe that the reduction in the number of taxa leads to a better agreement in the networks inferred through different methods (Figure~\ref{fig:figure6} and Figure~\ref{fig:figures1}).
+  Moreover, filtering is necessary in order to increase the power in tests of significance when the number of taxa is much greater than the number of samples.
+
+\newpage
+  \pagenumbering{goggle}
+  \thispagestyle{empty}
+  \input{sections/table1.tex}
+  \thispagestyle{empty}
+  \input{sections/table_s1.tex}
 
 %--------------------------------------------------------%
 %   END DOCUMENT
