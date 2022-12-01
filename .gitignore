@@ -281,4 +281,6 @@ ENV/
 # Drafts
 draft_*
 resubmission
+final_submission/*.pdf
+final_submission/*.docx
 *.zip
