@@ -423,12 +423,13 @@ We expect that our tool will also be useful for benchmarking future alternative 
   For this purpose, we generated synthetic interaction data using the ``NorTA''~\cite{Kurtz2015} and ``seqtime''~\cite{faustSignaturesEcologicalProcesses2018} methods (see Methods).
   For each method, an \ac{otu} counts table was generated based on the selected parameters and abundance distributions.
   This counts table was used as the input to the \ac{micone} pipeline to generate predicted associations.
-  The interaction network used to generate the counts table was used as the source of true interactions to calculate the precision and sensitivity (Figure \ref{fig:figure5}) of the consensus algorithms and the four best-performing individual network inference methods (propr, FlashWeave, \acs{sparcc}, and \acs{spieceasi}).
+  The interaction network used to generate the counts table was used as the source of true interactions to calculate the precision and sensitivity (Figure \ref{fig:figure5}) of the consensus algorithms. 
+  These values are also compared with the precision and sensitivity of four individual network inference methods (two correlation-based, i.e. propr, FlashWeave, and two direct association methods, i.e. \acs{sparcc}, and \acs{spieceasi}), which were selected based on their high precision (see Figure ~\ref{fig:figure_s5} and Figure ~\ref{fig:figure_s6}).
   As shown in Figure \ref{fig:figure5} the consensus algorithm, especially the scaled-sum method, captures true associations with high precision (through the removal of edges that are either not present in most of the inference methods or whose association strength is low across methods).
-  Although this increase in precision is followed by a drop in sensitivity (as parameter $\theta$ increases), this approach is advantageous as the consensus networks provide the means to obtain a short list of associations that would have a high likelihood of being present in the real association network.
+  Although this increase in precision is associated with a drop in sensitivity (as the consensus parameter $\theta$ increases), the consensus networks provide valuable and practically helpful results, in the form of a short list of high-confidence associations.
   Overall, the scaled-sum method for $\theta=1.000$ performs the best (precision = $1.000$ for both NorTA and seqtime).
-  Additionally, Figure \ref{fig:figure_s5} and Figure \ref{fig:figure_s6} show precision and sensitivity values of all network inference and consensus algorithms for each interaction network in the synthetic datasets.
-  The scaled-sum method for $\theta=0.333$ (default option in the pipeline) shows a high precision ($0.956$ with NorTA; $0.688$ with seqtime), without displaying significant reduction in sensitivity (Figure~\ref{fig:figure_s5} and Figure~\ref{fig:figure_s6}).
+  Additionally, Figure \ref{fig:figure_s5} and Figure \ref{fig:figure_s6} show the precision and sensitivity values of all network inference and consensus algorithms for each interaction network in the synthetic datasets.
+  The scaled-sum method for $\theta=0.333$ (default option in the pipeline) shows a high precision ($0.956$ with NorTA; $0.688$ with seqtime), without displaying a significant reduction in sensitivity (Figure~\ref{fig:figure_s5} and Figure~\ref{fig:figure_s6}).
   However, if higher precision is required $\theta>0.5$ can be considered.
 
   \FloatBarrier
@@ -490,18 +491,18 @@ We expect that our tool will also be useful for benchmarking future alternative 
 
   \subsection*{The default pipeline and recommended tools}
 
-  Through \ac{micone}, in addition to transparently revealing the dependence of co-occurrence networks on tool and parameter choices (see Discussion in Supplementary Text for details on the DC, TA and OP steps), we have taken advantage of our spectrum of computational options and the availability of mock and synthetic datasets, to suggest a default standard setting.
+  Through \ac{micone}, in addition to transparently revealing the dependence of co-occurrence networks on tool and parameter choices (see Discussion in Supplementary Text for details on the DC, TA, and OP steps), we have taken advantage of our spectrum of computational options and the availability of mock and synthetic datasets, to suggest a default standard setting that streamlines comparisons across datasets.
   %\todo[noline]{R1.3}
-  Additionally, we have developed a consensus approach, that can reliably generate networks that are fairly robust across multiple tool choices.
-  An important caveat related to these results is that due to the lack of a universal standard for microbial interaction data, our conclusions are based on the specific datasets used in our analysis.
-  While our analysis is based on several mock and synthetic datasets that cover a diverse range of abundance distributions and network topologies, datasets that have drastically different distributions may require a re-assessment of the best settings.
-  However, the \ac{micone} pipeline provides a platform for easy evaluation of accuracy, variance and other properities at each step of the workflow for any other dataset of interest.
+  Additionally, we have developed a consensus approach that can reliably generate fairly robust networks across multiple tool choices.
+  Even if, in the current analysis, we have shown the relevance of our approach to two very different types of microbiome datasets (human and vole stool), it is important to remember that there is no universal standard for microbial interaction data, and our conclusions are based on the specific datasets used in our analysis.
+  While our analysis is based on several mock and synthetic datasets that cover a diverse range of abundance distributions and network topologies, datasets with drastically different distributions may require a re-assessment of the best settings.
+  However, the \ac{micone} pipeline provides a platform for easy evaluation of accuracy, variance, and other properties at each workflow step for any other dataset of interest.
 
   The networks generated by different network inference methods show considerable differences in edge-density and connectivity, partially due to the underlying assumptions regarding sparsity, distribution, and compositionality.
   To address this issue, we have developed two consensus algorithms (simple voting and scaled-sum method) that generate networks whose links have evidence based on multiple inference algorithms.
 
  We find that the scaled-sum method performs the best on synthetic datasets, and is therefore chosen as the default for the \ac{ni} step of the pipeline.
- Notably, the consensus network displays a higher precision and returns a concise list of robust associations which represent a valuable set for experimental validation follow-up.
+ Notably, the consensus network displays a higher precision and returns a concise list of robust associations representing a valuable set for experimental validation follow-up.
 
   \subsection*{Future directions}
 
@@ -511,10 +512,12 @@ We expect that our tool will also be useful for benchmarking future alternative 
 
   The network analyses in this study are primarily at the Genus level, wherein the lowest resolution of a node is a Genus and if an entity cannot be resolved to the Genus level, the next lowest taxonomic level is used (for example, Family).
   %\todo[noline]{R2.1c}
-  As a consequence, two entities belonging to the same lineage where one entity is resolved to the Genus level and another is resolved to the Family level are treated as two different nodes in the network.
-  Thus, the development of a metric of overlap to compare nodes with shared lineages within and across networks could enable more biologically and phylogenetically relevant comparisons.
+  Consequently, two entities belonging to the same lineage where one entity is resolved to the Genus level and another is resolved to the Family level are treated as two different nodes in the network.
+  Thus, developing an overlap metric to compare nodes with shared lineages within and across networks could enable more biologically and phylogenetically relevant comparisons.
 
-  Although direct comparisons between co-occurrence networks and directly measured interactions are difficult to interpret and highly debated~\cite{hiranoDifficultyInferringMicrobial2019,gobernaCautionaryNotesUse2022}.
+  In thinking about the possible biological interpretations of the co-occurrence network computed by us and others, it is important to remember that there is no solid basis for assuming that these networks carry information about physical or metabolic interactions (see for example, REFS Pankaj , also FAIR ).
+  Comparing co-occurrence networks and directly measured interactions remains a major unresolved challenge~\cite{hiranoDifficultyInferringMicrobial2019,gobernaCautionaryNotesUse2022}, which needs to be investigated further.
+  Understanding this connection will enable the utilization of co-occurrence networks, for systems in which direct interaction measurements cannot be taken.
   %\todo[noline]{R2.2}
   Further, benchmarking of co-occurrence networks could also be pursued through the use of literature-based interactions~\cite{lima-mendezDeterminantsCommunityStructure2015a} or biological benchmark interaction data~\cite{sungGlobalMetabolicInteraction2017a}.
   Additionally, \ac{micone} could be extended to enable the processing of metagenomics sequencing data, facilitating the analysis of a much larger and diverse range of datasets and domains of life.
@@ -1099,14 +1102,15 @@ Designed the research project: DK, KK, DS, ZH, CDL. Performed analysis: DK, GB. 
     \centering
     \caption{
       \textbf{The associations generated by the scaled-sum consensus method show high precision in benchmarks using synthetic datasets}.
-    The different points on the box plot show the precision (red) and sensitivity (blue) of co-occurrence networks generated through individual network inference methods and through consensus network construction approaches. Precision and sensitivity are estimated based on the comparisons with two sets of synthetic benchmark datasets (``NorTA'' and ``seqtime'', see Methods).
-      The independent algorithms chosen for the comparison are the two best-performing correlation-based (propr, sparcc) and direct association based (spieceasi, flashweave) methods.
+      The different points on the box plot show the precision (A, C) and sensitivity (B, D) of co-occurrence networks generated through individual network inference methods and consensus network construction approaches.
+      Precision and sensitivity are estimated based on the comparisons with two sets of synthetic benchmark datasets (``NorTA'' and ``seqtime'', see Methods).
+      The independent algorithms chosen for the comparison are the two best-performing correlation-based (propr, sparcc) and direct-association-based (spieceasi, flashweave) methods.
       For consensus network inference, we used the scaled-sum (SS) and simple voting (SV) methods.
       A weight threshold of 0.1 and a p-value threshold of 0.05 was applied to each network before the calculation of precision and sensitivity.
-      The purpose behind the construction of the consensus algorithms is to capture true associations in the data through the removal of assocations that have a lower probability of being present in the networks inferred by different inference algorithms.
+      The purpose behind the construction of the consensus algorithms is to capture true associations in the data through the removal of associations that have a lower probability of being present in the networks inferred by different inference algorithms.
       Therefore, an increase in precision is followed by a decrease in sensitivity.
-      The overall best precision was consistently obtained by the scaled-sum consensus method for $\theta \geq 0.333$ on both benchmark datasets. Among all the individual network inference methods, spieceasi shows the best average precision.
-      The simple voting method, when using the presence of edges in all inferred networks as a requirement ($\theta = 1.000$), also outperforms spieceasi on average precision.
+      The scaled-sum consensus method consistently obtained the overall best precision for $\theta \geq 0.333$ on both benchmark datasets. Among all the individual network inference methods, spieceasi shows the best average precision.
+      When using the presence of edges in all inferred networks as a requirement ($\theta = 1.000$), the simple voting method also outperforms spieceasi on average precision.
       Therefore, we set the scaled-sum consensus method with $\theta = 0.333$ as the default tool for consensus network inference, since this option provides a good balance of precision and sensitivity (see also Figure~\ref{fig:figure_s5} and \ref{fig:figure_s6}).
       The correlation-based methods (propr, and \acs{sparcc}) and the simple-voting consensus method return networks with higher sensitivities.
     }
@@ -1465,11 +1469,12 @@ Designed the research project: DK, KK, DS, ZH, CDL. Performed analysis: DK, GB. 
   The frequent changes in the taxonomy nomenclature coupled with the frequency of updates to the various 16S reference databases create inherent differences \cite{Balvociute2017} in taxonomy hierarchies in these databases.
   Our analysis revealed that no particular reference database performs better than the others across the different mock dataset benchmarks.
   %\todo[noline]{R2.12}
-  The default reference database in the pipeline is the \ac{gg} reference database along with the ``Naive Bayes'' classifier as the query tool.
+  The default reference database in the pipeline is currently chosen to be the \ac{gg} reference database along with the ``Naive Bayes'' classifier as the query tool.
   The reason for our choice stems from the popularity of the \ac{gg} database~\cite{parkEvaluation16SRRNA2018} in taxonomic studies, which would enable easy comparison across datasets.
-  However, for newer studies we recommend using SILVA database because of its size and taxonomic comprehensiveness~\cite{iiRESCRIPtReproducibleSequence2021} and since \ac{gg} has not been updated since 2013.
+  However, we recommend using the SILVA database for newer studies due to its size and taxonomic comprehensiveness~\cite{iiRESCRIPtReproducibleSequence2021} and since \ac{gg} has not been updated since 2013.
   Additionally, a particular database might be more appropriate than the rest based on specific requirements.
-  For example, to generate a dataset that is compatible with the \ac{mind} platform~\cite{huResourceComparisonIntegration2022} \ac{ncbi} is the most appropriate choice as it guarantees compatibility of taxonomic hierarchy and therefore comparability with other datasets.
+  For example, to generate a dataset that is compatible with the \ac{mind} platform~\cite{huResourceComparisonIntegration2022}, \ac{ncbi}, is the most appropriate choice as it guarantees compatibility of taxonomic hierarchy and therefore comparability with other datasets.
+  A detailed study of other taxonomy mapping approaches[REFS IDTAXA] and integrative approaches combining different databases might offer orthogonal information and better matches.
   Furthermore, we also enable users to use custom databases~\cite{Ritari2015,iiRESCRIPtReproducibleSequence2021} with the BLAST and Naive Bayes classifiers that are incorporated into the pipeline (from \ac{qiime2}).
   We suggest that the choice of the database should be made based on possible reported or inferred biases in the representation of given biomes in a specific databases~\cite{Balvociute2017,iiRESCRIPtReproducibleSequence2021}, as choosing taxon-specific databases have also been observed to compromise classification~\cite{rmarcelinoUseTaxonspecificReference2020}.
 
