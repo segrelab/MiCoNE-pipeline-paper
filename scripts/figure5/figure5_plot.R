@@ -116,6 +116,6 @@ plot_seqtime_sensitivity <- plot_boxplot_sensitivity(seqtime, "Seqtime")
 plot_norta <- plot_boxplot_all(norta, "NorTA")
 plot_seqtime <- plot_boxplot_all(seqtime, "Seqtime")
 
-# final_plot <- ggarrange(plot_norta_precision, plot_norta_sensitivity, plot_seqtime_precision, plot_seqtime_sensitivity, ncol = 1, labels = c("A", "B"), common.legend = TRUE, legend = "right")
-final_plot <- ggarrange(plot_norta, plot_seqtime, ncol = 1, labels = c("A", "B"), common.legend = TRUE, legend = "right")
+final_plot <- ggarrange(plot_norta_precision, plot_norta_sensitivity, plot_seqtime_precision, plot_seqtime_sensitivity, ncol = 1, labels = c("A", "B", "C", "D"), common.legend = TRUE, legend = "right")
+# final_plot <- ggarrange(plot_norta, plot_seqtime, ncol = 1, labels = c("A", "B"), common.legend = TRUE, legend = "right")
 ggsave(output_file, width = 14, height = 12)
