@@ -1,7 +1,4 @@
 %--------------------------------------------------------%
-%DIF LATEXDIFF DIFFERENCE FILE
-%DIF DEL ../resubmission/manuscript.tex   Thu Oct 20 15:53:52 2022
-%DIF ADD manuscript.tex                   Thu Mar  9 22:56:53 2023
 % Journal Article Manuscript Template
 %--------------------------------------------------------%
 
@@ -163,87 +160,6 @@
 %--------------------------------------------------------%
 % BEGIN DOCUMENT
 %--------------------------------------------------------%
-%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
-%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
-\RequirePackage[normalem]{ulem} %DIF PREAMBLE
-\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
-\providecommand{\DIFaddtex}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
-\providecommand{\DIFdeltex}[1]{{\protect\color{red}\sout{#1}}}                      %DIF PREAMBLE
-%DIF SAFE PREAMBLE %DIF PREAMBLE
-\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
-\providecommand{\DIFaddend}{} %DIF PREAMBLE
-\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
-\providecommand{\DIFdelend}{} %DIF PREAMBLE
-\providecommand{\DIFmodbegin}{} %DIF PREAMBLE
-\providecommand{\DIFmodend}{} %DIF PREAMBLE
-%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
-\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
-\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
-\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
-\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
-\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
-\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
-%DIF HYPERREF PREAMBLE %DIF PREAMBLE
-\providecommand{\DIFadd}[1]{\texorpdfstring{\DIFaddtex{#1}}{#1}} %DIF PREAMBLE
-\providecommand{\DIFdel}[1]{\texorpdfstring{\DIFdeltex{#1}}{}} %DIF PREAMBLE
-\newcommand{\DIFscaledelfig}{0.5}
-%DIF HIGHLIGHTGRAPHICS PREAMBLE %DIF PREAMBLE
-\RequirePackage{settobox} %DIF PREAMBLE
-\RequirePackage{letltxmacro} %DIF PREAMBLE
-\newsavebox{\DIFdelgraphicsbox} %DIF PREAMBLE
-\newlength{\DIFdelgraphicswidth} %DIF PREAMBLE
-\newlength{\DIFdelgraphicsheight} %DIF PREAMBLE
-% store original definition of \includegraphics %DIF PREAMBLE
-\LetLtxMacro{\DIFOincludegraphics}{\includegraphics} %DIF PREAMBLE
-\newcommand{\DIFaddincludegraphics}[2][]{{\color{blue}\fbox{\DIFOincludegraphics[#1]{#2}}}} %DIF PREAMBLE
-\newcommand{\DIFdelincludegraphics}[2][]{% %DIF PREAMBLE
-\sbox{\DIFdelgraphicsbox}{\DIFOincludegraphics[#1]{#2}}% %DIF PREAMBLE
-\settoboxwidth{\DIFdelgraphicswidth}{\DIFdelgraphicsbox} %DIF PREAMBLE
-\settoboxtotalheight{\DIFdelgraphicsheight}{\DIFdelgraphicsbox} %DIF PREAMBLE
-\scalebox{\DIFscaledelfig}{% %DIF PREAMBLE
-\parbox[b]{\DIFdelgraphicswidth}{\usebox{\DIFdelgraphicsbox}\\[-\baselineskip] \rule{\DIFdelgraphicswidth}{0em}}\llap{\resizebox{\DIFdelgraphicswidth}{\DIFdelgraphicsheight}{% %DIF PREAMBLE
-\setlength{\unitlength}{\DIFdelgraphicswidth}% %DIF PREAMBLE
-\begin{picture}(1,1)% %DIF PREAMBLE
-\thicklines\linethickness{2pt} %DIF PREAMBLE
-{\color[rgb]{1,0,0}\put(0,0){\framebox(1,1){}}}% %DIF PREAMBLE
-{\color[rgb]{1,0,0}\put(0,0){\line( 1,1){1}}}% %DIF PREAMBLE
-{\color[rgb]{1,0,0}\put(0,1){\line(1,-1){1}}}% %DIF PREAMBLE
-\end{picture}% %DIF PREAMBLE
-}\hspace*{3pt}}} %DIF PREAMBLE
-} %DIF PREAMBLE
-\LetLtxMacro{\DIFOaddbegin}{\DIFaddbegin} %DIF PREAMBLE
-\LetLtxMacro{\DIFOaddend}{\DIFaddend} %DIF PREAMBLE
-\LetLtxMacro{\DIFOdelbegin}{\DIFdelbegin} %DIF PREAMBLE
-\LetLtxMacro{\DIFOdelend}{\DIFdelend} %DIF PREAMBLE
-\DeclareRobustCommand{\DIFaddbegin}{\DIFOaddbegin \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
-\DeclareRobustCommand{\DIFaddend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
-\DeclareRobustCommand{\DIFdelbegin}{\DIFOdelbegin \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
-\DeclareRobustCommand{\DIFdelend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
-\LetLtxMacro{\DIFOaddbeginFL}{\DIFaddbeginFL} %DIF PREAMBLE
-\LetLtxMacro{\DIFOaddendFL}{\DIFaddendFL} %DIF PREAMBLE
-\LetLtxMacro{\DIFOdelbeginFL}{\DIFdelbeginFL} %DIF PREAMBLE
-\LetLtxMacro{\DIFOdelendFL}{\DIFdelendFL} %DIF PREAMBLE
-\DeclareRobustCommand{\DIFaddbeginFL}{\DIFOaddbeginFL \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
-\DeclareRobustCommand{\DIFaddendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
-\DeclareRobustCommand{\DIFdelbeginFL}{\DIFOdelbeginFL \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
-\DeclareRobustCommand{\DIFdelendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
-%DIF COLORLISTINGS PREAMBLE %DIF PREAMBLE
-\RequirePackage{listings} %DIF PREAMBLE
-\RequirePackage{color} %DIF PREAMBLE
-\lstdefinelanguage{DIFcode}{ %DIF PREAMBLE
-%DIF DIFCODE_UNDERLINE %DIF PREAMBLE
-  moredelim=[il][\color{red}\sout]{\%DIF\ <\ }, %DIF PREAMBLE
-  moredelim=[il][\color{blue}\uwave]{\%DIF\ >\ } %DIF PREAMBLE
-} %DIF PREAMBLE
-\lstdefinestyle{DIFverbatimstyle}{ %DIF PREAMBLE
-	language=DIFcode, %DIF PREAMBLE
-	basicstyle=\ttfamily, %DIF PREAMBLE
-	columns=fullflexible, %DIF PREAMBLE
-	keepspaces=true %DIF PREAMBLE
-} %DIF PREAMBLE
-\lstnewenvironment{DIFverbatim}{\lstset{style=DIFverbatimstyle}}{} %DIF PREAMBLE
-\lstnewenvironment{DIFverbatim*}{\lstset{style=DIFverbatimstyle,showspaces=true}}{} %DIF PREAMBLE
-%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
 
 \begin{document}
 
@@ -362,9 +278,9 @@ Microbial communities are ubiquitous and play an important role in marine and te
   These advances have led to large-scale data collection efforts involving terrestrial~\cite{Thompson2017,gilbertMeetingReportTerabase2010,tedersooFungalBiogeographyGlobal2014}, marine~\cite{lima-mendezDeterminantsCommunityStructure2015a,royo-llonchCompendium530Metagenomeassembled2021} and human-associated microbiota~\cite{HumanMicrobiomeProjectConsortium2012,proctorIntegrativeHumanMicrobiome2019,Lloyd-Price2016}.
 
  This wealth of information has the potential to help us understand how communities assemble and operate.
- In particular, a powerful tool for translating microbiome composition data into knowledge is the construction of association (co-occurrence\DIFdelbegin \DIFdel{or correlation}\DIFdelend ) networks, in which  microbial taxa are represented by nodes, and frequent co-occurrences (or negative \DIFdelbegin \DIFdel{correlations}\DIFdelend \DIFaddbegin \DIFadd{co-occurrences}\DIFaddend ) across datasets are encoded as edges between nodes.
-  \DIFaddbegin \todo[noline]{R3.7}
- \DIFaddend While the relationship between directly measured interactions~\cite{lubbeExometabolomicAnalysisCrossFeeding2017,Jian2020,Hsu2019} and statistically inferred co-occurrence is still poorly understood \cite{Zuniga2017,Rottjers2018}, a significant amount of effort has gone into estimating \DIFdelbegin \DIFdel{correlations }\DIFdelend \DIFaddbegin \DIFadd{co-occurrences }\DIFaddend from large microbiome sequence datasets~\cite{faustMicrobialCooccurrenceRelationships2012,leeCrosskingdomCooccurrenceNetworks2022,faustMicrobialInteractionsNetworks2012a,maEarthMicrobialCooccurrence2020a}.
+ In particular, a powerful tool for translating microbiome composition data into knowledge is the construction of association (co-occurrence) networks, in which  microbial taxa are represented by nodes, and frequent co-occurrences (or negative co-occurrences) across datasets are encoded as edges between nodes.
+  %\todo[noline]{R3.7}
+ While the relationship between directly measured interactions~\cite{lubbeExometabolomicAnalysisCrossFeeding2017,Jian2020,Hsu2019} and statistically inferred co-occurrence is still poorly understood \cite{Zuniga2017,Rottjers2018}, a significant amount of effort has gone into estimating co-occurrences from large microbiome sequence datasets~\cite{faustMicrobialCooccurrenceRelationships2012,leeCrosskingdomCooccurrenceNetworks2022,faustMicrobialInteractionsNetworks2012a,maEarthMicrobialCooccurrence2020a}.
 
  The importance of these networks is two-fold: first, they can serve as maps that help identify hubs of keystone species \cite{Menon2018,Rottjers2018}, and the community response to environmental perturbations or underlying host conditions \cite{Gilbert2016}; second, they can serve as a bridge towards building mechanistic models of microbial communities, greatly enhancing our capacity to understand and control them.
  For example, multiple studies have shown the importance of specific microbial associations in the healthy microbiome \cite{Lloyd-Price2016,Wu2016,HumanMicrobiomeProjectConsortium2012} and their role in dysbiosis \cite{Wang2017,Gilbert2016,Belizario2015}.
@@ -372,11 +288,7 @@ Microbial communities are ubiquitous and play an important role in marine and te
 
 One of the most frequently used avenues for inferring co-occurrence networks is the parsing and analysis of 16S sequencing data \cite{Rottjers2018,Friedman2012}.
 Numerous software tools and pipelines have been developed to analyze 16S sequencing data, with a strong emphasis on the known limitations of this method, including resolution, sequencing depth, compositional nature, sequencing errors, and copy number variations \cite{Bharti2019,pollockMadnessMicrobiomeAttempting2018}.
-Popular methods for different phases of the analysis of 16S data include tools for: (i) quality checking and trimming the sequencing reads; (ii) denoising and clustering the trimmed reads \cite{Caporaso2010,Callahan2016,Amir2017}; (iii) assigning taxonomy to the denoised reads \cite{bokulichOptimizingTaxonomicClassification2018}; (iv) processing and transforming the taxonomy count matrices \DIFdelbegin \DIFdel{\mbox{%DIFAUXCMD
-\cite{Weiss2015}}\hskip0pt%DIFAUXCMD
-}\DIFdelend \DIFaddbegin \DIFadd{\mbox{%DIFAUXCMD
-\cite{weissNormalizationMicrobialDifferential2017}}\hskip0pt%DIFAUXCMD
-}\DIFaddend ; and (v) inferring the co-occurrence network \cite{Watts2018,Kurtz2015,tackmannRapidInferenceDirect2019}.
+Popular methods for different phases of the analysis of 16S data include tools for: (i) quality checking and trimming the sequencing reads; (ii) denoising and clustering the trimmed reads \cite{Caporaso2010,Callahan2016,Amir2017}; (iii) assigning taxonomy to the denoised reads \cite{bokulichOptimizingTaxonomicClassification2018}; (iv) processing and transforming the taxonomy count matrices \cite{weissNormalizationMicrobialDifferential2017}; and (v) inferring the co-occurrence network \cite{Watts2018,Kurtz2015,tackmannRapidInferenceDirect2019}.
 Different specific algorithms are often aggregated into popular online platforms (like MG-RAST~\cite{keeganMGRASTMetagenomicsService2016}, Qiita~\cite{gonzalezQiitaRapidWebenabled2018}) and software packages (such as \ac{qiime2}~\cite{bolyenReproducibleInteractiveScalable2019}).
 The different methods and tools can lead to vastly different inferences of community compositions and co-occurrence networks \cite{Golob2017,Weiss2016}, making it difficult to reliably compare networks across different publications and studies.
  This difference is partially due to the focus of existing platforms on \ac{otu} or \ac{esv} generation and not on the effects of upstream statistical methods on the inferred co-occurrence networks.
@@ -402,7 +314,7 @@ We expect that our tool will also be useful for benchmarking future alternative 
   Through a systematic analysis of tool combinations at each step of the pipeline, we estimated how much the final co-occurrence network depends on the possible choices at each step.
 
   Our analysis involved two types of data: The first type consisted of 16S sequencing data from samples of human stool microbiomes from a fecal microbiome transplant (FMT) study of autism~\cite{Kang2017}.
-  %\todo[noline]{R2.4}
+  %%\todo[noline]{R2.4}
   The second type was a collection of datasets synthetically or artificially created for the specific goal of evaluating computational analysis tools.
   In particular, in order to benchmark each step in \ac{micone}, we used both mock data (labeled mock4, mock12, and mock16) from mockrobiota~\cite{Bokulich2016} and synthetic networks generated using the NorTA~\cite{Kurtz2015} and seqtime~\cite{Rottjers2018} approaches (See Methods).
 
@@ -427,12 +339,12 @@ We expect that our tool will also be useful for benchmarking future alternative 
   The results (Figure~\ref{fig:figure2}C and \ref{fig:figure2}D) show that the predicted sequence distributions are overall different from the expected ones.
   The variation across datasets indicates that the datasets themselves play a big role in method performance.
   We note that there is no method that outperforms the rest in all datasets (see Supplementary for an extended discussion).
-  Based on \DIFdelbegin \DIFdel{their slightly better performance }\DIFdelend \DIFaddbegin \DIFadd{being among the top performers }\DIFaddend on the mock datasets, their de novo error correcting nature and previous independent evaluation~\cite{Nearing2018}, \ac{dada2} and Deblur appear to be the most reliable.
-  \DIFaddbegin \todo[noline]{R2.4}
-  \DIFaddend This is because the open-reference and de novo clustering methods return a much larger number of \ac{otu}s compared to the other pipelines and would affect the accuracy of the network inference step if stringent filtering is not performed.
-  %\todo[noline]{R2.6}
+  Based on being among the top performers on the mock datasets, their de novo error correcting nature and previous independent evaluation~\cite{Nearing2018}, \ac{dada2} and Deblur appear to be the most reliable.
+  %\todo[noline]{R2.4}
+  This is because the open-reference and de novo clustering methods return a much larger number of \ac{otu}s compared to the other pipelines and would affect the accuracy of the network inference step if stringent filtering is not performed.
+  %%\todo[noline]{R2.6}
   Overall, since \ac{dada2} as compared to Deblur, displays better performance on all the mock datasets on the weighted UniFrac metric, we set this tool as the default for the DC step of the pipeline.
-  %\todo[noline]{R2.10}
+  %%\todo[noline]{R2.10}
   However, if comparison across studies that have sequenced different 16S regions is required, closed-reference and open-reference might be a better option.
 
   After the denoising, the sequences are subject to Chimera Checking (CC).
@@ -469,13 +381,13 @@ We expect that our tool will also be useful for benchmarking future alternative 
   We find that none of the databases perform better than the others in absolute terms and that the dissimilarity with the expected composition is high ($>0.5$ for Family and Genus and $>0.9$ for Species), indicating that all the databases have some limitations when trying to recapture the expected taxonomic composition.
 
   Since no database performs better than others against mock datasets, the choice of which database to use could be driven by other reasons (see Supplementary discussion).
-  %\todo[noline]{R2.2a}
+  %%\todo[noline]{R2.2a}
   One reason to choose a particular database could be the frequency of updates and the potential for future growth.
   Both \ac{gg}, due to its frequent use in the literature~\cite{Balvociute2017}, and \ac{ncbi}, due to its regular revision and maintenance, could be good choices for taxonomy assignment.
   In our default pipeline, we choose \ac{gg} as the default method.
 
   The TA step results in a taxonomic counts table that is used as input to the subsequent steps of the pipeline.
-  %\todo[noline]{R2.1b}
+  %%\todo[noline]{R2.1b}
   Note that the count tables at different levels can be obtained through aggregation; for example, Genus count tables were obtained by summing up the counts of the lower taxonomy levels (Species and \ac{otu}) that map to the same higher taxonomy level entity.
 
   \FloatBarrier
@@ -483,14 +395,14 @@ We expect that our tool will also be useful for benchmarking future alternative 
   \subsection*{NI: Different network inference methods drastically affect edge-density and connectivity}
 
    The ten network inference methods we used in this step fall into two groups: the first set of methods (Pearson, Spearman, \acs{sparcc}~\cite{Friedman2012,Watts2018}, and propr~\cite{quinnProprRpackageIdentifying2017}) infer pairwise correlations while the second set (\acs{spieceasi}~\cite{Kurtz2015}, FlashWeave~\cite{tackmannRapidInferenceDirect2019}, \acs{cozine}~\cite{haCompositionalZeroinflatedNetwork2020a}, \acs{harmonies}~\cite{jiangHARMONIESHybridApproach2020}, \acs{spring}~\cite{yoonMicrobialNetworksSPRING2019}, and \acs{mldm}~\cite{Yang2017}) infer direct associations.
-   \DIFaddbegin \DIFadd{In general, when we refer to co-occurrences we include the associations from both correlation based methods and direct association based methods.
-  }\todo[noline]{R3.7}
-   \DIFadd{On the other hand, when mentioning correlations, we will exclusively refer to edges inferred by the correlation methods.
-   }\DIFaddend Note that while Pearson and Spearman methods are included in the pipeline for completeness, they tend to generate a large number of spurious edges as they are not intended for compositional datasets.
+   In general, when we refer to co-occurrences we include the associations from both correlation based methods and direct association based methods.
+  %\todo[noline]{R3.7}
+   On the other hand, when mentioning correlations, we will exclusively refer to edges inferred by the correlation methods.
+   Note that while Pearson and Spearman methods are included in the pipeline for completeness, they tend to generate a large number of spurious edges as they are not intended for compositional datasets.
    Thus, they are not included in subsequent quantitative analyses.
 
   Filtered (see \ac{op} step in Methods) genus-level counts table obtained using the default settings in the previous steps were used as input for the different network inference algorithms (Figure~\ref{fig:figure4}).
-  %\todo[noline]{R2.1b}
+  %%\todo[noline]{R2.1b}
   Even from a visual inspection (Figure~\ref{fig:figure4}A), one can see that the different networks differ vastly in their edge-density and connectivity, with common edges often displaying inverted signs.
 
   To quantify the differences between the networks, we analyzed the distribution of common nodes and edges (Figure~\ref{fig:figure4} B and \ref{fig:figure4}C) using UpSet plots~\cite{lexUpSetVisualizationIntersecting2014}.
@@ -503,31 +415,28 @@ We expect that our tool will also be useful for benchmarking future alternative 
   \subsection*{NI: The scaled-sum consensus method shows high precision on benchmark datasets}
 
  Inspired by previous approaches~\cite{bustinceFuzzySetsTheir2008,tsarevApplicationMajorityVoting2018}, we developed two methods that take into consideration the evidence offered by each network inference algorithm and generate a consensus network that contains the common edges among the inferred networks.
-  %\todo[noline]{R1.1}
-  %\todo[noline]{R1.4}
+  %%\todo[noline]{R1.1}
+  %%\todo[noline]{R1.4}
 
   Both of our approaches - simple voting (SV) and scaled-sum (SS) - combine appropriately filtered networks inferred from correlation-based and direct association methods (see Methods).
   We chose the scaled-sum method as the pipeline default since this method takes into account the weights of the associations in the determination of the final consensus.
-  The pipeline enables the selection of any subset of methods for the consensus calculation. Currently, by default, all direct \DIFdelbegin \DIFdel{methods }\DIFdelend \DIFaddbegin \DIFadd{association methods (}\acs{spieceasi}\DIFadd{, }\acs{cozine}\DIFadd{, }\acs{harmonies}\DIFadd{, }\acs{spring}\DIFadd{, }\acs{mldm}\DIFadd{, and FlashWeave) }\DIFaddend are used, together with \acs{sparcc} and propr.
-  \DIFaddbegin \todo[noline]{R3.2}
-\DIFaddend 
+  The pipeline enables the selection of any subset of methods for the consensus calculation. Currently, by default, all direct association methods (\acs{spieceasi}, \acs{cozine}, \acs{harmonies}, \acs{spring}, \acs{mldm}, and FlashWeave) are used, together with \acs{sparcc} and propr.
+  %\todo[noline]{R3.2}
 
   Similar to what was done for the previous steps of the pipeline, and in analogy with previous estimations of network inference accuracy~\cite{Kurtz2015,Weiss2016}, we evaluated the network inference algorithms and the final consensus network using synthetic interaction data.
   For this purpose, we generated synthetic interaction data using the ``NorTA''~\cite{Kurtz2015} and ``seqtime''~\cite{faustSignaturesEcologicalProcesses2018} methods (see Methods).
   For each method, an \ac{otu} counts table was generated based on the selected parameters and abundance distributions.
   This counts table was used as the input to the \ac{micone} pipeline to generate predicted associations.
-  The interaction network used to generate the counts table was used as the source of true interactions to calculate the precision \DIFaddbegin \DIFadd{and sensitivity }\DIFaddend (Figure \ref{fig:figure5}) \DIFdelbegin \DIFdel{and sensitivity (Figure }\DIFdelend \DIFaddbegin \DIFadd{of the consensus algorithms.
-  These values are also compared with the precision and sensitivity of four individual network inference methods (two correlation-based, i.e. propr, FlashWeave, and two direct association methods, i.e. }\acs{sparcc}\DIFadd{, and }\acs{spieceasi}\DIFadd{), which were selected based on their high precision (see Figure ~}\DIFaddend \ref{fig:figure_s5} and Figure \DIFdelbegin \DIFdel{\ref{fig:figure_s6}) for each network inference algorithm}\DIFdelend \DIFaddbegin \DIFadd{~\ref{fig:figure_s6})}\DIFaddend .
+  The interaction network used to generate the counts table was used as the source of true interactions to calculate the precision and sensitivity (Figure \ref{fig:figure5}) of the consensus algorithms.
+  These values are also compared with the precision and sensitivity of four individual network inference methods (two correlation-based, i.e. propr, FlashWeave, and two direct association methods, i.e. \acs{sparcc}, and \acs{spieceasi}), which were selected based on their high precision (see Figure ~\ref{fig:figure_s5} and Figure ~\ref{fig:figure_s6}).
   As shown in Figure \ref{fig:figure5} the consensus algorithm, especially the scaled-sum method, captures true associations with high precision (through the removal of edges that are either not present in most of the inference methods or whose association strength is low across methods).
-  \DIFaddbegin \todo[noline]{R1}
-  \todo[noline]{R2.1}
-  \DIFadd{Although this increase in precision is associated with a drop in sensitivity (as the consensus parameter $\theta$ increases), the consensus networks provide valuable and practically helpful results, in the form of a short list of high-confidence associations.
-  }\DIFaddend Overall, the scaled-sum method for \DIFdelbegin \DIFdel{$p=1.000$ }\DIFdelend \DIFaddbegin \DIFadd{$\theta=1.000$ }\DIFaddend performs the best (precision = $1.000$ for both NorTA and seqtime).
-  \DIFaddbegin \DIFadd{Figure \ref{fig:figure_s5} and Figure \ref{fig:figure_s6} show the precision and sensitivity values of all network inference and consensus algorithms for each interaction network in the synthetic datasets.
-  }\DIFaddend The scaled-sum method for \DIFdelbegin \DIFdel{$p=0.333$ }\DIFdelend \DIFaddbegin \DIFadd{$\theta=0.333$ }\DIFaddend (default option in the pipeline) shows a high precision ($0.956$ with NorTA; $0.688$ with seqtime), without displaying \DIFaddbegin \DIFadd{a }\DIFaddend significant reduction in sensitivity (Figure~\DIFaddbegin \DIFadd{\ref{fig:figure5}, Figure~}\DIFaddend \ref{fig:figure_s5} and Figure~\ref{fig:figure_s6}).
-  However, if higher precision is required \DIFdelbegin \DIFdel{$p>0.5$ }\DIFdelend \DIFaddbegin \DIFadd{$\theta>0.5$ }\DIFaddend can be considered.
-\DIFdelbegin \DIFdel{Therefore, the consensus networks provide the means to obtain a short list of associations that would have a high likelihood of being present in the real association network.
-}\DIFdelend 
+  %\todo[noline]{R1}
+  %\todo[noline]{R2.1}
+  Although this increase in precision is associated with a drop in sensitivity (as the consensus parameter $\theta$ increases), the consensus networks provide valuable and practically helpful results, in the form of a short list of high-confidence associations.
+  Overall, the scaled-sum method for $\theta=1.000$ performs the best (precision = $1.000$ for both NorTA and seqtime).
+  Figure \ref{fig:figure_s5} and Figure \ref{fig:figure_s6} show the precision and sensitivity values of all network inference and consensus algorithms for each interaction network in the synthetic datasets.
+  The scaled-sum method for $\theta=0.333$ (default option in the pipeline) shows a high precision ($0.956$ with NorTA; $0.688$ with seqtime), without displaying a significant reduction in sensitivity (Figure~\ref{fig:figure5}, Figure~\ref{fig:figure_s5} and Figure~\ref{fig:figure_s6}).
+  However, if higher precision is required $\theta>0.5$ can be considered.
 
   \FloatBarrier
 
@@ -545,10 +454,8 @@ We expect that our tool will also be useful for benchmarking future alternative 
   The major effect of the TA step choice, shown before in Figure \ref{fig:figure6}A, is also reflected in the PCA plot, where networks segregate based on the database used (Figure~\ref{fig:figure6}B and Figure~\ref{fig:figure_s1}).
   Additionally, the plot also shows that the variation between the networks decreases when the low abundance \ac{otu}s are removed from the network.
   It is also evident that in the NI step, some networks, especially those inferred using the direct association network inference methods, are much closer in the PCA plot regardless of the reference database used.
-  \DIFaddbegin \DIFadd{The network variance analysis performed on the supplementary dataset~\mbox{%DIFAUXCMD
-\cite{shafferStandardizedMultiomicsEarth2022} }\hskip0pt%DIFAUXCMD
-(stool samples from radiation-exposed bank vole) shown in Figure~\ref{fig:figure_s8} support these observations, implying that these findings are fairly consistent across different datasets.
-  }\DIFaddend These results suggest that the most important criterion for accurate comparative analysis of co-occurrence networks is the taxonomy reference database followed by the level of filtering of the taxonomy tables and the network inference algorithm used.
+  The network variance analysis performed on the supplementary dataset~\cite{shafferStandardizedMultiomicsEarth2022} (stool samples from radiation-exposed bank vole) shown in Figure~\ref{fig:figure_s8} support these observations, implying that these findings are fairly consistent across different datasets.
+  These results suggest that the most important criterion for accurate comparative analysis of co-occurrence networks is the taxonomy reference database followed by the level of filtering of the taxonomy tables and the network inference algorithm used.
 
   \FloatBarrier
 
@@ -563,7 +470,7 @@ We expect that our tool will also be useful for benchmarking future alternative 
   As a consequence of using the consensus network algorithm, the final co-occurrence networks are sparse and can be visually compared and examined.
 
   The analysis of the rewiring of associations in the ASD samples with respect to the control provides a guide for the identification of key genera that could be linked to dysbiosis.
-  %\todo[noline]{R2.14}
+  %%\todo[noline]{R2.14}
   We observed 22 unique links in the network for control samples, 12 unique links in the network for ASD subjects, and 7 edges in common between the two networks.
   Although these unique associations do not imply actual interactions, they can still serve as potential starting points for literature surveys and further experimental exploration of mechanistic processes underlying dysbiosis.
   For example, \textit{Prevotella} and \textit{Porphyromonas}, genera previously implicated in ASD~\cite{Kang2017,hoGutMicrobiotaChanges2020} and cognitive impairment~\cite{chiPorphyromonasGingivalisInducedCognitive2021} display modified connectivity in our network, suggesting that the observed associations may be relevant for understanding the role of these bacteria in disease.
@@ -591,19 +498,18 @@ We expect that our tool will also be useful for benchmarking future alternative 
 
   \subsection*{The default pipeline and recommended tools}
 
-  Through \ac{micone}, in addition to transparently revealing the dependence of co-occurrence networks on tool and parameter choices (see Discussion in Supplementary Text for details on the DC, TA\DIFaddbegin \DIFadd{, }\DIFaddend and OP steps), we have taken advantage of our spectrum of computational options and the availability of mock and synthetic datasets, to suggest a default standard setting \DIFaddbegin \DIFadd{that streamlines comparisons across datasets}\DIFaddend .
-  %\todo[noline]{R1.3}
-  Additionally, we have developed a consensus approach \DIFdelbegin \DIFdel{, }\DIFdelend that can reliably generate \DIFdelbegin \DIFdel{networks that are fairly robust }\DIFdelend \DIFaddbegin \DIFadd{fairly robust networks }\DIFaddend across multiple tool choices.
-  \DIFdelbegin \DIFdel{An important caveat related to these results is that due to the lack of a }\DIFdelend \DIFaddbegin \DIFadd{Even if, in the current analysis, we have shown the relevance of our approach to two very different types of microbiome datasets (human and vole stool), it is important to remember that there is no }\DIFaddend universal standard for microbial interaction data, \DIFaddbegin \DIFadd{and }\DIFaddend our conclusions are based on the specific datasets used in our analysis.
-  While our analysis is based on several mock and synthetic datasets that cover a diverse range of abundance distributions and network topologies, datasets \DIFdelbegin \DIFdel{that have }\DIFdelend \DIFaddbegin \DIFadd{with }\DIFaddend drastically different distributions may require a re-assessment of the best settings.
-  \DIFaddbegin \DIFadd{However, the }\ac{micone} \DIFadd{pipeline provides a platform for easy evaluation of accuracy, variance, and other properties at each workflow step for any other dataset of interest.
-}\DIFaddend 
+  Through \ac{micone}, in addition to transparently revealing the dependence of co-occurrence networks on tool and parameter choices (see Discussion in Supplementary Text for details on the DC, TA, and OP steps), we have taken advantage of our spectrum of computational options and the availability of mock and synthetic datasets, to suggest a default standard setting that streamlines comparisons across datasets.
+  %%\todo[noline]{R1.3}
+  Additionally, we have developed a consensus approach that can reliably generate fairly robust networks across multiple tool choices.
+  Even if, in the current analysis, we have shown the relevance of our approach to two very different types of microbiome datasets (human and vole stool), it is important to remember that there is no universal standard for microbial interaction data, and our conclusions are based on the specific datasets used in our analysis.
+  While our analysis is based on several mock and synthetic datasets that cover a diverse range of abundance distributions and network topologies, datasets with drastically different distributions may require a re-assessment of the best settings.
+  However, the \ac{micone} pipeline provides a platform for easy evaluation of accuracy, variance, and other properties at each workflow step for any other dataset of interest.
 
   The networks generated by different network inference methods show considerable differences in edge-density and connectivity, partially due to the underlying assumptions regarding sparsity, distribution, and compositionality.
   To address this issue, we have developed two consensus algorithms (simple voting and scaled-sum method) that generate networks whose links have evidence based on multiple inference algorithms.
 
  We find that the scaled-sum method performs the best on synthetic datasets, and is therefore chosen as the default for the \ac{ni} step of the pipeline.
- Notably, the consensus network displays a higher precision and returns a concise list of robust associations \DIFdelbegin \DIFdel{which represent }\DIFdelend \DIFaddbegin \DIFadd{representing }\DIFaddend a valuable set for experimental validation follow-up.
+ Notably, the consensus network displays a higher precision and returns a concise list of robust associations representing a valuable set for experimental validation follow-up.
 
   \subsection*{Future directions}
 
@@ -612,26 +518,19 @@ We expect that our tool will also be useful for benchmarking future alternative 
   Incorporating datasets from a broad spectrum of biomes with varying microbial distributions into \ac{micone} will likely increase the robustness and generalizability of the results from these analyses.
 
   The network analyses in this study are primarily at the Genus level, wherein the lowest resolution of a node is a Genus and if an entity cannot be resolved to the Genus level, the next lowest taxonomic level is used (for example, Family).
-  %\todo[noline]{R2.1c}
-  \DIFdelbegin \DIFdel{As a consequence}\DIFdelend \DIFaddbegin \DIFadd{Consequently}\DIFaddend , two entities belonging to the same lineage where one entity is resolved to the Genus level and another is resolved to the Family level are treated as two different nodes in the network.
-  Thus, \DIFdelbegin \DIFdel{the development of a metric of overlap }\DIFdelend \DIFaddbegin \DIFadd{developing an overlap metric }\DIFaddend to compare nodes with shared lineages within and across networks could enable more biologically and phylogenetically relevant comparisons.
+  %%\todo[noline]{R2.1c}
+  Consequently, two entities belonging to the same lineage where one entity is resolved to the Genus level and another is resolved to the Family level are treated as two different nodes in the network.
+  Thus, developing an overlap metric to compare nodes with shared lineages within and across networks could enable more biologically and phylogenetically relevant comparisons.
 
-  \DIFdelbegin \DIFdel{Although direct comparisons between }\DIFdelend \DIFaddbegin \DIFadd{In thinking about the possible biological interpretations of the }\DIFaddend co-occurrence \DIFaddbegin \DIFadd{network computed by us and others, it is important to remember that there is no solid basis for assuming that these networks carry information about physical or metabolic interactions~\mbox{%DIFAUXCMD
-\cite{fisherIdentifyingKeystoneSpecies2014,pachecoFAIRRepresentationsMicrobial2022}}\hskip0pt%DIFAUXCMD
-.
-  Comparing co-occurrence }\DIFaddend networks and directly measured interactions \DIFdelbegin \DIFdel{are difficult to interpret and highly debated~\mbox{%DIFAUXCMD
-\cite{hiranoDifficultyInferringMicrobial2019,gobernaCautionaryNotesUse2022}}\hskip0pt%DIFAUXCMD
-.
-  }\DIFdelend \DIFaddbegin \DIFadd{remains a major unresolved challenge~\mbox{%DIFAUXCMD
-\cite{hiranoDifficultyInferringMicrobial2019,gobernaCautionaryNotesUse2022}}\hskip0pt%DIFAUXCMD
-, which needs to be investigated further.
+  In thinking about the possible biological interpretations of the co-occurrence network computed by us and others, it is important to remember that there is no solid basis for assuming that these networks carry information about physical or metabolic interactions~\cite{fisherIdentifyingKeystoneSpecies2014,pachecoFAIRRepresentationsMicrobial2022}.
+  Comparing co-occurrence networks and directly measured interactions remains a major unresolved challenge~\cite{hiranoDifficultyInferringMicrobial2019,gobernaCautionaryNotesUse2022}, which needs to be investigated further.
   Understanding this connection will be benficial for predicting interactions in systems where direct interaction measurements cannot be taken.
-  }\DIFaddend %\todo[noline]{R2.2}
+  %%\todo[noline]{R2.2}
   Further, benchmarking of co-occurrence networks could also be pursued through the use of literature-based interactions~\cite{lima-mendezDeterminantsCommunityStructure2015a} or biological benchmark interaction data~\cite{sungGlobalMetabolicInteraction2017a}.
   Additionally, \ac{micone} could be extended to enable the processing of metagenomics sequencing data, facilitating the analysis of a much larger and diverse range of datasets and domains of life.
 
   Although in the current analysis, we have only used default parameter values recommended by the tool creators, the \ac{micone} pipeline could be used in the future to explore any combinations of parameters and to optimize these values for improved network inference.
-  %\todo[noline]{R1.3}
+  %%\todo[noline]{R1.3}
   Overall, there likely is no ``best method'' for the various steps of 16S data analysis, and hence, \ac{micone} is intended to help researchers to identify the methods and algorithms that are most suitable for their datasets in an easy-to-use and reproducible manner.
 
   We envision that \ac{micone}, and its underlying tools and databases, will be increasingly useful for building large comparative analyses across studies.
@@ -644,7 +543,7 @@ We expect that our tool will also be useful for benchmarking future alternative 
   \subsection*{16S rRNA sequencing datasets}
   \vspace{-5mm}
   This study utilized two types of 16S rRNA sequencing datasets: biological datasets and mock/synthetic datasets.
-  %\todo[noline]{R2.4}
+  %%\todo[noline]{R2.4}
   Biological datasets are collections of sequencing reads obtained from naturally occurring microbial community samples.
   The current analysis used stool samples from a fecal microbiome transplant study of autism~\cite{Kang2017} as the biological dataset.
   This dataset was chosen because the sequences were easily accessible on Qiita~\cite{qiita} and optimally pre-processed according to the \ac{emp}~\cite{Thompson2017} protocol, allowing them to be used directly as input to the \ac{micone} pipeline.
@@ -658,10 +557,7 @@ We expect that our tool will also be useful for benchmarking future alternative 
   Two replicate samples from mock4 contain all species in equal abundances, and two additional replicate samples contain the same species in unequal abundances.
   The mock12 community is composed of 27 bacterial strains that include closely related taxa with some pairs having only one to two nucleotide differences from one another.
   The mock16 community is composed of 49 bacteria and 10 Archaea, all represented in equal amounts.
-  \DIFaddbegin \DIFadd{In addition to these datasets, we have utilized a dataset containing stool samples from radiation-exposed bank vole~\mbox{%DIFAUXCMD
-\cite{shafferStandardizedMultiomicsEarth2022} }\hskip0pt%DIFAUXCMD
-(Qiita study ID 13114) for supplementary analyses.
-}\DIFaddend 
+  In addition to these datasets, we have utilized a dataset containing stool samples from radiation-exposed bank vole~\cite{shafferStandardizedMultiomicsEarth2022} (Qiita study ID 13114) for supplementary analyses.
 
   \subsection*{\ac{micone}}
   \vspace{-5mm}
@@ -686,7 +582,7 @@ We expect that our tool will also be useful for benchmarking future alternative 
   It also allows for automatic parallelization of all possible processes, both within and across samples.
   The pipeline is designed to be modular: each tool or method is organized into modules that can be easily modified or replaced.
   This modular architecture simplifies the process of adding new tools (refer to the modules section in the \ac{micone} documentation).
-  %\todo[noline]{R2.11}
+  %%\todo[noline]{R2.11}
   The main components of the pipeline are detailed in the subsequent sections.
 
   \subsection*{Sequence Processing (SP)}
@@ -736,27 +632,21 @@ We expect that our tool will also be useful for benchmarking future alternative 
   This module deals with normalization, filtering, forking, grouping, and applying transformations to the \ac{otu} or \ac{esv} counts matrix.
   Normalization of the count matrix involves converting the count matrix of read counts into a count matrix containing relative abundances.
   The module also supports rarefaction, which is a normalization technique used to overcome the bias that might arise due to variable sampling depth in different samples.
-  %\todo[noline]{R2.5}
-  This is performed either by sub-sampling \DIFdelbegin \DIFdel{or by normalization }\DIFdelend of the matrix to \DIFdelbegin \DIFdel{the lowest sampling depth~\mbox{%DIFAUXCMD
-\cite{Weiss2015}}\hskip0pt%DIFAUXCMD
-.
-  }\DIFdelend \DIFaddbegin \DIFadd{a specified rarefaction depth~\mbox{%DIFAUXCMD
-\cite{weissNormalizationMicrobialDifferential2017} }\hskip0pt%DIFAUXCMD
-in order to obtain samples with equal library sizes.
-  }\todo[noline]{R3.5}
-  \DIFaddend However, due to the potential biases and false positives~\cite{mcmurdieWasteNotWant2014,chaoCoveragebasedRarefactionExtrapolation2012} that might arise during the process, the rarefaction module is disabled by default and can be enabled in the configuration if needed.
-  Hence, although the pipeline supports \DIFdelbegin \DIFdel{normalization and rarefaction, these modules are }\DIFdelend \DIFaddbegin \DIFadd{rarefaction, it is }\DIFaddend turned off by default\DIFdelbegin \DIFdel{, and }\DIFdelend \DIFaddbegin \DIFadd{.
-  In addition to rarefaction, }\DIFaddend the \DIFdelbegin \DIFdel{analyses reported in the paper do not normalize or rareify the counts matrices.
-  However, }\DIFdelend \DIFaddbegin \ac{micone} \DIFadd{pipeline also supports total sum scaling (TSS) and the centered log-ratio (clr) transformation (from the speiceasi R package).
-  }\todo[noline]{R3.4}
-  \DIFadd{However, since }\DIFaddend most of the network inference methods perform normalization and other transformation operations on the counts matrix as a part of their workflow\DIFaddbegin \DIFadd{, the analyses reported in the paper do not explicitly normalize the counts matrices}\DIFaddend .
+  %%\todo[noline]{R2.5}
+  This is performed either by sub-sampling of the matrix to a specified rarefaction depth~\cite{weissNormalizationMicrobialDifferential2017} in order to obtain samples with equal library sizes.
+  %\todo[noline]{R3.5}
+  However, due to the potential biases and false positives~\cite{mcmurdieWasteNotWant2014,chaoCoveragebasedRarefactionExtrapolation2012} that might arise during the process, the rarefaction module is disabled by default and can be enabled in the configuration if needed.
+  Hence, although the pipeline supports rarefaction, it is turned off by default.
+  In addition to rarefaction, the \ac{micone} pipeline also supports total sum scaling (TSS) and the centered log-ratio (clr) transformation (from the speiceasi R package).
+  %\todo[noline]{R3.4}
+  However, since most of the network inference methods perform normalization and other transformation operations on the counts matrix as a part of their workflow, the analyses reported in the paper do not explicitly normalize the counts matrices.
   Filtering, is performed to remove samples or features (\ac{otu}s or \ac{esv}s) from the counts matrix that are sparse.
   By default, when the OP module is ``on'', the samples are filtered out if the total reads in a sample are less than 500 and features are filtered out if the relative abundance is less than 1\%, prevalence (percentage of samples containing feature) is less than 5\% and count sum across all the samples is less than 100.
   When the OP module is ``off'', the filtering is still performed but threshold parameters are much more relaxed.
   The parameters used are given in Table~\ref{tab:micone_tools}.
   The forking operation splits the count matrix into multiple matrices based on sample metadata column, this is useful for example to compare case vs. control.
   The group operation transforms the \ac{otu} or \ac{esv} count matrix into a taxonomic count matrix at the requested level by adding up counts that map to the same taxonomy and is carried out at the end of the OP step.
-  %\todo[noline]{R2.1b}
+  %%\todo[noline]{R2.1b}
   Finally, transformations are performed in order to correct for and overcome the compositional bias that is inherent in the counts matrix (in the analysis performed in the study these were disabled and directly handled by the network inference algorithm).
   All the modules in this step were implemented using functions from the \href{http://biom-format.org/}{biom-format} Python package~\cite{mcdonaldBiologicalObservationMatrix2012}.
 
@@ -770,21 +660,21 @@ in order to obtain samples with equal library sizes.
   The pipeline includes 4 methods for pairwise correlation metrics, and 6 methods for direct association metrics (refer to Table~\ref{tab:micone_tools}).
   Pairwise correlation methods involve the calculation of the correlation coefficient between each pair of nodes (taxonomic entity like Genera) leading to the inclusion of spurious indirect connections.
   On the other hand, direct association methods use conditional independence to avoid the detection of correlated but indirectly connected taxonomic entities~\cite{Kurtz2015,Menon2018}.
-  A null model is created by re-sampling and \DIFdelbegin \DIFdel{bootstrapping }\DIFdelend \DIFaddbegin \DIFadd{permuting }\DIFaddend the counts matrix and recalculating the correlations (see next section for details on network analysis and statistics).
-  These \DIFdelbegin \DIFdel{bootstrapped }\DIFdelend \DIFaddbegin \DIFadd{permuted }\DIFaddend association matrices are used to calculate the significance of the inferred correlations by calculating the p-values against this null model~\cite{Watts2018}.
+  A null model is created by re-sampling and permuting the counts matrix and recalculating the correlations (see next section for details on network analysis and statistics).
+  These permuted association matrices are used to calculate the significance of the inferred correlations by calculating the p-values against this null model~\cite{Watts2018}.
   Brown's p-value merging method~\cite{brown_400_1975} is used for combining p-values from the pairwise correlations methods to obtain a consensus p-value, which can be used to filter for significance.
-  The \DIFdelbegin \DIFdel{bootstrapping }\DIFdelend \DIFaddbegin \DIFadd{permutations }\DIFaddend and p-value calculations are only performed on the correlations-based methods.
+  The permutations and p-value calculations are only performed on the correlations-based methods.
   In the final module of this step, the consensus algorithms are used to create the final consensus network using associations from all the network inference methods (except Pearson and Spearman, by default).
   The outputs of this step are co-occurrence association networks encoded in the JSON format (refer to Supplementary section) and which can also be exportable to a variety of network formats.
   The list of tools used in this step, along with their modules and references are provided in Table~\ref{tab:micone_tools}.
 
   \subsection*{Consensus network and p-value merging}
   The consensus methods combine networks inferred from both correlation-based and direct association methods.
-  %\todo[noline]{R1.1}
-  %\todo[noline]{R1.4}
+  %%\todo[noline]{R1.1}
+  %%\todo[noline]{R1.4}
   First, for the correlation-based methods, we calculate p-values using null models and then merge the p-values using Brown's p-value merging method~\cite{Poole_Gibbs_Shmulevich_Bernard_Knijnenburg_2016,faustCoNetAppInference2016}.
-  %\todo[noline]{R2.2}
-  %\todo[noline]{R2.3}
+  %%\todo[noline]{R2.2}
+  %%\todo[noline]{R2.3}
   Second, we filter all the inferred networks based on an association strength threshold of 0.1 and a p-value cutoff of 0.05.
   Finally, we apply the consensus algorithms we have developed on these filtered networks.
   These steps are elaborated on in the subsequent sections.
@@ -810,17 +700,17 @@ in order to obtain samples with equal library sizes.
 
   $\bar{P}^i$, the ``flattened'' version of the adjacency matrix $P^i$ into a $q^2 \times 1$ column vector, where all columns are stacked onto each other into a $q^2$ long vector.
 
-  \subsubsection*{\DIFdelbegin \DIFdel{Bootstrapping }\DIFdelend \DIFaddbegin \DIFadd{Permutations }\DIFaddend and p-value calculation}
+  \subsubsection*{Permutations and p-value calculation}
   \vspace{-5mm}
   For all correlation-based methods $k \le w$, $1000$ permutations of the original \ac{otu} counts data were generated~\cite{Watts2018}.
   The correlations in the permuted \ac{otu} tables are recalculated using the different correlation-based algorithms.
   Finally, the p-value is determined based on how often a more extreme association is observed for randomly permuted data.
-  Note that, all the direct association-based methods used in the study have their own regularization methods built in and hence do not need to undergo \DIFdelbegin \DIFdel{bootstrapping}\DIFdelend \DIFaddbegin \DIFadd{this procedure}\DIFaddend .
+  Note that, all the direct association-based methods used in the study have their own regularization methods built in and hence do not need to undergo this procedure.
 
   \subsubsection*{p-value merging}
   \vspace{-5mm}
   The next step in the consensus algorithm workflow is to merge the p-values for the networks generated by the correlation-based methods.
-  %\todo[noline]{R1.1}
+  %%\todo[noline]{R1.1}
   This step is performed using the Brown's p-value merging method~\cite{Poole_Gibbs_Shmulevich_Bernard_Knijnenburg_2016,faustCoNetAppInference2016}.
 
   As described in more detail in the Supplementary section and in the original reference~\cite{Poole_Gibbs_Shmulevich_Bernard_Knijnenburg_2016}, the final combined p-value is given by:
@@ -841,8 +731,8 @@ in order to obtain samples with equal library sizes.
   \vspace{-5mm}
   The consensus algorithm was designed to increase the precision (number of true positives) at the end of the network inference step.
   For this purpose, we developed two simple algorithms that combine the edges reported by the different network inference tools.
-  Both the algorithms make use of a user-defined parameter \DIFdelbegin \DIFdel{$p$ ($0 \leq p \leq 1$}\DIFdelend \DIFaddbegin \DIFadd{$\theta$ ($0 \leq \theta \leq 1$}\DIFaddend ), in order to threshold the edges from the individual methods.
-  The inputs to both the algorithms are the co-occurrence networks (association matrices) $\bar{N}^i$ (flattened version of $N^{i}$) generated by each method $i$, and the threshold parameter \DIFdelbegin \DIFdel{$p$}\DIFdelend \DIFaddbegin \DIFadd{$\theta$}\DIFaddend .
+  Both the algorithms make use of a user-defined parameter $\theta$ ($0 \leq \theta \leq 1$), in order to threshold the edges from the individual methods.
+  The inputs to both the algorithms are the co-occurrence networks (association matrices) $\bar{N}^i$ (flattened version of $N^{i}$) generated by each method $i$, and the threshold parameter $\theta$.
   Here, the $\bar{N}^{i}$ each have the same set of nodes $q$ and only differ by the value of the association inferred between every pair.
   Networks that do not have a particular node, are updated such that the node is added as an isolated component.
   In this manner, $\bar{N}^{i}_j$ represents edge $j$ in network $i$.
@@ -884,13 +774,13 @@ where, $g$ and $f$ are defined as follows:
 
  The edge $j$ is selected to be present in the final consensus network if the number of networks in which $j$ appears is greater than a threshold, i.e:
   \begin{equation}
-     M_j \geq \lfloor \DIFdelbegin \DIFdel{p }\DIFdelend \DIFaddbegin \DIFadd{\theta }\DIFaddend \times w \rfloor
+     M_j \geq \lfloor \theta \times w \rfloor
     \label{eqn:simple-voting2}
   \end{equation}
-  where, \DIFdelbegin \DIFdel{$p$ }\DIFdelend \DIFaddbegin \DIFadd{$\theta$ }\DIFaddend is the user-defined threshold parameter.
+  where, $\theta$ is the user-defined threshold parameter.
 
-  The simple voting method returns the union of the networks when \DIFdelbegin \DIFdel{$0 \leq p \leq \frac{1}{w}$ }\DIFdelend \DIFaddbegin \DIFadd{$0 \leq \theta \leq \frac{1}{w}$ }\DIFaddend and will return the intersection when \DIFdelbegin \DIFdel{$\frac{(w - 1)}{w} \leq p \leq 1$}\DIFdelend \DIFaddbegin \DIFadd{$\frac{(w - 1)}{w} \leq \theta \leq 1$}\DIFaddend .
-  In general, if \DIFdelbegin \DIFdel{$\frac{(n - 1)}{w} \leq p \leq \frac{n}{w}$}\DIFdelend \DIFaddbegin \DIFadd{$\frac{(n - 1)}{w} \leq \theta \leq \frac{n}{w}$}\DIFaddend , this algorithm will report an edge in the consensus network when at least $n$ network inference methods report this edge.
+  The simple voting method returns the union of the networks when $0 \leq \theta \leq \frac{1}{w}$ and will return the intersection when $\frac{(w - 1)}{w} \leq \theta \leq 1$.
+  In general, if $\frac{(n - 1)}{w} \leq \theta \leq \frac{n}{w}$, this algorithm will report an edge in the consensus network when at least $n$ network inference methods report this edge.
 
 
   \paragraph*{Algorithm 2 - Scaled-sum method:}
@@ -916,9 +806,8 @@ where, $g$ and $f$ are defined as follows:
 
   An edge $j$ will be included in the consensus network if $s_j$ passes a threshold.
   \begin{equation}
-    \mid s_j \mid > (w - 1) \times \DIFdelbegin \DIFdel{p
-    }\DIFdelend \DIFaddbegin \DIFadd{\theta
-    }\DIFaddend \label{eq:scaled-sum2}
+    \mid s_j \mid > (w - 1) \times \theta
+    \label{eq:scaled-sum2}
   \end{equation}
 
   The advantage of this method over the simple voting method is that it also takes into account the strength of the association reported for that particular node in the inferred networks.
@@ -928,9 +817,9 @@ where, $g$ and $f$ are defined as follows:
   \subsubsection*{Notation}
   \vspace{-5mm}
   This section defines the notation used for the network variability analysis performed for Figure~\ref{fig:figure6}.
-  %\todo[noline]{R1.2}
-  %\todo[noline]{R1.8}
-  %\todo[noline]{R2.1b,d}
+  %%\todo[noline]{R1.2}
+  %%\todo[noline]{R1.8}
+  %%\todo[noline]{R2.1b,d}
 
   $W$, the number of co-occurrence networks generated from all possible combinations of tools and parameters in the workflow.
   Note that this is different from $w$, which counted only the different network inference modules.
@@ -951,8 +840,8 @@ where, $g$ and $f$ are defined as follows:
    Therefore, $\bar{N}^i_j$ is the weight of edge $j$ in the network $i$.
    $\bar{N}^i_j$ is assigned a value of 0 if edge $j$ did not exist in network $i$ but was present in one of the other networks.
    Note that row $j$ of $\mathbf{\bar{N}}$, $\bar{N}_j$ is the vector that encodes the values of edge $j$ across all the networks.
-  %\todo[noline]{R1.5}
-  %\todo[noline]{R2.1b}
+  %%\todo[noline]{R1.5}
+  %%\todo[noline]{R2.1b}
 
   \begin{equation*}
    \mathbf{\bar{N}} =
@@ -965,9 +854,9 @@ where, $g$ and $f$ are defined as follows:
   \end{equation*}
 
   To infer the variability contributed due to the different steps in the pipeline we can perform a linear regression on each edge in $\mathbf{\bar{N}}$ and a subsequent ANOVA to extract the within-group variances.
-  \DIFdelbegin \DIFdel{One }\DIFdelend \DIFaddbegin \DIFadd{A major }\DIFaddend issue with this approach is that the possibility of correlations existing between the edges of the network could lead to inaccurate estimates of the variance if a linear model were used to directly model the relationships between edges and steps in the workflow.
-  \DIFdelbegin \DIFdel{In }\DIFdelend \DIFaddbegin \todo[noline]{R2.5}
-  \DIFadd{Therefore, in }\DIFaddend order to remedy this issue, we performed a PCA (Principal Component Analysis) on the matrix $\mathbf{\bar{N}}$ to obtain the $\mathbf{C}$ matrix ($W \times c$) of components for each network, such that we reduce the dimensions from the $Q^2$ dimensional edge space to a $c$ dimensional component space.
+  A major issue with this approach is that the possibility of correlations existing between the edges of the network could lead to inaccurate estimates of the variance if a linear model were used to directly model the relationships between edges and steps in the workflow.
+  %\todo[noline]{R2.5}
+  Therefore, in order to remedy this issue, we performed a PCA (Principal Component Analysis) on the matrix $\mathbf{\bar{N}}$ to obtain the $\mathbf{C}$ matrix ($W \times c$) of components for each network, such that we reduce the dimensions from the $Q^2$ dimensional edge space to a $c$ dimensional component space.
 
   We then use linear regression to express each component $C_j$ (where $j \in 1:c$) as a linear function of categorical variables that describe the possible options in each of the steps of the pipeline.
 
@@ -993,17 +882,17 @@ where, $g$ and $f$ are defined as follows:
    \end{enumerate}
 
    The variance contributed by each step of the pipeline was calculated for every component in $\mathbf{C}$ matrix through ANOVA using the Python statsmodels~\cite{seaboldStatsmodelsEconometricStatistical2010} package and is shown in Figure~\ref{fig:figure6}A.
-  %\todo[noline]{R1.6}
+  %%\todo[noline]{R1.6}
   The total variance for the network was calculated by adding the variances for each connection and normalizing with the degrees of freedom.
   The merged network table $\mathbf{\bar{N}}$ was used as the input to the PCA analysis to generate Figure~\ref{fig:figure6}B.
-  %\todo[noline]{R1.7}
+  %%\todo[noline]{R1.7}
 
   \subsection*{Synthetic interaction data}
   \vspace{-5mm}
   We generated synthetic interaction data using two methodologies previously used for benchmarking network inference methods.
-  %\todo[noline]{R1.4}
-  %\todo[noline]{R2.2}
-  %\todo[noline]{R2.4}
+  %%\todo[noline]{R1.4}
+  %%\todo[noline]{R2.2}
+  %%\todo[noline]{R2.4}
 
   The first method, ``seqtime''~\cite{faustSignaturesEcologicalProcesses2018}, used generalized Lotka-Volterra (gLV) equations to model the microbial community dynamics and utilized the Klemm–Eguı́luz algorithm to generate a clique-based interaction network~\cite{Rottjers2018}.
   We used the \href{https://github.com/hallucigenia-sparsa/seqtime}{seqtime} R package to simulate communities with number of species ($N$) varying from 10 to 150 (10, 25, 50, 100, 150 and 200).
@@ -1038,7 +927,7 @@ where, $g$ and $f$ are defined as follows:
 
   \subsubsection*{NI step}
   \vspace{-5mm}
-  In Figure~\ref{fig:figure5} we evaluated the \DIFdelbegin \DIFdel{accuracy and robustness }\DIFdelend \DIFaddbegin \DIFadd{precision and sensitivity }\DIFaddend of the inferred association networks (using the various network inference algorithms and the consensus methods) against the original interaction network used to create the taxonomic distribution.
+  In Figure~\ref{fig:figure5} we evaluated the precision and sensitivity of the inferred association networks (using the various network inference algorithms and the consensus methods) against the original interaction network used to create the taxonomic distribution.
   We used the following formulations of precision and sensitivity to calculate the accuracy of the predictions:
 
   Precision = $\frac{TP}{TP + FP}$
@@ -1114,7 +1003,7 @@ Designed the research project: DK, KK, DS, ZH, CDL. Performed analysis: DK, GB. 
     \caption{
       \textbf{Tools used in the \ac{micone} pipeline}.
       The tools highlighted in gray are the defaults for the pipeline that are recommended based on the benchmarks with the mock and synthetic datasets.
-      The consensus algorithm in the Network Inference (\ac{ni}) step incorporates all the modules (\DIFdelbeginFL \DIFdelFL{bootstrapping}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{permutations}\DIFaddendFL , direct association, and correlation-based) to generate the consensus network.
+      The consensus algorithm in the Network Inference (\ac{ni}) step incorporates all the modules (permutations, direct association, and correlation-based) to generate the consensus network.
     }
     \label{tab:micone_tools}
   \end{table}
@@ -1224,18 +1113,18 @@ Designed the research project: DK, KK, DS, ZH, CDL. Performed analysis: DK, GB. 
     \centering
     \caption{
       \textbf{The associations generated by the scaled-sum consensus method show high precision in benchmarks using synthetic datasets}.
-      The different points on the box plot show the precision \DIFaddbeginFL \DIFaddFL{(A, C) and sensitivity (B, D) }\DIFaddendFL of co-occurrence networks generated through individual network inference methods and \DIFdelbeginFL \DIFdelFL{through }\DIFdelendFL consensus network construction approaches.
-      Precision \DIFdelbeginFL \DIFdelFL{is }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{and sensitivity are }\DIFaddendFL estimated based on the comparisons with two sets of synthetic benchmark datasets (``NorTA'' and ``seqtime'', see Methods).
-      The independent algorithms chosen for the comparison are the two best-performing correlation-based (propr, sparcc) and \DIFdelbeginFL \DIFdelFL{direct association based }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{direct-association-based }\DIFaddendFL (spieceasi, flashweave) methods.
+      The different points on the box plot show the precision (A, C) and sensitivity (B, D) of co-occurrence networks generated through individual network inference methods and consensus network construction approaches.
+      Precision and sensitivity are estimated based on the comparisons with two sets of synthetic benchmark datasets (``NorTA'' and ``seqtime'', see Methods).
+      The independent algorithms chosen for the comparison are the two best-performing correlation-based (propr, sparcc) and direct-association-based (spieceasi, flashweave) methods.
       For consensus network inference, we used the scaled-sum (SS) and simple voting (SV) methods.
-      A weight threshold of 0.1 and a p-value threshold of 0.05 was applied to each network before the calculation of precision \DIFaddbeginFL \DIFaddFL{and sensitivity}\DIFaddendFL .
-      The \DIFdelbeginFL \DIFdelFL{overall best }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{purpose behind the construction of the consensus algorithms is to capture true associations in the data through the removal of associations that have a lower probability of being present in the networks inferred by different inference algorithms.
-      Therefore, an increase in }\DIFaddendFL precision \DIFdelbeginFL \DIFdelFL{was consistently obtained }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{is followed }\DIFaddendFL by \DIFdelbeginFL \DIFdelFL{the }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{a decrease in sensitivity.
-      The }\DIFaddendFL scaled-sum consensus method \DIFaddbeginFL \DIFaddFL{consistently obtained the overall best precision }\DIFaddendFL for \DIFdelbeginFL \DIFdelFL{$p \geq 0.333$ }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{$\theta \geq 0.333$ }\DIFaddendFL on both benchmark datasets. Among all the individual network inference methods, spieceasi shows the best average precision.
-      \DIFdelbeginFL \DIFdelFL{The simple voting method, when }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{When }\DIFaddendFL using the presence of edges in all inferred networks as a requirement (\DIFdelbeginFL \DIFdelFL{$p = 1.000$}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{$\theta = 1.000$}\DIFaddendFL ), \DIFaddbeginFL \DIFaddFL{the simple voting method }\DIFaddendFL also outperforms spieceasi on average precision.
-      Therefore, we set the scaled-sum consensus method with \DIFdelbeginFL \DIFdelFL{$p = 0.333$ }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{$\theta = 0.333$ }\DIFaddendFL as the default tool for consensus network inference, since this option provides a good balance of precision and sensitivity (see also Figure~\ref{fig:figure_s5} and \ref{fig:figure_s6}).
-      \DIFaddbeginFL \DIFaddFL{The correlation-based methods (propr, and }\acs{sparcc}\DIFaddFL{) and the simple-voting consensus method return networks with higher sensitivities.
-    }\DIFaddendFL }
+      A weight threshold of 0.1 and a p-value threshold of 0.05 was applied to each network before the calculation of precision and sensitivity.
+      The purpose behind the construction of the consensus algorithms is to capture true associations in the data through the removal of associations that have a lower probability of being present in the networks inferred by different inference algorithms.
+      Therefore, an increase in precision is followed by a decrease in sensitivity.
+      The scaled-sum consensus method consistently obtained the overall best precision for $\theta \geq 0.333$ on both benchmark datasets. Among all the individual network inference methods, spieceasi shows the best average precision.
+      When using the presence of edges in all inferred networks as a requirement ($\theta = 1.000$), the simple voting method also outperforms spieceasi on average precision.
+      Therefore, we set the scaled-sum consensus method with $\theta = 0.333$ as the default tool for consensus network inference, since this option provides a good balance of precision and sensitivity (see also Figure~\ref{fig:figure_s5} and \ref{fig:figure_s6}).
+      The correlation-based methods (propr, and \acs{sparcc}) and the simple-voting consensus method return networks with higher sensitivities.
+    }
     \label{fig:figure5}
   \end{figure}
 
@@ -1385,7 +1274,7 @@ Designed the research project: DK, KK, DS, ZH, CDL. Performed analysis: DK, GB. 
         The different consensus methods used are scaled-sum (SS) and simple voting (SV) methods.
         Pearson and Spearman methods are not used in the calculation of the consensus.
         Among all the independent network inference methods, \acs{spieceasi} has the best average precision (0.944), but the overall best precision was consistently obtained by the scaled-sum method (0.956, 0.985, and 1.000).
-        The simple voting method when using the presence of edges in all inferred networks as a requirement (\DIFdelbeginFL \DIFdelFL{$p = 1.000$}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{$\theta = 1.000$}\DIFaddendFL ), also outperforms \acs{spieceasi} on average precision (0.969).
+        The simple voting method when using the presence of edges in all inferred networks as a requirement ($\theta = 1.000$), also outperforms \acs{spieceasi} on average precision (0.969).
         Although \acs{spieceasi} has a higher sensitivity, if the goal of network inference is to obtain the list of associations that have a high probability of existing in the real microbial community, then the consensus methods perform better.
       }
     \label{fig:figure_s5}
@@ -1404,7 +1293,7 @@ Designed the research project: DK, KK, DS, ZH, CDL. Performed analysis: DK, GB. 
         The different consensus methods used are scaled-sum (SS) and simple voting (SV) methods.
         Pearson and Spearman methods are not used in the calculation of the consensus.
         Among all the independent network inference methods, \acs{spieceasi} has the best average precision (0.624), but the overall best precision was consistently obtained by the scaled-sum method (0.688, 0.820, and 1.000).
-        The simple voting method when using the presence of edges in all inferred networks as a requirement (\DIFdelbeginFL \DIFdelFL{$p = 1.000$}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{$\theta = 1.000$}\DIFaddendFL ), also outperforms \acs{spieceasi} on average precision (0.692).
+        The simple voting method when using the presence of edges in all inferred networks as a requirement ($\theta = 1.000$), also outperforms \acs{spieceasi} on average precision (0.692).
         These results show that the scaled-sum method is not only much better suited for inferring robust and accurate interactions from count data generated from network topologies (NorTA), but it is also capable of accurately extracting real associations from Lotka-Volterra simulations.
       }
     \label{fig:figure_s6}
@@ -1433,319 +1322,239 @@ Designed the research project: DK, KK, DS, ZH, CDL. Performed analysis: DK, GB. 
   % \FloatBarrier
   % \newpage
 
-  %DIF >  \begin{figure}[H]
-  %DIF >    \centering
-  %DIF >    \includegraphics[width=1.0\linewidth]{figure_s8.pdf}
-  %DIF >  \end{figure}
-  \DIFaddbegin \begin{figure}[H]
+  % \begin{figure}[H]
+  %   \centering
+  %   \includegraphics[width=1.0\linewidth]{figure_s8.pdf}
+  % \end{figure}
+  \begin{figure}[H]
     \centering
     \caption{
-      \textbf{\DIFaddFL{Network variance analysis of the stool samples from radiation-exposed bank vole (EMP dataset)}}\DIFaddFL{.
-      }\textbf{\DIFaddFL{(A)}} \DIFaddFL{The percentage of variance in the networks contributed by the }\acf{dc}\DIFaddFL{, CC (chimera checking), }\acf{ta}\DIFaddFL{, }\acf{op} \DIFaddFL{and }\acf{ni} \DIFaddFL{steps of the pipeline calculated using ANOVA on a linear model (see Methods).
+      \textbf{Network variance analysis of the stool samples from radiation-exposed bank vole (EMP dataset)}.
+      \textbf{(A)} The percentage of variance in the networks contributed by the \acf{dc}, CC (chimera checking), \acf{ta}, \acf{op} and \acf{ni} steps of the pipeline calculated using ANOVA on a linear model (see Methods).
       A weight threshold of 0.1 and a p-value threshold of 0.05 were applied to each network before the analysis.
       The taxonomy database contributes most to the variance between the networks (57.96\%) followed by the filtering of the counts matrix (33.48\%) in the OP step.
     The variation due to the NI, DC and CC steps are much smaller in comparison (6.69\%, 1.30\%, and 0.00\% respectively).
       The negligible fraction labeled as the residual is an artifact that arises when multiple steps are changed at the same time.
-      }\textbf{\DIFaddFL{(B)}} \DIFaddFL{All the inferred networks generated from various combinations of tools are shown as points on a PCA plot.
-      Each point on the PCA plot represents a network inferred using different combinations of tools and parameters that are available in the }\ac{micone} \DIFaddFL{pipeline.
+      \textbf{(B)} All the inferred networks generated from various combinations of tools are shown as points on a PCA plot.
+      Each point on the PCA plot represents a network inferred using different combinations of tools and parameters that are available in the \ac{micone} pipeline.
       The color of the points corresponds to the tools used at each step of the pipeline (DC, TA, OP, and NI).
       The points on the PCA plot can be largely grouped based on the TA step, and the extent of this separation decreases when the filtering is turned on in the OP step.
-      However, unlike Figure~\ref{fig:figure6} B, here we observe that the networks that utilize }\ac{gg} \DIFaddFL{and }\ac{ncbi} \DIFaddFL{databases have the variation along similar axes in the 2 dimensional PCA plot.
+      However, unlike Figure~\ref{fig:figure6} B, here we observe that the networks that utilize \ac{gg} and \ac{ncbi} databases have the variation along similar axes in the 2 dimensional PCA plot.
       This could imply that the taxonomy assignments returned by these two databases for this dataset, might be more similar to each other compared to those in the FMT dataset.
-    }}
+    }
     \label{fig:figure_s8}
   \end{figure}
-  %DIF >  \FloatBarrier
-  %DIF >  \newpage
+  % \FloatBarrier
+  % \newpage
 
 
-  \DIFaddend \setcounter{figure}{0}
+  \setcounter{figure}{0}
   \renewcommand{\figurename}{Text}
   \renewcommand{\thefigure}{S\arabic{figure}}
   \begin{figure}[H]
     \centering
-    \caption{Supplemental text describing data processing, synthetic interaction data generation, network metrics, p-value merging\DIFaddbeginFL \DIFaddFL{, additional network variance analysis }\DIFaddendFL and supplementary discussion sections.}
+    \caption{Supplemental text describing data processing, synthetic interaction data generation, network metrics, p-value merging, additional network variance analysis and supplementary discussion sections.}
     \label{txt:text_s1}
   \end{figure}
 
-%DIF <  \input{sections/supplementary.tex}
-\DIFaddbegin \newpage
-\section*{\DIFadd{Supplementary Text}}
+\newpage
+\section*{Supplementary Text}
 
-  \subsection*{\DIFadd{Processing the FMT data}}
+  \subsection*{Processing the FMT data}
 
-    \subsubsection*{\DIFadd{Data download and pre-processing}}
-    \DIFadd{The main biological dataset used in this study was the collection of 16S rRNA sequencing reads from stool samples (healthy and autistic individuals) for a fecal microbiome transplant study~\mbox{%DIFAUXCMD
-\cite{Kang2017}}\hskip0pt%DIFAUXCMD
-.
-    The data containing the 16S sequencing reads (V4 region) was downloaded from Qiita~\mbox{%DIFAUXCMD
-\cite{gonzalezQiitaRapidWebenabled2018} }\hskip0pt%DIFAUXCMD
-(study ID: 10532).
+    \subsubsection*{Data download and pre-processing}
+    The main biological dataset used in this study was the collection of 16S rRNA sequencing reads from stool samples (healthy and autistic individuals) for a fecal microbiome transplant study~\cite{Kang2017}.
+    The data containing the 16S sequencing reads (V4 region) was downloaded from Qiita~\cite{gonzalezQiitaRapidWebenabled2018} (study ID: 10532).
     Only runs 2, 3, and 4 were used for the subsequent analysis as these runs consisted of paired-end sequencing data, and run 1 contained single-end data.
     The sample metadata was updated to contain only BMI, sex, height, weight, and experimental group.
-    This was necessary as two of the network inference algorithms (}\acs{mldm} \DIFadd{and FlashWeave) required information about environmental heterogeneity.
+    This was necessary as two of the network inference algorithms (\acs{mldm} and FlashWeave) required information about environmental heterogeneity.
     However, these environmental correlations were not included in the current analyses.
-}
 
-    \subsubsection*{\DIFadd{Processing using the }\ac{micone} \DIFadd{pipeline}}
-    \DIFadd{The data was then processed using the }\ac{micone} \DIFadd{pipeline starting at the }\ac{sp} \DIFadd{step and ending at the }\ac{ni} \DIFadd{step with the consensus algorithm.
-    The configuration files (main.nf and nextflow.config) used to run the }\ac{micone} \DIFadd{pipeline as well the details of the pipeline execution (dag, report, timeline and trace) are in the "runs/FMT" directory of the data and scripts repository (}\href{https://github.com/segrelab/MiCoNE-pipeline-paper}{\DIFadd{https://github.com/segrelab/MiCoNE-pipeline-paper}}\DIFadd{)
+    \subsubsection*{Processing using the \ac{micone} pipeline}
+    The data was then processed using the \ac{micone} pipeline starting at the \ac{sp} step and ending at the \ac{ni} step with the consensus algorithm.
+    The configuration files (main.nf and nextflow.config) used to run the \ac{micone} pipeline as well the details of the pipeline execution (dag, report, timeline and trace) are in the "runs/FMT" directory of the data and scripts repository (\href{https://github.com/segrelab/MiCoNE-pipeline-paper}{https://github.com/segrelab/MiCoNE-pipeline-paper})
     The results of the pipeline execution for reproducing the analyses in the manuscript are stored on Zenodo.
-}
 
-  \subsection*{\DIFadd{Processing the mock data}}
+  \subsection*{Processing the mock data}
 
-    \subsubsection*{\DIFadd{Data download and pre-processing}}
-    \DIFadd{The mock datasets, mock4, mock12 and mock16 used for this study, were obtained from mockrobiota~\mbox{%DIFAUXCMD
-\cite{Bokulich2016}}\hskip0pt%DIFAUXCMD
-.
+    \subsubsection*{Data download and pre-processing}
+    The mock datasets, mock4, mock12 and mock16 used for this study, were obtained from mockrobiota~\cite{Bokulich2016}.
     Mock 4 is a mock community composed of 21 bacterial strains represented in equal abundances in two replicate samples, and the same strains represented in uneven abundances in two other replicate samples.
     Mock 12 is composed of 27 bacterial strains containing closely related taxa, the members of which were chosen in part for their well-separated 16S rRNA gene sequences. Some pairs of strains differ by as little as one nucleotide, but all the strains are distinguishable over the sequenced region of the 16S rRNA gene.
     Mock 16 is a mock community composed of even amounts of purified genomic DNA from 49 bacteria and 10 archaea.
     The datasets did not require any preprocessing and could be directly used as input to the pipeline
-}
 
-    \subsubsection*{\DIFadd{Processing using the }\ac{micone} \DIFadd{pipeline}}
-    \DIFadd{The data was processed using the }\ac{micone} \DIFadd{pipeline starting at the }\ac{sp} \DIFadd{step and ending at the }\ac{op} \DIFadd{step with the filtered taxonomic tables as the final output.
-    The configuration files (main.nf and nextflow.config) used to run the }\ac{micone} \DIFadd{pipeline as well the details of the pipeline execution (dag, report, timeline and trace) are in the "runs/mock*" directory of the data and scripts repository (}\href{https://github.com/segrelab/MiCoNE-pipeline-paper}{\DIFadd{https://github.com/segrelab/MiCoNE-pipeline-paper}}\DIFadd{)
+    \subsubsection*{Processing using the \ac{micone} pipeline}
+    The data was processed using the \ac{micone} pipeline starting at the \ac{sp} step and ending at the \ac{op} step with the filtered taxonomic tables as the final output.
+    The configuration files (main.nf and nextflow.config) used to run the \ac{micone} pipeline as well the details of the pipeline execution (dag, report, timeline and trace) are in the "runs/mock*" directory of the data and scripts repository (\href{https://github.com/segrelab/MiCoNE-pipeline-paper}{https://github.com/segrelab/MiCoNE-pipeline-paper})
     The results of the pipeline execution for reproducing the analyses in the manuscript are stored on Zenodo.
-}
 
-    \subsubsection*{\DIFadd{Interpretation of Unifrac results in the DC step}}
-  \DIFadd{In Figure \ref{fig:figure_s3}, we observe that both the weighted and unweighted UniFrac distances are increased for the top 1000 representative sequences, implying that the top representative sequences generated by the different methods are not as similar to each other.
+    \subsubsection*{Interpretation of Unifrac results in the DC step}
+  In Figure \ref{fig:figure_s3}, we observe that both the weighted and unweighted UniFrac distances are increased for the top 1000 representative sequences, implying that the top representative sequences generated by the different methods are not as similar to each other.
   Therefore, since the weighted UniFrac distances are lower than the unweighted distances, we conclude that the representative sequences in the middle range of the abundance distribution are those that must be the most similar between the methods.
-}
 
-    \DIFadd{Open-reference and de novo clustering methods perform the best under the weighted UniFrac metric and the worst (marginally) under the unweighted UniFrac metric (Figure~\ref{fig:figure2}C and \ref{fig:figure2}D).
+    Open-reference and de novo clustering methods perform the best under the weighted UniFrac metric and the worst (marginally) under the unweighted UniFrac metric (Figure~\ref{fig:figure2}C and \ref{fig:figure2}D).
     This result can be attributed to the large number of low abundance representative sequences that are generated by these methods.
     Deblur performs poorly under weighted Unifrac and although its performance on the mock4 dataset is the best under unweighted UniFrac, its performance on the other datasets is average.
     The Deblur method returns a very small number of representative sequences (2388) and this could account for the reason for the high dissimilarity with the other methods as well as irregular performance on the mock data.
-}
 
-  \subsection*{\DIFadd{Synthetic interaction data}}
+  \subsection*{Synthetic interaction data}
 
-    \subsubsection*{\DIFadd{Data generation}}
-    \DIFadd{The synthetic interaction data for the study were generated using two methods.
-    The first method, ``seqtime''~\mbox{%DIFAUXCMD
-\cite{faustSignaturesEcologicalProcesses2018} }\hskip0pt%DIFAUXCMD
-utilized generalized Lotka-Volterra (gLV) equations to model the microbial community dynamics and made use of the Klemm–Eguı́luz algorithm to generate clique-based interaction networks~\mbox{%DIFAUXCMD
-\cite{Rottjers2018}}\hskip0pt%DIFAUXCMD
-.
+    \subsubsection*{Data generation}
+    The synthetic interaction data for the study were generated using two methods.
+    The first method, ``seqtime''~\cite{faustSignaturesEcologicalProcesses2018} utilized generalized Lotka-Volterra (gLV) equations to model the microbial community dynamics and made use of the Klemm–Eguı́luz algorithm to generate clique-based interaction networks~\cite{Rottjers2018}.
     We used the seqtime R package to simulate communities with different numbers of species and samples (see Methods for details).
-    The second method, ``NorTA'' used the Normal to Anything (NorTA) approach coupled with a given interaction network topology to generate the abundance distribution of the microbial community~\mbox{%DIFAUXCMD
-\cite{Kurtz2015}}\hskip0pt%DIFAUXCMD
-.
+    The second method, ``NorTA'' used the Normal to Anything (NorTA) approach coupled with a given interaction network topology to generate the abundance distribution of the microbial community~\cite{Kurtz2015}.
     We used the spieceasi R package to simulate communities with different abundance distributions and network topologies (see Methods for details).
-    The scripts to generate these datasets can be found in the synthetic data and scripts repository (}\href{https://github.com/segrelab/MiCoNE-synthetic-data}{\DIFadd{https://github.com/segrelab/MiCoNE-synthetic-data}}\DIFadd{)
-}
+    The scripts to generate these datasets can be found in the synthetic data and scripts repository (\href{https://github.com/segrelab/MiCoNE-synthetic-data}{https://github.com/segrelab/MiCoNE-synthetic-data})
 
-    \subsubsection*{\DIFadd{Processing using the }\ac{micone} \DIFadd{pipeline}}
-    \DIFadd{The data was processed using the }\ac{micone} \DIFadd{pipeline using only the }\ac{ni} \DIFadd{step with the consensus networks as the final output.
-    The configuration files (main.nf and nextflow.config) used to run the }\ac{micone} \DIFadd{pipeline as well the details of the pipeline execution (dag, report, timeline and trace) are in the "runs/norta" and "runs/seqtime" directories of the data and scripts repository (}\href{https://github.com/segrelab/MiCoNE-pipeline-paper}{\DIFadd{https://github.com/segrelab/MiCoNE-pipeline-paper}}\DIFadd{)
+    \subsubsection*{Processing using the \ac{micone} pipeline}
+    The data was processed using the \ac{micone} pipeline using only the \ac{ni} step with the consensus networks as the final output.
+    The configuration files (main.nf and nextflow.config) used to run the \ac{micone} pipeline as well the details of the pipeline execution (dag, report, timeline and trace) are in the "runs/norta" and "runs/seqtime" directories of the data and scripts repository (\href{https://github.com/segrelab/MiCoNE-pipeline-paper}{https://github.com/segrelab/MiCoNE-pipeline-paper})
     The results of the pipeline execution for reproducing the analyses in the manuscript are stored on Zenodo.
-}
 
 
-  \subsection*{\DIFadd{Network metrics}}
+  \subsection*{Network metrics}
 
-  \DIFadd{In Table~\ref{tab:network_metrics} we show various global network metrics calculated for each tool in the pipeline.
-  %DIF > \todo[noline]{R2.1a}
-  %DIF > \todo[noline]{R2.7}
+  In Table~\ref{tab:network_metrics} we show various global network metrics calculated for each tool in the pipeline.
+  %%\todo[noline]{R2.1a}
+  %%\todo[noline]{R2.7}
   All the networks that make use of a particular tool are grouped together, and the following average metrics are calculated for each group:
-  }\begin{enumerate}
-    \item \DIFadd{The average shortest path length describes the average of all the shortest paths in the graph. No number is reported if the graph is not connected, therefore, the results indicate that none of the networks that make use of }\acs{harmonies}\DIFadd{, }\acs{cozine}\DIFadd{, }\acs{spring}\DIFadd{, }\acs{spieceasi} \DIFadd{and Pearson are connected.
-    }\item \DIFadd{The average clustering is the average clustering coefficient of the graph. The closer the value is to 1.0, the more densely connected is the graph. We can observe that the networks that use correlation-based methods have the highest values while the direct association based methods have the lowest.
-    }\item \DIFadd{The number of connected components is the highest for the direct association based methods and the lowest for the correlation-based methods. In the case of propr, all the networks have only one giant component.
-    }\item \DIFadd{The modularity metric is the modularity over all partitions in a graph calculated using a label propagation algorithm~\mbox{%DIFAUXCMD
-\cite{cordascoCommunityDetectionSemisynchronous2010}}\hskip0pt%DIFAUXCMD
-. Positive values imply that there are more edges between vertices of the same type than we would expect by chance, and negative implies that there are less. The networks inferred by }\acs{mldm} \DIFadd{report very few edges, and skew the average modularity scores. This could also be an artifact of incomplete convergence of the }\acs{mldm} \DIFadd{algorithm for some combinations.
-    }\item \DIFadd{Node connectivity refers to the minimum number of nodes that must be removed from the graph to make it disconnected. We observe that only the networks generated using propr have a high value since most of these networks are connected.
-    }\item \DIFadd{Degree assortativity coefficient measures the similarity of connections in the graph with respect to the node degree. Again we observe that the direct association based methods have a negative degree of assortativity, meaning that there are many hubs in these networks. The correlation-based methods have positive values implying that in these networks nodes with similar degrees attach to one another.
-  }\end{enumerate}
-  \DIFadd{A weight threshold of 0.1 and a p-value threshold of 0.05 were applied to each network before the analysis.
-  All the metrics were calculated using the }\texttt{\DIFadd{networkx}} \DIFadd{Python package~\mbox{%DIFAUXCMD
-\cite{hagbergExploringNetworkStructure2008}}\hskip0pt%DIFAUXCMD
-.
-}
+  \begin{enumerate}
+    \item The average shortest path length describes the average of all the shortest paths in the graph. No number is reported if the graph is not connected, therefore, the results indicate that none of the networks that make use of \acs{harmonies}, \acs{cozine}, \acs{spring}, \acs{spieceasi} and Pearson are connected.
+    \item The average clustering is the average clustering coefficient of the graph. The closer the value is to 1.0, the more densely connected is the graph. We can observe that the networks that use correlation-based methods have the highest values while the direct association based methods have the lowest.
+    \item The number of connected components is the highest for the direct association based methods and the lowest for the correlation-based methods. In the case of propr, all the networks have only one giant component.
+    \item The modularity metric is the modularity over all partitions in a graph calculated using a label propagation algorithm~\cite{cordascoCommunityDetectionSemisynchronous2010}. Positive values imply that there are more edges between vertices of the same type than we would expect by chance, and negative implies that there are less. The networks inferred by \acs{mldm} report very few edges, and skew the average modularity scores. This could also be an artifact of incomplete convergence of the \acs{mldm} algorithm for some combinations.
+    \item Node connectivity refers to the minimum number of nodes that must be removed from the graph to make it disconnected. We observe that only the networks generated using propr have a high value since most of these networks are connected.
+    \item Degree assortativity coefficient measures the similarity of connections in the graph with respect to the node degree. Again we observe that the direct association based methods have a negative degree of assortativity, meaning that there are many hubs in these networks. The correlation-based methods have positive values implying that in these networks nodes with similar degrees attach to one another.
+  \end{enumerate}
+  A weight threshold of 0.1 and a p-value threshold of 0.05 were applied to each network before the analysis.
+  All the metrics were calculated using the \texttt{networkx} Python package~\cite{hagbergExploringNetworkStructure2008}.
 
-  \subsection*{\DIFadd{p-value merging}}
+  \subsection*{p-value merging}
 
-  \DIFadd{Fisher~\mbox{%DIFAUXCMD
-\cite{fisher_224a_1948} }\hskip0pt%DIFAUXCMD
-proposed that for $k$ independent p-values, each generated by $k$ different methods and denoted by $\bar{P}^i$ (notations are same as used in the "Consensus network and p-value merging" subsection of the Methods).
-  %DIF > \todo[noline]{R1.1}
+  Fisher~\cite{fisher_224a_1948} proposed that for $k$ independent p-values, each generated by $k$ different methods and denoted by $\bar{P}^i$ (notations are same as used in the "Consensus network and p-value merging" subsection of the Methods).
+  %%\todo[noline]{R1.1}
   The following will hold true for the statistic $\Psi$:
-  }\begin{equation*}
-    \DIFadd{\begin{aligned}
+  \begin{equation*}
+    \begin{aligned}
       \Psi &= \sum_{i=1}^k -2 \log \left( \bar{P}^i \right) \\
         \Psi &\sim \chi^2_{2k}
     \end{aligned}
-  }\end{equation*}
+  \end{equation*}
 
-  \DIFadd{Brown~\mbox{%DIFAUXCMD
-\cite{brown_400_1975} }\hskip0pt%DIFAUXCMD
-extended Fisher's method to dependent p-values by using a re-scaled $\chi^2$ distribution:
-  }\begin{equation*}
-    \DIFadd{\Psi \sim c \chi^2_{2f}
-  }\end{equation*}
-  \DIFadd{where, $f$ is the degrees of freedom and $c$ is the scale factor and are given by:
-  }\begin{equation*}
-    \DIFadd{f = \frac{\mathrm{E}[\Psi]^2}{\mathrm{Var}[\Psi]} ~~~\text{and}~~~ c = \frac{\mathrm{Var}[\Psi]}{2\mathrm{E}[\Psi]} = \frac{k}{f}
-  }\end{equation*}
+  Brown~\cite{brown_400_1975} extended Fisher's method to dependent p-values by using a re-scaled $\chi^2$ distribution:
+  \begin{equation*}
+    \Psi \sim c \chi^2_{2f}
+  \end{equation*}
+  where, $f$ is the degrees of freedom and $c$ is the scale factor and are given by:
+  \begin{equation*}
+    f = \frac{\mathrm{E}[\Psi]^2}{\mathrm{Var}[\Psi]} ~~~\text{and}~~~ c = \frac{\mathrm{Var}[\Psi]}{2\mathrm{E}[\Psi]} = \frac{k}{f}
+  \end{equation*}
 
-  \DIFadd{We can calculate $E[\Psi]$ and $Var[\Psi]$ under the null hypothesis that the data are drawn from a multivariate Gaussian with some covariance matrix.
+  We can calculate $E[\Psi]$ and $Var[\Psi]$ under the null hypothesis that the data are drawn from a multivariate Gaussian with some covariance matrix.
   We then use these values to parametrize a $\chi^2$ distribution from which the p-value corresponding to $\frac{\psi}{c}$ can be calculated.
   Furthermore, Brown showed that $\mathrm{E}[\Psi]$ and $\mathrm{Var}[\Psi]$ can be calculated via the following numerical approximation:
-  }\begin{equation*}
-    \DIFadd{\mathrm{E}[\Psi] = 2k ~~~\text{and}~~~ \mathrm{Var}[\Psi] = 4k + 2\sum_{i<j} \mathrm{Cov}\left( -2\log(\bar{P}^i), -2\log(\bar{P}^j) \right)
-  }\end{equation*}
+  \begin{equation*}
+    \mathrm{E}[\Psi] = 2k ~~~\text{and}~~~ \mathrm{Var}[\Psi] = 4k + 2\sum_{i<j} \mathrm{Cov}\left( -2\log(\bar{P}^i), -2\log(\bar{P}^j) \right)
+  \end{equation*}
 
-  \DIFadd{The above formulation was improved by Kost and McDermott~\mbox{%DIFAUXCMD
-\cite{kost_combining_2002} }\hskip0pt%DIFAUXCMD
-by further fitting a third-order polynomial to approximate the covariance
-  }\begin{equation}
-    \DIFadd{\mathrm{Cov}\left( -2\log(\bar{P}^i), -2\log(\bar{P}^j) \right) \approx 3.263 \rho_{ij} + 0.710 \rho_{ij}^2 + 0.027 \rho_{ij}^3
+  The above formulation was improved by Kost and McDermott~\cite{kost_combining_2002} by further fitting a third-order polynomial to approximate the covariance
+  \begin{equation}
+    \mathrm{Cov}\left( -2\log(\bar{P}^i), -2\log(\bar{P}^j) \right) \approx 3.263 \rho_{ij} + 0.710 \rho_{ij}^2 + 0.027 \rho_{ij}^3
     \label{eqn:suppl_covariance-pvalues}
-  }\end{equation}
-  \DIFadd{where, $\rho_{ij}$ is the correlation between method $i$ and method $j$
-}
+  \end{equation}
+  where, $\rho_{ij}$ is the correlation between method $i$ and method $j$
 
-  \DIFadd{Using $E[\Psi]$ and $Var[\Psi]$ we then fit a $\chi^2$ distribution with the parameters $c$ and $f$.
-  Note that since, in general, $f$ will not be an integer, this should be understood as a Gamma distribution with a shape parameter $f$, as mentioned by Brown~\mbox{%DIFAUXCMD
-\cite{brown_400_1975}}\hskip0pt%DIFAUXCMD
-.
+  Using $E[\Psi]$ and $Var[\Psi]$ we then fit a $\chi^2$ distribution with the parameters $c$ and $f$.
+  Note that since, in general, $f$ will not be an integer, this should be understood as a Gamma distribution with a shape parameter $f$, as mentioned by Brown~\cite{brown_400_1975}.
   Using this, we calculate the test $\psi$ and compute the p-value from the CDF of the $\chi^2$ distribution, given in Equation~\ref{eqn:suppl_pvalue-combined}.
-  Therefore, the final combined p-value~\mbox{%DIFAUXCMD
-\cite{Poole_Gibbs_Shmulevich_Bernard_Knijnenburg_2016} }\hskip0pt%DIFAUXCMD
-is then given by:
-  }\begin{equation}
-    \DIFadd{\begin{aligned*}
-        }& \DIFadd{\hat{P}_j = 1.0 - \Phi_{2f}\left( \psi / c \right) }\\
-        \DIFadd{\text{where},~ }&\DIFadd{\psi = -2 \sum_{i=1}^k \log(\bar{P}^i_j) ~~~\text{and}~~~ \Phi_{2f} = \mathrm{CDF}\left( \chi^2_{2f} \right)
+  Therefore, the final combined p-value~\cite{Poole_Gibbs_Shmulevich_Bernard_Knijnenburg_2016} is then given by:
+  \begin{equation}
+    \begin{aligned*}
+        & \hat{P}_j = 1.0 - \Phi_{2f}\left( \psi / c \right) \\
+        \text{where},~ &\psi = -2 \sum_{i=1}^k \log(\bar{P}^i_j) ~~~\text{and}~~~ \Phi_{2f} = \mathrm{CDF}\left( \chi^2_{2f} \right)
     \end{aligned*}
     \label{eqn:suppl_pvalue-combined}
-  }\end{equation}
+  \end{equation}
 
-  \DIFadd{The p-value merging and consensus method in }\ac{micone} \DIFadd{(see Methods) uses Equation~\ref{eqn:suppl_covariance-pvalues} to estimate the covariance of the p-values and Equation~\ref{eqn:suppl_pvalue-combined} to merge the p-values (obtained from bootstrapping) from the different correlation methods.
+  The p-value merging and consensus method in \ac{micone} (see Methods) uses Equation~\ref{eqn:suppl_covariance-pvalues} to estimate the covariance of the p-values and Equation~\ref{eqn:suppl_pvalue-combined} to merge the p-values (obtained from bootstrapping) from the different correlation methods.
   Note that we do not use Pearson and Spearman methods in the p-value merging step and these algorithms are only used for demonstration and comparison.
   The combined p-values are used to threshold for significance in the correlation-based networks during the consensus network step.
-}
 
-  \subsection*{\DIFadd{The JSON network format and network exports}}
+  \subsection*{The JSON network format and network exports}
 
-    \DIFadd{The default format }\ac{micone} \DIFadd{uses for storing the network files is the JSON (JavaScript Object Notation) format which is supported by the }\acf{mind}\DIFadd{~\mbox{%DIFAUXCMD
-\cite{huResourceComparisonIntegration2022}}\hskip0pt%DIFAUXCMD
-.
+    The default format \ac{micone} uses for storing the network files is the JSON (JavaScript Object Notation) format which is supported by the \acf{mind}~\cite{huResourceComparisonIntegration2022}.
     The custom JSON schema we have designed is able to store all network-related information pertaining to nodes, links, and the metadata related to the links and datasets.
-    Additionally, }\ac{micone} \DIFadd{also supports exporting of networks into a variety of other formats such as edge lists, GML, and Cytoscape formats.
-    Since we make use of }\texttt{\DIFadd{networkx}}\DIFadd{~\mbox{%DIFAUXCMD
-\cite{hagbergExploringNetworkStructure2008} }\hskip0pt%DIFAUXCMD
-for the export functionality, networks can be exported to all formats supported by the package.
+    Additionally, \ac{micone} also supports exporting of networks into a variety of other formats such as edge lists, GML, and Cytoscape formats.
+    Since we make use of \texttt{networkx}~\cite{hagbergExploringNetworkStructure2008} for the export functionality, networks can be exported to all formats supported by the package.
     However, not all the corresponding metadata will be exported appropriately, as most formats do not support this additional metadata.
-    The details of the format and information about importing/exporting it and other network formats can be found in the }\ac{micone} \DIFadd{documentation.
-}
+    The details of the format and information about importing/exporting it and other network formats can be found in the \ac{micone} documentation.
 
-  \subsection*{\DIFadd{Network variance analysis of stool samples from radiation-exposed bank vole (EMP dataset)}}
+  \subsection*{Network variance analysis of stool samples from radiation-exposed bank vole (EMP dataset)}
 
-  \DIFadd{In order to verify the consistency of the network variance analysis, we processed an additional 16S rRNA dataset through the }\ac{micone} \DIFadd{pipeline.
-  }\todo[noline]{R3.1}
-  \DIFadd{Specifically, we used stool samples from radiation-exposed bank vole that were a part of the Earth Microbiome Project (EMP)~\mbox{%DIFAUXCMD
-\cite{shafferStandardizedMultiomicsEarth2022}}\hskip0pt%DIFAUXCMD
-.
-  We chose a dataset from the EMP because the }\ac{micone} \DIFadd{pipeline inherently supports the EMP amplicon protocol with minimal pre-processing requirements.
-  The data containing the 16S sequencing reads (V4 region) was downloaded from Qiita~\mbox{%DIFAUXCMD
-\cite{gonzalezQiitaRapidWebenabled2018} }\hskip0pt%DIFAUXCMD
-(study ID: 13114).
+  In order to verify the consistency of the network variance analysis, we processed an additional 16S rRNA dataset through the \ac{micone} pipeline.
+  %\todo[noline]{R3.1}
+  Specifically, we used stool samples from radiation-exposed bank vole that were a part of the Earth Microbiome Project (EMP)~\cite{shafferStandardizedMultiomicsEarth2022}.
+  We chose a dataset from the EMP because the \ac{micone} pipeline inherently supports the EMP amplicon protocol with minimal pre-processing requirements.
+  The data containing the 16S sequencing reads (V4 region) was downloaded from Qiita~\cite{gonzalezQiitaRapidWebenabled2018} (study ID: 13114).
   For the analysis, the paired-end sequencing data extracted from stools samples of radiation-exposed bank vole (named ``mousseau'') were chosen from run ``EMP500\_6-9''.
-  The data was then processed using the }\ac{micone} \DIFadd{pipeline starting at the }\ac{sp} \DIFadd{step and ending at the }\ac{ni} \DIFadd{step with the consensus algorithm.
-  The configuration files (main.nf and nextflow.config) used to run the }\ac{micone} \DIFadd{pipeline as well the details of the pipeline execution (dag, report, timeline and trace) are in the "runs/EMP" directory of the data and scripts repository (}\href{https://github.com/segrelab/MiCoNE-pipeline-paper}{\DIFadd{https://github.com/segrelab/MiCoNE-pipeline-paper}}\DIFadd{)
-}
+  The data was then processed using the \ac{micone} pipeline starting at the \ac{sp} step and ending at the \ac{ni} step with the consensus algorithm.
+  The configuration files (main.nf and nextflow.config) used to run the \ac{micone} pipeline as well the details of the pipeline execution (dag, report, timeline and trace) are in the "runs/EMP" directory of the data and scripts repository (\href{https://github.com/segrelab/MiCoNE-pipeline-paper}{https://github.com/segrelab/MiCoNE-pipeline-paper})
 
-  \DIFadd{Similar to the previous network variance analysis performed in Figure~\ref{fig:figure6}, we analyzed the effect of different processing methods on the inferred co-occurrence networks generated using all possible combinations of methods.
+  Similar to the previous network variance analysis performed in Figure~\ref{fig:figure6}, we analyzed the effect of different processing methods on the inferred co-occurrence networks generated using all possible combinations of methods.
   Figure \ref{fig:figure_s8}A, shows the percentage of total variation among the co-occurrence networks due to the different steps of the pipeline.
-  The }\ac{ta} \DIFadd{step, or more specifically the choice of 16S reference database, contributes the most ($57.96\%$) to the variation in the networks, followed by the }\ac{op} \DIFadd{step ($33.48\%$).
+  The \ac{ta} step, or more specifically the choice of 16S reference database, contributes the most ($57.96\%$) to the variation in the networks, followed by the \ac{op} step ($33.48\%$).
   These results are very similar to those from the network variance analysis of the FMT dataset (Figure~\ref{fig:figure6}A).
   This implies that the effects of various workflow steps on the inferred networks are fairly consistent across different datasets.
-}
 
-  \DIFadd{The effects of the different steps of the pipeline on the inferred networks can be visualized through dimensionality reduction.
+  The effects of the different steps of the pipeline on the inferred networks can be visualized through dimensionality reduction.
   The PCA in Figure \ref{fig:figure_s8}B shows all possible inferred networks, colored by the tools used in the DC, TA, OP, and NI steps in each subfigure.
   We observe that the networks largely segregate based on the database used (TA step), and the extent of this separation decreases when the filtering is turned on in the OP step.
-  However, unlike the case of the FMT dataset (Figure~\ref{fig:figure6}B), here we observe that the networks that utilize }\ac{gg} \DIFadd{and }\ac{ncbi} \DIFadd{databases have the variation along similar axes in the 2 dimensional PCA plot.
+  However, unlike the case of the FMT dataset (Figure~\ref{fig:figure6}B), here we observe that the networks that utilize \ac{gg} and \ac{ncbi} databases have the variation along similar axes in the 2 dimensional PCA plot.
   This could imply that the taxonomy assignments returned by these two databases for this dataset, might be more similar to each other compared to those in the FMT dataset.
   The variation in the networks due to the other workflow steps is consistent with that observed in the FMT data analysis (Figure~\ref{fig:figure6}B).
-}
 
-  \subsection*{\DIFadd{Supplementary discussion}}
+  \subsection*{Supplementary discussion}
 
-  \DIFadd{It is worth pointing out some additional, more specific, conclusions stemming from the individual steps of our analysis.
+  It is worth pointing out some additional, more specific, conclusions stemming from the individual steps of our analysis.
   The different denoising/clustering methods differ mostly in their identification of sequences that are in low abundance.
   Hence, they do not have much of an impact on the inferred co-occurrence networks when the sequences of low abundance are removed (Figure~\ref{fig:figure1}).
-  Comparison of inferred and expected reference sequences and their abundances in mock community datasets has allowed us to identify }\ac{dada2} \DIFadd{as the method which best recapitulates the expected sequence composition.
-  For the chimera checking module, we suggest using the remove bimera method since it was developed in conjunction with }\ac{dada2} \DIFadd{and its performance does not significantly differ from uchime-denovo.
+  Comparison of inferred and expected reference sequences and their abundances in mock community datasets has allowed us to identify \ac{dada2} as the method which best recapitulates the expected sequence composition.
+  For the chimera checking module, we suggest using the remove bimera method since it was developed in conjunction with \ac{dada2} and its performance does not significantly differ from uchime-denovo.
   For the current work, we have decided to focus on the tools most widely used at the time of the analysis.
-  Some tools which were not as widely used (e.g. dbOTU3~\mbox{%DIFAUXCMD
-\cite{Olesen2017}}\hskip0pt%DIFAUXCMD
-) as well as older popular methods like mothur~\mbox{%DIFAUXCMD
-\cite{Schloss2009} }\hskip0pt%DIFAUXCMD
-have not been included in the study but could be added into the pipelines in future updated analyses.
-}
+  Some tools which were not as widely used (e.g. dbOTU3~\cite{Olesen2017}) as well as older popular methods like mothur~\cite{Schloss2009} have not been included in the study but could be added into the pipelines in future updated analyses.
 
-  \DIFadd{The choice of taxonomy database was found to be the most important factor in the inference of microbial co-occurrence networks, contributing $65.4\%$ of the total variance.
-  %DIF > \todo[noline]{R2.2a}
-  The frequent changes in the taxonomy nomenclature coupled with the frequency of updates to the various 16S reference databases create inherent differences \mbox{%DIFAUXCMD
-\cite{Balvociute2017} }\hskip0pt%DIFAUXCMD
-in taxonomy hierarchies in these databases.
+  The choice of taxonomy database was found to be the most important factor in the inference of microbial co-occurrence networks, contributing $65.4\%$ of the total variance.
+  %%\todo[noline]{R2.2a}
+  The frequent changes in the taxonomy nomenclature coupled with the frequency of updates to the various 16S reference databases create inherent differences \cite{Balvociute2017} in taxonomy hierarchies in these databases.
   Our analysis revealed that no particular reference database performs better than the others across the different mock dataset benchmarks.
-  %DIF > \todo[noline]{R2.12}
-  The default reference database in the pipeline is currently chosen to be the }\ac{gg} \DIFadd{reference database along with the ``Naive Bayes'' classifier as the query tool.
-  The reason for our choice stems from the popularity of the }\ac{gg} \DIFadd{database~\mbox{%DIFAUXCMD
-\cite{parkEvaluation16SRRNA2018} }\hskip0pt%DIFAUXCMD
-in taxonomic studies, which would enable easy comparison across datasets.
-  }\todo[noline]{R2.6}
-  \DIFadd{However, we recommend using the SILVA database for newer studies due to its size and taxonomic comprehensiveness~\mbox{%DIFAUXCMD
-\cite{iiRESCRIPtReproducibleSequence2021} }\hskip0pt%DIFAUXCMD
-and since }\ac{gg} \DIFadd{has not been updated since 2013.
+  %%\todo[noline]{R2.12}
+  The default reference database in the pipeline is currently chosen to be the \ac{gg} reference database along with the ``Naive Bayes'' classifier as the query tool.
+  The reason for our choice stems from the popularity of the \ac{gg} database~\cite{parkEvaluation16SRRNA2018} in taxonomic studies, which would enable easy comparison across datasets.
+  %\todo[noline]{R2.6}
+  However, we recommend using the SILVA database for newer studies due to its size and taxonomic comprehensiveness~\cite{iiRESCRIPtReproducibleSequence2021} and since \ac{gg} has not been updated since 2013.
   Additionally, a particular database might be more appropriate than the rest based on specific requirements.
-  For example, to generate a dataset that is compatible with the }\ac{mind} \DIFadd{platform~\mbox{%DIFAUXCMD
-\cite{huResourceComparisonIntegration2022}}\hskip0pt%DIFAUXCMD
-, }\ac{ncbi}\DIFadd{, is the most appropriate choice as it guarantees compatibility of taxonomic hierarchy and therefore comparability with other datasets.
-  A detailed study of other taxonomy mapping approaches~\mbox{%DIFAUXCMD
-\cite{muraliIDTAXANovelApproach2018,matiasrodriguesMAPseqHighlyEfficient2017} }\hskip0pt%DIFAUXCMD
-and integrative approaches combining different databases~\mbox{%DIFAUXCMD
-\cite{gwakDataDrivenModelingSpeciesLevel2020} }\hskip0pt%DIFAUXCMD
-might offer orthogonal information and better matches.
-  }\todo[noline]{R2.5a}
-  \DIFadd{Furthermore, we also enable users to use custom databases~\mbox{%DIFAUXCMD
-\cite{Ritari2015,iiRESCRIPtReproducibleSequence2021} }\hskip0pt%DIFAUXCMD
-with the BLAST and Naive Bayes classifiers that are incorporated into the pipeline (from }\ac{qiime2}\DIFadd{).
-  We suggest that the choice of the database should be made based on possible reported or inferred biases in the representation of given biomes in a specific databases~\mbox{%DIFAUXCMD
-\cite{Balvociute2017,iiRESCRIPtReproducibleSequence2021}}\hskip0pt%DIFAUXCMD
-, as choosing taxon-specific databases have also been observed to compromise classification~\mbox{%DIFAUXCMD
-\cite{rmarcelinoUseTaxonspecificReference2020}}\hskip0pt%DIFAUXCMD
-.
-}
+  For example, to generate a dataset that is compatible with the \ac{mind} platform~\cite{huResourceComparisonIntegration2022}, \ac{ncbi}, is the most appropriate choice as it guarantees compatibility of taxonomic hierarchy and therefore comparability with other datasets.
+  A detailed study of other taxonomy mapping approaches~\cite{muraliIDTAXANovelApproach2018,matiasrodriguesMAPseqHighlyEfficient2017} and integrative approaches combining different databases~\cite{gwakDataDrivenModelingSpeciesLevel2020} might offer orthogonal information and better matches.
+  %\todo[noline]{R2.5a}
+  Furthermore, we also enable users to use custom databases~\cite{Ritari2015,iiRESCRIPtReproducibleSequence2021} with the BLAST and Naive Bayes classifiers that are incorporated into the pipeline (from \ac{qiime2}).
+  We suggest that the choice of the database should be made based on possible reported or inferred biases in the representation of given biomes in a specific databases~\cite{Balvociute2017,iiRESCRIPtReproducibleSequence2021}, as choosing taxon-specific databases have also been observed to compromise classification~\cite{rmarcelinoUseTaxonspecificReference2020}.
 
-  \DIFadd{The }\ac{op} \DIFadd{step of the pipeline is second in its contribution to total network variance.
+  The \ac{op} step of the pipeline is second in its contribution to total network variance.
   This can be attributed to the large number of nodes that are added to the final networks when the filtering is turned off.
-  Additionally, a very large number of nodes also decreases the accuracy of the network inference algorithms for the same sample size~\mbox{%DIFAUXCMD
-\cite{peschelNetCoMiNetworkConstruction2020} }\hskip0pt%DIFAUXCMD
-and increases the computational complexity~\mbox{%DIFAUXCMD
-\cite{tackmannRapidInferenceDirect2019}}\hskip0pt%DIFAUXCMD
-.
+  Additionally, a very large number of nodes also decreases the accuracy of the network inference algorithms for the same sample size~\cite{peschelNetCoMiNetworkConstruction2020} and increases the computational complexity~\cite{tackmannRapidInferenceDirect2019}.
   We observe that filtering out taxa that are present in low abundances in all samples increases the proportion of taxa in common between taxonomy tables generated using different reference databases (Figure~\ref{fig:figure_s4}), providing another reason for filtering.
   We also observe that the reduction in the number of taxa leads to a better agreement in the networks inferred through different methods (Figure~\ref{fig:figure6} and Figure~\ref{fig:figure_s1}).
-  }\todo[noline]{R2.3}
-  \DIFadd{Moreover, filtering is necessary in order to increase the power in tests of significance when the number of taxa is much greater than the number of samples.
-}
+  %\todo[noline]{R2.3}
+  Moreover, filtering is necessary in order to increase the power in tests of significance when the number of taxa is much greater than the number of samples.
 
-%DIF >  \newpage
-%DIF >    \pagenumbering{goggle}
-%DIF >    \thispagestyle{empty}
-%DIF >    \input{table1.tex}
-%DIF >    \thispagestyle{empty}
-%DIF >    \input{table_s1.tex}
-\DIFaddend 
+% \newpage
+%   \pagenumbering{goggle}
+%   \thispagestyle{empty}
+%   \input{table1.tex}
+%   \thispagestyle{empty}
+%   \input{table_s1.tex}
 
 %--------------------------------------------------------%
 %   END DOCUMENT
